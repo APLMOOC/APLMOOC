@@ -1,0 +1,24 @@
+site_name: APL MOOC
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: purple
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: deep purple
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - nagivation.top  
+    - navigation.sections
+markdown_extensions:
+  - md_in_html
+extra_css:
+  - styles/main.css
+extra_javascript:
+  - javascripts/login.js
