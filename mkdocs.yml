@@ -31,3 +31,16 @@ markdown_extensions:
   - pymdownx.tabbed:
       alternate_style: true 
   - attr_list
+nav:
+  - Home: index.md
+  - Course:
+    - 0 - The wonderful world of APL:
+      - 0.1 - Quirky and different: course/ch0/part1.md
+      - 0.2 - What's the big idea?: course/ch0/part2.md
+      - 0.3 - Useful resources: course/ch0/part3.md
+    - 1 - Getting your toes wet:
+      - 1.1 - Immediate execution mode: course/ch1/part1.md
+      - 1.r - Read exercises: course/ch1/read.md
+      - 1.w - Write exercises: course/ch1/write.md
+  - Receiving ECTS Credits: credits.md
+  - Log in: login.md

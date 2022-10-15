@@ -1,6 +1,9 @@
-# Part 1
+# Read exercises
 
-This is the course content and exercises for part 1
+For each of the following exercises, try to figure out what the input will produce in the tryAPL terminal.
+Check your answers by opening the "Output" tab.
+
+The exercises are not checked or graded: use them to check your knowledge!
 
 !!! question "Read problem 1"
 
@@ -37,11 +40,3 @@ This is the course content and exercises for part 1
         ```
 
 ---
-
-!!! question "Write problem 1: Sum of a vector"
-    Write a dfn that, given a right vector argument, returns the sum of its elements.
-    <div class="inline-input">
-    <input type="text" id="c1_p1_sum_list" placeholder="your function here">
-    <button class="md-button md-button--primary" onclick="alert('c1_p1_sum_list')">Submit</button>
-    </div>
-
