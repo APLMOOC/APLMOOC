@@ -1,0 +1,109 @@
+input {
+    border: solid 2px black;
+    padding: 0.3rem;
+    font-family: "APL385";
+}
+
+.ngn_lb {
+    background-color: #eae9f3;
+    color: #555;
+    cursor: default;
+    font-family: "APL385";
+    padding: 2px;
+    padding-left: 1em;
+    word-wrap: break-word;
+    top: 0;
+    position: fixed;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 0 2px #000;
+    z-index: 3;
+}
+
+.ngn_lb b {
+    cursor: pointer;
+    padding: 0 0.125rem;
+    font-weight: normal;
+    border-radius: 0.125rem;
+}
+
+.ngn_lb b:hover,
+.ngn_bq .ngn_lb {
+    background-color: #928abd;
+    color: #fff
+}
+
+.lb~.input-group {
+    background: white;
+}
+
+.power {
+    display: flex;
+    margin: -0.5rem 0 1rem 0.5rem;
+}
+
+.logo,
+#logo {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border-bottom: none!important;
+}
+
+.power svg {
+    transition: 0.15s;
+    height: 2.75em;
+    width: 5em;
+    margin: 0.25rem;
+    border-radius: 0.25rem;
+    background: white;
+    color: #928abd;
+    padding: 0.125rem;
+    border: 1px solid #928abd;
+}
+
+.power svg:hover {
+    background: #928abd;
+    color: white;
+}
+
+#gcaptcha:hover path:nth-child(2) {
+    fill: #2a57fe;
+}
+
+#gcaptcha:hover path:nth-child(2) {
+    fill: #63c8ff
+}
+
+#gcaptcha:hover path:nth-child(3) {
+    fill: #ffffff;
+}
+
+.trans {
+    color: transparent;
+}
+
+.jBox-Tooltip {
+    font-family: "APL385 Unicode";
+}
+
+.jBox-Tooltip pre.APL {
+    margin-bottom: 0;
+}
+
+.jBox-Tooltip p {
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.ngn_tth {
+    color: #ed7f00;
+    font-size: 150%;
+    margin: -0.25em;
+}
+
+kbd,
+.jBox-Tooltip span {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
