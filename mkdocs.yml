@@ -40,7 +40,7 @@ nav:
       - 0.3 - Useful resources: course/ch0/part3.md
     - 1 - Getting your toes wet:
       - 1.1 - Immediate execution mode: course/ch1/part1.md
-      - 1.r - Read exercises: course/ch1/read.md
-      - 1.w - Write exercises: course/ch1/write.md
+      - 1.R - Read exercises: course/ch1/read.md
+      - 1.W - Write exercises: course/ch1/write.md
   - Receiving ECTS Credits: credits.md
   - Log in: login.md

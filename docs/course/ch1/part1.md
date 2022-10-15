@@ -1,3 +1,3 @@
-# Part 1
+# Immediate execution mode
 
 < info on immediate execution mode >
