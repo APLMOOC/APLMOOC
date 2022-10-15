@@ -21,4 +21,13 @@ markdown_extensions:
 extra_css:
   - styles/main.css
 extra_javascript:
-  - javascripts/login.js
+  - js/mooc.js
+  - js/languagebar.js
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true 
+  - attr_list
