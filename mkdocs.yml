@@ -1,6 +1,9 @@
 site_name: APL MOOC
 theme:
   name: material
+  icon:
+    logo: material/food-apple
+  favicon: course/assets/favicon.png
   palette:
     - scheme: default
       primary: purple
