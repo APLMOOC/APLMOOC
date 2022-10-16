@@ -41,6 +41,7 @@ nav:
       - 0.4 - About the course: course/ch0/part4.md
     - 1 - Getting your toes wet:
       - 1.1 - Immediate execution mode: course/ch1/part1.md
+      - 1.S - Summary: course/ch1/summary.md
       - 1.R - Read exercises: course/ch1/read.md
       - 1.W - Write exercises: course/ch1/write.md
   - Receiving ECTS Credits: credits.md
