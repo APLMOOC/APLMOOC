@@ -16,6 +16,8 @@ theme:
     - navigation.tabs
     - nagivation.top  
     - navigation.sections
+  font:
+    code: APL385
 markdown_extensions:
   - md_in_html
 extra_css:
@@ -25,12 +27,17 @@ extra_javascript:
   - js/languagebar.js
 markdown_extensions:
   - admonition
+  - attr_list
   - pymdownx.details
   - pymdownx.superfences
   - pymdownx.superfences
   - pymdownx.tabbed:
-      alternate_style: true 
-  - attr_list
+      alternate_style: true
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
 nav:
   - Home: index.md
   - Course:
@@ -41,6 +48,8 @@ nav:
       - 0.4 - About the course: course/ch0/part4.md
     - 1 - Getting your toes wet:
       - 1.1 - Immediate execution mode: course/ch1/part1.md
+      - 1.2 - Basic operations and input (funky): course/ch1/part2.md
+      - 1.3 - How do I type these characters?!?!?!?: course/ch1/part3.md
       - 1.S - Summary: course/ch1/summary.md
       - 1.R - Read exercises: course/ch1/read.md
       - 1.W - Write exercises: course/ch1/write.md
