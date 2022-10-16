@@ -9,7 +9,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.5.2">
+      <meta name="generator" content="mkdocs-1.4.1, mkdocs-material-8.5.6">
     
     
       
@@ -17,7 +17,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.9f9400aa.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.20d9efc8.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
@@ -32,8 +32,8 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CAPL385:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"APL385"}</style>
       
     
     
@@ -469,6 +469,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../part2/" class="md-nav__link">
+        1.2 - Basic operations and input (funky)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part3/" class="md-nav__link">
+        1.3 - How do I type these characters?!?!?!?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../summary/" class="md-nav__link">
         1.S - Summary
       </a>
@@ -582,7 +610,29 @@
 
 
 <h1 id="immediate-execution-mode">Immediate execution mode</h1>
-<p>&lt; info on immediate execution mode &gt;</p>
+<p>Let's get started with some basic APL!</p>
+<p>For the first few chapters, we will be working with the REPL available at <a href="https://tryapl.org" target="_blank">TryAPL</a>.
+If you've ever tried running <code>python3</code> (<code>py</code> for W*ndows users) or the IDLE editor on your computer, this is the same thing.
+The REPL will wait for you to enter a command, then evaluate and print the result (if your command resulted in a result),
+after which it will return control back to you.
+This will repeat for as long as your heart desires.</p>
+<div class="admonition tip">
+<p class="admonition-title">Try it yourself</p>
+<p>You can run APL code at</p>
+<p><a class="md-button" href="https://tryapl.org" target="_blank">tryapl.org</a></p>
+<p>Try running the commands in this chapter yourself.</p>
+<p>You can also use the REPL for playing around, testing out ideas,
+and working on the write exercises at the end of the chapter.</p>
+</div>
+<p>The mode you land in by default is called <mark>Immediate Execution mode</mark> (because it immediately executes whatever you give it).
+Other modes include Execution mode, Function Editing mode, Character Input mode, Evaluated Input mode, and GUI Input Form mode.
+We will get back to these modes in future chapters.</p>
+<p>Surprisingly enough, this style of prompt is how APL code has been written for the longest time!
+By using the different modes outlined above, alongside APL workspaces and an APL IDE, you can write any programs you like.
+Thankfully, since we live in the year 2022, some APL developers have realised that it might be smart to finally get with the times
+and let programmers write their code in text files that are executed by an APL interpreter.
+This is fairly straightforward to do but requires some configuration, so we will get back to this in a later chapter.
+For now, the TryAPL interpreter will suffice.</p>
 
 
 
@@ -619,13 +669,13 @@
       
       
         
-        <a href="../summary/" class="md-footer__link md-footer__link--next" aria-label="Next: 1.S - Summary" rel="next">
+        <a href="../part2/" class="md-footer__link md-footer__link--next" aria-label="Next: 1.2 - Basic operations and input (funky)" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              1.S - Summary
+              1.2 - Basic operations and input (funky)
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -656,10 +706,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "nagivation.top", "navigation.sections"], "search": "../../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "nagivation.top", "navigation.sections"], "search": "../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.39f04ddb.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.078830c0.min.js"></script>
       
         <script src="../../../js/mooc.js"></script>
       

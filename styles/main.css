@@ -1,23 +1,60 @@
-input {
-    border: solid 2px black;
-    padding: 0.3rem;
+@font-face {
     font-family: "APL385";
+    src:url("Apl385.ttf")
 }
 
+/* Problem submission box */
+
+.problem {
+    margin: 1em;
+    display: inline-flex;
+    width: 95%;
+}
+
+.problem span {
+    background: #ccc;
+    height: 100%;
+    display: inline-block;
+    padding: 0.5em;
+    color: #777;
+    font-family: "APL385";
+    border-radius: 0.5em 0 0 0.5em;
+}
+
+.problem input {
+    flex-grow: 1;
+    margin-right: -0.1em;
+    font-family: "APL385";
+    font-size: 1.5em;
+    border-top: solid 1px #777;
+    border-bottom: solid 1px #777;
+    text-indent: 0.2em;
+}
+
+.problem button {
+    font-weight: bold;
+    font-size: 1.1em;
+    font-family: "APL385";
+    border-radius: 0 0.5em 0.5em 0;
+    color: #000;
+    background: #BBB5D6;
+    border: none;
+    cursor: pointer;
+    padding: 0 0.5em;
+}
+
+/* Language bar */
+
 .ngn_lb {
-    background-color: #eae9f3;
-    color: #555;
+    background-color: --md-primary-fg-color;
     cursor: default;
     font-family: "APL385";
     padding: 2px;
     padding-left: 1em;
     word-wrap: break-word;
-    top: 0;
-    position: fixed;
-    left: 0;
     width: 100%;
-    box-shadow: 0 0 2px #000;
     z-index: 3;
+    font-size: 1.25vw;
 }
 
 .ngn_lb b {
@@ -85,7 +122,7 @@ input {
 }
 
 .jBox-Tooltip {
-    font-family: "APL385 Unicode";
+    font-family: "APL385";
 }
 
 .jBox-Tooltip pre.APL {
@@ -103,7 +140,6 @@ input {
     margin: -0.25em;
 }
 
-kbd,
 .jBox-Tooltip span {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: "APL385";
 }
