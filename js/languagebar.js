@@ -42,11 +42,11 @@
     })
     let fk=x=>{
       let t=x.target
-      if(bqm){let i=t.selectionStart,v=t.value,c=bqc[x.key];if(x.which>31){bqm=0;d.body.classList.remove('ngn_bq')}
+      if(bqm){let i=t.selectionStart,v=t.value,c=bqc[x.key];if(x.which>31){bqm=0;document.body.classList.remove('ngn_bq')}
               if(c){t.value=v.slice(0,i)+c+v.slice(i);t.selectionStart=t.selectionEnd=i+1;pd(x);return!1}}
       if (!x.ctrlKey && !x.shiftKey && !x.altKey && !x.metaKey) {
         if ("`½²^º§ùµ°".indexOf(x.key) > -1) {
-          bqm=1;d.body.classList.add('ngn_bq');pd(x); // ` or other trigger symbol pressed, wait for next key
+          bqm=1;document.body.classList.add('ngn_bq');pd(x); // ` or other trigger symbol pressed, wait for next key
         } else if (x.key == "Tab") {
           let i=t.selectionStart,v=t.value,c=tc[v.slice(i-2,i)]
           if(c){t.value=v.slice(0,i-2)+c+v.slice(i);t.selectionStart=t.selectionEnd=i-1;pd(x)}
@@ -58,28 +58,5 @@
       if(nn!=='textarea'&&(nn!=='input'||t0.type!=='text'&&t0.type!=='search'))return
       t=t0;if(!t.ngn){t.ngn=1;ts.push(t);ev(t,'keydown',fk)}
     }
-    let upd=_=>{
-      d.body.style.marginTop=lb.clientHeight+'px';
-      d.body.style.height="calc(100vh - 8px - " + lb.clientHeight+'px)';
-      $$(".content").forEach(fn=node=>{
-        if(node.id === "learn") {
-          let inNotebook = node.getAttribute("data-in_notebook");
-          switch(inNotebook) {
-            case "yes":
-              node.style.height="calc(100vh - 2px - " + lb.clientHeight+'px)';
-              break;
-            case "no":
-              node.style.height="calc(100vh - 3em - 2px - " + lb.clientHeight+'px)';
-              break;
-            default:
-              console.error(`Error: expected "yes" or "no", got: ${inNotebook}`);
-              break;
-          }
-        } else {
-          node.style.height="calc(100vh - 3em - 2px - " + lb.clientHeight+'px)';
-        }
-      });
-    }
-    upd();ev(window,'resize',upd)
-    ev(d,'focus',ff,!0);let ae=d.activeElement;ae&&ff({type:'focus',target:ae})
+    ev(document,'focus',ff,!0);let ae=document.activeElement;ae&&ff({type:'focus',target:ae})
     })();

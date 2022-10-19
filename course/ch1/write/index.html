@@ -324,9 +324,7 @@
   
   
     
-      
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
@@ -417,9 +415,7 @@
   
   
     
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" checked>
@@ -460,7 +456,7 @@
   
     <li class="md-nav__item">
       <a href="../part2/" class="md-nav__link">
-        1.2 - Basic operations and input (funky)
+        1.2 - Basic operations and input
       </a>
     </li>
   
@@ -475,6 +471,34 @@
     <li class="md-nav__item">
       <a href="../part3/" class="md-nav__link">
         1.3 - How do I type these characters?!?!?!?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part4/" class="md-nav__link">
+        1.4 - Order of execution
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part5/" class="md-nav__link">
+        1.5 - When things go wrong
       </a>
     </li>
   
@@ -611,15 +635,139 @@
 
 <h1 id="write-exercises">Write exercises</h1>
 <p>Submit APL code for the following exercises.
-These are graded using TMC.</p>
-<p>You can submit as many solutions as you like.</p>
-<div class="admonition question">
-<p class="admonition-title">Write problem 1: Sum of a vector</p>
-<p>Write a dfn that, given a right vector argument, returns the sum of its elements.
+Your submissions are graded using TMC.</p>
+<p>Make sure to <a href="../../../login/">log in</a> to be able to submit your work!</p>
+<p>You can submit as many solutions as you like.
+If you submit a correct solution at least once, you will receive points on the TMC server and be able to see the model solution.
+If the write problem is red, it is unsolved. If it it green, you have solved it and received points for it on the server.</p>
+<hr />
+<div class="admonition problem">
+<p class="admonition-title">Write problem 1</p>
+<p>Calculate the area of a room which is 13.7 long and 206.55 wide.
 <div class="problem">
-    <span>your_function ←</span>
-    <input type="text" id="c1_p1_sum_list" placeholder="your function here">
-    <button onclick="alert('c1_p1_sum_list')">Submit</button>
+    <span class="problemspan">⎕←</span>
+    <input class="probleminput" type="text" id="c1_p1" placeholder="your solution here">
+    <button class="problembutton" onclick="alert('c1_p1')">Submit</button>
+</div></p>
+</div>
+<hr />
+<div class="admonition problem">
+<p class="admonition-title">Write problem 2</p>
+<p>A grandpa decreases in height by 2.5412cm every year.
+If he is 150.0000cm tall now, how tall will he be in 15 years?
+<div class="problem">
+    <span class="problemspan">⎕←</span>
+    <input class="probleminput" type="text" id="c1_p2" placeholder="your solution here">
+    <button class="problembutton" onclick="alert('c1_p2')">Submit</button>
+</div></p>
+</div>
+<hr />
+<div class="admonition problem">
+<p class="admonition-title">Write problem 3</p>
+<p>If 3 liters of embalming fluid cost you 300.12€, what is the price per liter?
+<div class="problem">
+    <span class="problemspan">⎕←</span>
+    <input class="probleminput" type="text" id="c1_p3" placeholder="your solution here">
+    <button class="problembutton" onclick="alert('c1_p3')">Submit</button>
+</div></p>
+</div>
+<hr />
+<div class="admonition problem">
+<p class="admonition-title">Write problem 4</p>
+<p>Your current bank balance is ¯420€. You are in big trouble.
+What will be your balance if you take just another quick loan of 100€?
+<div class="problem">
+    <span class="problemspan">⎕←</span>
+    <input class="probleminput" type="text" id="c1_p4" placeholder="your solution here">
+    <button class="problembutton" onclick="alert('c1_p4')">Submit</button>
+</div></p>
+</div>
+<hr />
+<div class="admonition problem">
+<p class="admonition-title">Write problem 5</p>
+<p>Cause a <code>SYNTAX ERROR</code> using as few symbols as possible.
+<div class="problem">
+    <span class="problemspan">⎕←</span>
+    <input class="probleminput" type="text" id="c1_p5" placeholder="your solution here">
+    <button class="problembutton" onclick="alert('c1_p5')">Submit</button>
+</div></p>
+</div>
+<hr />
+<div class="admonition problem">
+<p class="admonition-title">Write problem 6</p>
+<p>Cause a <code>DOMAIN ERROR</code>.
+<div class="problem">
+    <span class="problemspan">⎕←</span>
+    <input class="probleminput" type="text" id="c1_p6" placeholder="your solution here">
+    <button class="problembutton" onclick="alert('c1_p6')">Submit</button>
+</div></p>
+</div>
+<hr />
+<div class="admonition problem">
+<p class="admonition-title">Write problem 7</p>
+<p>The following expression returns the number 13.
+<div class="highlight"><pre><span></span><code><span class="p">(((</span><span class="m">5</span><span class="o">*</span><span class="m">2</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="m">12</span><span class="o">*</span><span class="m">2</span><span class="p">))</span><span class="o">*</span><span class="m">.5</span><span class="p">)</span><span class="w"></span>
+</code></pre></div>
+Rewrite the expression with as few parentheses as possible to still return the number 13.
+<div class="problem">
+    <span class="problemspan">⎕←</span>
+    <input class="probleminput" type="text" id="c1_p7" placeholder="your solution here">
+    <button class="problembutton" onclick="alert('c1_p7')">Submit</button>
+</div></p>
+</div>
+<hr />
+<div class="admonition problem">
+<p class="admonition-title">Write problem 8</p>
+<p>Compute the mean of the numbers 1, 57, 237, ¯5, 42.
+<div class="problem">
+    <span class="problemspan">⎕←</span>
+    <input class="probleminput" type="text" id="c1_p8" placeholder="your solution here">
+    <button class="problembutton" onclick="alert('c1_p8')">Submit</button>
+</div></p>
+</div>
+<hr />
+<div class="admonition problem">
+<p class="admonition-title">Write problem 9</p>
+<p>Suppose your tax rate is 7.5%, up to a maximum of 1000€ in taxes.
+If you earned 25000€ this year, and your tax return (to be deducted from this year's taxes) is 175€,
+how much money will you owe the government this year?
+<div class="problem">
+    <span class="problemspan">⎕←</span>
+    <input class="probleminput" type="text" id="c1_p9" placeholder="your solution here">
+    <button class="problembutton" onclick="alert('c1_p9')">Submit</button>
+</div></p>
+</div>
+<hr />
+<div class="admonition problem">
+<p class="admonition-title">Write problem 10</p>
+<p>Subtract 7 from 16, divide the result by 3, add 8, multiply by 2.5, and square the result.
+Use as few parentheses as possible.
+<div class="problem">
+    <span class="problemspan">⎕←</span>
+    <input class="probleminput" type="text" id="c1_p10" placeholder="your solution here">
+    <button class="problembutton" onclick="alert('c1_p10')">Submit</button>
+</div></p>
+</div>
+<hr />
+<div class="admonition problem">
+<p class="admonition-title">Write problem 11</p>
+<p>Write a nonempty line of code that does nothing (doesn't display anything on the screen).
+<div class="problem">
+    <span class="problemspan">⎕←</span>
+    <input class="probleminput" type="text" id="c1_p11" placeholder="your solution here">
+    <button class="problembutton" onclick="alert('c1_p11')">Submit</button>
+</div></p>
+</div>
+<hr />
+<div class="admonition problem">
+<p class="admonition-title">Write problem 12</p>
+<p>Rewrite the following line of code to use as few parentheses as possible
+<div class="highlight"><pre><span></span><code><span class="p">((((</span><span class="m">10</span><span class="o">+</span><span class="m">3.5</span><span class="p">)</span><span class="o">×</span><span class="p">(</span><span class="m">6</span><span class="o">+</span><span class="m">5.555</span><span class="p">))</span><span class="o">-</span><span class="p">(((</span><span class="m">2</span><span class="o">+</span><span class="m">7</span><span class="p">)</span><span class="o">×</span><span class="m">¯11</span><span class="p">)</span><span class="o">×</span><span class="m">8.5</span><span class="p">))</span><span class="o">÷</span><span class="m">¯20</span><span class="p">)</span><span class="c1">⍝((()())))()()((()()))()()()()))())))()(((</span><span class="w"></span>
+</code></pre></div>
+<div class="problem">
+    <span class="problemspan">⎕←</span>
+    <input class="probleminput" type="text" id="c1_p12" placeholder="your solution here">
+    <button class="problembutton" onclick="alert('c1_p12')">Submit</button>
 </div></p>
 </div>
 
@@ -695,7 +843,7 @@ These are graded using TMC.</p>
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "nagivation.top", "navigation.sections"], "search": "../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "nagivation.top", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
       <script src="../../../assets/javascripts/bundle.078830c0.min.js"></script>

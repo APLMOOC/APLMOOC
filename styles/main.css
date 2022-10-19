@@ -3,15 +3,36 @@
     src:url("Apl385.ttf")
 }
 
+html {
+    font-size: 165%;
+}
+
+/* Problem admonitions */
+
+.md-typeset .admonition.problem,
+.md-typeset details.problem {
+    border-color: #ff5252;
+}
+.md-typeset .problem > .admonition-title,
+.md-typeset .problem > summary {
+    background-color: rgba(255,82,82,0.1);
+}
+.md-typeset .problem > .admonition-title::before,
+.md-typeset .problem > summary::before {
+    background-color: #ff5252;
+    -webkit-mask-image: var(--md-admonition-icon--example);
+            mask-image: var(--md-admonition-icon--example);
+}
+
 /* Problem submission box */
 
-.problem {
+div.problem {
     margin: 1em;
     display: inline-flex;
     width: 95%;
 }
 
-.problem span {
+div.problem span.problemspan {
     background: #ccc;
     height: 100%;
     display: inline-block;
@@ -21,7 +42,7 @@
     border-radius: 0.5em 0 0 0.5em;
 }
 
-.problem input {
+div.problem input.probleminput {
     flex-grow: 1;
     margin-right: -0.1em;
     font-family: "APL385";
@@ -31,7 +52,7 @@
     text-indent: 0.2em;
 }
 
-.problem button {
+div.problem button.problembutton {
     font-weight: bold;
     font-size: 1.1em;
     font-family: "APL385";
@@ -54,7 +75,7 @@
     word-wrap: break-word;
     width: 100%;
     z-index: 3;
-    font-size: 1.25vw;
+    font-size: 1.15vw;
 }
 
 .ngn_lb b {
@@ -67,7 +88,7 @@
 .ngn_lb b:hover,
 .ngn_bq .ngn_lb {
     background-color: #928abd;
-    color: #fff
+    color: #fff;
 }
 
 .lb~.input-group {

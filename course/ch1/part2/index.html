@@ -13,7 +13,7 @@
     
     
       
-        <title>1.2 - Basic operations and input (funky) - APL MOOC</title>
+        <title>1.2 - Basic operations and input - APL MOOC</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#basic-operations-and-input-funky" class="md-skip">
+        <a href="#basic-operations-and-input" class="md-skip">
           Skip to content
         </a>
       
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              1.2 - Basic operations and input (funky)
+              1.2 - Basic operations and input
             
           </span>
         </div>
@@ -324,9 +324,7 @@
   
   
     
-      
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
@@ -417,9 +415,7 @@
   
   
     
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" checked>
@@ -469,7 +465,7 @@
       
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        1.2 - Basic operations and input (funky)
+        1.2 - Basic operations and input
       </a>
       
     </li>
@@ -485,6 +481,34 @@
     <li class="md-nav__item">
       <a href="../part3/" class="md-nav__link">
         1.3 - How do I type these characters?!?!?!?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part4/" class="md-nav__link">
+        1.4 - Order of execution
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part5/" class="md-nav__link">
+        1.5 - When things go wrong
       </a>
     </li>
   
@@ -609,7 +633,7 @@
                   
 
 
-<h1 id="basic-operations-and-input-funky">Basic operations and input (funky)</h1>
+<h1 id="basic-operations-and-input">Basic operations and input</h1>
 <p>Okay, so we have TryAPL open. Now what?</p>
 <p>APL is a programming language, so it would make sense if it could, at least, do some basic arithmetic.
 Let's try it out!</p>
@@ -638,6 +662,23 @@ The other is a <mark>negative sign</mark> (<code>¯</code>), which is slightly h
 The negative sign is not a function!
 In the same way that a full stop (<code>.</code>) decorates a number (<code>3.14159</code>) to show that it has a decimal part,
 the negative sign (<code>¯</code>) decorates a number (<code>¯1337</code>) to show that it's negative.</p>
+<div class="admonition info">
+<p class="admonition-title">Functions</p>
+<p>In APL, <strong>functions</strong> take in <strong>arguments</strong> and produce <strong>results</strong>.</p>
+<hr />
+<p>Most APL symbols are <strong>functions</strong>. You will get familiar with them in the next chapters.</p>
+<p>Functions can have <strong>arguments</strong> to their left and right.</p>
+<ul>
+<li>If a function has <strong>both left and right arguments</strong>, it is called dyadic (di = two).</li>
+<li>If a function has <strong>only one argument on the right</strong>, it is called monadic (mono = one).</li>
+<li>If a function doesn't take arguments (quite rare!), it is called niladic (nil = zero).</li>
+</ul>
+<p>Functions with only one argument on the left do not exist in APL.</p>
+<p><strong>Results</strong> are what a function "spits out".
+  You can imagine the result of the function replacing the function after its execution is done,
+  just like in any other programming language.
+  There are also functions that do not return any results.</p>
+</div>
 <hr />
 <p>Multiplication should work just as intuitively.</p>
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="m">2</span><span class="o">*</span><span class="m">2</span><span class="w"></span>
@@ -666,14 +707,20 @@ Similarly, division is done with the dedicated mathematical division symbol (<co
 <span class="m">4</span><span class="w"></span>
 <span class="w">      </span><span class="m">2</span><span class="o">×</span><span class="m">5</span><span class="w"></span>
 <span class="m">10</span><span class="w"></span>
-<span class="w">      </span><span class="m">4</span><span class="o">÷</span><span class="m">2</span><span class="w"></span>
-<span class="m">2</span><span class="w"></span>
-<span class="w">      </span><span class="m">2</span><span class="o">÷</span><span class="m">4</span><span class="w"></span>
-<span class="m">0.5</span><span class="w"></span>
+<span class="w">      </span><span class="m">7</span><span class="o">÷</span><span class="m">2</span><span class="w"></span>
+<span class="m">3.5</span><span class="w"></span>
+<span class="w">      </span><span class="m">2</span><span class="o">÷</span><span class="m">7</span><span class="w"></span>
+<span class="m">0.2857142857</span><span class="w"></span>
 <span class="w">      </span><span class="m">123</span><span class="o">×</span><span class="m">¯456</span><span class="w"></span>
 <span class="m">¯56088</span><span class="w"></span>
 </code></pre></div>
 <p>Funkar som den ska.</p>
+<div class="admonition info">
+<p class="admonition-title">Significant figures</p>
+<p>APL will display results of your calculations to 10 significant figures.
+  Internally, APL calculates all floating-point operations to 16 or 17 significant figures,
+  which is a suitable level of accuracy for most (if not all) applications.</p>
+</div>
 
 
 
@@ -747,7 +794,7 @@ Similarly, division is done with the dedicated mathematical division symbol (<co
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "nagivation.top", "navigation.sections"], "search": "../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "nagivation.top", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
       <script src="../../../assets/javascripts/bundle.078830c0.min.js"></script>
