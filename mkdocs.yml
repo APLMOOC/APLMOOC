@@ -18,7 +18,7 @@ theme:
   features:
     - navigation.tabs
     - nagivation.top  
-    - navigation.sections
+    - content.code.annotate
   font:
     code: APL385
 markdown_extensions:
@@ -51,8 +51,10 @@ nav:
       - 0.4 - About the course: course/ch0/part4.md
     - 1 - Getting your toes wet:
       - 1.1 - Immediate execution mode: course/ch1/part1.md
-      - 1.2 - Basic operations and input (funky): course/ch1/part2.md
+      - 1.2 - Basic operations and input: course/ch1/part2.md
       - 1.3 - How do I type these characters?!?!?!?: course/ch1/part3.md
+      - 1.4 - Order of execution: course/ch1/part4.md
+      - 1.5 - When things go wrong: course/ch1/part5.md
       - 1.S - Summary: course/ch1/summary.md
       - 1.R - Read exercises: course/ch1/read.md
       - 1.W - Write exercises: course/ch1/write.md

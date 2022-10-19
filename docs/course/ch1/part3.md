@@ -21,7 +21,7 @@ Find some alternatives below.
 
 ### Quickest: Use keyboard shortcuts
 
-On TryAPL (and this page), you can use prefixes to insert various special symbols.
+On TryAPL (and this page), you can use **prefixes** to insert various special symbols.
 
 You can use any of the following keys as prefixes:
 <kbd>`</kbd> <kbd>§</kbd> <kbd>°</kbd> <kbd>²</kbd> <kbd>µ</kbd> <kbd>º</kbd> <kbd>½</kbd> <kbd>ù</kbd>
@@ -59,3 +59,12 @@ as it doesn't have a separate <kbd>[</kbd> key (and using <kbd>AltGr</kbd> break
     When we install the Dyalog IDE in a future chapter, this will no longer be a concern, as that supports Finnish
     (and various other non-US) keyboards natively.
 
+---
+
+### Excessive: Install the APL Keyboard
+
+You can install a dedicated keyboard for APL glyphs.
+See further instructions [on the Dyalog website](https://www.dyalog.com/apl-font-keyboard.htm).
+This method provides no extra benefits unless you want to type APL outside of TryAPL, this webpage, or the IDE.
+
+We will also see in a later chapter how to install a plugin for Visual Studio Code that allows you to type APL characters.
