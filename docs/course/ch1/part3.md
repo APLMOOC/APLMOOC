@@ -36,7 +36,7 @@ and division `÷` is inserted with <kbd>PREFIX</kbd> <kbd>=</kbd>.
 
 While these might seem unintuitive at first, you'll get used to them fairly quickly.
 You can see the completion shortcut if you hover over the symbol in the top language bar.
-For example, hovering over `×` shows that you can type it by using `<prefix> -`, just like we did above. 
+For example, hovering over `×` shows that you can type it by using `Prefix: <prefix> -`, just like we did above. 
 
 ---
 
