@@ -9,16 +9,16 @@ html {
 
 /* Problem admonitions */
 
-.md-typeset .admonition.problem,
-.md-typeset details.problem {
+.md-typeset .admonition.write-problem,
+.md-typeset details.write-problem {
     border-color: #ff5252;
 }
-.md-typeset .problem > .admonition-title,
-.md-typeset .problem > summary {
+.md-typeset .write-problem > .admonition-title,
+.md-typeset .write-problem > summary {
     background-color: rgba(255,82,82,0.1);
 }
-.md-typeset .problem > .admonition-title::before,
-.md-typeset .problem > summary::before {
+.md-typeset .write-problem > .admonition-title::before,
+.md-typeset .write-problem > summary::before {
     background-color: #ff5252;
     -webkit-mask-image: var(--md-admonition-icon--example);
             mask-image: var(--md-admonition-icon--example);
@@ -74,8 +74,7 @@ div.problem button.problembutton {
     padding-left: 1em;
     word-wrap: break-word;
     width: 100%;
-    z-index: 3;
-    font-size: 1.15vw;
+    z-index: -1;
 }
 
 .ngn_lb b {
@@ -83,6 +82,7 @@ div.problem button.problembutton {
     padding: 0 0.125rem;
     font-weight: normal;
     border-radius: 0.125rem;
+    font-size: 1.65em;
 }
 
 .ngn_lb b:hover,
