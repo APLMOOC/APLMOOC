@@ -3,14 +3,29 @@ var client_secret = "d15d4d4ba2b80a91aaff7a5c94d30fe65c87b058991a327a5de4dfe71f7
 var mooc_status = 0;
 var mooc_token;
 
-$=s=>document.querySelector(s)
+$=s=>document.querySelector(s);
+$$=s=>document.querySelectorAll(s);
+
+
+// On page load
+
+if("mooc_token" in sessionStorage) {
+    mooc_token = sessionStorage.getItem("mooc_token");
+
+    if($$("div.write-problem").length > 0) {
+        problem_status_update();
+    }
+}
+
+
+// Authentication
 
 function login() {
-    let user = $("#user").value
-    let pass = $("#pass").value
-    let ret = mooc_login(user, pass, logincallback)
-    console.log(ret)
-    $("#loginResponse").innerHTML = "Logging in..."
+    let user = $("#user").value;
+    let pass = $("#pass").value;
+    let ret = mooc_login(user, pass, logincallback);
+    console.log(ret);
+    $("#loginResponse").innerHTML = "Logging in...";
 }
 
 function mooc_login(username,password,callback) {
@@ -23,9 +38,9 @@ function mooc_login(username,password,callback) {
             if (mooc_status == 1) {
                 mooc_token = JSON.parse(this.responseText)["access_token"];
                 sessionStorage.setItem("mooc_token",mooc_token);
-                $("#loginResponse").innerHTML = "Success"
+                $("#loginResponse").innerHTML = "Success";
             } else {
-                $("#loginResponse").innerHTML = "Login failed"
+                $("#loginResponse").innerHTML = "Login failed";
             }
             callback();
         }
@@ -45,6 +60,32 @@ function mooc_logout(callback) {
     sessionStorage.clear();
     callback();
 }
+
+
+// Problem status
+
+function problem_status() {
+    console.log(`Getting problem status for user ${mooc_token}`);
+    // Return dummy data
+    return ["c1_p1", "c1_p3"];
+}
+
+function problem_status_update() {
+    const solved = problem_status();
+    let problems = $$("div.write-problem");
+
+    for(const problem of problems) {
+        let problem_id = problem.getElementsByClassName("probleminput")[0].id;
+        if(solved.includes(problem_id)) {
+            console.log(`Marking ${problem_id} as complete`);
+            problem.classList.remove("write-problem");
+            problem.classList.add("success");
+        }
+    }
+}
+
+
+// To be implemented (template)
 
 /*
 function quizzes_status(callback) {
