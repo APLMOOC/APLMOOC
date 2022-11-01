@@ -1,6 +1,9 @@
 site_name: APL MOOC
 theme:
   name: material
+  icon:
+    logo: material/food-apple
+  favicon: course/assets/favicon.png
   palette:
     - scheme: default
       primary: purple
@@ -15,10 +18,45 @@ theme:
   features:
     - navigation.tabs
     - nagivation.top  
-    - navigation.sections
+    - content.code.annotate
+  font:
+    code: APL385
 markdown_extensions:
   - md_in_html
 extra_css:
   - styles/main.css
 extra_javascript:
-  - javascripts/login.js
+  - js/mooc.js
+  - js/languagebar.js
+markdown_extensions:
+  - admonition
+  - attr_list
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+nav:
+  - Home: index.md
+  - Course:
+    - 0 - The wonderful world of APL:
+      - 0.1 - Quirky and different: course/ch0/part1.md
+      - 0.2 - What's the big idea?: course/ch0/part2.md
+      - 0.3 - Useful resources: course/ch0/part3.md
+      - 0.4 - About the course: course/ch0/part4.md
+    - 1 - Getting your toes wet:
+      - 1.1 - Immediate execution mode: course/ch1/part1.md
+      - 1.2 - Basic operations and input: course/ch1/part2.md
+      - 1.3 - How do I type these characters?!?!?!?: course/ch1/part3.md
+      - 1.4 - Order of execution: course/ch1/part4.md
+      - 1.5 - When things go wrong: course/ch1/part5.md
+      - 1.S - Summary: course/ch1/summary.md
+      - 1.R - Read exercises: course/ch1/read.md
+      - 1.W - Write exercises: course/ch1/write.md
+  - Receiving ECTS Credits: credits.md
+  - Log in: login.md

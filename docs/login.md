@@ -1,16 +1,15 @@
 # Log in
+
+Sign in with your mooc.fi credentials to be able to submit write problems to TMC and receive problem points.
+
 <div>
-<input id="user" type="text" placeholder="Username">
-<input id="pass" type="password" placeholder="Password">
-<button onclick="login()">Log in</button>
+<input id="user" type="text" placeholder="Email"><br><br>
+<input id="pass" type="password" placeholder="Password"><br><br>
+<button class="md-button md-button--primary" onclick="login()">Log in</button>
 </div>
 
 <script type="text/javascript">
 $=>document.querySelector
 </script>
-
-<style>
-    button { border: solid 1px black; padding: 0 0.3rem; height: 100%; cursor: pointer;}
-</style>
 
 <div id="loginResponse"></div>

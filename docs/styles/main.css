@@ -1,4 +1,166 @@
-input {
-    border: solid 2px black;
-    padding: 0.3rem;
+@font-face {
+    font-family: "APL385";
+    src:url("Apl385.ttf")
+}
+
+html {
+    font-size: 165%;
+}
+
+/* Problem admonitions */
+
+.md-typeset .admonition.write-problem,
+.md-typeset details.write-problem {
+    border-color: #ff5252;
+}
+.md-typeset .write-problem > .admonition-title,
+.md-typeset .write-problem > summary {
+    background-color: rgba(255,82,82,0.1);
+}
+.md-typeset .write-problem > .admonition-title::before,
+.md-typeset .write-problem > summary::before {
+    background-color: #ff5252;
+    -webkit-mask-image: var(--md-admonition-icon--example);
+            mask-image: var(--md-admonition-icon--example);
+}
+
+/* Problem submission box */
+
+div.problem {
+    margin: 1em;
+    display: inline-flex;
+    width: 95%;
+}
+
+div.problem span.problemspan {
+    background: #ccc;
+    height: 100%;
+    display: inline-block;
+    padding: 0.5em;
+    color: #777;
+    font-family: "APL385";
+    border-radius: 0.5em 0 0 0.5em;
+}
+
+div.problem input.probleminput {
+    flex-grow: 1;
+    margin-right: -0.1em;
+    font-family: "APL385";
+    font-size: 1.5em;
+    border-top: solid 1px #777;
+    border-bottom: solid 1px #777;
+    text-indent: 0.2em;
+}
+
+div.problem button.problembutton {
+    font-weight: bold;
+    font-size: 1.1em;
+    font-family: "APL385";
+    border-radius: 0 0.5em 0.5em 0;
+    color: #000;
+    background: #BBB5D6;
+    border: none;
+    cursor: pointer;
+    padding: 0 0.5em;
+}
+
+/* Language bar */
+
+.ngn_lb {
+    background-color: --md-primary-fg-color;
+    cursor: default;
+    font-family: "APL385";
+    padding: 2px;
+    padding-left: 1em;
+    word-wrap: break-word;
+    width: 100%;
+    z-index: -1;
+}
+
+.ngn_lb b {
+    cursor: pointer;
+    padding: 0 0.125rem;
+    font-weight: normal;
+    border-radius: 0.125rem;
+    font-size: 1.65em;
+}
+
+.ngn_lb b:hover,
+.ngn_bq .ngn_lb {
+    background-color: #928abd;
+    color: #fff;
+}
+
+.lb~.input-group {
+    background: white;
+}
+
+.power {
+    display: flex;
+    margin: -0.5rem 0 1rem 0.5rem;
+}
+
+.logo,
+#logo {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border-bottom: none!important;
+}
+
+.power svg {
+    transition: 0.15s;
+    height: 2.75em;
+    width: 5em;
+    margin: 0.25rem;
+    border-radius: 0.25rem;
+    background: white;
+    color: #928abd;
+    padding: 0.125rem;
+    border: 1px solid #928abd;
+}
+
+.power svg:hover {
+    background: #928abd;
+    color: white;
+}
+
+#gcaptcha:hover path:nth-child(2) {
+    fill: #2a57fe;
+}
+
+#gcaptcha:hover path:nth-child(2) {
+    fill: #63c8ff
+}
+
+#gcaptcha:hover path:nth-child(3) {
+    fill: #ffffff;
+}
+
+.trans {
+    color: transparent;
+}
+
+.jBox-Tooltip {
+    font-family: "APL385";
+}
+
+.jBox-Tooltip pre.APL {
+    margin-bottom: 0;
+}
+
+.jBox-Tooltip p {
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.ngn_tth {
+    color: #ed7f00;
+    font-size: 150%;
+    margin: -0.25em;
+}
+
+.jBox-Tooltip span {
+    font-family: "APL385";
 }
