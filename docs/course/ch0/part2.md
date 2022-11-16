@@ -103,7 +103,7 @@ However, this is also how beginner Python programmers are often taught to approa
 
 You'll notice that there is a lot of overhead in this solution:
 the programmer has to split the input, manually go through the list using a loop,
-convert string data to integer format, handle all of the different cases themselves ((making sure they are exhaustive),
+convert string data to integer format, handle all of the different cases themselves (making sure they are exhaustive),
 and print the result to the screen themselves.
 
 Compare this to the equivalent APL solution.
@@ -118,7 +118,7 @@ This isn't just part of the solution, this isn't a little section thereof, this 
 
 To an APL thinker, this is perfectly clear and legible!
 The symbols essentially tell the interpreter the following:
-"multiply together all of the elements of the list containing the signs of the input list".
+"Take the signs of all the elements of the input list, and multiply them together".
 There is no mention of types, no mention of loops, just operations acting on a structured list of data.
 
 Which one do you think is more legible?
