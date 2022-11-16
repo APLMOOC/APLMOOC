@@ -375,9 +375,81 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          0.2 - What's the big idea?
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         0.2 - What's the big idea?
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#apl" class="md-nav__link">
+    APL...
+  </a>
+  
+    <nav class="md-nav" aria-label="APL...">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#is-an-array-language" class="md-nav__link">
+    ...is an array language.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uses-special-characters" class="md-nav__link">
+    ...uses special characters.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is-untyped" class="md-nav__link">
+    ...is untyped.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is-high-level" class="md-nav__link">
+    ...is high-level.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-power-of-apl" class="md-nav__link">
+    The power of APL
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -620,6 +692,62 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#apl" class="md-nav__link">
+    APL...
+  </a>
+  
+    <nav class="md-nav" aria-label="APL...">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#is-an-array-language" class="md-nav__link">
+    ...is an array language.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uses-special-characters" class="md-nav__link">
+    ...uses special characters.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is-untyped" class="md-nav__link">
+    ...is untyped.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is-high-level" class="md-nav__link">
+    ...is high-level.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-power-of-apl" class="md-nav__link">
+    The power of APL
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -634,7 +762,95 @@
 
 
 <h1 id="whats-the-big-idea">What's the big idea?</h1>
-<p>&lt; explain what APL is all about &gt;</p>
+<h2 id="apl">APL...</h2>
+<hr />
+<h3 id="is-an-array-language">...is an array language.</h3>
+<p>Another (unofficial) name for APL is "Array Programming Language".
+All operations in the language work on lists, matrices, and higher dimensional arrays.</p>
+<p>Many tasks that require data processing and operations on large amounts of structured data work really well in APL.</p>
+<p>You might have heard that programming languages can be classified into a few different types:</p>
+<ul>
+<li>Imperative languages (Python, Java, C, R, etc.)</li>
+<li>Functional languages (Haskell, Clojure, etc.)</li>
+</ul>
+<p>A new addition to this list, which you might not have heard of, is</p>
+<ul>
+<li>Array languages (APL and its derivatives, Fortran, etc.)</li>
+</ul>
+<p>Array languages are considered separate from the previous two categories, as they operate differently.
+Instead of having variables and operations (imperative) or functions (functional) as primitive objects,
+array languages use arrays and array algorithms as primitives.
+This requires a separate from of thinking from how you would program in other languages, which justifies the study of such languages.</p>
+<hr />
+<h3 id="uses-special-characters">...uses special characters.</h3>
+<p>Look at the top of the screen: that long bar with characters is the APL language!</p>
+<p>Don't be afraid: while mysterious at first, you'll grow to learn and love them.</p>
+<hr />
+<h3 id="is-untyped">...is untyped.</h3>
+<p>There is no concept of type in APL.
+The underlying interpreter abstracts it all away from you and lets you focus on processing data, not its types.</p>
+<hr />
+<h3 id="is-high-level">...is high-level.</h3>
+<p>In fact, APL abstracts a lot of normal operations from you.</p>
+<p>There are no concepts of memory, pointers, loops (in their traditional sense), or other primitives
+that, as a traditional (imperative) programmer, one needs to think about and understand when writing algorithms and code.</p>
+<hr />
+<h2 id="the-power-of-apl">The power of APL</h2>
+<p>Some people say that APL is "confusing" and "difficult to read" due to its special characters.</p>
+<p>However, I disagree.
+APL is just as readable as any language.
+An English person can't read Finnish either without a little practice!</p>
+<p>On the contrary, APL is sometimes <em>easier</em> to read than imperative languages.
+Consider the following problem:</p>
+<div class="admonition question">
+<p class="admonition-title">Example problem</p>
+<p>Write a program that takes in a list of numbers.
+Is the product of all the numbers positive, negative, or zero?</p>
+<p>Return the sign of the product (1 if it is positive, -1 if it is negative, and 0 if it is zero).</p>
+</div>
+<p>There are many ways to solve this problem (try it!).
+The only arguably <em>incorrect</em> way is to actually multiply all the numbers together
+(that would take a lot of time and cause integer overflow for big lists or big numbers).</p>
+<p>Consider the following solution in Python.</p>
+<div class="admonition note">
+<p class="admonition-title">Python solution</p>
+<div class="highlight"><pre><span></span><code><span class="n">raw_values</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+<span class="n">values</span> <span class="o">=</span> <span class="n">raw_values</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">for</span> <span class="n">str_value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">str_value</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">break</span>
+    <span class="k">elif</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<p>Sure, this solution could definitely be optimised and shortened.
+However, this is also how beginner Python programmers are often taught to approach problems such as this.</p>
+<p>You'll notice that there is a lot of overhead in this solution:
+the programmer has to split the input, manually go through the list using a loop,
+convert string data to integer format, handle all of the different cases themselves ((making sure they are exhaustive),
+and print the result to the screen themselves.</p>
+<p>Compare this to the equivalent APL solution.</p>
+<div class="admonition note">
+<p class="admonition-title">APL solution</p>
+<div class="highlight"><pre><span></span><code><span class="o">×</span><span class="na">/</span><span class="o">×</span><span class="w"></span>
+</code></pre></div>
+</div>
+<p>This isn't just part of the solution, this isn't a little section thereof, this is <em>the whole solution</em>.</p>
+<p>To an APL thinker, this is perfectly clear and legible!
+The symbols essentially tell the interpreter the following:
+"multiply together all of the elements of the list containing the signs of the input list".
+There is no mention of types, no mention of loops, just operations acting on a structured list of data.</p>
+<p>Which one do you think is more legible?</p>
 
 
 
