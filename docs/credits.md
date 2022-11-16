@@ -1,7 +1,7 @@
 # Receiving ECTS Credits
 
-After you have completed at least 50% of the exercises,
-use the credits request form to request ECTS credits for the course.
+After you have completed at least 60% of the graded exercises,
+you can use the credits request form to request ECTS credits for the course.
 
 !!! failure "Note"
     
