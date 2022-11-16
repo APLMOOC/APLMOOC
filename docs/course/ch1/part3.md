@@ -23,7 +23,7 @@ Find some alternatives below.
 
 On TryAPL (and this page), you can use **prefixes** to insert various special symbols.
 
-You can use any of the following keys as prefixes:
+You can use any of the following keys as a prefix:
 <kbd>`</kbd> <kbd>§</kbd> <kbd>°</kbd> <kbd>²</kbd> <kbd>µ</kbd> <kbd>º</kbd> <kbd>½</kbd> <kbd>ù</kbd>
 
 On Finnish keyboards, the <kbd>§</kbd> key (located to the left of <kbd>1</kbd>) is the easiest to use.
@@ -36,7 +36,8 @@ and division `÷` is inserted with <kbd>PREFIX</kbd> <kbd>=</kbd>.
 
 While these might seem unintuitive at first, you'll get used to them fairly quickly.
 You can see the completion shortcut if you hover over the symbol in the top language bar.
-For example, hovering over `×` shows that you can type it by using `Prefix: <prefix> -`, just like we did above. 
+For example, hovering over `×` shows tells you the following: `Prefix: <prefix> -`.
+These are just instructions telling you to do what we did above.
 
 ---
 
