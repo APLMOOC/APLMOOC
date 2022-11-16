@@ -13,9 +13,9 @@ At the end of each chapter, you can find the following parts:
 
 ## Grading
 
-Once you have successfully completed at least 50% of the write exercises, you can get 5 ECTS credits for completion.
+Once you have successfully completed at least 60% of the write exercises, you can get 5 ECTS credits for completion.
 
-- If you solve at least 50% of the exercises, you get a grade of 1.
+- If you solve at least 60% of the exercises, you get a grade of 3.
 - If you solve at least 90% of the exercises, you get a grade of 4.
 - If you solve at least 99% of the exercises, you get a grade of 5.
 
