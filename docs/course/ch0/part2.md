@@ -23,7 +23,8 @@ A new addition to this list, which you might not have heard of, is
 Array languages are considered separate from the previous two categories, as they operate differently.
 Instead of having variables and operations (imperative) or functions (functional) as primitive objects,
 array languages use arrays and array algorithms as primitives.
-This requires a separate from of thinking from how you would program in other languages, which justifies the study of such languages.
+This requires a separate from of thinking from how you would program in other languages,
+which makes it interesting to learn even if you already know an imperative language like Python.
 
 ---
 
@@ -70,48 +71,66 @@ Consider the following problem:
     
     Return the sign of the product (1 if it is positive, -1 if it is negative, and 0 if it is zero).
 
-There are many ways to solve this problem (try it!).
-The only arguably _incorrect_ way is to actually multiply all the numbers together
-(that would take a lot of time and cause integer overflow for big lists or big numbers).
+There are many ways to solve this problem (try it in Python or a language you are already familiar with!).
+The naïve way - multiplying all the numbers together - is inefficient and may cause integer overflow for big lists or big numbers in some languages.
 
-Consider the following solution in Python.
+Consider the following efficient solution in Python.
 
 !!! note "Python solution"
     
+    Solution:
     ```python
-    raw_values = input()
-    values = raw_values.split()
+    def solution(values):
+        result = 1
 
-    result = 1
+        for value in values:
+            if value == 0:
+                result = 0
+                break
+            elif value > 0:
+                continue
+            else:
+                result *= -1
 
-    for str_value in values:
-        value = int(str_value)
+        print(result)
+    ```
 
-        if value == 0:
-            result = 0
-            break
-        elif value > 0:
-            continue
-        else:
-            result *= -1
+    Execution:
+    ```python
+    solution([1, 3, 5, -4])
+    ```
 
-    print(result)
+    Result:
+    ```python
+    -1
     ```
 
 Sure, this solution could definitely be optimised and shortened.
 However, this is also how beginner Python programmers are often taught to approach problems such as this.
 
 You'll notice that there is a lot of overhead in this solution:
-the programmer has to split the input, manually go through the list using a loop,
-convert string data to integer format, handle all of the different cases themselves (making sure they are exhaustive),
+the programmer manually go through the list using a loop,
+handle all of the different cases (making sure they are exhaustive),
 and print the result to the screen themselves.
+New students have to understand that functions are called using parentheses, while square brackets and commas are used for lists.
 
 Compare this to the equivalent APL solution.
 
 !!! note "APL solution"
 
+    Solution:
     ```apl
-    ×/×
+    solution ← ×/×
+    ```
+
+    Execution:
+    ```apl
+    solution 1 3 5 ¯4
+    ```
+
+    Result:
+    ```
+    ¯1
     ```
 
 This isn't just part of the solution, this isn't a little section thereof, this is _the whole solution_.
@@ -121,4 +140,4 @@ The symbols essentially tell the interpreter the following:
 "Take the signs of all the elements of the input list, and multiply them together".
 There is no mention of types, no mention of loops, just operations acting on a structured list of data.
 
-Which one do you think is more legible?
+This is the power of APL: you can express simple constructs simply and effectively, with the rest abstracted away!

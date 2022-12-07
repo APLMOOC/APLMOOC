@@ -8,7 +8,7 @@ One December, I was doing the [Advent of Code](https://adventofcode.com/) (AoC) 
 These are fun, small programming projects that are given to you in the form of a Christmas advent calendar.
 There are 2 challenges per day, for a grand total of 50 throughout December.
 
-Throughout the month, I kept seeing the following strings of text being thrown around on forums:
+Throughout the month, text like this was posted on forums:
 
 ```apl
 east  ← ⊢{(⍺+¯1⌽⍵)-⍵}     0∘<∧0=1∘⌽   ⍝ (1)!
