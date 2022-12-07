@@ -7,6 +7,10 @@ html {
     font-size: 150%;
 }
 
+.md-typeset code {
+    font-size: 110%;
+}
+
 input#user, input#pass {
     padding: 1em;
     border: solid 2px black;

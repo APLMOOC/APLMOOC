@@ -778,7 +778,8 @@ All operations in the language work on lists, matrices, and higher dimensional a
 <p>Array languages are considered separate from the previous two categories, as they operate differently.
 Instead of having variables and operations (imperative) or functions (functional) as primitive objects,
 array languages use arrays and array algorithms as primitives.
-This requires a separate from of thinking from how you would program in other languages, which justifies the study of such languages.</p>
+This requires a separate from of thinking from how you would program in other languages,
+which makes it interesting to learn even if you already know an imperative language like Python.</p>
 <hr />
 <h3 id="uses-special-characters">...uses special characters.</h3>
 <p>Look at the top of the screen: that long bar with characters is the APL language!</p>
@@ -806,49 +807,59 @@ Consider the following problem:</p>
 Is the product of all the numbers positive, negative, or zero?</p>
 <p>Return the sign of the product (1 if it is positive, -1 if it is negative, and 0 if it is zero).</p>
 </div>
-<p>There are many ways to solve this problem (try it!).
-The only arguably <em>incorrect</em> way is to actually multiply all the numbers together
-(that would take a lot of time and cause integer overflow for big lists or big numbers).</p>
-<p>Consider the following solution in Python.</p>
+<p>There are many ways to solve this problem (try it in Python or a language you are already familiar with!).
+The naïve way - multiplying all the numbers together - is inefficient and may cause integer overflow for big lists or big numbers in some languages.</p>
+<p>Consider the following efficient solution in Python.</p>
 <div class="admonition note">
 <p class="admonition-title">Python solution</p>
-<div class="highlight"><pre><span></span><code><span class="n">raw_values</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
-<span class="n">values</span> <span class="o">=</span> <span class="n">raw_values</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<p>Solution:
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">break</span>
+        <span class="k">elif</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
 
-<span class="k">for</span> <span class="n">str_value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
-    <span class="n">value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">str_value</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">break</span>
-    <span class="k">elif</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">continue</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">result</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-</code></pre></div>
+    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div></p>
+<p>Execution:
+<div class="highlight"><pre><span></span><code><span class="n">solution</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">])</span>
+</code></pre></div></p>
+<p>Result:
+<div class="highlight"><pre><span></span><code><span class="o">-</span><span class="mi">1</span>
+</code></pre></div></p>
 </div>
 <p>Sure, this solution could definitely be optimised and shortened.
 However, this is also how beginner Python programmers are often taught to approach problems such as this.</p>
 <p>You'll notice that there is a lot of overhead in this solution:
-the programmer has to split the input, manually go through the list using a loop,
-convert string data to integer format, handle all of the different cases themselves (making sure they are exhaustive),
-and print the result to the screen themselves.</p>
+the programmer manually go through the list using a loop,
+handle all of the different cases (making sure they are exhaustive),
+and print the result to the screen themselves.
+New students have to understand that functions are called using parentheses, while square brackets and commas are used for lists.</p>
 <p>Compare this to the equivalent APL solution.</p>
 <div class="admonition note">
 <p class="admonition-title">APL solution</p>
-<div class="highlight"><pre><span></span><code><span class="o">×</span><span class="na">/</span><span class="o">×</span><span class="w"></span>
-</code></pre></div>
+<p>Solution:
+<div class="highlight"><pre><span></span><code><span class="nv">solution</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="o">×</span><span class="na">/</span><span class="o">×</span><span class="w"></span>
+</code></pre></div></p>
+<p>Execution:
+<div class="highlight"><pre><span></span><code><span class="nv">solution</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">¯4</span><span class="w"></span>
+</code></pre></div></p>
+<p>Result:
+<div class="highlight"><pre><span></span><code>¯1
+</code></pre></div></p>
 </div>
 <p>This isn't just part of the solution, this isn't a little section thereof, this is <em>the whole solution</em>.</p>
 <p>To an APL thinker, this is perfectly clear and legible!
 The symbols essentially tell the interpreter the following:
 "Take the signs of all the elements of the input list, and multiply them together".
 There is no mention of types, no mention of loops, just operations acting on a structured list of data.</p>
-<p>Which one do you think is more legible?</p>
+<p>This is the power of APL: you can express simple constructs simply and effectively, with the rest abstracted away!</p>
 
 
 
