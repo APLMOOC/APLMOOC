@@ -43,6 +43,20 @@ An equivalent formulation of this would be
 
 Can you see why these two formulations are equivalent?
 
+!!! info "Example"
+
+      Suppose you have the expression `3+5÷2×6*10-7`.
+      
+      This will get evaluated right-to-left as:
+      ```apl
+      3+5÷0.25×6*10-8
+      3+5÷0.25×6*2
+      3+5÷0.25×36
+      3+5÷9
+      3+0.5555555556
+      3.555555556
+      ```
+
 !!! warning "About spaces"
 
       APL ignores extra spaces when processing statements.

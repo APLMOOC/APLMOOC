@@ -101,7 +101,7 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 ---
 
 !!! write-problem "Write problem 9"
-    Suppose your tax rate is 7.5%, up to a maximum of 1000€ in taxes.
+    Suppose your tax rate is 7.5%.
     If you earned 25000€ this year, and your tax return (to be deducted from this year's taxes) is 175€,
     how much money will you owe the government this year?
     <div class="problem">
