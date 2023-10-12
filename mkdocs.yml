@@ -57,11 +57,8 @@ nav:
       - 1.S - Summary: course/ch1/summary.md
       - 1.R - Read exercises: course/ch1/read.md
       - 1.W - Write exercises: course/ch1/write.md
-    - 2 - Variables, functions, system:
+    - 2 - Variables, scalars, vectors, matrices:
       - 2.1 - Assignment: course/ch2/part1.md
-      - 2.2 - String and function assignment: course/ch2/part2.md
-      - 2.3 - Intermediate assignment: course/ch2/part3.md
-      - 2.4 - System commands: course/ch2/part4.md
       - 2.S - Summary: course/ch2/summary.md
       - 2.R - Read exercises: course/ch2/read.md
       - 2.W - Write exercises: course/ch2/write.md

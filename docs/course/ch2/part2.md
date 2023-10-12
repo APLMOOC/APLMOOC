@@ -1,2 +1,0 @@
-# String and function assignment
-
