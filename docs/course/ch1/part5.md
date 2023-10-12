@@ -53,4 +53,4 @@ or constructed an incomplete APL expression like `3+` (the `+` function is missi
 
 !!! warning "When faced with an error"
     
-    Stop, take a breath, and analyse the situation.
+    Stop, take a breath, **read the error message**, and analyse the situation.
