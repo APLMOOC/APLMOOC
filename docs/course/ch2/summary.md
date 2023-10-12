@@ -8,7 +8,8 @@ It might be useful to review this page as you are doing the read and write exerc
 
 | Symbol | Name | Function | Key combination |
 |:--:|:--:|:--:|:--:|
-| ? | ? | ? | ? |
+| `←` | Assignment operator | Assigning variables | <kbd><</kbd> ++minus++ ++tab++ |
+| `⎕` | Quad | Printing | <kbd>PREFIX</kbd> ++l++ |
 
 ## Old functions
 

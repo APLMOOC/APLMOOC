@@ -59,6 +59,7 @@ nav:
       - 1.W - Write exercises: course/ch1/write.md
     - 2 - Variables, scalars, vectors, matrices:
       - 2.1 - Assignment: course/ch2/part1.md
+      - 2.2 - Vectors: course/ch2/part2.md
       - 2.S - Summary: course/ch2/summary.md
       - 2.R - Read exercises: course/ch2/read.md
       - 2.W - Write exercises: course/ch2/write.md

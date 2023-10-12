@@ -6,7 +6,7 @@ Allow me to introduce you to a new symbol; the assignment operator:
 ←
 ```
 
-!!! info "Typing the assignment operator `←`"
+!!! note "Typing the assignment operator `←`"
 
       Prefix method: <kbd>PREFIX</kbd> <kbd>]</kbd>
 
@@ -108,7 +108,7 @@ Here, we "assigned" to an operator called a *quad*.
 All this does is print whatever is assigned to it to the screen.
 The developers of APL picked this because it looks kinda like a (arguably, vertical) computer monitor.
 
-!!! info "Typing the quad operator `⎕`"
+!!! note "Typing the quad operator `⎕`"
 
       Prefix method: <kbd>PREFIX</kbd> <kbd>L</kbd>
 
