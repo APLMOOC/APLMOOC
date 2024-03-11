@@ -2,7 +2,7 @@
 
 This is an online course on array programming in APL.
 No prior array programming knowledge is required;
-however, being familiar with at least one "normal" programming language is highly recommended.
+however, being familiar with at least one other programming language is highly recommended.
 
 This course is a work-in-progress.
 When complete, it is intended to be an official 5 ECTS credit course at the University of Helsinki.

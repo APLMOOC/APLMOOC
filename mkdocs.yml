@@ -59,9 +59,10 @@ nav:
       - 1.W - Write exercises: course/ch1/write.md
     - 2 - Variables, functions, system:
       - 2.1 - Assignment: course/ch2/part1.md
-      - 2.2 - String and function assignment: course/ch2/part2.md
-      - 2.3 - Intermediate assignment: course/ch2/part3.md
-      - 2.4 - System commands: course/ch2/part4.md
+      - 2.2 - Higher dimensional space: course/ch2/part2.md
+      - 2.3 - Arithmetic operations on vectors: course/ch2/part3.md
+      - 2.4 - Nested arrays: course/ch2/part4.md
+      - 2.5 - A Musical Interlude: course/ch2/part5.md
       - 2.S - Summary: course/ch2/summary.md
       - 2.R - Read exercises: course/ch2/read.md
       - 2.W - Write exercises: course/ch2/write.md
