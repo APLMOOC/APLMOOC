@@ -57,7 +57,7 @@ nav:
       - 1.S - Summary: course/ch1/summary.md
       - 1.R - Read exercises: course/ch1/read.md
       - 1.W - Write exercises: course/ch1/write.md
-    - 2 - Variables, functions, system:
+    - 2 - Variables, scalars, vectors, matrices:
       - 2.1 - Assignment: course/ch2/part1.md
       - 2.2 - Higher dimensional space: course/ch2/part2.md
       - 2.3 - Arithmetic operations on vectors: course/ch2/part3.md

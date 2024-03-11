@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Higher Dimensional Space
 ---
 
@@ -424,3 +425,5 @@ Before moving on, an important function to keep in mind is the monadic index ⍳
 │2 2 1│2 2 2│
 └─────┴─────┘
 ```
+=======
+>>>>>>> 3cbd4c9ac81486b18b978aa66e5afe1d713d2f7b

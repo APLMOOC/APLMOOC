@@ -45,7 +45,7 @@ Can you see why these two formulations are equivalent?
 
 !!! info "Example"
 
-      Suppose you have the expression `3+5÷2×6*10-7`.
+      Suppose you have the expression `3+5÷0.25×6*10-8`.
       
       This will get evaluated right-to-left as:
       ```apl
@@ -151,7 +151,7 @@ Don't worry, as you progress further, you will forget how _else_ computers can e
 
 ---
 
-# Stopping execution
+# Lamp
 
 One last handy symbol: `⍝`.
 Can you figure out what it does from this example?
