@@ -164,8 +164,10 @@ When dealing with nested arrays, useful functions to keep in mind are the monadi
 2 2
 ```
 
-!!! info “Boxing”
+
+!!! info "Boxing"
        The ]Box user command controls how array output is displayed
+       
        ```apl
               nested ← 2 2 ⍴ (⍳3) ('  ') ('   ') (2 2 ⍴ ('  ') (⍳3) (2 2 ⍴ (⍳3) ('  ') ('   ') (⍳2)) ('   '))
               nested
@@ -192,6 +194,7 @@ When dealing with nested arrays, useful functions to keep in mind are the monadi
        └─────┴───────────────────┘
        ```
 
+
 The monadic tally function ≢ returns the number of rows of an array.
 ```apl
        ≢10
@@ -205,15 +208,7 @@ The monadic tally function ≢ returns the number of rows of an array.
 2
 ```
 
-       ≢10
-1
-       ≢⍳10
-10
-       ≢10 20 ⍴ ⍳30
-10
-       nested ← 2 2 ⍴ (⍳3) ('  ') ('   ') (2 2 ⍴ ('  ') (⍳3) (2 2 ⍴ (⍳3) ('  ') ('   ') (⍳2)) ('   '))
-       ≢nested
-2
+In order to create a nested array out of another array, the enclose ⊂ operator can be used.
 
 ```apl
        ⍳10

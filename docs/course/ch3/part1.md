@@ -51,7 +51,7 @@ fibonacci ← {
             }
 ```
 
-!!! info “Multiline support in RIDE”
+!!! info "Multiline support in RIDE"
 	In order to write multiline functions in the Dyalog RIDE, "Extended Multiline Input" needs to be enabled. It can be found in the Session tab under Options>Configure.
 
 Any code beyond the first statement which produces a value is not evaluated
