@@ -1221,8 +1221,10 @@
 <span class="w">             </span><span class="p">((</span><span class="nv">PHI</span><span class="o">*</span><span class="bp">⍵</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="nv">PHI</span><span class="p">)</span><span class="o">*-</span><span class="bp">⍵</span><span class="p">)</span><span class="w"> </span><span class="o">÷</span><span class="w"> </span><span class="p">(</span><span class="m">¯1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">2</span><span class="o">×</span><span class="nv">PHI</span><span class="p">)</span>
 <span class="w">            </span><span class="kt">}</span>
 </code></pre></div>
-<p>!!! info “Multiline support in RIDE”
-    In order to write multiline functions in the Dyalog RIDE, "Extended Multiline Input" needs to be enabled. It can be found in the Session tab under Options&gt;Configure.</p>
+<div class="admonition info">
+<p class="admonition-title">Multiline support in RIDE</p>
+<p>In order to write multiline functions in the Dyalog RIDE, "Extended Multiline Input" needs to be enabled. It can be found in the Session tab under Options&gt;Configure.</p>
+</div>
 <p>Any code beyond the first statement which produces a value is not evaluated
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">number</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="m">1</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span><span class="m">4</span><span class="kt">}</span>
 <span class="w">      </span><span class="nv">number</span><span class="w"> </span><span class="no">⍬</span><span class="w"> </span><span class="c1">⍝ The empty vector character ⍬ is added here as filler since functions always require a right argument</span>

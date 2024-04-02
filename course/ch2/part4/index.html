@@ -1324,9 +1324,10 @@
 <span class="w">       </span><span class="o">⍴</span><span class="nv">nested</span><span class="w"> </span><span class="c1">⍝ Notice that the nested elements in the matrix count as scalar elements.</span>
 <span class="m">2</span><span class="w"> </span><span class="m">2</span>
 </code></pre></div>
-<p>!!! info “Boxing”
-       The ]Box user command controls how array output is displayed
-       <div class="highlight"><pre><span></span><code><span class="w">       </span><span class="nv">nested</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="p">(</span><span class="o">⍳</span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;  &#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;   &#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;  &#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">⍳</span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="p">(</span><span class="o">⍳</span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;  &#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;   &#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">⍳</span><span class="m">2</span><span class="p">))</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;   &#39;</span><span class="p">))</span>
+<div class="admonition info">
+<p class="admonition-title">Boxing</p>
+<p>The ]Box user command controls how array output is displayed</p>
+<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="nv">nested</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="p">(</span><span class="o">⍳</span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;  &#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;   &#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;  &#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">⍳</span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="p">(</span><span class="o">⍳</span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;  &#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;   &#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">⍳</span><span class="m">2</span><span class="p">))</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;   &#39;</span><span class="p">))</span>
 <span class="w">       </span><span class="nv">nested</span>
 <span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w">                        </span>
 <span class="w">                </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w">  </span>
@@ -1349,7 +1350,8 @@
 <span class="err">│</span><span class="w">     </span><span class="err">││└─────┴───┘│</span><span class="w">     </span><span class="err">││</span>
 <span class="err">│</span><span class="w">     </span><span class="err">│└───────────┴─────┘│</span>
 <span class="err">└─────┴───────────────────┘</span>
-</code></pre></div></p>
+</code></pre></div>
+</div>
 <p>The monadic tally function ≢ returns the number of rows of an array.
 <div class="highlight"><pre><span></span><code><span class="w">       </span><span class="o">≢</span><span class="m">10</span>
 <span class="m">1</span>
@@ -1361,16 +1363,7 @@
 <span class="w">       </span><span class="o">≢</span><span class="nv">nested</span>
 <span class="m">2</span>
 </code></pre></div></p>
-<pre><code>   ≢10
-</code></pre>
-<p>1
-       ≢⍳10
-10
-       ≢10 20 ⍴ ⍳30
-10
-       nested ← 2 2 ⍴ (⍳3) ('  ') ('   ') (2 2 ⍴ ('  ') (⍳3) (2 2 ⍴ (⍳3) ('  ') ('   ') (⍳2)) ('   '))
-       ≢nested
-2</p>
+<p>In order to create a nested array out of another array, the enclose ⊂ operator can be used.</p>
 <div class="highlight"><pre><span></span><code><span class="w">       </span><span class="o">⍳</span><span class="m">10</span>
 <span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">10</span>
 <span class="w">       </span><span class="o">⊂⍳</span><span class="m">10</span>
