@@ -66,5 +66,13 @@ nav:
       - 2.S - Summary: course/ch2/summary.md
       - 2.R - Read exercises: course/ch2/read.md
       - 2.W - Write exercises: course/ch2/write.md
+    - 3 - Functions:
+      - 3.1 - Fun for Everyone: course/ch3/part1.md
+      - 3.2 - All the Math: course/ch3/part2.md
+      - 3.3 - All Aboard: course/ch3/part3.md
+      - 3.4 - Computer Graphics: course/ch3/part4.md
+      - 2.S - Summary: course/ch3/summary.md
+      - 2.R - Read exercises: course/ch3/read.md
+      - 2.W - Write exercises: course/ch3/write.md
   - Receiving ECTS Credits: credits.md
   - Log in: login.md
