@@ -1,8 +1,8 @@
 site_name: APL MOOC
 theme:
   name: material
-  logo: course/assets/apl.svg
-  favicon: course/assets/favicon.svg
+  logo: course/assets/_apl.svg
+  favicon: course/assets/_favicon.svg
   palette:
     - scheme: default
       primary: purple
