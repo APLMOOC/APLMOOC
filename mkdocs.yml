@@ -59,20 +59,66 @@ nav:
       - 1.W - Write exercises: course/ch1/write.md
     - 2 - Variables, scalars, vectors, matrices:
       - 2.1 - Assignment: course/ch2/part1.md
-      - 2.2 - Higher dimensional space: course/ch2/part2.md
+      - 2.2 - Vectors: course/ch2/part2.md
       - 2.3 - Arithmetic operations on vectors: course/ch2/part3.md
-      - 2.4 - Nested arrays: course/ch2/part4.md
-      - 2.5 - A Musical Interlude: course/ch2/part5.md
+      - 2.4 - Higher dimensional space: course/ch2/part4.md
+      - 2.5 - Shape: course/ch2/part5.md
+      - 2.6 - Nested arrays: course/ch2/part6.md
       - 2.S - Summary: course/ch2/summary.md
       - 2.R - Read exercises: course/ch2/read.md
       - 2.W - Write exercises: course/ch2/write.md
+      - 2.B - Bonus content: course/ch2/bonus.md
     - 3 - Functions:
-      - 3.1 - Fun for Everyone: course/ch3/part1.md
-      - 3.2 - All the Math: course/ch3/part2.md
-      - 3.3 - All Aboard: course/ch3/part3.md
-      - 3.4 - Computer Graphics: course/ch3/part4.md
-      - 2.S - Summary: course/ch3/summary.md
-      - 2.R - Read exercises: course/ch3/read.md
-      - 2.W - Write exercises: course/ch3/write.md
+      - 3.1 - Fun for everyone: course/ch3/part1.md
+      - 3.2 - All the math: course/ch3/part2.md
+      - 3.3 - Relational functions: course/ch3/part3.md
+      - 3.4 - Logical functions: course/ch3/part4.md
+      - 3.5 - Quad functions: course/ch3/part5.md
+      - 3.6 - Installing Dyalog: course/ch3/part6.md
+      - 3.7 - Traditional fun: course/ch3/part7.md
+      - 3.8 - Fun(Fun(Fun(Fun(Fun(...))))): course/ch3/part8.md
+      - 3.S - Summary: course/ch3/summary.md
+      - 3.R - Read exercises: course/ch3/read.md
+      - 3.W - Write exercises: course/ch3/write.md
+      - 3.B - Bonus content: course/ch3/bonus.md
+    - 4 - Vector functions:
+      - 4.1 - Creating vectors: course/ch4/part1.md
+      - 4.2 - Reductions and scans: course/ch4/part2.md
+      - 4.3 - Selecting from a vector: course/ch4/part3.md
+      - 4.4 - Sorting: course/ch4/part4.md
+      - 4.5 - I'm in Spain without the "a": course/ch4/part5.md
+      - 4.6 - Searching: course/ch4/part6.md
+      - 4.7 - Elements of set theory: course/ch4/part7.md
+      - 4.S - Summary: course/ch4/summary.md
+      - 4.R - Read exercises: course/ch4/read.md
+      - 4.W - Write exercises: course/ch4/write.md
+      - 4.B - Bonus content: course/ch4/bonus.md
+    - 5 - Higher dimensions:
+      - 5.1 - Choose your axis!: course/ch5/part1.md
+      - 5.2 - Anything can be a scalar: course/ch5/part2.md
+      - 5.3 - (Un)matrixification: course/ch5/part3.md
+      - 5.4 - Selections and reductions: course/ch5/part1.md
+      - 5.5 - Cross-tabulation: course/ch5/part1.md
+      - 4.S - Summary: course/ch5/summary.md
+      - 4.R - Read exercises: course/ch5/read.md
+      - 4.W - Write exercises: course/ch5/write.md
+    - 6 - Everything else you need to know:
+      - 6.1 - String manipulation: course/ch6/part1.md
+      - 6.2 - Inner and outer products: course/ch6/part2.md
+      - 6.3 - Encoding and decoding: course/ch6/part3.md
+      - 6.4 - Operators: course/ch6/part4.md
+      - 6.5 - ALL ABOARD!: course/ch6/part5.md
+      - 6.S - Summary: course/ch6/summary.md
+      - 6.R - Read exercises: course/ch6/read.md
+      - 6.W - Write exercises: course/ch6/write.md
+      - 6.B - Bonus content: course/ch6/bonus.md
+    - 7 - Programming in APL:
+      - 7.1 - Development environment: course/ch7/part1.md
+      - 7.2 - Branching and looping: course/ch7/part2.md
+      - 7.3 - Execute and format: course/ch7/part3.md
+      - 7.4 - Writing interactive programs: course/ch7/part4.md
+      - 7.5 - File I/O: course/ch7/part5.md
+      - 7.S - Summary: course/ch7/summary.md
+      - 7.P - Programming project: course/ch7/project.md
   - Receiving ECTS Credits: credits.md
   - Log in: login.md

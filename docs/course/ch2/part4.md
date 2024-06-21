@@ -1,285 +1,370 @@
-# Nested arrays
+# Higher dimensional space
+---
 
-Be warned, elements of arrays can be vectors, or matrices, or arrays of higher rank as well!
+The astute reader may have noticed that, although the new data is much more structured, the dates and times of the measurements have been completely forgotten.
 
-Reducing the length of the temperature arrays for the sake of the following example, look what happens when we try to create a rank 3 array in the following,
+One solution is to use more vectors to organize this data, here using floating-point decimal encoded format. This format stores the dates as decimal numbers, where the integer part stores the year, month, and day, and the fractional part stores the hour, minute, and second, yyyymmdd.hhmmss.
+
+For example, 00010101.074200 is year 0001, month 01, day 01, hour 05, minute 42, and second 00.
 
 ```apl
-       TEMPERATURE_DATA1 ← 21.4 00010101.074200 21.8 00010101.084700
-       TEMPERATURE_DATA2 ← 22.8 00010101.182300 21.5 00010101.193000 
-       TEMPERATURE_ARRAY ← 2 2 2 ⍴ TEMPERATURE_DATA1 TEMPERATURE_DATA2
-
-       TEMPERATURE_ARRAY
-┌───────────────────────────────┬──────────────────────────────┐
-│21.4 10101.0742 21.8 10101.0847│22.8 10101.1823 21.5 10101.193│
-├───────────────────────────────┼──────────────────────────────┤
-│21.4 10101.0742 21.8 10101.0847│22.8 10101.1823 21.5 10101.193│
-└───────────────────────────────┴──────────────────────────────┘
-┌───────────────────────────────┬──────────────────────────────┐
-│21.4 10101.0742 21.8 10101.0847│22.8 10101.1823 21.5 10101.193│
-├───────────────────────────────┼──────────────────────────────┤
-│21.4 10101.0742 21.8 10101.0847│22.8 10101.1823 21.5 10101.193│
-└───────────────────────────────┴──────────────────────────────┘
+      TEMPERATURE_PAGE1 ← 21.4 21.8 22.0 21.5 21.3 22.3
+      TEMPERATURE_PAGE1_DATE ← 00010101.074200 00010101.084700 00010101.101000 00010101.120100 00010101.143600 00010101.165000
+      TEMPERATURE_PAGE2 ← 22.8 21.5 22.1 22.0 21.9 22.4
+      TEMPERATURE_PAGE2_DATE ← 00010101.182300 00010101.193000 00010101.211200 00010102.071500 00010102.083000 00010102.094500
 ```
 
-compared to the expected result, which is
+and access dates and times using the same index;
 
 ```apl
-21.4 00010101.074200 
-21.8 00010101.084700
-
-22.8 00010101.182300 
-21.5 00010101.193000
+      TEMPERATURE_PAGE1[2]
+21.8
+      TEMPERATURE_PAGE1_DATE[2]
+00010101.084700
+      60 ¯10 ⎕DT TEMPERATURE_PAGE1_DATE[2]
+┌────────────┐
+│1 1 8 47 0 0│
+└────────────┘
+      ⍝ The ⎕DT function allows many different date conversions
+      ⍝ The above is read as, Year 1, Day 1, Hour 8, Minute 47
 ```
 
-Attempting to access the elements of the rank 3 array returns vectors, this is because we’ve accidentally created an array of vectors rather than an array of their elements. 
+However, this lack of structure is exactly what introducing vectors was supposed to solve; two closely related pieces of information, the time of a measurement and the value of the measurement, are kept separate when they should logically be part of the same collection of data. Measurement data of this form are usually stored in tables, and it is only natural to try to store them in the same manner in a computer system.
+
+You decide to start over yet again, and decide to store data in a matrix instead
 
 ```apl
-       ⍝ TEMPERATUER_ARRAY can be thought of as
-       ⍝ TEMPERATURE_DATA1 TEMPERATURE_DATA2
-       ⍝ TEMPERATURE_DATA1 TEMPERATURE_DATA2
-       ⍝
-       ⍝ TEMPERATURE_DATA1 TEMPERATURE_DATA2
-       ⍝ TEMPERATURE_DATA1 TEMPERATURE_DATA2
-
-       TEMPERATURE_ARRAY[1;1;1] ⍝ the vector TEMPERATURE_DATA1 
-21.4 00010101.074200 21.8 00010101.084700
-	   TEMPERATURE_ARRAY[2;1;1] ⍝ the vector TEMPERATURE_DATA1
-21.4 00010101.074200 21.8 00010101.084700
-	   TEMPERATURE_ARRAY[1;2;1] ⍝ the vector TEMPERATURE_DATA1 
-21.4 00010101.074200 21.8 00010101.084700
-	   TEMPERATURE_ARRAY[2;2;1] ⍝ the vector TEMPERATURE_DATA1
-21.4 00010101.074200 21.8 00010101.084700
-
-
-       TEMPERATURE_ARRAY[1;1;2] ⍝ the vector TEMPERATURE_DATA2
-22.8 00010101.182300 21.5 00010101.193000 
-	   TEMPERATURE_ARRAY[2;1;2] ⍝ the vector TEMPERATURE_DATA2
-22.8 00010101.182300 21.5 00010101.193000 
-	   TEMPERATURE_ARRAY[1;2;2] ⍝ the vector TEMPERATURE_DATA2 
-22.8 00010101.182300 21.5 00010101.193000 
-	   TEMPERATURE_ARRAY[2;2;2] ⍝ the vector TEMPERATURE_DATA2
-22.8 00010101.182300 21.5 00010101.193000 
+      TEMPERATURE_PAGE1 ← 6 2 ⍴ 21.4 00010101.074200 21.8 00010101.084700 22.0 00010101.101000 21.5 00010101.120100 21.3 00010101.143600 22.3 00010101.165000
+      TEMPERATURE_PAGE2 ← 6 2 ⍴ 22.8 00010101.182300 21.5 00010101.193000 22.1 00010102.211200 22.0 00010103.071500 21.9 00010103.083000 22.4 00010103.094500
 ```
 
-If we replace TEMPERATURE_DATA1 and TEMPERATURE_DATA2 with scalars, the situation is a bit more clear.
-```apl
-	   ARRAY ← 2 2 2 ⍴ 1 2
-	   ARRAY
-1 2
-1 2
-   
-1 2
-1 2
+---
 
-	   ARRAY[1;1;1]
-1
-	   ARRAY[2;1;1]
-1
-	   ARRAY[1;2;1]
-1
-	   ARRAY[2;2;1]
-1
+Matrices are two-dimensional ordered collections of data, they are rectangles of data. They can be created by reshaping (⍴) a vector.
 
-	   ARRAY[1;1;2]
-2
-	   ARRAY[2;1;2]
-2
-	   ARRAY[1;2;2]
-2
-	   ARRAY[2;2;2]
-2
-```
+!!! info "Function Valence"
+	
+	The symbol ⍴ actually represents two different functions depending on the manner in which arguments are given. 
+	
+	When applied to a single argument, ⍴X, it acts as the *shape* operator; when two arguments are given one on either side, X⍴Y, it acts as the *reshape* operator. 
+	
+	The former function is the monadic function associated to the symbol ⍴, and the latter is the dyadic function associated with the symbol ⍴. 
 
-The monadic ravel operator , can be used to “unravel” a matrix into a vector of its elements in left-right top-down order, called ravel order. Dyadically, the catenate , function glues two arrays together along a common axis.
+	Many symbols in APL admit both monadic and dyadic functions, take a look at (link to apl vocab sheet) to see the different functions associated to different APL symbols.
+
+The reshape operator acts by returning an array whose entries are the entries of its right operand, and whose axes are specified by a vector of integers as its left operand, more concretely,
 
 ```apl
-       ARRAY ← 2 2 2 ⍴ 1 2 3 4 5 6 7 8
-       ARRAY
-1 2
-3 4
-   
-5 6
-7 8
-
-       ,ARRAY
-1 2 3 4 5 6 7 8
-
-       ARRAY,1
-1 2 1
-3 4 1
-     
-5 6 1
-7 8 1
-
-       ARRAY,ARRAY
-1 2 1 2
-3 4 3 4
-       
-5 6 5 6
-7 8 7 8
-
-
-       TEMPERATURE_DATA1 ← 21.4 00010101.074200 21.8 00010101.084700
-       TEMPERATURE_DATA2 ← 22.8 00010101.182300 21.5 00010101.193000 
-       TEMPERATURE_ARRAY ← 2 2 2 ⍴ TEMPERATURE_DATA1 , TEMPERATURE_DATA2
+      TEMPERATURE_DATA ← 21.4 00010101.074200 21.8 00010101.084700 22.0 00010101.101000 21.5 00010101.120100 21.3 00010101.143600 22.3 00010101.165000
+      6 2 ⍴ TEMPERATURE_DATA
 21.4 10101.0742
 21.8 10101.0847
+22   10101.101
+21.5 10101.1201
+21.3 10101.1436
+22.3 10101.165
+      ⍝ The reshaped matrix has 6 rows and 2 columns
+```
+
+turns the vector TEMPERATURE_DATA into a matrix with axes of length six and two, consisting of the entries in TEMPERATURE_DATA.
+
+```apl
+     PYRAMID_ENTRIES ← 1 1 1 1 1 1 2 2 2 1 1 2 3 2 1 1 2 2 2 1 1 1 1 1 1 1
+      5 5 ⍴ PYRAMID_ENTRIES ⍝ 5 rows and 5 columns
+1 1 1 1 1
+1 2 2 2 1
+1 2 3 2 1
+1 2 2 2 1
+1 1 1 1 1
+
+      ALPHABET ← ⎕A ⍝ The ⎕A function return the string 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'. 
+      ⍝ 'Strings' in APL are vectors of characters, defined using single quotes.
+      26 25 ⍴ ALPHABET 
+ABCDEFGHIJKLMNOPQRSTUVWXY
+ZABCDEFGHIJKLMNOPQRSTUVWX
+YZABCDEFGHIJKLMNOPQRSTUVW
+XYZABCDEFGHIJKLMNOPQRSTUV
+WXYZABCDEFGHIJKLMNOPQRSTU
+VWXYZABCDEFGHIJKLMNOPQRST
+UVWXYZABCDEFGHIJKLMNOPQRS
+TUVWXYZABCDEFGHIJKLMNOPQR
+STUVWXYZABCDEFGHIJKLMNOPQ
+RSTUVWXYZABCDEFGHIJKLMNOP
+QRSTUVWXYZABCDEFGHIJKLMNO
+PQRSTUVWXYZABCDEFGHIJKLMN
+OPQRSTUVWXYZABCDEFGHIJKLM
+NOPQRSTUVWXYZABCDEFGHIJKL
+MNOPQRSTUVWXYZABCDEFGHIJK
+LMNOPQRSTUVWXYZABCDEFGHIJ
+KLMNOPQRSTUVWXYZABCDEFGHI
+JKLMNOPQRSTUVWXYZABCDEFGH
+IJKLMNOPQRSTUVWXYZABCDEFG
+HIJKLMNOPQRSTUVWXYZABCDEF
+GHIJKLMNOPQRSTUVWXYZABCDE
+FGHIJKLMNOPQRSTUVWXYZABCD
+EFGHIJKLMNOPQRSTUVWXYZABC
+DEFGHIJKLMNOPQRSTUVWXYZAB
+CDEFGHIJKLMNOPQRSTUVWXYZA
+BCDEFGHIJKLMNOPQRSTUVWXYZ
+      ⍝ If the right operand is too short to fill the array, the reshape (dyadic ⍴) operator repeats the right operand's entries
+```
+
+The shape (monadic ⍴) operator acts on one array, its right operand, by returning a vector whose entries are the lengths of the axes.
+
+```apl
+      TEMPERATURE_DATA ← 21.4 00010101.074200 21.8 00010101.084700 22.0 00010101.101000 21.5 00010101.120100 21.3 00010101.143600 22.3 00010101.165000
+      TEMPERATURE_PAGE1 ← 6 2 ⍴ TEMPERATURE_DATA
+      ⍴TEMPERATURE_PAGE1
+6 2
+      ⍴100
+
+      ⍴⎕A
+26
+```
+
+Since elements in matrices are ordered along two axes, an element of a matrix can be specified by two position, the row and column. If only a row position (or column position) is specified, the whole row (or column) is returned.
+
+```apl
+
+     WORD_SQUARE ← 5 5 ⍴ "HEARTEMBERABUSERESINTREND"
+     WORD_SQUARE
+HEART
+EMBER
+ABUSE
+RESIN
+TREND
+     WORD_SQUARE[1;]
+HEART
+     WORD_SQUARE[;1]
+HEART
+     WORD_SQUARE[5;]
+TREND
+     WORD_SQUARE[;5]
+TREND
+
+      TEMPERATURE_DATA1 ← 21.4 00010101.074200 21.8 00010101.084700 22.0 00010101.101000 21.5 00010101.120100 21.3 00010101.143600 22.3 00010101.165000
+      TEMPERATURE_PAGE1 ← 6 2 ⍴ TEMPERATURE_DATA1
+      TEMPERATURE_PAGE1
+21.4 10101.0742
+21.8 10101.0847
+22   10101.101
+21.5 10101.1201
+21.3 10101.1436
+22.3 10101.165
+      TEMPERATURE_PAGE1[1;1]
+21.4
+      TEMPERATURE_PAGE1[1;2]
+10101.0742
+      TEMPERATURE_PAGE1[1;]
+21.4 10101.0742
+      TEMPERATURE_PAGE1[3;2]
+10101.101
+
+     TEMPERATURE_PAGE2 ← 6 2 ⍴ 22.8 00010101.182300 21.5 00010101.193000 22.1 00010102.211200 22.0 00010103.071500 21.9 00010103.083000 22.4 00010103.094500
+     TEMPERATURE_PAGE2
+22.8 10101.1823
+21.5 10101.193 
+22.1 10102.2112
+22   10103.0715
+21.9 10103.083 
+22.4 10103.0945
+     TEMPERATURE_PAGE2[1;2]
+10101.1823
+     TEMPERATURE_PAGE2[2;2]
+10101.193
+     TEMPERATURE_PAGE2[3;2]
+10102.2112
+     TEMPERATURE_PAGE2[;2]
+0101.1823 10101.193 10102.2112 10103.0715 10103.083 10103.0945
+
+```
+
+Multiple numbers can be specified for both row and column indices.
+
+```apl
+       ALPHABET ← 5 5⍴⎕A
+       ALPHABET[1;]
+ABCDE
+       ALPHABET[1 2 3;]
+ABCDE
+FGHIJ
+KLMNO
+       ALPHABET[1 2 3; 1 2 3]
+ABC
+FGH
+KLM
+```
+
+However, again, the data measurements are separated without reason, the problem that introducing matrices was supposed to solve. Going one dimension further, the data can be arranged in a three-dimensional ordered collection of data:
+
+```apl
+     TEMPERATURE_ARRAY ← 2 6 2 ⍴ 21.4 00010101.074200 21.8 00010101.084700 22.0 00010101.101000 21.5 00010101.120100 21.3 00010101.143600 22.3 00010101.165000 22.8 00010101.182300 21.5 00010101.193000 22.1 00010102.211200 22.0 00010103.071500 21.9 00010103.083000 22.4 00010103.094500
+     TEMPERATURE_ARRAY
+21.4 10101.0742
+21.8 10101.0847
+22   10101.101 
+21.5 10101.1201
+21.3 10101.1436
+22.3 10101.165 
                
 22.8 10101.1823
-21.5 10101.193
+21.5 10101.193 
+22.1 10102.2112
+22   10103.0715
+21.9 10103.083 
+22.4 10103.0945
+     ⍴TEMPERATURE_ARRAY 
+2 6 2
+     ⍴⍴TEMPERATURE_ARRAY 
+3
+     TEMPERATURE_ARRAY[1;5;2]
+10101.1436
+     TEMPERATURE_ARRAY[2;5;2]
+10103.083
+     TEMPERATURE_ARRAY[1;6;1]
+22.3
+     TEMPERATURE_ARRAY[2;6;1]
+22.4
+
+     TEMPERATURE_ARRAY[1;;]
+21.4 10101.0742
+21.8 10101.0847
+22   10101.101 
+21.5 10101.1201
+21.3 10101.1436
+22.3 10101.165
+
+     TEMPERATURE_ARRAY[2;;]
+22.8 10101.1823
+21.5 10101.193 
+22.1 10102.2112
+22   10103.0715
+21.9 10103.083 
+22.4 10103.0945
+
+     TEMPERATURE_ARRAY[;1;]
+21.4 10101.0742
+22.8 10101.1823
+
+
+     TEMPERATURE_ARRAY[;;1]
+21.4 21.8 22   21.5 21.3 22.3
+22.8 21.5 22.1 22   21.9 22.4
 ```
 
-When dealing with nested arrays, useful functions to keep in mind are the monadic ≡ depth, and the monadic ≢ tally.
+!!! info "Rank"
+      The number of axes of an array is called the rank of the array. 
+      
+      The arrays we’ve constructed so far are of rank 0 (scalars), rank 1 (vectors), rank 2 (matrices), and rank 3. The maximum rank of an array in Dyalog APL is 15. 
+      
+      A useful idiom for getting the rank of an array is the shape of the shape of an array, ⍴⍴X.
+
+Now with your temperature table safely stored in your APL workspace, you can only imagine how many more values you can log and maintain. You excitedly gesture at one of your unimpressed coworkers before you notice you’ve accidentally logged the temperature of the cabin as 226 degrees. Before they have a chance to look at your mistake, you quickly and shamefully change the value.
 
 ```apl
-       ≡TEMPERATURE_ARRAY ⍝ TEMPERATURE_ARRAY is an array of arrays, it has depth 2
-2 
-       ≡10 ⍝ The depth of a scalar is 0
-0 
-       ⍳10 ⍝ The monadic ⍳ index operator generates numbers up to its right argument
-1 2 3 4 5 6 7 8 9 10 
-       ≡⍳10 ⍝ The depth of a vector of scalars is 1
-1 
-       ≡ 10 10 ⍴ ⍳10 ⍝ The depth of a matrix of scalars is 1
-1 
-       nested ← 2 2 ⍴ (⍳3) ('  ') ('   ') (2 2 ⍴ ('  ') (⍳3) (2 2 ⍴ (⍳3) ('  ') ('   ') (⍳2)) ('   '))
-       nested
-┌─────┬───────────────────┐
-│1 2 3│                   │
-├─────┼───────────────────┤
-│     │┌───────────┬─────┐│
-│     ││           │1 2 3││
-│     │├───────────┼─────┤│
-│     ││┌─────┬───┐│     ││
-│     │││1 2 3│   ││     ││
-│     ││├─────┼───┤│     ││
-│     │││     │1 2││     ││
-│     ││└─────┴───┘│     ││
-│     │└───────────┴─────┘│
-└─────┴───────────────────┘
-       ≡nested ⍝ We might expect a depth of 4 here, but for arrays with elements with differing depths, the depth is labelled as negative
-¯4 
-       ⍴nested ⍝ Notice that the nested elements in the matrix count as scalar elements.
-2 2
+     TEMPERATURE_ARRAY
+21.4 10101.0742
+21.8 10101.0847
+226  10101.101 
+21.5 10101.1201
+21.3 10101.1436
+22.3 10101.165 
+               
+22.8 10101.1823
+21.5 10101.193 
+22.1 10102.2112
+22   10103.0715
+21.9 10103.083 
+22.4 10103.0945
+     TEMPERATURE_ARRAY[1;3;1] ← 22.6
+     TEMPERATURE_ARRAY
+21.4 10101.0742
+21.8 10101.0847
+22.6  10101.101 
+21.5 10101.1201
+21.3 10101.1436
+22.3 10101.165 
+               
+22.8 10101.1823
+21.5 10101.193 
+22.1 10102.2112
+22   10103.0715
+21.9 10103.083 
+22.4 10103.0945
 ```
 
+That was close!
 
-!!! info "Boxing"
-       The ]Box user command controls how array output is displayed
-       
-       ```apl
-              nested ← 2 2 ⍴ (⍳3) ('  ') ('   ') (2 2 ⍴ ('  ') (⍳3) (2 2 ⍴ (⍳3) ('  ') ('   ') (⍳2)) ('   '))
-              nested
-       1 2 3                        
-                       1 2 3  
-          1 2 3               
-                 1 2          
-
-              ]Box on
-       Was OFF
-              nested
-       ┌─────┬───────────────────┐
-       │1 2 3│                   │
-       ├─────┼───────────────────┤
-       │     │┌───────────┬─────┐│
-       │     ││           │1 2 3││
-       │     │├───────────┼─────┤│
-       │     ││┌─────┬───┐│     ││
-       │     │││1 2 3│   ││     ││
-       │     ││├─────┼───┤│     ││
-       │     │││     │1 2││     ││
-       │     ││└─────┴───┘│     ││
-       │     │└───────────┴─────┘│
-       └─────┴───────────────────┘
-       ```
-
-
-The monadic tally function ≢ returns the number of rows of an array.
-```apl
-       ≢10
-1
-       ≢⍳10
-10
-       ≢10 20 ⍴ ⍳30
-10
-       nested ← 2 2 ⍴ (⍳3) ('  ') ('   ') (2 2 ⍴ ('  ') (⍳3) (2 2 ⍴ (⍳3) ('  ') ('   ') (⍳2)) ('   '))
-       ≢nested
-2
-```
-
-In order to create a nested array out of another array, the enclose ⊂ operator can be used.
+Changing values in arrays acts in the same manner as it does for the case of changing variables, specify the element(s) to change and assign a new value.
 
 ```apl
-       ⍳10
-1 2 3 4 5 6 7 8 9 10
-       ⊂⍳10
-┌────────────────────┐
-│1 2 3 4 5 6 7 8 9 10│
-└────────────────────┘
+     BOX ← '╔═══╗║TRY║╠═ ═╣║APL║╚═══╝'
+     BOX ← 5 5 ⍴ BOX
+     BOX
+╔═══╗
+║TRY║
+╠═ ═╣
+║APL║
+╚═══╝
+
+     BOX[3;3] ← '═'
+     BOX
+╔═══╗
+║TRY║
+╠═══╣
+║APL║
+╚═══╝
+
+     BOX[3;]
+╠═══╣
+     BOX[3;] ← '║   ║'
+     BOX
+╔═══╗
+║TRY║
+║   ║
+║APL║
+╚═══╝
+
+     BOX[3;] ← '╬'
+     BOX
+╔═══╗
+║TRY║
+╬╬╬╬╬
+║APL║
+╚═══╝
 ```
 
-In order to pick information out of nested arrays, the dyadic pick ⊃ operator allows indexing a nested arrays using a nested left array. Monadically, it picks the first element of the array.
+In order to make use of our knowledge of data in APL, a good understanding of how different functions act is needed. This is the topic of the rest of the course.
+
+Before moving on, an important function to keep in mind is the monadic index ⍳ functions, which acts on a list, and returns the indices of the array with axes specified by the list. For example,
 
 ```apl
-       school ← 2 1 ⍴ ('MATH' ('101' 30 ('COMPETED')) ('102' 37 ('CANCELLED')))  ('CS' ('101' 53 ('COMPETED')) ('102' 28 ('COMPLETED')) ('103' 20 ('IN PROGRESS')))
-       school
-┌──────────────────────────────────────────────────────────────┐
-│┌────┬─────────────────┬──────────────────┐                   │
-││MATH│┌───┬──┬────────┐│┌───┬──┬─────────┐│                   │
-││    ││101│30│COMPETED│││102│37│CANCELLED││                   │
-││    │└───┴──┴────────┘│└───┴──┴─────────┘│                   │
-│└────┴─────────────────┴──────────────────┘                   │
-├──────────────────────────────────────────────────────────────┤
-│┌──┬─────────────────┬──────────────────┬────────────────────┐│
-││CS│┌───┬──┬────────┐│┌───┬──┬─────────┐│┌───┬──┬───────────┐││
-││  ││101│53│COMPETED│││102│28│COMPLETED│││103│20│IN PROGRESS│││
-││  │└───┴──┴────────┘│└───┴──┴─────────┘│└───┴──┴───────────┘││
-│└──┴─────────────────┴──────────────────┴────────────────────┘│
-└──────────────────────────────────────────────────────────────┘
-       ≡school
-¯4
-       ≢school
-2
-       school[1]
-RANK ERROR
-      school[1]
-            ∧
-            
-      ⊃school
-┌────┬─────────────────────┬──────────────────────┐
-│MATH│┌───────┬──┬────────┐│┌───────┬──┬─────────┐│
-│    ││CLASS 1│30│COMPETED│││CLASS 2│37│CANCELLED││
-│    │└───────┴──┴────────┘│└───────┴──┴─────────┘│
-└────┴─────────────────────┴──────────────────────┘
 
-       ⍝ Nested left arrays are required
-       (1 1)⊃school
-RANK ERROR
-      (1 1)⊃school
-           ∧
-           
-      (⊂(1 1))⊃school
-┌────┬─────────────────────┬──────────────────────┐
-│MATH│┌───────┬──┬────────┐│┌───────┬──┬─────────┐│
-│    ││CLASS 1│30│COMPETED│││CLASS 2│37│CANCELLED││
-│    │└───────┴──┴────────┘│└───────┴──┴─────────┘│
-└────┴─────────────────────┴──────────────────────┘
-       (⊂(2 1))⊃school
-┌────────────────┬─────────────────────┬──────────────────────┬────────────────────────┐
-│COMPUTER SCIENCE│┌───────┬──┬────────┐│┌───────┬──┬─────────┐│┌───────┬──┬───────────┐│
-│                ││CLASS 1│53│COMPETED│││CLASS 2│28│COMPLETED│││CLASS 3│20│IN PROGRESS││
-│                │└───────┴──┴────────┘│└───────┴──┴─────────┘│└───────┴──┴───────────┘│
-└────────────────┴─────────────────────┴──────────────────────┴────────────────────────┘
-       
-       ((1 1) (1))⊃school
-MATH
-       ((2 1) (2))⊃school
-┌───────┬──┬────────┐
-│CLASS 1│53│COMPETED│
-└───────┴──┴────────┘
-       ((2 1) (2) (3))⊃school
-COMPETED
+       ⍳5
+1 2 3 4 5
+
+       ⍳5 5
+┌───┬───┬───┬───┬───┐
+│1 1│1 2│1 3│1 4│1 5│
+├───┼───┼───┼───┼───┤
+│2 1│2 2│2 3│2 4│2 5│
+├───┼───┼───┼───┼───┤
+│3 1│3 2│3 3│3 4│3 5│
+├───┼───┼───┼───┼───┤
+│4 1│4 2│4 3│4 4│4 5│
+├───┼───┼───┼───┼───┤
+│5 1│5 2│5 3│5 4│5 5│
+└───┴───┴───┴───┴───┘
+
+       ⍳2 2 2
+┌─────┬─────┐
+│1 1 1│1 1 2│
+├─────┼─────┤
+│1 2 1│1 2 2│
+└─────┴─────┘
+┌─────┬─────┐
+│2 1 1│2 1 2│
+├─────┼─────┤
+│2 2 1│2 2 2│
+└─────┴─────┘
 ```
-
-Using nested arrays allows applying functions to arrays as if they were scalars, more on this in Chapter 4.

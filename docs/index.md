@@ -7,7 +7,7 @@ however, being familiar with at least one other programming language is highly r
 This course is a work-in-progress.
 When complete, it is intended to be an official 5 ECTS credit course at the University of Helsinki.
 
-Course developed and written by Sergey Ichtchenko, Dani Adham, and Hex. (dani.adham[at]helsinki.fi, sergey.ichtchenko[at]helsinki.fi)
+Course developed and written by Sergey Ichtchenko (sergey.ichtchenko[at]helsinki.fi), Dani Adham (dani.adham[at]helsinki.fi), and Hex.
 
 Thank you to [Dyalog Ltd.](https://dyalog.com) for collaborating on this MOOC.
 

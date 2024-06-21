@@ -1,4 +1,4 @@
-# All the Math
+# All the math
 
 APL comes with a lot of math functions! Here we go through a bunch of them, so you can always come back to check. Remember to also check the toolbar in TryAPL and RIDE, they come with very helpful tooltips to remind you what an operator does!
 
@@ -64,31 +64,6 @@ If you want to get “euclidean” remainder, simply subtract divisor back if th
 0
 ```
 
-Dyadic =, ≠, ≤, <, >, ≥ : Comparison Functions
-```apl
-      0 = 0
-1
-      0 ≠ 0
-0
-      3 ≤ 3
-1
-      3 < 3
-0
-      2 = 1 2 3 4 5 2 3 2 4 2 ⍝ Getting a "bit mask" for elements equal to 2
-0 1 0 0 0 1 0 1 0 1
-```
-
-Note that when you use these functions over two vectors, the result is a vector, denoting the function *element wise*.
-
-```apl
-      1 2 1 4 5 2 5 2 3 2 = 1 2 3 4 5 2 3 2 4 2
-1 1 0 1 1 1 0 1 0 1
-      1 2 1 4 5 2 5 2 3 2 ≤ 1 2 3 4 5 2 3 2 4 2
-1 1 1 1 1 1 0 1 1 1
-```
-
-We will learn about how to collect these result into one scalar in the next section.
-
 Dyadic ∨ & ∧ : GCD and LCM
 ```apl
       12 ∨ 10 ⍝ Greatest Common Divisor...
@@ -102,32 +77,6 @@ Dyadic ∨ & ∧ : GCD and LCM
 ```
 
 Curiously, as suggested by the choice of glyphs for these two operations, these two operations are also used for the boolean logic “or” and “and” operations. This is because 0 is divisible by everything, as the remainder is always 0. So the Greatest Common Divisor of 0 and x is just x, since x divides both 0 and x. Dually, 0 is also a multiple of everything, so the Least Common Multiple of 0 and x is just 0, since 0 is a multiple of both x and 0 (and it’s the smallest!).
-
-```apl
-      3 ∧ 0
-0
-      0 ∨ 3
-3
-      1 1 0 1 1 ∧ 1 0 1 0 1 ⍝ If the arguments are "bit mask"s, this is a bitwise and
-1 0 0 0 1
-      1 1 0 1 1 ∨ 1 0 1 0 1 ⍝ This is a bitwise or
-1 1 1 1 1
-```
-
-Monadic `~` : Logical Not
-Dyadic `⍲` & `⍱` : Logical Nand and Logical Nor
-```apl
-      ~ 1 1 0 1 1
-0 0 1 0 0
-      ~ 3 ⍝ However, this operator is truly logical, so you cannot take the not of a non-0 non-1 number
-DOMAIN ERROR
-      ~3
-      ∧
-      1 1 0 1 1 ⍲ 1 0 1 0 1 ⍝ This is just ~ 1 1 0 1 1 ∧ 1 0 1 0 1
-0 1 1 1 0
-      1 1 0 1 1 ⍱ 1 0 1 0 1 ⍝ Similarly this is just ~ 1 1 0 1 1 ∨ 1 0 1 0 1
-1 1 1 1 1
-```
 
 Monadic + : Complex Conjugate
 ```apl
