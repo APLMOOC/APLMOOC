@@ -92,7 +92,6 @@ nav:
       - 4.S - Summary: course/ch4/summary.md
       - 4.R - Read exercises: course/ch4/read.md
       - 4.W - Write exercises: course/ch4/write.md
-      - 4.B - Bonus content: course/ch4/bonus.md
     - 5 - Higher dimensions:
       - 5.1 - Choose your axis!: course/ch5/part1.md
       - 5.2 - Anything can be a scalar: course/ch5/part2.md

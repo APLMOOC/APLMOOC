@@ -15,4 +15,4 @@ Thank you to [Dyalog Ltd.](https://dyalog.com) for collaborating on this MOOC.
 
 What are you waiting for?
 
-[Get started!](/course/ch0/part1){ .md-button .md-button--primary }
+[Get started!](/course/ch0/part1.md){ .md-button .md-button--primary }
