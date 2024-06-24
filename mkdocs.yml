@@ -119,6 +119,7 @@ nav:
       - 7.3 - Execute and format: course/ch7/part3.md
       - 7.4 - Writing interactive programs: course/ch7/part4.md
       - 7.5 - File I/O: course/ch7/part5.md
+      - 7.6 - External libraries: course/ch7/part6.md
       - 7.S - Summary: course/ch7/summary.md
       - 7.P - Programming project: course/ch7/project.md
   - Receiving ECTS Credits: credits.md
