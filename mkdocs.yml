@@ -67,7 +67,6 @@ nav:
       - 2.S - Summary: course/ch2/summary.md
       - 2.R - Read exercises: course/ch2/read.md
       - 2.W - Write exercises: course/ch2/write.md
-      - 2.B - Bonus content: course/ch2/bonus.md
     - 3 - Functions:
       - 3.1 - Fun for everyone: course/ch3/part1.md
       - 3.2 - All the math: course/ch3/part2.md
@@ -77,6 +76,7 @@ nav:
       - 3.6 - Installing Dyalog: course/ch3/part6.md
       - 3.7 - Traditional fun: course/ch3/part7.md
       - 3.8 - Fun(Fun(Fun(Fun(Fun(...))))): course/ch3/part8.md
+      - 3.9 - ALL ABOARD!: course/ch3/part9.md
       - 3.S - Summary: course/ch3/summary.md
       - 3.R - Read exercises: course/ch3/read.md
       - 3.W - Write exercises: course/ch3/write.md
@@ -92,21 +92,23 @@ nav:
       - 4.S - Summary: course/ch4/summary.md
       - 4.R - Read exercises: course/ch4/read.md
       - 4.W - Write exercises: course/ch4/write.md
+      - 4.B - Bonus content: course/ch4/bonus.md
     - 5 - Higher dimensions:
       - 5.1 - Choose your axis!: course/ch5/part1.md
       - 5.2 - Anything can be a scalar: course/ch5/part2.md
       - 5.3 - (Un)matrixification: course/ch5/part3.md
       - 5.4 - Selections and reductions: course/ch5/part4.md
       - 5.5 - Cross-tabulation: course/ch5/part5.md
-      - 4.S - Summary: course/ch5/summary.md
-      - 4.R - Read exercises: course/ch5/read.md
-      - 4.W - Write exercises: course/ch5/write.md
+      - 5.S - Summary: course/ch5/summary.md
+      - 5.R - Read exercises: course/ch5/read.md
+      - 5.W - Write exercises: course/ch5/write.md
+      - 5.B - Bonus content: course/ch5/bonus.md
     - 6 - Everything else you need to know:
       - 6.1 - String manipulation: course/ch6/part1.md
       - 6.2 - Inner and outer products: course/ch6/part2.md
       - 6.3 - Encoding and decoding: course/ch6/part3.md
       - 6.4 - Operators: course/ch6/part4.md
-      - 6.5 - ALL ABOARD!: course/ch6/part5.md
+      - 6.5 - Choo choo: course/ch6/part5.md
       - 6.S - Summary: course/ch6/summary.md
       - 6.R - Read exercises: course/ch6/read.md
       - 6.W - Write exercises: course/ch6/write.md
