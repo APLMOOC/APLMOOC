@@ -3,7 +3,7 @@
 
 This part will cover:
 - The axis operator
-- Applications to reverse, catenate, rotate, replicate, 
+- Applications
   - Reverse
   - Rotate
   - Catenate
