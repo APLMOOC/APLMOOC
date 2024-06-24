@@ -34,7 +34,7 @@ The most basic train is the 2-train (fg), in operator form f⍤g, called an atop
 
 The following image is composed of three parts, the first being the APL syntax for the atop, the second being a tree-like representation of the atop where the evaluation happens from bottom to top, and the third is the atop in traditional mathematical notation.
 
-<img src="../../assets/3_3_atop.png" style="width:50%; margin-left: auto; margin-right: auto; display: block;" />
+<img src="../../assets/3_9_atop.png" style="width:50%; margin-left: auto; margin-right: auto; display: block;" />
 
 !!! info “Trains in RIDE”
 	It is possible to make sense of trains by rendering them in various forms in the RIDE editor using the -trains option to the Box user command. For example, it is possible to render trains as trees using the following command.
@@ -54,7 +54,7 @@ Floored division can be conveniently expressed as an atop.
 ```
 A very similar composition is achieved using the Beside operator, f∘g. 
 
-<img src="../../assets/3_3_beside.png" style="width:50%; margin-left: auto; margin-right: auto; display: block;" />
+<img src="../../assets/3_9_beside.png" style="width:50%; margin-left: auto; margin-right: auto; display: block;" />
 
 More simply, the expression ⍺(f∘g)⍵ evaluates to ⍺fg⍵, and recalling that APL is right associative, is ⍺f(g⍵).
 ```apl
@@ -89,7 +89,7 @@ Notice that in the last statement, the atop -/× and function ⊖ were composed 
 The Over ⍥ operator, f⍥g, applies f to the value of g applied to each of its arguments.
 
 
-<img src="../../assets/3_3_over.png" style="width:50%; margin-left: auto; margin-right: auto; display: block;" />
+<img src="../../assets/3_9_over.png" style="width:50%; margin-left: auto; margin-right: auto; display: block;" />
 
 The decibel conversion from the start of this chapter can be easily written in this form.
 

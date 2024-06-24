@@ -1,15 +1,13 @@
 # Bonus content: Computer graphics
-
-# Bonus content: Computer Graphics
 ---
 
 Did you know APL was used to make graphics for the original TRON movie? Judson Rosebush, one of the founders of the computer animation studio Digital Effects, developed "Visions"; a library of APL functions intended for generating computer graphics. It allowed the manipulation of polygons in three-dimensional space and compute perspective transformations.
 The company created several animated sequences for the movie, including animating the polyhedral character "Bit" who could only convey one bit of information, answering yes or no questions.
 
 <div style="display:flex; flex-direction: row;">
-<img src="../../assets/3_4_bitno.jpg" style="width:50%; margin-left: 0; margin-right: auto;" />
-<img src="../../assets/3_4_bit.jpg" style="width:50%; margin-left: auto; margin-right: auto;" />
-<img src="../../assets/3_4_bityes.jpg" style="width:50%; margin-left: auto; margin-right: 0;" />
+<img src="../../assets/5_b_bitno.jpg" style="width:50%; margin-left: 0; margin-right: auto;" />
+<img src="../../assets/5_b_bit.jpg" style="width:50%; margin-left: auto; margin-right: auto;" />
+<img src="../../assets/5_b_bityes.jpg" style="width:50%; margin-left: auto; margin-right: 0;" />
 </div>
 
 Here's a quote from Jeffrey Kleinster, one of the co-founders of Digital Effects, in an interview published in “CG 101”:
@@ -26,7 +24,7 @@ The only rays of light that affect the final image are the ones which finally re
 The procedure we will use is as follows. We place a camera at a certain position relative to a 3D environment, and send out rays from the camera for every pixel in the final rendered image in the direction of that pixel. We then calculate the intersection of each of our rays with the environment, and get the directions from the points to the light source of our scene. We finally calculate the shading for the specific points of the environment, by comparing the vector orthogonal to the surface at that point, the normal vector, to the direction of the light source. We will ignore lighting falloff and shadows in our rendering for simplicity.
 
 
-<img src="../../assets/3_4_raymarchscene.png" style="margin-left: auto; margin-right: auto; display: block;" />
+<img src="../../assets/5_b_raymarchscene.png" style="margin-left: auto; margin-right: auto; display: block;" />
 
 For the first step, we create a vector called camera which stores the camera position. We refer to the first coordinate as the x coordinate, the second as the y coordinate, and the third as the z coordinate. We imagine the camera is facing the positive z direction, towards (0 0 1).
 
@@ -120,13 +118,13 @@ Next, we have to calculate the intersection of our rays with the environment. On
 A more efficient solution is to use this distance function to move along our rays by the distance to the nearest object, guaranteeing first that we do not accidentally move beyond the nearest object while moving along our rays, and second that we approach these objects as quickly as possible. This approach is called “sphere tracing”.
 
 <figure>
-<img src="../../assets/3_4_TeadrinkerVisualization.png" style="margin-left: auto; margin-right: auto; display: block;" />
+<img src="../../assets/5_b_TeadrinkerVisualization.png" style="margin-left: auto; margin-right: auto; display: block;" />
 <figcaption style="display:block; margin-left: auto; margin-right: auto;"> <a href="https://commons.wikimedia.org/wiki/User:Teadrinker">Teadrinker</a>, <a href="https://commons.wikimedia.org/wiki/File:Visualization_of_SDF_ray_marching_algorithm.png">Visualization of SDF ray marching algorithm</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/legalcode" rel="license">CC BY-SA 4.0</a> </figcaption>
 </figure>
 
 We first setup the environment. The function for getting the distance between two points ⍺ and ⍵ in 3D space can be obtained using the Pythagorean theorem:
 
-<img src="../../assets/3_4_pythagorean.png" style="margin-left: auto; margin-right: auto; display: block;" />
+<img src="../../assets/5_b_pythagorean.png" style="margin-left: auto; margin-right: auto; display: block;" />
 
 ```apl
 	       dist ← {0.5*⍨+/(⍺-⍵)*2}
@@ -136,7 +134,7 @@ We first setup the environment. The function for getting the distance between tw
 
 The signed distance function for a sphere is immediate from the definition of a sphere as the set of points a distance R away from some center point C.
 
-<img src="../../assets/3_4_spheredistancefunction.png" style="margin-left: auto; margin-right: auto; display: block;" />
+<img src="../../assets/5_b_spheredistancefunction.png" style="margin-left: auto; margin-right: auto; display: block;" />
 
 ```apl
       sphere ← {⍵[3] -⍨ ⍵[1] dist ⍵[2]}
@@ -163,11 +161,11 @@ Let’s define the other functions we need and leave the marching function for l
 
 When a point on an object is hit by a ray, the color of that point needs to be calculated in order to make it into the final image. The main insight is that, at every point on the surface of an object, the lighting at that point depends on the angle between the light ray and the surface. For example, if the light ray hits the surface directly, so that it is parallel to the normal at that point, that point will be at the maximum brightness compared to points where the light ray does not hit exactly. If the light ray is perpendicular or makes a negative angle with the surface, then that part of the object is obscured.
 
-<img src="../../assets/3_4_lightraynormals.png" style="margin-left: auto; margin-right: auto; display: block;" />
+<img src="../../assets/5_b_lightraynormals.png" style="margin-left: auto; margin-right: auto; display: block;" />
 
 We first normalise the vectors then take their dot product, this gives us the cosine of the angle between the two. Mathematically,
 
-<img src="../../assets/3_4_dotproduct.png" style="margin-left: auto; margin-right: auto; display: block;" />
+<img src="../../assets/5_b_dotproduct.png" style="margin-left: auto; margin-right: auto; display: block;" />
 
 We will use the cosine of the angle for shading, instead of using the angle explicitly.
 
@@ -180,7 +178,7 @@ We will use the cosine of the angle for shading, instead of using the angle expl
 
 The last function we will need is one which returns the normal to the environment at some point. Consider a point on the sphere. Intuitively, the vector orthogonal to the sphere will be the direction which makes the distance to the sphere increase the fastest, since every other direction either takes us towards the center of the sphere or away from the sphere at a slower rate
 
-<img src="../../assets/3_4_tangentspace.png" style="margin-left: auto; margin-right: auto; display: block;" />
+<img src="../../assets/5_b_tangentspace.png" style="margin-left: auto; margin-right: auto; display: block;" />
 
 We can construct this vector by calculating how much the distance function changes with a small variation in the x, y, and z directions, and normalizing the resulting vector. Small variations are needed so that we only consider points close to the surface point. In vector analysis terms, we are calculating the gradient of the distance function at that point.
 
@@ -314,7 +312,7 @@ To actually see our rendered image, we need to export our array as an image file
 
 Opening the file in a compatible program, such as the GIMP image editor, we see the beautifully shaded sphere.
 
-<img src="../../assets/3_4_sphere.png" style="margin-left: auto; margin-right: auto; display: block;" />
+<img src="../../assets/5_b_sphere.png" style="margin-left: auto; margin-right: auto; display: block;" />
 
 By changing the distance function of the world, it is possible to render more complex objects. Take for example, the distance function for a torus.
 
@@ -326,6 +324,6 @@ By changing the distance function of the world, it is possible to render more co
        env ← {1 0.5 torus ⍵}
 ```
 
-<img src="../../assets/3_4_torus.png" style="margin-left: auto; margin-right: auto; display: block;" />
+<img src="../../assets/5_b_torus.png" style="margin-left: auto; margin-right: auto; display: block;" />
 
 There are also ways of combining distance functions to create more complex scenes, such as taking the minimum of two distance functions. However, we will leave the creation of more complex 3D scenes to the interested reader.

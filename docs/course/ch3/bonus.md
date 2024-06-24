@@ -34,15 +34,15 @@ A musical scale is a certain selection of these notes, usually spanning an octav
 
 From the above discussion, the problem is now clear. Given some starting note, we want to generate movements between the notes with some preference for certain special movements. 
 
-<img src="../../assets/2_5_note_table.svg" style="width:50%; margin-left: auto; margin-right: auto; display: block;" />
+<img src="../../assets/3_b_note_table.svg" style="width:50%; margin-left: auto; margin-right: auto; display: block;" />
 
 In the table above, red numerals represent a preferred following note. For example, we want VI to resolve to a <span style="color:red;"> V </span> more frequently than to move to a <span style="color:blue;"> VII </span> or down to a <span style="color:blue;"> IV </span>. Note that the next note depends only on the previous note, so we can represent this data as a graph.
 
-<img src="../../assets/2_5_note_graph.svg" style="width:70%; margin-left: auto; margin-right: auto; display: block;" />
+<img src="../../assets/3_b_note_graph.svg" style="width:70%; margin-left: auto; margin-right: auto; display: block;" />
 
 Then, the data is a list of triples, consisting of the starting note, the ending note, and the color (or, priority) of the arrow between those notes. We can lay out this data in the form of a table as follows, where the row represents the starting note and the column represents the ending note. For example, the first row says that, for I as the starting note, we can get to I itself, II, or III with equal preference, 1 1 1.
 
-<img src="../../assets/2_5_note_graph_table.svg" style="width:50%; margin-left: auto; margin-right: auto; display: block;" />
+<img src="../../assets/3_b_note_graph_table.svg" style="width:50%; margin-left: auto; margin-right: auto; display: block;" />
 
 We use <span style="color:blue;"> 1 </span> for standard movements and <span style="color:red;"> 2 </span> for preferred movements. Let’s write try to create this matrix in APL using the reshape ⍴ operator, remembering that if the right argument is not long enough, it will repeat it to fill the required dimensions.
 
@@ -217,12 +217,12 @@ There is clearly so much more we could add to our program, from generating rhyth
 Some of the generated melodies are included below.
 
  <audio controls>
-  <source src="../../assets/2_5_melody1.mp3" type="audio/mpeg">
+  <source src="../../assets/3_b_melody1.mp3" type="audio/mpeg">
 Your browser does not support the audio element.
 </audio> 
 
  <audio controls>
-  <source src="../../assets/2_5_melody2.mp3" type="audio/mpeg">
+  <source src="../../assets/3_b_melody2.mp3" type="audio/mpeg">
 Your browser does not support the audio element.
 </audio> 
 
