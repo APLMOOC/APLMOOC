@@ -26,7 +26,7 @@ We will get back to these modes in future chapters.
 
 Surprisingly enough, this style of prompt is how APL code has been written for the longest time!
 By using the different modes outlined above, alongside APL workspaces and an APL IDE, you can write any programs you like.
-Thankfully, since we live in the year 2022, some APL developers have realised that it might be smart to finally get with the times
+Thankfully, since we live in the 2000s, some APL developers have realised that it might be smart to finally get with the times
 and let programmers write their code in text files that are executed by an APL interpreter.
 This is fairly straightforward to do but requires some configuration, so we will get back to this in a later chapter.
-For now, the TryAPL interpreter will suffice.
+For now, the TryAPL interpreter will be enough.
