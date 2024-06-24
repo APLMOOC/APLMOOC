@@ -1,3 +1,4 @@
 site
 flake.lock
 flake.nix
+.vscode
