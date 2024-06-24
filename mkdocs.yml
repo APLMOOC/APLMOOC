@@ -57,7 +57,7 @@ nav:
       - 1.S - Summary: course/ch1/summary.md
       - 1.R - Read exercises: course/ch1/read.md
       - 1.W - Write exercises: course/ch1/write.md
-    - 2 - Variables, scalars, vectors, matrices:
+    - 2 - Array programming:
       - 2.1 - Assignment: course/ch2/part1.md
       - 2.2 - Vectors: course/ch2/part2.md
       - 2.3 - Arithmetic operations on vectors: course/ch2/part3.md
@@ -85,7 +85,9 @@ nav:
       - 4.1 - Creating vectors: course/ch4/part1.md
       - 4.2 - Reductions and scans: course/ch4/part2.md
       - 4.3 - Selecting from a vector: course/ch4/part3.md
-      - 4.6 - Order from chaos: course/ch4/part6.md
+      - 4.4 - Order from chaos: course/ch4/part4.md
+      - 4.5 - I'm in Spain without the "a": course/ch4/part5.md
+      - 4.6 - Searching: course/ch4/part6.md
       - 4.7 - Elements of set theory: course/ch4/part7.md
       - 4.S - Summary: course/ch4/summary.md
       - 4.R - Read exercises: course/ch4/read.md

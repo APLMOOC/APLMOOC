@@ -1,5 +1,9 @@
 # Nested arrays
 
+This part will cover
+- Basics of nested arrays
+- How to catenate vectors properly
+
 Be warned, elements of arrays can be vectors, or matrices, or arrays of higher rank as well!
 
 Reducing the length of the temperature arrays for the sake of the following example, look what happens when we try to create a rank 3 array in the following,
@@ -207,79 +211,3 @@ The monadic tally function ≢ returns the number of rows of an array.
        ≢nested
 2
 ```
-
-In order to create a nested array out of another array, the enclose ⊂ operator can be used.
-
-```apl
-       ⍳10
-1 2 3 4 5 6 7 8 9 10
-       ⊂⍳10
-┌────────────────────┐
-│1 2 3 4 5 6 7 8 9 10│
-└────────────────────┘
-```
-
-In order to pick information out of nested arrays, the dyadic pick ⊃ operator allows indexing a nested arrays using a nested left array. Monadically, it picks the first element of the array.
-
-```apl
-       school ← 2 1 ⍴ ('MATH' ('101' 30 ('COMPETED')) ('102' 37 ('CANCELLED')))  ('CS' ('101' 53 ('COMPETED')) ('102' 28 ('COMPLETED')) ('103' 20 ('IN PROGRESS')))
-       school
-┌──────────────────────────────────────────────────────────────┐
-│┌────┬─────────────────┬──────────────────┐                   │
-││MATH│┌───┬──┬────────┐│┌───┬──┬─────────┐│                   │
-││    ││101│30│COMPETED│││102│37│CANCELLED││                   │
-││    │└───┴──┴────────┘│└───┴──┴─────────┘│                   │
-│└────┴─────────────────┴──────────────────┘                   │
-├──────────────────────────────────────────────────────────────┤
-│┌──┬─────────────────┬──────────────────┬────────────────────┐│
-││CS│┌───┬──┬────────┐│┌───┬──┬─────────┐│┌───┬──┬───────────┐││
-││  ││101│53│COMPETED│││102│28│COMPLETED│││103│20│IN PROGRESS│││
-││  │└───┴──┴────────┘│└───┴──┴─────────┘│└───┴──┴───────────┘││
-│└──┴─────────────────┴──────────────────┴────────────────────┘│
-└──────────────────────────────────────────────────────────────┘
-       ≡school
-¯4
-       ≢school
-2
-       school[1]
-RANK ERROR
-      school[1]
-            ∧
-            
-      ⊃school
-┌────┬─────────────────────┬──────────────────────┐
-│MATH│┌───────┬──┬────────┐│┌───────┬──┬─────────┐│
-│    ││CLASS 1│30│COMPETED│││CLASS 2│37│CANCELLED││
-│    │└───────┴──┴────────┘│└───────┴──┴─────────┘│
-└────┴─────────────────────┴──────────────────────┘
-
-       ⍝ Nested left arrays are required
-       (1 1)⊃school
-RANK ERROR
-      (1 1)⊃school
-           ∧
-           
-      (⊂(1 1))⊃school
-┌────┬─────────────────────┬──────────────────────┐
-│MATH│┌───────┬──┬────────┐│┌───────┬──┬─────────┐│
-│    ││CLASS 1│30│COMPETED│││CLASS 2│37│CANCELLED││
-│    │└───────┴──┴────────┘│└───────┴──┴─────────┘│
-└────┴─────────────────────┴──────────────────────┘
-       (⊂(2 1))⊃school
-┌────────────────┬─────────────────────┬──────────────────────┬────────────────────────┐
-│COMPUTER SCIENCE│┌───────┬──┬────────┐│┌───────┬──┬─────────┐│┌───────┬──┬───────────┐│
-│                ││CLASS 1│53│COMPETED│││CLASS 2│28│COMPLETED│││CLASS 3│20│IN PROGRESS││
-│                │└───────┴──┴────────┘│└───────┴──┴─────────┘│└───────┴──┴───────────┘│
-└────────────────┴─────────────────────┴──────────────────────┴────────────────────────┘
-       
-       ((1 1) (1))⊃school
-MATH
-       ((2 1) (2))⊃school
-┌───────┬──┬────────┐
-│CLASS 1│53│COMPETED│
-└───────┴──┴────────┘
-       ((2 1) (2) (3))⊃school
-COMPETED
-```
-
-Using nested arrays allows applying functions to arrays as if they were scalars, more on this in Chapter 4.
