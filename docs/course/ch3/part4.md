@@ -1,5 +1,12 @@
 # Logical functions
 
+!!! abstract "This part will cover"
+
+    - Functions used to perform bitwise operations
+    - Bitwise operations on scalars and vectors
+
+---
+
 ```apl
       3 ∧ 0
 0

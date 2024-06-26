@@ -1,5 +1,12 @@
 # Relational functions
 
+!!! abstract "This part will cover"
+
+    - Functions used to compare values
+    - Comparing vectors and scalars
+
+---
+
 Dyadic =, ≠, ≤, <, >, ≥ : Comparison Functions
 ```apl
       0 = 0

@@ -1,10 +1,11 @@
 # Fun(Fun(Fun(Fun(Fun(...)))))
+
+!!! abstract "This part will cover"
+
+    - How to define recursive dfns and tradfns
+    - Guard syntax in dfns
+
 ---
-
-This part will cover:
-
-- How to define recursive dfns and tradfns
-- Guard syntax in dfns
 
 Recursive functions can be implemented using guarded expressions and the self `∇` function.
 

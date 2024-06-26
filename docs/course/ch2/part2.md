@@ -1,4 +1,10 @@
 # Vectors
+
+!!! abstract "This part will cover"
+
+    - Creating vectors
+    - Spaces Separate Scalars
+
 ---
 
 In the following section, you will play the role of an astronaut aboard the [International Space Station](https://archive.org/details/MeetMeAtTheStationiss). You are currently orbiting the Earth at an altitude of 413km at a speed of 28,013km/h. As part of the maintenance and repair team, you are tasked with guaranteeing the proper functioning of scientific instruments, environmental control and life support systems, power management and distribution systems, and radio communication modules to gather, log, process, and transmit information through the ISS, or back to mission control centers.

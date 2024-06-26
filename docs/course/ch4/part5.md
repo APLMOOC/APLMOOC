@@ -1,11 +1,12 @@
 # I'm in Spain without the "a"
+
+!!! abstract "This part will cover"
+    
+    - Rotations
+    - Reflections
+    - Transpose
+
 ---
-
-This part will cover:
-
-- Reflections
-- Rotations
-- Transpose
 
 The dyadic `⌽` `⊖` rotate functions rotate an array by an amount specific by the left argument, around a specific axis.
 

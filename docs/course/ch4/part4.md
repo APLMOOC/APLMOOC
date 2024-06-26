@@ -1,10 +1,11 @@
 # Order from chaos
+
+!!! abstract "This part will cover"
+
+    - Sorting / grade up / grade down
+    - Generating vectors
+
 ---
-
-This part will cover:
-
-- Sorting / grade up / grade down
-- Generating vectors
 
 Measurement of data in real-world systems is often accompanied by noise, which makes the extraction of useful information difficult. In order to introduce techniques which help analyse noisy data, we will first generate artificial noisy data.
 

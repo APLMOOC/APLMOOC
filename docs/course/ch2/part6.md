@@ -1,8 +1,11 @@
 # Nested arrays
 
-This part will cover
-- Basics of nested arrays
-- How to catenate vectors properly
+!!! abstract "This part will cover"
+
+    - Basics of nested arrays
+    - How to catenate vectors properly
+
+---
 
 Be warned, elements of arrays can be vectors, or matrices, or arrays of higher rank as well!
 

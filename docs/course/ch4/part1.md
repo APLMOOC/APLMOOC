@@ -1,12 +1,13 @@
 # Creating vectors
+
+!!! abstract "This part will cover"
+
+    - Vector generating functions
+        - Iota
+        - Rho
+        - Replicate
+        - Catenate
+        - Roll/deal
+    - Index origin / Quad IO
+
 ---
-
-This part will cover:
-
-- Vector generating functions
-  - iota
-  - rho
-  - replicate
-  - catenate
-  - roll/deal
-- index origin, Quad IO

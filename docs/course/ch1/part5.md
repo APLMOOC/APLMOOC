@@ -2,8 +2,10 @@
 
 !!! abstract "This part will cover"
 
-      - Error handling
-      - Different errors in APL
+    - Error handling
+    - Different errors in APL
+
+---
 
 Let's do some more arithmetic:
 

@@ -1,14 +1,15 @@
 # Anything can be a scalar
+
+!!! abstract "This part will cover"
+    
+    - Nested arrays
+    - Enclose
+    - Disclose
+    - Nest
+    - Each
+    - Tally
+
 ---
-
-This part will cover:
-
-- Nested arrays
-- Enclose
-- Disclose
-- Nest
-- Each
-- Tally
 
 In order to create a nested array out of another array, the enclose ⊂ operator can be used.
 

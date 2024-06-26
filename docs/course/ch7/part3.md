@@ -1,7 +1,8 @@
 # Execute and format
+
+!!! abstract "This part will cover"
+    
+    - Execute
+    - Format
+
 ---
-
-This part will cover:
-
-- Execute
-- Format

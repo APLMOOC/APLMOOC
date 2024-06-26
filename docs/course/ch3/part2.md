@@ -1,5 +1,12 @@
 # All the math
 
+!!! abstract "This part will cover"
+
+    - Basic mathematical operations
+    - Calculating things
+
+---
+
 APL comes with a lot of math functions! Here we go through a bunch of them, so you can always come back to check. Remember to also check the toolbar in TryAPL and RIDE, they come with very helpful tooltips to remind you what an operator does!
 
 Dyadic ⌈ & ⌊ : Max & Min

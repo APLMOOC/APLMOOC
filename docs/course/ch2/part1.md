@@ -1,5 +1,13 @@
 # Assignment
 
+!!! abstract "This part will cover"
+
+    - The assignment operator
+    - Variables and naming
+    - Intermediate assignment
+
+---
+
 Allow me to introduce you to a new symbol; the assignment operator:
 
 ```apl
@@ -8,9 +16,9 @@ Allow me to introduce you to a new symbol; the assignment operator:
 
 !!! note "Typing the assignment operator `←`"
 
-      Prefix method: <kbd>PREFIX</kbd> <kbd>]</kbd>
+    Prefix method: <kbd>PREFIX</kbd> <kbd>]</kbd>
 
-      Tab method: <kbd><</kbd> <kbd>-</kbd> ++tab++
+    Tab method: <kbd><</kbd> <kbd>-</kbd> ++tab++
 
 
 Here is an example of assignment:
@@ -110,9 +118,9 @@ The developers of APL picked this because it looks kinda like a (arguably, verti
 
 !!! note "Typing the quad operator `⎕`"
 
-      Prefix method: <kbd>PREFIX</kbd> <kbd>L</kbd>
+    Prefix method: <kbd>PREFIX</kbd> <kbd>L</kbd>
 
-      Tab method: <kbd>[</kbd> <kbd>]</kbd> ++tab++
+    Tab method: <kbd>[</kbd> <kbd>]</kbd> ++tab++
 
 We also realised that we made a mistake somewhere in our calculation
 (it should be fairly obvious, but let's pretend we have a very complex program here).
@@ -144,7 +152,7 @@ Nice!
 
 !!! bug "Intermediate quad operator"
 
-      It appears as though currently, TryAPL does not support the intermediate quad operator.
-      That is, the above expression `RES ← 1 + ⎕ ← 5*6` will throw a `NOT PERMITTED` error.
-      This is rather unfortunate but will not be an issue later,
-      when we install the Dyalog IDE to write bigger programs.
+    It appears as though currently, TryAPL does not support the intermediate quad operator.
+    That is, the above expression `RES ← 1 + ⎕ ← 5*6` will throw a `NOT PERMITTED` error.
+    This is rather unfortunate but will not be an issue later,
+    when we install the Dyalog IDE to write bigger programs.

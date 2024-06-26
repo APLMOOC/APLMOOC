@@ -1,10 +1,11 @@
 # Reductions and scans
+
+!!! abstract "This part will cover"
+
+    - The six useful reduction functions
+    - The six useful scan functions
+
 ---
-
-This part will cover:
-
-- The six useful reduction functions
-- The six useful scan functions
 
 The dyadic replicate / function repeats elements of its right hand argument array by a specified left hand argument array. This allows the use of boolean masks, which makes it commonly used to filter arrays.
 

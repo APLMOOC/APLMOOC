@@ -1,13 +1,14 @@
 # Elements of set theory
+
+!!! abstract "This part will cover"
+    
+    - Set operations:
+        - Union
+        - Intersection
+        - Unique
+        - Without
+
 ---
-
-This part will cover:
-
-- Set operations
-- Union
-- Intersection
-- Unique
-- Without
 
 Most of the functions introduced in the previous chapter can also be applied element-wise to vectors, as was described in Chapter 2. There are certain other functions that only make sense when dealing with vector arguments; for example, the usual set operations (Intersection, Union, and Difference) only make sense when dealing with collections of elements, such as vectors.
 

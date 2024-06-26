@@ -1,11 +1,12 @@
 # Traditional fun
+
+!!! abstract "This part will cover"
+
+    - How to write tradfns in the Dyalog IDE
+    - Assigning temporary variables
+    - Basic workspace management
+
 ---
-
-This part will cover:
-
-- How to write tradfns in the Dyalog IDE
-- Assigning temporary variables
-- Basic workspace management
 
 Another way of defining functions is using traditional functions, abbreviated tradfn. (”trad-fun”) These functions look a lot more similar to functions in imperative programming languages.
 

@@ -1,5 +1,12 @@
 # Fun for everyone
 
+!!! abstract "This part will cover"
+
+    - Defining your own functions using dfns
+    - The alpha and omega parameters
+
+---
+
 Programming languages provide structured methods of storing and operating on data. Now that we know how data is structured in APL, it’s time to look at how operations on data are structured, more specifically, how to make your own operations from already existing ones.
 
 One of the ways of defining a function, taking in array arguments and outputting an array result, is using direct functions, abbreviated dfn. (”dee-fun”) A dfn is a series of statements, where the special characters ⍺ and ⍵ represent the left and right arguments to the function. Functions always require a right argument. Let’s look at some simple examples.

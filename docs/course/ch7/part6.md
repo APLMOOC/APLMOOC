@@ -1,6 +1,11 @@
 # External libraries
 
-This part will cover:
+!!! abstract "This part will cover"
+    
+    - Tatin package manager
+    - Using external libraries
+        - HTTP server
+        - OpenAI
+        - etc.
 
-- Using external libraries
-- e.g. HTTP, etc
+---

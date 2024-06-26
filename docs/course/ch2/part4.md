@@ -1,4 +1,11 @@
 # Higher dimensional space
+
+!!! abstract "This part will cover"
+
+    - Constructing matrices
+    - Constructing 3D arrays
+    - The reshape operator
+
 ---
 
 The astute reader may have noticed that, although the new data is much more structured, the dates and times of the measurements have been completely forgotten.

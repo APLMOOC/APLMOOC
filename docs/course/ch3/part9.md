@@ -1,5 +1,13 @@
 # ALL ABOARD!
 
+!!! abstract "This part will cover"
+
+    - Trains
+    - Defining 2- and 3-trains
+    - The tack functions
+
+---
+
 Some other important functions are the dyadic right and left identity/“tack” functions which return their right or left arguments.
 
 ```apl

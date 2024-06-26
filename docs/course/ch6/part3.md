@@ -1,11 +1,12 @@
 # Encoding and decoding
+
+!!! abstract "This part will cover"
+    
+    - Inner products
+    - Outer products
+    - Matrix inverse
+
 ---
-
-This part will cover:
-
-- Encode
-- Decode
-- Numbers in different bases
 
 A common operation in the manipulation of time data is the formatting of a period of time into a standard format in terms of days, hours, minutes, and seconds. This appears, for example, when calculating the time difference between two dates. 
 

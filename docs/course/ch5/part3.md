@@ -1,8 +1,9 @@
 # (Un)matrixification
+
+!!! abstract "This part will cover"
+    
+    - Mix
+    - Split
+    - Ravel
+
 ---
-
-This part will cover:
-
-- Mix
-- Split
-- Ravel

@@ -2,9 +2,11 @@
 
 !!! abstract "This part will cover"
 
-      - Right-to-left execution
-      - Using parentheses
-      - Comments
+    - Right-to-left execution
+    - Using parentheses
+    - Comments
+
+---
 
 Okay, we've tried adding and multiplying two numbers together.
 What if we try adding and multiplying three numbers at the same time?
@@ -34,50 +36,50 @@ And this doesn't even take into account functions that programmers can create th
 
 !!! info "Order of execution"
 
-      In APL, all operations are executed _right-to-left_.
+    In APL, all operations are executed _right-to-left_.
 
-      When APL runs a line of code, it first looks at the rightmost function symbol
-      and executes it with the arguments to its left and right.
-      It then looks at the function symbol to the left of the one just processed,
-      and executes it, treating the result it just got as a right argument.
+    When APL runs a line of code, it first looks at the rightmost function symbol
+    and executes it with the arguments to its left and right.
+    It then looks at the function symbol to the left of the one just processed,
+    and executes it, treating the result it just got as a right argument.
 
 An equivalent formulation of this would be
 
 !!! info "Order of execution"
 
-      In APL, every function takes in the whole expression on its right as a right argument.
+    In APL, every function takes in the whole expression on its right as a right argument.
 
 Can you see why these two formulations are equivalent?
 
 !!! info "Example"
 
-      Suppose you have the expression `3+5÷0.25×6*10-8`.
-      
-      This will get evaluated right-to-left as:
-      ```apl
-      3+5÷0.25×6*10-8
-      3+5÷0.25×6*2
-      3+5÷0.25×36
-      3+5÷9
-      3+0.5555555556
-      3.555555556
-      ```
+    Suppose you have the expression `3+5÷0.25×6*10-8`.
+    
+    This will get evaluated right-to-left as:
+    ```apl
+    3+5÷0.25×6*10-8
+    3+5÷0.25×6*2
+    3+5÷0.25×36
+    3+5÷9
+    3+0.5555555556
+    3.555555556
+    ```
 
 !!! warning "About spaces"
 
-      APL ignores extra spaces when processing statements.
-      For example, all of the following statements will produce the same result:
+    APL ignores extra spaces when processing statements.
+    For example, all of the following statements will produce the same result:
 
-      ```apl
-              2×2+1
-      6
-              2×2 + 1
-      6
-              2×2       +           1
-      6
-              2         ×           2+1
-      6
-      ```
+    ```apl
+            2×2+1
+    6
+            2×2 + 1
+    6
+            2×2       +           1
+    6
+            2         ×           2+1
+    6
+    ```
 
 ---
 
@@ -138,14 +140,14 @@ Before we conclude, here are some tips on how to reduce parentheses in your code
 
 !!! info "Reducing parentheses"
 
-      1. No APL expression needs to end with a closing parenthesis. It's redundant.
-        - For example, the expression `(2×3)+(4×5)` can be rewritten as `(2×3)+4×5`
-      2. You never need two consecutive closing parentheses. It's redundant.
-        - For example, the expression `(2×(3+4))÷5` is equivalent to `(2×3+4)÷5`
-      3. If you can easily rewrite the expression to avoid parentheses, do so.
-        - For example, the expression `((2÷3)+4)×5` can be reversed to give `5×4+2÷3`
-      4. Do not shovel in extra parentheses in a panicked, desperate attempt to fix your code.
-      Do shovel in parentheses if it genuinely helps the readability of your code.
+    1. No APL expression needs to end with a closing parenthesis. It's redundant.
+    - For example, the expression `(2×3)+(4×5)` can be rewritten as `(2×3)+4×5`
+    2. You never need two consecutive closing parentheses. It's redundant.
+    - For example, the expression `(2×(3+4))÷5` is equivalent to `(2×3+4)÷5`
+    3. If you can easily rewrite the expression to avoid parentheses, do so.
+    - For example, the expression `((2÷3)+4)×5` can be reversed to give `5×4+2÷3`
+    4. Do not shovel in extra parentheses in a panicked, desperate attempt to fix your code.
+    Do shovel in parentheses if it genuinely helps the readability of your code.
 
 
 This isn't to say that you should avoid using parentheses.

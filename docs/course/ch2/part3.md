@@ -1,5 +1,12 @@
 # Arithmetic operations on vectors
 
+!!! abstract "This part will cover"
+
+    - Operations work on vectors all at once
+    - Length error
+
+---
+
 So now we have vectors. You might wonder, why do we want to put a bunch of numbers inside a vector? Let’s say you, the astronaut on the ISS, mistakenly bought a bunch of measuring equipment from America, and only found out later that all the readings are in Fahrenheit. Terrible news! After about 2000 milliseconds of googling about it, you found this formula to convert it into Celsius:
 
 Celsius = (Fahrenheit - 32) * 5 / 9

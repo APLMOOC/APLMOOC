@@ -1,11 +1,11 @@
 # Searching
+
+!!! abstract "This part will cover"
+    
+    - Different search methods on 1D arrays:
+        - Iota
+        - Iota underbar
+        - Epsilon
+        - Epsilon underbar
+
 ---
-
-This part will cover:
-
-- Different search methods on 1D arrays
-- Iota
-- Iota underbar
-- Epsilon
-- Epsilon underbar
-- Example: changing a certain value to another
