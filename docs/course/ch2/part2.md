@@ -8,18 +8,18 @@ In brief intervals of time spent waiting between tasks, you enjoy logging temper
 Typing as fast as possible without the aid of gravity, you manage to write some data without being caught.
 
 ```apl
-       TEMPERATURE_PAGE1_YEAR1_DAY2_HOUR7_MINUTE42 ← 21.4
-       TEMPERATURE_PAGE1_YEAR1_DAY2_HOUR8_MINUTE47 ← 21.8
-       TEMPERATURE_PAGE1_YEAR1_DAY2_HOUR10_MINUTE10 ← 22.0
-       TEMPERATURE_PAGE1_YEAR1_DAY2_HOUR12_MINUTE01 ← 21.5
-       TEMPERATURE_PAGE1_YEAR1_DAY2_HOUR14_MINUTE36 ← 21.3
-       TEMPERATURE_PAGE1_YEAR1_DAY2_HOUR16_MINUTE50 ← 22.3
-       TEMPERATURE_PAGE2_YEAR1_DAY2_HOUR18_MINUTE23 ← 22.8
-       TEMPERATURE_PAGE2_YEAR1_DAY2_HOUR19_MINUTE30 ← 21.5
-       TEMPERATURE_PAGE2_YEAR1_DAY2_HOUR21_MINUTE12 ← 22.1
-       TEMPERATURE_PAGE2_YEAR1_DAY3_HOUR7_MINUTE15 ← 22.0
-       TEMPERATURE_PAGE2_YEAR1_DAY3_HOUR8_MINUTE30 ← 21.9
-       TEMPERATURE_PAGE2_YEAR1_DAY3_HOUR9_MINUTE45 ← 22.4
+       TEMPERATURE_PAGE1_HOUR7 ← 21.4
+       TEMPERATURE_PAGE1_HOUR8 ← 21.8
+       TEMPERATURE_PAGE1_HOUR10 ← 22.0
+       TEMPERATURE_PAGE1_HOUR12 ← 21.5
+       TEMPERATURE_PAGE1_HOUR14 ← 21.3
+       TEMPERATURE_PAGE1_HOUR16 ← 22.3
+       TEMPERATURE_PAGE2_HOUR18 ← 22.8
+       TEMPERATURE_PAGE2_HOUR19 ← 21.5
+       TEMPERATURE_PAGE2_HOUR21 ← 22.1
+       TEMPERATURE_PAGE2_HOUR7 ← 22.0
+       TEMPERATURE_PAGE2_HOUR8 ← 21.9
+       TEMPERATURE_PAGE2_HOUR9 ← 22.4
 ```
 
 This is not the most efficient, or readable, method to input data into your system, and while flicking through your APL notes now crowded with temperatures, you refresh your workspace and instead decide to store your data using vectors.
