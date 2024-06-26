@@ -98,7 +98,7 @@ If we replace TEMPERATURE_DATA1 and TEMPERATURE_DATA2 with scalars, the situatio
 2
 ```
 
-The monadic ravel operator , can be used to “unravel” a matrix into a vector of its elements in left-right top-down order, called ravel order. Dyadically, the catenate , function glues two arrays together along a common axis.
+The monadic ravel operator , can be used to "unravel" a matrix into a vector of its elements in left-right top-down order, called ravel order. Dyadically, the catenate , function glues two arrays together along a common axis.
 
 ```apl
        ARRAY ← 2 2 2 ⍴ 1 2 3 4 5 6 7 8

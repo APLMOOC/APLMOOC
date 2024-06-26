@@ -9,7 +9,7 @@
 
 APL comes with a lot of math functions! Here we go through a bunch of them, so you can always come back to check. Remember to also check the toolbar in TryAPL and RIDE, they come with very helpful tooltips to remind you what an operator does!
 
-Dyadic ⌈ & ⌊ : Max & Min
+Dyadic `⌈` and `⌊` : Max & Min
 ```apl
       4 ⌈ 5 ⍝ This simply returns the larger argument
 5
@@ -21,7 +21,7 @@ Dyadic ⌈ & ⌊ : Max & Min
 1 3 4 4 4 4 4 4 2 0
 ```
 
-Monadic ⌈ & ⌊ : Ceil & Floor
+Monadic `⌈` and `⌊` : Ceil & Floor
 ```apl
       ⌈ 2.5 2.6 ¯2.5 ¯2.6 ⍝ Rounds up to the closest integer
 3 3 ¯2 ¯2
@@ -29,7 +29,7 @@ Monadic ⌈ & ⌊ : Ceil & Floor
 2 2 ¯3 ¯3
 ```
 
-Monadic | : Absolute value
+Monadic `|` : Absolute value
 ```
       | ¯1 ⍝ Absolute value of ¯1 is ...
 1
@@ -37,7 +37,7 @@ Monadic | : Absolute value
 1 5
 ```
 
-Dyadic | : Residue
+Dyadic `|` : Residue
 ```apl
       13 | 100 ⍝ 13 × 7 = 91, note this is in reverse order as `%` operator in C
 9
@@ -53,14 +53,14 @@ Dyadic | : Residue
 3
 ```
 
-This residue operation respects “floored” division. The defining equation is
+This residue operation respects "floored" division. The defining equation is
 ```apl
 X|Y ← Y-X×⌊Y÷X+0=X
 ⍝ where, X+0=X means if X is 0 then 1, else X.
 ⍝ if X is not 0, this is simply (Y - X * floor(Y / X)).
 ```
 
-If you want to get “euclidean” remainder, simply subtract divisor back if the result is negative.
+If you want to get "euclidean" remainder, simply subtract divisor back if the result is negative.
 ```apl
       mod←{(⍵|⍺)<0:(⍵|⍺)-⍵ ⋄ ⍵|⍺}
       ¯13 mod ¯3
@@ -71,7 +71,7 @@ If you want to get “euclidean” remainder, simply subtract divisor back if th
 0
 ```
 
-Dyadic ∨ & ∧ : GCD and LCM
+Dyadic `∨` & `∧` : GCD and LCM
 ```apl
       12 ∨ 10 ⍝ Greatest Common Divisor...
 2
@@ -83,15 +83,15 @@ Dyadic ∨ & ∧ : GCD and LCM
 ¯20
 ```
 
-Curiously, as suggested by the choice of glyphs for these two operations, these two operations are also used for the boolean logic “or” and “and” operations. This is because 0 is divisible by everything, as the remainder is always 0. So the Greatest Common Divisor of 0 and x is just x, since x divides both 0 and x. Dually, 0 is also a multiple of everything, so the Least Common Multiple of 0 and x is just 0, since 0 is a multiple of both x and 0 (and it’s the smallest!).
+Curiously, as suggested by the choice of glyphs for these two operations, these two operations are also used for the boolean logic "or" and "and" operations. This is because 0 is divisible by everything, as the remainder is always 0. So the Greatest Common Divisor of 0 and x is just x, since x divides both 0 and x. Dually, 0 is also a multiple of everything, so the Least Common Multiple of 0 and x is just 0, since 0 is a multiple of both x and 0 (and it’s the smallest!).
 
-Monadic + : Complex Conjugate
+Monadic `+` : Complex Conjugate
 ```apl
       + 0j1 1j¯1 3j4
 0J¯1 1J1 3J¯4
 ```
 
-Monadic - : Negate
+Monadic `-` : Negate
 ```apl
       - 4 ¯5 6
 ¯4 5 ¯6
@@ -99,7 +99,7 @@ Monadic - : Negate
 ¯5
 ```
 
-Monadic × : Signum/Direction
+Monadic `×` : Signum/Direction
 ```apl
       × 0 3 ¯3
 0 1 ¯1
@@ -107,7 +107,7 @@ Monadic × : Signum/Direction
 0.6J0.8 ¯0.6J0.8 0.28J0.96
 ```
 
-Monadic ○ : Pi Times
+Monadic `○` : Pi Times
 ```apl
       ○ 1
 3.141592654

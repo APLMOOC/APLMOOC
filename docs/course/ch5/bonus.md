@@ -20,7 +20,7 @@ The company created several animated sequences for the movie, including animatin
 <img src="../../assets/5_b_bityes.jpg" style="width:50%; margin-left: auto; margin-right: 0;" />
 </div>
 
-Here's a quote from Jeffrey Kleinster, one of the co-founders of Digital Effects, in an interview published in “CG 101”:
+Here's a quote from Jeffrey Kleinster, one of the co-founders of Digital Effects, in an interview published in "CG 101":
 "Our original setup was a 1200-baud modem connection to an Amdahl V6 running A Programming language (APL) in Bethesda, Maryland, using a Tektronix display to preview wireframes. (Polygons refreshed at one per second—that's one polygon per second!)…"
 
 In this section, we will write our own ray marcher to render out 3D environments entirely in APL. The advantages of an array-based language for computer graphics will be immediately seen.
@@ -125,7 +125,7 @@ Where here, the each ¨ operator is used to apply the function (,∘1) to each e
 
 Next, we have to calculate the intersection of our rays with the environment. One way is to do this is to keep moving along our rays in small steps until we are close enough to an object in the environment, which we detect using a function that returns the distance to the nearest object. This function should also return negative values for being inside the object, this function is usually called a signed distance function.
 
-A more efficient solution is to use this distance function to move along our rays by the distance to the nearest object, guaranteeing first that we do not accidentally move beyond the nearest object while moving along our rays, and second that we approach these objects as quickly as possible. This approach is called “sphere tracing”.
+A more efficient solution is to use this distance function to move along our rays by the distance to the nearest object, guaranteeing first that we do not accidentally move beyond the nearest object while moving along our rays, and second that we approach these objects as quickly as possible. This approach is called "sphere tracing".
 
 <figure>
 <img src="../../assets/5_b_TeadrinkerVisualization.png" style="margin-left: auto; margin-right: auto; display: block;" />
@@ -274,7 +274,7 @@ Wrapping the march function in a function that returns zero if the result is not
 
 This calculation might take a couple seconds.
 
-To actually see our rendered image, we need to export our array as an image file. We will be using the very simple PPM file format, in which images are plain text files. The header of a PPM file consists of a format indicator “P3”, the size of the image (5 5), the maximum value for each color (255), and the colors in RGB format. Using the ⎕NPUT function with the append (2) argument, we write to a file called “image.ppm”. We use the encode `⍕` operator to convert between numerical arrays to character arrays.
+To actually see our rendered image, we need to export our array as an image file. We will be using the very simple PPM file format, in which images are plain text files. The header of a PPM file consists of a format indicator "P3", the size of the image (5 5), the maximum value for each color (255), and the colors in RGB format. Using the ⎕NPUT function with the append (2) argument, we write to a file called "image.ppm". We use the encode `⍕` operator to convert between numerical arrays to character arrays.
 
 ```apl
        'P3'⎕NPUT'image.ppm'2

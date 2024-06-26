@@ -33,7 +33,7 @@ You are going to spend ages plugging the data from this one sensor, and you have
 
 There’s all the Celsius! What’s going on here?
 
-In APL, all the basic arithmetic functions apply “component-wise”. If you are familiar with functional programming in Python or maybe Haskell, you might know the `map` function, which applies another function to each element of a vector. In APL, this is done automatically for all the basic arithmetic functions, if one of the parameters is a scalar:
+In APL, all the basic arithmetic functions apply "component-wise". If you are familiar with functional programming in Python or maybe Haskell, you might know the `map` function, which applies another function to each element of a vector. In APL, this is done automatically for all the basic arithmetic functions, if one of the parameters is a scalar:
 
 ```apl
       TEMP_F - 32
@@ -61,7 +61,7 @@ That’s some extreme temperature right there! And it makes you start to wonder,
 96.72222222 75.21111111 36.55555556 7.222222222 ¯32.53333333 ¯84.96666667 ¯135.7
 ```
 
-So applying a basic arithmetic function to two vectors also just applies them “component-wise”! It just applies this function for the first element on the left and the first element on the right, note the result, then the second element on the left and the second element on the right, and so on. This is analogous to `map` with a binary operation and two iterators in Python, and `zipWith` in Haskell. There is one serious caveat though:
+So applying a basic arithmetic function to two vectors also just applies them "component-wise"! It just applies this function for the first element on the left and the first element on the right, note the result, then the second element on the left and the second element on the right, and so on. This is analogous to `map` with a binary operation and two iterators in Python, and `zipWith` in Haskell. There is one serious caveat though:
 
 ```apl
       1 2 3 - 4 5

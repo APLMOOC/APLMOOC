@@ -8,7 +8,7 @@
 
 ---
 
-Another way of defining functions is using traditional functions, abbreviated tradfn. (”trad-fun”) These functions look a lot more similar to functions in imperative programming languages.
+Another way of defining functions is using traditional functions, abbreviated tradfn. ("trad-fun") These functions look a lot more similar to functions in imperative programming languages.
 
 ```apl
        ∇ (R1 R2) ← solve_quadratic A B C;root;vertex 

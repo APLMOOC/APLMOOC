@@ -8,12 +8,12 @@
 
 ---
 
-Some other important functions are the dyadic right and left identity/“tack” functions which return their right or left arguments.
+Some other important functions are the dyadic right and left identity/"tack" functions which return their right or left arguments.
 
 ```apl
-       "True"⊣"False"
+       'True'⊣'False'
 True
-       "True"⊢"False"
+       'True'⊢'False'
 False
 ```
 When applied monadically, they return their only argument.
@@ -36,7 +36,7 @@ Consider the following pairs of functions, implemented using dfns first, and tra
 5.5 5.7 5.9
 ```
 
-Notice that the arguments of the function were not referred to in the function trains, this style of programming is called tacit or “point-free” programming, borrowed from mathematics where it means taking data that can be described using points to be more fundamental than the points themselves, avoiding the need to refer to points explicitly. In this case, taking functions to be more fundamental than their description in terms of explicit arguments, w
+Notice that the arguments of the function were not referred to in the function trains, this style of programming is called tacit or "point-free" programming, borrowed from mathematics where it means taking data that can be described using points to be more fundamental than the points themselves, avoiding the need to refer to points explicitly. In this case, taking functions to be more fundamental than their description in terms of explicit arguments, w
 
 The most basic train is the 2-train (fg), in operator form f⍤g, called an atop. The atop evaluates the function f monadically on the result of g applied to the arguments of the train.
 
@@ -44,7 +44,7 @@ The following image is composed of three parts, the first being the APL syntax f
 
 <img src="../../assets/3_9_atop.png" style="width:50%; margin-left: auto; margin-right: auto; display: block;" />
 
-!!! info “Trains in RIDE”
+!!! info "Trains in RIDE"
 	It is possible to make sense of trains by rendering them in various forms in the RIDE editor using the -trains option to the Box user command. For example, it is possible to render trains as trees using the following command.
 	```apl
 	]Box on -trains=tree
@@ -92,9 +92,9 @@ More simply, the expression ⍺(f∘g)⍵ evaluates to ⍺fg⍵, and recalling t
 ¯5
 ```
 
-Notice that in the last statement, the atop -/× and function ⊖ were composed into an atop. Since the atop -/× is a functions in its own right, it can be used as part of larger trains.
+Notice that in the last statement, the atop `-/×` and function `⊖` were composed into an atop. Since the atop `-/×` is a functions in its own right, it can be used as part of larger trains.
 
-The Over ⍥ operator, f⍥g, applies f to the value of g applied to each of its arguments.
+The Over `⍥` operator, `f⍥g`, applies f to the value of g applied to each of its arguments.
 
 
 <img src="../../assets/3_9_over.png" style="width:50%; margin-left: auto; margin-right: auto; display: block;" />
@@ -126,7 +126,7 @@ SYNTAX ERROR
                       ∧
 ```
 
-When trying to adapt the hypotenuse function to point-free programming, a seemingly strange error appears complaining about syntax of our train. However, this error should not seem so bizzare after some thought, because the expression (* 0.5 +) is not a function, in fact, (* 0.5 +) evaluates to (1.648721271+) since the * function here is interpreted to act monadically on 0.5. In order to attach the value 0.5 to * and turn the dyadic * into a monadic {⍵*0.5}, the bind ∘ operator can be used.
+When trying to adapt the hypotenuse function to point-free programming, a seemingly strange error appears complaining about syntax of our train. However, this error should not seem so bizzare after some thought, because the expression `(* 0.5 +)` is not a function, in fact, `(* 0.5 +)` evaluates to `(1.648721271+)` since the `*` function here is interpreted to act monadically on 0.5. In order to attach the value 0.5 to `*` and turn the dyadic `*` into a monadic `{⍵*0.5}`, the bind `∘` operator can be used.
 
 ```apl
        hypotenuse ← (*∘0.5+)⍥(*∘2)
@@ -160,7 +160,7 @@ Let’s take a closer look at the trains at the beginning of this section, appli
        plusminus ← -,⊣,+
 ```
 
-Starting with range_average, we start reading from right to left identifying forks and atops. We first identify the 3-train +/÷≢, which takes the sum +/ of the elements of a vector and divides ÷ by the length ≢ of the vector, {(+/⍵)÷(≢⍵)} as a function which takes an average.
+Starting with range_average, we start reading from right to left identifying forks and atops. We first identify the 3-train `+/÷≢`, which takes the sum `+/` of the elements of a vector and divides `÷` by the length `≢ ` of the vector, `{(+/⍵)÷(≢⍵)}` as a function which takes an average.
 
 <img src="../../assets/3_9_fork.png" style="width:50%; margin-left: auto; margin-right: auto; display: block;" />
 
@@ -169,7 +169,7 @@ Starting with range_average, we start reading from right to left identifying for
        range_average ← (⌈/-⌊/),avg
 ```
 
-Then, the 3-train (⌈/-⌊/) takes the maximum ⌈/ and subtracts - by the minimum ⌊/, {(⌈/⍵)-(⌊/⍵)}, which gives the range of a series of values.
+Then, the 3-train `(⌈/-⌊/)` takes the maximum `⌈/` and subtracts `-` by the minimum `⌊/`, `{(⌈/⍵)-(⌊/⍵)}`, which gives the range of a series of values.
 ```apl
        avg←+/÷≢
        range←⌈/-⌊/
@@ -187,10 +187,10 @@ The plus_minus function can be analysed similarly.
        plusminus ← {(⍺-⍵),(⍵,⍺+⍵)}
 ```
 
-More generally, for an n-train of functions (f g h k l m … w x y z), 
+More generally, for an n-train of functions `(f g h k l m … w x y z)`, 
 
-- (f g h k l m … t u v w x y z) is interpreted as (f g h k l m … t u v w (x y z)), which can be interpreted again as (f g h k l m … t u (v w (x y z))), and further recursively.
+- `(f g h k l m … t u v w x y z)` is interpreted as `(f g h k l m … t u v w (x y z))`, which can be interpreted again as `(f g h k l m … t u (v w (x y z)))`, and further recursively.
 - If the number of functions is odd, then the result is of the form of forks over forks
-    - (f g (h k (l m … (t u (v w (x y z))))…)
+    - `(f g (h k (l m … (t u (v w (x y z))))…)`
 - If the number of functions is even, then the result is an atop over forks
-    - (f (g h (k l (m … (t u (v w (x y z))))…)
+    - `(f (g h (k l (m … (t u (v w (x y z))))…)`

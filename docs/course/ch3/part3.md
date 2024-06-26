@@ -7,7 +7,7 @@
 
 ---
 
-Dyadic =, ≠, ≤, <, >, ≥ : Comparison Functions
+Dyadic `=`, `≠`, `≤`, `<`, `>`, `≥` : Comparison Functions
 ```apl
       0 = 0
 1
