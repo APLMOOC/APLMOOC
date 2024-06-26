@@ -2329,47 +2329,38 @@
 <hr />
 <p>The astute reader may have noticed that, although the new data is much more structured, the dates and times of the measurements have been completely forgotten.</p>
 <p>One solution is to use more vectors to organize this data, here using floating-point decimal encoded format. This format stores the dates as decimal numbers, where the integer part stores the year, month, and day, and the fractional part stores the hour, minute, and second, yyyymmdd.hhmmss.</p>
-<p>For example, 00010101.074200 is year 0001, month 01, day 01, hour 05, minute 42, and second 00.</p>
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">TEMPERATURE_PAGE1</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">21.4</span><span class="w"> </span><span class="m">21.8</span><span class="w"> </span><span class="m">22.0</span><span class="w"> </span><span class="m">21.5</span><span class="w"> </span><span class="m">21.3</span><span class="w"> </span><span class="m">22.3</span>
-<span class="w">      </span><span class="nv">TEMPERATURE_PAGE1_DATE</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">00010101.074200</span><span class="w"> </span><span class="m">00010101.084700</span><span class="w"> </span><span class="m">00010101.101000</span><span class="w"> </span><span class="m">00010101.120100</span><span class="w"> </span><span class="m">00010101.143600</span><span class="w"> </span><span class="m">00010101.165000</span>
+<span class="w">      </span><span class="nv">TEMPERATURE_PAGE1_HOUR</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">16</span>
 <span class="w">      </span><span class="nv">TEMPERATURE_PAGE2</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">22.8</span><span class="w"> </span><span class="m">21.5</span><span class="w"> </span><span class="m">22.1</span><span class="w"> </span><span class="m">22.0</span><span class="w"> </span><span class="m">21.9</span><span class="w"> </span><span class="m">22.4</span>
-<span class="w">      </span><span class="nv">TEMPERATURE_PAGE2_DATE</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">00010101.182300</span><span class="w"> </span><span class="m">00010101.193000</span><span class="w"> </span><span class="m">00010101.211200</span><span class="w"> </span><span class="m">00010102.071500</span><span class="w"> </span><span class="m">00010102.083000</span><span class="w"> </span><span class="m">00010102.094500</span>
+<span class="w">      </span><span class="nv">TEMPERATURE_PAGE2_HOUR</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">19</span><span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span>
 </code></pre></div>
 <p>and access dates and times using the same index;</p>
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">TEMPERATURE_PAGE1</span><span class="sr">[</span><span class="m">2</span><span class="sr">]</span>
 <span class="m">21.8</span>
-<span class="w">      </span><span class="nv">TEMPERATURE_PAGE1_DATE</span><span class="sr">[</span><span class="m">2</span><span class="sr">]</span>
-<span class="m">00010101.084700</span>
-<span class="w">      </span><span class="m">60</span><span class="w"> </span><span class="m">¯10</span><span class="w"> </span><span class="nf">⎕DT</span><span class="w"> </span><span class="nv">TEMPERATURE_PAGE1_DATE</span><span class="sr">[</span><span class="m">2</span><span class="sr">]</span>
-<span class="err">┌────────────┐</span>
-<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">47</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="err">│</span>
-<span class="err">└────────────┘</span>
-<span class="w">      </span><span class="c1">⍝ The ⎕DT function allows many different date conversions</span>
-<span class="w">      </span><span class="c1">⍝ The above is read as, Year 1, Day 1, Hour 8, Minute 47</span>
+<span class="w">      </span><span class="nv">TEMPERATURE_PAGE1_HOUR</span><span class="sr">[</span><span class="m">2</span><span class="sr">]</span>
+<span class="m">8</span>
 </code></pre></div>
 <p>However, this lack of structure is exactly what introducing vectors was supposed to solve; two closely related pieces of information, the time of a measurement and the value of the measurement, are kept separate when they should logically be part of the same collection of data. Measurement data of this form are usually stored in tables, and it is only natural to try to store them in the same manner in a computer system.</p>
 <p>You decide to start over yet again, and decide to store data in a matrix instead</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">TEMPERATURE_PAGE1</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="m">21.4</span><span class="w"> </span><span class="m">00010101.074200</span><span class="w"> </span><span class="m">21.8</span><span class="w"> </span><span class="m">00010101.084700</span><span class="w"> </span><span class="m">22.0</span><span class="w"> </span><span class="m">00010101.101000</span><span class="w"> </span><span class="m">21.5</span><span class="w"> </span><span class="m">00010101.120100</span><span class="w"> </span><span class="m">21.3</span><span class="w"> </span><span class="m">00010101.143600</span><span class="w"> </span><span class="m">22.3</span><span class="w"> </span><span class="m">00010101.165000</span>
-<span class="w">      </span><span class="nv">TEMPERATURE_PAGE2</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="m">22.8</span><span class="w"> </span><span class="m">00010101.182300</span><span class="w"> </span><span class="m">21.5</span><span class="w"> </span><span class="m">00010101.193000</span><span class="w"> </span><span class="m">22.1</span><span class="w"> </span><span class="m">00010102.211200</span><span class="w"> </span><span class="m">22.0</span><span class="w"> </span><span class="m">00010103.071500</span><span class="w"> </span><span class="m">21.9</span><span class="w"> </span><span class="m">00010103.083000</span><span class="w"> </span><span class="m">22.4</span><span class="w"> </span><span class="m">00010103.094500</span>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">TEMPERATURE_PAGE1</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="m">21.4</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">21.8</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">22.0</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">21.5</span><span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="m">21.3</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">22.3</span><span class="w"> </span><span class="m">16</span>
+<span class="w">      </span><span class="nv">TEMPERATURE_PAGE2</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="m">22.8</span><span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">21.5</span><span class="w"> </span><span class="m">19</span><span class="w"> </span><span class="m">22.1</span><span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">22.0</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">21.9</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">22.4</span><span class="w"> </span><span class="m">9</span>
 </code></pre></div>
 <hr />
-<p>Matrices are two-dimensional ordered collections of data, they are rectangles of data. They can be created by reshaping (⍴) a vector.</p>
+<p>Matrices are two-dimensional ordered collections of data, they are rectangles of data. They can be created by reshaping (<code>⍴</code>) a vector.</p>
 <div class="admonition info">
-<p class="admonition-title">Function Valence</p>
-<p>The symbol ⍴ actually represents two different functions depending on the manner in which arguments are given. </p>
-<p>When applied to a single argument, ⍴X, it acts as the <em>shape</em> operator; when two arguments are given one on either side, X⍴Y, it acts as the <em>reshape</em> operator. </p>
-<p>The former function is the monadic function associated to the symbol ⍴, and the latter is the dyadic function associated with the symbol ⍴. </p>
-<p>Many symbols in APL admit both monadic and dyadic functions, take a look at (link to apl vocab sheet) to see the different functions associated to different APL symbols.</p>
+<p class="admonition-title">Typing the reshape operator <code>⍴</code></p>
+<p>Prefix method: <kbd>PREFIX</kbd> <kbd>r</kbd></p>
+<p>Tab method: <kbd>r</kbd> <kbd>r</kbd> <span class="keys"><kbd class="key-tab">Tab</kbd></span></p>
 </div>
 <p>The reshape operator acts by returning an array whose entries are the entries of its right operand, and whose axes are specified by a vector of integers as its left operand, more concretely,</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">TEMPERATURE_DATA</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">21.4</span><span class="w"> </span><span class="m">00010101.074200</span><span class="w"> </span><span class="m">21.8</span><span class="w"> </span><span class="m">00010101.084700</span><span class="w"> </span><span class="m">22.0</span><span class="w"> </span><span class="m">00010101.101000</span><span class="w"> </span><span class="m">21.5</span><span class="w"> </span><span class="m">00010101.120100</span><span class="w"> </span><span class="m">21.3</span><span class="w"> </span><span class="m">00010101.143600</span><span class="w"> </span><span class="m">22.3</span><span class="w"> </span><span class="m">00010101.165000</span>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">TEMPERATURE_DATA</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">21.4</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">21.8</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">22.0</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">21.5</span><span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="m">21.3</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">22.3</span><span class="w"> </span><span class="m">16</span>
 <span class="w">      </span><span class="m">6</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="nv">TEMPERATURE_DATA</span>
-<span class="m">21.4</span><span class="w"> </span><span class="m">10101.0742</span>
-<span class="m">21.8</span><span class="w"> </span><span class="m">10101.0847</span>
-<span class="m">22</span><span class="w">   </span><span class="m">10101.101</span>
-<span class="m">21.5</span><span class="w"> </span><span class="m">10101.1201</span>
-<span class="m">21.3</span><span class="w"> </span><span class="m">10101.1436</span>
-<span class="m">22.3</span><span class="w"> </span><span class="m">10101.165</span>
+<span class="m">21.4</span><span class="w">  </span><span class="m">7</span>
+<span class="m">21.8</span><span class="w">  </span><span class="m">8</span>
+<span class="m">22</span><span class="w">   </span><span class="m">10</span>
+<span class="m">21.5</span><span class="w"> </span><span class="m">12</span>
+<span class="m">21.3</span><span class="w"> </span><span class="m">14</span>
+<span class="m">22.3</span><span class="w"> </span><span class="m">16</span>
 <span class="w">      </span><span class="c1">⍝ The reshaped matrix has 6 rows and 2 columns</span>
 </code></pre></div>
 <p>turns the vector TEMPERATURE_DATA into a matrix with axes of length six and two, consisting of the entries in TEMPERATURE_DATA.</p>
@@ -2412,16 +2403,6 @@
 <span class="nv">BCDEFGHIJKLMNOPQRSTUVWXYZ</span>
 <span class="w">      </span><span class="c1">⍝ If the right operand is too short to fill the array, the reshape (dyadic ⍴) operator repeats the right operand&#39;s entries</span>
 </code></pre></div>
-<p>The shape (monadic ⍴) operator acts on one array, its right operand, by returning a vector whose entries are the lengths of the axes.</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">TEMPERATURE_DATA</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">21.4</span><span class="w"> </span><span class="m">00010101.074200</span><span class="w"> </span><span class="m">21.8</span><span class="w"> </span><span class="m">00010101.084700</span><span class="w"> </span><span class="m">22.0</span><span class="w"> </span><span class="m">00010101.101000</span><span class="w"> </span><span class="m">21.5</span><span class="w"> </span><span class="m">00010101.120100</span><span class="w"> </span><span class="m">21.3</span><span class="w"> </span><span class="m">00010101.143600</span><span class="w"> </span><span class="m">22.3</span><span class="w"> </span><span class="m">00010101.165000</span>
-<span class="w">      </span><span class="nv">TEMPERATURE_PAGE1</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="nv">TEMPERATURE_DATA</span>
-<span class="w">      </span><span class="o">⍴</span><span class="nv">TEMPERATURE_PAGE1</span>
-<span class="m">6</span><span class="w"> </span><span class="m">2</span>
-<span class="w">      </span><span class="o">⍴</span><span class="m">100</span>
-
-<span class="w">      </span><span class="o">⍴</span><span class="nf">⎕A</span>
-<span class="m">26</span>
-</code></pre></div>
 <p>Since elements in matrices are ordered along two axes, an element of a matrix can be specified by two position, the row and column. If only a row position (or column position) is specified, the whole row (or column) is returned.</p>
 <div class="highlight"><pre><span></span><code><span class="w">     </span><span class="nv">WORD_SQUARE</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="s2">&quot;HEARTEMBERABUSERESINTREND&quot;</span>
 <span class="w">     </span><span class="nv">WORD_SQUARE</span>
@@ -2439,40 +2420,40 @@
 <span class="w">     </span><span class="nv">WORD_SQUARE</span><span class="sr">[;</span><span class="m">5</span><span class="sr">]</span>
 <span class="nv">TREND</span>
 
-<span class="w">      </span><span class="nv">TEMPERATURE_DATA1</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">21.4</span><span class="w"> </span><span class="m">00010101.074200</span><span class="w"> </span><span class="m">21.8</span><span class="w"> </span><span class="m">00010101.084700</span><span class="w"> </span><span class="m">22.0</span><span class="w"> </span><span class="m">00010101.101000</span><span class="w"> </span><span class="m">21.5</span><span class="w"> </span><span class="m">00010101.120100</span><span class="w"> </span><span class="m">21.3</span><span class="w"> </span><span class="m">00010101.143600</span><span class="w"> </span><span class="m">22.3</span><span class="w"> </span><span class="m">00010101.165000</span>
+<span class="w">      </span><span class="nv">TEMPERATURE_DATA1</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">21.4</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">21.8</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">22.0</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">21.5</span><span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="m">21.3</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">22.3</span><span class="w"> </span><span class="m">16</span>
 <span class="w">      </span><span class="nv">TEMPERATURE_PAGE1</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="nv">TEMPERATURE_DATA1</span>
 <span class="w">      </span><span class="nv">TEMPERATURE_PAGE1</span>
-<span class="m">21.4</span><span class="w"> </span><span class="m">10101.0742</span>
-<span class="m">21.8</span><span class="w"> </span><span class="m">10101.0847</span>
-<span class="m">22</span><span class="w">   </span><span class="m">10101.101</span>
-<span class="m">21.5</span><span class="w"> </span><span class="m">10101.1201</span>
-<span class="m">21.3</span><span class="w"> </span><span class="m">10101.1436</span>
-<span class="m">22.3</span><span class="w"> </span><span class="m">10101.165</span>
+<span class="m">21.4</span><span class="w">  </span><span class="m">7</span>
+<span class="m">21.8</span><span class="w">  </span><span class="m">8</span>
+<span class="m">22</span><span class="w">   </span><span class="m">10</span>
+<span class="m">21.5</span><span class="w"> </span><span class="m">12</span>
+<span class="m">21.3</span><span class="w"> </span><span class="m">14</span>
+<span class="m">22.3</span><span class="w"> </span><span class="m">16</span>
 <span class="w">      </span><span class="nv">TEMPERATURE_PAGE1</span><span class="sr">[</span><span class="m">1</span><span class="sr">;</span><span class="m">1</span><span class="sr">]</span>
 <span class="m">21.4</span>
 <span class="w">      </span><span class="nv">TEMPERATURE_PAGE1</span><span class="sr">[</span><span class="m">1</span><span class="sr">;</span><span class="m">2</span><span class="sr">]</span>
-<span class="m">10101.0742</span>
+<span class="m">7</span>
 <span class="w">      </span><span class="nv">TEMPERATURE_PAGE1</span><span class="sr">[</span><span class="m">1</span><span class="sr">;]</span>
-<span class="m">21.4</span><span class="w"> </span><span class="m">10101.0742</span>
+<span class="m">21.4</span><span class="w"> </span><span class="m">7</span>
 <span class="w">      </span><span class="nv">TEMPERATURE_PAGE1</span><span class="sr">[</span><span class="m">3</span><span class="sr">;</span><span class="m">2</span><span class="sr">]</span>
-<span class="m">10101.101</span>
+<span class="m">10</span>
 
-<span class="w">     </span><span class="nv">TEMPERATURE_PAGE2</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="m">22.8</span><span class="w"> </span><span class="m">00010101.182300</span><span class="w"> </span><span class="m">21.5</span><span class="w"> </span><span class="m">00010101.193000</span><span class="w"> </span><span class="m">22.1</span><span class="w"> </span><span class="m">00010102.211200</span><span class="w"> </span><span class="m">22.0</span><span class="w"> </span><span class="m">00010103.071500</span><span class="w"> </span><span class="m">21.9</span><span class="w"> </span><span class="m">00010103.083000</span><span class="w"> </span><span class="m">22.4</span><span class="w"> </span><span class="m">00010103.094500</span>
+<span class="w">     </span><span class="nv">TEMPERATURE_PAGE2</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="m">22.8</span><span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">21.5</span><span class="w"> </span><span class="m">19</span><span class="w"> </span><span class="m">22.1</span><span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">22.0</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">21.9</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">22.4</span><span class="w"> </span><span class="m">9</span>
 <span class="w">     </span><span class="nv">TEMPERATURE_PAGE2</span>
-<span class="m">22.8</span><span class="w"> </span><span class="m">10101.1823</span>
-<span class="m">21.5</span><span class="w"> </span><span class="m">10101.193</span><span class="w"> </span>
-<span class="m">22.1</span><span class="w"> </span><span class="m">10102.2112</span>
-<span class="m">22</span><span class="w">   </span><span class="m">10103.0715</span>
-<span class="m">21.9</span><span class="w"> </span><span class="m">10103.083</span><span class="w"> </span>
-<span class="m">22.4</span><span class="w"> </span><span class="m">10103.0945</span>
+<span class="m">22.8</span><span class="w"> </span><span class="m">18</span>
+<span class="m">21.5</span><span class="w"> </span><span class="m">19</span><span class="w"> </span>
+<span class="m">22.1</span><span class="w"> </span><span class="m">21</span>
+<span class="m">22</span><span class="w">   </span><span class="m">7</span>
+<span class="m">21.9</span><span class="w"> </span><span class="m">8</span>
+<span class="m">22.4</span><span class="w"> </span><span class="m">9</span>
 <span class="w">     </span><span class="nv">TEMPERATURE_PAGE2</span><span class="sr">[</span><span class="m">1</span><span class="sr">;</span><span class="m">2</span><span class="sr">]</span>
-<span class="m">10101.1823</span>
+<span class="m">18</span>
 <span class="w">     </span><span class="nv">TEMPERATURE_PAGE2</span><span class="sr">[</span><span class="m">2</span><span class="sr">;</span><span class="m">2</span><span class="sr">]</span>
-<span class="m">10101.193</span>
+<span class="m">19</span>
 <span class="w">     </span><span class="nv">TEMPERATURE_PAGE2</span><span class="sr">[</span><span class="m">3</span><span class="sr">;</span><span class="m">2</span><span class="sr">]</span>
-<span class="m">10102.2112</span>
+<span class="m">21</span>
 <span class="w">     </span><span class="nv">TEMPERATURE_PAGE2</span><span class="sr">[;</span><span class="m">2</span><span class="sr">]</span>
-<span class="m">0101.1823</span><span class="w"> </span><span class="m">10101.193</span><span class="w"> </span><span class="m">10102.2112</span><span class="w"> </span><span class="m">10103.0715</span><span class="w"> </span><span class="m">10103.083</span><span class="w"> </span><span class="m">10103.0945</span>
+<span class="m">18</span><span class="w"> </span><span class="m">19</span><span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span>
 </code></pre></div>
 <p>Multiple numbers can be specified for both row and column indices.</p>
 <div class="highlight"><pre><span></span><code><span class="w">       </span><span class="nv">ALPHABET</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="o">⍴</span><span class="nf">⎕A</span>
@@ -2488,53 +2469,53 @@
 <span class="nv">KLM</span>
 </code></pre></div>
 <p>However, again, the data measurements are separated without reason, the problem that introducing matrices was supposed to solve. Going one dimension further, the data can be arranged in a three-dimensional ordered collection of data:</p>
-<div class="highlight"><pre><span></span><code><span class="w">     </span><span class="nv">TEMPERATURE_ARRAY</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="m">21.4</span><span class="w"> </span><span class="m">00010101.074200</span><span class="w"> </span><span class="m">21.8</span><span class="w"> </span><span class="m">00010101.084700</span><span class="w"> </span><span class="m">22.0</span><span class="w"> </span><span class="m">00010101.101000</span><span class="w"> </span><span class="m">21.5</span><span class="w"> </span><span class="m">00010101.120100</span><span class="w"> </span><span class="m">21.3</span><span class="w"> </span><span class="m">00010101.143600</span><span class="w"> </span><span class="m">22.3</span><span class="w"> </span><span class="m">00010101.165000</span><span class="w"> </span><span class="m">22.8</span><span class="w"> </span><span class="m">00010101.182300</span><span class="w"> </span><span class="m">21.5</span><span class="w"> </span><span class="m">00010101.193000</span><span class="w"> </span><span class="m">22.1</span><span class="w"> </span><span class="m">00010102.211200</span><span class="w"> </span><span class="m">22.0</span><span class="w"> </span><span class="m">00010103.071500</span><span class="w"> </span><span class="m">21.9</span><span class="w"> </span><span class="m">00010103.083000</span><span class="w"> </span><span class="m">22.4</span><span class="w"> </span><span class="m">00010103.094500</span>
+<div class="highlight"><pre><span></span><code><span class="w">     </span><span class="nv">TEMPERATURE_ARRAY</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="m">21.4</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">21.8</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">22.0</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">21.5</span><span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="m">21.3</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">22.3</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">22.8</span><span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">21.5</span><span class="w"> </span><span class="m">19</span><span class="w"> </span><span class="m">22.1</span><span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">22.0</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">21.9</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">22.4</span><span class="w"> </span><span class="m">9</span>
 <span class="w">     </span><span class="nv">TEMPERATURE_ARRAY</span>
-<span class="m">21.4</span><span class="w"> </span><span class="m">10101.0742</span>
-<span class="m">21.8</span><span class="w"> </span><span class="m">10101.0847</span>
-<span class="m">22</span><span class="w">   </span><span class="m">10101.101</span><span class="w"> </span>
-<span class="m">21.5</span><span class="w"> </span><span class="m">10101.1201</span>
-<span class="m">21.3</span><span class="w"> </span><span class="m">10101.1436</span>
-<span class="m">22.3</span><span class="w"> </span><span class="m">10101.165</span><span class="w"> </span>
+<span class="m">21.4</span><span class="w">  </span><span class="m">7</span>
+<span class="m">21.8</span><span class="w">  </span><span class="m">8</span>
+<span class="m">22</span><span class="w">   </span><span class="m">10</span>
+<span class="m">21.5</span><span class="w"> </span><span class="m">12</span>
+<span class="m">21.3</span><span class="w"> </span><span class="m">14</span>
+<span class="m">22.3</span><span class="w"> </span><span class="m">16</span>
 
-<span class="m">22.8</span><span class="w"> </span><span class="m">10101.1823</span>
-<span class="m">21.5</span><span class="w"> </span><span class="m">10101.193</span><span class="w"> </span>
-<span class="m">22.1</span><span class="w"> </span><span class="m">10102.2112</span>
-<span class="m">22</span><span class="w">   </span><span class="m">10103.0715</span>
-<span class="m">21.9</span><span class="w"> </span><span class="m">10103.083</span><span class="w"> </span>
-<span class="m">22.4</span><span class="w"> </span><span class="m">10103.0945</span>
+<span class="m">22.8</span><span class="w"> </span><span class="m">18</span>
+<span class="m">21.5</span><span class="w"> </span><span class="m">19</span>
+<span class="m">22.1</span><span class="w"> </span><span class="m">21</span>
+<span class="m">22</span><span class="w">    </span><span class="m">7</span>
+<span class="m">21.9</span><span class="w">  </span><span class="m">8</span>
+<span class="m">22.4</span><span class="w">  </span><span class="m">9</span>
 <span class="w">     </span><span class="o">⍴</span><span class="nv">TEMPERATURE_ARRAY</span><span class="w"> </span>
 <span class="m">2</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">2</span>
 <span class="w">     </span><span class="o">⍴⍴</span><span class="nv">TEMPERATURE_ARRAY</span><span class="w"> </span>
 <span class="m">3</span>
 <span class="w">     </span><span class="nv">TEMPERATURE_ARRAY</span><span class="sr">[</span><span class="m">1</span><span class="sr">;</span><span class="m">5</span><span class="sr">;</span><span class="m">2</span><span class="sr">]</span>
-<span class="m">10101.1436</span>
+<span class="m">14</span>
 <span class="w">     </span><span class="nv">TEMPERATURE_ARRAY</span><span class="sr">[</span><span class="m">2</span><span class="sr">;</span><span class="m">5</span><span class="sr">;</span><span class="m">2</span><span class="sr">]</span>
-<span class="m">10103.083</span>
+<span class="m">8</span>
 <span class="w">     </span><span class="nv">TEMPERATURE_ARRAY</span><span class="sr">[</span><span class="m">1</span><span class="sr">;</span><span class="m">6</span><span class="sr">;</span><span class="m">1</span><span class="sr">]</span>
 <span class="m">22.3</span>
 <span class="w">     </span><span class="nv">TEMPERATURE_ARRAY</span><span class="sr">[</span><span class="m">2</span><span class="sr">;</span><span class="m">6</span><span class="sr">;</span><span class="m">1</span><span class="sr">]</span>
 <span class="m">22.4</span>
 
 <span class="w">     </span><span class="nv">TEMPERATURE_ARRAY</span><span class="sr">[</span><span class="m">1</span><span class="sr">;;]</span>
-<span class="m">21.4</span><span class="w"> </span><span class="m">10101.0742</span>
-<span class="m">21.8</span><span class="w"> </span><span class="m">10101.0847</span>
-<span class="m">22</span><span class="w">   </span><span class="m">10101.101</span><span class="w"> </span>
-<span class="m">21.5</span><span class="w"> </span><span class="m">10101.1201</span>
-<span class="m">21.3</span><span class="w"> </span><span class="m">10101.1436</span>
-<span class="m">22.3</span><span class="w"> </span><span class="m">10101.165</span>
+<span class="m">21.4</span><span class="w">  </span><span class="m">7</span>
+<span class="m">21.8</span><span class="w">  </span><span class="m">8</span>
+<span class="m">22</span><span class="w">   </span><span class="m">10</span>
+<span class="m">21.5</span><span class="w"> </span><span class="m">12</span>
+<span class="m">21.3</span><span class="w"> </span><span class="m">14</span>
+<span class="m">22.3</span><span class="w"> </span><span class="m">16</span>
 
 <span class="w">     </span><span class="nv">TEMPERATURE_ARRAY</span><span class="sr">[</span><span class="m">2</span><span class="sr">;;]</span>
-<span class="m">22.8</span><span class="w"> </span><span class="m">10101.1823</span>
-<span class="m">21.5</span><span class="w"> </span><span class="m">10101.193</span><span class="w"> </span>
-<span class="m">22.1</span><span class="w"> </span><span class="m">10102.2112</span>
-<span class="m">22</span><span class="w">   </span><span class="m">10103.0715</span>
-<span class="m">21.9</span><span class="w"> </span><span class="m">10103.083</span><span class="w"> </span>
-<span class="m">22.4</span><span class="w"> </span><span class="m">10103.0945</span>
+<span class="m">22.8</span><span class="w"> </span><span class="m">18</span>
+<span class="m">21.5</span><span class="w"> </span><span class="m">19</span>
+<span class="m">22.1</span><span class="w"> </span><span class="m">21</span>
+<span class="m">22</span><span class="w">    </span><span class="m">7</span>
+<span class="m">21.9</span><span class="w">  </span><span class="m">8</span>
+<span class="m">22.4</span><span class="w">  </span><span class="m">9</span>
 
 <span class="w">     </span><span class="nv">TEMPERATURE_ARRAY</span><span class="sr">[;</span><span class="m">1</span><span class="sr">;]</span>
-<span class="m">21.4</span><span class="w"> </span><span class="m">10101.0742</span>
-<span class="m">22.8</span><span class="w"> </span><span class="m">10101.1823</span>
+<span class="m">21.4</span><span class="w">  </span><span class="m">7</span>
+<span class="m">22.8</span><span class="w"> </span><span class="m">18</span>
 
 
 <span class="w">     </span><span class="nv">TEMPERATURE_ARRAY</span><span class="sr">[;;</span><span class="m">1</span><span class="sr">]</span>
@@ -2549,34 +2530,34 @@
 </div>
 <p>Now with your temperature table safely stored in your APL workspace, you can only imagine how many more values you can log and maintain. You excitedly gesture at one of your unimpressed coworkers before you notice you’ve accidentally logged the temperature of the cabin as 226 degrees. Before they have a chance to look at your mistake, you quickly and shamefully change the value.</p>
 <div class="highlight"><pre><span></span><code><span class="w">     </span><span class="nv">TEMPERATURE_ARRAY</span>
-<span class="m">21.4</span><span class="w"> </span><span class="m">10101.0742</span>
-<span class="m">21.8</span><span class="w"> </span><span class="m">10101.0847</span>
-<span class="m">226</span><span class="w">  </span><span class="m">10101.101</span><span class="w"> </span>
-<span class="m">21.5</span><span class="w"> </span><span class="m">10101.1201</span>
-<span class="m">21.3</span><span class="w"> </span><span class="m">10101.1436</span>
-<span class="m">22.3</span><span class="w"> </span><span class="m">10101.165</span><span class="w"> </span>
+<span class="m">21.4</span><span class="w">  </span><span class="m">7</span>
+<span class="m">21.8</span><span class="w">  </span><span class="m">8</span>
+<span class="m">22</span><span class="w">   </span><span class="m">10</span>
+<span class="m">21.5</span><span class="w"> </span><span class="m">12</span>
+<span class="m">21.3</span><span class="w"> </span><span class="m">14</span>
+<span class="m">22.3</span><span class="w"> </span><span class="m">16</span>
 
-<span class="m">22.8</span><span class="w"> </span><span class="m">10101.1823</span>
-<span class="m">21.5</span><span class="w"> </span><span class="m">10101.193</span><span class="w"> </span>
-<span class="m">22.1</span><span class="w"> </span><span class="m">10102.2112</span>
-<span class="m">22</span><span class="w">   </span><span class="m">10103.0715</span>
-<span class="m">21.9</span><span class="w"> </span><span class="m">10103.083</span><span class="w"> </span>
-<span class="m">22.4</span><span class="w"> </span><span class="m">10103.0945</span>
+<span class="m">22.8</span><span class="w"> </span><span class="m">18</span>
+<span class="m">21.5</span><span class="w"> </span><span class="m">19</span>
+<span class="m">22.1</span><span class="w"> </span><span class="m">21</span>
+<span class="m">22</span><span class="w">    </span><span class="m">7</span>
+<span class="m">21.9</span><span class="w">  </span><span class="m">8</span>
+<span class="m">22.4</span><span class="w">  </span><span class="m">9</span>
 <span class="w">     </span><span class="nv">TEMPERATURE_ARRAY</span><span class="sr">[</span><span class="m">1</span><span class="sr">;</span><span class="m">3</span><span class="sr">;</span><span class="m">1</span><span class="sr">]</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">22.6</span>
 <span class="w">     </span><span class="nv">TEMPERATURE_ARRAY</span>
-<span class="m">21.4</span><span class="w"> </span><span class="m">10101.0742</span>
-<span class="m">21.8</span><span class="w"> </span><span class="m">10101.0847</span>
-<span class="m">22.6</span><span class="w">  </span><span class="m">10101.101</span><span class="w"> </span>
-<span class="m">21.5</span><span class="w"> </span><span class="m">10101.1201</span>
-<span class="m">21.3</span><span class="w"> </span><span class="m">10101.1436</span>
-<span class="m">22.3</span><span class="w"> </span><span class="m">10101.165</span><span class="w"> </span>
+<span class="m">21.4</span><span class="w">  </span><span class="m">7</span>
+<span class="m">21.8</span><span class="w">  </span><span class="m">8</span>
+<span class="m">22.6</span><span class="w"> </span><span class="m">10</span>
+<span class="m">21.5</span><span class="w"> </span><span class="m">12</span>
+<span class="m">21.3</span><span class="w"> </span><span class="m">14</span>
+<span class="m">22.3</span><span class="w"> </span><span class="m">16</span>
 
-<span class="m">22.8</span><span class="w"> </span><span class="m">10101.1823</span>
-<span class="m">21.5</span><span class="w"> </span><span class="m">10101.193</span><span class="w"> </span>
-<span class="m">22.1</span><span class="w"> </span><span class="m">10102.2112</span>
-<span class="m">22</span><span class="w">   </span><span class="m">10103.0715</span>
-<span class="m">21.9</span><span class="w"> </span><span class="m">10103.083</span><span class="w"> </span>
-<span class="m">22.4</span><span class="w"> </span><span class="m">10103.0945</span>
+<span class="m">22.8</span><span class="w"> </span><span class="m">18</span>
+<span class="m">21.5</span><span class="w"> </span><span class="m">19</span>
+<span class="m">22.1</span><span class="w"> </span><span class="m">21</span>
+<span class="m">22</span><span class="w">    </span><span class="m">7</span>
+<span class="m">21.9</span><span class="w">  </span><span class="m">8</span>
+<span class="m">22.4</span><span class="w">  </span><span class="m">9</span>
 </code></pre></div>
 <p>That was close!</p>
 <p>Changing values in arrays acts in the same manner as it does for the case of changing variables, specify the element(s) to change and assign a new value.</p>

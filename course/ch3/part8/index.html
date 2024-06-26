@@ -2327,9 +2327,11 @@
 
 <h1 id="funfunfunfunfun">Fun(Fun(Fun(Fun(Fun(...)))))</h1>
 <hr />
-<p>This part will cover:
-- How to define recursive dfns and tradfns
-- Guard syntax in dfns</p>
+<p>This part will cover:</p>
+<ul>
+<li>How to define recursive dfns and tradfns</li>
+<li>Guard syntax in dfns</li>
+</ul>
 <p>Recursive functions can be implemented using guarded expressions and the self <code>∇</code> function.</p>
 <p>Guarded expressions consist of a boolean/logical expression followed by a colon ”:”, and another expression. For example, ⍵=0: 1. </p>
 <p>A guarded expression in a function specifies a condition for whether a statement is evaluated; if the boolean expression evaluates to 1, the function evaluates the statement and the value of the expression is returned. In the above example, if we create a function {⍵=0: 1}, if ⍵ (the right argument) is 0, then the function will return 1.</p>
