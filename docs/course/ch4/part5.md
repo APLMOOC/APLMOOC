@@ -7,7 +7,7 @@ This part will cover:
 - Rotations
 - Transpose
 
-The dyadic ⌽ ⊖ rotate functions rotate an array by an amount specific by the left argument, around a specific axis.
+The dyadic `⌽` `⊖` rotate functions rotate an array by an amount specific by the left argument, around a specific axis.
 
 ```apl
        3⌽¨'hotbloods' 'mentally' 'outbreak' 'clean' 'kyoto'
