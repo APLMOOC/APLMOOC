@@ -1,10 +1,15 @@
 # Bonus content: Minesweeper in APL and Python
 
-This part will cover:
+!!! tip "This part is optional"
 
-- The Python-APL bridge
-- Stencils
-- Developing a minesweeper project
+    This part is considered to be bonus content.
+    It contains some more advanced topics that are not covered in the main course.
+    It can also give some examples of functions and topics that are introuced later in the course.
+    There are no exercises related to this content.
+
+    Feel free to skim or skip this section for now, and return to it later!
+
+---
 
 One of the central advantages of APL over other programming languages is that it provides a powerful notation for reasoning about higher dimensional data. When writing code in other languages, there are times where using this notation would simplify code significantly, and luckily, APL code can be used in Python programs, and vice versa, using the Py'n'APL interface. 
 

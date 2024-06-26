@@ -1,12 +1,21 @@
 # Bonus content: A Musical Interlude
 
+!!! tip "This part is optional"
+
+    This part is considered to be bonus content.
+    It contains some more advanced topics that are not covered in the main course.
+    It can also give some examples of functions and topics that are introuced later in the course.
+    There are no exercises related to this content.
+
+    Feel free to skim or skip this section for now, and return to it later!
+
+---
+
 In addition to a linear progression of ideas, this course will have several projects that showcase features of the language in a non-linear order. These projects will use ideas or operations that might not have been covered yet, so brief explanations will be given, anticipating more complete explanations in later chapters.
 
 In this project, we will use basic music theory to algorithmically generate melodies entirely in APL.
 
 ## The Theoretical Minimum
-
-!!! info "This section is optional. It explains the reasoning behind the decisions which will be made in the next section."
 
 For most people, the sensation of sound is mediated through the ears. The ears achieve this by allowing vibrations in the air to produce waves in the fluids of the inner ear, stimulating the inner ear hair cells whose signals are eventually processed by the brain. 
 

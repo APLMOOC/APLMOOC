@@ -1,4 +1,14 @@
 # Bonus content: Computer graphics
+
+!!! tip "This part is optional"
+
+    This part is considered to be bonus content.
+    It contains some more advanced topics that are not covered in the main course.
+    It can also give some examples of functions and topics that are introuced later in the course.
+    There are no exercises related to this content.
+
+    Feel free to skim or skip this section for now, and return to it later!
+
 ---
 
 Did you know APL was used to make graphics for the original TRON movie? Judson Rosebush, one of the founders of the computer animation studio Digital Effects, developed "Visions"; a library of APL functions intended for generating computer graphics. It allowed the manipulation of polygons in three-dimensional space and compute perspective transformations.
