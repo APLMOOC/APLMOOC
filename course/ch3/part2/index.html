@@ -250,12 +250,12 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../credits/" class="md-tabs__link">
+      <a href="../../../progress/" class="md-tabs__link">
         
   
     
   
-  Receiving ECTS Credits
+  Progress
 
       </a>
     </li>
@@ -2259,11 +2259,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../credits/" class="md-nav__link">
+      <a href="../../../progress/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Receiving ECTS Credits
+    Progress
   </span>
   
 
@@ -2326,8 +2326,16 @@
 
 
 <h1 id="all-the-math">All the math</h1>
+<div class="admonition abstract">
+<p class="admonition-title">This part will cover</p>
+<ul>
+<li>Basic mathematical operations</li>
+<li>Calculating things</li>
+</ul>
+</div>
+<hr />
 <p>APL comes with a lot of math functions! Here we go through a bunch of them, so you can always come back to check. Remember to also check the toolbar in TryAPL and RIDE, they come with very helpful tooltips to remind you what an operator does!</p>
-<p>Dyadic ⌈ &amp; ⌊ : Max &amp; Min
+<p>Dyadic <code>⌈</code> and <code>⌊</code> : Max &amp; Min
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="m">4</span><span class="w"> </span><span class="o">⌈</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="c1">⍝ This simply returns the larger argument</span>
 <span class="m">5</span>
 <span class="w">      </span><span class="m">4</span><span class="w"> </span><span class="o">⌊</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="c1">⍝ This is for the smaller one</span>
@@ -2337,19 +2345,19 @@
 <span class="w">      </span><span class="m">4</span><span class="w"> </span><span class="o">⌊</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="c1">⍝ Similarly &quot;clips&quot; down</span>
 <span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">0</span>
 </code></pre></div></p>
-<p>Monadic ⌈ &amp; ⌊ : Ceil &amp; Floor
+<p>Monadic <code>⌈</code> and <code>⌊</code> : Ceil &amp; Floor
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">⌈</span><span class="w"> </span><span class="m">2.5</span><span class="w"> </span><span class="m">2.6</span><span class="w"> </span><span class="m">¯2.5</span><span class="w"> </span><span class="m">¯2.6</span><span class="w"> </span><span class="c1">⍝ Rounds up to the closest integer</span>
 <span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">¯2</span><span class="w"> </span><span class="m">¯2</span>
 <span class="w">      </span><span class="o">⌊</span><span class="w"> </span><span class="m">2.5</span><span class="w"> </span><span class="m">2.6</span><span class="w"> </span><span class="m">¯2.5</span><span class="w"> </span><span class="m">¯2.6</span><span class="w"> </span><span class="c1">⍝ Rounds down to the closest integer</span>
 <span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">¯3</span><span class="w"> </span><span class="m">¯3</span>
 </code></pre></div></p>
-<p>Monadic | : Absolute value
+<p>Monadic <code>|</code> : Absolute value
 <div class="highlight"><pre><span></span><code>      | ¯1 ⍝ Absolute value of ¯1 is ...
 1
       | 0j1 3j4 ⍝ Applying to complex numbers
 1 5
 </code></pre></div></p>
-<p>Dyadic | : Residue
+<p>Dyadic <code>|</code> : Residue
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="m">13</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="c1">⍝ 13 × 7 = 91, note this is in reverse order as `%` operator in C</span>
 <span class="m">9</span>
 <span class="w">      </span><span class="m">13</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="m">¯100</span><span class="w"> </span><span class="c1">⍝ 13 × ¯8 = ¯104</span>
@@ -2363,12 +2371,12 @@
 <span class="w">      </span><span class="m">0</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="c1">⍝ 0 as a divisor is treated as 1 here</span>
 <span class="m">3</span>
 </code></pre></div></p>
-<p>This residue operation respects “floored” division. The defining equation is
+<p>This residue operation respects "floored" division. The defining equation is
 <div class="highlight"><pre><span></span><code><span class="nv">X</span><span class="o">|</span><span class="nv">Y</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">Y</span><span class="o">-</span><span class="nv">X</span><span class="o">×⌊</span><span class="nv">Y</span><span class="o">÷</span><span class="nv">X</span><span class="o">+</span><span class="m">0</span><span class="o">=</span><span class="nv">X</span>
 <span class="c1">⍝ where, X+0=X means if X is 0 then 1, else X.</span>
 <span class="c1">⍝ if X is not 0, this is simply (Y - X * floor(Y / X)).</span>
 </code></pre></div></p>
-<p>If you want to get “euclidean” remainder, simply subtract divisor back if the result is negative.
+<p>If you want to get "euclidean" remainder, simply subtract divisor back if the result is negative.
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">mod</span><span class="kd">←</span><span class="kt">{</span><span class="p">(</span><span class="bp">⍵</span><span class="o">|</span><span class="bp">⍺</span><span class="p">)</span><span class="o">&lt;</span><span class="m">0</span><span class="bp">:</span><span class="p">(</span><span class="bp">⍵</span><span class="o">|</span><span class="bp">⍺</span><span class="p">)</span><span class="o">-</span><span class="bp">⍵</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span><span class="bp">⍵</span><span class="o">|</span><span class="bp">⍺</span><span class="kt">}</span>
 <span class="w">      </span><span class="m">¯13</span><span class="w"> </span><span class="nv">mod</span><span class="w"> </span><span class="m">¯3</span>
 <span class="m">2</span>
@@ -2377,7 +2385,7 @@
 <span class="w">      </span><span class="m">¯15</span><span class="w"> </span><span class="nv">mod</span><span class="w"> </span><span class="m">¯3</span>
 <span class="m">0</span>
 </code></pre></div></p>
-<p>Dyadic ∨ &amp; ∧ : GCD and LCM
+<p>Dyadic <code>∨</code> &amp; <code>∧</code> : GCD and LCM
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="m">12</span><span class="w"> </span><span class="o">∨</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="c1">⍝ Greatest Common Divisor...</span>
 <span class="m">2</span>
 <span class="w">      </span><span class="m">12</span><span class="w"> </span><span class="o">∧</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="c1">⍝ Least Common Mutiple...</span>
@@ -2387,24 +2395,24 @@
 <span class="w">      </span><span class="m">¯4</span><span class="w"> </span><span class="o">∧</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="c1">⍝ But the LCM is defined as product of two numbers divided by their GCD, so it could be negative</span>
 <span class="m">¯20</span>
 </code></pre></div></p>
-<p>Curiously, as suggested by the choice of glyphs for these two operations, these two operations are also used for the boolean logic “or” and “and” operations. This is because 0 is divisible by everything, as the remainder is always 0. So the Greatest Common Divisor of 0 and x is just x, since x divides both 0 and x. Dually, 0 is also a multiple of everything, so the Least Common Multiple of 0 and x is just 0, since 0 is a multiple of both x and 0 (and it’s the smallest!).</p>
-<p>Monadic + : Complex Conjugate
+<p>Curiously, as suggested by the choice of glyphs for these two operations, these two operations are also used for the boolean logic "or" and "and" operations. This is because 0 is divisible by everything, as the remainder is always 0. So the Greatest Common Divisor of 0 and x is just x, since x divides both 0 and x. Dually, 0 is also a multiple of everything, so the Least Common Multiple of 0 and x is just 0, since 0 is a multiple of both x and 0 (and it’s the smallest!).</p>
+<p>Monadic <code>+</code> : Complex Conjugate
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">+</span><span class="w"> </span><span class="m">0j1</span><span class="w"> </span><span class="m">1j¯1</span><span class="w"> </span><span class="m">3j4</span>
 <span class="m">0J¯1</span><span class="w"> </span><span class="m">1J1</span><span class="w"> </span><span class="m">3J¯4</span>
 </code></pre></div></p>
-<p>Monadic - : Negate
+<p>Monadic <code>-</code> : Negate
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">-</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">¯5</span><span class="w"> </span><span class="m">6</span>
 <span class="m">¯4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">¯6</span>
 <span class="w">      </span><span class="o">-</span><span class="m">4</span><span class="w"> </span><span class="o">-</span><span class="m">5</span><span class="w"> </span><span class="o">-</span><span class="m">6</span><span class="w"> </span><span class="c1">⍝ Remember this is different from ¯, since it could be monadic and also applies to the whole array</span>
 <span class="m">¯5</span>
 </code></pre></div></p>
-<p>Monadic × : Signum/Direction
+<p>Monadic <code>×</code> : Signum/Direction
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">×</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">¯3</span>
 <span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">¯1</span>
 <span class="w">      </span><span class="o">×</span><span class="w"> </span><span class="m">3J4</span><span class="w"> </span><span class="m">¯6J8</span><span class="w"> </span><span class="m">7J24</span>
 <span class="m">0.6J0.8</span><span class="w"> </span><span class="m">¯0.6J0.8</span><span class="w"> </span><span class="m">0.28J0.96</span>
 </code></pre></div></p>
-<p>Monadic ○ : Pi Times
+<p>Monadic <code>○</code> : Pi Times
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">○</span><span class="w"> </span><span class="m">1</span>
 <span class="m">3.141592654</span>
 <span class="w">      </span><span class="o">○</span><span class="w"> </span><span class="m">2</span>

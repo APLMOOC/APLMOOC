@@ -250,12 +250,12 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../credits/" class="md-tabs__link">
+      <a href="../../../progress/" class="md-tabs__link">
         
   
     
   
-  Receiving ECTS Credits
+  Progress
 
       </a>
     </li>
@@ -2259,11 +2259,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../credits/" class="md-nav__link">
+      <a href="../../../progress/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Receiving ECTS Credits
+    Progress
   </span>
   
 
@@ -2326,21 +2326,23 @@
 
 
 <h1 id="funfunfunfunfun">Fun(Fun(Fun(Fun(Fun(...)))))</h1>
-<hr />
-<p>This part will cover:</p>
+<div class="admonition abstract">
+<p class="admonition-title">This part will cover</p>
 <ul>
 <li>How to define recursive dfns and tradfns</li>
 <li>Guard syntax in dfns</li>
 </ul>
+</div>
+<hr />
 <p>Recursive functions can be implemented using guarded expressions and the self <code>∇</code> function.</p>
-<p>Guarded expressions consist of a boolean/logical expression followed by a colon ”:”, and another expression. For example, ⍵=0: 1. </p>
-<p>A guarded expression in a function specifies a condition for whether a statement is evaluated; if the boolean expression evaluates to 1, the function evaluates the statement and the value of the expression is returned. In the above example, if we create a function {⍵=0: 1}, if ⍵ (the right argument) is 0, then the function will return 1.</p>
+<p>Guarded expressions consist of a boolean/logical expression followed by a colon <code>:</code>, and another expression. For example, <code>⍵=0: 1</code>. </p>
+<p>A guarded expression in a function specifies a condition for whether a statement is evaluated; if the boolean expression evaluates to 1, the function evaluates the statement and the value of the expression is returned. In the above example, if we create a function <code>{⍵=0: 1}</code>, if <code>⍵</code> (the right argument) is 0, then the function will return 1.</p>
 <p>The self function <code>∇</code> stands for the function it is contained in, allowing calling the function from within itself, that is, allowing recursion. Alternatively, the function name can be used within the function itself.</p>
-<p>For example, the factorial function is typically defined as f(n) = n * f(n-1), such that f(0)=1. Thinking in terms of guarded expressions, if the argument of the function is 0 the result should be 1 (in symbols, ⍵=0: 1), otherwise multiply the right argument (⍵) by the result of the function itself (∇) evaluated for the right argument minus 1 (⍵ - 1).  Putting it together,
+<p>For example, the factorial function is typically defined as f(n) = n * f(n-1), such that f(0)=1. Thinking in terms of guarded expressions, if the argument of the function is 0 the result should be 1 (in symbols, <code>⍵=0: 1</code>), otherwise multiply the right argument (<code>⍵</code>) by the result of the function itself (<code>∇</code>) evaluated for the right argument minus 1 (<code>⍵ - 1</code>).  Putting it together,
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">factorial</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="bp">⍵</span><span class="o">=</span><span class="m">0</span><span class="bp">:</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span><span class="bp">⍵</span><span class="w"> </span><span class="o">×</span><span class="w"> </span><span class="bp">∇</span><span class="w"> </span><span class="bp">⍵</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="kt">}</span><span class="w"> </span>
 </code></pre></div>
-This function consists of two statements, separated by the separator ⋄.
-The first statement in this function is an example of a guarded expression, if ⍵=0 evaluates to true, that is, when ⍵ is equal to 0, the expression 1 is evaluated. Otherwise, the expression ⍵ × ∇ ⍵ - 1  is evaluated. 
+This function consists of two statements, separated by the separator <code>⋄</code>.
+The first statement in this function is an example of a guarded expression, if <code>⍵=0</code> evaluates to true, that is, when <code>⍵</code> is equal to 0, the expression 1 is evaluated. Otherwise, the expression <code>⍵ × ∇ ⍵ - 1</code> is evaluated. 
 For example, the evaluation of factorial 2 can be visualised as:</p>
 <div class="highlight"><pre><span></span><code><span class="w">           </span><span class="kt">{</span><span class="bp">⍵</span><span class="o">=</span><span class="m">0</span><span class="bp">:</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span><span class="bp">⍵</span><span class="w"> </span><span class="o">×</span><span class="w"> </span><span class="bp">∇</span><span class="w"> </span><span class="bp">⍵</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="kt">}</span><span class="w"> </span><span class="m">2</span>
 <span class="w">      </span><span class="c1">⍝    Since 2=0 is 0, the guarded statement is not evaluated.</span>
@@ -2360,7 +2362,7 @@ For example, the evaluation of factorial 2 can be visualised as:</p>
 </code></pre></div>
 <p><div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">collatz</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="bp">⍵</span><span class="o">=</span><span class="m">1</span><span class="bp">:</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span><span class="m">0</span><span class="o">=</span><span class="m">2</span><span class="o">|</span><span class="bp">⍵:</span><span class="w"> </span><span class="bp">⍵</span><span class="w"> </span><span class="o">,</span><span class="w"> </span><span class="bp">∇</span><span class="w"> </span><span class="bp">⍵</span><span class="o">÷</span><span class="m">2</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span><span class="bp">⍵</span><span class="w"> </span><span class="o">,</span><span class="w"> </span><span class="bp">∇</span><span class="w"> </span><span class="m">1</span><span class="o">+</span><span class="m">3</span><span class="o">×</span><span class="bp">⍵</span><span class="kt">}</span>
 </code></pre></div>
-This function keeps track of the evaluation of the following procedure. If the ⍵ is even (see more examples of the dyadic modulo | function), divide it by two. If it is odd, multiply it by three and add one. Evaluate this function until ⍵ reaches 1.</p>
+This function keeps track of the evaluation of the following procedure. If the <code>⍵</code> is even (see more examples of the dyadic modulo <code>|</code> function), divide it by two. If it is odd, multiply it by three and add one. Evaluate this function until <code>⍵</code> reaches 1.</p>
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="c1">⍝ Example:</span>
 <span class="w">      </span><span class="c1">⍝     collatz 3 </span>
 <span class="w">      </span><span class="c1">⍝     3 , ∇ 1+3×3</span>

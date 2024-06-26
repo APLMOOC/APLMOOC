@@ -250,12 +250,12 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../credits/" class="md-tabs__link">
+      <a href="../../../progress/" class="md-tabs__link">
         
   
     
   
-  Receiving ECTS Credits
+  Progress
 
       </a>
     </li>
@@ -2259,11 +2259,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../credits/" class="md-nav__link">
+      <a href="../../../progress/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Receiving ECTS Credits
+    Progress
   </span>
   
 
@@ -2326,10 +2326,19 @@
 
 
 <h1 id="all-aboard">ALL ABOARD!</h1>
-<p>Some other important functions are the dyadic right and left identity/“tack” functions which return their right or left arguments.</p>
-<p><div class="highlight"><pre><span></span><code><span class="w">       </span><span class="s2">&quot;True&quot;</span><span class="o">⊣</span><span class="s2">&quot;False&quot;</span>
+<div class="admonition abstract">
+<p class="admonition-title">This part will cover</p>
+<ul>
+<li>Trains</li>
+<li>Defining 2- and 3-trains</li>
+<li>The tack functions</li>
+</ul>
+</div>
+<hr />
+<p>Some other important functions are the dyadic right and left identity/"tack" functions which return their right or left arguments.</p>
+<p><div class="highlight"><pre><span></span><code><span class="w">       </span><span class="s1">&#39;True&#39;</span><span class="o">⊣</span><span class="s1">&#39;False&#39;</span>
 <span class="nv">True</span>
-<span class="w">       </span><span class="s2">&quot;True&quot;</span><span class="o">⊢</span><span class="s2">&quot;False&quot;</span>
+<span class="w">       </span><span class="s1">&#39;True&#39;</span><span class="o">⊢</span><span class="s1">&#39;False&#39;</span>
 <span class="nv">False</span>
 </code></pre></div>
 When applied monadically, they return their only argument.</p>
@@ -2348,15 +2357,17 @@ When applied monadically, they return their only argument.</p>
 <span class="w">       </span><span class="m">5.7</span><span class="w"> </span><span class="nv">plusminus</span><span class="w"> </span><span class="m">0.2</span>
 <span class="m">5.5</span><span class="w"> </span><span class="m">5.7</span><span class="w"> </span><span class="m">5.9</span>
 </code></pre></div>
-<p>Notice that the arguments of the function were not referred to in the function trains, this style of programming is called tacit or “point-free” programming, borrowed from mathematics where it means taking data that can be described using points to be more fundamental than the points themselves, avoiding the need to refer to points explicitly. In this case, taking functions to be more fundamental than their description in terms of explicit arguments, w</p>
+<p>Notice that the arguments of the function were not referred to in the function trains, this style of programming is called tacit or "point-free" programming, borrowed from mathematics where it means taking data that can be described using points to be more fundamental than the points themselves, avoiding the need to refer to points explicitly. In this case, taking functions to be more fundamental than their description in terms of explicit arguments, w</p>
 <p>The most basic train is the 2-train (fg), in operator form f⍤g, called an atop. The atop evaluates the function f monadically on the result of g applied to the arguments of the train.</p>
 <p>The following image is composed of three parts, the first being the APL syntax for the atop, the second being a tree-like representation of the atop where the evaluation happens from bottom to top, and the third is the atop in traditional mathematical notation.</p>
 <p><img src="../../assets/3_9_atop.png" style="width:50%; margin-left: auto; margin-right: auto; display: block;" /></p>
-<p>!!! info “Trains in RIDE”
-    It is possible to make sense of trains by rendering them in various forms in the RIDE editor using the -trains option to the Box user command. For example, it is possible to render trains as trees using the following command.
-    <div class="highlight"><pre><span></span><code><span class="sr">]</span><span class="nv">Box</span><span class="w"> </span><span class="nv">on</span><span class="w"> </span><span class="o">-</span><span class="nv">trains</span><span class="o">=</span><span class="nv">tree</span>
+<div class="admonition info">
+<p class="admonition-title">Trains in RIDE</p>
+<p>It is possible to make sense of trains by rendering them in various forms in the RIDE editor using the -trains option to the Box user command. For example, it is possible to render trains as trees using the following command.
+<div class="highlight"><pre><span></span><code><span class="sr">]</span><span class="nv">Box</span><span class="w"> </span><span class="nv">on</span><span class="w"> </span><span class="o">-</span><span class="nv">trains</span><span class="o">=</span><span class="nv">tree</span>
 </code></pre></div>
-    You can use the help ]? command to get help for any user command in RIDE.</p>
+You can use the help ]? command to get help for any user command in RIDE.</p>
+</div>
 <p>Floored division can be conveniently expressed as an atop.
 <div class="highlight"><pre><span></span><code><span class="w">       </span><span class="m">12</span><span class="o">÷</span><span class="m">5</span>
 <span class="m">2.4</span>
@@ -2393,8 +2404,8 @@ A very similar composition is achieved using the Beside operator, f∘g. </p>
 <span class="w">       </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="na">/</span><span class="o">×</span><span class="p">)</span><span class="o">⊖</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">1</span>
 <span class="m">¯5</span>
 </code></pre></div></p>
-<p>Notice that in the last statement, the atop -/× and function ⊖ were composed into an atop. Since the atop -/× is a functions in its own right, it can be used as part of larger trains.</p>
-<p>The Over ⍥ operator, f⍥g, applies f to the value of g applied to each of its arguments.</p>
+<p>Notice that in the last statement, the atop <code>-/×</code> and function <code>⊖</code> were composed into an atop. Since the atop <code>-/×</code> is a functions in its own right, it can be used as part of larger trains.</p>
+<p>The Over <code>⍥</code> operator, <code>f⍥g</code>, applies f to the value of g applied to each of its arguments.</p>
 <p><img src="../../assets/3_9_over.png" style="width:50%; margin-left: auto; margin-right: auto; display: block;" /></p>
 <p>The decibel conversion from the start of this chapter can be easily written in this form.</p>
 <div class="highlight"><pre><span></span><code><span class="w">       </span><span class="nv">dB_to_ratio</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="m">10</span><span class="o">*</span><span class="bp">⍵</span><span class="o">÷</span><span class="m">10</span><span class="kt">}</span>
@@ -2420,7 +2431,7 @@ A very similar composition is achieved using the Beside operator, f∘g. </p>
 <span class="w">      </span><span class="nv">hypotenuse</span><span class="kd">←</span><span class="p">(</span><span class="o">*</span><span class="m">0.5</span><span class="o">+</span><span class="p">)</span><span class="na">⍥</span><span class="p">(</span><span class="o">*</span><span class="m">2</span><span class="p">)</span>
 <span class="w">                      </span><span class="o">∧</span>
 </code></pre></div>
-<p>When trying to adapt the hypotenuse function to point-free programming, a seemingly strange error appears complaining about syntax of our train. However, this error should not seem so bizzare after some thought, because the expression (<em> 0.5 +) is not a function, in fact, (</em> 0.5 +) evaluates to (1.648721271+) since the * function here is interpreted to act monadically on 0.5. In order to attach the value 0.5 to * and turn the dyadic * into a monadic {⍵*0.5}, the bind ∘ operator can be used.</p>
+<p>When trying to adapt the hypotenuse function to point-free programming, a seemingly strange error appears complaining about syntax of our train. However, this error should not seem so bizzare after some thought, because the expression <code>(* 0.5 +)</code> is not a function, in fact, <code>(* 0.5 +)</code> evaluates to <code>(1.648721271+)</code> since the <code>*</code> function here is interpreted to act monadically on 0.5. In order to attach the value 0.5 to <code>*</code> and turn the dyadic <code>*</code> into a monadic <code>{⍵*0.5}</code>, the bind <code>∘</code> operator can be used.</p>
 <div class="highlight"><pre><span></span><code><span class="w">       </span><span class="nv">hypotenuse</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="na">∘</span><span class="m">0.5</span><span class="o">+</span><span class="p">)</span><span class="na">⍥</span><span class="p">(</span><span class="o">*</span><span class="na">∘</span><span class="m">2</span><span class="p">)</span>
 <span class="w">       </span><span class="m">3</span><span class="w"> </span><span class="nv">hypotenuse</span><span class="w"> </span><span class="m">4</span>
 <span class="m">5</span>
@@ -2444,12 +2455,12 @@ A very similar composition is achieved using the Beside operator, f∘g. </p>
 <div class="highlight"><pre><span></span><code><span class="w">       </span><span class="nv">range_average</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="p">(</span><span class="o">⌈</span><span class="na">/</span><span class="o">-⌊</span><span class="na">/</span><span class="p">)</span><span class="o">,+</span><span class="na">/</span><span class="o">÷≢</span>
 <span class="w">       </span><span class="nv">plusminus</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="o">-,⊣,+</span>
 </code></pre></div>
-<p>Starting with range_average, we start reading from right to left identifying forks and atops. We first identify the 3-train +/÷≢, which takes the sum +/ of the elements of a vector and divides ÷ by the length ≢ of the vector, {(+/⍵)÷(≢⍵)} as a function which takes an average.</p>
-<p><img src="../../assets/4_3_fork.png" style="width:50%; margin-left: auto; margin-right: auto; display: block;" /></p>
+<p>Starting with range_average, we start reading from right to left identifying forks and atops. We first identify the 3-train <code>+/÷≢</code>, which takes the sum <code>+/</code> of the elements of a vector and divides <code>÷</code> by the length <code>≢</code> of the vector, <code>{(+/⍵)÷(≢⍵)}</code> as a function which takes an average.</p>
+<p><img src="../../assets/3_9_fork.png" style="width:50%; margin-left: auto; margin-right: auto; display: block;" /></p>
 <div class="highlight"><pre><span></span><code><span class="w">       </span><span class="nv">avg</span><span class="kd">←</span><span class="o">+</span><span class="na">/</span><span class="o">÷≢</span>
 <span class="w">       </span><span class="nv">range_average</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="p">(</span><span class="o">⌈</span><span class="na">/</span><span class="o">-⌊</span><span class="na">/</span><span class="p">)</span><span class="o">,</span><span class="nv">avg</span>
 </code></pre></div>
-<p>Then, the 3-train (⌈/-⌊/) takes the maximum ⌈/ and subtracts - by the minimum ⌊/, {(⌈/⍵)-(⌊/⍵)}, which gives the range of a series of values.
+<p>Then, the 3-train <code>(⌈/-⌊/)</code> takes the maximum <code>⌈/</code> and subtracts <code>-</code> by the minimum <code>⌊/</code>, <code>{(⌈/⍵)-(⌊/⍵)}</code>, which gives the range of a series of values.
 <div class="highlight"><pre><span></span><code><span class="w">       </span><span class="nv">avg</span><span class="kd">←</span><span class="o">+</span><span class="na">/</span><span class="o">÷≢</span>
 <span class="w">       </span><span class="nv">range</span><span class="kd">←</span><span class="o">⌈</span><span class="na">/</span><span class="o">-⌊</span><span class="na">/</span>
 <span class="w">       </span><span class="nv">range_average</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">range</span><span class="o">,</span><span class="nv">avg</span>
@@ -2461,15 +2472,15 @@ A very similar composition is achieved using the Beside operator, f∘g. </p>
 <span class="w">       </span><span class="nv">plusminus</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="o">-,</span><span class="kt">{</span><span class="bp">⍵</span><span class="o">,</span><span class="bp">⍺</span><span class="o">+</span><span class="bp">⍵</span><span class="kt">}</span>
 <span class="w">       </span><span class="nv">plusminus</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="p">(</span><span class="bp">⍺</span><span class="o">-</span><span class="bp">⍵</span><span class="p">)</span><span class="o">,</span><span class="p">(</span><span class="bp">⍵</span><span class="o">,</span><span class="bp">⍺</span><span class="o">+</span><span class="bp">⍵</span><span class="p">)</span><span class="kt">}</span>
 </code></pre></div>
-<p>More generally, for an n-train of functions (f g h k l m … w x y z), </p>
+<p>More generally, for an n-train of functions <code>(f g h k l m … w x y z)</code>, </p>
 <ul>
-<li>(f g h k l m … t u v w x y z) is interpreted as (f g h k l m … t u v w (x y z)), which can be interpreted again as (f g h k l m … t u (v w (x y z))), and further recursively.</li>
+<li><code>(f g h k l m … t u v w x y z)</code> is interpreted as <code>(f g h k l m … t u v w (x y z))</code>, which can be interpreted again as <code>(f g h k l m … t u (v w (x y z)))</code>, and further recursively.</li>
 <li>If the number of functions is odd, then the result is of the form of forks over forks<ul>
-<li>(f g (h k (l m … (t u (v w (x y z))))…)</li>
+<li><code>(f g (h k (l m … (t u (v w (x y z))))…)</code></li>
 </ul>
 </li>
 <li>If the number of functions is even, then the result is an atop over forks<ul>
-<li>(f (g h (k l (m … (t u (v w (x y z))))…)</li>
+<li><code>(f (g h (k l (m … (t u (v w (x y z))))…)</code></li>
 </ul>
 </li>
 </ul>

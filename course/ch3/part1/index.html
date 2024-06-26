@@ -250,12 +250,12 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../credits/" class="md-tabs__link">
+      <a href="../../../progress/" class="md-tabs__link">
         
   
     
   
-  Receiving ECTS Credits
+  Progress
 
       </a>
     </li>
@@ -2259,11 +2259,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../credits/" class="md-nav__link">
+      <a href="../../../progress/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Receiving ECTS Credits
+    Progress
   </span>
   
 
@@ -2326,8 +2326,16 @@
 
 
 <h1 id="fun-for-everyone">Fun for everyone</h1>
+<div class="admonition abstract">
+<p class="admonition-title">This part will cover</p>
+<ul>
+<li>Defining your own functions using dfns</li>
+<li>The alpha and omega parameters</li>
+</ul>
+</div>
+<hr />
 <p>Programming languages provide structured methods of storing and operating on data. Now that we know how data is structured in APL, it’s time to look at how operations on data are structured, more specifically, how to make your own operations from already existing ones.</p>
-<p>One of the ways of defining a function, taking in array arguments and outputting an array result, is using direct functions, abbreviated dfn. (”dee-fun”) A dfn is a series of statements, where the special characters ⍺ and ⍵ represent the left and right arguments to the function. Functions always require a right argument. Let’s look at some simple examples.</p>
+<p>One of the ways of defining a function, taking in array arguments and outputting an array result, is using direct functions, abbreviated dfn. ("dee-fun") A dfn is a series of statements, where the special characters ⍺ and ⍵ represent the left and right arguments to the function. Functions always require a right argument. Let’s look at some simple examples.</p>
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">F_to_C</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="p">(</span><span class="m">5</span><span class="w"> </span><span class="o">×</span><span class="w"> </span><span class="bp">⍵</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">32</span><span class="p">)</span><span class="o">÷</span><span class="m">9</span><span class="kt">}</span>
 <span class="w">      </span><span class="nv">F_to_C</span><span class="w"> </span><span class="m">451</span>
 <span class="m">232.7777778</span>

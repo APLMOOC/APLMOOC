@@ -250,12 +250,12 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../credits/" class="md-tabs__link">
+      <a href="../../../progress/" class="md-tabs__link">
         
   
     
   
-  Receiving ECTS Credits
+  Progress
 
       </a>
     </li>
@@ -2259,11 +2259,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../credits/" class="md-nav__link">
+      <a href="../../../progress/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Receiving ECTS Credits
+    Progress
   </span>
   
 
@@ -2326,9 +2326,14 @@
 
 
 <h1 id="nested-arrays">Nested arrays</h1>
-<p>This part will cover
-- Basics of nested arrays
-- How to catenate vectors properly</p>
+<div class="admonition abstract">
+<p class="admonition-title">This part will cover</p>
+<ul>
+<li>Basics of nested arrays</li>
+<li>How to catenate vectors properly</li>
+</ul>
+</div>
+<hr />
 <p>Be warned, elements of arrays can be vectors, or matrices, or arrays of higher rank as well!</p>
 <p>Reducing the length of the temperature arrays for the sake of the following example, look what happens when we try to create a rank 3 array in the following,</p>
 <div class="highlight"><pre><span></span><code><span class="w">       </span><span class="nv">TEMPERATURE_DATA1</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">21.4</span><span class="w"> </span><span class="m">00010101.074200</span><span class="w"> </span><span class="m">21.8</span><span class="w"> </span><span class="m">00010101.084700</span>
@@ -2408,7 +2413,7 @@
 <span class="w">       </span><span class="nv">ARRAY</span><span class="sr">[</span><span class="m">2</span><span class="sr">;</span><span class="m">2</span><span class="sr">;</span><span class="m">2</span><span class="sr">]</span>
 <span class="m">2</span>
 </code></pre></div></p>
-<p>The monadic ravel operator , can be used to “unravel” a matrix into a vector of its elements in left-right top-down order, called ravel order. Dyadically, the catenate , function glues two arrays together along a common axis.</p>
+<p>The monadic ravel operator , can be used to "unravel" a matrix into a vector of its elements in left-right top-down order, called ravel order. Dyadically, the catenate , function glues two arrays together along a common axis.</p>
 <div class="highlight"><pre><span></span><code><span class="w">       </span><span class="nv">ARRAY</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span>
 <span class="w">       </span><span class="nv">ARRAY</span>
 <span class="m">1</span><span class="w"> </span><span class="m">2</span>

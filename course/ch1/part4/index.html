@@ -250,12 +250,12 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../credits/" class="md-tabs__link">
+      <a href="../../../progress/" class="md-tabs__link">
         
   
     
   
-  Receiving ECTS Credits
+  Progress
 
       </a>
     </li>
@@ -2259,11 +2259,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../credits/" class="md-nav__link">
+      <a href="../../../progress/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Receiving ECTS Credits
+    Progress
   </span>
   
 
@@ -2326,6 +2326,15 @@
 
 
 <h1 id="order-of-execution">Order of execution</h1>
+<div class="admonition abstract">
+<p class="admonition-title">This part will cover</p>
+<ul>
+<li>Right-to-left execution</li>
+<li>Using parentheses</li>
+<li>Comments</li>
+</ul>
+</div>
+<hr />
 <p>Okay, we've tried adding and multiplying two numbers together.
 What if we try adding and multiplying three numbers at the same time?</p>
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="m">2</span><span class="o">×</span><span class="m">2</span>
@@ -2350,9 +2359,9 @@ And this doesn't even take into account functions that programmers can create th
 <p class="admonition-title">Order of execution</p>
 <p>In APL, all operations are executed <em>right-to-left</em>.</p>
 <p>When APL runs a line of code, it first looks at the rightmost function symbol
-  and executes it with the arguments to its left and right.
-  It then looks at the function symbol to the left of the one just processed,
-  and executes it, treating the result it just got as a right argument.</p>
+and executes it with the arguments to its left and right.
+It then looks at the function symbol to the left of the one just processed,
+and executes it, treating the result it just got as a right argument.</p>
 </div>
 <p>An equivalent formulation of this would be</p>
 <div class="admonition info">
@@ -2364,7 +2373,7 @@ And this doesn't even take into account functions that programmers can create th
 <p class="admonition-title">Example</p>
 <p>Suppose you have the expression <code>3+5÷0.25×6*10-8</code>.</p>
 <p>This will get evaluated right-to-left as:
-  <div class="highlight"><pre><span></span><code><span class="m">3</span><span class="o">+</span><span class="m">5</span><span class="o">÷</span><span class="m">0.25</span><span class="o">×</span><span class="m">6</span><span class="o">*</span><span class="m">10</span><span class="o">-</span><span class="m">8</span>
+<div class="highlight"><pre><span></span><code><span class="m">3</span><span class="o">+</span><span class="m">5</span><span class="o">÷</span><span class="m">0.25</span><span class="o">×</span><span class="m">6</span><span class="o">*</span><span class="m">10</span><span class="o">-</span><span class="m">8</span>
 <span class="m">3</span><span class="o">+</span><span class="m">5</span><span class="o">÷</span><span class="m">0.25</span><span class="o">×</span><span class="m">6</span><span class="o">*</span><span class="m">2</span>
 <span class="m">3</span><span class="o">+</span><span class="m">5</span><span class="o">÷</span><span class="m">0.25</span><span class="o">×</span><span class="m">36</span>
 <span class="m">3</span><span class="o">+</span><span class="m">5</span><span class="o">÷</span><span class="m">9</span>
@@ -2375,7 +2384,7 @@ And this doesn't even take into account functions that programmers can create th
 <div class="admonition warning">
 <p class="admonition-title">About spaces</p>
 <p>APL ignores extra spaces when processing statements.
-  For example, all of the following statements will produce the same result:</p>
+For example, all of the following statements will produce the same result:</p>
 <div class="highlight"><pre><span></span><code><span class="w">        </span><span class="m">2</span><span class="o">×</span><span class="m">2</span><span class="o">+</span><span class="m">1</span>
 <span class="m">6</span>
 <span class="w">        </span><span class="m">2</span><span class="o">×</span><span class="m">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span>
@@ -2427,20 +2436,14 @@ So, in this case, you could achieve the same result with the shorter and more re
 <div class="admonition info">
 <p class="admonition-title">Reducing parentheses</p>
 <ol>
-<li>No APL expression needs to end with a closing parenthesis. It's redundant.<ul>
+<li>No APL expression needs to end with a closing parenthesis. It's redundant.</li>
 <li>For example, the expression <code>(2×3)+(4×5)</code> can be rewritten as <code>(2×3)+4×5</code></li>
-</ul>
-</li>
-<li>You never need two consecutive closing parentheses. It's redundant.<ul>
+<li>You never need two consecutive closing parentheses. It's redundant.</li>
 <li>For example, the expression <code>(2×(3+4))÷5</code> is equivalent to <code>(2×3+4)÷5</code></li>
-</ul>
-</li>
-<li>If you can easily rewrite the expression to avoid parentheses, do so.<ul>
+<li>If you can easily rewrite the expression to avoid parentheses, do so.</li>
 <li>For example, the expression <code>((2÷3)+4)×5</code> can be reversed to give <code>5×4+2÷3</code></li>
-</ul>
-</li>
 <li>Do not shovel in extra parentheses in a panicked, desperate attempt to fix your code.
-  Do shovel in parentheses if it genuinely helps the readability of your code.</li>
+Do shovel in parentheses if it genuinely helps the readability of your code.</li>
 </ol>
 </div>
 <p>This isn't to say that you should avoid using parentheses.

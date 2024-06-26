@@ -250,12 +250,12 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../credits/" class="md-tabs__link">
+      <a href="../../../progress/" class="md-tabs__link">
         
   
     
   
-  Receiving ECTS Credits
+  Progress
 
       </a>
     </li>
@@ -2259,11 +2259,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../credits/" class="md-nav__link">
+      <a href="../../../progress/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Receiving ECTS Credits
+    Progress
   </span>
   
 
@@ -2326,6 +2326,14 @@
 
 
 <h1 id="arithmetic-operations-on-vectors">Arithmetic operations on vectors</h1>
+<div class="admonition abstract">
+<p class="admonition-title">This part will cover</p>
+<ul>
+<li>Operations work on vectors all at once</li>
+<li>Length error</li>
+</ul>
+</div>
+<hr />
 <p>So now we have vectors. You might wonder, why do we want to put a bunch of numbers inside a vector? Let’s say you, the astronaut on the ISS, mistakenly bought a bunch of measuring equipment from America, and only found out later that all the readings are in Fahrenheit. Terrible news! After about 2000 milliseconds of googling about it, you found this formula to convert it into Celsius:</p>
 <p>Celsius = (Fahrenheit - 32) * 5 / 9</p>
 <p>To test it out, you looked up the current room temperature reading, which says 72.1. You did the calculation in APL:</p>
@@ -2340,7 +2348,7 @@
 <span class="m">21.77777778</span><span class="w"> </span><span class="m">21.88888889</span><span class="w"> </span><span class="m">22.94444444</span><span class="w"> </span><span class="m">22.77777778</span><span class="w"> </span><span class="m">22.83333333</span><span class="w"> </span><span class="m">22.66666667</span><span class="w"> </span><span class="m">22.5</span>
 </code></pre></div>
 <p>There’s all the Celsius! What’s going on here?</p>
-<p>In APL, all the basic arithmetic functions apply “component-wise”. If you are familiar with functional programming in Python or maybe Haskell, you might know the <code>map</code> function, which applies another function to each element of a vector. In APL, this is done automatically for all the basic arithmetic functions, if one of the parameters is a scalar:</p>
+<p>In APL, all the basic arithmetic functions apply "component-wise". If you are familiar with functional programming in Python or maybe Haskell, you might know the <code>map</code> function, which applies another function to each element of a vector. In APL, this is done automatically for all the basic arithmetic functions, if one of the parameters is a scalar:</p>
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">TEMP_F</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">32</span>
 <span class="m">39.2</span><span class="w"> </span><span class="m">39.4</span><span class="w"> </span><span class="m">41.3</span><span class="w"> </span><span class="m">41</span><span class="w"> </span><span class="m">41.1</span><span class="w"> </span><span class="m">40.8</span><span class="w"> </span><span class="m">40.5</span>
 <span class="w">      </span><span class="nv">TEMP_F</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">32</span>
@@ -2358,7 +2366,7 @@
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="vg">⎕</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">TEMP_DIFF</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">TEMP_OUTSIDE</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">TEMP_CELSIUS</span>
 <span class="m">96.72222222</span><span class="w"> </span><span class="m">75.21111111</span><span class="w"> </span><span class="m">36.55555556</span><span class="w"> </span><span class="m">7.222222222</span><span class="w"> </span><span class="m">¯32.53333333</span><span class="w"> </span><span class="m">¯84.96666667</span><span class="w"> </span><span class="m">¯135.7</span>
 </code></pre></div>
-<p>So applying a basic arithmetic function to two vectors also just applies them “component-wise”! It just applies this function for the first element on the left and the first element on the right, note the result, then the second element on the left and the second element on the right, and so on. This is analogous to <code>map</code> with a binary operation and two iterators in Python, and <code>zipWith</code> in Haskell. There is one serious caveat though:</p>
+<p>So applying a basic arithmetic function to two vectors also just applies them "component-wise"! It just applies this function for the first element on the left and the first element on the right, note the result, then the second element on the left and the second element on the right, and so on. This is analogous to <code>map</code> with a binary operation and two iterators in Python, and <code>zipWith</code> in Haskell. There is one serious caveat though:</p>
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span>
 <span class="nv">LENGTH</span><span class="w"> </span><span class="nv">ERROR</span><span class="bp">:</span><span class="w"> </span><span class="nv">Mismatched</span><span class="w"> </span><span class="nv">left</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">right</span><span class="w"> </span><span class="nv">argument</span><span class="w"> </span><span class="nv">shapes</span>
 <span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="o">-</span><span class="m">4</span><span class="w"> </span><span class="m">5</span>

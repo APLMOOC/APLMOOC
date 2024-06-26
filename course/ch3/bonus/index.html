@@ -250,12 +250,12 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../credits/" class="md-tabs__link">
+      <a href="../../../progress/" class="md-tabs__link">
         
   
     
   
-  Receiving ECTS Credits
+  Progress
 
       </a>
     </li>
@@ -2307,11 +2307,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../credits/" class="md-nav__link">
+      <a href="../../../progress/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Receiving ECTS Credits
+    Progress
   </span>
   
 
@@ -2400,15 +2400,21 @@
 
 
 <h1 id="bonus-content-a-musical-interlude">Bonus content: A Musical Interlude</h1>
+<div class="admonition tip">
+<p class="admonition-title">This part is optional</p>
+<p>This part is considered to be bonus content.
+It contains some more advanced topics that are not covered in the main course.
+It can also give some examples of functions and topics that are introuced later in the course.
+There are no exercises related to this content.</p>
+<p>Feel free to skim or skip this section for now, and return to it later!</p>
+</div>
+<hr />
 <p>In addition to a linear progression of ideas, this course will have several projects that showcase features of the language in a non-linear order. These projects will use ideas or operations that might not have been covered yet, so brief explanations will be given, anticipating more complete explanations in later chapters.</p>
 <p>In this project, we will use basic music theory to algorithmically generate melodies entirely in APL.</p>
 <h2 id="the-theoretical-minimum">The Theoretical Minimum</h2>
-<div class="admonition info">
-<p class="admonition-title">This section is optional. It explains the reasoning behind the decisions which will be made in the next section.</p>
-</div>
 <p>For most people, the sensation of sound is mediated through the ears. The ears achieve this by allowing vibrations in the air to produce waves in the fluids of the inner ear, stimulating the inner ear hair cells whose signals are eventually processed by the brain. </p>
-<p>The pitch of a sound is the frequency of this vibration. “Notes” distinguish sounds by their pitch. In western music, the standard convention is to consider pitches whose ratio is a power of 2 as equivalent notes, this is called “octave equivalence”. Equivalent notes with higher or lower pitch are said to be an “octave” above or below the note, for reasons that will be made clear.</p>
-<p>The pitch of a sound is the frequency of this vibration. “Notes” distinguish sounds by their pitch. In western music, the standard convention is to consider pitches whose ratio is a power of 2 as equivalent notes, this is called “octave equivalence”. Equivalent notes with higher or lower pitch are said to be an “octave” above or below the note, for reasons that will be made clear.</p>
+<p>The pitch of a sound is the frequency of this vibration. "Notes" distinguish sounds by their pitch. In western music, the standard convention is to consider pitches whose ratio is a power of 2 as equivalent notes, this is called "octave equivalence". Equivalent notes with higher or lower pitch are said to be an "octave" above or below the note, for reasons that will be made clear.</p>
+<p>The pitch of a sound is the frequency of this vibration. "Notes" distinguish sounds by their pitch. In western music, the standard convention is to consider pitches whose ratio is a power of 2 as equivalent notes, this is called "octave equivalence". Equivalent notes with higher or lower pitch are said to be an "octave" above or below the note, for reasons that will be made clear.</p>
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="c1">⍝ For example, between the pitches 440Hz and 880Hz,</span>
 <span class="w">      </span><span class="o">⌊</span><span class="m">440</span><span class="o">×</span><span class="p">(</span><span class="m">2</span><span class="o">*</span><span class="p">(</span><span class="o">⍳</span><span class="m">11</span><span class="p">)</span><span class="o">÷</span><span class="m">12</span><span class="p">)</span>
 <span class="m">466</span><span class="w"> </span><span class="m">493</span><span class="w"> </span><span class="m">523</span><span class="w"> </span><span class="m">554</span><span class="w"> </span><span class="m">587</span><span class="w"> </span><span class="m">622</span><span class="w"> </span><span class="m">659</span><span class="w"> </span><span class="m">698</span><span class="w"> </span><span class="m">739</span><span class="w"> </span><span class="m">783</span><span class="w"> </span><span class="m">830</span>
@@ -2417,7 +2423,7 @@
 <span class="w">      </span><span class="c1">⍝ 2*       2 to the power of</span>
 <span class="w">      </span><span class="c1">⍝ (⍳11)÷12  the numbers 1,2,3,...,11 divided by 12</span>
 </code></pre></div>
-<p>Notes are labelled using the seven letters A through G,  with sharps (♯) and flats (♭) to signify the notes in-between by raising or lowering pitch, with redundancy. There are eight letters from A through G back to A, justifying the use of the word “octave". Starting from C, the twelve notes are C, C♯ or D♭, D, D♯ or E♭, E, F, F♯ or G♭, G, G♯ or A♭, A, A♯ or B♭, and B.</p>
+<p>Notes are labelled using the seven letters A through G,  with sharps (♯) and flats (♭) to signify the notes in-between by raising or lowering pitch, with redundancy. There are eight letters from A through G back to A, justifying the use of the word "octave". Starting from C, the twelve notes are C, C♯ or D♭, D, D♯ or E♭, E, F, F♯ or G♭, G, G♯ or A♭, A, A♯ or B♭, and B.</p>
 <p>A musical scale is a certain selection of these notes, usually spanning an octave. In our case, we will restrict ourselves to using the C major scale, the notes C, D, E, F, G, A, B. The notes of a major scale are usually referred to using an ordinal number from 1st through 7th, or by roman numerals I, II, III, IV, V, VI, VII.</p>
 <p>A musical scale is a certain selection of these notes, usually spanning an octave. In our case, we will restrict ourselves to using the C major scale, the notes C, D, E, F, G, A, B. The notes of a major scale are usually referred to using an ordinal number from 1st through 7th, or by roman numerals I, II, III, IV, V, VI, VII.</p>
 <h2 id="implementation">Implementation</h2>
