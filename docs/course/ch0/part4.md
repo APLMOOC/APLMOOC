@@ -21,7 +21,7 @@ Once you have successfully completed at least **60%** of the write exercises **i
 - If you solve at least 90% of the exercises, you get a grade of 4.
 - If you solve at least 99% of the exercises, you get a grade of 5.
 
-Please see the [ECTS credits page](../../credits.md) for instructions on getting study credits for this course.
+Please see the [progress page](../../progress.md) for instructions on getting study credits for this course.
 
 !!! failure "Note"
     
