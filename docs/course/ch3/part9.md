@@ -154,7 +154,7 @@ Let’s take a closer look at the trains at the beginning of this section, appli
 
 Starting with range_average, we start reading from right to left identifying forks and atops. We first identify the 3-train +/÷≢, which takes the sum +/ of the elements of a vector and divides ÷ by the length ≢ of the vector, {(+/⍵)÷(≢⍵)} as a function which takes an average.
 
-<img src="../../assets/4_3_fork.png" style="width:50%; margin-left: auto; margin-right: auto; display: block;" />
+<img src="../../assets/3_9_fork.png" style="width:50%; margin-left: auto; margin-right: auto; display: block;" />
 
 ```apl
        avg←+/÷≢
