@@ -2,6 +2,7 @@
 ---
 
 This part will cover:
+
 - Vector generating functions
   - iota
   - rho

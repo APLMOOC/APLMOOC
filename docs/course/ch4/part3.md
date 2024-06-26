@@ -2,6 +2,7 @@
 ---
 
 This part will cover:
+
 - Choosing the first or last N numbers. (↑)
 - Choosing all but the first or last N numbers. (↓)
 - Choosing the numbers at positions A, B, C,... ([]) / squad indexing (⌷)

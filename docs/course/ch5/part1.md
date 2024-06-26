@@ -2,6 +2,7 @@
 ---
 
 This part will cover:
+
 - The axis operator
 - Applications
   - Reverse

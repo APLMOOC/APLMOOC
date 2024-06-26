@@ -2,6 +2,7 @@
 ---
 
 This part will cover:
+
 - Set operations
 - Union
 - Intersection

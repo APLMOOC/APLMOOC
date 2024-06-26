@@ -2,6 +2,7 @@
 ---
 
 This part will cover:
+
 - Sorting / grade up / grade down
 - Generating vectors
 

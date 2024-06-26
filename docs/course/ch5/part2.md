@@ -2,6 +2,7 @@
 ---
 
 This part will cover:
+
 - Nested arrays
 - Enclose
 - Disclose

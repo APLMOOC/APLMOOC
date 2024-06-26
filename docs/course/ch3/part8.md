@@ -2,6 +2,7 @@
 ---
 
 This part will cover:
+
 - How to define recursive dfns and tradfns
 - Guard syntax in dfns
 

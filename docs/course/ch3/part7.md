@@ -2,6 +2,7 @@
 ---
 
 This part will cover:
+
 - How to write tradfns in the Dyalog IDE
 - Assigning temporary variables
 - Basic workspace management
