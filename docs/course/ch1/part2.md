@@ -1,5 +1,11 @@
 # Basic operations and input
 
+!!! abstract "This part will cover"
+
+      - Basic operations in APL
+      - Monadic and dyadic functions
+      - Some pitfalls
+
 Okay, so we have TryAPL open. Now what?
 
 APL is a programming language, so it would make sense if it could, at least, do some basic arithmetic.

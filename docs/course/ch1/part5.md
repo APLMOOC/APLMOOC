@@ -1,5 +1,10 @@
 # When things go wrong
 
+!!! abstract "This part will cover"
+
+      - Error handling
+      - Different errors in APL
+
 Let's do some more arithmetic:
 
 ```apl

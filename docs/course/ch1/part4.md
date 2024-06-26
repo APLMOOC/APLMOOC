@@ -1,5 +1,11 @@
 # Order of execution
 
+!!! abstract "This part will cover"
+
+      - Right-to-left execution
+      - Using parentheses
+      - Comments
+
 Okay, we've tried adding and multiplying two numbers together.
 What if we try adding and multiplying three numbers at the same time?
 
