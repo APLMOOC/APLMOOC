@@ -45,7 +45,7 @@ In this part, we will cover vector-generating functions: those that take in argu
 
     Tab method: <kbd>i</kbd> <kbd>i</kbd> ++tab++
 
-This is probably one of the most common and simple vector functions in APL.
+The monadic index generator `⍳` (iota) is probably one of the most common and simple vector functions in APL.
 Can you see what it does?
 
 ```apl
@@ -98,7 +98,7 @@ DOMAIN ERROR
 
 That's right, it's a domain error.
 APL can't handle these values, so it just throws an error.
-One last question: what about the number 0?
+What about the number 0?
 
 ```apl
       ⍳0
@@ -116,6 +116,41 @@ You can also get the empty vector directly using the *zilde* sign, `⍬`
     Prefix method: <kbd>PREFIX</kbd> <kbd>}</kbd>
 
     Tab method: <kbd>0</kbd> <kbd>~</kbd> ++tab++
+
+You can also give iota a vector as a right argument.
+In this case, it generates a table (array) with a vector of coordinates in each cell.
+For example, if we give it `5 5`, it creates a 2D array with little vectors that tell you what square it is in each position.
+
+```apl
+       ⍳5 5
+┌───┬───┬───┬───┬───┐
+│1 1│1 2│1 3│1 4│1 5│
+├───┼───┼───┼───┼───┤
+│2 1│2 2│2 3│2 4│2 5│
+├───┼───┼───┼───┼───┤
+│3 1│3 2│3 3│3 4│3 5│
+├───┼───┼───┼───┼───┤
+│4 1│4 2│4 3│4 4│4 5│
+├───┼───┼───┼───┼───┤
+│5 1│5 2│5 3│5 4│5 5│
+└───┴───┴───┴───┴───┘
+```
+
+The same thing happens if we give it `2 2 2`: now, it makes a 3D table in the same way.
+
+```apl
+       ⍳2 2 2
+┌─────┬─────┐
+│1 1 1│1 1 2│
+├─────┼─────┤
+│1 2 1│1 2 2│
+└─────┴─────┘
+┌─────┬─────┐
+│2 1 1│2 1 2│
+├─────┼─────┤
+│2 2 1│2 2 2│
+└─────┴─────┘
+```
 
 ## Index origin
 
@@ -160,23 +195,140 @@ Remember to always change back the index origin after you're done to avoid messi
 
 ## Reshape
 
+You've already seen this one, but let's see how it works in more detail.
+
+!!! note "Typing the reshape operator `⍴`"
+
+    Prefix method: <kbd>PREFIX</kbd> <kbd>r</kbd>
+
+    Tab method: <kbd>r</kbd> <kbd>r</kbd> ++tab++
+
+The dyadic reshape operator, `⍴`, takes in a shape on the left and a value to use as a filler on the right.
+Let's see it in action:
+
+```apl
+      5 ⍴ 3
+3 3 3 3 3
+      7 ⍴ 0
+0 0 0 0 0 0 0
+```
+
+You can also use a vector of filler items on the right.
+If there's not enough elements, they get repeated.
+If there are too many elements, they get left out.
+
+```apl
+      5 ⍴ 1 2
+1 2 1 2 1
+      10 ⍴ 1 2 3 4
+1 2 3 4 1 2 3 4 1 2
+      4 ⍴ 1 2 3 4 5 6
+1 2 3 4
+```
+
+Iota and rho are besties: we can combine them to make nice vectors!
+
+```apl
+      ⍳3
+1 2 3
+      14 ⍴ ⍳3
+1 2 3 1 2 3 1 2 3 1 2 3 1 2
+```
+
+This also works with letters.
+
+```apl
+      33 ⍴ 'aybabtu'
+aybabtuaybabtuaybabtuaybabtuaybab
+      100 ⍴ 'A'
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+```
+
+Reshape also works nicely with higher dimensional arrays.
+The argument on the left is now a vector that tells you the size of each of the dimensions of your array.
+
+```apl
+      3 3 ⍴ 1
+1 1 1
+1 1 1
+1 1 1
+      5 5 ⍴ ⍳5
+1 2 3 4 5
+1 2 3 4 5
+1 2 3 4 5
+1 2 3 4 5
+1 2 3 4 5
+      2 3 4 ⍴ 1 2
+1 2 1 2
+1 2 1 2
+1 2 1 2
+       
+1 2 1 2
+1 2 1 2
+1 2 1 2
+```
+
 ## Replicate
+
+What about this one?
+
+```apl
+      3 / 1 2 3 4
+1 1 1 2 2 2 3 3 3 4 4 4
+```
+
+This is the dyadic replicate function, `/`.
+If you give it a vector on the right and a scalar on the left, it repeats each element of the vector that many times.
+You can also give it two vectors of the same length on each side:
+
+```apl
+      1 2 1 2 / 1 2 3 4
+1 2 2 3 4 4
+      1 0 1 1 0 0 1 / 3 4 5 6 7 8 9
+3 5 6 9
+       0 0 0 1 1 0 0 0 1 1 0 0/'flamethrower'
+meow
+      0 0 0 1 1 0 0 0 7 1 0 0/'flamethrower'
+meooooooow
+```
+
+When the left-hand side contains just zeros and ones, it is called a *bitmask*.
+We can use bitmasks to select parts of a vector, which sometimes comes in useful.
+
+```apl
+      ⍳9
+1 2 3 4 5 6 7 8 9
+      2|⍳9
+1 0 1 0 1 0 1 0 1
+      ~2|⍳9
+0 1 0 1 0 1 0 1 0
+
+      (2|⍳9)/'ballooned'
+blond
+      (~2|⍳9)/'ballooned'
+aloe
+```
+
+A little more complicated example:
+
+```apl
+      ⍳26
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
+      8|⍳26
+1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0 1 2
+      5=8|⍳26
+0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0
+
+      ⎕A
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+      (5=8|⍳26)/⎕A
+EMU
+```
 
 ## Roll and deal
 
+
+
 ## Catenate
 
-The dyadic replicate `/` function repeats elements of its right hand argument array by a specified left hand argument array. This allows the use of boolean masks, which makes it commonly used to filter arrays.
 
-```apl
-       (2|⍳9)/'ballooned'
-blond
-       (~2|⍳9)/'ballooned'
-aloe
-       2 1 1 1 1 1/'elfish'
-eelfish
-       (5=8|⍳26)/⎕A
-EMU
-       0 0 0 1 1 0 0 0 1 1 0 0/'flamethrower'
-meow
-```
