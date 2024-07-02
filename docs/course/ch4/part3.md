@@ -14,7 +14,7 @@ Here they are: let's go through them all!
 - Choosing all but the first or last N numbers. (`↓`)
 - Choosing the numbers at specific positions (`[]` or `⌷`)
 - Choosing the numbers that satisfy certain conditions. (`/`)
-- Choosing the first item (`⊃`)
+- Choosing one specific item (`⊃`)
 
 ## Take
 
@@ -132,4 +132,15 @@ What do you think happens if we drop too many elements?
 ```
 
 We get nothing: just the empty vector! Makes sense.
+
+## Index
+
+
+
+## Compress
+
+
+
+## Pick
+
 
