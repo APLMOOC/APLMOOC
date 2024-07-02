@@ -87,4 +87,49 @@ So character vectors get padded with spaces instead of zeros. Nice.
     - Truncating
     - Padding
 
+## Drop
+
+The dyadic drop function `↓` works very similarly to take.
+Except now, instead of taking the first N elements, it takes everything *but* the first N elements.
+
+!!! note "Typing the take function `↑`"
+
+    Prefix method: <kbd>PREFIX</kbd> <kbd>u</kbd>
+
+    Tab method: <kbd>v</kbd> <kbd>|</kbd> ++tab++
+
+Let's see it in action:
+
+```apl
+      VEC ← 23 4.3 ¯23 ¯3.3 7.5 ¯8
+
+      3↓VEC
+¯3.3 7.5 ¯8
+      4↓VEC
+7.5 ¯8
+      5↓VEC
+¯8
+```
+
+Same thing with negative numbers: it drops elements from the back.
+
+```apl
+      ¯3↓VEC
+23 4.3 ¯23
+      ¯4↓VEC
+23 4.3
+      ¯5↓VEC
+23
+```
+
+What do you think happens if we drop too many elements?
+
+```apl
+      10↓VEC
+
+      ¯10↓VEC
+
+```
+
+We get nothing: just the empty vector! Makes sense.
 
