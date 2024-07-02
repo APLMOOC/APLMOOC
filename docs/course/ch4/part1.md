@@ -327,8 +327,123 @@ EMU
 
 ## Roll and deal
 
+Take a gamble: what does the dyadic `?` function do?
 
+```apl
+      3?5
+1 3 5
+      3?5
+4 1 5
+      3?5
+3 2 5
+      6?100
+64 53 77 98 10 11
+```
+
+It's a random number generator called "deal".
+Specifically, it "deals out" numbers without replacement.
+The expression `3?5` means: "generate 3 numbers from 1 to 5 **without** any repetitions".
+
+!!! warning "Pseudorandom numbers"
+
+      The `?` function generates *pseudorandom* numbers.
+      They are good for simulations and generic random numbers, but never use them for cryptography since they aren't truly random.
+
+What if we wanted to include zero?
+We could, of course, subtract 1 from everything.
+However, deal is origin-sensitive, so we can just use our favourite `⎕IO` variable (remember to set it back once you're done).
+
+```apl
+      ⎕IO←0
+
+      5?5
+1 2 0 4 3
+
+      ⎕IO←1
+```
+
+Ok, but what if we want repetitions?
+Say I wanted a random list of ones and zeros.
+Just trying to force APL to generate these doesn't end well...
+
+```apl
+      ⎕IO←0
+
+      10?2
+DOMAIN ERROR: Deal right argument must be greater than or equal to the left argument
+      10?2
+        ∧
+      
+      ⎕IO←1
+```
+
+There is actually another way to use deal that gives you numbers without replacement: it's called roll (like rolling a die)!
+And we don't even need another symbol: it's just the monadic version of `?`.
+
+```apl
+      ?5
+2
+      ?5
+5
+      ?5
+2
+      ?5
+1
+      ?5
+3
+```
+
+If we want more random numbers, we just give it more numbers as an argument.
+
+```apl
+      ?5 5 5 5 5 5 5 5 5 5
+5 1 2 4 3 2 5 4 4 2
+```
+
+Think about this for a moment: how would you use the functions you already know to do the same thing?
+Here's two possible answers:
+
+```apl
+      ?10⍴5
+1 2 2 4 3 4 5 4 2 2
+      ?10/5
+3 4 3 5 2 1 2 3 5 3
+```
+
+And, before we forget to answer the question we had before, here's how to generate a long list of random bits (ones and zeros):
+
+```apl
+      ⎕IO←0
+
+      ?15⍴2
+0 0 0 1 0 0 0 1 1 1 1 0 1 0 1
+
+      ⎕IO←1
+```
 
 ## Catenate
 
+You're also familiar with this one!
+Let's revise it just to be sure :)
 
+Remember that, when you have two vectors, combining them with a space makes them into a nested vector (**S**paces **S**eparate **S**calars):
+
+```apl
+      A←'abc'
+      B←'def'
+
+      A B
+┌───┬───┐
+│abc│def│
+└───┴───┘
+```
+
+But if you want to combine them into one vector, you can use the catenate function:
+
+```apl
+      A←'abc'
+      B←'def'
+
+      A,B
+abcdef
+```
