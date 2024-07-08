@@ -11,9 +11,9 @@ There are 5 ways to select things from an array in APL.
 Here they are: let's go through them all!
 
 - Choosing the first or last N numbers (`↑`)
-- Choosing all but the first or last N numbers. (`↓`)
-- Choosing the numbers at specific positions (`[]` or `⌷`)
-- Choosing the numbers that satisfy certain conditions. (`/`)
+- Choosing all but the first or last N numbers (`↓`)
+- Choosing the numbers at specific positions (`[]`)
+- Choosing the numbers that satisfy certain conditions (`/`)
 - Choosing one specific item (`⊃`)
 
 ## Take
@@ -135,7 +135,7 @@ We get nothing: just the empty vector! Makes sense.
 
 ## Index
 
-Indexing is used to pick out specific values from an array.
+Indexing is used to pick out values based on an index from an array.
 Let's compare two different programs: the first one is written in Python, and the second one is written in APL.
 
 ```py
@@ -181,6 +181,22 @@ Take a look at this!
 ```
 
 By putting in a vector instead of a scalar in the argument, APL will give you back a vector of just those elements. Neat!
+
+One more thing: the brackets won't let you pick stuff from outside a vector.
+
+```apl
+      THINGS[0 1 2]
+INDEX ERROR
+      THINGS[0 1 2]
+            ∧
+
+      THINGS[7 1 2]
+INDEX ERROR
+      THINGS[7 1 2]
+            ∧
+```
+
+You just get an error: the `INDEX ERROR`.
 
 !!! tip "Square brackets and shape"
 
@@ -231,12 +247,56 @@ By putting in a vector instead of a scalar in the argument, APL will give you ba
       We are just converting an array of indices to an array of values.
       The square brackets will always return something that has the **same shape as what you give them**.
 
-
-
-
 ## Compress
 
+The dyadic compress function `/` will let you use a mask to pick elements from an array.
+This function is perfect for when you need to pick out items **based on a certain condition**.
 
+```apl
+      SUBS ← 0 0 0 4 5 0 2 1 4
+      1 1 1 1 1 0 0 0 0 / SUBS
+0 0 0 4 5
+```
+
+We give it a vector of the same length on the left, and it keeps all the positions with a 1 and kills all the positions with a 0.
+How do we generate these automatically?
+Say we wanted to remove all the zeros from the array.
+We can use the boolean function `=` to see where all the zeros are and then use `/` to get rid of them.
+
+```apl
+      0=SUBS
+1 1 1 0 0 1 0 0 0
+      (0=SUBS)/SUBS
+0 0 0 0 (1)
+      (0≠SUBS)/SUBS
+4 5 2 1 4
+```
+
+1. Hint: whoops, wrong way around
+
+Same thing, if you wanted all the small numbers, you can use the `<` function:
+
+```apl
+      3>SUBS
+1 1 1 0 0 1 1 1 0
+      (3>SUBS)/SUBS
+0 0 0 0 2 1
+```
+
+If you want to combine multiple conditions, you can use the other logical functions we covered in Chapter 3.
+Go back and revise them if you've forgotten!
+Here, let's pick all the values that are small but not zero:
+
+```apl
+      3>SUBS
+1 1 1 0 0 1 1 1 0
+      0≠SUBS
+0 0 0 1 1 0 1 1 1
+      (3>SUBS)∧0≠SUBS
+0 0 0 0 0 0 1 1 0
+      ((3>SUBS)∧0≠SUBS)/SUBS
+2 1
+```
 
 ## Pick
 
