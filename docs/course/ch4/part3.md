@@ -300,4 +300,60 @@ Here, let's pick all the values that are small but not zero:
 
 ## Pick
 
+You can use the dyadic pick `⊃` function to pick **just one** element from a vector:
 
+```apl
+      P ← 1 9 4 ¯3 ¯2 ¯1
+      2⊃P
+9
+      3⊃P
+4
+      6⊃P
+¯1
+```
+
+"But why would I ever use this?! Don't the square brackets do the same thing and more? And this is harder to type!"
+Good point. There's no real benefit in using pick when you have simple vectors like this.
+The only real case where this is useful is when you're working with nested vectors.
+Remember how they work?
+
+```apl
+      A ← (1 2) (3 4 5) (2 44 2 1)
+      A
+┌───┬─────┬────────┐
+│1 2│3 4 5│2 44 2 1│
+└───┴─────┴────────┘
+```
+
+Here, we've created a nested vector `A` that has three simple vectors inside it.
+If we try to get the second vector out using the square brackets, we get something weird...
+
+```apl
+      A[2]
+┌─────┐
+│3 4 5│
+└─────┘
+      ⍴A[2]
+(nothing gets printed)
+```
+
+Instead of getting a vector, we get a vector in a box.
+And when we try to use `⍴` to find its shape, we see that its shape is the empty vector: it's a scalar!
+We'll get back to exactly why this is in the next chapter.
+For now, you can think of your vector as being **trapped in a box and unable to escape**.
+To set it free, we use pick!
+
+```apl
+      2⊃A
+3 4 5
+      ⍴2⊃A
+3
+```
+
+Peace has been restored to the world.
+
+!!! note "Typing the pick function `⊃`"
+
+    Prefix method: <kbd>PREFIX</kbd> <kbd>x</kbd>
+
+    Tab method: <kbd>)</kbd> <kbd>)</kbd> ++tab++
