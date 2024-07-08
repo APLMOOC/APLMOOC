@@ -135,6 +135,103 @@ We get nothing: just the empty vector! Makes sense.
 
 ## Index
 
+Indexing is used to pick out specific values from an array.
+Let's compare two different programs: the first one is written in Python, and the second one is written in APL.
+
+```py
+things = [5, -7, 6, 3, 0, 1]
+print(things[2])
+
+# Outputs 6
+```
+
+```apl
+      THINGS ← 5 ¯7 6 3 0 1
+      THINGS[3]
+6
+```
+
+The syntax is almost exactly the same!
+Except, of course, APL starts counting from 1 and not 0.
+If you want to change this, you can use the `⎕IO` variable again: the brackets are context-sensitive.
+
+```apl
+      ⎕IO ← 0
+
+      THINGS[2]
+6
+
+      ⎕IO ← 1
+```
+
+There's one big difference between these brackets and Python's brackets, though: APL brackets are _cooler_.
+Take a look at this!
+
+```apl
+      THINGS ← 5 ¯7 6 3 0 1
+
+      THINGS[3 6 2]
+6 1 ¯7
+      THINGS[1 2 3]
+5 ¯7 6
+      THINGS[⍳3]
+5 ¯7 6
+      THINGS[1 2 2 2]
+5 ¯7 ¯7 ¯7
+```
+
+By putting in a vector instead of a scalar in the argument, APL will give you back a vector of just those elements. Neat!
+
+!!! tip "Square brackets and shape"
+
+      When you pass just one element to the square brackets `[]`, they return a scalar, but when you pass multiple elements it returns a vector.
+      Seems a little inconsistent, right?
+
+      Actually, no!
+      The square brackets will always return something that has the **same shape as what you give them**.
+      
+      Let's see this in action. If you pass it a vector of length 2, then the response will also be a vector of length 2.
+
+      ```apl
+            ⍴2 5
+      2
+            THINGS[2 5]
+      ¯7 0
+            ⍴THINGS[2 5]
+      2
+       ```
+
+      If you pass it a scalar (whose shape is the empty vector), then it returns a scalar (whose shape is also the empty vector).
+
+      ```apl
+            ⍴1
+      (nothing gets printed)
+            THINGS[1]
+      5
+            ⍴THINGS[1]
+      (nothing gets printed again)            
+      ```
+
+      What do you think happens if you pass it a matrix with shape `2 3`?
+      Well, it returns a matrix of shape `2 3`!
+
+      ```apl
+            2 3⍴1 3 5 2 4 4
+      1 3 5
+      2 4 4
+            ⍴2 3⍴1 3 5 2 4 4
+      2 3
+            THINGS[2 3⍴1 3 5 2 4 4]
+      5 6 0
+      ¯7 3 3
+            ⍴THINGS[2 3⍴1 3 5 2 4 4]
+      2 3
+      ```
+
+      We are just converting an array of indices to an array of values.
+      The square brackets will always return something that has the **same shape as what you give them**.
+
+
 
 
 ## Compress
