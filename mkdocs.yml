@@ -16,17 +16,23 @@ theme:
         name: Switch to light mode
   features:
     - navigation.tabs
-    - nagivation.top  
+    - nagivation.top
     - content.code.annotate
   font:
     code: APL385
 markdown_extensions:
   - md_in_html
+  - pymdownx.arithmatex:
+      generic: true
 extra_css:
   - styles/main.css
+  - https://unpkg.com/katex@0/dist/katex.min.css
 extra_javascript:
   - js/mooc.js
   - js/languagebar.js
+  - js/katex.js
+  - https://unpkg.com/katex@0/dist/katex.min.js
+  - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
 markdown_extensions:
   - admonition
   - attr_list
