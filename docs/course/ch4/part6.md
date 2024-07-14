@@ -12,6 +12,7 @@
 
 ## Indices of
 
+The most used searching function is _indices of_, which shares its symbol with the index function `⍳`.
 
 
 ## Where
