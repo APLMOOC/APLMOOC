@@ -24,6 +24,11 @@ If you want a simple way to find a value in an array, `⍳` is your guy.
 On the left, you give it an array to search in; on the right, you give it an array of values to find.
 The function will output the indices where your values are located.
 
+```apl
+      3 5 2 1 4 ⍳ 2
+3
+```
+
 
 ## Where
 
