@@ -20,6 +20,10 @@ The most used searching function is the dyadic _indices of_, which shares its sy
 
     Tab method: <kbd>i</kbd> <kbd>i</kbd> ++tab++
 
+If you want a simple way to find a value in an array, `⍳` is your guy.
+On the left, you give it an array to search in; on the right, you give it an array of values to find.
+The function will output the indices where your values are located.
+
 
 ## Where
 
