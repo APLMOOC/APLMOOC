@@ -23,7 +23,7 @@ A new addition to this list, which you might not have heard of, is
 Array languages are considered separate from the previous two categories, as they operate differently.
 Instead of having variables and operations (imperative) or functions (functional) as primitive objects,
 array languages use arrays and array algorithms as primitives.
-This requires a separate from of thinking from how you would program in other languages,
+This requires a separate form of thinking from how you would program in other languages,
 which makes it interesting to learn even if you already know an imperative language like Python.
 
 ---
