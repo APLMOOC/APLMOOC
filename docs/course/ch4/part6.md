@@ -274,3 +274,34 @@ It's a little more compact! Feel free to use it when needed.
 
 ## Find
 
+Last one for this part!
+All of the finding operations that we looked at so far have been to find _one_ element in an array.
+APL also has a function to find _subarrays_: the dyadic find function, which is written using the epsilon-underbar symbol `⍷`.
+
+!!! note "Typing the find function `⍷`"
+
+    Prefix method: <kbd>PREFIX</kbd> <kbd>E</kbd>
+
+    Tab method: <kbd>e</kbd> <kbd>_</kbd> ++tab++
+
+```apl
+      SENTENCE ← 'Hello, this is elsa from melbourne'
+      'el' ⍷ SENTENCE
+0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0
+```
+
+In this example, the ones are where each `'el'` starts in the long sentence.
+You can also do this with arrays of strings:
+
+```apl
+      ANIMALS ← 'cow' 'dog' 'horse' 'cow' 'cat' 'horse' 'cow' 'bat' 
+      'horse' 'cow' ⍷ ANIMALS
+0 0 1 0 0 1 0 0
+```
+
+These occurences can also overlap:
+
+```apl
+      'ooo' ⍷ 'meoooooooow meooow'
+0 0 1 1 1 1 1 1 0 0 0 0 0 0 1 0 0 0
+```
