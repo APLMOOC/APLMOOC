@@ -4,6 +4,6 @@
     
     - Partition
     - Partitioned enclose
-    - Character vector considerations
+    - Interval index
 
 ---

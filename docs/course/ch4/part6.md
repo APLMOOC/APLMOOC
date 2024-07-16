@@ -264,10 +264,13 @@ Let's compare slashiotarho with the where function:
 1 2 3 4 6
 ```
 
+!!! note "Typing the where function `⍸`"
+
+    Prefix method: <kbd>PREFIX</kbd> <kbd>I</kbd>
+
+    Tab method: <kbd>i</kbd> <kbd>_</kbd> ++tab++
+
 It's a little more compact! Feel free to use it when needed.
 
 ## Find
 
-
-
-## Interval index
