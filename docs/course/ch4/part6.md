@@ -188,13 +188,85 @@ This one's farily straightforward.
 
 ## Where
 
+Let's try answering the question "where are all the values?" instead of the more boring question "where is the first value?"
+For this example, we'll use the vector `PRICES`, which has a bunch of prices of items.
+First, let's try finding where all the items are which have a price of `40`.
+Simple `⍳` won't cut the job, since we saw earlier that it only found the first element.
+Let's be more creative: first, we want to find all the positions that have the number 40...
 
+```apl
+      PRICES←12 39 40 10 55 40 73
+      40=PRICES
+0 0 1 0 0 1 0
+```
+
+Then, we want to convert these values to indices.
+A good strategy is to:
+
+1. Get the length of the array (`⍴`)
+1. Get a vector of indices of the same length (`⍳`)
+1. Use the bit mask `0 0 1 0 0 1 0` to select the indices (`/`)
+
+Step-by-step:
+
+```apl
+      40=PRICES
+0 0 1 0 0 1 0
+
+      ⍴PRICES
+7
+      ⍳⍴PRICES
+1 2 3 4 5 6 7
+      (40=PRICES)/⍳⍴PRICES
+3 6
+```
+
+!!! tip "Slashiotarho"
+
+    Look at the three symbols: slash, iota, and rho.
+    This way of finding where values are is so useful that it has its own name: **SLASHIOTARHO**!
+
+    Chant it to yourself before bed and remember it well.
+
+Slashiotarho is also more powerful than the dyadic `⍳` function we looked at earlier, since we can use it to find any condition we like.
+For example, if we wanted to find all prices that are _at most_ 40, we can just change one symbol:
+
+```apl
+      PRICES
+12 39 40 10 55 40 73
+
+      (40=PRICES)/⍳⍴PRICES
+3 6
+      (40≥PRICES)/⍳⍴PRICES
+1 2 3 4 6
+```
+
+Slashiotarho is such a useful function, that the APL developers decided to add a whole new symbol: the SUPER-IOTA (officially called "iota underbar") that can be used to perform the "where" function.
+This is a monadic function, which takes in a list of ones and zeros on the right and returns the location of all the ones.
+Let's compare slashiotarho with the where function:
+
+```apl
+      PRICES
+12 39 40 10 55 40 73
+
+      40=PRICES
+0 0 1 0 0 1 0
+      (40=PRICES)/⍳⍴PRICES
+3 6
+      ⍸40=PRICES
+3 6
+
+      40≥PRICES
+1 1 1 1 0 1 0
+      (40≥PRICES)/⍳⍴PRICES
+1 2 3 4 6
+      ⍸40≥PRICES
+1 2 3 4 6
+```
+
+It's a little more compact! Feel free to use it when needed.
 
 ## Find
-
-
-
-## Slashiotarho
 
 
 
