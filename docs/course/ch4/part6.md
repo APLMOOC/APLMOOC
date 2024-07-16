@@ -153,11 +153,40 @@ RANK ERROR
 You could think that this should return `1 2 2` (the first element, and two elements not in the list).
 But actually, the number 10 is a scalar and not an array! So you can't search inside it. Rip.
 
-## Where
-
-
-
 ## Member of
+
+Dyadic iota `⍳` answers the question "where is it?"; dyadic epsilon `∊` answers the question "is it?"
+
+```apl
+      4 ∊ 1 3 4 5 6
+1
+      4 ∊ 1 3 2 5 6
+0
+      4 3 ∊ 1 3 2 5 6
+0 1
+      4 3 4 3 ∊ 1 3 2 5 6
+0 1 0 1
+```
+
+It gives a simple yes/no answer, telling you whether the value is in the array or not.
+
+!!! note "Typing the member of function `∊`"
+
+    Prefix method: <kbd>PREFIX</kbd> <kbd>e</kbd>
+
+    Tab method: <kbd>e</kbd> <kbd>e</kbd> ++tab++
+
+!!! warning "Watch out!"
+
+    Iota `⍳` takes in the array to search on the **left** and the value(s) to find on the **right**.
+
+    Epsilon `∊` takes in the array to search on the **right** and the value(s) to find on the **left**.
+
+    Be careful!
+
+This one's farily straightforward.
+
+## Where
 
 
 
