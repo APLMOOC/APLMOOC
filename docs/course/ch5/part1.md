@@ -127,3 +127,99 @@ Then, using the bracket-axis notation, is it possible to obtain all 3 possible r
     <iframe  src="\js\demos\rank_anim1.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%;"></iframe>
 </div>
 
+Note that there is also a different method of specifying axes for functions which is more general than bracket-axis notation, since it behaves consistently and can be applied to any arbitrary function. The rank ⍤ operator allows for such general axis specification of a function left argument, via an integer right argument which specifies what rank cells to act on. 
+
+An n-cell of a rank r array is a rank n array formed from picking (r-n) indices from that array. Some n-cells of the above array are
+
+```apl
+      ⍝ 2-cell of M
+      M[1;;]
+5 2 4
+9 1 4
+5 8 4
+      ⍝ 1-cell of M
+      M[1;1;]
+5 2 4
+      ⍝ 0-cell of M
+      M[1;1;1]
+5
+```
+
+As an example, we study the action of the rank operator ⍤ on the plus reduce +⌿ function, +⌿⍤n. For n=3, the modified plus reduce function +⌿⍤3 acts on the 3-cells of the array. Since the whole array is of rank 3, there is only one 3-cell which is the array itself. Then, +⌿⍤3 is equivalent to the action of the plus reduce +⌿ function on the whole array, adding up terms along its leading axis.
+
+```apl
+      (+⌿⍤3)M
+16 16 16
+21  5 16
+15 20 15
+      +⌿M
+16 16 16
+21  5 16
+15 20 15
+```
+
+For n=2, +⌿⍤2 acts on the 3-cells of the array. The 2-cells of the array are the cells M[1;;], M[2;;], and M[3;;].
+
+```apl
+     M[1;;]
+5 2 4
+9 1 4
+5 8 4
+      M[2;;]
+9 5 8
+5 2 2
+3 2 5
+      M[3;;]
+2  9  4
+7  2 10
+7 10  6
+```
+
+The leading axis of these 2-cells is vertical, hence the plus reduce first +⌿ function will return the sum of the columns of these arrays.
+
+```apl
+      +⌿M[1;;]
+19 11 12
+      +⌿M[2;;]
+17 9 15
+      +⌿M[3;;]
+16 21 20
+```
+
+Then, the action of +⌿⍤2 on the original array is equivalent to adding up along its second axis.
+
+```apl
+      (+⌿⍤2)M
+19 11 12
+17  9 15
+16 21 20
+      +⌿[2]M
+19 11 12
+17  9 15
+16 21 20
+```
+
+Similarly, for n=1, the action of (+⌿⍤1) on the array is adding up its 1-cells, which is equivalent to adding along its last axis.
+
+```apl
+      M[1;1;]
+5 2 4
+      M[1;2;]
+9 1 4
+      M[1;3;]
+5 8 4
+      +⌿M[1;1;]
+11
+      +⌿M[1;2;]
+14
+      +⌿M[1;3;]
+17
+      (+⌿⍤1)M
+11 14 17
+22  9 10
+15 19 23
+      +⌿[3]M
+11 14 17
+22  9 10
+15 19 23
+```
