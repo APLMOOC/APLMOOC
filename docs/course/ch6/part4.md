@@ -202,3 +202,44 @@ With replicate each, the right-hand side can also be an array of the same shape 
 21 V  W  X  Y
 ```
 
+For other types of replacements, the At @ operator comes in handy. For array left and right arguments, the At @ operator returns a function which replaces the elements at the indices specified by the right argument, using the values of the left argument. Note that the arrays have to match shape. Then, replacing each element masked by B using successive letters of the alphabet,
+
+```apl
+      M ← 5 5 ⍴ ⍳25
+      ⍸B
+┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┐
+│1 2│1 4│1 5│2 2│2 4│2 5│3 1│3 2│4 2│5 2│5 3│5 4│5 5│
+└───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┘
+      ⍴⍸B
+13
+      (⍴⍸B)↑⎕A
+ABCDEFGHIJKLM
+      (((⍴⍸B)↑⎕A)@(⍸B)) M
+ 1 A  3  B  C
+ 6 D  8  E  F
+ G H 13 14 15
+16 I 18 19 20
+21 J  K  L  M
+```
+
+The arguments to @ can be functions instead, where the left argument function is the function to apply to the selected elements, and the right argument is a logical function that selects the elements out of the right argument array.
+
+```apl
+      M ← 5 5 ⍴ ⍳25
+      ⍝ Negate elements which are multiples of 3
+      (-@{0=3|⍵})M
+  1   2  ¯3   4   5
+ ¯6   7   8  ¯9  10
+ 11 ¯12  13  14 ¯15
+ 16  17 ¯18  19  20
+¯21  22  23 ¯24  25
+      
+      M ← 5 5 ⍴ ⍳25
+	    ⍝ Reverse list of elements which are multiples of 3
+      (⊖@{0=3|⍵})M
+ 1  2 24  4  5
+21  7  8 18 10
+11 15 13 14 12
+16 17  9 19 20
+ 6 22 23  3 25
+```
