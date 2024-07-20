@@ -335,7 +335,90 @@ Cookies ←	280	    0	    250	    200	    2
 Available ←	2200 1000 2200 1600 19
 ```
 
-Since there are more ingredients than recipes, there will not be a unique solution to this problem. The system of equations here is (insert latex image) n_cake(cake recipe) + … = available ingredients, which can be solved by obtaining the pseudoinverse of the matrix, and multiplying it by the target vector.
+Since there are more ingredients than recipes, there will not be a unique solution to this problem. The system of equations here is
+
+
+\\[
+\text{Cakes}\cdot\begin{bmatrix}450\\\\
+0\\\\
+700\\\\
+500\\\\
+2
+\end{bmatrix}+\text{Pancake}\cdot\begin{bmatrix}200\\\\
+300\\\\
+50\\\\
+50\\\\
+1
+\end{bmatrix}+\text{Cupcakes}\cdot\begin{bmatrix}150\\\\
+125\\\\
+150\\\\
+50\\\\
+0
+\end{bmatrix}+\text{Cookies}\cdot\begin{bmatrix}280\\\\
+0\\\\
+250\\\\
+200\\\\
+2
+\end{bmatrix}=\begin{bmatrix}
+2200\\\\
+1000\\\\
+2200\\\\
+1600\\\\
+19
+\end{bmatrix}
+\\]
+
+which can be written in matrix form as
+
+\\[
+\begin{bmatrix}
+450 & 200 & 150 & 280 \\\\
+0 & 300 & 125 & 0 \\\\
+700 & 50 & 150 & 250 \\\\
+500 & 50 & 50 & 200 \\\\
+2 & 1 & 0 & 2
+\end{bmatrix}
+\begin{bmatrix}
+\text{Cakes} \\\\
+\text{Pancake} \\\\
+\text{Cupcake} \\\\
+\text{Cookies}
+\end{bmatrix}
+=
+\begin{bmatrix}
+2200 \\\\
+1000 \\\\
+2200 \\\\
+1600 \\\\
+19
+\end{bmatrix}
+\\]
+
+which can be solved by obtaining the pseudoinverse of the matrix (represented below using the + symbol), and multiplying it by the target vector.
+
+\\[
+\begin{bmatrix}
+\text{Cakes} \\\\
+\text{Pancake} \\\\
+\text{Cupcake} \\\\
+\text{Cookies}
+\end{bmatrix}
+=
+\begin{bmatrix}
+450 & 200 & 150 & 280 \\\\
+0 & 300 & 125 & 0 \\\\
+700 & 50 & 150 & 250 \\\\
+500 & 50 & 50 & 200 \\\\
+2 & 1 & 0 & 2
+\end{bmatrix}^+
+\begin{bmatrix}
+2200 \\\\
+1000 \\\\
+2200 \\\\
+1600 \\\\
+19
+\end{bmatrix}
+\\]
 
 ```apl
 	   Goods ← ⍉ ↑ Cake Pancake Cupcake Cookies
@@ -346,7 +429,8 @@ Since there are more ingredients than recipes, there will not be a unique soluti
 500  50  50 200
   6   1   0   2
        
-       (⌹Goods)+.×Available 
+       ⍝ (Pseudo)inverse multiplied by the target vector 
+       (⌹Goods)+.×Available  
 1.99585722 2.919959252 0.992099059 2.032347529
 ```
 
