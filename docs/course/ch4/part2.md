@@ -145,3 +145,70 @@ The cumulative sum of a list can also be easily expressed using the reduce / ope
 ```
 
 Note that we had to disclose ⊃ the resulting scalar which contained the resulting vector. 
+
+There is a dedicated built-in operator that does not have the same limitations, and calculates cumulative functions even for higher dimensional arrays. The scan \ operator cumulatively applies its left argument function on its right argument array and returns a result array of the same rank.
+
+```apl
+      +\⍳10
+1 3 6 10 15 21 28 36 45 55
+
+      ⍝ Cumulative alternating sum
+      -\⍳10
+1 ¯1 2 ¯2 3 ¯3 4 ¯4 5 ¯5
+
+      ⍳5 5
+┌───┬───┬───┬───┬───┐
+│1 1│1 2│1 3│1 4│1 5│
+├───┼───┼───┼───┼───┤
+│2 1│2 2│2 3│2 4│2 5│
+├───┼───┼───┼───┼───┤
+│3 1│3 2│3 3│3 4│3 5│
+├───┼───┼───┼───┼───┤
+│4 1│4 2│4 3│4 4│4 5│
+├───┼───┼───┼───┼───┤
+│5 1│5 2│5 3│5 4│5 5│
+└───┴───┴───┴───┴───┘
+
+      +\⍳5 5
+┌───┬────┬────┬─────┬─────┐
+│1 1│2 3 │3 6 │4 10 │5 15 │
+├───┼────┼────┼─────┼─────┤
+│2 1│4 3 │6 6 │8 10 │10 15│
+├───┼────┼────┼─────┼─────┤
+│3 1│6 3 │9 6 │12 10│15 15│
+├───┼────┼────┼─────┼─────┤
+│4 1│8 3 │12 6│16 10│20 15│
+├───┼────┼────┼─────┼─────┤
+│5 1│10 3│15 6│20 10│25 15│
+└───┴────┴────┴─────┴─────┘
+
+			⍝ Cumulative maximum
+      ⌈\ 1 0 1 2 3 2 ¯1 4 2 1
+1 1 1 2 3 3 3 4 4 4
+
+      ⍝ Cumulative minimum
+      ⌊\ 1 0 1 2 3 2 ¯1 4 2 1
+1 0 0 0 0 0 ¯1 ¯1 ¯1 ¯1
+      
+      M ← ? 5 5 ⍴ 10
+      M
+9 10 2 1  4
+8  2 9 3  2
+6  4 3 2  8
+8  5 5 2  1
+2 10 2 2 10
+
+      ⌈\M
+9 10 10 10 10
+8  8  9  9  9
+6  6  6  6  8
+8  8  8  8  8
+2 10 10 10 10
+
+      ⌊\M
+9 9 2 1 1
+8 2 2 2 2
+6 4 3 2 2
+8 5 5 2 1
+2 2 2 2 2
+```
