@@ -72,7 +72,7 @@ Consider the following random 3-dimensional array
 7 10 6
 ```
 
-It is visualized in 3-dimensional space as follows. Click and drag on the 3D view to orbit the array.
+It is visualized in 3-dimensional space as follows. Click and drag on the 3D view to orbit the array, use the scroll wheel to zoom in and out.
 
 <div style="aspect-ratio: 1 / 1; width: 100%;">
     <iframe  src="\js\demos\rank_intro.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%;"></iframe>
@@ -102,21 +102,21 @@ The three axes of the array can be seen, with the red axis representing the lead
 Then, using the bracket-axis notation, is it possible to obtain all 3 possible reductions.
 ```apl
       (+/[1])M
-11 14 17
-22  9 10
-15 19 23
+16 16 16
+21  5 16
+15 20 15
       (+/[2])M
 19 11 12
 17  9 15
 16 21 20
       (+/[3])M
-16 16 16
-21  5 16
-15 20 15
+11 14 17
+22  9 10
+15 19 23
 ```
 
 <div style="aspect-ratio: 1 / 1; width: 100%;">
-    <iframe  src="\js\demos\rank_anim1.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%;"></iframe>
+    <iframe  src="\js\demos\rank_anim3.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%;"></iframe>
 </div>
 
 <div style="aspect-ratio: 1 / 1; width: 100%;">
@@ -124,5 +124,6 @@ Then, using the bracket-axis notation, is it possible to obtain all 3 possible r
 </div>
 
 <div style="aspect-ratio: 1 / 1; width: 100%;">
-    <iframe  src="\js\demos\rank_anim3.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%;"></iframe>
+    <iframe  src="\js\demos\rank_anim1.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%;"></iframe>
 </div>
+
