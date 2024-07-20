@@ -77,3 +77,22 @@ It is visualized in 3-dimensional space as follows. Click and drag on the 3D vie
 <div style="aspect-ratio: 1 / 1; width: 100%;">
     <iframe  src="\js\demos\rank_intro.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%;"></iframe>
 </div>
+
+The three axes of the array can be seen, with the red axis representing the leading axis, the green axis representing the intermediate axis, and the blue axis representing the last axis.
+
+```apl
+      M[1;;]
+5 2 4
+9 1 4
+5 8 4
+      M[;1;]
+5 2 4
+9 5 8
+2 9 4
+      M[;;1]
+5 9 5
+9 5 3
+2 7 7
+```
+
+
