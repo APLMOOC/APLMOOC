@@ -166,3 +166,39 @@ The story does not end there, for any expression that selects from an array can 
 5 5 5 5  5
 5 5 5 5  5
 ```
+
+With replicate each, the right-hand side can also be an array of the same shape as the original array to then selectively copy values depending on the left-hand side.
+
+```apl
+      M ← 5 5⍴⍳25
+      ⍝ Random logical array
+      B ← 1 -⍨ ? 5 5⍴2
+      B
+0 1 0 1 1
+0 1 0 1 1
+1 1 0 0 0
+0 1 0 0 0
+0 1 1 1 1
+      
+      (B/¨M)
+┌──┬──┬──┬──┬──┐
+│  │2 │  │4 │5 │
+├──┼──┼──┼──┼──┤
+│  │7 │  │9 │10│
+├──┼──┼──┼──┼──┤
+│11│12│  │  │  │
+├──┼──┼──┼──┼──┤
+│  │17│  │  │  │
+├──┼──┼──┼──┼──┤
+│  │22│23│24│25│
+└──┴──┴──┴──┴──┘
+
+      (B/¨M) ← 5 5⍴⎕A
+      M
+ 1 B  3  D  E
+ 6 G  8  I  J
+ K L 13 14 15
+16 Q 18 19 20
+21 V  W  X  Y
+```
+
