@@ -2,14 +2,9 @@
 
 !!! abstract "This part will cover"
     
+    - Bracket-axis notation
     - The axis operator
-    - Operations on different axes
-        - Reverse
-        - Rotate
-        - Catenate
-        - Replicate
-        - Take
-        - Drop
+    - Squad indexing
 
 ---
 
