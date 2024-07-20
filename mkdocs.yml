@@ -33,6 +33,8 @@ extra_javascript:
   - js/katex.js
   - https://unpkg.com/katex@0/dist/katex.min.js
   - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
+  - https://cdn.jsdelivr.net/npm/three@0.166.0/build/three.module.js
+  - https://cdn.jsdelivr.net/npm/three@0.166.0/examples/jsm/
 markdown_extensions:
   - admonition
   - attr_list
