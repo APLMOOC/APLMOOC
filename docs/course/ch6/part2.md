@@ -280,3 +280,74 @@ The inner product function +.× applied to matrices is the matrix product functi
 0  0  0  0  0
 ```
 
+Using the matrix inverse ⌹ function to verify the multiplication
+
+```apl
+      M ← +\ 5 5 ⍴ ⍳7
+      M
+1  3  6 10 15
+6 13 14 16 19
+4  9 15 22 23
+2  5  9 14 20
+7  8 10 13 17
+      
+      N ← +\ 5 5 ⍴ ⍳6
+      N
+1  3  6 10 15
+6  7  9 12 16
+5 11 12 14 17
+4  9 15 16 18
+3  7 12 18 19
+  
+      L ← M +.× N
+      L
+134 285 435  560  630
+275 540 789 1010 1185
+290 599 891 1124 1292
+193 406 615  790  895
+208 423 633  820  960
+
+      L+.×⌹N
+1  3  6 10 15
+6 13 14 16 19
+4  9 15 22 23
+2  5  9 14 20
+7  8 10 13 17
+
+      ⌹M+.×L
+1  3  6 10 15
+6  7  9 12 16
+5 11 12 14 17
+4  9 15 16 18
+3  7 12 18 19
+```
+
+The matrix inverse ⌹ also takes the pseudoinverse of a matrix, if the inverse does not exist, which can be used to get least squares solutions of systems of linear equations when a unique solution is not possible. Take the example of a bakery, wanting to make the most out of their ingredients
+
+```apl
+⍝ Recipes
+⍝		Flour	Milk	Sugar	Butter	Eggs
+Cake 	←	450	0	700	500	6
+Pancake ←	200	300	50	50	1
+Cupcake ←	150	125	150	50	0
+Cookies ←	280	0	250	200	2
+
+Available ←	2200 1000 2200 1600 19
+```
+
+Since there are more ingredients than recipes, there will not be a unique solution to this problem. The system of equations here is (insert latex image) n_cake(cake recipe) + … = available ingredients, which can be solved by obtaining the pseudoinverse of the matrix, and multiplying it by the target vector.
+
+```apl
+	     Goods ← ⍉ ↑ Cake Pancake Cupcake Cookies
+       Goods
+450 200 150 280
+  0 300 125   0
+700  50 150 250
+500  50  50 200
+  6   1   0   2
+       
+       (⌹Goods)+.×Available 
+1.99585722 2.919959252 0.992099059 2.032347529
+```
+
+Then, the closest solution is baking roughly 2 cakes, 3 batches of pancakes, 1 batch of cupcakes, and 2 batches of cookies.
