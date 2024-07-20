@@ -326,11 +326,11 @@ The matrix inverse ⌹ also takes the pseudoinverse of a matrix, if the inverse 
 
 ```apl
 ⍝ Recipes
-⍝		Flour	Milk	Sugar	Butter	Eggs
-Cake 	←	450	0	700	500	6
-Pancake ←	200	300	50	50	1
-Cupcake ←	150	125	150	50	0
-Cookies ←	280	0	250	200	2
+⍝		    Flour	Milk	Sugar	Butter	Eggs
+Cake 	←   450	    0	    700	    500	    6
+Pancake ←	200	    300	    50	    50	    1
+Cupcake ←	150	    125	    150	    50	    0
+Cookies ←	280	    0	    250	    200	    2
 
 Available ←	2200 1000 2200 1600 19
 ```
@@ -338,7 +338,7 @@ Available ←	2200 1000 2200 1600 19
 Since there are more ingredients than recipes, there will not be a unique solution to this problem. The system of equations here is (insert latex image) n_cake(cake recipe) + … = available ingredients, which can be solved by obtaining the pseudoinverse of the matrix, and multiplying it by the target vector.
 
 ```apl
-	     Goods ← ⍉ ↑ Cake Pancake Cupcake Cookies
+	   Goods ← ⍉ ↑ Cake Pancake Cupcake Cookies
        Goods
 450 200 150 280
   0 300 125   0
