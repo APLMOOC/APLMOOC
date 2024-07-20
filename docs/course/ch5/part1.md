@@ -17,6 +17,7 @@ So far, we’ve only covered reducing along a vector. Vectors, being one-dimensi
 
 Take the following example matrix
 
+
 ```apl
       ⍉10 10⍴⍳10
  1  1  1  1  1  1  1  1  1  1
@@ -31,7 +32,9 @@ Take the following example matrix
 10 10 10 10 10 10 10 10 10 10
 ```
 
+
 The leading axis of the matrix is the first axis along which indexing is done. In this case, 
+
 
 ```apl
        M[1;]
@@ -40,9 +43,11 @@ The leading axis of the matrix is the first axis along which indexing is done. I
  1  1  1  1  1  1  1  1  1  1
  2  2  2  2  2  2  2  2  2  2
  3  3  3  3  3  3  3  3  3  3
- ```
+```
+
 
 the leading axis is the vertical axis of this matrix. The last axis then is the horizontal axis of this matrix. To specify the axis along which to reduce, we can use one of the two reduce operators ⌿ and /, corresponding to reducing along the leading axis and last axis respectively.
+
 
 ```apl
        +⌿M
