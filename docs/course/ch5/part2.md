@@ -304,3 +304,74 @@ Without the each operator, the plus reduce function will add up the scalars
 │10 14 18│
 └────────┘
 ```
+
+In order to easily create and destroy such nested arrays,  we can use the enclose ⊂ function with a rank specification to denote what axis to group cells along.
+
+```apl
+      2 2 2⍴⍳8
+1 2
+3 4
+   
+5 6
+7 8
+      ⊂[3]2 2 2⍴⍳8
+┌───┬───┐
+│1 2│3 4│
+├───┼───┤
+│5 6│7 8│
+└───┴───┘
+      ⊂[2]2 2 2⍴⍳8
+┌───┬───┐
+│1 3│2 4│
+├───┼───┤
+│5 7│6 8│
+└───┴───┘
+      ⊂[1]2 2 2⍴⍳8
+┌───┬───┐
+│1 5│2 6│
+├───┼───┤
+│3 7│4 8│
+└───┴───┘
+```
+
+The split ↓ function is the dedicated function for this task
+
+```apl
+      ↓2 2 2⍴⍳8
+┌───┬───┐
+│1 2│3 4│
+├───┼───┤
+│5 6│7 8│
+└───┴───┘      
+      ↓[1]2 2 2⍴⍳8
+┌───┬───┐
+│1 5│2 6│
+├───┼───┤
+│3 7│4 8│
+└───┴───┘
+```
+
+With the rank operator on the enclose function, cells or arbitrary rank can be split
+
+```apl
+
+      (⊂⍤3)2 2 2⍴⍳8
+┌───┐
+│1 2│
+│3 4│
+│   │
+│5 6│
+│7 8│
+└───┘
+      (⊂⍤2)2 2 2⍴⍳8
+┌───┬───┐
+│1 2│5 6│
+│3 4│7 8│
+└───┴───┘
+      (⊂⍤1)2 2 2⍴⍳8
+┌───┬───┐
+│1 2│3 4│
+├───┼───┤
+│5 6│7 8│
+└───┴───┘
+```
