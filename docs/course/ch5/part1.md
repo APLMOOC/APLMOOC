@@ -74,4 +74,6 @@ Consider the following random 3-dimensional array
 
 It is visualized in 3-dimensional space as follows. Click and drag on the 3D view to orbit the array.
 
-<iframe src="\js\demos\rank_intro.html" ></iframe>
+<div style="aspect-ratio: 1 / 1; width: 100%;">
+    <iframe  src="\js\demos\rank_intro.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%;"></iframe>
+</div>
