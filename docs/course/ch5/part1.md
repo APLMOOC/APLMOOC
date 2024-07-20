@@ -53,3 +53,23 @@ the leading axis is the vertical axis of this matrix. The last axis then is the 
 
 Since the leading axis is the vertical axis, the plus reduce first +⌿ function returned the sums of the vertical columns of the matrix; similarly, the plus reduce last +/ function returned the sums of the horizontal rows of the matrix. For higher dimensional arrays, only reducing along either the leading axis or the last axis is not sufficient, as there are intermediate axes that need to be considered.
 
+There is special syntax that allows for such general axis specification for certain built-in functions. It consists of adding a set of square brackets [ ] after the function containing an increasing integer axis number starting from 1, corresponding to the leading axis.
+
+Consider the following random 3-dimensional array
+
+```apl
+      ?3 3 3⍴10
+5 2 4
+9 1 4
+5 8 4
+
+9 5 8
+5 2 2
+3 2 5
+
+2 9 4
+7 2 10
+7 10 6
+```
+
+It is visualized in 3-dimensional space as follows. Click and drag on the 3D view to orbit the array.
