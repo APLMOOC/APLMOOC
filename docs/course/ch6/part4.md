@@ -101,3 +101,68 @@ When the power operator is applied to a negative right argument, it acts as the 
       2 (⊥⍣¯1) 42
 1 0 1 0 1 0
 ```
+
+---
+
+Recall how we modified elements of arrays in Chapter 2; the elements were specified on the left-hand side of the assignment, and the replacement values were specified on the right.
+
+```apl
+      M ← 5 5⍴⍳25
+      M
+ 1  2  3  4  5
+ 6  7  8  9 10
+11 12 13 14 15
+16 17 18 19 20
+21 22 23 24 25
+
+      M[1;]
+1 2 3 4 5
+      M[1;] ← 0
+      
+      M
+ 0  0  0  0  0
+ 6  7  8  9 10
+11 12 13 14 15
+16 17 18 19 20
+21 22 23 24 25
+```
+
+It was also possible to replace specified arrays with other arrays as long as their shape matched.
+
+```apl
+      M[1 2;1 2]
+1 2
+6 7
+      M[1 2;1 2] ← 2 2⍴0 1 1 0
+      M
+ 0  1  1  4  5
+ 1  0  0  9 10
+11 12 13 14 15
+16 17 18 19 20
+21 22 23 24 25
+```
+
+The story does not end there, for any expression that selects from an array can be used on the left-hand side of the assignment.
+
+```apl
+      M ← 5 5 ⍴ ⍳25
+      2↑M
+1 2 3 4  5 
+6 7 8 9 10
+      (2↑M) ← 5
+      M
+ 5  5  5  5  5
+ 5  5  5  5  5
+11 12 13 14 15
+16 17 18 19 20
+21 22 23 24 25
+
+      M ← 5 5 ⍴ ⍳25
+      (2↓M)←5 
+      M
+1 2 3 4  5
+6 7 8 9 10
+5 5 5 5  5
+5 5 5 5  5
+5 5 5 5  5
+```
