@@ -13,7 +13,7 @@ const camera = new THREE.PerspectiveCamera(75, window.innerWidth / ( window.inne
 camera.far = 1000;
 camera.viewport = new THREE.Vector4(0, 0, innerWidth, innerHeight);
 camera.updateProjectionMatrix();
-camera.position.set(25.82372197987948, 26.03410011657629, 25.92586386021308);
+camera.position.set(25.82372197987948/2, 26.03410011657629/2, 25.92586386021308/2);
 camera.rotation.set(-0.7874812306578431, 0.612637675429355, 0.5236571287580409);
 
 const controls = new OrbitControls( camera, renderer.domElement );
