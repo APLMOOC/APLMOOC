@@ -182,3 +182,101 @@ There is a specific operator for this operation called the outer product (∘.f)
       (⍳100) ~ (1+⍳49)(∘.×)1+⍳49
 1 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97
 ```
+
+In many applications, it is useful to reduce over the diagonal of the outer product. That is, match each element of the vectors in order, then reduce over them. The inner product of vectors is an example of this, which APL generalizes using the inner product (f.g) operator.
+
+```apl
+      v1 ← 3 -⍨ ? 5 ⍴ 5
+      v1
+0 ¯1 0 2 ¯2
+
+      v2 ← 3 -⍨ ? 5 ⍴ 5
+      v2
+¯1 ¯2 2 0 0
+
+      v1∘.×v2
+ 0  0  0 0 0
+ 1  2 ¯2 0 0
+ 0  0  0 0 0
+¯2 ¯4  4 0 0
+ 2  4 ¯4 0 0
+ 
+      ⍝ Diagonal
+      (1 1)∘⍉(v1∘.×v2)
+0 2 0 0 0
+      +/(1 1)∘⍉(v1∘.×v2)
+2
+      v1+.×v2
+2
+      
+      ⍝ Absolute difference between pairs of elements
+      v1 ∘.(|-) v2
+1 2 2 0 0
+0 1 3 1 1
+1 2 2 0 0
+3 4 0 2 2
+1 0 4 2 2
+
+      ⍝ Maximum absolute difference between all pairs of elements of two vectors
+      ⌈/, v1 ∘.(|-) v2
+4
+
+      ⍝ Maximum absolute difference between matching elements of two vectors
+      ⌈/ (1 1)∘⍉ v1∘.(|-)v2
+2
+      v1 ⌈.(|-) v2
+2
+```
+
+The inner product function +.× applied to matrices is the matrix product function
+
+```apl
+      M ← (⍳5)∘.=⍳5
+      M
+1 0 0 0 0
+0 1 0 0 0
+0 0 1 0 0
+0 0 0 1 0
+0 0 0 0 1
+     5 ? 5
+3 4 2 1 5
+      M ← M[5 ? 5;]
+      M
+0 0 0 1 0
+0 0 0 0 1
+0 0 1 0 0
+1 0 0 0 0
+0 1 0 0 0
+      
+      N ← +\ 5 5 ⍴ ⍳6
+      N
+1  3  6 10 15
+6  7  9 12 16
+5 11 12 14 17
+4  9 15 16 18
+3  7 12 18 19
+
+      M +.× N
+4  9 15 16 18
+3  7 12 18 19
+5 11 12 14 17
+1  3  6 10 15
+6  7  9 12 16
+
+
+      M ← 0 1 0 0 0 ∘.× 0 0 1 0 0
+      M
+0 0 0 0 0
+0 0 1 0 0
+0 0 0 0 0
+0 0 0 0 0
+0 0 0 0 0
+
+      M +.× N
+0  0  0  0  0
+5 11 12 14 17
+0  0  0  0  0
+0  0  0  0  0
+0  0  0  0  0
+```
+
