@@ -39,6 +39,8 @@
     
       <link rel="stylesheet" href="../../../styles/main.css">
     
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -68,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#operators" class="md-skip">
+        <a href="#repeat-masking" class="md-skip">
           Skip to content
         </a>
       
@@ -910,7 +912,7 @@
   
     <li class="md-nav__item">
       <a href="../../ch3/bonus/" class="md-nav__link">
-        3.B - Bonus content
+        3.B - A Musical Interlude
       </a>
     </li>
   
@@ -1097,7 +1099,7 @@
   
     <li class="md-nav__item">
       <a href="../../ch4/bonus/" class="md-nav__link">
-        4.B - Bonus content
+        4.B - Rotating an image
       </a>
     </li>
   
@@ -1256,7 +1258,7 @@
   
     <li class="md-nav__item">
       <a href="../../ch5/bonus/" class="md-nav__link">
-        5.B - Bonus content
+        5.B - Computer graphics
       </a>
     </li>
   
@@ -1427,7 +1429,7 @@
   
     <li class="md-nav__item">
       <a href="../bonus/" class="md-nav__link">
-        6.B - Bonus content
+        6.B - Minesweeper in APL and Python
       </a>
     </li>
   
@@ -1655,20 +1657,215 @@
                   
 
 
-<h1 id="operators">Operators</h1>
+<h1 id="repeat-masking">Repeat, Masking</h1>
 <div class="admonition abstract">
 <p class="admonition-title">This part will cover</p>
 <ul>
-<li>Swap</li>
 <li>Repeat</li>
-<li>Atop</li>
-<li>Over</li>
-<li>Left</li>
-<li>Right</li>
 <li>Masking</li>
 </ul>
 </div>
 <hr />
+<p>Just as the reduce / operator destructs a list by iterating through it from the right, the power ⍣ operator can be thought of as destructing a number n by repeating n times. The power operator repeats its left function argument the amount of times specified by its right argument.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="m">2</span><span class="p">(</span><span class="o">+</span><span class="na">⍣</span><span class="m">3</span><span class="p">)</span><span class="m">5</span><span class="w"></span>
+<span class="m">11</span><span class="w"></span>
+<span class="w">      </span><span class="p">(</span><span class="m">2</span><span class="o">+</span><span class="p">(</span><span class="m">2</span><span class="o">+</span><span class="p">(</span><span class="m">2</span><span class="o">+</span><span class="m">5</span><span class="p">)))</span><span class="w"></span>
+<span class="m">11</span><span class="w"></span>
+
+<span class="w">      </span><span class="m">2</span><span class="p">(</span><span class="o">×</span><span class="na">⍣</span><span class="m">3</span><span class="p">)</span><span class="m">5</span><span class="w"></span>
+<span class="m">40</span><span class="w"></span>
+<span class="w">      </span><span class="p">(</span><span class="m">2</span><span class="o">×</span><span class="p">(</span><span class="m">2</span><span class="o">×</span><span class="p">(</span><span class="m">2</span><span class="o">×</span><span class="m">5</span><span class="p">)))</span><span class="w"></span>
+<span class="m">40</span><span class="w"></span>
+
+<span class="w">      </span><span class="m">0.5</span><span class="p">(</span><span class="o">*</span><span class="na">⍣</span><span class="m">3</span><span class="p">)</span><span class="m">0.5</span><span class="w"></span>
+<span class="m">0.65404086</span><span class="w"></span>
+
+<span class="w">            </span><span class="m">0.5</span><span class="p">(</span><span class="m">0.5</span><span class="o">*</span><span class="p">(</span><span class="m">0.5</span><span class="o">*</span><span class="m">0.5</span><span class="p">))</span><span class="w"></span>
+<span class="m">0.65404086</span><span class="w"></span>
+
+<span class="w">      </span><span class="m">1</span><span class="p">(</span><span class="o">,</span><span class="na">⍣</span><span class="m">10</span><span class="p">)</span><span class="m">2</span><span class="w"></span>
+<span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"></span>
+
+<span class="w">      </span><span class="m">1</span><span class="p">(</span><span class="kt">{</span><span class="bp">⍵</span><span class="o">,</span><span class="bp">⍺</span><span class="o">,</span><span class="bp">⍵</span><span class="kt">}</span><span class="na">⍣</span><span class="m">2</span><span class="p">)</span><span class="m">2</span><span class="w"></span>
+<span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"></span>
+
+<span class="w">      </span><span class="p">(</span><span class="o">⊂</span><span class="na">⍣</span><span class="m">5</span><span class="p">)</span><span class="s1">&#39;Welcome&#39;</span><span class="w"></span>
+<span class="err">┌───────────────┐</span><span class="w"></span>
+<span class="err">│┌─────────────┐│</span><span class="w"></span>
+<span class="err">││┌───────────┐││</span><span class="w"></span>
+<span class="err">│││┌─────────┐│││</span><span class="w"></span>
+<span class="err">││││┌───────┐││││</span><span class="w"></span>
+<span class="err">│││││</span><span class="nv">Welcome</span><span class="err">│││││</span><span class="w"></span>
+<span class="err">││││└───────┘││││</span><span class="w"></span>
+<span class="err">│││└─────────┘│││</span><span class="w"></span>
+<span class="err">││└───────────┘││</span><span class="w"></span>
+<span class="err">│└─────────────┘│</span><span class="w"></span>
+<span class="err">└───────────────┘</span><span class="w"></span>
+</code></pre></div>
+<p>Note that X (f⍣g) Y is equivalent to binding the left argument as the left argument to f, (X∘f⍣g) Y.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="m">2</span><span class="p">(</span><span class="o">×</span><span class="na">⍣</span><span class="m">3</span><span class="p">)</span><span class="m">5</span><span class="w"></span>
+<span class="m">40</span><span class="w"></span>
+<span class="w">      </span><span class="p">(</span><span class="m">2</span><span class="na">∘</span><span class="o">×</span><span class="na">⍣</span><span class="m">3</span><span class="p">)</span><span class="m">5</span><span class="w"></span>
+<span class="m">40</span><span class="w"></span>
+</code></pre></div>
+<p>The right argument to the power ⍣ operator can be a function, f⍣g, where the f is applied until g, applied to the current and previous value of f, returns 1. For example, the following code multiplies 5 by 2 until the current value is greater than 100.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="m">2</span><span class="w"> </span><span class="p">(</span><span class="o">×</span><span class="na">⍣</span><span class="kt">{</span><span class="bp">⍺</span><span class="o">&gt;</span><span class="m">100</span><span class="kt">}</span><span class="p">)</span><span class="m">5</span><span class="w"></span>
+<span class="m">160</span><span class="w"></span>
+<span class="w">      </span><span class="m">2</span><span class="w"> </span><span class="p">(</span><span class="o">×</span><span class="na">⍣</span><span class="kt">{</span><span class="vg">⎕</span><span class="kd">←</span><span class="bp">⍺</span><span class="o">,</span><span class="bp">⍵</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span><span class="bp">⍺</span><span class="o">&gt;</span><span class="m">100</span><span class="kt">}</span><span class="p">)</span><span class="m">5</span><span class="w"></span>
+<span class="m">10</span><span class="w"> </span><span class="m">5</span><span class="w"></span>
+<span class="m">20</span><span class="w"> </span><span class="m">10</span><span class="w"></span>
+<span class="m">40</span><span class="w"> </span><span class="m">20</span><span class="w"></span>
+<span class="m">80</span><span class="w"> </span><span class="m">40</span><span class="w"></span>
+<span class="m">160</span><span class="w"> </span><span class="m">80</span><span class="w"></span>
+<span class="m">160</span><span class="w"></span>
+</code></pre></div>
+<p>This is equivalent to 
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="no">⍬</span><span class="w"> </span><span class="kt">{</span><span class="bp">⍺</span><span class="o">&gt;</span><span class="m">100</span><span class="bp">:</span><span class="w"> </span><span class="bp">⍺</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span><span class="p">(</span><span class="m">2</span><span class="o">×</span><span class="bp">⍵</span><span class="p">)</span><span class="w"> </span><span class="bp">∇</span><span class="w"> </span><span class="bp">⍺</span><span class="kt">}</span><span class="w"> </span><span class="m">5</span><span class="w"></span>
+<span class="m">160</span><span class="w"></span>
+</code></pre></div></p>
+<p>For a more complicated example, the power operator can also be used to find fixed points of functions.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="c1">⍝ Fixed point of 0.5∘*</span><span class="w"></span>
+<span class="w">      </span><span class="m">0.5</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="na">⍣</span><span class="o">=</span><span class="p">)</span><span class="w"> </span><span class="m">0.5</span><span class="w"></span>
+<span class="m">0.6411857445</span><span class="w"></span>
+
+<span class="w">      </span><span class="m">0.5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">0.6411857445</span><span class="w"></span>
+<span class="m">0.6411857445</span><span class="w"></span>
+</code></pre></div>
+<p>The code applies 0.5∘* until the current and previous values are equal.</p>
+<p>When the power operator is applied to a negative right argument, it acts as the repeated inverse operator for its function left argument, for certain functions.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="m">3</span><span class="p">(</span><span class="o">+</span><span class="na">⍣</span><span class="m">2</span><span class="p">)</span><span class="m">5</span><span class="w"></span>
+<span class="m">11</span><span class="w"></span>
+<span class="w">      </span><span class="m">3</span><span class="p">(</span><span class="o">+</span><span class="na">⍣</span><span class="m">¯2</span><span class="p">)</span><span class="m">5</span><span class="w"></span>
+<span class="m">¯1</span><span class="w"></span>
+
+<span class="w">            </span><span class="m">2</span><span class="w"> </span><span class="o">⊥</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"></span>
+<span class="m">42</span><span class="w"></span>
+<span class="w">      </span><span class="m">2</span><span class="w"> </span><span class="p">(</span><span class="o">⊥</span><span class="na">⍣</span><span class="m">¯1</span><span class="p">)</span><span class="w"> </span><span class="m">42</span><span class="w"></span>
+<span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"></span>
+</code></pre></div>
+<hr />
+<p>Recall how we modified elements of arrays in Chapter 2; the elements were specified on the left-hand side of the assignment, and the replacement values were specified on the right.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">M</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="o">⍴⍳</span><span class="m">25</span><span class="w"></span>
+<span class="w">      </span><span class="nv">M</span><span class="w"></span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">3</span><span class="w">  </span><span class="m">4</span><span class="w">  </span><span class="m">5</span><span class="w"></span>
+<span class="w"> </span><span class="m">6</span><span class="w">  </span><span class="m">7</span><span class="w">  </span><span class="m">8</span><span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">10</span><span class="w"></span>
+<span class="m">11</span><span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">15</span><span class="w"></span>
+<span class="m">16</span><span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">19</span><span class="w"> </span><span class="m">20</span><span class="w"></span>
+<span class="m">21</span><span class="w"> </span><span class="m">22</span><span class="w"> </span><span class="m">23</span><span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">25</span><span class="w"></span>
+
+<span class="w">      </span><span class="nv">M</span><span class="sr">[</span><span class="m">1</span><span class="sr">;]</span><span class="w"></span>
+<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"></span>
+<span class="w">      </span><span class="nv">M</span><span class="sr">[</span><span class="m">1</span><span class="sr">;]</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">0</span><span class="w"></span>
+
+<span class="w">      </span><span class="nv">M</span><span class="w"></span>
+<span class="w"> </span><span class="m">0</span><span class="w">  </span><span class="m">0</span><span class="w">  </span><span class="m">0</span><span class="w">  </span><span class="m">0</span><span class="w">  </span><span class="m">0</span><span class="w"></span>
+<span class="w"> </span><span class="m">6</span><span class="w">  </span><span class="m">7</span><span class="w">  </span><span class="m">8</span><span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">10</span><span class="w"></span>
+<span class="m">11</span><span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">15</span><span class="w"></span>
+<span class="m">16</span><span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">19</span><span class="w"> </span><span class="m">20</span><span class="w"></span>
+<span class="m">21</span><span class="w"> </span><span class="m">22</span><span class="w"> </span><span class="m">23</span><span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">25</span><span class="w"></span>
+</code></pre></div>
+<p>It was also possible to replace specified arrays with other arrays as long as their shape matched.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">M</span><span class="sr">[</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="sr">;</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="sr">]</span><span class="w"></span>
+<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"></span>
+<span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"></span>
+<span class="w">      </span><span class="nv">M</span><span class="sr">[</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="sr">;</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="sr">]</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="o">⍴</span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"></span>
+<span class="w">      </span><span class="nv">M</span><span class="w"></span>
+<span class="w"> </span><span class="m">0</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">4</span><span class="w">  </span><span class="m">5</span><span class="w"></span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span><span class="m">0</span><span class="w">  </span><span class="m">0</span><span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">10</span><span class="w"></span>
+<span class="m">11</span><span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">15</span><span class="w"></span>
+<span class="m">16</span><span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">19</span><span class="w"> </span><span class="m">20</span><span class="w"></span>
+<span class="m">21</span><span class="w"> </span><span class="m">22</span><span class="w"> </span><span class="m">23</span><span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">25</span><span class="w"></span>
+</code></pre></div>
+<p>The story does not end there, for any expression that selects from an array can be used on the left-hand side of the assignment.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">M</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="o">⍳</span><span class="m">25</span><span class="w"></span>
+<span class="w">      </span><span class="m">2</span><span class="o">↑</span><span class="nv">M</span><span class="w"></span>
+<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w">  </span><span class="m">5</span><span class="w"> </span>
+<span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">10</span><span class="w"></span>
+<span class="w">      </span><span class="p">(</span><span class="m">2</span><span class="o">↑</span><span class="nv">M</span><span class="p">)</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">5</span><span class="w"></span>
+<span class="w">      </span><span class="nv">M</span><span class="w"></span>
+<span class="w"> </span><span class="m">5</span><span class="w">  </span><span class="m">5</span><span class="w">  </span><span class="m">5</span><span class="w">  </span><span class="m">5</span><span class="w">  </span><span class="m">5</span><span class="w"></span>
+<span class="w"> </span><span class="m">5</span><span class="w">  </span><span class="m">5</span><span class="w">  </span><span class="m">5</span><span class="w">  </span><span class="m">5</span><span class="w">  </span><span class="m">5</span><span class="w"></span>
+<span class="m">11</span><span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">15</span><span class="w"></span>
+<span class="m">16</span><span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">19</span><span class="w"> </span><span class="m">20</span><span class="w"></span>
+<span class="m">21</span><span class="w"> </span><span class="m">22</span><span class="w"> </span><span class="m">23</span><span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">25</span><span class="w"></span>
+
+<span class="w">      </span><span class="nv">M</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="o">⍳</span><span class="m">25</span><span class="w"></span>
+<span class="w">      </span><span class="p">(</span><span class="m">2</span><span class="o">↓</span><span class="nv">M</span><span class="p">)</span><span class="kd">←</span><span class="m">5</span><span class="w"> </span>
+<span class="w">      </span><span class="nv">M</span><span class="w"></span>
+<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w">  </span><span class="m">5</span><span class="w"></span>
+<span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">10</span><span class="w"></span>
+<span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="w">  </span><span class="m">5</span><span class="w"></span>
+<span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="w">  </span><span class="m">5</span><span class="w"></span>
+<span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="w">  </span><span class="m">5</span><span class="w"></span>
+</code></pre></div>
+<p>With replicate each, the right-hand side can also be an array of the same shape as the original array to then selectively copy values depending on the left-hand side.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">M</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="o">⍴⍳</span><span class="m">25</span><span class="w"></span>
+<span class="w">      </span><span class="c1">⍝ Random logical array</span><span class="w"></span>
+<span class="w">      </span><span class="nv">B</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">-</span><span class="na">⍨</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="o">⍴</span><span class="m">2</span><span class="w"></span>
+<span class="w">      </span><span class="nv">B</span><span class="w"></span>
+<span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"></span>
+<span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"></span>
+<span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"></span>
+<span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"></span>
+<span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"></span>
+
+<span class="w">      </span><span class="p">(</span><span class="nv">B</span><span class="na">/¨</span><span class="nv">M</span><span class="p">)</span><span class="w"></span>
+<span class="err">┌──┬──┬──┬──┬──┐</span><span class="w"></span>
+<span class="err">│</span><span class="w">  </span><span class="err">│</span><span class="m">2</span><span class="w"> </span><span class="err">│</span><span class="w">  </span><span class="err">│</span><span class="m">4</span><span class="w"> </span><span class="err">│</span><span class="m">5</span><span class="w"> </span><span class="err">│</span><span class="w"></span>
+<span class="err">├──┼──┼──┼──┼──┤</span><span class="w"></span>
+<span class="err">│</span><span class="w">  </span><span class="err">│</span><span class="m">7</span><span class="w"> </span><span class="err">│</span><span class="w">  </span><span class="err">│</span><span class="m">9</span><span class="w"> </span><span class="err">│</span><span class="m">10</span><span class="err">│</span><span class="w"></span>
+<span class="err">├──┼──┼──┼──┼──┤</span><span class="w"></span>
+<span class="err">│</span><span class="m">11</span><span class="err">│</span><span class="m">12</span><span class="err">│</span><span class="w">  </span><span class="err">│</span><span class="w">  </span><span class="err">│</span><span class="w">  </span><span class="err">│</span><span class="w"></span>
+<span class="err">├──┼──┼──┼──┼──┤</span><span class="w"></span>
+<span class="err">│</span><span class="w">  </span><span class="err">│</span><span class="m">17</span><span class="err">│</span><span class="w">  </span><span class="err">│</span><span class="w">  </span><span class="err">│</span><span class="w">  </span><span class="err">│</span><span class="w"></span>
+<span class="err">├──┼──┼──┼──┼──┤</span><span class="w"></span>
+<span class="err">│</span><span class="w">  </span><span class="err">│</span><span class="m">22</span><span class="err">│</span><span class="m">23</span><span class="err">│</span><span class="m">24</span><span class="err">│</span><span class="m">25</span><span class="err">│</span><span class="w"></span>
+<span class="err">└──┴──┴──┴──┴──┘</span><span class="w"></span>
+
+<span class="w">      </span><span class="p">(</span><span class="nv">B</span><span class="na">/¨</span><span class="nv">M</span><span class="p">)</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="o">⍴</span><span class="nf">⎕A</span><span class="w"></span>
+<span class="w">      </span><span class="nv">M</span><span class="w"></span>
+<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="nv">B</span><span class="w">  </span><span class="m">3</span><span class="w">  </span><span class="nv">D</span><span class="w">  </span><span class="nv">E</span><span class="w"></span>
+<span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="nv">G</span><span class="w">  </span><span class="m">8</span><span class="w">  </span><span class="nv">I</span><span class="w">  </span><span class="nv">J</span><span class="w"></span>
+<span class="w"> </span><span class="nv">K</span><span class="w"> </span><span class="nv">L</span><span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">15</span><span class="w"></span>
+<span class="m">16</span><span class="w"> </span><span class="nv">Q</span><span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">19</span><span class="w"> </span><span class="m">20</span><span class="w"></span>
+<span class="m">21</span><span class="w"> </span><span class="nv">V</span><span class="w">  </span><span class="nv">W</span><span class="w">  </span><span class="nv">X</span><span class="w">  </span><span class="nv">Y</span><span class="w"></span>
+</code></pre></div>
+<p>For other types of replacements, the At @ operator comes in handy. For array left and right arguments, the At @ operator returns a function which replaces the elements at the indices specified by the right argument, using the values of the left argument. Note that the arrays have to match shape. Then, replacing each element masked by B using successive letters of the alphabet,</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">M</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="o">⍳</span><span class="m">25</span><span class="w"></span>
+<span class="w">      </span><span class="o">⍸</span><span class="nv">B</span><span class="w"></span>
+<span class="err">┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┐</span><span class="w"></span>
+<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">4</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">5</span><span class="err">│</span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">2</span><span class="w"> </span><span class="m">4</span><span class="err">│</span><span class="m">2</span><span class="w"> </span><span class="m">5</span><span class="err">│</span><span class="m">3</span><span class="w"> </span><span class="m">1</span><span class="err">│</span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">4</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">5</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">5</span><span class="w"> </span><span class="m">3</span><span class="err">│</span><span class="m">5</span><span class="w"> </span><span class="m">4</span><span class="err">│</span><span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="err">│</span><span class="w"></span>
+<span class="err">└───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┘</span><span class="w"></span>
+<span class="w">      </span><span class="o">⍴⍸</span><span class="nv">B</span><span class="w"></span>
+<span class="m">13</span><span class="w"></span>
+<span class="w">      </span><span class="p">(</span><span class="o">⍴⍸</span><span class="nv">B</span><span class="p">)</span><span class="o">↑</span><span class="nf">⎕A</span><span class="w"></span>
+<span class="nv">ABCDEFGHIJKLM</span><span class="w"></span>
+<span class="w">      </span><span class="p">(((</span><span class="o">⍴⍸</span><span class="nv">B</span><span class="p">)</span><span class="o">↑</span><span class="nf">⎕A</span><span class="p">)</span><span class="na">@</span><span class="p">(</span><span class="o">⍸</span><span class="nv">B</span><span class="p">))</span><span class="w"> </span><span class="nv">M</span><span class="w"></span>
+<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="nv">A</span><span class="w">  </span><span class="m">3</span><span class="w">  </span><span class="nv">B</span><span class="w">  </span><span class="nv">C</span><span class="w"></span>
+<span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="nv">D</span><span class="w">  </span><span class="m">8</span><span class="w">  </span><span class="nv">E</span><span class="w">  </span><span class="nv">F</span><span class="w"></span>
+<span class="w"> </span><span class="nv">G</span><span class="w"> </span><span class="nv">H</span><span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">15</span><span class="w"></span>
+<span class="m">16</span><span class="w"> </span><span class="nv">I</span><span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">19</span><span class="w"> </span><span class="m">20</span><span class="w"></span>
+<span class="m">21</span><span class="w"> </span><span class="nv">J</span><span class="w">  </span><span class="nv">K</span><span class="w">  </span><span class="nv">L</span><span class="w">  </span><span class="nv">M</span><span class="w"></span>
+</code></pre></div>
+<p>The arguments to @ can be functions instead, where the left argument function is the function to apply to the selected elements, and the right argument is a logical function that selects the elements out of the right argument array.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">M</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="o">⍳</span><span class="m">25</span><span class="w"></span>
+<span class="w">      </span><span class="c1">⍝ Negate elements which are multiples of 3</span><span class="w"></span>
+<span class="w">      </span><span class="p">(</span><span class="o">-</span><span class="na">@</span><span class="kt">{</span><span class="m">0</span><span class="o">=</span><span class="m">3</span><span class="o">|</span><span class="bp">⍵</span><span class="kt">}</span><span class="p">)</span><span class="nv">M</span><span class="w"></span>
+<span class="w">  </span><span class="m">1</span><span class="w">   </span><span class="m">2</span><span class="w">  </span><span class="m">¯3</span><span class="w">   </span><span class="m">4</span><span class="w">   </span><span class="m">5</span><span class="w"></span>
+<span class="w"> </span><span class="m">¯6</span><span class="w">   </span><span class="m">7</span><span class="w">   </span><span class="m">8</span><span class="w">  </span><span class="m">¯9</span><span class="w">  </span><span class="m">10</span><span class="w"></span>
+<span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">¯12</span><span class="w">  </span><span class="m">13</span><span class="w">  </span><span class="m">14</span><span class="w"> </span><span class="m">¯15</span><span class="w"></span>
+<span class="w"> </span><span class="m">16</span><span class="w">  </span><span class="m">17</span><span class="w"> </span><span class="m">¯18</span><span class="w">  </span><span class="m">19</span><span class="w">  </span><span class="m">20</span><span class="w"></span>
+<span class="m">¯21</span><span class="w">  </span><span class="m">22</span><span class="w">  </span><span class="m">23</span><span class="w"> </span><span class="m">¯24</span><span class="w">  </span><span class="m">25</span><span class="w"></span>
+
+<span class="w">      </span><span class="nv">M</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="o">⍳</span><span class="m">25</span><span class="w"></span>
+<span class="w">        </span><span class="c1">⍝ Reverse list of elements which are multiples of 3</span><span class="w"></span>
+<span class="w">      </span><span class="p">(</span><span class="o">⊖</span><span class="na">@</span><span class="kt">{</span><span class="m">0</span><span class="o">=</span><span class="m">3</span><span class="o">|</span><span class="bp">⍵</span><span class="kt">}</span><span class="p">)</span><span class="nv">M</span><span class="w"></span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span><span class="m">2</span><span class="w"> </span><span class="m">24</span><span class="w">  </span><span class="m">4</span><span class="w">  </span><span class="m">5</span><span class="w"></span>
+<span class="m">21</span><span class="w">  </span><span class="m">7</span><span class="w">  </span><span class="m">8</span><span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">10</span><span class="w"></span>
+<span class="m">11</span><span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">12</span><span class="w"></span>
+<span class="m">16</span><span class="w"> </span><span class="m">17</span><span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">19</span><span class="w"> </span><span class="m">20</span><span class="w"></span>
+<span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">22</span><span class="w"> </span><span class="m">23</span><span class="w">  </span><span class="m">3</span><span class="w"> </span><span class="m">25</span><span class="w"></span>
+</code></pre></div>
 
 
 
@@ -1750,6 +1947,16 @@
         <script src="../../../js/mooc.js"></script>
       
         <script src="../../../js/languagebar.js"></script>
+      
+        <script src="../../../js/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/build/three.module.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/examples/jsm/"></script>
       
     
   </body>

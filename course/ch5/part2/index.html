@@ -39,6 +39,8 @@
     
       <link rel="stylesheet" href="../../../styles/main.css">
     
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -910,7 +912,7 @@
   
     <li class="md-nav__item">
       <a href="../../ch3/bonus/" class="md-nav__link">
-        3.B - Bonus content
+        3.B - A Musical Interlude
       </a>
     </li>
   
@@ -1097,7 +1099,7 @@
   
     <li class="md-nav__item">
       <a href="../../ch4/bonus/" class="md-nav__link">
-        4.B - Bonus content
+        4.B - Rotating an image
       </a>
     </li>
   
@@ -1268,7 +1270,7 @@
   
     <li class="md-nav__item">
       <a href="../bonus/" class="md-nav__link">
-        5.B - Bonus content
+        5.B - Computer graphics
       </a>
     </li>
   
@@ -1427,7 +1429,7 @@
   
     <li class="md-nav__item">
       <a href="../../ch6/bonus/" class="md-nav__link">
-        6.B - Bonus content
+        6.B - Minesweeper in APL and Python
       </a>
     </li>
   
@@ -1915,6 +1917,178 @@
 <span class="err">│</span><span class="m">10</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">18</span><span class="err">│</span><span class="w"></span>
 <span class="err">└────────┘</span><span class="w"></span>
 </code></pre></div>
+<p>In order to easily create and destroy such nested arrays,  we can use the enclose ⊂ function with a rank specification to denote what axis to group cells along.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="o">⍴⍳</span><span class="m">8</span><span class="w"></span>
+<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"></span>
+<span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"></span>
+
+<span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"></span>
+<span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"></span>
+<span class="w">      </span><span class="o">⊂</span><span class="sr">[</span><span class="m">3</span><span class="sr">]</span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="o">⍴⍳</span><span class="m">8</span><span class="w"></span>
+<span class="err">┌───┬───┐</span><span class="w"></span>
+<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="err">│</span><span class="w"></span>
+<span class="err">├───┼───┤</span><span class="w"></span>
+<span class="err">│</span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="err">│</span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="err">│</span><span class="w"></span>
+<span class="err">└───┴───┘</span><span class="w"></span>
+<span class="w">      </span><span class="o">⊂</span><span class="sr">[</span><span class="m">2</span><span class="sr">]</span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="o">⍴⍳</span><span class="m">8</span><span class="w"></span>
+<span class="err">┌───┬───┐</span><span class="w"></span>
+<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="err">│</span><span class="m">2</span><span class="w"> </span><span class="m">4</span><span class="err">│</span><span class="w"></span>
+<span class="err">├───┼───┤</span><span class="w"></span>
+<span class="err">│</span><span class="m">5</span><span class="w"> </span><span class="m">7</span><span class="err">│</span><span class="m">6</span><span class="w"> </span><span class="m">8</span><span class="err">│</span><span class="w"></span>
+<span class="err">└───┴───┘</span><span class="w"></span>
+<span class="w">      </span><span class="o">⊂</span><span class="sr">[</span><span class="m">1</span><span class="sr">]</span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="o">⍴⍳</span><span class="m">8</span><span class="w"></span>
+<span class="err">┌───┬───┐</span><span class="w"></span>
+<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">5</span><span class="err">│</span><span class="m">2</span><span class="w"> </span><span class="m">6</span><span class="err">│</span><span class="w"></span>
+<span class="err">├───┼───┤</span><span class="w"></span>
+<span class="err">│</span><span class="m">3</span><span class="w"> </span><span class="m">7</span><span class="err">│</span><span class="m">4</span><span class="w"> </span><span class="m">8</span><span class="err">│</span><span class="w"></span>
+<span class="err">└───┴───┘</span><span class="w"></span>
+</code></pre></div>
+<p>The split ↓ function is the dedicated function for this task</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">↓</span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="o">⍴⍳</span><span class="m">8</span><span class="w"></span>
+<span class="err">┌───┬───┐</span><span class="w"></span>
+<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="err">│</span><span class="w"></span>
+<span class="err">├───┼───┤</span><span class="w"></span>
+<span class="err">│</span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="err">│</span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="err">│</span><span class="w"></span>
+<span class="err">└───┴───┘</span><span class="w">      </span>
+<span class="w">      </span><span class="o">↓</span><span class="sr">[</span><span class="m">1</span><span class="sr">]</span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="o">⍴⍳</span><span class="m">8</span><span class="w"></span>
+<span class="err">┌───┬───┐</span><span class="w"></span>
+<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">5</span><span class="err">│</span><span class="m">2</span><span class="w"> </span><span class="m">6</span><span class="err">│</span><span class="w"></span>
+<span class="err">├───┼───┤</span><span class="w"></span>
+<span class="err">│</span><span class="m">3</span><span class="w"> </span><span class="m">7</span><span class="err">│</span><span class="m">4</span><span class="w"> </span><span class="m">8</span><span class="err">│</span><span class="w"></span>
+<span class="err">└───┴───┘</span><span class="w"></span>
+</code></pre></div>
+<p>With the rank operator on the enclose function, cells or arbitrary rank can be split</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="p">(</span><span class="o">⊂</span><span class="na">⍤</span><span class="m">3</span><span class="p">)</span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="o">⍴⍳</span><span class="m">8</span><span class="w"></span>
+<span class="err">┌───┐</span><span class="w"></span>
+<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="w"></span>
+<span class="err">│</span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="err">│</span><span class="w"></span>
+<span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w"></span>
+<span class="err">│</span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="err">│</span><span class="w"></span>
+<span class="err">│</span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="err">│</span><span class="w"></span>
+<span class="err">└───┘</span><span class="w"></span>
+<span class="w">      </span><span class="p">(</span><span class="o">⊂</span><span class="na">⍤</span><span class="m">2</span><span class="p">)</span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="o">⍴⍳</span><span class="m">8</span><span class="w"></span>
+<span class="err">┌───┬───┐</span><span class="w"></span>
+<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="err">│</span><span class="w"></span>
+<span class="err">│</span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="err">│</span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="err">│</span><span class="w"></span>
+<span class="err">└───┴───┘</span><span class="w"></span>
+<span class="w">      </span><span class="p">(</span><span class="o">⊂</span><span class="na">⍤</span><span class="m">1</span><span class="p">)</span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="o">⍴⍳</span><span class="m">8</span><span class="w"></span>
+<span class="err">┌───┬───┐</span><span class="w"></span>
+<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="err">│</span><span class="w"></span>
+<span class="err">├───┼───┤</span><span class="w"></span>
+<span class="err">│</span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="err">│</span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="err">│</span><span class="w"></span>
+<span class="err">└───┴───┘</span><span class="w"></span>
+</code></pre></div>
+<p>The inverse to splitting is the Mix ↑ function. If the nested array is of irregular shape, the Mix function will pad the resulting array, or try to fill in missing elements with an empty array of expected shape</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="p">(</span><span class="o">⊂</span><span class="na">⍤</span><span class="m">2</span><span class="p">)</span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="o">⍴⍳</span><span class="m">8</span><span class="w"></span>
+<span class="err">┌───┬───┐</span><span class="w"></span>
+<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="err">│</span><span class="w"></span>
+<span class="err">│</span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="err">│</span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="err">│</span><span class="w"></span>
+<span class="err">└───┴───┘</span><span class="w"></span>
+<span class="w">      </span><span class="o">↑</span><span class="p">(</span><span class="o">⊂</span><span class="na">⍤</span><span class="m">2</span><span class="p">)</span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="o">⍴⍳</span><span class="m">8</span><span class="w"></span>
+<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"></span>
+<span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"></span>
+
+<span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"></span>
+<span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"></span>
+<span class="w">      </span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="p">(</span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="p">)</span><span class="m">6</span><span class="p">)</span><span class="w"></span>
+<span class="err">┌─┬─┬─┬───┬─┐</span><span class="w"></span>
+<span class="err">│</span><span class="m">1</span><span class="err">│</span><span class="m">2</span><span class="err">│</span><span class="m">3</span><span class="err">│</span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="err">│</span><span class="m">6</span><span class="err">│</span><span class="w"></span>
+<span class="err">└─┴─┴─┴───┴─┘</span><span class="w"></span>
+<span class="w">      </span><span class="o">↑</span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="p">(</span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="p">)</span><span class="m">6</span><span class="p">)</span><span class="w"></span>
+<span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"></span>
+<span class="m">2</span><span class="w"> </span><span class="m">0</span><span class="w"></span>
+<span class="m">3</span><span class="w"> </span><span class="m">0</span><span class="w"></span>
+<span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"></span>
+<span class="m">6</span><span class="w"> </span><span class="m">0</span><span class="w"></span>
+<span class="w">      </span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="p">(</span><span class="m">4</span><span class="w"> </span><span class="p">(</span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="p">)</span><span class="w"> </span><span class="m">7</span><span class="p">)</span><span class="m">8</span><span class="p">)</span><span class="w"></span>
+<span class="err">┌─┬─┬─┬─────────┬─┐</span><span class="w"></span>
+<span class="err">│</span><span class="m">1</span><span class="err">│</span><span class="m">2</span><span class="err">│</span><span class="m">3</span><span class="err">│┌─┬───┬─┐│</span><span class="m">8</span><span class="err">│</span><span class="w"></span>
+<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="err">││</span><span class="m">4</span><span class="err">│</span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="err">│</span><span class="m">7</span><span class="err">││</span><span class="w"> </span><span class="err">│</span><span class="w"></span>
+<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="err">│└─┴───┴─┘│</span><span class="w"> </span><span class="err">│</span><span class="w"></span>
+<span class="err">└─┴─┴─┴─────────┴─┘</span><span class="w"></span>
+<span class="w">      </span><span class="o">↑</span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="p">(</span><span class="m">4</span><span class="w"> </span><span class="p">(</span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="p">)</span><span class="w"> </span><span class="m">7</span><span class="p">)</span><span class="m">8</span><span class="p">)</span><span class="w"></span>
+<span class="err">┌─┬───┬─┐</span><span class="w"></span>
+<span class="err">│</span><span class="m">1</span><span class="err">│</span><span class="m">0</span><span class="w">  </span><span class="err">│</span><span class="m">0</span><span class="err">│</span><span class="w"></span>
+<span class="err">├─┼───┼─┤</span><span class="w"></span>
+<span class="err">│</span><span class="m">2</span><span class="err">│</span><span class="m">0</span><span class="w">  </span><span class="err">│</span><span class="m">0</span><span class="err">│</span><span class="w"></span>
+<span class="err">├─┼───┼─┤</span><span class="w"></span>
+<span class="err">│</span><span class="m">3</span><span class="err">│</span><span class="m">0</span><span class="w">  </span><span class="err">│</span><span class="m">0</span><span class="err">│</span><span class="w"></span>
+<span class="err">├─┼───┼─┤</span><span class="w"></span>
+<span class="err">│</span><span class="m">4</span><span class="err">│</span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="err">│</span><span class="m">7</span><span class="err">│</span><span class="w"></span>
+<span class="err">├─┼───┼─┤</span><span class="w"></span>
+<span class="err">│</span><span class="m">8</span><span class="err">│</span><span class="m">0</span><span class="w">  </span><span class="err">│</span><span class="m">0</span><span class="err">│</span><span class="w"></span>
+<span class="err">└─┴───┴─┘</span><span class="w"></span>
+</code></pre></div>
+<p>For a more involved example, consider the following grade book
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">school</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;MATH&#39;</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;101&#39;</span><span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;COMPETED&#39;</span><span class="p">))</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;102&#39;</span><span class="w"> </span><span class="m">37</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;CANCELLED&#39;</span><span class="p">)))</span><span class="w">  </span><span class="p">(</span><span class="s1">&#39;CS&#39;</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;101&#39;</span><span class="w"> </span><span class="m">53</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;COMPETED&#39;</span><span class="p">))</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;102&#39;</span><span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;COMPLETED&#39;</span><span class="p">))</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;103&#39;</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;IN PROGRESS&#39;</span><span class="p">)))</span><span class="w"></span>
+<span class="w">      </span><span class="nv">school</span><span class="w"></span>
+<span class="err">┌─────────────────────────────────────────────┬────────────────────────────────────────────────────────────────┐</span><span class="w"></span>
+<span class="err">│┌──────┬─────────────────┬──────────────────┐│┌────┬─────────────────┬──────────────────┬────────────────────┐│</span><span class="w"></span>
+<span class="err">││┌────┐│┌───┬──┬────────┐│┌───┬──┬─────────┐│││┌──┐│┌───┬──┬────────┐│┌───┬──┬─────────┐│┌───┬──┬───────────┐││</span><span class="w"></span>
+<span class="err">│││</span><span class="nv">MATH</span><span class="err">│││</span><span class="m">101</span><span class="err">│</span><span class="m">30</span><span class="err">│</span><span class="nv">COMPETED</span><span class="err">│││</span><span class="m">102</span><span class="err">│</span><span class="m">37</span><span class="err">│</span><span class="nv">CANCELLED</span><span class="err">│││││</span><span class="nv">CS</span><span class="err">│││</span><span class="m">101</span><span class="err">│</span><span class="m">53</span><span class="err">│</span><span class="nv">COMPETED</span><span class="err">│││</span><span class="m">102</span><span class="err">│</span><span class="m">28</span><span class="err">│</span><span class="nv">COMPLETED</span><span class="err">│││</span><span class="m">103</span><span class="err">│</span><span class="m">20</span><span class="err">│</span><span class="nv">IN</span><span class="w"> </span><span class="nv">PROGRESS</span><span class="err">│││</span><span class="w"></span>
+<span class="err">││└────┘│└───┴──┴────────┘│└───┴──┴─────────┘│││└──┘│└───┴──┴────────┘│└───┴──┴─────────┘│└───┴──┴───────────┘││</span><span class="w"></span>
+<span class="err">│└──────┴─────────────────┴──────────────────┘│└────┴─────────────────┴──────────────────┴────────────────────┘│</span><span class="w"></span>
+<span class="err">└─────────────────────────────────────────────┴────────────────────────────────────────────────────────────────┘</span><span class="w"></span>
+<span class="w">      </span><span class="o">↑</span><span class="nv">school</span><span class="w"></span>
+<span class="err">┌──────┬─────────────────┬──────────────────┬────────────────────┐</span><span class="w"></span>
+<span class="err">│┌────┐│┌───┬──┬────────┐│┌───┬──┬─────────┐│┌────┐</span><span class="w">              </span><span class="err">│</span><span class="w"></span>
+<span class="err">││</span><span class="nv">MATH</span><span class="err">│││</span><span class="m">101</span><span class="err">│</span><span class="m">30</span><span class="err">│</span><span class="nv">COMPETED</span><span class="err">│││</span><span class="m">102</span><span class="err">│</span><span class="m">37</span><span class="err">│</span><span class="nv">CANCELLED</span><span class="err">│││</span><span class="w">    </span><span class="err">│</span><span class="w">              </span><span class="err">│</span><span class="w"></span>
+<span class="err">│└────┘│└───┴──┴────────┘│└───┴──┴─────────┘│└────┘</span><span class="w">              </span><span class="err">│</span><span class="w"></span>
+<span class="err">├──────┼─────────────────┼──────────────────┼────────────────────┤</span><span class="w"></span>
+<span class="err">│┌──┐</span><span class="w">  </span><span class="err">│┌───┬──┬────────┐│┌───┬──┬─────────┐│┌───┬──┬───────────┐│</span><span class="w"></span>
+<span class="err">││</span><span class="nv">CS</span><span class="err">│</span><span class="w">  </span><span class="err">││</span><span class="m">101</span><span class="err">│</span><span class="m">53</span><span class="err">│</span><span class="nv">COMPETED</span><span class="err">│││</span><span class="m">102</span><span class="err">│</span><span class="m">28</span><span class="err">│</span><span class="nv">COMPLETED</span><span class="err">│││</span><span class="m">103</span><span class="err">│</span><span class="m">20</span><span class="err">│</span><span class="nv">IN</span><span class="w"> </span><span class="nv">PROGRESS</span><span class="err">││</span><span class="w"></span>
+<span class="err">│└──┘</span><span class="w">  </span><span class="err">│└───┴──┴────────┘│└───┴──┴─────────┘│└───┴──┴───────────┘│</span><span class="w"></span>
+<span class="err">└──────┴─────────────────┴──────────────────┴────────────────────┘</span><span class="w"></span>
+</code></pre></div></p>
+<p>Notice that the Math row was given an extra element with an empty nested array by the Mix function in order to match with the shape of CS row</p>
+<div class="highlight"><pre><span></span><code>      ↑↑school
+┌────┬────┬───────────┐
+│MATH│    │           │
+├────┼────┼───────────┤
+│101 │30  │COMPETED   │
+├────┼────┼───────────┤
+│102 │37  │CANCELLED  │
+├────┼────┼───────────┤
+│    │    │           │
+└────┴────┴───────────┘
+┌────┬────┬───────────┐
+│CS  │    │           │
+├────┼────┼───────────┤
+│101 │53  │COMPETED   │
+├────┼────┼───────────┤
+│102 │28  │COMPLETED  │
+├────┼────┼───────────┤
+│103 │20  │IN PROGRESS│
+└────┴────┴───────────┘
+</code></pre></div>
+<p>The depth of an array can be obtained explicitly using the monadic ≡ depth function.</p>
+<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="o">≡</span><span class="m">10</span><span class="w"> </span><span class="c1">⍝ The depth of a scalar is 0</span><span class="w"></span>
+<span class="m">0</span><span class="w"> </span>
+<span class="w">       </span><span class="o">⍳</span><span class="m">10</span><span class="w"></span>
+<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">10</span><span class="w"> </span>
+<span class="w">       </span><span class="o">≡⍳</span><span class="m">10</span><span class="w"></span>
+<span class="m">1</span><span class="w"> </span>
+<span class="w">       </span><span class="o">≡</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="o">⍳</span><span class="m">10</span><span class="w"></span>
+<span class="m">1</span><span class="w"> </span>
+<span class="w">       </span><span class="nv">nested</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="p">(</span><span class="o">⍳</span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;  &#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;   &#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;  &#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">⍳</span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="p">(</span><span class="o">⍳</span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;  &#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;   &#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">⍳</span><span class="m">2</span><span class="p">))</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;   &#39;</span><span class="p">))</span><span class="w"></span>
+<span class="w">       </span><span class="nv">nested</span><span class="w"></span>
+<span class="err">┌─────┬───────────────────┐</span><span class="w"></span>
+<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="err">│</span><span class="w">                   </span><span class="err">│</span><span class="w"></span>
+<span class="err">├─────┼───────────────────┤</span><span class="w"></span>
+<span class="err">│</span><span class="w">     </span><span class="err">│┌───────────┬─────┐│</span><span class="w"></span>
+<span class="err">│</span><span class="w">     </span><span class="err">││</span><span class="w">           </span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="err">││</span><span class="w"></span>
+<span class="err">│</span><span class="w">     </span><span class="err">│├───────────┼─────┤│</span><span class="w"></span>
+<span class="err">│</span><span class="w">     </span><span class="err">││┌─────┬───┐│</span><span class="w">     </span><span class="err">││</span><span class="w"></span>
+<span class="err">│</span><span class="w">     </span><span class="err">│││</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="err">│</span><span class="w">   </span><span class="err">││</span><span class="w">     </span><span class="err">││</span><span class="w"></span>
+<span class="err">│</span><span class="w">     </span><span class="err">││├─────┼───┤│</span><span class="w">     </span><span class="err">││</span><span class="w"></span>
+<span class="err">│</span><span class="w">     </span><span class="err">│││</span><span class="w">     </span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">││</span><span class="w">     </span><span class="err">││</span><span class="w"></span>
+<span class="err">│</span><span class="w">     </span><span class="err">││└─────┴───┘│</span><span class="w">     </span><span class="err">││</span><span class="w"></span>
+<span class="err">│</span><span class="w">     </span><span class="err">│└───────────┴─────┘│</span><span class="w"></span>
+<span class="err">└─────┴───────────────────┘</span><span class="w"></span>
+<span class="w">       </span><span class="o">≡</span><span class="nv">nested</span><span class="w"></span>
+<span class="m">¯4</span><span class="w"> </span>
+</code></pre></div>
+<p>We might expect a depth of 4 for the last array, but for arrays with elements with differing depths, the depth function returns the negative of the maximum depth of the array.</p>
 
 
 
@@ -1996,6 +2170,16 @@
         <script src="../../../js/mooc.js"></script>
       
         <script src="../../../js/languagebar.js"></script>
+      
+        <script src="../../../js/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/build/three.module.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/examples/jsm/"></script>
       
     
   </body>

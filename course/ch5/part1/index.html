@@ -39,6 +39,8 @@
     
       <link rel="stylesheet" href="../../../styles/main.css">
     
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -910,7 +912,7 @@
   
     <li class="md-nav__item">
       <a href="../../ch3/bonus/" class="md-nav__link">
-        3.B - Bonus content
+        3.B - A Musical Interlude
       </a>
     </li>
   
@@ -1097,7 +1099,7 @@
   
     <li class="md-nav__item">
       <a href="../../ch4/bonus/" class="md-nav__link">
-        4.B - Bonus content
+        4.B - Rotating an image
       </a>
     </li>
   
@@ -1268,7 +1270,7 @@
   
     <li class="md-nav__item">
       <a href="../bonus/" class="md-nav__link">
-        5.B - Bonus content
+        5.B - Computer graphics
       </a>
     </li>
   
@@ -1427,7 +1429,7 @@
   
     <li class="md-nav__item">
       <a href="../../ch6/bonus/" class="md-nav__link">
-        6.B - Bonus content
+        6.B - Minesweeper in APL and Python
       </a>
     </li>
   
@@ -1659,19 +1661,228 @@
 <div class="admonition abstract">
 <p class="admonition-title">This part will cover</p>
 <ul>
+<li>Bracket-axis notation</li>
 <li>The axis operator</li>
-<li>Operations on different axes<ul>
-<li>Reverse</li>
-<li>Rotate</li>
-<li>Catenate</li>
-<li>Replicate</li>
-<li>Take</li>
-<li>Drop</li>
-</ul>
-</li>
+<li>Squad indexing</li>
 </ul>
 </div>
 <hr />
+<p>So far, we’ve only covered reducing along a vector. Vectors, being one-dimensional arrays, have a clear unambiguous axis along which reduction can be done. Higher dimensional arrays do not have this same privilege, the axis along which to reduce must be specified.</p>
+<p>Take the following example matrix</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">⍉</span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="o">⍴⍳</span><span class="m">10</span><span class="w"></span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w"></span>
+<span class="w"> </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w"></span>
+<span class="w"> </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w"></span>
+<span class="w"> </span><span class="m">4</span><span class="w">  </span><span class="m">4</span><span class="w">  </span><span class="m">4</span><span class="w">  </span><span class="m">4</span><span class="w">  </span><span class="m">4</span><span class="w">  </span><span class="m">4</span><span class="w">  </span><span class="m">4</span><span class="w">  </span><span class="m">4</span><span class="w">  </span><span class="m">4</span><span class="w">  </span><span class="m">4</span><span class="w"></span>
+<span class="w"> </span><span class="m">5</span><span class="w">  </span><span class="m">5</span><span class="w">  </span><span class="m">5</span><span class="w">  </span><span class="m">5</span><span class="w">  </span><span class="m">5</span><span class="w">  </span><span class="m">5</span><span class="w">  </span><span class="m">5</span><span class="w">  </span><span class="m">5</span><span class="w">  </span><span class="m">5</span><span class="w">  </span><span class="m">5</span><span class="w"></span>
+<span class="w"> </span><span class="m">6</span><span class="w">  </span><span class="m">6</span><span class="w">  </span><span class="m">6</span><span class="w">  </span><span class="m">6</span><span class="w">  </span><span class="m">6</span><span class="w">  </span><span class="m">6</span><span class="w">  </span><span class="m">6</span><span class="w">  </span><span class="m">6</span><span class="w">  </span><span class="m">6</span><span class="w">  </span><span class="m">6</span><span class="w"></span>
+<span class="w"> </span><span class="m">7</span><span class="w">  </span><span class="m">7</span><span class="w">  </span><span class="m">7</span><span class="w">  </span><span class="m">7</span><span class="w">  </span><span class="m">7</span><span class="w">  </span><span class="m">7</span><span class="w">  </span><span class="m">7</span><span class="w">  </span><span class="m">7</span><span class="w">  </span><span class="m">7</span><span class="w">  </span><span class="m">7</span><span class="w"></span>
+<span class="w"> </span><span class="m">8</span><span class="w">  </span><span class="m">8</span><span class="w">  </span><span class="m">8</span><span class="w">  </span><span class="m">8</span><span class="w">  </span><span class="m">8</span><span class="w">  </span><span class="m">8</span><span class="w">  </span><span class="m">8</span><span class="w">  </span><span class="m">8</span><span class="w">  </span><span class="m">8</span><span class="w">  </span><span class="m">8</span><span class="w"></span>
+<span class="w"> </span><span class="m">9</span><span class="w">  </span><span class="m">9</span><span class="w">  </span><span class="m">9</span><span class="w">  </span><span class="m">9</span><span class="w">  </span><span class="m">9</span><span class="w">  </span><span class="m">9</span><span class="w">  </span><span class="m">9</span><span class="w">  </span><span class="m">9</span><span class="w">  </span><span class="m">9</span><span class="w">  </span><span class="m">9</span><span class="w"></span>
+<span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="w"></span>
+</code></pre></div>
+<p>The leading axis of the matrix is the first axis along which indexing is done. In this case, </p>
+<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="nv">M</span><span class="sr">[</span><span class="m">1</span><span class="sr">;]</span><span class="w"></span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w"></span>
+<span class="w">       </span><span class="nv">M</span><span class="sr">[</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="sr">;]</span><span class="w"></span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w"></span>
+<span class="w"> </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w"></span>
+<span class="w"> </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w"></span>
+</code></pre></div>
+<p>the leading axis is the vertical axis of this matrix. The last axis then is the horizontal axis of this matrix. To specify the axis along which to reduce, we can use one of the two reduce operators ⌿ and /, corresponding to reducing along the leading axis and last axis respectively.</p>
+<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="o">+</span><span class="na">⌿</span><span class="nv">M</span><span class="w"></span>
+<span class="m">55</span><span class="w"> </span><span class="m">55</span><span class="w"> </span><span class="m">55</span><span class="w"> </span><span class="m">55</span><span class="w"> </span><span class="m">55</span><span class="w"> </span><span class="m">55</span><span class="w"> </span><span class="m">55</span><span class="w"> </span><span class="m">55</span><span class="w"> </span><span class="m">55</span><span class="w"> </span><span class="m">55</span><span class="w"></span>
+<span class="w">       </span><span class="o">+</span><span class="na">/</span><span class="nv">M</span><span class="w"></span>
+<span class="m">10</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="m">40</span><span class="w"> </span><span class="m">50</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="m">70</span><span class="w"> </span><span class="m">80</span><span class="w"> </span><span class="m">90</span><span class="w"> </span><span class="m">100</span><span class="w"></span>
+</code></pre></div>
+<p>Since the leading axis is the vertical axis, the plus reduce first +⌿ function returned the sums of the vertical columns of the matrix; similarly, the plus reduce last +/ function returned the sums of the horizontal rows of the matrix. For higher dimensional arrays, only reducing along either the leading axis or the last axis is not sufficient, as there are intermediate axes that need to be considered.</p>
+<p>There is special syntax that allows for such general axis specification for certain built-in functions. It consists of adding a set of square brackets [ ] after the function containing an increasing integer axis number starting from 1, corresponding to the leading axis.</p>
+<p>Consider the following random 3-dimensional array</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">?</span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="o">⍴</span><span class="m">10</span><span class="w"></span>
+<span class="m">5</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">4</span><span class="w"></span>
+<span class="m">9</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">4</span><span class="w"></span>
+<span class="m">5</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">4</span><span class="w"></span>
+
+<span class="m">9</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">8</span><span class="w"></span>
+<span class="m">5</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"></span>
+<span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">5</span><span class="w"></span>
+
+<span class="m">2</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">4</span><span class="w"></span>
+<span class="m">7</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">10</span><span class="w"></span>
+<span class="m">7</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">6</span><span class="w"></span>
+</code></pre></div>
+<p>It is visualized in 3-dimensional space as follows. Click and drag on the 3D view to orbit the array, use the scroll wheel to zoom in and out.</p>
+<div style="aspect-ratio: 1 / 1; width: 100%;">
+    <iframe  src="\js\demos\rank_intro.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%;"></iframe>
+</div>
+
+<p>The three axes of the array can be seen, with the red axis representing the leading axis, the green axis representing the intermediate axis, and the blue axis representing the last axis.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">M</span><span class="sr">[</span><span class="m">1</span><span class="sr">;;]</span><span class="w"></span>
+<span class="m">5</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">4</span><span class="w"></span>
+<span class="m">9</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">4</span><span class="w"></span>
+<span class="m">5</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">4</span><span class="w"></span>
+<span class="w">      </span><span class="nv">M</span><span class="sr">[;</span><span class="m">1</span><span class="sr">;]</span><span class="w"></span>
+<span class="m">5</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">4</span><span class="w"></span>
+<span class="m">9</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">8</span><span class="w"></span>
+<span class="m">2</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">4</span><span class="w"></span>
+<span class="w">      </span><span class="nv">M</span><span class="sr">[;;</span><span class="m">1</span><span class="sr">]</span><span class="w"></span>
+<span class="m">5</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">5</span><span class="w"></span>
+<span class="m">9</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">3</span><span class="w"></span>
+<span class="m">2</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">7</span><span class="w"></span>
+</code></pre></div>
+<div style="aspect-ratio: 1 / 1; width: 100%;">
+    <iframe  src="\js\demos\rank_axes.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%;"></iframe>
+</div>
+
+<p>Then, using the bracket-axis notation, is it possible to obtain all 3 possible reductions.
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="p">(</span><span class="o">+</span><span class="na">/</span><span class="sr">[</span><span class="m">1</span><span class="sr">]</span><span class="p">)</span><span class="nv">M</span><span class="w"></span>
+<span class="m">16</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">16</span><span class="w"></span>
+<span class="m">21</span><span class="w">  </span><span class="m">5</span><span class="w"> </span><span class="m">16</span><span class="w"></span>
+<span class="m">15</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">15</span><span class="w"></span>
+<span class="w">      </span><span class="p">(</span><span class="o">+</span><span class="na">/</span><span class="sr">[</span><span class="m">2</span><span class="sr">]</span><span class="p">)</span><span class="nv">M</span><span class="w"></span>
+<span class="m">19</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">12</span><span class="w"></span>
+<span class="m">17</span><span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">15</span><span class="w"></span>
+<span class="m">16</span><span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">20</span><span class="w"></span>
+<span class="w">      </span><span class="p">(</span><span class="o">+</span><span class="na">/</span><span class="sr">[</span><span class="m">3</span><span class="sr">]</span><span class="p">)</span><span class="nv">M</span><span class="w"></span>
+<span class="m">11</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">17</span><span class="w"></span>
+<span class="m">22</span><span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">10</span><span class="w"></span>
+<span class="m">15</span><span class="w"> </span><span class="m">19</span><span class="w"> </span><span class="m">23</span><span class="w"></span>
+</code></pre></div></p>
+<div style="aspect-ratio: 1 / 1; width: 100%;">
+    <iframe  src="\js\demos\rank_anim3.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%;"></iframe>
+</div>
+
+<div style="aspect-ratio: 1 / 1; width: 100%;">
+    <iframe  src="\js\demos\rank_anim2.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%;"></iframe>
+</div>
+
+<div style="aspect-ratio: 1 / 1; width: 100%;">
+    <iframe  src="\js\demos\rank_anim1.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%;"></iframe>
+</div>
+
+<p>Note that there is also a different method of specifying axes for functions which is more general than bracket-axis notation, since it behaves consistently and can be applied to any arbitrary function. The rank ⍤ operator allows for such general axis specification of a function left argument, via an integer right argument which specifies what rank cells to act on. </p>
+<p>An n-cell of a rank r array is a rank n array formed from picking (r-n) indices from that array. Some n-cells of the above array are</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="c1">⍝ 2-cell of M</span><span class="w"></span>
+<span class="w">      </span><span class="nv">M</span><span class="sr">[</span><span class="m">1</span><span class="sr">;;]</span><span class="w"></span>
+<span class="m">5</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">4</span><span class="w"></span>
+<span class="m">9</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">4</span><span class="w"></span>
+<span class="m">5</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">4</span><span class="w"></span>
+<span class="w">      </span><span class="c1">⍝ 1-cell of M</span><span class="w"></span>
+<span class="w">      </span><span class="nv">M</span><span class="sr">[</span><span class="m">1</span><span class="sr">;</span><span class="m">1</span><span class="sr">;]</span><span class="w"></span>
+<span class="m">5</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">4</span><span class="w"></span>
+<span class="w">      </span><span class="c1">⍝ 0-cell of M</span><span class="w"></span>
+<span class="w">      </span><span class="nv">M</span><span class="sr">[</span><span class="m">1</span><span class="sr">;</span><span class="m">1</span><span class="sr">;</span><span class="m">1</span><span class="sr">]</span><span class="w"></span>
+<span class="m">5</span><span class="w"></span>
+</code></pre></div>
+<p>As an example, we study the action of the rank operator ⍤ on the plus reduce +⌿ function, +⌿⍤n. For n=3, the modified plus reduce function +⌿⍤3 acts on the 3-cells of the array. Since the whole array is of rank 3, there is only one 3-cell which is the array itself. Then, +⌿⍤3 is equivalent to the action of the plus reduce +⌿ function on the whole array, adding up terms along its leading axis.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="p">(</span><span class="o">+</span><span class="na">⌿⍤</span><span class="m">3</span><span class="p">)</span><span class="nv">M</span><span class="w"></span>
+<span class="m">16</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">16</span><span class="w"></span>
+<span class="m">21</span><span class="w">  </span><span class="m">5</span><span class="w"> </span><span class="m">16</span><span class="w"></span>
+<span class="m">15</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">15</span><span class="w"></span>
+<span class="w">      </span><span class="o">+</span><span class="na">⌿</span><span class="nv">M</span><span class="w"></span>
+<span class="m">16</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">16</span><span class="w"></span>
+<span class="m">21</span><span class="w">  </span><span class="m">5</span><span class="w"> </span><span class="m">16</span><span class="w"></span>
+<span class="m">15</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">15</span><span class="w"></span>
+</code></pre></div>
+<p>For n=2, +⌿⍤2 acts on the 3-cells of the array. The 2-cells of the array are the cells M[1;;], M[2;;], and M[3;;].</p>
+<div class="highlight"><pre><span></span><code><span class="w">     </span><span class="nv">M</span><span class="sr">[</span><span class="m">1</span><span class="sr">;;]</span><span class="w"></span>
+<span class="m">5</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">4</span><span class="w"></span>
+<span class="m">9</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">4</span><span class="w"></span>
+<span class="m">5</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">4</span><span class="w"></span>
+<span class="w">      </span><span class="nv">M</span><span class="sr">[</span><span class="m">2</span><span class="sr">;;]</span><span class="w"></span>
+<span class="m">9</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">8</span><span class="w"></span>
+<span class="m">5</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"></span>
+<span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">5</span><span class="w"></span>
+<span class="w">      </span><span class="nv">M</span><span class="sr">[</span><span class="m">3</span><span class="sr">;;]</span><span class="w"></span>
+<span class="m">2</span><span class="w">  </span><span class="m">9</span><span class="w">  </span><span class="m">4</span><span class="w"></span>
+<span class="m">7</span><span class="w">  </span><span class="m">2</span><span class="w"> </span><span class="m">10</span><span class="w"></span>
+<span class="m">7</span><span class="w"> </span><span class="m">10</span><span class="w">  </span><span class="m">6</span><span class="w"></span>
+</code></pre></div>
+<p>The leading axis of these 2-cells is vertical, hence the plus reduce first +⌿ function will return the sum of the columns of these arrays.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">+</span><span class="na">⌿</span><span class="nv">M</span><span class="sr">[</span><span class="m">1</span><span class="sr">;;]</span><span class="w"></span>
+<span class="m">19</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">12</span><span class="w"></span>
+<span class="w">      </span><span class="o">+</span><span class="na">⌿</span><span class="nv">M</span><span class="sr">[</span><span class="m">2</span><span class="sr">;;]</span><span class="w"></span>
+<span class="m">17</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">15</span><span class="w"></span>
+<span class="w">      </span><span class="o">+</span><span class="na">⌿</span><span class="nv">M</span><span class="sr">[</span><span class="m">3</span><span class="sr">;;]</span><span class="w"></span>
+<span class="m">16</span><span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">20</span><span class="w"></span>
+</code></pre></div>
+<p>Then, the action of +⌿⍤2 on the original array is equivalent to adding up along its second axis.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="p">(</span><span class="o">+</span><span class="na">⌿⍤</span><span class="m">2</span><span class="p">)</span><span class="nv">M</span><span class="w"></span>
+<span class="m">19</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">12</span><span class="w"></span>
+<span class="m">17</span><span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">15</span><span class="w"></span>
+<span class="m">16</span><span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">20</span><span class="w"></span>
+<span class="w">      </span><span class="o">+</span><span class="na">⌿</span><span class="sr">[</span><span class="m">2</span><span class="sr">]</span><span class="nv">M</span><span class="w"></span>
+<span class="m">19</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">12</span><span class="w"></span>
+<span class="m">17</span><span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">15</span><span class="w"></span>
+<span class="m">16</span><span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">20</span><span class="w"></span>
+</code></pre></div>
+<p>Similarly, for n=1, the action of (+⌿⍤1) on the array is adding up its 1-cells, which is equivalent to adding along its last axis.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">M</span><span class="sr">[</span><span class="m">1</span><span class="sr">;</span><span class="m">1</span><span class="sr">;]</span><span class="w"></span>
+<span class="m">5</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">4</span><span class="w"></span>
+<span class="w">      </span><span class="nv">M</span><span class="sr">[</span><span class="m">1</span><span class="sr">;</span><span class="m">2</span><span class="sr">;]</span><span class="w"></span>
+<span class="m">9</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">4</span><span class="w"></span>
+<span class="w">      </span><span class="nv">M</span><span class="sr">[</span><span class="m">1</span><span class="sr">;</span><span class="m">3</span><span class="sr">;]</span><span class="w"></span>
+<span class="m">5</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">4</span><span class="w"></span>
+<span class="w">      </span><span class="o">+</span><span class="na">⌿</span><span class="nv">M</span><span class="sr">[</span><span class="m">1</span><span class="sr">;</span><span class="m">1</span><span class="sr">;]</span><span class="w"></span>
+<span class="m">11</span><span class="w"></span>
+<span class="w">      </span><span class="o">+</span><span class="na">⌿</span><span class="nv">M</span><span class="sr">[</span><span class="m">1</span><span class="sr">;</span><span class="m">2</span><span class="sr">;]</span><span class="w"></span>
+<span class="m">14</span><span class="w"></span>
+<span class="w">      </span><span class="o">+</span><span class="na">⌿</span><span class="nv">M</span><span class="sr">[</span><span class="m">1</span><span class="sr">;</span><span class="m">3</span><span class="sr">;]</span><span class="w"></span>
+<span class="m">17</span><span class="w"></span>
+<span class="w">      </span><span class="p">(</span><span class="o">+</span><span class="na">⌿⍤</span><span class="m">1</span><span class="p">)</span><span class="nv">M</span><span class="w"></span>
+<span class="m">11</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">17</span><span class="w"></span>
+<span class="m">22</span><span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">10</span><span class="w"></span>
+<span class="m">15</span><span class="w"> </span><span class="m">19</span><span class="w"> </span><span class="m">23</span><span class="w"></span>
+<span class="w">      </span><span class="o">+</span><span class="na">⌿</span><span class="sr">[</span><span class="m">3</span><span class="sr">]</span><span class="nv">M</span><span class="w"></span>
+<span class="m">11</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">17</span><span class="w"></span>
+<span class="m">22</span><span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">10</span><span class="w"></span>
+<span class="m">15</span><span class="w"> </span><span class="m">19</span><span class="w"> </span><span class="m">23</span><span class="w"></span>
+</code></pre></div>
+<p>An operator form of (partially) indexing a matrix, such as M[1;3;], is given by the squad (”squish quad”) indexing ⌷ operator. 
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">M</span><span class="sr">[</span><span class="m">1</span><span class="sr">;</span><span class="m">3</span><span class="sr">;]</span><span class="w"></span>
+<span class="m">5</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">4</span><span class="w"></span>
+<span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="o">⌷</span><span class="nv">M</span><span class="w"></span>
+<span class="m">5</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">4</span><span class="w"></span>
+</code></pre></div></p>
+<p>It is equivalent to bracket indexing, but can be used like any other operator.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">N</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="o">⍳</span><span class="m">27</span><span class="w"></span>
+<span class="w">      </span><span class="nv">N</span><span class="w"></span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">3</span><span class="w"></span>
+<span class="w"> </span><span class="m">4</span><span class="w">  </span><span class="m">5</span><span class="w">  </span><span class="m">6</span><span class="w"></span>
+<span class="w"> </span><span class="m">7</span><span class="w">  </span><span class="m">8</span><span class="w">  </span><span class="m">9</span><span class="w"></span>
+
+<span class="m">10</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">12</span><span class="w"></span>
+<span class="m">13</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">15</span><span class="w"></span>
+<span class="m">16</span><span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="m">18</span><span class="w"></span>
+
+<span class="m">19</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">21</span><span class="w"></span>
+<span class="m">22</span><span class="w"> </span><span class="m">23</span><span class="w"> </span><span class="m">24</span><span class="w"></span>
+<span class="m">25</span><span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">27</span><span class="w"></span>
+
+<span class="w">      </span><span class="p">(</span><span class="o">⊂</span><span class="na">⍤</span><span class="m">2</span><span class="p">)</span><span class="nv">N</span><span class="w"></span>
+<span class="err">┌─────┬────────┬────────┐</span><span class="w"></span>
+<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="err">│</span><span class="m">10</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">12</span><span class="err">│</span><span class="m">19</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">21</span><span class="err">│</span><span class="w"></span>
+<span class="err">│</span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="err">│</span><span class="m">13</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">15</span><span class="err">│</span><span class="m">22</span><span class="w"> </span><span class="m">23</span><span class="w"> </span><span class="m">24</span><span class="err">│</span><span class="w"></span>
+<span class="err">│</span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="err">│</span><span class="m">16</span><span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="m">18</span><span class="err">│</span><span class="m">25</span><span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">27</span><span class="err">│</span><span class="w"></span>
+<span class="err">└─────┴────────┴────────┘</span><span class="w"></span>
+<span class="w">      </span><span class="m">1</span><span class="p">(</span><span class="o">⌷</span><span class="na">⍤</span><span class="m">2</span><span class="p">)</span><span class="nv">N</span><span class="w"></span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">3</span><span class="w"></span>
+<span class="m">10</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">12</span><span class="w"></span>
+<span class="m">19</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">21</span><span class="w"></span>
+
+<span class="w">      </span><span class="p">(</span><span class="o">⊂</span><span class="na">⍤</span><span class="m">1</span><span class="p">)</span><span class="nv">N</span><span class="w"></span>
+<span class="err">┌────────┬────────┬────────┐</span><span class="w"></span>
+<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w">   </span><span class="err">│</span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w">   </span><span class="err">│</span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="w">   </span><span class="err">│</span><span class="w"></span>
+<span class="err">├────────┼────────┼────────┤</span><span class="w"></span>
+<span class="err">│</span><span class="m">10</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">12</span><span class="err">│</span><span class="m">13</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">15</span><span class="err">│</span><span class="m">16</span><span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="m">18</span><span class="err">│</span><span class="w"></span>
+<span class="err">├────────┼────────┼────────┤</span><span class="w"></span>
+<span class="err">│</span><span class="m">19</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">21</span><span class="err">│</span><span class="m">22</span><span class="w"> </span><span class="m">23</span><span class="w"> </span><span class="m">24</span><span class="err">│</span><span class="m">25</span><span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">27</span><span class="err">│</span><span class="w"></span>
+<span class="err">└────────┴────────┴────────┘</span><span class="w"></span>
+<span class="w">      </span><span class="m">1</span><span class="p">(</span><span class="o">⌷</span><span class="na">⍤</span><span class="m">1</span><span class="p">)</span><span class="nv">N</span><span class="w"></span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span><span class="m">4</span><span class="w">  </span><span class="m">7</span><span class="w"></span>
+<span class="m">10</span><span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="m">16</span><span class="w"></span>
+<span class="m">19</span><span class="w"> </span><span class="m">22</span><span class="w"> </span><span class="m">25</span><span class="w"></span>
+</code></pre></div>
 
 
 
@@ -1692,7 +1903,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../../ch4/bonus/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 4.B - Bonus content" rel="prev">
+        <a href="../../ch4/bonus/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 4.B - Rotating an image" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1701,7 +1912,7 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              4.B - Bonus content
+              4.B - Rotating an image
             </div>
           </div>
         </a>
@@ -1753,6 +1964,16 @@
         <script src="../../../js/mooc.js"></script>
       
         <script src="../../../js/languagebar.js"></script>
+      
+        <script src="../../../js/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/build/three.module.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/examples/jsm/"></script>
       
     
   </body>
