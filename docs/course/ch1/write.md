@@ -18,9 +18,10 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     Calculate the area of a room which is 13.7 long and 206.55 wide.
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <input class="probleminput" type="text" id="c1_p1" placeholder="your solution here">
-        <button class="problembutton" onclick="alert('c1_p1')">Submit</button>
+        <input class="probleminput" type="text" id="input_ch1_p1" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch1_p1')">Submit</button>
     </div>
+    <p id="feedback_ch1_p1" style="color: red"></p>
 
 ---
 
@@ -29,9 +30,10 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     If he is 150.0000cm tall now, how tall will he be in 15 years?
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <input class="probleminput" type="text" id="c1_p2" placeholder="your solution here">
-        <button class="problembutton" onclick="alert('c1_p2')">Submit</button>
+        <input class="probleminput" type="text" id="input_ch1_p2" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch1_p2')">Submit</button>
     </div>
+    <p id="feedback_ch1_p2" style="color: red"></p>
 
 ---
 
@@ -39,9 +41,10 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     If 3 liters of embalming fluid cost you 300.12€, what is the price per liter?
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <input class="probleminput" type="text" id="c1_p3" placeholder="your solution here">
-        <button class="problembutton" onclick="alert('c1_p3')">Submit</button>
+        <input class="probleminput" type="text" id="input_ch1_p3" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch1_p3')">Submit</button>
     </div>
+    <p id="feedback_ch1_p3" style="color: red"></p>
 
 ---
 
@@ -50,9 +53,10 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     What will be your balance if you take just another quick loan of 100€?
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <input class="probleminput" type="text" id="c1_p4" placeholder="your solution here">
-        <button class="problembutton" onclick="alert('c1_p4')">Submit</button>
+        <input class="probleminput" type="text" id="input_ch1_p4" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch1_p4')">Submit</button>
     </div>
+    <p id="feedback_ch1_p4" style="color: red"></p>
 
 ---
 
@@ -60,9 +64,10 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     Cause a `SYNTAX ERROR` using as few symbols as possible.
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <input class="probleminput" type="text" id="c1_p5" placeholder="your solution here">
-        <button class="problembutton" onclick="alert('c1_p5')">Submit</button>
+        <input class="probleminput" type="text" id="input_ch1_p5" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch1_p5')">Submit</button>
     </div>
+    <p id="feedback_ch1_p5" style="color: red"></p>
 
 ---
 
@@ -70,9 +75,10 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     Cause a `DOMAIN ERROR`.
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <input class="probleminput" type="text" id="c1_p6" placeholder="your solution here">
-        <button class="problembutton" onclick="alert('c1_p6')">Submit</button>
+        <input class="probleminput" type="text" id="input_ch1_p6" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch1_p6')">Submit</button>
     </div>
+    <p id="feedback_ch1_p6" style="color: red"></p>
 
 ---
 
@@ -84,9 +90,10 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     Rewrite the expression with as few parentheses as possible to still return the number 13.
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <input class="probleminput" type="text" id="c1_p7" placeholder="your solution here">
-        <button class="problembutton" onclick="alert('c1_p7')">Submit</button>
+        <input class="probleminput" type="text" id="input_ch1_p7" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch1_p7')">Submit</button>
     </div>
+    <p id="feedback_ch1_p7" style="color: red"></p>
 
 ---
 
@@ -94,9 +101,10 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     Compute the mean of the numbers 1, 57, 237, ¯5, 42.
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <input class="probleminput" type="text" id="c1_p8" placeholder="your solution here">
-        <button class="problembutton" onclick="alert('c1_p8')">Submit</button>
+        <input class="probleminput" type="text" id="input_ch1_p8" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch1_p8')">Submit</button>
     </div>
+    <p id="feedback_ch1_p8" style="color: red"></p>
 
 ---
 
@@ -106,9 +114,10 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     how much money will you owe the government this year?
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <input class="probleminput" type="text" id="c1_p9" placeholder="your solution here">
-        <button class="problembutton" onclick="alert('c1_p9')">Submit</button>
+        <input class="probleminput" type="text" id="input_ch1_p9" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch1_p9')">Submit</button>
     </div>
+    <p id="feedback_ch1_p9" style="color: red"></p>
 
 ---
 
@@ -117,9 +126,10 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     Use as few parentheses as possible.
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <input class="probleminput" type="text" id="c1_p10" placeholder="your solution here">
-        <button class="problembutton" onclick="alert('c1_p10')">Submit</button>
+        <input class="probleminput" type="text" id="input_ch1_p10" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch1_p10')">Submit</button>
     </div>
+    <p id="feedback_ch1_p10" style="color: red"></p>
 
 ---
 
@@ -127,9 +137,10 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     Write a nonempty line of code that does nothing (doesn't display anything on the screen).
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <input class="probleminput" type="text" id="c1_p11" placeholder="your solution here">
-        <button class="problembutton" onclick="alert('c1_p11')">Submit</button>
+        <input class="probleminput" type="text" id="input_ch1_p11" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch1_p11')">Submit</button>
     </div>
+    <p id="feedback_ch1_p11" style="color: red"></p>
 
 ---
 
@@ -140,6 +151,7 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     ```
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <input class="probleminput" type="text" id="c1_p12" placeholder="your solution here">
-        <button class="problembutton" onclick="alert('c1_p12')">Submit</button>
+        <input class="probleminput" type="text" id="input_ch1_p12" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch1_p12')">Submit</button>
     </div>
+    <p id="feedback_ch1_p12" style="color: red"></p>

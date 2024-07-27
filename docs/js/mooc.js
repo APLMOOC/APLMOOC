@@ -1,6 +1,8 @@
 var client_id = "50c4648f34bb075578c383ec62d6908fa49b6986d992c34a2a029be777e0337e";
 var client_secret = "d15d4d4ba2b80a91aaff7a5c94d30fe65c87b058991a327a5de4dfe71f7c5576";
 
+var backend_url = "https://backend.aplmooc.fi";
+
 $=s=>document.querySelector(s);
 $$=s=>document.querySelectorAll(s);
 
@@ -18,11 +20,7 @@ auto_login();
 // Authentication
 
 function get_mooc_token() {
-    if("mooc_token" in sessionStorage) {
-        return sessionStorage.getItem("mooc_token");
-    }
-
-    return null;
+    return sessionStorage.getItem("mooc_token");
 }
 
 function set_mooc_token(token) {
@@ -64,8 +62,8 @@ function mooc_login(username, password, callback) {
 }
 
 function logincallback(){
+    mooc_token = get_mooc_token()
     console.log("TOKEN: " + mooc_token);
-    console.log("STATUS: " + mooc_status);
 }
 
 function mooc_logout(callback) {
@@ -75,12 +73,43 @@ function mooc_logout(callback) {
 
 // Problems
 
+function set_feedback(problem_id, feedback, success = false) {
+    $(`#feedback_${problem_id}`).innerHTML = feedback;
+    color = success ? "green" : "red";
+    $(`#feedback_${problem_id}`).style.color = color;
+}
+
 function submit_problem(problem_id) {
-    
+    user_token = get_mooc_token();
+    if(user_token == null) {
+        set_feedback(problem_id, "Please <a href='/login'>log in</a> first")
+    }
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState != 4) return;
+
+        response = JSON.parse(this.responseText);
+        if (this.status == 200) {
+            set_feedback(problem_id, response["feedback"], response["points"] == 2);
+        } else {
+            set_feedback(problem_id, response["message"]);
+        }
+
+        callback();
+    }
+
+    xhttp.open("POST", `${backend_url}/submit`, true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send({
+        "id_problem": problem_id,
+        "mooc_token": user_token,
+        "code_encoded": btoa($(`#input_${problem_id}`).value),
+    });
 }
 
 function problem_status() {
-    console.log(`Getting problem status for user ${mooc_token}`);
+    console.log(`Getting problem status for user ${get_mooc_token()}`);
     // Return dummy data
     return ["c1_p1", "c1_p3"];
 }
