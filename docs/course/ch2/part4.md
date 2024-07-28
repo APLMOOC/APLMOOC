@@ -8,7 +8,7 @@
 
 ---
 
-The astute reader may have noticed that, although the new data is much more structured, the dates and times of the measurements have been completely forgotten.
+The astute reader may have noticed that, although the vector data is much more structured, the dates and times of the measurements have been completely forgotten.
 
 One solution is to use more vectors to organize this data, here using floating-point decimal encoded format. This format stores the dates as decimal numbers, where the integer part stores the year, month, and day, and the fractional part stores the hour, minute, and second, yyyymmdd.hhmmss.
 
@@ -28,13 +28,9 @@ and access dates and times using the same index;
 21.8
       TEMPERATURE_PAGE1_DATE[2]
 00010101.084700
-      60 ¯10 ⎕DT TEMPERATURE_PAGE1_DATE[2]
-┌────────────┐
-│1 1 8 47 0 0│
-└────────────┘
-      ⍝ The ⎕DT function allows many different date conversions
-      ⍝ The above is read as, Year 1, Day 1, Hour 8, Minute 47
 ```
+
+There is a built-in function to deal with dates and times, the ⎕DT command, which will be introduced in chapter 3.
 
 However, this lack of structure is exactly what introducing vectors was supposed to solve; two closely related pieces of information, the time of a measurement and the value of the measurement, are kept separate when they should logically be part of the same collection of data. Measurement data of this form are usually stored in tables, and it is only natural to try to store them in the same manner in a computer system.
 

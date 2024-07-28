@@ -7,7 +7,7 @@
 
 ---
 
-In the following section, you will play the role of an astronaut aboard the [International Space Station](https://archive.org/details/MeetMeAtTheStationiss). You are currently orbiting the Earth at an altitude of 413km at a speed of 28,013km/h. As part of the maintenance and repair team, you are tasked with guaranteeing the proper functioning of scientific instruments, environmental control and life support systems, power management and distribution systems, and radio communication modules to gather, log, process, and transmit information through the ISS, or back to mission control centers.
+In the following section, you will play the role of an astronaut aboard the [International Space Station](https://archive.org/details/MeetMeAtTheStationiss). You are currently orbiting the Earth at an altitude of 413km at a speed of 28,013km/h.
 
 In brief intervals of time spent waiting between tasks, you enjoy logging temperatures from sensors all around the ship into a small notebook. Unfortunately for you, your notebook’s completely filled, and none of your colleagues seem to share your enthusiasm for data collection. Unfortunately for mission control, you’ve decided to use critical APL machines on board to store your data.
 
@@ -32,9 +32,9 @@ This is not the most efficient, or readable, method to input data into your syst
 
 ---
 
-*Vectors* are one-dimensional ordered collections of elements, straight lines of elements. They are defined by writing values separated by one or more spaces in a line. 
+*Vectors* are lines of values. They are defined by writing values separated by one or more spaces. 
 	
-Since vectors are ordered, it is possible to talk about the element at a specific position, called an index. For example, the first (1) element, the second (2) element, and so on. In notation, elements are obtained by specifying their index in square brackets after the name of the vector.
+Vectors are also ordered, it is possible to talk about the element at a specific position, called an index. For example, the first (1) element, the second (2) element, and so on. In code, they can be accessed by adding square brackets to the vector with an index (or multiple indices) in between.
 
 ```apl
       FIBB ← 1 1 2 3 5 8 13 21 34 55 ⍝ This is a vector
