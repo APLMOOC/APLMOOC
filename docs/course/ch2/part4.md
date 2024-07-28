@@ -12,11 +12,13 @@ The astute reader may have noticed that, although the new data is much more stru
 
 One solution is to use more vectors to organize this data, here using floating-point decimal encoded format. This format stores the dates as decimal numbers, where the integer part stores the year, month, and day, and the fractional part stores the hour, minute, and second, yyyymmdd.hhmmss.
 
+For example, 00010101.074200 is year 0001, month 01, day 01, hour 05, minute 42, and second 00.
+
 ```apl
       TEMPERATURE_PAGE1 ← 21.4 21.8 22.0 21.5 21.3 22.3
-      TEMPERATURE_PAGE1_HOUR ← 7 8 10 12 14 16
+      TEMPERATURE_PAGE1_DATE ← 00010101.074200 00010101.084700 00010101.101000 00010101.120100 00010101.143600 00010101.165000
       TEMPERATURE_PAGE2 ← 22.8 21.5 22.1 22.0 21.9 22.4
-      TEMPERATURE_PAGE2_HOUR ← 18 19 21 7 8 9
+      TEMPERATURE_PAGE2_DATE ← 00010101.182300 00010101.193000 00010101.211200 00010102.071500 00010102.083000 00010102.094500
 ```
 
 and access dates and times using the same index;
@@ -24,8 +26,14 @@ and access dates and times using the same index;
 ```apl
       TEMPERATURE_PAGE1[2]
 21.8
-      TEMPERATURE_PAGE1_HOUR[2]
-8
+      TEMPERATURE_PAGE1_DATE[2]
+00010101.084700
+      60 ¯10 ⎕DT TEMPERATURE_PAGE1_DATE[2]
+┌────────────┐
+│1 1 8 47 0 0│
+└────────────┘
+      ⍝ The ⎕DT function allows many different date conversions
+      ⍝ The above is read as, Year 1, Day 1, Hour 8, Minute 47
 ```
 
 However, this lack of structure is exactly what introducing vectors was supposed to solve; two closely related pieces of information, the time of a measurement and the value of the measurement, are kept separate when they should logically be part of the same collection of data. Measurement data of this form are usually stored in tables, and it is only natural to try to store them in the same manner in a computer system.
@@ -33,31 +41,35 @@ However, this lack of structure is exactly what introducing vectors was supposed
 You decide to start over yet again, and decide to store data in a matrix instead
 
 ```apl
-      TEMPERATURE_PAGE1 ← 6 2 ⍴ 21.4 7 21.8 8 22.0 10 21.5 12 21.3 14 22.3 16
-      TEMPERATURE_PAGE2 ← 6 2 ⍴ 22.8 18 21.5 19 22.1 21 22.0 7 21.9 8 22.4 9
+      TEMPERATURE_PAGE1 ← 6 2 ⍴ 21.4 00010101.074200 21.8 00010101.084700 22.0 00010101.101000 21.5 00010101.120100 21.3 00010101.143600 22.3 00010101.165000
+      TEMPERATURE_PAGE2 ← 6 2 ⍴ 22.8 00010101.182300 21.5 00010101.193000 22.1 00010102.211200 22.0 00010103.071500 21.9 00010103.083000 22.4 00010103.094500
 ```
 
 ---
 
-Matrices are two-dimensional ordered collections of data, they are rectangles of data. They can be created by reshaping (`⍴`) a vector.
+Matrices are two-dimensional ordered collections of data, they are rectangles of data. They can be created by reshaping (⍴) a vector.
 
-!!! info "Typing the reshape operator `⍴`"
+!!! info "Function Valence"
 	
-	Prefix method: <kbd>PREFIX</kbd> <kbd>r</kbd>
+	The symbol ⍴ actually represents two different functions depending on the manner in which arguments are given. 
+	
+	When applied to a single argument, ⍴X, it acts as the *shape* operator; when two arguments are given one on either side, X⍴Y, it acts as the *reshape* operator. 
+	
+	The former function is the monadic function associated to the symbol ⍴, and the latter is the dyadic function associated with the symbol ⍴. 
 
-     Tab method: <kbd>r</kbd> <kbd>r</kbd> ++tab++
+	Many symbols in APL admit both monadic and dyadic functions, take a look at (link to apl vocab sheet) to see the different functions associated to different APL symbols.
 
 The reshape operator acts by returning an array whose entries are the entries of its right operand, and whose axes are specified by a vector of integers as its left operand, more concretely,
 
 ```apl
-      TEMPERATURE_DATA ← 21.4 7 21.8 8 22.0 10 21.5 12 21.3 14 22.3 16
+      TEMPERATURE_DATA ← 21.4 00010101.074200 21.8 00010101.084700 22.0 00010101.101000 21.5 00010101.120100 21.3 00010101.143600 22.3 00010101.165000
       6 2 ⍴ TEMPERATURE_DATA
-21.4  7
-21.8  8
-22   10
-21.5 12
-21.3 14
-22.3 16
+21.4 10101.0742
+21.8 10101.0847
+22   10101.101
+21.5 10101.1201
+21.3 10101.1436
+22.3 10101.165
       ⍝ The reshaped matrix has 6 rows and 2 columns
 ```
 
@@ -104,6 +116,19 @@ BCDEFGHIJKLMNOPQRSTUVWXYZ
       ⍝ If the right operand is too short to fill the array, the reshape (dyadic ⍴) operator repeats the right operand's entries
 ```
 
+The shape (monadic ⍴) operator acts on one array, its right operand, by returning a vector whose entries are the lengths of the axes.
+
+```apl
+      TEMPERATURE_DATA ← 21.4 00010101.074200 21.8 00010101.084700 22.0 00010101.101000 21.5 00010101.120100 21.3 00010101.143600 22.3 00010101.165000
+      TEMPERATURE_PAGE1 ← 6 2 ⍴ TEMPERATURE_DATA
+      ⍴TEMPERATURE_PAGE1
+6 2
+      ⍴100
+
+      ⍴⎕A
+26
+```
+
 Since elements in matrices are ordered along two axes, an element of a matrix can be specified by two position, the row and column. If only a row position (or column position) is specified, the whole row (or column) is returned.
 
 ```apl
@@ -124,40 +149,40 @@ TREND
      WORD_SQUARE[;5]
 TREND
 
-      TEMPERATURE_DATA1 ← 21.4 7 21.8 8 22.0 10 21.5 12 21.3 14 22.3 16
+      TEMPERATURE_DATA1 ← 21.4 00010101.074200 21.8 00010101.084700 22.0 00010101.101000 21.5 00010101.120100 21.3 00010101.143600 22.3 00010101.165000
       TEMPERATURE_PAGE1 ← 6 2 ⍴ TEMPERATURE_DATA1
       TEMPERATURE_PAGE1
-21.4  7
-21.8  8
-22   10
-21.5 12
-21.3 14
-22.3 16
+21.4 10101.0742
+21.8 10101.0847
+22   10101.101
+21.5 10101.1201
+21.3 10101.1436
+22.3 10101.165
       TEMPERATURE_PAGE1[1;1]
 21.4
       TEMPERATURE_PAGE1[1;2]
-7
+10101.0742
       TEMPERATURE_PAGE1[1;]
-21.4 7
+21.4 10101.0742
       TEMPERATURE_PAGE1[3;2]
-10
+10101.101
 
-     TEMPERATURE_PAGE2 ← 6 2 ⍴ 22.8 18 21.5 19 22.1 21 22.0 7 21.9 8 22.4 9
+     TEMPERATURE_PAGE2 ← 6 2 ⍴ 22.8 00010101.182300 21.5 00010101.193000 22.1 00010102.211200 22.0 00010103.071500 21.9 00010103.083000 22.4 00010103.094500
      TEMPERATURE_PAGE2
-22.8 18
-21.5 19 
-22.1 21
-22   7
-21.9 8
-22.4 9
+22.8 10101.1823
+21.5 10101.193 
+22.1 10102.2112
+22   10103.0715
+21.9 10103.083 
+22.4 10103.0945
      TEMPERATURE_PAGE2[1;2]
-18
+10101.1823
      TEMPERATURE_PAGE2[2;2]
-19
+10101.193
      TEMPERATURE_PAGE2[3;2]
-21
+10102.2112
      TEMPERATURE_PAGE2[;2]
-18 19 21 7 8 9
+0101.1823 10101.193 10102.2112 10103.0715 10103.083 10103.0945
 
 ```
 
@@ -180,53 +205,53 @@ KLM
 However, again, the data measurements are separated without reason, the problem that introducing matrices was supposed to solve. Going one dimension further, the data can be arranged in a three-dimensional ordered collection of data:
 
 ```apl
-     TEMPERATURE_ARRAY ← 2 6 2 ⍴ 21.4 7 21.8 8 22.0 10 21.5 12 21.3 14 22.3 16 22.8 18 21.5 19 22.1 21 22.0 7 21.9 8 22.4 9
+     TEMPERATURE_ARRAY ← 2 6 2 ⍴ 21.4 00010101.074200 21.8 00010101.084700 22.0 00010101.101000 21.5 00010101.120100 21.3 00010101.143600 22.3 00010101.165000 22.8 00010101.182300 21.5 00010101.193000 22.1 00010102.211200 22.0 00010103.071500 21.9 00010103.083000 22.4 00010103.094500
      TEMPERATURE_ARRAY
-21.4  7
-21.8  8
-22   10
-21.5 12
-21.3 14
-22.3 16
-       
-22.8 18
-21.5 19
-22.1 21
-22    7
-21.9  8
-22.4  9
+21.4 10101.0742
+21.8 10101.0847
+22   10101.101 
+21.5 10101.1201
+21.3 10101.1436
+22.3 10101.165 
+               
+22.8 10101.1823
+21.5 10101.193 
+22.1 10102.2112
+22   10103.0715
+21.9 10103.083 
+22.4 10103.0945
      ⍴TEMPERATURE_ARRAY 
 2 6 2
      ⍴⍴TEMPERATURE_ARRAY 
 3
      TEMPERATURE_ARRAY[1;5;2]
-14
+10101.1436
      TEMPERATURE_ARRAY[2;5;2]
-8
+10103.083
      TEMPERATURE_ARRAY[1;6;1]
 22.3
      TEMPERATURE_ARRAY[2;6;1]
 22.4
 
      TEMPERATURE_ARRAY[1;;]
-21.4  7
-21.8  8
-22   10
-21.5 12
-21.3 14
-22.3 16
+21.4 10101.0742
+21.8 10101.0847
+22   10101.101 
+21.5 10101.1201
+21.3 10101.1436
+22.3 10101.165
 
      TEMPERATURE_ARRAY[2;;]
-22.8 18
-21.5 19
-22.1 21
-22    7
-21.9  8
-22.4  9
+22.8 10101.1823
+21.5 10101.193 
+22.1 10102.2112
+22   10103.0715
+21.9 10103.083 
+22.4 10103.0945
 
      TEMPERATURE_ARRAY[;1;]
-21.4  7
-22.8 18
+21.4 10101.0742
+22.8 10101.1823
 
 
      TEMPERATURE_ARRAY[;;1]
@@ -245,34 +270,34 @@ Now with your temperature table safely stored in your APL workspace, you can onl
 
 ```apl
      TEMPERATURE_ARRAY
-21.4  7
-21.8  8
-22   10
-21.5 12
-21.3 14
-22.3 16
-       
-22.8 18
-21.5 19
-22.1 21
-22    7
-21.9  8
-22.4  9
+21.4 10101.0742
+21.8 10101.0847
+226  10101.101 
+21.5 10101.1201
+21.3 10101.1436
+22.3 10101.165 
+               
+22.8 10101.1823
+21.5 10101.193 
+22.1 10102.2112
+22   10103.0715
+21.9 10103.083 
+22.4 10103.0945
      TEMPERATURE_ARRAY[1;3;1] ← 22.6
      TEMPERATURE_ARRAY
-21.4  7
-21.8  8
-22.6 10
-21.5 12
-21.3 14
-22.3 16
-       
-22.8 18
-21.5 19
-22.1 21
-22    7
-21.9  8
-22.4  9
+21.4 10101.0742
+21.8 10101.0847
+22.6  10101.101 
+21.5 10101.1201
+21.3 10101.1436
+22.3 10101.165 
+               
+22.8 10101.1823
+21.5 10101.193 
+22.1 10102.2112
+22   10103.0715
+21.9 10103.083 
+22.4 10103.0945
 ```
 
 That was close!
