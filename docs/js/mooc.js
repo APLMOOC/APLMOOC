@@ -1,7 +1,7 @@
 var client_id = "50c4648f34bb075578c383ec62d6908fa49b6986d992c34a2a029be777e0337e";
 var client_secret = "d15d4d4ba2b80a91aaff7a5c94d30fe65c87b058991a327a5de4dfe71f7c5576";
 
-var backend_url = "https://backend.aplmooc.fi";
+var backend_url = "https://backend.aplmooc.fi:20001";
 
 $=s=>document.querySelector(s);
 $$=s=>document.querySelectorAll(s);
