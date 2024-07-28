@@ -43,7 +43,11 @@ You decide to start over yet again, and decide to store data in a matrix instead
 
 ---
 
-Matrices are two-dimensional ordered collections of data, they are rectangles of data. They can be created by reshaping (⍴) a vector.
+Matrices are rectangles of data. They can be created by reshaping (⍴) a vector.
+
+!!! info "Typing the reshape operator `⍴`"
+     Prefix method: <kbd>PREFIX</kbd> <kbd>r</kbd>
+     Tab method: <kbd>r</kbd> <kbd>r</kbd> ++tab++
 
 !!! info "Function Valence"
 	
@@ -52,8 +56,6 @@ Matrices are two-dimensional ordered collections of data, they are rectangles of
 	When applied to a single argument, ⍴X, it acts as the *shape* operator; when two arguments are given one on either side, X⍴Y, it acts as the *reshape* operator. 
 	
 	The former function is the monadic function associated to the symbol ⍴, and the latter is the dyadic function associated with the symbol ⍴. 
-
-	Many symbols in APL admit both monadic and dyadic functions, take a look at (link to apl vocab sheet) to see the different functions associated to different APL symbols.
 
 The reshape operator acts by returning an array whose entries are the entries of its right operand, and whose axes are specified by a vector of integers as its left operand, more concretely,
 
@@ -79,9 +81,10 @@ turns the vector TEMPERATURE_DATA into a matrix with axes of length six and two,
 1 2 3 2 1
 1 2 2 2 1
 1 1 1 1 1
-
-      ALPHABET ← ⎕A ⍝ The ⎕A function return the string 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'. 
-      ⍝ 'Strings' in APL are vectors of characters, defined using single quotes.
+```
+*Strings* in APL are vectors of characters, defined using single quotes. The ⎕A function return the string 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', more on this in Chapter 3.
+```
+      ALPHABET ← ⎕A 
       26 25 ⍴ ALPHABET 
 ABCDEFGHIJKLMNOPQRSTUVWXY
 ZABCDEFGHIJKLMNOPQRSTUVWX
@@ -109,17 +112,18 @@ EFGHIJKLMNOPQRSTUVWXYZABC
 DEFGHIJKLMNOPQRSTUVWXYZAB
 CDEFGHIJKLMNOPQRSTUVWXYZA
 BCDEFGHIJKLMNOPQRSTUVWXYZ
-      ⍝ If the right operand is too short to fill the array, the reshape (dyadic ⍴) operator repeats the right operand's entries
 ```
 
-The shape (monadic ⍴) operator acts on one array, its right operand, by returning a vector whose entries are the lengths of the axes.
+If the right operand is too short to fill the array, the reshape (dyadic ⍴) function repeats the right operand's entries. Here, the reshape ⍴ function repeated the alphabet.
+
+The shape (monadic ⍴) function acts on one array, its right operand, by returning a vector whose entries are the lengths of the axes.
 
 ```apl
       TEMPERATURE_DATA ← 21.4 00010101.074200 21.8 00010101.084700 22.0 00010101.101000 21.5 00010101.120100 21.3 00010101.143600 22.3 00010101.165000
       TEMPERATURE_PAGE1 ← 6 2 ⍴ TEMPERATURE_DATA
       ⍴TEMPERATURE_PAGE1
 6 2
-      ⍴100
+      ⍴100 ⍝ The shape of a scalar is the empty list
 
       ⍴⎕A
 26
@@ -128,6 +132,21 @@ The shape (monadic ⍴) operator acts on one array, its right operand, by return
 Since elements in matrices are ordered along two axes, an element of a matrix can be specified by two position, the row and column. If only a row position (or column position) is specified, the whole row (or column) is returned.
 
 ```apl
+
+     TABLE ← 5 5 ⍴ 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+     TABLE
+ 1  2  3  4  5
+ 6  7  8  9 10
+11 12 13 14 15
+16 17 18 19 20
+21 22 23 24 25
+
+     TABLE[1;1]
+1
+     TABLE[1;]
+1 2 3 4 5
+     TABLE[;1]
+1 6 11 16 21
 
      WORD_SQUARE ← 5 5 ⍴ "HEARTEMBERABUSERESINTREND"
      WORD_SQUARE
@@ -216,18 +235,12 @@ However, again, the data measurements are separated without reason, the problem 
 22   10103.0715
 21.9 10103.083 
 22.4 10103.0945
+
      ⍴TEMPERATURE_ARRAY 
 2 6 2
+
      ⍴⍴TEMPERATURE_ARRAY 
 3
-     TEMPERATURE_ARRAY[1;5;2]
-10101.1436
-     TEMPERATURE_ARRAY[2;5;2]
-10103.083
-     TEMPERATURE_ARRAY[1;6;1]
-22.3
-     TEMPERATURE_ARRAY[2;6;1]
-22.4
 
      TEMPERATURE_ARRAY[1;;]
 21.4 10101.0742
@@ -244,11 +257,6 @@ However, again, the data measurements are separated without reason, the problem 
 22   10103.0715
 21.9 10103.083 
 22.4 10103.0945
-
-     TEMPERATURE_ARRAY[;1;]
-21.4 10101.0742
-22.8 10101.1823
-
 
      TEMPERATURE_ARRAY[;;1]
 21.4 21.8 22   21.5 21.3 22.3
@@ -283,7 +291,7 @@ Now with your temperature table safely stored in your APL workspace, you can onl
      TEMPERATURE_ARRAY
 21.4 10101.0742
 21.8 10101.0847
-22.6  10101.101 
+22.6 10101.101 
 21.5 10101.1201
 21.3 10101.1436
 22.3 10101.165 
