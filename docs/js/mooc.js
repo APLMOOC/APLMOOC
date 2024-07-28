@@ -20,11 +20,11 @@ auto_login();
 // Authentication
 
 function get_mooc_token() {
-    return sessionStorage.getItem("mooc_token");
+    return localStorage.getItem("mooc_token");
 }
 
 function set_mooc_token(token) {
-    sessionStorage.setItem("mooc_token", token);
+    localStorage.setItem("mooc_token", token);
 }
 
 function login() {
@@ -67,7 +67,7 @@ function logincallback(){
 }
 
 function mooc_logout(callback) {
-    sessionStorage.removeItem("mooc_token");
+    localStorage.removeItem("mooc_token");
     callback();
 }
 
