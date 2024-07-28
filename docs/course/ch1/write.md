@@ -15,31 +15,38 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 ---
 
 !!! write-problem "Write problem 1"
-    Calculate the area of a room which is 13.7 long and 206.55 wide.
+    Calculate the area of a room which is 130.7 long and 206.55 wide.
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <input class="probleminput" type="text" id="c1_p1" placeholder="your solution here">
+        <span class="problemfilltext">130.7</span>
+        <input class="problemfillinput" type="text" id="c1_p1" placeholder="fill in the blank" oninput="this.style.flexGrow=0;this.style.width = ((this.value.length+1) * 14) + 'px';">
+        <span class="problemfilltext">206.55</span>
         <button class="problembutton" onclick="alert('c1_p1')">Submit</button>
     </div>
 
 ---
 
 !!! write-problem "Write problem 2"
-    A grandpa decreases in height by 2.5412cm every year.
-    If he is 150.0000cm tall now, how tall will he be in 15 years?
+    A grandpa decreases in height by 2.5cm every year.
+    If he is 150cm tall now, how tall will he be in 15 years?
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <input class="probleminput" type="text" id="c1_p2" placeholder="your solution here">
+        <span class="problemfilltext">150</span>
+        <input class="problemfillinput" type="text" id="c1_p2_b1" placeholder="fill in the blank" oninput="this.style.flexGrow=0;this.style.width = ((this.value.length+1) * 14) + 'px';">
+        <span class="problemfilltext">2.5</span>
+        <input class="problemfillinput" type="text" id="c1_p2_b2" placeholder="fill in the blank" oninput="this.style.flexGrow=0;this.style.width = ((this.value.length+1) * 14) + 'px';">
+        <span class="problemfilltext">15</span>
         <button class="problembutton" onclick="alert('c1_p2')">Submit</button>
     </div>
-
 ---
 
 !!! write-problem "Write problem 3"
-    If 3 liters of embalming fluid cost you 300.12€, what is the price per liter?
+    If 12 chairs cost you 200000, what is the price per chair?
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <input class="probleminput" type="text" id="c1_p3" placeholder="your solution here">
+        <span class="problemfilltext">12</span>
+        <input class="problemfillinput" type="text" id="c1_p3_b1" placeholder="fill in the blank" oninput="this.style.flexGrow=0;this.style.width = ((this.value.length+1) * 14) + 'px';">
+        <span class="problemfilltext">200000</span>
         <button class="problembutton" onclick="alert('c1_p3')">Submit</button>
     </div>
 
@@ -50,7 +57,9 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     What will be your balance if you take just another quick loan of 100€?
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <input class="probleminput" type="text" id="c1_p4" placeholder="your solution here">
+        <span class="problemfilltext">¯420</span>
+        <input class="problemfillinput" type="text" id="c1_p4_b2" placeholder="fill in the blank" oninput="this.style.flexGrow=0;this.style.width = ((this.value.length+1) * 14) + 'px';">
+        <span class="problemfilltext">100</span>
         <button class="problembutton" onclick="alert('c1_p4')">Submit</button>
     </div>
 
@@ -77,11 +86,10 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 ---
 
 !!! write-problem "Write problem 7"
-    The following expression returns the number 13.
+    Rewrite the following expression with as few parentheses as possible.
     ```apl
-    (((5*2)+(12*2))*.5)
+    (((x*2)+(y*2))*.5)
     ```
-    Rewrite the expression with as few parentheses as possible to still return the number 13.
     <div class="problem">
         <span class="problemspan">⎕←</span>
         <input class="probleminput" type="text" id="c1_p7" placeholder="your solution here">
@@ -94,19 +102,30 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     Compute the mean of the numbers 1, 57, 237, ¯5, 42.
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <input class="probleminput" type="text" id="c1_p8" placeholder="your solution here">
+        <input class="problemfillinput" type="text" id="c1_p8_b1" placeholder="fill in the blank" oninput="this.style.flexGrow=0;this.style.width = ((this.value.length+1) * 14) + 'px';">
+        <span class="problemfilltext">1</span>
+        <input class="problemfillinput" type="text" id="c1_p8_b2" placeholder="fill in the blank" oninput="this.style.flexGrow=0;this.style.width = ((this.value.length+1) * 14) + 'px';">
+        <span class="problemfilltext">57</span>
+        <input class="problemfillinput" type="text" id="c1_p8_b3" placeholder="fill in the blank" oninput="this.style.flexGrow=0;this.style.width = ((this.value.length+1) * 14) + 'px';">
+        <span class="problemfilltext">237</span>
+        <input class="problemfillinput" type="text" id="c1_p8_b4" placeholder="fill in the blank" oninput="this.style.flexGrow=0;this.style.width = ((this.value.length+1) * 14) + 'px';">
+        <span class="problemfilltext">¯5</span>
+        <input class="problemfillinput" type="text" id="c1_p8_b5" placeholder="fill in the blank" oninput="this.style.flexGrow=0;this.style.width = ((this.value.length+1) * 14) + 'px';">
+        <span class="problemfilltext">42</span>
+        <input class="problemfillinput" type="text" id="c1_p8_b6" placeholder="fill in the blank" oninput="this.style.flexGrow=0;this.style.width = ((this.value.length+1) * 14) + 'px';">
         <button class="problembutton" onclick="alert('c1_p8')">Submit</button>
     </div>
 
 ---
 
 !!! write-problem "Write problem 9"
-    Suppose your tax rate is 7.5%.
-    If you earned 25000€ this year, and your tax return (to be deducted from this year's taxes) is 175€,
-    how much money will you owe the government this year?
+    You've got a 5 megawatt laser due in 15 days. If you've already got a 2.5 megawatt laser, how many megawatts a day do you have to add?
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <input class="probleminput" type="text" id="c1_p9" placeholder="your solution here">
+        <input class="problemfillinput" type="text" id="c1_p9_b1" placeholder="fill in the blank" oninput="this.style.flexGrow=0;this.style.width = ((this.value.length+1) * 14) + 'px';">
+        <span class="problemfilltext">5</span>
+        <input class="problemfillinput" type="text" id="c1_p9_b2" placeholder="fill in the blank" oninput="this.style.flexGrow=0;this.style.width = ((this.value.length+1) * 14) + 'px';">
+        <span class="problemfilltext">15</span>
         <button class="problembutton" onclick="alert('c1_p9')">Submit</button>
     </div>
 
@@ -134,9 +153,9 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 ---
 
 !!! write-problem "Write problem 12"
-    Rewrite the following line of code to use as few parentheses as possible
+    Rewrite the following line of code using less than 7 parentheses.
     ```apl
-    ((((10+3.5)×(6+5.555))-(((2+7)×¯11)×8.5))÷¯20)⍝((()())))()()((()()))()()()()))())))()(((
+    ((((x+3.5)×(x+6))-(((2+y)×(z×8.5))÷¯20)⍝((()())))()()((()()))()()()()))())))()(((
     ```
     <div class="problem">
         <span class="problemspan">⎕←</span>
