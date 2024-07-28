@@ -82,7 +82,7 @@ function set_feedback(problem_id, feedback, success = false) {
 function submit_problem(problem_id) {
     user_token = get_mooc_token();
     if(user_token == null) {
-        set_feedback(problem_id, "Please <a href='/login'>log in</a> first")
+        set_feedback(problem_id, "Please <a href='/account'>log in</a> first")
     }
 
     var xhttp = new XMLHttpRequest();

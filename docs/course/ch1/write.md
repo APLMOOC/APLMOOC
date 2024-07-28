@@ -3,7 +3,7 @@
 Submit APL code for the following exercises.
 Your submissions are graded using TMC.
 
-Make sure to [log in](../../login.md) to be able to submit your work!
+Make sure to [log in](../../account.md) to be able to submit your work!
 
 Remember, you can test out ideas and develop you solution at [TryAPL](https://tryapl.org) before submitting it here.
 

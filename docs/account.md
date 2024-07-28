@@ -1,4 +1,4 @@
-# Log in
+# Account
 
 Sign in with your mooc.fi credentials to be able to submit write problems to TMC and receive problem points.
 
