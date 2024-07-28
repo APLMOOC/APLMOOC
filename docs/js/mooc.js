@@ -35,6 +35,11 @@ function login() {
     $("#loginResponse").innerHTML = "Logging in...";
 }
 
+function logout(callback) {
+    localStorage.removeItem("mooc_token");
+    callback();
+}
+
 function mooc_login(username, password, callback) {
     var xhttp = new XMLHttpRequest();
 
@@ -64,11 +69,6 @@ function mooc_login(username, password, callback) {
 function logincallback(){
     mooc_token = get_mooc_token()
     console.log("TOKEN: " + mooc_token);
-}
-
-function mooc_logout(callback) {
-    localStorage.removeItem("mooc_token");
-    callback();
 }
 
 // Problems
