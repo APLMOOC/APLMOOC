@@ -70,8 +70,7 @@ nav:
       - 2.2 - Vectors: course/ch2/part2.md
       - 2.3 - Arithmetic operations on vectors: course/ch2/part3.md
       - 2.4 - Higher dimensional space: course/ch2/part4.md
-      - 2.5 - Shape: course/ch2/part5.md
-      - 2.6 - Nested arrays: course/ch2/part6.md
+      - 2.5 - Nested arrays: course/ch2/part5.md
       - 2.S - Summary: course/ch2/summary.md
       - 2.R - Read exercises: course/ch2/read.md
       - 2.W - Write exercises: course/ch2/write.md
