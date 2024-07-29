@@ -7,34 +7,34 @@
 
 ---
 
-In the following section, you will play the role of an astronaut aboard the [International Space Station](https://archive.org/details/MeetMeAtTheStationiss). You are currently orbiting the Earth at an altitude of 413km at a speed of 28,013km/h. As part of the maintenance and repair team, you are tasked with guaranteeing the proper functioning of scientific instruments, environmental control and life support systems, power management and distribution systems, and radio communication modules to gather, log, process, and transmit information through the ISS, or back to mission control centers.
+In the following section, you will play the role of an astronaut aboard the [International Space Station](https://archive.org/details/MeetMeAtTheStationiss). You are currently orbiting the Earth at an altitude of 413km at a speed of 28,013km/h.
 
 In brief intervals of time spent waiting between tasks, you enjoy logging temperatures from sensors all around the ship into a small notebook. Unfortunately for you, your notebook’s completely filled, and none of your colleagues seem to share your enthusiasm for data collection. Unfortunately for mission control, you’ve decided to use critical APL machines on board to store your data.
 
 Typing as fast as possible without the aid of gravity, you manage to write some data without being caught.
 
 ```apl
-       TEMPERATURE_PAGE1_HOUR7 ← 21.4
-       TEMPERATURE_PAGE1_HOUR8 ← 21.8
-       TEMPERATURE_PAGE1_HOUR10 ← 22.0
-       TEMPERATURE_PAGE1_HOUR12 ← 21.5
-       TEMPERATURE_PAGE1_HOUR14 ← 21.3
-       TEMPERATURE_PAGE1_HOUR16 ← 22.3
-       TEMPERATURE_PAGE2_HOUR18 ← 22.8
-       TEMPERATURE_PAGE2_HOUR19 ← 21.5
-       TEMPERATURE_PAGE2_HOUR21 ← 22.1
-       TEMPERATURE_PAGE2_HOUR7 ← 22.0
-       TEMPERATURE_PAGE2_HOUR8 ← 21.9
-       TEMPERATURE_PAGE2_HOUR9 ← 22.4
+       TEMPERATURE_PAGE1_YEAR1_DAY2_HOUR7_MINUTE42 ← 21.4
+       TEMPERATURE_PAGE1_YEAR1_DAY2_HOUR8_MINUTE47 ← 21.8
+       TEMPERATURE_PAGE1_YEAR1_DAY2_HOUR10_MINUTE10 ← 22.0
+       TEMPERATURE_PAGE1_YEAR1_DAY2_HOUR12_MINUTE01 ← 21.5
+       TEMPERATURE_PAGE1_YEAR1_DAY2_HOUR14_MINUTE36 ← 21.3
+       TEMPERATURE_PAGE1_YEAR1_DAY2_HOUR16_MINUTE50 ← 22.3
+       TEMPERATURE_PAGE2_YEAR1_DAY2_HOUR18_MINUTE23 ← 22.8
+       TEMPERATURE_PAGE2_YEAR1_DAY2_HOUR19_MINUTE30 ← 21.5
+       TEMPERATURE_PAGE2_YEAR1_DAY2_HOUR21_MINUTE12 ← 22.1
+       TEMPERATURE_PAGE2_YEAR1_DAY3_HOUR7_MINUTE15 ← 22.0
+       TEMPERATURE_PAGE2_YEAR1_DAY3_HOUR8_MINUTE30 ← 21.9
+       TEMPERATURE_PAGE2_YEAR1_DAY3_HOUR9_MINUTE45 ← 22.4
 ```
 
 This is not the most efficient, or readable, method to input data into your system, and while flicking through your APL notes now crowded with temperatures, you refresh your workspace and instead decide to store your data using vectors.
 
 ---
 
-*Vectors* are one-dimensional ordered collections of elements, straight lines of elements. They are defined by writing values separated by one or more spaces in a line. 
+*Vectors* are lines of values. They are defined by writing values separated by one or more spaces. 
 	
-Since vectors are ordered, it is possible to talk about the element at a specific position, called an index. For example, the first (1) element, the second (2) element, and so on. In notation, elements are obtained by specifying their index in square brackets after the name of the vector.
+Vectors are also ordered, it is possible to talk about the element at a specific position, called an index. For example, the first (1) element, the second (2) element, and so on. In code, they can be accessed by adding square brackets to the vector with an index (or multiple indices) in between.
 
 ```apl
       FIBB ← 1 1 2 3 5 8 13 21 34 55 ⍝ This is a vector
