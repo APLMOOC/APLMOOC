@@ -137,3 +137,10 @@ function problem_status_update() {
         }
     }
 }
+
+// Styling
+
+function fillinput_resize(field) {
+    field.style.flexGrow=0;
+    field.style.width = ((field.value.length+1) * 14) + 'px';
+}
