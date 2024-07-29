@@ -44,6 +44,14 @@ div.problem {
     width: 95%;
 }
 
+div.problem span.problemfilltext {
+    font-family: "APL385";
+    font-size: 1.5em;
+    border-top: solid 1px #777;
+    border-bottom: solid 1px #777;
+    text-indent: 0.2em 0 0 0.2em;
+}
+
 div.problem span.problemspan {
     background: #ccc;
     height: 100%;
@@ -54,8 +62,21 @@ div.problem span.problemspan {
     border-radius: 0.5em 0 0 0.5em;
 }
 
+div.problem input.problemfillinput {
+    flex-grow: 1;
+    width: 0%;
+    font-family: "APL385";
+    font-size: 1.5em;
+    border-top: solid 1px #777;
+    border-bottom: solid 1px #777;
+    border-left: solid 1px #777;
+    border-right: solid 1px #777;
+    text-indent: 0.2em;
+}
+
 div.problem input.probleminput {
     flex-grow: 1;
+    width: 0%;
     margin-right: -0.1em;
     font-family: "APL385";
     font-size: 1.5em;
