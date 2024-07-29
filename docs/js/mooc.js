@@ -1,7 +1,7 @@
 var client_id = "50c4648f34bb075578c383ec62d6908fa49b6986d992c34a2a029be777e0337e";
 var client_secret = "d15d4d4ba2b80a91aaff7a5c94d30fe65c87b058991a327a5de4dfe71f7c5576";
-var mooc_status = 0;
-var mooc_token;
+
+var backend_url = "https://backend.aplmooc.fi";
 
 $=s=>document.querySelector(s);
 $$=s=>document.querySelectorAll(s);
@@ -9,16 +9,23 @@ $$=s=>document.querySelectorAll(s);
 
 // On page load
 
-if("mooc_token" in sessionStorage) {
-    mooc_token = sessionStorage.getItem("mooc_token");
+function auto_login() {
+    if($$("div.write-problem").length == 0) return;
 
-    if($$("div.write-problem").length > 0) {
-        problem_status_update();
-    }
+    problem_status_update();
 }
 
+auto_login();
 
 // Authentication
+
+function get_mooc_token() {
+    return localStorage.getItem("mooc_token");
+}
+
+function set_mooc_token(token) {
+    localStorage.setItem("mooc_token", token);
+}
 
 function login() {
     let user = $("#user").value;
@@ -28,23 +35,28 @@ function login() {
     $("#loginResponse").innerHTML = "Logging in...";
 }
 
-function mooc_login(username,password,callback) {
+function logout(callback) {
+    localStorage.removeItem("mooc_token");
+    callback();
+}
+
+function mooc_login(username, password, callback) {
     var xhttp = new XMLHttpRequest();
-    var client_id = "50c4648f34bb075578c383ec62d6908fa49b6986d992c34a2a029be777e0337e";
-    var client_secret = "d15d4d4ba2b80a91aaff7a5c94d30fe65c87b058991a327a5de4dfe71f7c5576";
+
     xhttp.onreadystatechange = function() {
-        if (this.readyState == 4) {
-            mooc_status = this.status == 200 ? 1 : 2;
-            if (mooc_status == 1) {
-                mooc_token = JSON.parse(this.responseText)["access_token"];
-                sessionStorage.setItem("mooc_token",mooc_token);
-                $("#loginResponse").innerHTML = "Success";
-            } else {
-                $("#loginResponse").innerHTML = "Login failed";
-            }
-            callback();
+        if (this.readyState != 4) return;
+
+        if (this.status == 200) {
+            mooc_token = JSON.parse(this.responseText)["access_token"];
+            set_mooc_token(mooc_token);
+            $("#loginResponse").innerHTML = "Success";
+        } else {
+            $("#loginResponse").innerHTML = "Login failed";
         }
+
+        callback();
     }
+
     xhttp.open("POST","https://tmc.mooc.fi/oauth/token",true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("client_id="+client_id+"&"+
@@ -54,18 +66,60 @@ function mooc_login(username,password,callback) {
                "grant_type=password");
 }
 
-function mooc_logout(callback) {
-    mooc_status = 0;
-    mooc_token = "";
-    sessionStorage.clear();
-    callback();
+function logincallback(){
+    mooc_token = get_mooc_token()
+    console.log("TOKEN: " + mooc_token);
 }
 
+// Problems
 
-// Problem status
+function set_feedback(problem_id, feedback, success = false) {
+    $(`#feedback_${problem_id}`).innerHTML = feedback;
+    color = success ? "green" : "red";
+    $(`#feedback_${problem_id}`).style.color = color;
+}
+
+function submit_problem(problem_id, parts=0) {
+    let submission = "";
+
+    if(parts > 0){
+        for(let i=1; i<=parts; i++){
+            submission += $(`#input_${problem_id}_b${i}`).value;
+        }
+    } else {
+        submission = $(`#input_${problem_id}`).value;
+    }
+
+    user_token = get_mooc_token();
+    if(user_token == null) {
+        set_feedback(problem_id, "Please <a href='/account'>log in</a> first")
+    }
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState != 4) return;
+
+        response = JSON.parse(this.responseText);
+        if (this.status == 200) {
+            set_feedback(problem_id, response["feedback"], response["points"] == 2);
+        } else {
+            set_feedback(problem_id, response["message"]);
+        }
+
+        callback();
+    }
+
+    xhttp.open("POST", `${backend_url}/submit`, true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send({
+        "id_problem": problem_id,
+        "mooc_token": user_token,
+        "code_encoded": btoa(submission),
+    });
+}
 
 function problem_status() {
-    console.log(`Getting problem status for user ${mooc_token}`);
+    console.log(`Getting problem status for user ${get_mooc_token()}`);
     // Return dummy data
     return ["c1_p1", "c1_p3"];
 }
@@ -84,62 +138,9 @@ function problem_status_update() {
     }
 }
 
+// Styling
 
-// To be implemented (template)
-
-/*
-function quizzes_status(callback) {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            callback(this.responseText.split(" "));
-        }
-    }
-    xhttp.open("GET","api/sql_status.php?token="+mooc_token,true);
-    xhttp.send();
+function fillinput_resize(field) {
+    field.style.flexGrow=0;
+    field.style.width = ((field.value.length+1) * 14) + 'px';
 }
-
-function quizzes_send(task,sql,result,callback) {
-    result = result ? 1 : 0;
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            callback();
-        }
-    }
-    xhttp.open("POST","api/sql_send.php",true);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("token="+mooc_token+"&"+
-                "task="+task+"&"+
-                "result="+result+"&"+
-                "data="+encodeURIComponent(sql));
-}
-
-function quizzes_answer(task,callback) {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            callback(this.responseText);
-        }
-    }
-    xhttp.open("GET","api/sql_answer.php?token="+mooc_token+"&task="+task,true);
-    xhttp.send();
-}
-
-function quizzes_model(task,callback) {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            callback(this.responseText);
-        }
-    }
-    xhttp.open("GET","api/sql_model.php?token="+mooc_token+"&task="+task,true);
-    xhttp.send();
-}
-*/
-
-function logincallback(){
-    console.log("TOKEN: " + mooc_token);
-    console.log("STATUS: " + mooc_status);
-}
-

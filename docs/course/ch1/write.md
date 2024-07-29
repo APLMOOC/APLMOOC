@@ -3,7 +3,7 @@
 Submit APL code for the following exercises.
 Your submissions are graded using TMC.
 
-Make sure to [log in](../../login.md) to be able to submit your work!
+Make sure to [log in](../../account.md) to be able to submit your work!
 
 Remember, you can test out ideas and develop you solution at [TryAPL](https://tryapl.org) before submitting it here.
 
@@ -19,10 +19,11 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     <div class="problem">
         <span class="problemspan">⎕←</span>
         <span class="problemfilltext">130.7</span>
-        <input class="problemfillinput" type="text" id="c1_p1" placeholder="fill in the blank" oninput="this.style.flexGrow=0;this.style.width = ((this.value.length+1) * 14) + 'px';">
+        <input class="problemfillinput" type="text" id="input_ch1_p1" placeholder="fill in the blank" oninput="fillinput_resize(this)">
         <span class="problemfilltext">206.55</span>
-        <button class="problembutton" onclick="alert('c1_p1')">Submit</button>
+        <button class="problembutton" onclick="submit_problem('ch1_p1')">Submit</button>
     </div>
+    <p id="feedback_ch1_p1" style="color: red"></p>
 
 ---
 
@@ -32,12 +33,14 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     <div class="problem">
         <span class="problemspan">⎕←</span>
         <span class="problemfilltext">150</span>
-        <input class="problemfillinput" type="text" id="c1_p2_b1" placeholder="fill in the blank" oninput="this.style.flexGrow=0;this.style.width = ((this.value.length+1) * 14) + 'px';">
+        <input class="problemfillinput" type="text" id="input_ch1_p2_b1" placeholder="fill in the blank" oninput="fillinput_resize(this)">
         <span class="problemfilltext">2.5</span>
-        <input class="problemfillinput" type="text" id="c1_p2_b2" placeholder="fill in the blank" oninput="this.style.flexGrow=0;this.style.width = ((this.value.length+1) * 14) + 'px';">
+        <input class="problemfillinput" type="text" id="input_ch1_p2_b2" placeholder="fill in the blank" oninput="fillinput_resize(this)">
         <span class="problemfilltext">15</span>
-        <button class="problembutton" onclick="alert('c1_p2')">Submit</button>
+        <button class="problembutton" onclick="submit_problem('ch1_p2', 2)">Submit</button>
     </div>
+    <p id="feedback_ch1_p2" style="color: red"></p>
+
 ---
 
 !!! write-problem "Write problem 3"
@@ -45,10 +48,11 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     <div class="problem">
         <span class="problemspan">⎕←</span>
         <span class="problemfilltext">12</span>
-        <input class="problemfillinput" type="text" id="c1_p3_b1" placeholder="fill in the blank" oninput="this.style.flexGrow=0;this.style.width = ((this.value.length+1) * 14) + 'px';">
+        <input class="problemfillinput" type="text" id="input_ch1_p3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
         <span class="problemfilltext">200000</span>
-        <button class="problembutton" onclick="alert('c1_p3')">Submit</button>
+        <button class="problembutton" onclick="submit_problem('ch1_p3')">Submit</button>
     </div>
+    <p id="feedback_ch1_p3" style="color: red"></p>
 
 ---
 
@@ -58,10 +62,11 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     <div class="problem">
         <span class="problemspan">⎕←</span>
         <span class="problemfilltext">¯420</span>
-        <input class="problemfillinput" type="text" id="c1_p4_b2" placeholder="fill in the blank" oninput="this.style.flexGrow=0;this.style.width = ((this.value.length+1) * 14) + 'px';">
+        <input class="problemfillinput" type="text" id="input_ch1_p4" placeholder="fill in the blank" oninput="fillinput_resize(this)">
         <span class="problemfilltext">100</span>
-        <button class="problembutton" onclick="alert('c1_p4')">Submit</button>
+        <button class="problembutton" onclick="submit_problem('ch1_p4')">Submit</button>
     </div>
+    <p id="feedback_ch1_p4" style="color: red"></p>
 
 ---
 
@@ -69,9 +74,10 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     Cause a `SYNTAX ERROR` using as few symbols as possible.
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <input class="probleminput" type="text" id="c1_p5" placeholder="your solution here">
-        <button class="problembutton" onclick="alert('c1_p5')">Submit</button>
+        <input class="probleminput" type="text" id="input_ch1_p5" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch1_p5')">Submit</button>
     </div>
+    <p id="feedback_ch1_p5" style="color: red"></p>
 
 ---
 
@@ -79,9 +85,10 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     Cause a `DOMAIN ERROR`.
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <input class="probleminput" type="text" id="c1_p6" placeholder="your solution here">
-        <button class="problembutton" onclick="alert('c1_p6')">Submit</button>
+        <input class="probleminput" type="text" id="input_ch1_p6" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch1_p6')">Submit</button>
     </div>
+    <p id="feedback_ch1_p6" style="color: red"></p>
 
 ---
 
@@ -92,9 +99,10 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     ```
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <input class="probleminput" type="text" id="c1_p7" placeholder="your solution here">
-        <button class="problembutton" onclick="alert('c1_p7')">Submit</button>
+        <input class="probleminput" type="text" id="input_ch1_p7" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch1_p7')">Submit</button>
     </div>
+    <p id="feedback_ch1_p7" style="color: red"></p>
 
 ---
 
@@ -102,19 +110,20 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     Compute the mean of the numbers 1, 57, 237, ¯5, 42.
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <input class="problemfillinput" type="text" id="c1_p8_b1" placeholder="fill in the blank" oninput="this.style.flexGrow=0;this.style.width = ((this.value.length+1) * 14) + 'px';">
+        <input class="problemfillinput" type="text" id="input_ch1_p8_b1" placeholder="fill in the blank" oninput="fillinput_resize(this)">
         <span class="problemfilltext">1</span>
-        <input class="problemfillinput" type="text" id="c1_p8_b2" placeholder="fill in the blank" oninput="this.style.flexGrow=0;this.style.width = ((this.value.length+1) * 14) + 'px';">
+        <input class="problemfillinput" type="text" id="input_ch1_p8_b2" placeholder="fill in the blank" oninput="fillinput_resize(this)">
         <span class="problemfilltext">57</span>
-        <input class="problemfillinput" type="text" id="c1_p8_b3" placeholder="fill in the blank" oninput="this.style.flexGrow=0;this.style.width = ((this.value.length+1) * 14) + 'px';">
+        <input class="problemfillinput" type="text" id="input_ch1_p8_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
         <span class="problemfilltext">237</span>
-        <input class="problemfillinput" type="text" id="c1_p8_b4" placeholder="fill in the blank" oninput="this.style.flexGrow=0;this.style.width = ((this.value.length+1) * 14) + 'px';">
+        <input class="problemfillinput" type="text" id="input_ch1_p8_b4" placeholder="fill in the blank" oninput="fillinput_resize(this)">
         <span class="problemfilltext">¯5</span>
-        <input class="problemfillinput" type="text" id="c1_p8_b5" placeholder="fill in the blank" oninput="this.style.flexGrow=0;this.style.width = ((this.value.length+1) * 14) + 'px';">
+        <input class="problemfillinput" type="text" id="input_ch1_p8_b5" placeholder="fill in the blank" oninput="fillinput_resize(this)">
         <span class="problemfilltext">42</span>
-        <input class="problemfillinput" type="text" id="c1_p8_b6" placeholder="fill in the blank" oninput="this.style.flexGrow=0;this.style.width = ((this.value.length+1) * 14) + 'px';">
-        <button class="problembutton" onclick="alert('c1_p8')">Submit</button>
+        <input class="problemfillinput" type="text" id="input_ch1_p8_b6" placeholder="fill in the blank" oninput="fillinput_resize(this)">
+        <button class="problembutton" onclick="submit_problem('ch1_p8', 6)">Submit</button>
     </div>
+    <p id="feedback_ch1_p8" style="color: red"></p>
 
 ---
 
@@ -122,12 +131,13 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     You've got a 5 megawatt laser due in 15 days. If you've already got a 2.5 megawatt laser, how many megawatts a day do you have to add?
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <input class="problemfillinput" type="text" id="c1_p9_b1" placeholder="fill in the blank" oninput="this.style.flexGrow=0;this.style.width = ((this.value.length+1) * 14) + 'px';">
+        <input class="problemfillinput" type="text" id="input_ch1_p9_b1" placeholder="fill in the blank" oninput="fillinput_resize(this)">
         <span class="problemfilltext">5</span>
-        <input class="problemfillinput" type="text" id="c1_p9_b2" placeholder="fill in the blank" oninput="this.style.flexGrow=0;this.style.width = ((this.value.length+1) * 14) + 'px';">
+        <input class="problemfillinput" type="text" id="input_ch1_p9_b2" placeholder="fill in the blank" oninput="fillinput_resize(this)">
         <span class="problemfilltext">15</span>
-        <button class="problembutton" onclick="alert('c1_p9')">Submit</button>
+        <button class="problembutton" onclick="submit_problem('ch1_p9', 2)">Submit</button>
     </div>
+    <p id="feedback_ch1_p9" style="color: red"></p>
 
 ---
 
@@ -136,9 +146,10 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     Use as few parentheses as possible.
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <input class="probleminput" type="text" id="c1_p10" placeholder="your solution here">
-        <button class="problembutton" onclick="alert('c1_p10')">Submit</button>
+        <input class="probleminput" type="text" id="input_ch1_p10" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch1_p10')">Submit</button>
     </div>
+    <p id="feedback_ch1_p10" style="color: red"></p>
 
 ---
 
@@ -146,9 +157,10 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     Write a nonempty line of code that does nothing (doesn't display anything on the screen).
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <input class="probleminput" type="text" id="c1_p11" placeholder="your solution here">
-        <button class="problembutton" onclick="alert('c1_p11')">Submit</button>
+        <input class="probleminput" type="text" id="input_ch1_p11" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch1_p11')">Submit</button>
     </div>
+    <p id="feedback_ch1_p11" style="color: red"></p>
 
 ---
 
@@ -159,6 +171,7 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     ```
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <input class="probleminput" type="text" id="c1_p12" placeholder="your solution here">
-        <button class="problembutton" onclick="alert('c1_p12')">Submit</button>
+        <input class="probleminput" type="text" id="input_ch1_p12" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch1_p12')">Submit</button>
     </div>
+    <p id="feedback_ch1_p12" style="color: red"></p>

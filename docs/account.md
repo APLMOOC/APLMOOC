@@ -1,4 +1,4 @@
-# Log in
+# Account
 
 Sign in with your mooc.fi credentials to be able to submit write problems to TMC and receive problem points.
 
@@ -7,6 +7,8 @@ Sign in with your mooc.fi credentials to be able to submit write problems to TMC
 <input id="pass" type="password" placeholder="Password"><br><br>
 <button class="md-button md-button--primary" onclick="login()">Log in</button>
 </div>
+
+<button class="md-button md-button--primary" onclick="logout()">Log out</button>
 
 <script type="text/javascript">
 $=>document.querySelector
