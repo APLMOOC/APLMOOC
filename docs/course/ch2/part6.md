@@ -7,9 +7,9 @@
 
 ---
 
-Be warned, elements of arrays can be vectors, or matrices, or arrays of higher rank as well!
+Be warned, elements of arrays can be vectors, or matrices, or arrays of higher rank as well! We will discuss this in depth in Chapter 5.
 
-Look what happens when we try to create a rank 3 array in the following,
+Look what happens when we try to create the new temperature matrix from the already existing temperature vectors
 
 ```apl
        TEMPERATURE_DATA1 ← 21.4 00010101.074200 21.8 00010101.084700
@@ -41,33 +41,6 @@ compared to the expected result, which is
 
 Attempting to access the elements of the rank 3 array returns vectors, this is because we’ve accidentally created an array of vectors rather than an array of their elements. 
 
-```apl
-       ⍝ TEMPERATUER_ARRAY can be thought of as
-       ⍝ TEMPERATURE_DATA1 TEMPERATURE_DATA2
-       ⍝ TEMPERATURE_DATA1 TEMPERATURE_DATA2
-       ⍝
-       ⍝ TEMPERATURE_DATA1 TEMPERATURE_DATA2
-       ⍝ TEMPERATURE_DATA1 TEMPERATURE_DATA2
-
-       TEMPERATURE_ARRAY[1;1;1] ⍝ the vector TEMPERATURE_DATA1 
-21.4 00010101.074200 21.8 00010101.084700
-	   TEMPERATURE_ARRAY[2;1;1] ⍝ the vector TEMPERATURE_DATA1
-21.4 00010101.074200 21.8 00010101.084700
-	   TEMPERATURE_ARRAY[1;2;1] ⍝ the vector TEMPERATURE_DATA1 
-21.4 00010101.074200 21.8 00010101.084700
-	   TEMPERATURE_ARRAY[2;2;1] ⍝ the vector TEMPERATURE_DATA1
-21.4 00010101.074200 21.8 00010101.084700
-
-
-       TEMPERATURE_ARRAY[1;1;2] ⍝ the vector TEMPERATURE_DATA2
-22.8 00010101.182300 21.5 00010101.193000 
-	   TEMPERATURE_ARRAY[2;1;2] ⍝ the vector TEMPERATURE_DATA2
-22.8 00010101.182300 21.5 00010101.193000 
-	   TEMPERATURE_ARRAY[1;2;2] ⍝ the vector TEMPERATURE_DATA2 
-22.8 00010101.182300 21.5 00010101.193000 
-	   TEMPERATURE_ARRAY[2;2;2] ⍝ the vector TEMPERATURE_DATA2
-22.8 00010101.182300 21.5 00010101.193000 
-```
 
 If we replace TEMPERATURE_DATA1 and TEMPERATURE_DATA2 with scalars, the situation is a bit more clear.
 ```apl
@@ -78,27 +51,9 @@ If we replace TEMPERATURE_DATA1 and TEMPERATURE_DATA2 with scalars, the situatio
    
 1 2
 1 2
-
-	   ARRAY[1;1;1]
-1
-	   ARRAY[2;1;1]
-1
-	   ARRAY[1;2;1]
-1
-	   ARRAY[2;2;1]
-1
-
-	   ARRAY[1;1;2]
-2
-	   ARRAY[2;1;2]
-2
-	   ARRAY[1;2;2]
-2
-	   ARRAY[2;2;2]
-2
 ```
 
-The monadic ravel operator , can be used to "unravel" a matrix into a vector of its elements in left-right top-down order, called ravel order. Dyadically, the catenate , function glues two arrays together along a common axis.
+The way to combine two vectors into a single longer vector is using the catenate `,` function,  generally joining two arrays along a common edge. Monadically, the ravel `,` function can be used to "unravel" a matrix into a vector of its elements in top-down left-right order, called ravel order.
 
 ```apl
        ARRAY ← 2 2 2 ⍴ 1 2 3 4 5 6 7 8
@@ -139,7 +94,7 @@ The monadic ravel operator , can be used to "unravel" a matrix into a vector of 
 
 
 !!! info "Boxing"
-       The ]Box user command controls how array output is displayed
+       The ]Box user command controls how array output is displayed, with levels of nesting shown as boxes.
        
        ```apl
               nested ← 2 2 ⍴ (⍳3) ('  ') ('   ') (2 2 ⍴ ('  ') (⍳3) (2 2 ⍴ (⍳3) ('  ') ('   ') (⍳2)) ('   '))

@@ -125,7 +125,7 @@ The shape (monadic ⍴) function acts on one array, its right operand, by return
 6 2
       ⍴100 ⍝ The shape of a scalar is the empty list
 
-      ⍴⎕A
+      ⍴⎕A ⍝ Number of letters in the alphabet
 26
 ```
 
@@ -217,7 +217,7 @@ FGH
 KLM
 ```
 
-However, again, the data measurements are separated without reason, the problem that introducing matrices was supposed to solve. Going one dimension further, the data can be arranged in a three-dimensional ordered collection of data:
+However again, the data measurements are separated without reason, the problem that introducing matrices was supposed to solve. Going one dimension further, the data can be arranged in a three-dimensional ordered collection of data:
 
 ```apl
      TEMPERATURE_ARRAY ← 2 6 2 ⍴ 21.4 00010101.074200 21.8 00010101.084700 22.0 00010101.101000 21.5 00010101.120100 21.3 00010101.143600 22.3 00010101.165000 22.8 00010101.182300 21.5 00010101.193000 22.1 00010102.211200 22.0 00010103.071500 21.9 00010103.083000 22.4 00010103.094500
