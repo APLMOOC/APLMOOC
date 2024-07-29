@@ -9,7 +9,7 @@
 
 Be warned, elements of arrays can be vectors, or matrices, or arrays of higher rank as well!
 
-Reducing the length of the temperature arrays for the sake of the following example, look what happens when we try to create a rank 3 array in the following,
+Look what happens when we try to create a rank 3 array in the following,
 
 ```apl
        TEMPERATURE_DATA1 ← 21.4 00010101.074200 21.8 00010101.084700
@@ -137,40 +137,6 @@ The monadic ravel operator , can be used to "unravel" a matrix into a vector of 
 21.5 10101.193
 ```
 
-When dealing with nested arrays, useful functions to keep in mind are the monadic ≡ depth, and the monadic ≢ tally.
-
-```apl
-       ≡TEMPERATURE_ARRAY ⍝ TEMPERATURE_ARRAY is an array of arrays, it has depth 2
-2 
-       ≡10 ⍝ The depth of a scalar is 0
-0 
-       ⍳10 ⍝ The monadic ⍳ index operator generates numbers up to its right argument
-1 2 3 4 5 6 7 8 9 10 
-       ≡⍳10 ⍝ The depth of a vector of scalars is 1
-1 
-       ≡ 10 10 ⍴ ⍳10 ⍝ The depth of a matrix of scalars is 1
-1 
-       nested ← 2 2 ⍴ (⍳3) ('  ') ('   ') (2 2 ⍴ ('  ') (⍳3) (2 2 ⍴ (⍳3) ('  ') ('   ') (⍳2)) ('   '))
-       nested
-┌─────┬───────────────────┐
-│1 2 3│                   │
-├─────┼───────────────────┤
-│     │┌───────────┬─────┐│
-│     ││           │1 2 3││
-│     │├───────────┼─────┤│
-│     ││┌─────┬───┐│     ││
-│     │││1 2 3│   ││     ││
-│     ││├─────┼───┤│     ││
-│     │││     │1 2││     ││
-│     ││└─────┴───┘│     ││
-│     │└───────────┴─────┘│
-└─────┴───────────────────┘
-       ≡nested ⍝ We might expect a depth of 4 here, but for arrays with elements with differing depths, the depth is labelled as negative
-¯4 
-       ⍴nested ⍝ Notice that the nested elements in the matrix count as scalar elements.
-2 2
-```
-
 
 !!! info "Boxing"
        The ]Box user command controls how array output is displayed
@@ -200,17 +166,3 @@ When dealing with nested arrays, useful functions to keep in mind are the monadi
        │     │└───────────┴─────┘│
        └─────┴───────────────────┘
        ```
-
-
-The monadic tally function ≢ returns the number of rows of an array.
-```apl
-       ≢10
-1
-       ≢⍳10
-10
-       ≢10 20 ⍴ ⍳30
-10
-       nested ← 2 2 ⍴ (⍳3) ('  ') ('   ') (2 2 ⍴ ('  ') (⍳3) (2 2 ⍴ (⍳3) ('  ') ('   ') (⍳2)) ('   '))
-       ≢nested
-2
-```

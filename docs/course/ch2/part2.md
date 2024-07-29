@@ -37,8 +37,11 @@ This is not the most efficient, or readable, method to input data into your syst
 Vectors are also ordered, it is possible to talk about the element at a specific position, called an index. For example, the first (1) element, the second (2) element, and so on. In code, they can be accessed by adding square brackets to the vector with an index (or multiple indices) in between.
 
 ```apl
-      FIBB ← 1 1 2 3 5 8 13 21 34 55 ⍝ This is a vector
-      KEYA ← 9 249  17 2 157   116 227 91 216    65 86 197 99 86 136 192 ⍝ This is also a vector
+      ⍝ This is a vector
+      FIBB ← 1 1 2 3 5 8 13 21 34 55 
+
+      ⍝ This is also a vector
+      KEYA ← 9 249  17 2 157   116 227 91 216    65 86 197 99 86 136 192 
 
       ⍝ The following are all scalars
       PRIME ← 57
@@ -51,12 +54,25 @@ Vectors are also ordered, it is possible to talk about the element at a specific
       PI ← 11.001001 ⍝ This is a scalar
       PI ← 11,001001 ⍝ This is a vector
 
-      LIST ← PRIME 100 NUMERALS MCBRT7 0.6 EPSILON MAGIC 31.5 ⍝ this is a vector
+      ⍝ This is a vector
+      LIST ← PRIME 100 NUMERALS MCBRT7 0.6 EPSILON MAGIC 31.5 
+
+      ⍝ Selecting a single element using an index
       LIST[2] 
 100
+      ⍝ Selecting multiple values using indices
       LIST[2 1 3]
 100 57 413
+
+      ⍝ Selecting multiple values using a vector of indices
       INDICES ← 2 1 3
       LIST[INDICES] 
 100 57 413
+
+      ⍝ The above temperature lists as vectors
+      TEMPERATURE_PAGE1 ← 21.4 21.8 22.0 21.5 21.3 22.3
+      TEMPERATURE_PAGE2 ← 22.8 21.5 22.1 22.0 21.9 22.4
+      
+      TEMPERATURE_PAGE1[1 2 3]
+      21.4 21.8 22.0
 ```
