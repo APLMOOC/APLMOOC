@@ -4,7 +4,7 @@
 
     - Constructing matrices
     - Constructing 3D arrays
-    - The reshape operator
+    - The reshape function
 
 ---
 
@@ -45,7 +45,7 @@ You decide to start over yet again, and decide to store data in a matrix instead
 
 Matrices are rectangles of data. They can be created by reshaping (⍴) a vector.
 
-!!! info "Typing the reshape operator `⍴`"
+!!! info "Typing the reshape function `⍴`"
      Prefix method: <kbd>PREFIX</kbd> <kbd>r</kbd>
      Tab method: <kbd>r</kbd> <kbd>r</kbd> ++tab++
 
@@ -53,11 +53,11 @@ Matrices are rectangles of data. They can be created by reshaping (⍴) a vector
 	
 	The symbol ⍴ actually represents two different functions depending on the manner in which arguments are given. 
 	
-	When applied to a single argument, ⍴X, it acts as the *shape* operator; when two arguments are given one on either side, X⍴Y, it acts as the *reshape* operator. 
+	When applied to a single argument, ⍴X, it acts as the *shape* function; when two arguments are given one on either side, X⍴Y, it acts as the *reshape* function. 
 	
 	The former function is the monadic function associated to the symbol ⍴, and the latter is the dyadic function associated with the symbol ⍴. 
 
-The reshape operator acts by returning an array whose entries are the entries of its right operand, and whose axes are specified by a vector of integers as its left operand, more concretely,
+The reshape function acts by returning an array whose entries are the entries of its right operand, and whose axes are specified by a vector of integers as its left operand, more concretely,
 
 ```apl
       TEMPERATURE_DATA ← 21.4 00010101.074200 21.8 00010101.084700 22.0 00010101.101000 21.5 00010101.120100 21.3 00010101.143600 22.3 00010101.165000
