@@ -35,9 +35,9 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
         <span class="problemfilltext">150</span>
         <input class="problemfillinput" type="text" id="input_ch1_p2_b1" placeholder="fill in the blank" oninput="this.style.flexGrow=0;this.style.width = ((this.value.length+1) * 14) + 'px';">
         <span class="problemfilltext">2.5</span>
-        <input class="problemfillinput" type="text" id=""input_ch1_p2_b2" placeholder="fill in the blank" oninput="this.style.flexGrow=0;this.style.width = ((this.value.length+1) * 14) + 'px';">
+        <input class="problemfillinput" type="text" id="input_ch1_p2_b2" placeholder="fill in the blank" oninput="this.style.flexGrow=0;this.style.width = ((this.value.length+1) * 14) + 'px';">
         <span class="problemfilltext">15</span>
-        <button class="problembutton" onclick="submit_problem('ch1_p2')">Submit</button>
+        <button class="problembutton" onclick="submit_problem('ch1_p2', 2)">Submit</button>
     </div>
     <p id="feedback_ch1_p2" style="color: red"></p>
 
@@ -121,7 +121,7 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
         <input class="problemfillinput" type="text" id="input_ch1_p8_b5" placeholder="fill in the blank" oninput="this.style.flexGrow=0;this.style.width = ((this.value.length+1) * 14) + 'px';">
         <span class="problemfilltext">42</span>
         <input class="problemfillinput" type="text" id="input_ch1_p8_b6" placeholder="fill in the blank" oninput="this.style.flexGrow=0;this.style.width = ((this.value.length+1) * 14) + 'px';">
-        <button class="problembutton" onclick="submit_problem('ch1_p8')">Submit</button>
+        <button class="problembutton" onclick="submit_problem('ch1_p8', 6)">Submit</button>
     </div>
     <p id="feedback_ch1_p8" style="color: red"></p>
 
@@ -135,7 +135,7 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
         <span class="problemfilltext">5</span>
         <input class="problemfillinput" type="text" id="input_ch1_p9_b2" placeholder="fill in the blank" oninput="this.style.flexGrow=0;this.style.width = ((this.value.length+1) * 14) + 'px';">
         <span class="problemfilltext">15</span>
-        <button class="problembutton" onclick="submit_problem('ch1_p9')">Submit</button>
+        <button class="problembutton" onclick="submit_problem('ch1_p9', 2)">Submit</button>
     </div>
     <p id="feedback_ch1_p9" style="color: red"></p>
 

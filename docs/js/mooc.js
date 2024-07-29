@@ -79,7 +79,17 @@ function set_feedback(problem_id, feedback, success = false) {
     $(`#feedback_${problem_id}`).style.color = color;
 }
 
-function submit_problem(problem_id) {
+function submit_problem(problem_id, parts=0) {
+    let submission = "";
+
+    if(parts > 0){
+        for(let i=1; i<=parts; i++){
+            submission += $(`#input_${problem_id}_b${i}`).value;
+        }
+    } else {
+        submission = $(`#input_${problem_id}`).value;
+    }
+
     user_token = get_mooc_token();
     if(user_token == null) {
         set_feedback(problem_id, "Please <a href='/account'>log in</a> first")
@@ -104,7 +114,7 @@ function submit_problem(problem_id) {
     xhttp.send({
         "id_problem": problem_id,
         "mooc_token": user_token,
-        "code_encoded": btoa($(`#input_${problem_id}`).value),
+        "code_encoded": btoa(submission),
     });
 }
 
