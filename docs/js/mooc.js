@@ -30,17 +30,16 @@ function set_mooc_token(token) {
 function login() {
     let user = $("#user").value;
     let pass = $("#pass").value;
-    let ret = mooc_login(user, pass, logincallback);
+    let ret = mooc_login(user, pass);
     console.log(ret);
     $("#loginResponse").innerHTML = "Logging in...";
 }
 
-function logout(callback) {
+function logout() {
     localStorage.removeItem("mooc_token");
-    callback();
 }
 
-function mooc_login(username, password, callback) {
+function mooc_login(username, password) {
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
@@ -53,8 +52,6 @@ function mooc_login(username, password, callback) {
         } else {
             $("#loginResponse").innerHTML = "Login failed";
         }
-
-        callback();
     }
 
     xhttp.open("POST","https://tmc.mooc.fi/oauth/token",true);
@@ -64,11 +61,6 @@ function mooc_login(username, password, callback) {
                "username="+encodeURIComponent(username)+"&"+
                "password="+encodeURIComponent(password)+"&"+
                "grant_type=password");
-}
-
-function logincallback(){
-    mooc_token = get_mooc_token()
-    console.log("TOKEN: " + mooc_token);
 }
 
 // Problems
@@ -105,8 +97,6 @@ function submit_problem(problem_id, parts=0) {
         } else {
             set_feedback(problem_id, response["message"]);
         }
-
-        callback();
     }
 
     xhttp.open("POST", `${backend_url}/submit`, true);
