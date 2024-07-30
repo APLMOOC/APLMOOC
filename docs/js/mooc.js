@@ -104,7 +104,7 @@ function submit_problem(problem_id, parts=0) {
     xhttp.send({
         "id_problem": problem_id,
         "mooc_token": user_token,
-        "code_encoded": btoa(submission),
+        "code_encoded": window.btoa(submission),
     });
 }
 
