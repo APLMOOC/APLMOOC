@@ -66,7 +66,7 @@ function mooc_login(username, password) {
 // Problems
 
 function set_feedback(problem_id, feedback, success = false) {
-    $(`#feedback_${problem_id}`).innerText = feedback;
+    $(`#feedback_${problem_id}`).innerHTML = feedback;
     color = success ? "green" : "red";
     $(`#feedback_${problem_id}`).style.color = color;
 }
@@ -76,7 +76,9 @@ function submit_problem(problem_id, parts=0) {
 
     if(parts > 0){
         for(let i=1; i<=parts; i++){
-            submission += $(`#input_${problem_id}_b${i}`).value;
+            input_part = $(`#input_${problem_id}_b${i}`);
+            if(input_part.nodeName == "INPUT") submission += input_part.value + " ";
+            else if(input_part.nodeName == "SPAN") submission += input_part.innerText + " ";
         }
     } else {
         submission = $(`#input_${problem_id}`).value;
@@ -104,7 +106,7 @@ function submit_problem(problem_id, parts=0) {
     xhttp.send({
         "id_problem": problem_id,
         "mooc_token": user_token,
-        "code_encoded": window.btoa(submission),
+        "code_encoded": window.btoa(unescape(encodeURIComponent(submission))),
     });
 }
 

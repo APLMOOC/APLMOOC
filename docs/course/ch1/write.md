@@ -18,10 +18,12 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     Calculate the area of a room which is 130.7 long and 206.55 wide.
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <span class="problemfilltext">130.7</span>
-        <input class="problemfillinput" type="text" id="input_ch1_p1" placeholder="fill in the blank" oninput="fillinput_resize(this)">
-        <span class="problemfilltext">206.55</span>
-        <button class="problembutton" onclick="submit_problem('ch1_p1')">Submit</button>
+        <span class="problemfilltext" id="input_ch1_p1_b1" hidden>A←{</span>
+        <span class="problemfilltext" id="input_ch1_p1_b2">130.7</span>
+        <input class="problemfillinput" type="text" id="input_ch1_p1_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
+        <span class="problemfilltext" id="input_ch1_p1_b4">206.55</span>
+        <span class="problemfilltext" id="input_ch1_p1_b5" hidden>}</span>
+        <button class="problembutton" onclick="submit_problem('ch1_p1', 5)">Submit</button>
     </div>
     <p id="feedback_ch1_p1" style="color: red"></p>
 
@@ -32,12 +34,14 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     If he is 150cm tall now, how tall will he be in 15 years?
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <span class="problemfilltext">150</span>
-        <input class="problemfillinput" type="text" id="input_ch1_p2_b1" placeholder="fill in the blank" oninput="fillinput_resize(this)">
-        <span class="problemfilltext">2.5</span>
-        <input class="problemfillinput" type="text" id="input_ch1_p2_b2" placeholder="fill in the blank" oninput="fillinput_resize(this)">
-        <span class="problemfilltext">15</span>
-        <button class="problembutton" onclick="submit_problem('ch1_p2', 2)">Submit</button>
+        <span class="problemfilltext" id="input_ch1_p2_b1" hidden>A←{</span>
+        <span class="problemfilltext" id="input_ch1_p2_b2">150</span>
+        <input class="problemfillinput" type="text" id="input_ch1_p2_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
+        <span class="problemfilltext" id="input_ch1_p2_b4">2.5</span>
+        <input class="problemfillinput" type="text" id="input_ch1_p2_b5" placeholder="fill in the blank" oninput="fillinput_resize(this)">
+        <span class="problemfilltext" id="input_ch1_p2_b6">15</span>
+        <span class="problemfilltext" id="input_ch1_p2_b7" hidden>}</span>
+        <button class="problembutton" onclick="submit_problem('ch1_p2', 7)">Submit</button>
     </div>
     <p id="feedback_ch1_p2" style="color: red"></p>
 
@@ -47,10 +51,12 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     If 12 chairs cost you 200000, what is the price per chair?
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <span class="problemfilltext">12</span>
-        <input class="problemfillinput" type="text" id="input_ch1_p3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
-        <span class="problemfilltext">200000</span>
-        <button class="problembutton" onclick="submit_problem('ch1_p3')">Submit</button>
+        <span class="problemfilltext" id="input_ch1_p3_b1" hidden>A←{</span>
+        <span class="problemfilltext" id="input_ch1_p3_b2">12</span>
+        <input class="problemfillinput" type="text" id="input_ch1_p3_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
+        <span class="problemfilltext" id="input_ch1_p3_b4">200000</span>
+        <span class="problemfilltext" id="input_ch1_p3_b5" hidden>}</span>
+        <button class="problembutton" onclick="submit_problem('ch1_p3', 5)">Submit</button>
     </div>
     <p id="feedback_ch1_p3" style="color: red"></p>
 
@@ -61,10 +67,12 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     What will be your balance if you take just another quick loan of 100€?
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <span class="problemfilltext">¯420</span>
-        <input class="problemfillinput" type="text" id="input_ch1_p4" placeholder="fill in the blank" oninput="fillinput_resize(this)">
-        <span class="problemfilltext">100</span>
-        <button class="problembutton" onclick="submit_problem('ch1_p4')">Submit</button>
+        <span class="problemfilltext" id="input_ch1_p4_b1" hidden>A←{</span>
+        <span class="problemfilltext" id="input_ch1_p4_b2">¯420</span>
+        <input class="problemfillinput" type="text" id="input_ch1_p4_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
+        <span class="problemfilltext" id="input_ch1_p4_b4">100</span>
+        <span class="problemfilltext" id="input_ch1_p1_b5" hidden>}</span>
+        <button class="problembutton" onclick="submit_problem('ch1_p4', 5)">Submit</button>
     </div>
     <p id="feedback_ch1_p4" style="color: red"></p>
 
@@ -74,8 +82,10 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     Cause a `SYNTAX ERROR` using as few symbols as possible.
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <input class="probleminput" type="text" id="input_ch1_p5" placeholder="your solution here">
-        <button class="problembutton" onclick="submit_problem('ch1_p5')">Submit</button>
+        <span class="problemfilltext" id="input_ch1_p5_b1" hidden>A←{</span>
+        <input class="probleminput" type="text" id="input_ch1_p5_b2" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch1_p1_b3" hidden>}</span>
+        <button class="problembutton" onclick="submit_problem('ch1_p5', 3)">Submit</button>
     </div>
     <p id="feedback_ch1_p5" style="color: red"></p>
 
@@ -85,8 +95,10 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     Cause a `DOMAIN ERROR`.
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <input class="probleminput" type="text" id="input_ch1_p6" placeholder="your solution here">
-        <button class="problembutton" onclick="submit_problem('ch1_p6')">Submit</button>
+        <span class="problemfilltext" id="input_ch1_p6_b1" hidden>A←{</span>
+        <input class="probleminput" type="text" id="input_ch1_p6_b2" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch1_p6_b3" hidden>}</span>
+        <button class="problembutton" onclick="submit_problem('ch1_p6', 3)">Submit</button>
     </div>
     <p id="feedback_ch1_p6" style="color: red"></p>
 
@@ -99,8 +111,10 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     ```
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <input class="probleminput" type="text" id="input_ch1_p7" placeholder="your solution here">
-        <button class="problembutton" onclick="submit_problem('ch1_p7')">Submit</button>
+        <span class="problemfilltext" id="input_ch1_p7_b1" hidden>A←{</span>
+        <input class="probleminput" type="text" id="input_ch1_p7_b2" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch1_p7_b3" hidden>}</span>
+        <button class="problembutton" onclick="submit_problem('ch1_p7', 3)">Submit</button>
     </div>
     <p id="feedback_ch1_p7" style="color: red"></p>
 
@@ -110,18 +124,20 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     Compute the mean of the numbers 1, 57, 237, ¯5, 42.
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <input class="problemfillinput" type="text" id="input_ch1_p8_b1" placeholder="fill in the blank" oninput="fillinput_resize(this)">
-        <span class="problemfilltext">1</span>
+        <span class="problemfilltext" id="input_ch1_p8_b1" hidden>A←{</span>
         <input class="problemfillinput" type="text" id="input_ch1_p8_b2" placeholder="fill in the blank" oninput="fillinput_resize(this)">
-        <span class="problemfilltext">57</span>
-        <input class="problemfillinput" type="text" id="input_ch1_p8_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
-        <span class="problemfilltext">237</span>
+        <span class="problemfilltext" id="input_ch1_p8_b3">1</span>
         <input class="problemfillinput" type="text" id="input_ch1_p8_b4" placeholder="fill in the blank" oninput="fillinput_resize(this)">
-        <span class="problemfilltext">¯5</span>
-        <input class="problemfillinput" type="text" id="input_ch1_p8_b5" placeholder="fill in the blank" oninput="fillinput_resize(this)">
-        <span class="problemfilltext">42</span>
+        <span class="problemfilltext" id="input_ch1_p8_b5">57</span>
         <input class="problemfillinput" type="text" id="input_ch1_p8_b6" placeholder="fill in the blank" oninput="fillinput_resize(this)">
-        <button class="problembutton" onclick="submit_problem('ch1_p8', 6)">Submit</button>
+        <span class="problemfilltext" id="input_ch1_p8_b7">237</span>
+        <input class="problemfillinput" type="text" id="input_ch1_p8_b8" placeholder="fill in the blank" oninput="fillinput_resize(this)">
+        <span class="problemfilltext" id="input_ch1_p8_b9">¯5</span>
+        <input class="problemfillinput" type="text" id="input_ch1_p8_b10" placeholder="fill in the blank" oninput="fillinput_resize(this)">
+        <span class="problemfilltext" id="input_ch1_p8_b11">42</span>
+        <input class="problemfillinput" type="text" id="input_ch1_p8_b12" placeholder="fill in the blank" oninput="fillinput_resize(this)">
+        <span class="problemfilltext" id="input_ch1_p8_b13" hidden>}</span>
+        <button class="problembutton" onclick="submit_problem('ch1_p8', 13)">Submit</button>
     </div>
     <p id="feedback_ch1_p8" style="color: red"></p>
 
@@ -131,11 +147,13 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     You've got a 5 megawatt laser due in 15 days. If you've already got a 2.5 megawatt laser, how many megawatts a day do you have to add?
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <input class="problemfillinput" type="text" id="input_ch1_p9_b1" placeholder="fill in the blank" oninput="fillinput_resize(this)">
-        <span class="problemfilltext">5</span>
+        <span class="problemfilltext" id="input_ch1_p9_b1" hidden>A←{</span>
         <input class="problemfillinput" type="text" id="input_ch1_p9_b2" placeholder="fill in the blank" oninput="fillinput_resize(this)">
-        <span class="problemfilltext">15</span>
-        <button class="problembutton" onclick="submit_problem('ch1_p9', 2)">Submit</button>
+        <span class="problemfilltext" id="input_ch1_p9_b3">5</span>
+        <input class="problemfillinput" type="text" id="input_ch1_p9_b4" placeholder="fill in the blank" oninput="fillinput_resize(this)">
+        <span class="problemfilltext" id="input_ch1_p9_b5">15</span>
+        <span class="problemfilltext" id="input_ch1_p1_b6" hidden>}</span>
+        <button class="problembutton" onclick="submit_problem('ch1_p9', 6)">Submit</button>
     </div>
     <p id="feedback_ch1_p9" style="color: red"></p>
 
@@ -146,8 +164,10 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     Use as few parentheses as possible.
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <input class="probleminput" type="text" id="input_ch1_p10" placeholder="your solution here">
-        <button class="problembutton" onclick="submit_problem('ch1_p10')">Submit</button>
+        <span class="problemfilltext" id="input_ch1_p10_b1" hidden>A←{</span>
+        <input class="probleminput" type="text" id="input_ch1_p10_b2" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch1_p10_b3" hidden>}</span>
+        <button class="problembutton" onclick="submit_problem('ch1_p10', 3)">Submit</button>
     </div>
     <p id="feedback_ch1_p10" style="color: red"></p>
 
@@ -157,8 +177,10 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     Write a nonempty line of code that does nothing (doesn't display anything on the screen).
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <input class="probleminput" type="text" id="input_ch1_p11" placeholder="your solution here">
-        <button class="problembutton" onclick="submit_problem('ch1_p11')">Submit</button>
+        <span class="problemfilltext" id="input_ch1_p11_b1" hidden>A←{</span>
+        <input class="probleminput" type="text" id="input_ch1_p11_b2" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch1_p11_b3" hidden>}</span>
+        <button class="problembutton" onclick="submit_problem('ch1_p11', 3)">Submit</button>
     </div>
     <p id="feedback_ch1_p11" style="color: red"></p>
 
@@ -171,7 +193,9 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     ```
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <input class="probleminput" type="text" id="input_ch1_p12" placeholder="your solution here">
-        <button class="problembutton" onclick="submit_problem('ch1_p12')">Submit</button>
+        <span class="problemfilltext" id="input_ch1_p12_b1" hidden>A←{</span>
+        <input class="probleminput" type="text" id="input_ch1_p12_b2" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch1_p12_b3" hidden>}</span>
+        <button class="problembutton" onclick="submit_problem('ch1_p12', 3)">Submit</button>
     </div>
     <p id="feedback_ch1_p12" style="color: red"></p>
