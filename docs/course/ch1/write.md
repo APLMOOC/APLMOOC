@@ -15,11 +15,11 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 ---
 
 !!! write-problem "Write problem 1"
-    Calculate the area of a room which is 130.7 long and 206.55 wide.
+    Calculate the area of a room which is 13.7 long and 206.55 wide.
     <div class="problem">
         <span class="problemspan">⎕←</span>
         <span class="problemfilltext" id="input_ch1_p1_b1" hidden>A←{</span>
-        <span class="problemfilltext" id="input_ch1_p1_b2">130.7</span>
+        <span class="problemfilltext" id="input_ch1_p1_b2">13.7</span>
         <input class="problemfillinput" type="text" id="input_ch1_p1_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
         <span class="problemfilltext" id="input_ch1_p1_b4">206.55</span>
         <span class="problemfilltext" id="input_ch1_p1_b5" hidden>}</span>
