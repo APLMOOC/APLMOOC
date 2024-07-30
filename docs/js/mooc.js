@@ -32,7 +32,7 @@ function login() {
     let pass = $("#pass").value;
     let ret = mooc_login(user, pass);
     console.log(ret);
-    $("#loginResponse").innerHTML = "Logging in...";
+    $("#loginResponse").innerText = "Logging in...";
 }
 
 function logout() {
@@ -48,9 +48,9 @@ function mooc_login(username, password) {
         if (this.status == 200) {
             mooc_token = JSON.parse(this.responseText)["access_token"];
             set_mooc_token(mooc_token);
-            $("#loginResponse").innerHTML = "Success";
+            $("#loginResponse").innerText = "Success";
         } else {
-            $("#loginResponse").innerHTML = "Login failed";
+            $("#loginResponse").innerText = "Login failed";
         }
     }
 
@@ -66,7 +66,7 @@ function mooc_login(username, password) {
 // Problems
 
 function set_feedback(problem_id, feedback, success = false) {
-    $(`#feedback_${problem_id}`).innerHTML = feedback;
+    $(`#feedback_${problem_id}`).innerText = feedback;
     color = success ? "green" : "red";
     $(`#feedback_${problem_id}`).style.color = color;
 }
