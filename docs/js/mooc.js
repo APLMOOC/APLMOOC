@@ -103,11 +103,11 @@ function submit_problem(problem_id, parts=0) {
 
     xhttp.open("POST", `${backend_url}/submit`, true);
     xhttp.setRequestHeader("Content-type", "application/json");
-    xhttp.send({
+    xhttp.send(JSON.stringify({
         "id_problem": problem_id,
         "mooc_token": user_token,
         "code_encoded": window.btoa(unescape(encodeURIComponent(submission))),
-    });
+    }));
 }
 
 function problem_status() {
