@@ -52,7 +52,6 @@ Vectors are also ordered, it is possible to talk about the element at a specific
 
       ⍝ Note that the decimal separator in APL is the dot
       PI ← 11.001001 ⍝ This is a scalar
-      PI ← 11,001001 ⍝ This is a vector
 
       ⍝ This is a vector
       LIST ← PRIME 100 NUMERALS MCBRT7 0.6 EPSILON MAGIC 31.5 
