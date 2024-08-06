@@ -2,19 +2,19 @@
 
 !!! abstract "This part will cover"
 
-    - The assignment operator
+    - Assignment statements
     - Variables and naming
     - Intermediate assignment
 
 ---
 
-Allow me to introduce you to a new symbol; the assignment operator:
+Allow me to introduce you to a new symbol; the assignment symbol:
 
 ```apl
 ←
 ```
 
-!!! note "Typing the assignment operator `←`"
+!!! note "Typing the assignment symbol `←`"
 
     Prefix method: <kbd>PREFIX</kbd> <kbd>]</kbd>
 
@@ -59,7 +59,7 @@ We can use variables in place of a number.
 ```
 
 Note that variables keep their value even if you perform operations with them.
-The only way to change a variable's value is to use the assignment operator again:
+The only way to change a variable's value is to use assignment again:
 
 ```apl
       BANANA ← 3
@@ -95,7 +95,7 @@ This is often handy to conserve space.
 
 One more thing. We saw above that assignment was a shy operation.
 What if we really *wanted* to see what was assigned to a variable immediately?
-This is where intermediate assignment, or chaining assignment operators, comes into play.
+This is where intermediate assignment, or chaining assignments, comes into play.
 
 For an example, say we were trying to solve the equation "one plus the value of five times six",
 and we assigned it to a variable.
@@ -112,11 +112,11 @@ Now, something seems wrong. Let's see whether we got the result we wanted...
 15626
 ```
 
-Here, we "assigned" to an operator called a *quad*.
+Here, we "assigned" to a symbol called a *quad*.
 All this does is print whatever is assigned to it to the screen.
 The developers of APL picked this because it looks kinda like a (arguably, vertical) computer monitor.
 
-!!! note "Typing the quad operator `⎕`"
+!!! note "Typing the quad symbol `⎕`"
 
     Prefix method: <kbd>PREFIX</kbd> <kbd>L</kbd>
 
@@ -134,7 +134,7 @@ To debug what's going on, we can use intermediate assignment in the middle of ou
 ```
 
 This makes it easy to identify and debug different parts of our code.
-We could have also done both the assigning and the printing in one line, using our familiar quad operator:
+We could have also done both the assigning and the printing in one line, using our familiar quad symbol:
 
 ```apl
       RES ← 1 + ⎕ ← 5*6
@@ -150,9 +150,9 @@ With this, we can fix our code to work as it should.
 
 Nice!
 
-!!! bug "Intermediate quad operator"
+!!! bug "Intermediate quad symbol"
 
-    It appears as though currently, TryAPL does not support the intermediate quad operator.
+    It appears as though currently, TryAPL does not support the intermediate quad symbol.
     That is, the above expression `RES ← 1 + ⎕ ← 5*6` will throw a `NOT PERMITTED` error.
     This is rather unfortunate but will not be an issue later,
     when we install the Dyalog IDE to write bigger programs.
