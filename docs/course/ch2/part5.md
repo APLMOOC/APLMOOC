@@ -7,7 +7,7 @@
 
 ---
 
-Be warned, elements of arrays can be vectors, or matrices, or arrays of higher rank as well! We will discuss this in depth in Chapter 5.
+Be warned, elements of arrays can be vectors, or matrices, or arrays of higher rank as well! We will discuss this in depth in Chapter 5, so take this section as a word of warning.
 
 Look what happens when we try to create the new temperature matrix from the already existing temperature vectors
 
