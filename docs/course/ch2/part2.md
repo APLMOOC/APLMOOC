@@ -67,7 +67,11 @@ Vectors are also ordered, it is possible to talk about the element at a specific
       INDICES ← 2 1 3
       LIST[INDICES] 
 100 57 413
+```
 
+---
+
+```apl
       ⍝ The above temperature lists as vectors
       TEMPERATURE_PAGE1 ← 21.4 21.8 22.0 21.5 21.3 22.3
       TEMPERATURE_PAGE2 ← 22.8 21.5 22.1 22.0 21.9 22.4

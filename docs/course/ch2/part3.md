@@ -7,18 +7,18 @@
 
 ---
 
-So now we have vectors. You might wonder, why do we want to put a bunch of numbers inside a vector? Let’s say you, the astronaut on the ISS, mistakenly bought a bunch of measuring equipment from America, and only found out later that all the readings are in Fahrenheit. Terrible news! After about 2000 milliseconds of googling about it, you found this formula to convert it into Celsius:
+You might wonder, why would we want to put a bunch of numbers inside a vector? Is it just to organise data? Let’s say you mistakenly bought a bunch of measuring equipment from America, and only found out later that all the readings are in Fahrenheit. Terrible news! After about 2000 milliseconds of googling about it, you found this formula to convert it into Celsius:
 
 Celsius = (Fahrenheit - 32) * 5 / 9
 
-To test it out, you looked up the current room temperature reading, which says 72.1. You did the calculation in APL:
+To test it out, you looked up the current room temperature reading, which says 72.1. Doing the calculation in APL:
 
 ```apl
       (5 × 72.1 - 32) ÷ 9
 22.27777778
 ```
 
-Great! What’s not so great is that, the temperature sensor has been left generating data for the whole week, and there is a bunch of readings to convert to Celsius.
+Great! What’s not so great is that the temperature sensor has been left generating data for the whole week, and there are a bunch of readings to convert to Celsius.
 
 ```apl
       TEMP_F ← 71.2 71.4 73.3 73.0 73.1 72.8 72.5
@@ -42,19 +42,21 @@ In APL, all the basic arithmetic functions apply "component-wise". If you are fa
 103.2 103.4 105.3 105 105.1 104.8 104.5
       32 - TEMP_F
 ¯39.2 ¯39.4 ¯41.3 ¯41 ¯41.1 ¯40.8 ¯40.5
-      100+1 2 3      ⍝ The space here takes precedent over +
+      100+1 2 3      
 101 102 103
+      1 2 3+100      
+101 102 103  
 ```
 
-Now you can do arithmetic to a list of numbers however you like! Just use them in place of a scalar value.
+Pay close attention to the last two example, constructing a vector using spaces always takes precedence over other operations.
 
-After figuring this out, you decided to also check the temperature reading of a sensor outside the ISS:
+Now you can do arithmetic to a list of numbers however you like! After figuring this out, you decided to also check the temperature reading of a sensor outside the ISS:
 
 ```apl
       TEMP_OUTSIDE ← 118.5 97.1 59.5 30.0 ¯9.7 ¯62.3 ¯113.2
 ```
 
-That’s some extreme temperature right there! And it makes you start to wonder, how much temperature difference is the hull bearing? Turns out it’s also very simple in APL:
+That’s some extreme temperature right there! And it makes you start to wonder, what temperature difference is the hull bearing? Turns out it’s also very simple in APL:
 
 ```apl
       ⎕ ← TEMP_DIFF ← TEMP_OUTSIDE - TEMP_CELSIUS
