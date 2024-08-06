@@ -10,9 +10,9 @@
 
 The astute reader may have noticed that, although the vector data is much more structured, the dates and times of the measurements have been completely forgotten.
 
-One solution is to use more vectors to organize this data, here using floating-point decimal encoded format. This format stores the dates as decimal numbers, where the integer part stores the year, month, and day, and the fractional part stores the hour, minute, and second, yyyymmdd.hhmmss.
+One solution is to use more vectors to organize this data. We represent dates here using floating-point decimal encoded format. This format stores the dates as decimal numbers, where the integer part stores the year, month, and day, and the fractional part stores the hour, minute, and second, yyyymmdd.hhmmss.
 
-For example, 00010101.074200 is year 0001, month 01, day 01, hour 05, minute 42, and second 00.
+For example, 20240806.070130 is year 2024, month 08, day 06, hour 05, minute 01, and second 30.
 
 ```apl
       TEMPERATURE_PAGE1 ← 21.4 21.8 22.0 21.5 21.3 22.3
@@ -57,7 +57,7 @@ Matrices are rectangles of data. They can be created by reshaping (⍴) a vector
 	
 	The former function is the monadic function associated to the symbol ⍴, and the latter is the dyadic function associated with the symbol ⍴. 
 
-The reshape function acts by returning an array whose entries are the entries of its right operand, and whose axes are specified by a vector of integers as its left operand, more concretely,
+The reshape function acts by returning an array whose entries are the entries of its right argument, and whose axes are specified by a vector of integers as its left argument, more concretely,
 
 ```apl
       TEMPERATURE_DATA ← 21.4 00010101.074200 21.8 00010101.084700 22.0 00010101.101000 21.5 00010101.120100 21.3 00010101.143600 22.3 00010101.165000
@@ -82,41 +82,38 @@ turns the vector TEMPERATURE_DATA into a matrix with axes of length six and two,
 1 2 2 2 1
 1 1 1 1 1
 ```
-*Strings* in APL are vectors of characters, defined using single quotes. The ⎕A function return the string 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', more on this in Chapter 3.
+
+*Strings* in APL are vectors of characters, defined using single quotes. The ⎕A function return the string 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', more on this in Chapter 3. 
+
 ```
+      WORD ← 'STONE'
+      WORD
+STONE
+
       ALPHABET ← ⎕A 
-      26 25 ⍴ ALPHABET 
+      ALPHABET
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+```
+
+If the right argument is too short to fill the array, the reshape (dyadic ⍴) function repeats the right argument's entries.
+
+```
+      5 25 ⍴ ALPHABET 
 ABCDEFGHIJKLMNOPQRSTUVWXY
 ZABCDEFGHIJKLMNOPQRSTUVWX
 YZABCDEFGHIJKLMNOPQRSTUVW
 XYZABCDEFGHIJKLMNOPQRSTUV
 WXYZABCDEFGHIJKLMNOPQRSTU
-VWXYZABCDEFGHIJKLMNOPQRST
-UVWXYZABCDEFGHIJKLMNOPQRS
-TUVWXYZABCDEFGHIJKLMNOPQR
-STUVWXYZABCDEFGHIJKLMNOPQ
-RSTUVWXYZABCDEFGHIJKLMNOP
-QRSTUVWXYZABCDEFGHIJKLMNO
-PQRSTUVWXYZABCDEFGHIJKLMN
-OPQRSTUVWXYZABCDEFGHIJKLM
-NOPQRSTUVWXYZABCDEFGHIJKL
-MNOPQRSTUVWXYZABCDEFGHIJK
-LMNOPQRSTUVWXYZABCDEFGHIJ
-KLMNOPQRSTUVWXYZABCDEFGHI
-JKLMNOPQRSTUVWXYZABCDEFGH
-IJKLMNOPQRSTUVWXYZABCDEFG
-HIJKLMNOPQRSTUVWXYZABCDEF
-GHIJKLMNOPQRSTUVWXYZABCDE
-FGHIJKLMNOPQRSTUVWXYZABCD
-EFGHIJKLMNOPQRSTUVWXYZABC
-DEFGHIJKLMNOPQRSTUVWXYZAB
-CDEFGHIJKLMNOPQRSTUVWXYZA
-BCDEFGHIJKLMNOPQRSTUVWXYZ
+
+      5 4⍴WORD
+STON
+ESTO
+NEST
+ONES
+TONE
 ```
 
-If the right operand is too short to fill the array, the reshape (dyadic ⍴) function repeats the right operand's entries. Here, the reshape ⍴ function repeated the alphabet.
-
-The shape (monadic ⍴) function acts on one array, its right operand, by returning a vector whose entries are the lengths of the axes.
+The shape (monadic ⍴) function acts on one array, its right argument, by returning a vector whose entries are the lengths of the axes.
 
 ```apl
       TEMPERATURE_DATA ← 21.4 00010101.074200 21.8 00010101.084700 22.0 00010101.101000 21.5 00010101.120100 21.3 00010101.143600 22.3 00010101.165000
