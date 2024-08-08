@@ -7,7 +7,7 @@
 
 ---
 
-In the following section, you will play the role of an astronaut aboard the [International Space Station](https://archive.org/details/MeetMeAtTheStationiss). You are currently orbiting the Earth at an altitude of 413km at a speed of 28,013km/h.
+You are an astronaut aboard the [International Space Station](https://archive.org/details/MeetMeAtTheStationiss). You are currently orbiting the Earth at an altitude of 413km at a speed of 28,013km/h.
 
 In brief intervals of time spent waiting between tasks, you enjoy logging temperatures from sensors all around the ship into a small notebook. Unfortunately for you, your notebook’s completely filled, and none of your colleagues seem to share your enthusiasm for data collection. Unfortunately for mission control, you’ve decided to use critical APL machines on board to store your data.
 

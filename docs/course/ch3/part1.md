@@ -21,21 +21,25 @@ One of the ways of defining a function, taking in array arguments and outputting
       C_to_F F_to_C 100
 100
 
-      dB_to_B ← {⍵÷10} ⍝ From decibels to bels 
-      dB_to_ratio ← {10*dB_to_B ⍵} ⍝ From decibels back to a power ratio
+      ⍝ From decibels to bels 
+      dB_to_B ← {⍵÷10} 
+      ⍝ From decibels back to a power ratio
+      dB_to_ratio ← {10*dB_to_B ⍵} 
 			dB_to_ratio 60
 1000000
       dB_to_ratio 3
 1.995262315
       
-      PHI ← 0.5× 1 + 5*.5 ⍝ golden ratio
+      ⍝ golden ratio
+      PHI ← 0.5× 1 + 5*.5 
       fibonacci ← {((PHI*⍵) - (-PHI)*-⍵) ÷ (¯1 + 2×PHI)}
       fibonacci ⍳7
 1 1 2 3 5 8 13
       fibonacci 10
 55
 
-      hypotenuse ← {((⍺*2)+⍵*2)*0.5} ⍝ Pythagorean theorem
+      ⍝ Pythagorean theorem
+      hypotenuse ← {((⍺*2)+⍵*2)*0.5} 
       3 hypotenuse 4
 5
       6 hypotenuse 8
@@ -51,11 +55,26 @@ Note that for the Fibonacci function, a constant value phi for the golden ratio 
 APL allows any number of assignment statements inside a function before the statement which evaluates the result, using the diamond-shaped statement separator ⋄, or placing the statements on new lines. The following two functions are equivalent.
 
 ```apl
-fibonacci ← {PHI ← 0.5× 1 + 5*.5 ⋄ ((PHI*⍵) - (-PHI)*-⍵) ÷ (¯1 + 2×PHI)}
-fibonacci ← {
-             PHI ← 0.5× 1 + 5*.5
-             ((PHI*⍵) - (-PHI)*-⍵) ÷ (¯1 + 2×PHI)
-            }
+      fibonacci ← {PHI ← 0.5× 1 + 5*.5 ⋄ ((PHI*⍵) - (-PHI)*-⍵) ÷ (¯1 + 2×PHI)}
+      fibonacci ← {
+            PHI ← 0.5× 1 + 5*.5
+            ((PHI*⍵) - (-PHI)*-⍵) ÷ (¯1 + 2×PHI)
+      }
+```
+
+```apl
+      ⍝ Centimeters to feet and inches
+      cm_to_ft_in ← {
+            inches ← (⌊⍵÷2.54)
+            (⌊inches ÷ 12),(12 | inches)
+      }
+
+      cm_to_ft_in 30
+0 11
+      cm_to_ft_in 180
+5 10
+      cm_to_ft_in 300
+9 10
 ```
 
 !!! info "Multiline support in RIDE"
@@ -64,7 +83,8 @@ fibonacci ← {
 Any code beyond the first statement which produces a value is not evaluated
 ```apl
       number ← {1 ⋄ 2 ⋄ 3 ⋄ 4}
-      number ⍬ ⍝ The empty vector character ⍬ is added here as filler since functions always require a right argument
+      ⍝ The empty vector character ⍬ is added here as filler since functions always require a right argument
+      number ⍬ 
 1
       separator_test ← {a ← 1 ⋄ a + a ⋄ a - a}
       separator_test ⍬
