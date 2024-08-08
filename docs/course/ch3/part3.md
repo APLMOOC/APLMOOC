@@ -35,7 +35,28 @@ Note that when you use these functions over two vectors, the result is a vector,
 1 1 1 1 1 1 0 1 1 1
 ```
 
-One useful aspect of APL is the ability to change the tolerance of comparison when it comes to floating point values. More on this in the section on system functions.
+One useful feature of APL is the ability to change the tolerance of comparison when it comes to floating point values (except for comparison against zero!), and the displayed precision of numbers. The tolerance can be read (and set) via the ⎕CT system variable, and the precision shown is read (and set) via ⎕PP. The tolerance can be anything from 0 (exact comparisons) to 10*¯10.
+
+```apl
+      ⍝ 1 + Sine of Pi
+      X ← 1 + 1 ○ ○ 1
+      X
+1
+
+      ⎕PP ← 20
+      X
+1.0000000000000002
+      
+      ⎕CT ← 0
+      1 = X
+0
+
+      ⎕CT ← 1E¯10
+      1 = X
+1
+
+```
+
 
 As suggested by the choice of glyphs for the Greatest Common Divisor ∧ and the Least Common Multiple ∨, these two operations are also used for the boolean logic "or" and "and" operations. This is because 0 is divisible by everything, as the remainder is always 0. So the Greatest Common Divisor of 0 and x is just x, since x divides both 0 and x. Dually, 0 is also a multiple of everything, so the Least Common Multiple of 0 and x is just 0, since 0 is a multiple of both x and 0 (and it’s the smallest!).
 

@@ -83,7 +83,7 @@ turns the vector TEMPERATURE_DATA into a matrix with axes of length six and two,
 1 1 1 1 1
 ```
 
-*Strings* in APL are vectors of characters, defined using single quotes. The ⎕A constant return the string 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', more on this in Chapter 3. 
+*Strings* in APL are vectors of characters, defined using single quotes. The useful ⎕A system constant stores the upper-case english alphabet 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.
 
 ```
       WORD ← 'STONE'

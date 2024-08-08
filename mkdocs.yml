@@ -78,11 +78,10 @@ nav:
       - 3.1 - Fun for everyone: course/ch3/part1.md
       - 3.2 - All the math: course/ch3/part2.md
       - 3.3 - Relational and Logical functions: course/ch3/part3.md
-      - 3.4 - Quad functions: course/ch3/part4.md
-      - 3.5 - Installing Dyalog: course/ch3/part5.md
-      - 3.6 - Traditional fun: course/ch3/part6.md
-      - 3.7 - Fun(Fun(Fun(Fun(Fun(...))))): course/ch3/part7.md
-      - 3.8 - ALL ABOARD!: course/ch3/part8.md
+      - 3.5 - Installing Dyalog: course/ch3/part4.md
+      - 3.6 - Traditional fun: course/ch3/part5.md
+      - 3.7 - Fun(Fun(Fun(Fun(Fun(...))))): course/ch3/part6.md
+      - 3.8 - ALL ABOARD!: course/ch3/part7.md
       - 3.S - Summary: course/ch3/summary.md
       - 3.R - Read exercises: course/ch3/read.md
       - 3.W - Write exercises: course/ch3/write.md
