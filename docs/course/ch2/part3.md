@@ -82,8 +82,6 @@ LENGTH ERROR: Mismatched left and right argument shapes
 
 The length of the vectors must match, APL will not silently truncate the longer one or fill in the difference.
 
-The length of the vectors must match, APL will not silently truncate the longer one or fill in the difference.
-
 ```apl
       1 2 3 ÷ 2 2 0
 DOMAIN ERROR: Divide by zero

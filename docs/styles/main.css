@@ -50,6 +50,7 @@ div.problem span.problemfilltext {
     border-top: solid 1px #777;
     border-bottom: solid 1px #777;
     text-indent: 0.2em 0 0 0.2em;
+    padding-left: 0.5em;
 }
 
 div.problem span.problemspan {
