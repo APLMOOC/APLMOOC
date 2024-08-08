@@ -48,7 +48,12 @@ In APL, all the basic arithmetic functions apply to all the elements of a vector
 101 102 103  
 ```
 
-Pay close attention to the last two examples, constructing a vector using spaces always takes precedence over other operations.
+Pay close attention to the last two examples; constructing a vector using spaces always takes precedence over other operations, otherwise ``1 2 3+100`` would be ``1 2 103``. If that is what we want, we can add extra parentheses
+
+```apl
+      1 2 (3+100)
+1 2 103
+```
 
 Now you can do arithmetic to a list of numbers however you like! After figuring this out, you decided to also check the temperature reading of a sensor outside the ISS:
 
