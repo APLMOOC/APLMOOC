@@ -25,7 +25,7 @@ One of the ways of defining a function, taking in array arguments and outputting
       dB_to_B ← {⍵÷10} 
       ⍝ From decibels back to a power ratio
       dB_to_ratio ← {10*dB_to_B ⍵} 
-			dB_to_ratio 60
+	dB_to_ratio 60
 1000000
       dB_to_ratio 3
 1.995262315
@@ -52,7 +52,7 @@ One of the ways of defining a function, taking in array arguments and outputting
 
 Note that for the Fibonacci function, a constant value phi for the golden ratio was used. If the value of phi is changed, the Fibonacci function will use the updated value. 
 
-APL allows any number of assignment statements inside a function before the statement which evaluates the result, using the diamond-shaped statement separator ⋄, or placing the statements on new lines. The following two functions are equivalent.
+In order to let the Fibonacci function define its own phi, we have to define it inside the function itself. APL allows any number of assignment statements inside a function before the statement which evaluates the result, using the diamond-shaped statement separator ⋄, or placing the statements on new lines. The following two functions are equivalent.
 
 ```apl
       fibonacci ← {PHI ← 0.5× 1 + 5*.5 ⋄ ((PHI*⍵) - (-PHI)*-⍵) ÷ (¯1 + 2×PHI)}
@@ -60,9 +60,7 @@ APL allows any number of assignment statements inside a function before the stat
             PHI ← 0.5× 1 + 5*.5
             ((PHI*⍵) - (-PHI)*-⍵) ÷ (¯1 + 2×PHI)
       }
-```
 
-```apl
       ⍝ Centimeters to feet and inches
       cm_to_ft_in ← {
             inches ← (⌊⍵÷2.54)
@@ -75,19 +73,15 @@ APL allows any number of assignment statements inside a function before the stat
 5 10
       cm_to_ft_in 300
 9 10
-```
 
-!!! info "Multiline support in RIDE"
-	In order to write multiline functions in the Dyalog RIDE, "Extended Multiline Input" needs to be enabled. It can be found in the Session tab under Options>Configure.
-
-Any code beyond the first statement which produces a value is not evaluated
-```apl
-      number ← {1 ⋄ 2 ⋄ 3 ⋄ 4}
-      ⍝ The empty vector character ⍬ is added here as filler since functions always require a right argument
-      number ⍬ 
-1
       separator_test ← {a ← 1 ⋄ a + a ⋄ a - a}
+      ⍝ The empty vector character ⍬ is added here as filler since functions always require a right argument
       separator_test ⍬
 2
 ```
+
+Any code beyond the first statement which produces a value is not evaluated.
+
+!!! info "Multiline support in RIDE"
+	In order to write multiline functions in the Dyalog RIDE, "Extended Multiline Input" needs to be enabled. It can be found in the Session tab under Options>Configure.
 
