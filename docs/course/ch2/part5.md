@@ -44,43 +44,51 @@ Attempting to access the elements of the rank 3 array returns vectors, this is b
 
 If we replace TEMPERATURE_DATA1 and TEMPERATURE_DATA2 with scalars, the situation is a bit more clear.
 ```apl
-	   ARRAY ← 2 2 2 ⍴ 1 2
+	   ARRAY ← 2 2 2 ⍴ 'AB'
 	   ARRAY
-1 2
-1 2
+A B
+A B
    
-1 2
-1 2
+A B
+A B
 ```
 
 The proper way to combine two vectors into a single longer vector is using the catenate `,` function,  generally joining two arrays along a common edge. Monadically, the ravel `,` function can be used to "unravel" a matrix into a vector of its elements in top-down left-right order, called ravel order.
 
 ```apl
-       ARRAY ← 2 2 2 ⍴ 1 2 3 4 5 6 7 8
-       ARRAY
-1 2
-3 4
+       WORD ← 3 2 2 ⍴ 'BOROSILICATE'
+       WORD
+BO
+RO
+  
+SI
+LI
+  
+CA
+TE
+
+       ,WORD
+BOROSILICATE
+
+       WORD,'T'
+BOT
+ROT
    
-5 6
-7 8
+SIT
+LIT
+   
+CAT
+TET
 
-       ,ARRAY
-1 2 3 4 5 6 7 8
-
-       ARRAY,1
-1 2 1
-3 4 1
-     
-5 6 1
-7 8 1
-
-       ARRAY,ARRAY
-1 2 1 2
-3 4 3 4
-       
-5 6 5 6
-7 8 7 8
-
+       WORD,WORD
+BOBO
+RORO
+    
+SISI
+LILI
+    
+CACA
+TETE
 
        TEMPERATURE_DATA1 ← 21.4 00010101.074200 21.8 00010101.084700
        TEMPERATURE_DATA2 ← 22.8 00010101.182300 21.5 00010101.193000 
