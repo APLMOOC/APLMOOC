@@ -44,7 +44,7 @@ For example, the evaluation of factorial 2 can be visualised as:
 ```apl
       collatz ← {⍵=1: 1 ⋄ 0=2|⍵: ⍵ , ∇ ⍵÷2 ⋄ ⍵ , ∇ 1+3×⍵}
 ```
-This function keeps track of the evaluation of the following procedure. If the `⍵` is even (see more examples of the dyadic modulo `|` function), divide it by two. If it is odd, multiply it by three and add one. Evaluate this function until `⍵` reaches 1.
+This function keeps track of the evaluation of the following procedure. If the `⍵` is even, divide it by two. If it is odd, multiply it by three and add one. Evaluate this function until `⍵` reaches 1.
 
 ```apl
       ⍝ Example:

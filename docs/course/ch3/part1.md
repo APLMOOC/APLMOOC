@@ -9,34 +9,44 @@
 
 Now that we know how data is structured in APL, it’s time to look at how to use this data, more specifically, how to make your own functions from already existing ones.
 
-One of the ways of defining a function, taking in array arguments and outputting an array result, is using direct functions abbreviated dfn. ("dee-fun") A dfn is a series of statements, where the special characters ⍺ and ⍵ represent the left and right arguments to the function. Functions always require a right argument. Let’s look at some simple examples.
+You are an engineer sitting at your [cubicle](https://en.wikipedia.org/wiki/Cubicle). You are currently orbiting the Earth at an altitude of 160m at a speed of 1,600km/h.
+
+In brief intervals of time spent waiting between tasks, you have to organise project data in your data management system. Unfortunately for you, your clients all use different units of measurement, and none of your colleagues seem to share your enthusiasm for avoiding misunderstanding. Fortunately for your company, you’ve decided to use your APL skills to avoid a [Mars Climate Orbiter](https://en.wikipedia.org/wiki/Mars_Climate_Orbiter)-like situation.
+
+One of the ways of defining a function, taking in array arguments and outputting an array result, is using direct functions abbreviated dfn. ("dee-fun") A dfn is a series of statements, where the special characters ⍺ and ⍵ represent the left and right arguments to the function. Functions always require a right argument. You start with the basic conversions your current project requires, and a couple fun ones just for yourself.
 
 ```apl
-      F_to_C ← {(5 × ⍵ - 32)÷9}
-      F_to_C 451
+      FtoC ← {(5 × ⍵ - 32)÷9}
+      FtoC 451
 232.7777778
-      C_to_F ← {32 + (9 × ⍵) ÷ 5}
-      C_to_F ¯273.15
+      CtoF ← {32 + (9 × ⍵) ÷ 5}
+      CtoF ¯273.15
 ¯459.67
-      C_to_F F_to_C 100
+      CtoF FtoC 100
 100
 
+      ⍝ Centimeters to feet and inches
+      CmtoIn ← {⌊⍵÷2.54}
+      CmtoFtIn ← {
+            (⌊(CmtoIn ⍵) ÷ 12),(12 | (CmtoIn ⍵))
+      }
+
+      CmtoFtIn 30
+0 11
+      CmtoFtIn 180
+5 10
+      CmtoFtIn 300
+9 10
+
       ⍝ From decibels to bels 
-      dB_to_B ← {⍵÷10} 
+      dBtoB ← {⍵÷10} 
       ⍝ From decibels back to a power ratio
-      dB_to_ratio ← {10*dB_to_B ⍵} 
-	dB_to_ratio 60
+      dBtoratio ← {10*dBtoB ⍵} 
+	dBtoRatio 60
 1000000
-      dB_to_ratio 3
+      dBtoRatio 3
 1.995262315
-      
-      ⍝ golden ratio
-      PHI ← 0.5× 1 + 5*.5 
-      fibonacci ← {((PHI*⍵) - (-PHI)*-⍵) ÷ (¯1 + 2×PHI)}
-      fibonacci ⍳7
-1 1 2 3 5 8 13
-      fibonacci 10
-55
+
 
       ⍝ Pythagorean theorem
       hypotenuse ← {((⍺*2)+⍵*2)*0.5} 
@@ -48,6 +58,15 @@ One of the ways of defining a function, taking in array arguments and outputting
 13
       1 hypotenuse 3*.5
 2
+      
+      ⍝ golden ratio
+      PHI ← 0.5× 1 + 5*.5 
+      fibonacci ← {((PHI*⍵) - (-PHI)*-⍵) ÷ (¯1 + 2×PHI)}
+      fibonacci ⍳7
+1 1 2 3 5 8 13
+      fibonacci 10
+55
+
 ```
 
 Note that for the Fibonacci function, a constant value phi for the golden ratio was used. If the value of phi is changed, the Fibonacci function will use the updated value. 
@@ -61,26 +80,13 @@ In order to let the Fibonacci function define its own phi, we have to define it 
             ((PHI*⍵) - (-PHI)*-⍵) ÷ (¯1 + 2×PHI)
       }
 
-      ⍝ Centimeters to feet and inches
-      cm_to_ft_in ← {
-            inches ← (⌊⍵÷2.54)
-            (⌊inches ÷ 12),(12 | inches)
-      }
-
-      cm_to_ft_in 30
-0 11
-      cm_to_ft_in 180
-5 10
-      cm_to_ft_in 300
-9 10
-
       separator_test ← {a ← 1 ⋄ a + a ⋄ a - a}
       ⍝ The empty vector character ⍬ is added here as filler since functions always require a right argument
       separator_test ⍬
 2
 ```
 
-Any code beyond the first statement which produces a value is not evaluated.
+As seen with the last function, any code beyond the first statement which produces a value is not evaluated.
 
 !!! info "Multiline support in RIDE"
 	In order to write multiline functions in the Dyalog RIDE, "Extended Multiline Input" needs to be enabled. It can be found in the Session tab under Options>Configure.
