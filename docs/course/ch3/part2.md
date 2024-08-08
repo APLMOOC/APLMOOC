@@ -96,7 +96,6 @@ Monadic `|` : Absolute value, Magnitude
 ```
 
 
-
 Dyadic `∨` & `∧` : GCD and LCM
 ```apl
       ⍝ Greatest Common Divisor
@@ -113,7 +112,8 @@ Dyadic `∨` & `∧` : GCD and LCM
 ¯20
 ```
 
-Curiously, as suggested by the choice of glyphs for these two operations, these two operations are also used for the boolean logic "or" and "and" operations. This is because 0 is divisible by everything, as the remainder is always 0. So the Greatest Common Divisor of 0 and x is just x, since x divides both 0 and x. Dually, 0 is also a multiple of everything, so the Least Common Multiple of 0 and x is just 0, since 0 is a multiple of both x and 0 (and it’s the smallest!).
+As suggested by the choice of glyphs for these two operations, these two operations are also used for the boolean logic "or" and "and" operations. More on this in the next section.
+
 
 Monadic `+` : Complex Conjugate
 ```apl
