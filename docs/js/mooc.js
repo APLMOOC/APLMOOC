@@ -30,17 +30,16 @@ function set_mooc_token(token) {
 function login() {
     let user = $("#user").value;
     let pass = $("#pass").value;
-    let ret = mooc_login(user, pass, logincallback);
+    let ret = mooc_login(user, pass);
     console.log(ret);
-    $("#loginResponse").innerHTML = "Logging in...";
+    $("#loginResponse").innerText = "Logging in...";
 }
 
-function logout(callback) {
+function logout() {
     localStorage.removeItem("mooc_token");
-    callback();
 }
 
-function mooc_login(username, password, callback) {
+function mooc_login(username, password) {
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
@@ -49,12 +48,10 @@ function mooc_login(username, password, callback) {
         if (this.status == 200) {
             mooc_token = JSON.parse(this.responseText)["access_token"];
             set_mooc_token(mooc_token);
-            $("#loginResponse").innerHTML = "Success";
+            $("#loginResponse").innerText = "Success";
         } else {
-            $("#loginResponse").innerHTML = "Login failed";
+            $("#loginResponse").innerText = "Login failed";
         }
-
-        callback();
     }
 
     xhttp.open("POST","https://tmc.mooc.fi/oauth/token",true);
@@ -64,11 +61,6 @@ function mooc_login(username, password, callback) {
                "username="+encodeURIComponent(username)+"&"+
                "password="+encodeURIComponent(password)+"&"+
                "grant_type=password");
-}
-
-function logincallback(){
-    mooc_token = get_mooc_token()
-    console.log("TOKEN: " + mooc_token);
 }
 
 // Problems
@@ -84,7 +76,9 @@ function submit_problem(problem_id, parts=0) {
 
     if(parts > 0){
         for(let i=1; i<=parts; i++){
-            submission += $(`#input_${problem_id}_b${i}`).value;
+            input_part = $(`#input_${problem_id}_b${i}`);
+            if(input_part.nodeName == "INPUT") submission += input_part.value + " ";
+            else if(input_part.nodeName == "SPAN") submission += input_part.innerText + " ";
         }
     } else {
         submission = $(`#input_${problem_id}`).value;
@@ -105,17 +99,15 @@ function submit_problem(problem_id, parts=0) {
         } else {
             set_feedback(problem_id, response["message"]);
         }
-
-        callback();
     }
 
     xhttp.open("POST", `${backend_url}/submit`, true);
     xhttp.setRequestHeader("Content-type", "application/json");
-    xhttp.send({
+    xhttp.send(JSON.stringify({
         "id_problem": problem_id,
         "mooc_token": user_token,
-        "code_encoded": btoa(submission),
-    });
+        "code_encoded": window.btoa(unescape(encodeURIComponent(submission))),
+    }));
 }
 
 function problem_status() {
