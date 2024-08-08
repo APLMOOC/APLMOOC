@@ -1,11 +1,8 @@
-# Quad functions
+# Installing Dyalog
 
 !!! abstract "This part will cover"
 
-    - What quad functions are
-    - Common quad functions:
-        - DT
-        - A
-        - etc.
+    - Instructions on installing the Dyalog IDE, Dyalog RIDE, and Dyalogscript
+    - Basic usage instructions
 
 ---

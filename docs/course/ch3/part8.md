@@ -1,65 +1,196 @@
-# Fun(Fun(Fun(Fun(Fun(...)))))
+# ALL ABOARD!
 
 !!! abstract "This part will cover"
 
-    - How to define recursive dfns and tradfns
-    - Guard syntax in dfns
+    - Trains
+    - Defining 2- and 3-trains
+    - The tack functions
 
 ---
 
-Recursive functions can be implemented using guarded expressions and the self `∇` function.
+Some other important functions are the dyadic right and left identity/"tack" functions which return their right or left arguments.
 
-Guarded expressions consist of a boolean/logical expression followed by a colon `:`, and another expression. For example, `⍵=0: 1`. 
-
-A guarded expression in a function specifies a condition for whether a statement is evaluated; if the boolean expression evaluates to 1, the function evaluates the statement and the value of the expression is returned. In the above example, if we create a function `{⍵=0: 1}`, if `⍵` (the right argument) is 0, then the function will return 1.
-
-The self function `∇` stands for the function it is contained in, allowing calling the function from within itself, that is, allowing recursion. Alternatively, the function name can be used within the function itself.
-
-For example, the factorial function is typically defined as f(n) = n * f(n-1), such that f(0)=1. Thinking in terms of guarded expressions, if the argument of the function is 0 the result should be 1 (in symbols, `⍵=0: 1`), otherwise multiply the right argument (`⍵`) by the result of the function itself (`∇`) evaluated for the right argument minus 1 (`⍵ - 1`).  Putting it together,
 ```apl
-      factorial ← {⍵=0: 1 ⋄ ⍵ × ∇ ⍵ - 1} 
+       'True'⊣'False'
+True
+       'True'⊢'False'
+False
 ```
-This function consists of two statements, separated by the separator `⋄`.
-The first statement in this function is an example of a guarded expression, if `⍵=0` evaluates to true, that is, when `⍵` is equal to 0, the expression 1 is evaluated. Otherwise, the expression `⍵ × ∇ ⍵ - 1` is evaluated. 
-For example, the evaluation of factorial 2 can be visualised as:
+When applied monadically, they return their only argument.
+
+Consider the following pairs of functions, implemented using dfns first, and trains second.
 
 ```apl
-           {⍵=0: 1 ⋄ ⍵ × ∇ ⍵ - 1} 2
-      ⍝    Since 2=0 is 0, the guarded statement is not evaluated.
-      ⍝    2 × ∇ 1
-      ⍝    2 × {⍵=0: 1 ⋄ ⍵ × ∇ ⍵ - 1} 1
-      ⍝    Since 1=0 is 0, the guarded statement is not evaluated.
-      ⍝    2 × 1 × ∇ 0
-      ⍝    2 × 1 × {⍵=0: 1 ⋄ ⍵ × ∇ ⍵ - 1} 0
-      ⍝    Since 0=0 is 1, the guarded statement is evaluated.
-      ⍝    2 × 1 × 1
-      factorial 2
+       range_average ← {((⌈/⍵)-⌊/⍵),(+/⍵)÷≢⍵}
+       range_average 5.48 6 5.63 6.02 5.37
+0.65 5.7
+	     range_average ← (⌈/-⌊/),+/÷≢
+       range_average 5.48 6 5.63 6.02 5.37
+0.65 5.7
+
+       plusminus ← {(⍺-⍵),⍺,⍺+⍵}
+       5.7 plusminus 0.65
+5.05 5.7 6.35
+       plusminus ← -,⊣,+
+       5.7 plusminus 0.2
+5.5 5.7 5.9
+```
+
+Notice that the arguments of the function were not referred to in the function trains, this style of programming is called tacit or "point-free" programming, borrowed from mathematics where it means taking data that can be described using points to be more fundamental than the points themselves, avoiding the need to refer to points explicitly. In this case, taking functions to be more fundamental than their description in terms of explicit arguments, w
+
+The most basic train is the 2-train (fg), in operator form f⍤g, called an atop. The atop evaluates the function f monadically on the result of g applied to the arguments of the train.
+
+The following image is composed of three parts, the first being the APL syntax for the atop, the second being a tree-like representation of the atop where the evaluation happens from bottom to top, and the third is the atop in traditional mathematical notation.
+
+<img src="../../assets/3_9_atop.png" style="width:50%; margin-left: auto; margin-right: auto; display: block;" />
+
+!!! info "Trains in RIDE"
+	It is possible to make sense of trains by rendering them in various forms in the RIDE editor using the -trains option to the Box user command. For example, it is possible to render trains as trees using the following command.
+	```apl
+	]Box on -trains=tree
+	```
+	You can use the help ]? command to get help for any user command in RIDE.
+
+Floored division can be conveniently expressed as an atop.
+```apl
+       12÷5
+2.4
+       ⌊2.4
 2
-      factorial 3
-6
-      factorial 4
-24
+       12(⌊÷)5
+2
+```
+A very similar composition is achieved using the Beside operator, f∘g. 
+
+<img src="../../assets/3_9_beside.png" style="width:50%; margin-left: auto; margin-right: auto; display: block;" />
+
+More simply, the expression ⍺(f∘g)⍵ evaluates to ⍺fg⍵, and recalling that APL is right associative, is ⍺f(g⍵).
+```apl
+       matrix ← 3 3 ⍴ (3|⍳9)
+       matrix
+1 2 0
+1 2 0
+1 2 0
+       ⍉ matrix ⍝ Transpose
+1 1 1
+2 2 2
+0 0 0
+       ⍝ Beside of matrix multiplication (+.×) and transpose (⍉)
+       matrix (+.×)∘⍉ matrix
+5 5 5
+5 5 5
+5 5 5
+       matrix (+.×)⍉ matrix
+5 5 5
+5 5 5
+5 5 5
+       
+       1 2 (-/×)∘⊖ 3 1 ⍝ Cross product
+¯5
+       ⍝ A beside of an atop and a function
+       1 2 (-/×)⊖ 3 1
+¯5
 ```
 
-```apl
-      collatz ← {⍵=1: 1 ⋄ 0=2|⍵: ⍵ , ∇ ⍵÷2 ⋄ ⍵ , ∇ 1+3×⍵}
-```
-This function keeps track of the evaluation of the following procedure. If the `⍵` is even (see more examples of the dyadic modulo `|` function), divide it by two. If it is odd, multiply it by three and add one. Evaluate this function until `⍵` reaches 1.
+Notice that in the last statement, the atop `-/×` and function `⊖` were composed into an atop. Since the atop `-/×` is a functions in its own right, it can be used as part of larger trains.
+
+The Over `⍥` operator, `f⍥g`, applies f to the value of g applied to each of its arguments.
+
+
+<img src="../../assets/3_9_over.png" style="width:50%; margin-left: auto; margin-right: auto; display: block;" />
+
+The decibel conversion from the start of this chapter can be easily written in this form.
 
 ```apl
-      ⍝ Example:
-      ⍝     collatz 3 
-      ⍝     3 , ∇ 1+3×3
-      ⍝     3 , collatz  1+3×3
-      ⍝     3 , collatz 10
-      ⍝     3 , 10 , ∇ 10÷2
-      ⍝     3 10 , collatz  10÷2
-      ⍝     3 10 , collatz  5
-      ⍝     and so on
-      collatz 3
-3 10 5 16 8 4 2 1
-      collatz 100
-100 50 25 76 38 19 58 29 88 44 22 11 34 17 52 26 13 40 20 10 5 16 8 4 2 1
-      collatz 2*10
-1024 512 256 128 64 32 16 8 4 2 1
+       dB_to_ratio ← {10*⍵÷10}
+       ratio_to_dB ← {10×10⍟⍵}
+       ⍝Over of an atop and a function
+       60 (ratio_to_dB÷)⍥dB_to_ratio 30
+30
+       ratio_to_dB ((dB_to_ratio 60) ÷ dB_to_ratio 30)
+13.01029996
+
+       reciprocal_sum ← {÷(÷⍺)+÷⍵}
+       1 reciprocal_sum 2
+0.6666666667
+       reciprocal_sum ← (÷+)⍥÷
+       1 reciprocal_sum 2
+0.6666666667
+
+       hypotenuse ← {((⍺*2)+⍵*2)*0.5}
+       3 hypotenuse 4
+5
+       hypotenuse ← (*0.5+)⍥(*2)
+SYNTAX ERROR
+      hypotenuse←(*0.5+)⍥(*2)
+                      ∧
 ```
+
+When trying to adapt the hypotenuse function to point-free programming, a seemingly strange error appears complaining about syntax of our train. However, this error should not seem so bizzare after some thought, because the expression `(* 0.5 +)` is not a function, in fact, `(* 0.5 +)` evaluates to `(1.648721271+)` since the `*` function here is interpreted to act monadically on 0.5. In order to attach the value 0.5 to `*` and turn the dyadic `*` into a monadic `{⍵*0.5}`, the bind `∘` operator can be used.
+
+```apl
+       hypotenuse ← (*∘0.5+)⍥(*∘2)
+       3 hypotenuse 4
+5
+```
+
+Another form of the hypotenuse function is obtained by taking the magnitude of a complex number, with real and imaginary parts the arguments of the function.
+
+```apl
+	       complex ← +/(1 0J1)∘×
+	       complex 3 4
+3J4
+	       hypotenuse ← |complex
+	       hypotenuse 3 4
+5
+         hypotenuse ← |(+/(1 0J1)∘×)
+         hypotenuse 3 4
+5
+         hypotenuse ← |⍤+/(1 0J1)∘×
+         hypotenuse 3 4
+5
+```
+
+Another form of the hypotenuse function is obtained by taking the magnitude of a complex number, with real and imaginary parts the arguments of the function.
+
+Let’s take a closer look at the trains at the beginning of this section, applied to vector values.
+
+```apl
+       range_average ← (⌈/-⌊/),+/÷≢
+       plusminus ← -,⊣,+
+```
+
+Starting with range_average, we start reading from right to left identifying forks and atops. We first identify the 3-train `+/÷≢`, which takes the sum `+/` of the elements of a vector and divides `÷` by the length `≢ ` of the vector, `{(+/⍵)÷(≢⍵)}` as a function which takes an average.
+
+<img src="../../assets/3_9_fork.png" style="width:50%; margin-left: auto; margin-right: auto; display: block;" />
+
+```apl
+       avg←+/÷≢
+       range_average ← (⌈/-⌊/),avg
+```
+
+Then, the 3-train `(⌈/-⌊/)` takes the maximum `⌈/` and subtracts `-` by the minimum `⌊/`, `{(⌈/⍵)-(⌊/⍵)}`, which gives the range of a series of values.
+```apl
+       avg←+/÷≢
+       range←⌈/-⌊/
+       range_average ← range,avg
+```
+
+Then it’s clear in this form that the function range_average takes the range and average of a series of values and returns both values in the form of a vector.
+
+The plus_minus function can be analysed similarly.
+
+```apl
+       plusminus ← -,⊣,+
+       plusminus ← -,(⊣,+)
+       plusminus ← -,{⍵,⍺+⍵}
+       plusminus ← {(⍺-⍵),(⍵,⍺+⍵)}
+```
+
+More generally, for an n-train of functions `(f g h k l m … w x y z)`, 
+
+- `(f g h k l m … t u v w x y z)` is interpreted as `(f g h k l m … t u v w (x y z))`, which can be interpreted again as `(f g h k l m … t u (v w (x y z)))`, and further recursively.
+- If the number of functions is odd, then the result is of the form of forks over forks
+    - `(f g (h k (l m … (t u (v w (x y z))))…)`
+- If the number of functions is even, then the result is an atop over forks
+    - `(f (g h (k l (m … (t u (v w (x y z))))…)`
