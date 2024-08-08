@@ -33,7 +33,7 @@ You are going to spend ages plugging the data from this one sensor, and you have
 
 There’s all the Celsius! What’s going on here?
 
-In APL, all the basic arithmetic functions apply "component-wise". If you are familiar with functional programming in Python or maybe Haskell, you might know the `map` function, which applies another function to each element of a vector. In APL, this is done automatically for all the basic arithmetic functions, if one of the parameters is a scalar:
+In APL, all the basic arithmetic functions apply to all the elements of a vector. If you are familiar with functional programming, you might know the `map` function, which applies a function to each element of a vector. In APL, this is done automatically for all the basic arithmetic functions, if one of the parameters is a scalar:
 
 ```apl
       TEMP_F - 32
@@ -48,7 +48,7 @@ In APL, all the basic arithmetic functions apply "component-wise". If you are fa
 101 102 103  
 ```
 
-Pay close attention to the last two example, constructing a vector using spaces always takes precedence over other operations.
+Pay close attention to the last two examples, constructing a vector using spaces always takes precedence over other operations.
 
 Now you can do arithmetic to a list of numbers however you like! After figuring this out, you decided to also check the temperature reading of a sensor outside the ISS:
 
