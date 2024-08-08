@@ -68,7 +68,7 @@ That’s some extreme temperature right there! And it makes you start to wonder,
 96.72222222 75.21111111 36.55555556 7.222222222 ¯32.53333333 ¯84.96666667 ¯135.7
 ```
 
-So applying a basic arithmetic function to two vectors also just applies them "component-wise"! It just applies this function for the first element on the left and the first element on the right, note the result, then the second element on the left and the second element on the right, and so on. This is analogous to `map` with a binary operation and two iterators in Python, and `zipWith` in Haskell. 
+Applying a basic arithmetic function to two vectors applies it to their components! It applies this function for the first element on the left with the first element on the right, noting the result, then the second element on the left with the second element on the right, and so on. This is analogous to `map` with a binary operation and two iterators in Python, and `zipWith` in Haskell. 
 
 ```apl
       ⍝ Approximations to pi
