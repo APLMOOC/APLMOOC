@@ -2,28 +2,13 @@
 
 !!! abstract "This part will cover"
 
-    - Trains
-    - Defining 2- and 3-trains
+    - Forks and Atops
     - The tack functions
+    - Reduce function
 
 ---
 
-Before starting this section, we briefly introduce the commonly used / symbol. The dyadic replicate / function repeats elements of its right hand argument array by a specified left hand argument array. This allows the use of boolean masks, which makes it commonly used to filter arrays.
-
-```apl
-       1 0 1 0 1 0 1 0 1/'ballooned'
-blond
-       (~1 0 1 0 1 0 1 0 1)/'ballooned'
-aloe
-       2 1 1 1 1 1/'elfish'
-eelfish
-       0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0/⎕A
-EMU
-       0 0 0 1 1 0 0 0 1 1 0 0/'flamethrower'
-meow
-```
-
-The monadic reduce / operator applies its left function argument between every element of a vector. More on this in Chapter 4.
+Before starting this section, we briefly introduce the commonly used monadic replicate / operator, which applies its left function argument between every element of a vector. More on this in Chapter 4.
 
 ```apl
        ⍳10
@@ -49,7 +34,7 @@ True
 False
 ```
 
-At this point, all the functions we've defined have explicitly referred to the left ⍺ and right ⍵ arguments, for example in the following function ``maxdiff`` which takes the difference of the largest and smallest values of a vector
+At this point, all the functions we've defined have explicitly referred to the left ⍺ and right ⍵ arguments, for example in the following function ``range`` which takes the difference of the largest and smallest values of a vector
 
 ```apl
       5 ⌈ 6
@@ -66,10 +51,6 @@ At this point, all the functions we've defined have explicitly referred to the l
       
       range 80 49 56 60 100 99 23 19 24 4 50 7
 50
-
-      maxdiff 80 49 56 60 100 99 23 19 24 4 50 7 
-93
-      ⍝ 100 - 7
 ```
 
 or in the following function which takes the (weighted) average of a vector
@@ -127,18 +108,111 @@ in the "plus or minus" function and rounded (or floored) division function
 1
 ```
 
-All of these functions can be expressed in terms of special combinations instead, without referring to the arguments ⍺ and ⍵ at all! Just like magic, it takes some time to learn, but once you do it reveals a rich world of programming magic.
+All of these functions can instead be expressed in terms of special combinations of functions, without referring to the arguments ⍺ and ⍵ at all! Just like magic, it takes some time to learn, but once you do it reveals a rich world of programming spells.
 
-This style of programming is called tacit or "point-free" programming, borrowed from mathematics where it means taking data described using points to be more fundamental than the points themselves, avoiding the need to refer to points explicitly. In this case, taking functions to be more fundamental than their description in terms of explicit arguments.
+This style of programming is called tacit or "point-free" programming, borrowed from mathematics where it means taking data described using points to be more fundamental than the points themselves, avoiding the need to refer to points explicitly. In this case, taking functions to be more fundamental than their description in terms of explicit arguments. These point-free functions are called trains. 
 
-Let's take a look at the functions above, with increasing complexity of their point-free equivalents.
+There are two fundamental types of trains which can be created by stringing functions together, more advanced trains will be covered in Chapter 6. The most basic train is the 2-train (fg), in operator form f⍤g, called an atop. The atop evaluates the function f on the result of g applied to the arguments of the train.
 
+The following image shows three equivalent forms of the atop, the first being the APL syntax for the atop, the second being a tree-like representation of the atop where the evaluation happens from bottom to top, and the third is the atop in traditional mathematical notation.
+
+<img src="../../assets/3_9_atop.png" style="width:50%; margin-left: auto; margin-right: auto; display: block;" />
+
+
+Floored division can be conveniently expressed as an atop.
 ```apl
-      
+       12÷5
+2.4
+       ⌊2.4
+2
+       12(⌊÷)5
+2
 ```
 
+The second fundamental type of train is the 3-train (fgh), called a fork.
+
+<img src="../../assets/3_9_fork.png" style="width:50%; margin-left: auto; margin-right: auto; display: block;" />
+
+When acting on arguments ``⍺`` and ``⍵``, it applies g dyadically to ``⍺f⍵`` and ``⍺h⍵``. 
+
+!!! info "Train trees"
+       The ]Box user command controls how trains are displayed, it is beneficial to set -trains=tree to see a tree-like representation of trains.
+       
+       ```apl
+             -,+
+       -,+
+
+             ]Box ON
+       Was OFF
+             ]Box -trains=tree
+       Was -trains=box
+
+             -,+
+       ┌─┼─┐
+       - , +
+       ```
+
+       Forks here look like forks! The trees are read from bottom up, where each function at the end of a branch is applied to ``⍺`` and ``⍵``, if there is a function in between, it is applied to the result of the functions on either side. The values then go up the tree until it reaches the root, at which point it is returned.
 
 
+Most of the above functions can be expressed as combinations of forks and atops, let's take a look at a few important cases.
+
+The range function is the most straightforward example, it can be written as a single fork
+
+```apl
+      range ← {(⌈/⍵)-(⌊/⍵)}
+      ⍝ is equivalent to
+      range ← ⌈/-⌊/
+      range
+  ┌─┼─┐
+  / - /
+┌─┘ ┌─┘
+⌈   ⌊
+```
+
+The functions f and h here are ``⌈/`` and ``⌊/``, with g being ``-``. When only given a right argument, the above range function evaluates ``⌈/⍵`` and ``⌊/⍵``, then takes the difference ``-`` between them, as is intended.
+
+An example of a fork over a fork is the ``plusminus`` function,
+
+```apl
+      plusminus ← {(⍺-⍵),⍺,⍺+⍵}
+      ⍝ is equivalent to
+      plusminus ← -,⊣,+
+      ⍝ or with redundant parentheses -,(⊣,+)
+      plusminus
+┌─┼───┐
+- , ┌─┼─┐
+    ⊣ , +
+```
+
+From the tree representation of plusminus, it is first seen that the function evaluates ``⊣`` and ``+`` to the arguments ``⍺`` and ``⍵``, then applies ``,`` between them. The result is then applied to the ``,`` above, with the result of ``-``. The result is ``(⍺-⍵),((⍺⊣⍵),(⍺+⍵))`` which is exactly ``(⍺-⍵),⍺,⍺+⍵``. 
+
+The reason plusminus is interpreted as a fork over a fork is that APL function evaluation is always read from right to left. This extends to longer trains where, for example, (f g h i j k) is interpreted as (f (g h (i j k))), an atop over a fork over a fork.
+
+The rounded division function can be written as an atop over an atop,
+
+```apl
+      round_div ← {⌊0.5+⍺÷⍵}
+      ⍝ is expected to be equivalent to
+      ⌊((0.5+)÷)
+SYNTAX ERROR: Missing right argument
+      ⌊((0.5+)÷)
+            ∧
+```
+
+What's going on here? The reason this doesn't work is that ``⌊((0.5+)÷)`` is not purely composed of functions, it contains a value ``0.5`` and thus is not interpreted as a train. One way around this is to write ``⌊({0.5+⍵}÷)``, which defeats the purpose of point-free programming. Instead, the bind ``∘`` function can be used to create a monadic function from a dyadic one. In this case, the dyadic function ``+`` is bound to the left argument ``0.5`` as ``0.5∘+``, which is now a monadic function equivalent to ``{0.5+⍵}``.
+
+```apl
+      round_div ← {⌊0.5+⍺÷⍵}
+      ⍝ is equivalent to
+      round_div ←  ⌊(0.5∘+÷)
+      round_div
+┌┴─┐
+⌊ ┌┴┐
+  ∘ ÷
+┌─┴─┐
+0.5 +
+```
 
 !!! tip "Move the rest to Chapter 6"
 
