@@ -1,10 +1,148 @@
-# ALL ABOARD!
+# All aboard!
 
 !!! abstract "This part will cover"
 
     - Trains
     - Defining 2- and 3-trains
     - The tack functions
+
+---
+
+Before starting this section, we briefly introduce the commonly used / symbol. The dyadic replicate / function repeats elements of its right hand argument array by a specified left hand argument array. This allows the use of boolean masks, which makes it commonly used to filter arrays.
+
+```apl
+       1 0 1 0 1 0 1 0 1/'ballooned'
+blond
+       (~1 0 1 0 1 0 1 0 1)/'ballooned'
+aloe
+       2 1 1 1 1 1/'elfish'
+eelfish
+       0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0/⎕A
+EMU
+       0 0 0 1 1 0 0 0 1 1 0 0/'flamethrower'
+meow
+```
+
+The monadic reduce / operator applies its left function argument between every element of a vector. More on this in Chapter 4.
+
+```apl
+       ⍳10
+1 2 3 4 5 6 7 8 9 10
+       +/⍳10
+55
+       1+2+3+4+5+6+7+8+9+10
+55
+       -/⍳10
+¯5
+       1-2-3-4-5-6-7-8-9-10
+¯5
+       ∧/⍳20 ⍝ LCM of numbers from 1 to 20
+2520
+```
+
+Some other important functions are the dyadic right and left identity/“tack” functions which return their right or left arguments. They "point" towards which argument they return.
+
+```apl
+       "True"⊣"False"
+True
+       "True"⊢"False"
+False
+```
+
+At this point, all the functions we've defined have explicitly referred to the left ⍺ and right ⍵ arguments, for example in the following function ``maxdiff`` which takes the difference of the largest and smallest values of a vector
+
+```apl
+      5 ⌈ 6
+6
+
+       5 ⌈ 6 ⌈ 7 ⌈ 8
+8
+
+      ⍝ Maximum between whole vector
+      ⌈/ 5 6 7 8
+8
+  
+      range ← {(⌈/⍵)-(⌊/⍵)}
+      
+      range 80 49 56 60 100 99 23 19 24 4 50 7
+50
+
+      maxdiff 80 49 56 60 100 99 23 19 24 4 50 7 
+93
+      ⍝ 100 - 7
+```
+
+or in the following function which takes the (weighted) average of a vector
+
+```apl
+
+      +/ 1 10 100
+111
+
+      ⍝ Average
+      (+/ 1 10 100) ÷ 3
+37
+
+      avg ← {(+/⍵)÷⍴⍵}
+
+      avg 1 10 100
+37
+
+      ⍝ Weighing the average by 1 1 1
+      (+/ 1 10 100 × 1 1 1) ÷ (+/ 1 1 1)
+37
+      
+      ⍝ Weighing the average by 2 3 4
+      (+/ 1 10 100 × 2 3 4) ÷ (+/ 2 3 4)
+48
+
+      weighted_avg ← {+/(⍺×⍵)÷(+/⍺)}
+
+      2 3 4 weighted_avg 1 10 100
+48
+```
+
+in the "plus or minus" function and rounded (or floored) division function
+
+```apl
+      plusminus ← {(⍺-⍵),⍺,⍺+⍵}
+
+       5.7 plusminus 0.5
+5.05 5.7 6.35
+
+      round_div ← {⌊0.5+⍺÷⍵}
+
+      1 round_div 3
+0
+
+      2 round_div 3
+1
+
+      floor_div ← {⌊⍺÷⍵}
+
+      2 floor_div 3
+0
+
+      4 floor_div 3
+1
+```
+
+All of these functions can be expressed in terms of special combinations instead, without referring to the arguments ⍺ and ⍵ at all! Just like magic, it takes some time to learn, but once you do it reveals a rich world of programming magic.
+
+This style of programming is called tacit or "point-free" programming, borrowed from mathematics where it means taking data described using points to be more fundamental than the points themselves, avoiding the need to refer to points explicitly. In this case, taking functions to be more fundamental than their description in terms of explicit arguments.
+
+Let's take a look at the functions above, with increasing complexity of their point-free equivalents.
+
+```apl
+      
+```
+
+
+
+
+!!! tip "Move the rest to Chapter 6"
+
+       The rest of this section should be adapted for chapter 6
 
 ---
 
