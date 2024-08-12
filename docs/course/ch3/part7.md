@@ -170,7 +170,7 @@ The range function is the most straightforward example, it can be written as a s
 ⌈   ⌊
 ```
 
-The functions f and h here are ``⌈/`` and ``⌊/``, with g being ``-``. When only given a right argument, the above range function evaluates ``⌈/⍵`` and ``⌊/⍵``, then takes the difference ``-`` between them, as is intended.
+The functions f and h here are the maximum ``⌈/`` and the minumum ``⌊/``, with g being the difference ``-``. When only given a right argument, the above range function evaluates the maximum ``⌈/⍵`` and the minimum ``⌊/⍵``, then takes the difference ``-`` between them, as is intended.
 
 An example of a fork over a fork is the ``plusminus`` function,
 
@@ -248,7 +248,7 @@ Consider the following pairs of functions, implemented using dfns first, and tra
 5.5 5.7 5.9
 ```
 
-Notice that the arguments of the function were not referred to in the function trains, this style of programming is called tacit or "point-free" programming, borrowed from mathematics where it means taking data that can be described using points to be more fundamental than the points themselves, avoiding the need to refer to points explicitly. In this case, taking functions to be more fundamental than their description in terms of explicit arguments, w
+Notice that the arguments of the function were not referred to in the function trains, this style of programming is called tacit or "point-free" programming, borrowed from mathematics where it means taking data that can be described using points to be more fundamental than the points themselves, avoiding the need to refer to points explicitly. In this case, taking functions to be more fundamental than their description in terms of explicit arguments,
 
 The most basic train is the 2-train (fg), in operator form f⍤g, called an atop. The atop evaluates the function f monadically on the result of g applied to the arguments of the train.
 
