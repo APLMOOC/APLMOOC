@@ -194,21 +194,18 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Input"
 
         ```apl
-              H ← {
-                ⍵=0: 1
-                2×∇ ⍵ - 1
-                }
-              H 10
+              H←{⍺=⍵:⍵ ⋄ ⍵ ∇ 2○⍵}
+              0 H 0.5
         ```
 
     === "Output"
 
         ```apl
-              H 10
-        1024
+              0 H 0.5
+        0.7390851332
         ```
 
-        This function calculates powers of 2
+        This function repeatedly applies cosine 2○ to ⍵ until ⍵ is the same as 2 ○ ⍵. The left argument keeps track of the previous iteration.
 
 ---
 
