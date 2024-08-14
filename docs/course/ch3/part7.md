@@ -135,24 +135,29 @@ The second fundamental type of train is the 3-train (fgh), called a fork.
 
 When acting on arguments ``⍺`` and ``⍵``, it applies g dyadically to ``⍺f⍵`` and ``⍺h⍵``. 
 
+The motivation for this specific definition is to match with mathematics, where it is possible to write f+g to get the sum of the values of the functions f and g.
+
 !!! info "Train trees"
        The ]Box user command controls how trains are displayed, it is beneficial to set -trains=tree to see a tree-like representation of trains.
        
        ```apl
-             -,+
-       -,+
+             f ← {...}
+             g ← {...}
+
+             f+g
+       f+g
 
              ]Box ON
        Was OFF
              ]Box -trains=tree
        Was -trains=box
 
-             -,+
+             f+g
        ┌─┼─┐
-       - , +
+       f + g
        ```
 
-       Forks here look like forks! The trees are read from bottom up, where each function at the end of a branch is applied to ``⍺`` and ``⍵``, if there is a function in between, it is applied to the result of the functions on either side. The values then go up the tree until it reaches the root, at which point it is returned.
+       Forks here look like forks! The trees are read from bottom up, if there are only two functions at the end of a branch, the result of the right function is applied to the left function, if there are three functions, the middle function is applied to the result of the right and left functions. The values then go up the tree until it reaches the root, at which point it is returned.
 
 
 Most of the above functions can be expressed as combinations of forks and atops, let's take a look at a few important cases.

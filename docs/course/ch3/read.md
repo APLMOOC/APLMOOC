@@ -55,6 +55,7 @@ The exercises are not checked or graded: use them to check your knowledge!
 
 ---
 
+
 !!! question "Read problem 4"
 
     === "Input"
@@ -85,7 +86,66 @@ The exercises are not checked or graded: use them to check your knowledge!
 
 ---
 
+
 !!! question "Read problem 5"
+
+    === "Input"
+
+        ```apl
+              D ← {0=15|⍵: 'FizzBuzz' ⋄ 0=3|⍵: 'Fizz' ⋄ 0=5|⍵: 'Buzz'}
+              D 1
+              D 2
+              D 3
+              D 4
+              D 5
+              D 6
+              D 7
+              D 8
+              D 9
+              D 10
+              D 11
+              D 12
+              D 13
+              D 14
+              D 15
+        ```
+
+    === "Output"
+
+        ```apl
+              D 1
+              D 2
+              D 3
+        Fizz
+              D 4
+              D 5
+        Buzz
+              D 6
+        Fizz
+              D 7
+              D 8
+              D 9
+        Fizz
+              D 10
+        Buzz
+              D 11
+              D 12
+        Fizz
+              D 13
+              D 14
+              D 15
+        FizzBuzz
+        ```
+
+        The famous FizzBuzz interview question. Note that a more concise version can be written as
+
+        ```apl
+              D ← {((0=3|⍵)⍴'Fizz'),(0=5|⍵)⍴'Buzz'}
+        ```
+
+---
+
+!!! question "Read problem 6"
 
     === "Input"
 
@@ -129,7 +189,7 @@ The exercises are not checked or graded: use them to check your knowledge!
 ---
 
 
-!!! question "Read problem 5"
+!!! question "Read problem 7"
 
     === "Input"
 
@@ -152,7 +212,7 @@ The exercises are not checked or graded: use them to check your knowledge!
 
 ---
 
-!!! question "Read problem 6"
+!!! question "Read problem 8"
 
     === "Input"
 
@@ -175,25 +235,149 @@ The exercises are not checked or graded: use them to check your knowledge!
 
 ---
 
-!!! question "Read problem 7"
+!!! question "Read problem 9"
 
     === "Input"
 
         ```apl
-              K ← {
-                ⍵≤2: 1
-                (∇ ⍵ - 2) + ∇ ⍵ - 1
+              L ← {
+                ⍵=0: 1
+                2*∇ ⍵ - 1
                 }
-              K 6
+              L 3
         ```
 
     === "Output"
 
         ```apl
-              K 6
-        8
+              L 3
+        16
+              ⍝ 2*2*2
         ```
 
-        This function calculates the ⍵th fibonacci number
+        This function calculates repeated exponentials of 2
+
+---
+
+!!! question "Read problem 10"
+
+    === "Input"
+
+        ```apl
+              A
+        1 2 3
+        4 5 6
+        7 8 9
+              M ← {(⍴⍺)⍴⍵}
+              A M ⎕A
+
+        ```
+
+    === "Output"
+
+        ```apl
+              A M ⎕A
+        ABC
+        DEF
+        GHI
+        ```
+
+        This function resizes ⍵ to be the same shape as ⍺
+---
+
+!!! question "Read problem 11"
+
+    === "Input"
+
+        ```apl
+              5 (+,-) 1 2 3
+        ```
+
+    === "Output"
+
+        ```apl
+              5 (+,-) 1 2 3
+        6 7 8 4 3 2
+        ```
+
+        This is a fork, the corresponding dfn is 5 {(⍺+⍵),(⍺-⍵)} 1 2 3
+---
+
+!!! question "Read problem 12"
+
+    === "Input"
+
+        ```apl
+              (1∘,⍴∘0) 10
+        ```
+
+    === "Output"
+
+        ```apl
+              (1∘,⍴∘0) 10
+        1 0 0 0 0 0 0 0 0 0 0
+
+              (1∘,⍴∘0)
+         ┌─┴─┐
+         ∘   ∘
+        ┌┴┐ ┌┴┐
+        1 , ⍴ 0
+        ```
+
+        This is an atop, the dfn equivalent is {1,⍵⍴0}
+
+---
+
+!!! question "Read problem 13"
+
+    === "Input"
+
+        ```apl
+              (2∘⍴⍴(1∘,⍴∘0)) 10
+        ```
+
+    === "Output"
+
+        ```apl
+              (2∘⍴⍴(1∘,⍴∘0)) 10
+        1 0 0 0 0 0 0 0 0 0
+        0 1 0 0 0 0 0 0 0 0
+        0 0 1 0 0 0 0 0 0 0
+        0 0 0 1 0 0 0 0 0 0
+        0 0 0 0 1 0 0 0 0 0
+        0 0 0 0 0 1 0 0 0 0
+        0 0 0 0 0 0 1 0 0 0
+        0 0 0 0 0 0 0 1 0 0
+        0 0 0 0 0 0 0 0 1 0
+        0 0 0 0 0 0 0 0 0 1
+              
+              (2∘⍴⍴(1∘,⍴∘0))
+        ┌─┼───┐
+        ∘ ⍴ ┌─┴─┐
+       ┌┴┐  ∘   ∘
+       2 ⍴ ┌┴┐ ┌┴┐
+           1 , ⍴ 0
+
+        This is a fork over an atop, the dfn equivalent is {(2⍴⍵)⍴1,⍵⍴0}
+        ```
+
+---
+
+!!! question "Read problem 14"
+
+    === "Input"
+
+        ```apl
+              (+/÷⍴) 1 10 100
+        ```
+
+    === "Output"
+
+        ```apl
+              (+/÷⍴) 1 10 100
+        37
+              
+        This is a fork for the average function, the dfn equivalent is {(+/⍵)÷⍴⍵}
+        ```
 
 ---
