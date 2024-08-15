@@ -35,3 +35,32 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     <p id="feedback_ch3_p2" style="color: red"></p>
 
 ---
+
+!!! write-problem "Write problem 3"
+    Create a function that calculates the geometric mean of its left and right arguments, mathematically defined as $$H(\alpha,\omega) = \sqrt{AB}$$
+    <div class="problem">
+        <span class="problemspan">H←</span>
+        <input class="probleminput" type="text" id="input_ch3_p2" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch3_p2', 2)">Submit</button>
+    </div>
+    <p id="feedback_ch3_p2" style="color: red"></p>
+
+---
+
+
+!!! write-problem "Write problem 3"
+    Create a function that calculates the arithmetic geometric mean of its left and right arguments, which is defined recursively. The left argument calculating the arithmetic mean of ``⍺`` and ``⍵``, the right argument calculating the geometric mean of ``⍺`` and ``⍵``, until both means converge. Mathematically,
+    $$   H(\alpha, \omega) = \\left\\{
+    \\begin{array}{ll}
+        \omega & \\alpha=\\omega \\\\
+        H(\frac{\alpha + \omega}{2}, \sqrt{\alpha \omega}) & \\alpha≠\\omega \\\\
+    \\end{array} 
+    \\right. $$
+    <div class="problem">
+        <span class="problemspan">H←</span>
+        <input class="probleminput" type="text" id="input_ch3_p2" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch3_p2', 2)">Submit</button>
+    </div>
+    <p id="feedback_ch3_p2" style="color: red"></p>
+
+---
