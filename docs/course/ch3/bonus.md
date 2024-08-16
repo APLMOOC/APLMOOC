@@ -21,8 +21,6 @@ For most people, the sensation of sound is mediated through the ears. The ears a
 
 The pitch of a sound is the frequency of this vibration. "Notes" distinguish sounds by their pitch. In western music, the standard convention is to consider pitches whose ratio is a power of 2 as equivalent notes, this is called "octave equivalence". Equivalent notes with higher or lower pitch are said to be an "octave" above or below the note, for reasons that will be made clear.
 
-The pitch of a sound is the frequency of this vibration. "Notes" distinguish sounds by their pitch. In western music, the standard convention is to consider pitches whose ratio is a power of 2 as equivalent notes, this is called "octave equivalence". Equivalent notes with higher or lower pitch are said to be an "octave" above or below the note, for reasons that will be made clear.
-
 ```apl
       ⍝ For example, between the pitches 440Hz and 880Hz,
       ⌊440×(2*(⍳11)÷12)
@@ -34,8 +32,6 @@ The pitch of a sound is the frequency of this vibration. "Notes" distinguish sou
 ```
 
 Notes are labelled using the seven letters A through G,  with sharps (♯) and flats (♭) to signify the notes in-between by raising or lowering pitch, with redundancy. There are eight letters from A through G back to A, justifying the use of the word "octave". Starting from C, the twelve notes are C, C♯ or D♭, D, D♯ or E♭, E, F, F♯ or G♭, G, G♯ or A♭, A, A♯ or B♭, and B.
-
-A musical scale is a certain selection of these notes, usually spanning an octave. In our case, we will restrict ourselves to using the C major scale, the notes C, D, E, F, G, A, B. The notes of a major scale are usually referred to using an ordinal number from 1st through 7th, or by roman numerals I, II, III, IV, V, VI, VII.
 
 A musical scale is a certain selection of these notes, usually spanning an octave. In our case, we will restrict ourselves to using the C major scale, the notes C, D, E, F, G, A, B. The notes of a major scale are usually referred to using an ordinal number from 1st through 7th, or by roman numerals I, II, III, IV, V, VI, VII.
 
