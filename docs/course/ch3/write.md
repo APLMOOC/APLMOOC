@@ -125,7 +125,7 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     Create a dfn FETCH that takes in a two element right argument vector ``⍵``, specifying in the first element the value of the section of tape and the second the state of the machine, and returns the corresponding instruction.
 
     <div class="problem">
-        <span class="problemspan">FETCH ← </span>
+        <span class="problemspan">FETCH←</span>
         <input class="probleminput" type="text" id="input_ch3_p7" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch3_p7', 2)">Submit</button>
     </div>
@@ -135,13 +135,15 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 
 !!! write-problem "Write problem 8"
     
-    
+    The Caesar cipher encrypts a piece of text by shifting all its letters a fixed amount of places along the alphabet. For example, 'BUNNY' (with indices 2 21 14 14 25) under a shift of 17 places (26 | 2 21 14 14 25 + 17 -> 11 4 23 23 8) becomes 'SLEEP'. 
+
+    Create a dfn that does the intermediate operation of this cipher by shifting an integer right argument vector by an integer left argument, modulo 26.
 
     <div class="problem">
-        <span class="problemspan">FETCH ← </span>
-        <input class="probleminput" type="text" id="input_ch3_p7" placeholder="your solution here">
-        <button class="problembutton" onclick="submit_problem('ch3_p7', 2)">Submit</button>
+        <span class="problemspan">SHIFT26←</span>
+        <input class="probleminput" type="text" id="input_ch3_p8" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch3_p8', 2)">Submit</button>
     </div>
-    <p id="feedback_ch3_p7" style="color: red"></p>
+    <p id="feedback_ch3_p8" style="color: red"></p>
 
 ---
