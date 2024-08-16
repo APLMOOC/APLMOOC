@@ -224,7 +224,7 @@ Index matrix, square
       │1 L 3│1 R 2│1 N H│
       └─────┴─────┴─────┘
     ```
-    The first value in each element is what to write to the section of tape, the second whether to move right 'R' left 'L' or stay in place 'N', and the last value is the next state of the machine '1' '2' or 'H' for halting the machine.
+    The first value in each element is what to write to the section of tape, the second whether to move right 'R' left 'L' or stay in place 'N', and the last value is the next state of the machine 1, 2, 3, or 'H' for halting the machine.
     
     The first (second) row of the matrix specifies the possible instructions when the value of the section of tape is a 1 (2). The columns similarly specify the possible instructions depending on the state of the machine.
 

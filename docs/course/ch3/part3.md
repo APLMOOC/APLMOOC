@@ -26,13 +26,22 @@ Dyadic `=`, `≠`, `≤`, `<`, `>`, `≥` : Comparison Functions
 0 1 0 1 0 1 0 1 0 1
 ```
 
-Note that when you use these functions over two vectors, the result is a vector, denoting the function *element wise*.
+Note that when you use these functions over two vectors, the result is a vector, denoting the function *element wise*. To compare arrays, use the dyadic ≡ match function.
 
 ```apl
       1 2 1 4 5 2 5 2 3 2 = 1 2 3 4 5 2 3 2 4 2
 1 1 0 1 1 1 0 1 0 1
       1 2 1 4 5 2 5 2 3 2 ≤ 1 2 3 4 5 2 3 2 4 2
 1 1 1 1 1 1 0 1 1 1
+      1 2 1 4 5 2 5 2 3 2 ≡ 1 2 3 4 5 2 3 2 4 2
+0
+      1 2 1 4 5 2 5 2 3 2 ≡ 1 2 1 4 5 2 5 2 3 2
+1
+
+      'Hello' ≡ 'hello'
+0
+      'hello' ≡ 'hello'
+1
 ```
 
 One useful feature of APL in real-world applications is the ability to change the tolerance of comparison when it comes to floating point values (except for comparison against zero!), and the displayed precision of numbers. The tolerance can be read (and set) via the ⎕CT system variable, and the precision shown is read (and set) via ⎕PP. The tolerance can be anything from 0 (exact comparisons) to 10*¯10.

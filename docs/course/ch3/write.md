@@ -98,11 +98,39 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     Future Gadget Lab LLC
     ```
 
+    Hint: Use the match ≡ function.
+
     <div class="problem">
         <span class="problemspan">My←</span>
         <input class="probleminput" type="text" id="input_ch3_p6" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch3_p6', 2)">Submit</button>
     </div>
     <p id="feedback_ch3_p6" style="color: red"></p>
+
+---
+
+!!! write-problem "Write problem 7"
+    
+    Recall the tape-based machine given in the Chapter 2 Write problem 12. 
+
+    ```apl
+          INSTRUCTIONS
+      ┌─────┬─────┬─────┐
+      │1 R 2│1 L 1│1 L 2│
+      ├─────┼─────┼─────┤
+      │1 L 3│1 R 2│1 N H│
+      └─────┴─────┴─────┘
+    ```
+
+    The first (second) row of the matrix specifies the possible instructions when the value of the section of tape is a 1 (2). The columns similarly specify the possible instructions depending on the state of the machine.
+
+    Create a dfn FETCH that takes in a two element right argument vector ``⍵``, specifying in the first element the value of the section of tape and the second the state of the machine, and returns the corresponding instruction.
+
+    <div class="problem">
+        <span class="problemspan">FETCH ← </span>
+        <input class="probleminput" type="text" id="input_ch3_p7" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch3_p7', 2)">Submit</button>
+    </div>
+    <p id="feedback_ch3_p7" style="color: red"></p>
 
 ---
