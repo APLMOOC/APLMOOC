@@ -66,14 +66,12 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 ---
 
 !!! write-problem "Write problem 5"
-    Write a dfn that allows the user to choose one of the means above. The function should take in a right argument array, where the first element is an integer representing which mean to use (see table below), and that particular mean is calculated for the next two elements.
+    Write a dfn that allows the user to choose from some of the means above. The function should take in a right argument array, where the first element is an integer representing which mean to use (see table below), and that particular mean is calculated for the next two elements.
     \\[
     \\begin{array}{cc}
         1 & \text{Arithmetic mean} \\\\
-        2 & \text{Harmonic mean} \\\\
-        3 & \text{Geometric mean} \\\\
-        4 & \text{Heronian mean} \\\\
-        5 & \text{Arithmetic-Geometric mean} \\\\
+        2 & \text{Geometric mean} \\\\
+        3 & \text{Arithmetic-Geometric mean} \\\\
     \\end{array}
     \\]
     <div class="problem">
@@ -125,6 +123,19 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     The first (second) row of the matrix specifies the possible instructions when the value of the section of tape is a 1 (2). The columns similarly specify the possible instructions depending on the state of the machine.
 
     Create a dfn FETCH that takes in a two element right argument vector ``⍵``, specifying in the first element the value of the section of tape and the second the state of the machine, and returns the corresponding instruction.
+
+    <div class="problem">
+        <span class="problemspan">FETCH ← </span>
+        <input class="probleminput" type="text" id="input_ch3_p7" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch3_p7', 2)">Submit</button>
+    </div>
+    <p id="feedback_ch3_p7" style="color: red"></p>
+
+---
+
+!!! write-problem "Write problem 8"
+    
+    
 
     <div class="problem">
         <span class="problemspan">FETCH ← </span>
