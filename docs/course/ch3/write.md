@@ -150,8 +150,11 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 
 !!! write-problem "Write problem 9"
     
-    Create a dfn that returns a matrix of size ``⍺`` by ``⍺``, with a 1 in a position specified by the vector right argument ``⍵``. 
+    Create a dfn that returns a matrix of zeroes of size ``⍺`` by ``⍺``, with a 1 in a position specified by the vector right argument ``⍵``. 
     ```apl
+          2 SPARSE 2 1
+    0 0
+    1 0
           10 SPARSE 5 4
     0 0 0 0 0 0 0 0 0 0
     0 0 0 0 0 0 0 0 0 0
@@ -174,24 +177,43 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 
 !!! write-problem "Write problem 10"
     
-    Create a dfn that returns a matrix of size ``⍺`` by ``⍺``, with a 1 in a position specified by the vector right argument ``⍵``. 
+    Create a dfn that plots a heatmap of a matrix, that is, a ``*`` where the matrix ``⍵`` is above a certain value ``⍺`` and an underscore ``_`` otherwise. For example,
+    
     ```apl
-          10 SPARSE 5 4
-    0 0 0 0 0 0 0 0 0 0
-    0 0 0 0 0 0 0 0 0 0
-    0 0 0 0 0 0 0 0 0 0
-    0 0 0 0 0 0 0 0 0 0
-    0 0 0 1 0 0 0 0 0 0
-    0 0 0 0 0 0 0 0 0 0
-    0 0 0 0 0 0 0 0 0 0
-    0 0 0 0 0 0 0 0 0 0
-    0 0 0 0 0 0 0 0 0 0
-    0 0 0 0 0 0 0 0 0 0
+          M ← 10 10⍴⍳9
+          M
+    1 2 3 4 5 6 7 8 9 1
+    2 3 4 5 6 7 8 9 1 2
+    3 4 5 6 7 8 9 1 2 3
+    4 5 6 7 8 9 1 2 3 4
+    5 6 7 8 9 1 2 3 4 5
+    6 7 8 9 1 2 3 4 5 6
+    7 8 9 1 2 3 4 5 6 7
+    8 9 1 2 3 4 5 6 7 8
+    9 1 2 3 4 5 6 7 8 9
+    1 2 3 4 5 6 7 8 9 1
+
+          7 PLOT M
+    _______**_
+    ______**__
+    _____**___
+    ____**____
+    ___**_____
+    __**______
+    _**_______
+    **_______*
+    *_______**
+    _______**_
+      
     ```
+
+    Hint: Index the vector ``'_*'``
+
     <div class="problem">
-        <span class="problemspan">SPARSE←</span>
-        <input class="probleminput" type="text" id="input_ch3_p9" placeholder="your solution here">
-        <button class="problembutton" onclick="submit_problem('ch3_p9', 2)">Submit</button>
+        <span class="problemspan">PLOT</span>
+        <input class="probleminput" type="text" id="input_ch3_p10" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch3_p10', 2)">Submit</button>
     </div>
-    <p id="feedback_ch3_p9" style="color: red"></p>
+    <p id="feedback_ch3_p10" style="color: red"></p>
 ---
+
