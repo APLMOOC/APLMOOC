@@ -170,5 +170,28 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
         <button class="problembutton" onclick="submit_problem('ch3_p9', 2)">Submit</button>
     </div>
     <p id="feedback_ch3_p9" style="color: red"></p>
+---
 
+!!! write-problem "Write problem 10"
+    
+    Create a dfn that returns a matrix of size ``⍺`` by ``⍺``, with a 1 in a position specified by the vector right argument ``⍵``. 
+    ```apl
+          10 SPARSE 5 4
+    0 0 0 0 0 0 0 0 0 0
+    0 0 0 0 0 0 0 0 0 0
+    0 0 0 0 0 0 0 0 0 0
+    0 0 0 0 0 0 0 0 0 0
+    0 0 0 1 0 0 0 0 0 0
+    0 0 0 0 0 0 0 0 0 0
+    0 0 0 0 0 0 0 0 0 0
+    0 0 0 0 0 0 0 0 0 0
+    0 0 0 0 0 0 0 0 0 0
+    0 0 0 0 0 0 0 0 0 0
+    ```
+    <div class="problem">
+        <span class="problemspan">SPARSE←</span>
+        <input class="probleminput" type="text" id="input_ch3_p9" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch3_p9', 2)">Submit</button>
+    </div>
+    <p id="feedback_ch3_p9" style="color: red"></p>
 ---
