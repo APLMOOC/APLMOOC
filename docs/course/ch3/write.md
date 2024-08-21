@@ -207,13 +207,33 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
       
     ```
 
-    Hint: Index the vector ``'_*'``
+    Hint: Index the vector ``'_*'`` by a matrix
 
     <div class="problem">
-        <span class="problemspan">PLOT</span>
+        <span class="problemspan">PLOT←</span>
         <input class="probleminput" type="text" id="input_ch3_p10" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch3_p10', 2)">Submit</button>
     </div>
     <p id="feedback_ch3_p10" style="color: red"></p>
 ---
 
+!!! write-problem "Write problem 11"
+    
+    Create a dfn that returns the singular form of a noun given as a vector right argument ``⍵``, returning 'an' with the noun when the noun begins with a vowel, and 'a' with the noun otherwise. In this case, 'Y' is considered a vowel. The nouns will be given in UPPERCASE.
+
+    ```apl
+          SINGULAR "DREAM"
+    A DREAM
+          SINGULAR "SNOOZE"
+    A SNOOZE
+          SINGULAR "AERODROME"
+    AN AERODROME
+    ```
+
+    <div class="problem">
+        <span class="problemspan">SINGULAR←</span>
+        <input class="probleminput" type="text" id="input_ch3_p11" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch3_p11', 2)">Submit</button>
+    </div>
+    <p id="feedback_ch3_p11" style="color: red"></p>
+---
