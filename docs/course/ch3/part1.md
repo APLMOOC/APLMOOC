@@ -88,6 +88,21 @@ In order to let the Fibonacci function define its own phi, we have to define it 
 
 As seen with the last function, any code beyond the first statement which produces a value is not evaluated.
 
+
+!!! warn "Variable Scope"
+	In dfns, while it is possible to access variables outside the function, it is not possible to assign to them. All quantities assigned in dfns are said to be local to the function itself.
+
+	```apl
+	       i ← 10
+	       d_increment ← {i←i+1 ⋄ i}
+	
+	       i
+	10
+	       increment ⍬
+	11	
+	       i
+	10
+
 !!! info "Multiline support in RIDE"
 	In order to write multiline functions in the Dyalog RIDE, "Extended Multiline Input" needs to be enabled. It can be found in the Session tab under Options>Configure.
 
