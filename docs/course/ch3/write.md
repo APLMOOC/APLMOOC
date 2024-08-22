@@ -219,7 +219,7 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 
 !!! write-problem "Write problem 11"
     
-    Create a dfn that returns the singular form of a noun given as a vector right argument ``⍵``, returning 'an' with the noun when the noun begins with a vowel, and 'a' with the noun otherwise. In this case, 'Y' is considered a vowel. The nouns will be given in UPPERCASE.
+    Create a dfn that returns the singular form of a noun given as a vector right argument ``⍵``, returning 'an' with the noun when the noun begins with a vowel, and 'a' with the noun otherwise. In this case, 'Y' is not considered a vowel. The nouns will be given in UPPERCASE.
 
     ```apl
           SINGULAR "DREAM"
@@ -236,4 +236,52 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
         <button class="problembutton" onclick="submit_problem('ch3_p11', 2)">Submit</button>
     </div>
     <p id="feedback_ch3_p11" style="color: red"></p>
+---
+
+!!! write-problem "Write problem 12"
+    
+    Create a dfn that determines an APL MOOC student's final grade. The right argument ``⍵`` is the number of exercises completed. For the sake of this problem, you can assume that the APL MOOC has 72 exercises. The grade boundaries and expected results are given below
+
+    ```apl
+          ⍝ Less than 60%
+          GRADE 42
+    0
+          ⍝ Between 60% and 70%
+          GRADE 43
+    1
+          GRADE 50
+    1
+
+          ⍝ Between 70% and 80%
+          GRADE 51
+    2
+          GRADE 57
+    2
+
+          ⍝ Between 80% and 90%
+          GRADE 58
+    3
+          GRADE 64
+    3
+
+          ⍝ Between 90% and 99%
+          GRADE 65
+    4
+          GRADE 71
+    4
+
+          ⍝ Between 99% and 100%
+          Grade 72
+    5
+
+          ⍝ Any higher returns nothing
+          Grade 73
+    ```
+
+    <div class="problem">
+        <span class="problemspan">GRADE←</span>
+        <input class="probleminput" type="text" id="input_ch3_p12" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch3_p12', 2)">Submit</button>
+    </div>
+    <p id="feedback_ch3_p12" style="color: red"></p>
 ---
