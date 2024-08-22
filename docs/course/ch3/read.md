@@ -205,7 +205,7 @@ The exercises are not checked or graded: use them to check your knowledge!
         0.7390851332
         ```
 
-        This function repeatedly applies cosine 2○ to ⍵ until ⍵ is the same as 2 ○ ⍵. The left argument keeps track of the previous iteration.
+        This function repeatedly applies cosine 2○ to ⍵ until ⍵ is the same as 2 ○ ⍵, that is, trying to find the fixed point of cosine. The left argument keeps track of the previous iteration.
 
 ---
 
