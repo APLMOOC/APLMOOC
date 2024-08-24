@@ -429,21 +429,21 @@ Let's revise it just to be sure :)
 Remember that, when you have two vectors, combining them with a space makes them into a nested vector (**S**paces **S**eparate **S**calars):
 
 ```apl
-      A←'abc'
-      B←'def'
+      A←'bart'
+      B←'ender'
 
       A B
-┌───┬───┐
-│abc│def│
-└───┴───┘
+┌────┬─────┐
+│bart│ender│
+└────┴─────┘
 ```
 
 But if you want to combine them into one vector, you can use the catenate function:
 
 ```apl
-      A←'abc'
-      B←'def'
+      A←'bart'
+      B←'ender'
 
       A,B
-abcdef
+bartender
 ```

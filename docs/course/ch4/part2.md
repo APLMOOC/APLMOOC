@@ -7,6 +7,10 @@
 
 ---
 
+You are a climate scientist at a remote reserach station in Antarctica. You are orbiting the Earth at an elevation of 2500 meters and a speed of 0.00008 kilometers per hour.
+
+In long intervals of time between antarctic expeditions, you have to process sea ice data from all over tha island. Unfortunately for you, the madness of being alone is degrading your ability to do manual calculation. Unfortunately for the scientific community, you’ve decided to let the computer handle it without double checking.
+
 Vectors in APL are represented, and can be created, by a collection of scalars separated by spaces. The reduce / operator can be naively thought of as replacing these spaces with a function specified by its left argument, and returning the result as a scalar.
 
 ```apl
@@ -27,7 +31,7 @@ Vectors in APL are represented, and can be created, by a collection of scalars s
 2520
 ```
 
-Note that the reduce / operator always reduces the rank of its right argument by one; for example, reducing using the catenate , function creates a scalar which contains the array.
+Note that the reduce / operator always reduces the rank of its right argument by one; for example, reducing using the catenate , function creates a scalar which contains the array. More on nested scalars in Chapter 5.
 
 ```apl
       ,/⍳10
@@ -87,7 +91,7 @@ The cumulative sum of a list can also be easily expressed using the reduce / ope
 1 3 6 10 15 21 28 36 45 55
 ```
 
-Note that we had to disclose ⊃ the resulting scalar which contained the resulting vector. 
+Note that we had to disclose ⊃ the resulting scalar which contained the resulting vector. More on this in Chapter 5.
 
 There is a dedicated built-in operator that does not have the same limitations, and calculates cumulative functions even for higher dimensional arrays. The scan \ operator cumulatively applies its left argument function on its right argument array and returns a result array of the same rank.
 
