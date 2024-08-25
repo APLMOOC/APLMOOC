@@ -272,6 +272,52 @@ Let's compare slashiotarho with the where function:
 
 It's a little more compact! Feel free to use it when needed.
 
+## Interval Index
+
+Sometimes, instead of finding exactly where an element is in an array, you'd like to find what elements it's between. Consider the grading function we defined in chapter 3, write problem 12
+
+```apl
+      GRADE 42
+0
+
+      GRADE 43
+1
+
+      GRADE 51
+2
+
+      GRADE 58
+3
+
+      GRADE 65
+4
+
+      Grade 72
+5
+```
+
+What this function does is try to find where the right argument ``⍵`` is, between the grade boundaries ``0 43 51 58 65 72`` for the grades ``0 1 2 3 4 5``. 
+
+Another example of this kind of problem is looking for a word in a dictionary, where the page with the word ``⍵`` is the one where ``⍵`` is alphabetically between the first word of the page and the first word of the next page.
+
+This problem can be solved with the dyadic ⍸ interval index function. The vector left argument ``⍺`` specifies the boundaries that the right argument ``⍵`` is placed between.  
+
+```apl
+
+      43 51 58 65 72 ⍸ 10
+0
+
+      43 51 58 65 72 ⍸ 64
+3
+
+      43 51 58 65 72 ⍸ 72
+5
+
+      'aardvark' 'abrasion' 'accessory' 'acquittance' 'adamantine' ⍸ ⊂'absolute'
+2
+
+```
+
 ## Find
 
 Last one for this part!

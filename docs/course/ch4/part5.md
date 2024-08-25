@@ -8,6 +8,8 @@
 
 ---
 
+!!! note move to chapter 5
+
 The dyadic `⌽` `⊖` rotate functions rotate an array by an amount specific by the left argument, around a specific axis.
 
 ```apl
