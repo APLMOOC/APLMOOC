@@ -3,11 +3,11 @@
 !!! abstract "This part will cover"
 
     - Sorting / grade up / grade down
-    - Generating vectors
+    - Windowed reduce
 
 ---
 
-Measurement of data in real-world systems is often accompanied by noise, which makes the extraction of useful information difficult. In order to introduce techniques which help analyse noisy data, we will first generate artificial noisy data.
+Your training as a climate sceintist has prepared you to deal with measurement of real-life systems, which can have a large amount of noise that has to be dealt with before making any inferences. Trying to test your data reduction methods on the computer, you first generate artificially noisy data.
 
 The monadic `?` roll function generates a random number for every scalar in its right argument, from 1 to the value of that scalar. 
 
@@ -19,6 +19,7 @@ The monadic `?` roll function generates a random number for every scalar in its 
 6 5 3
        ? ⍳10
 1 1 3 4 4 6 6 5 8 4
+
        ? 10*⍳10
 8 84 545 5254 99210 693088 7548981 55682236 454935262 2471243355
 ```
@@ -32,14 +33,6 @@ When the argument contains zero (0), a random floating point number between 0 an
 0.1770380776 1 1 2 4
 ```
 
-The replicate function can be used to generate a large number of random number in a certain range, by creating a vector of the same number of arbitrary length.
-
-```apl
-       6 / 10
-10 10 10 10 10 10 10
-       ? 6 / 10
-9 9 2 9 4 6
-```
 
 The dyadic `?` deal function works similarly, but generates a list of random numbers without repeats.
 
@@ -56,7 +49,17 @@ DOMAIN ERROR: Deal right argument must be greater than or equal to the left argu
          ∧
 ```
 
-Simulating measuring a temperature of 21 degrees with some noise
+The replicate function can be used to generate a large number of random number in a certain range, by creating a vector of the same number of arbitrary length.
+
+```apl
+       6 / 10
+10 10 10 10 10 10 10
+       ? 6 / 10
+9 9 2 9 4 6
+```
+
+
+Simulating measuring a temperature of 21 degrees with some noise, fluctuating between -0.5 and 0.5
 
 ```apl
        DATA ← 21 + (? 20 / 0) - 0.5
@@ -74,51 +77,80 @@ It is possible to recover the original data by taking an average, using the redu
 20.90107811
 ```
 
-For measurements of time-varying data, it would be useful instead to do a moving average. Take, for example, a temperature reading that goes from 20 to 30 over the course of 100 measurements.
+For measurements of time-varying data, it would be useful instead to do a moving average instead. Take, for example, a simulated temperature reading of air temperature that goes from ¯20 to ¯30 over the course of a day's measurements.
 
 ```apl
-       DATA ← 20+(1÷10)×⍳100
-20.1 20.2 20.3 20.4 20.5 20.6 20.7 20.8 20.9 21 21.1 21.2 21.3 21.4 21.5 21.6 21.7 21.8 21.9 22 22.1 22.2 22.3 22.4 22.5
-      22.6 22.7 22.8 22.9 23 23.1 23.2 23.3 23.4 23.5 23.6 23.7 23.8 23.9 24 24.1 24.2 24.3 24.4 24.5 24.6 24.7 24.8 24.9
-      25 25.1 25.2 25.3 25.4 25.5 25.6 25.7 25.8 25.9 26 26.1 26.2 26.3 26.4 26.5 26.6 26.7 26.8 26.9 27 27.1 27.2 27.3
-      27.4 27.5 27.6 27.7 27.8 27.9 28 28.1 28.2 28.3 28.4 28.5 28.6 28.7 28.8 28.9 29 29.1 29.2 29.3 29.4 29.5 29.6 29.7
-      29.8 29.9 30      
+       DATA ← ¯20-(1÷10)×⍳100
+¯20.1 ¯20.2 ¯20.3 ¯20.4 ¯20.5 ¯20.6 ¯20.7 ¯20.8 ¯20.9 ¯21 ¯21.1 ¯21.2
+ ¯21.3 ¯21.4 ¯21.5 ¯21.6 ¯21.7 ¯21.8 ¯21.9 ¯22 ¯22.1 ¯22.2 ¯22.3 ¯22.4
+ ¯22.5 ¯22.6 ¯22.7 ¯22.8 ¯22.9 ¯23 ¯23.1 ¯23.2 ¯23.3 ¯23.4 ¯23.5 ¯23.6
+ ¯23.7 ¯23.8 ¯23.9 ¯24 ¯24.1 ¯24.2 ¯24.3 ¯24.4 ¯24.5 ¯24.6 ¯24.7 ¯24.8
+ ¯24.9 ¯25 ¯25.1 ¯25.2 ¯25.3 ¯25.4 ¯25.5 ¯25.6 ¯25.7 ¯25.8 ¯25.9 ¯26
+ ¯26.1 ¯26.2 ¯26.3 ¯26.4 ¯26.5 ¯26.6 ¯26.7 ¯26.8 ¯26.9 ¯27 ¯27.1 ¯27.2
+ ¯27.3 ¯27.4 ¯27.5 ¯27.6 ¯27.7 ¯27.8 ¯27.9 ¯28 ¯28.1 ¯28.2 ¯28.3 ¯28.4
+ ¯28.5 ¯28.6 ¯28.7 ¯28.8 ¯28.9 ¯29 ¯29.1 ¯29.2 ¯29.3 ¯29.4 ¯29.5 ¯29.6
+ ¯29.7 ¯29.8 ¯29.9 ¯30
+   
+
       ⍝ Add noise
       DATA +← (? 100 / 0) - 0.5
 ```
 
-The windowed reduce `/` operator applies the reduce function on moving segments of its right argument specific by its left argument.
+In order to do a moving average, a function that takes moving windows of a vector is needed, the windowed reduce `/` operator is exactly that. It applies the reduce function on moving segments of its right argument specific by its left argument. 
 
 ```apl
-       3 +/ 1 2 3 4 5 6
-6 9 12 15
-       (1+2+3) (2+3+4) (3+4+5) (4+5+6)
-6 9 12 15
-       2 ×/ ⍳4
-2 6 12
-       (1×2) (2×3) (3×4)
-2 6 12
+       3 ,/ ⍳10
+┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬──────┐
+│1 2 3│2 3 4│3 4 5│4 5 6│5 6 7│6 7 8│7 8 9│8 9 10│
+└─────┴─────┴─────┴─────┴─────┴─────┴─────┴──────┘
+
+       3 +/ ⍳10
+6 9 12 15 18 21 24 27
+       (1+2+3) (2+3+4) (3+4+5) (4+5+6) (5+6+7) (6+7+8) (7+8+9) (8+9+10)
+6 9 12 15 18 21 24 27
+
+       2 ×/ ⍳10
+2 6 12 20 30 42 56 72 90
+       (1×2) (2×3) (3×4) (4×5) (5×6) (6×7) (7×8) (8×9) (9×10)
+2 6 12 20 30 42 56 72 90
+
        3 3 ⍴ ⍳9
 1 2 3
 4 5 6
 7 8 9
-       3+/(3 3 ⍴ ⍳9)
-6 15 24
+       2,/(3 3 ⍴ ⍳9)
+┌───┬───┐
+│1 2│2 3│
+├───┼───┤
+│4 5│5 6│
+├───┼───┤
+│7 8│8 9│
+└───┴───┘
+      2+/(3 3 ⍴ ⍳9)
+ 3  5
+ 9 11
+15 17
 ```
 
 To get a moving average, the windowed reduce function can be applied to the + plus function and then divided by the size of the window, in this case 5. The result is then rounded to 1 decimal place.
 
 ```apl
       RESULT ← (5+/DATA)÷5
-      10÷⍨⌈RESULT×10
-20.4 20.5 20.7 20.7 20.8 20.8 20.9 20.9 21.1 21.1 21.2 21.4 21.5 21.6 21.8 21.9 21.9 22.1 22.2 22.3 22.5 22.7 22.7 22.8
-      22.8 22.8 22.8 22.9 23 23.1 23.2 23.5 23.7 23.6 23.8 23.9 24 24.1 24.4 24.5 24.6 24.5 24.5 24.5 24.5 24.5 24.7 24.9
-      24.9 25.2 25.4 25.6 25.7 25.8 25.8 25.9 25.9 26.1 26.2 26.3 26.4 26.6 26.7 26.7 26.9 27 27.1 27.2 27.3 27.3 27.4
-      27.4 27.4 27.6 27.8 27.9 28 28.2 28.3 28.3 28.3 28.4 28.6 28.6 28.8 29 29.1 29.2 29.3 29.4 29.3 29.3 29.4 29.6 29.7
-      29.8
+      (⌈RESULT×10)÷10
+¯20.4 ¯20.5 ¯20.7 ¯20.7 ¯20.8 ¯20.8 ¯20.9 ¯20.9 ¯21.1 ¯21.1 ¯21.2 ¯21.4
+ ¯21.5 ¯21.6 ¯21.8 ¯21.9 ¯21.9 ¯22.1 ¯22.2 ¯22.3 ¯22.5 ¯22.7 ¯22.7 ¯22.8
+ ¯22.8 ¯22.8 ¯22.8 ¯22.9 ¯23 ¯23.1 ¯23.2 ¯23.5 ¯23.7 ¯23.6 ¯23.8 ¯23.9 ¯24
+ ¯24.1 ¯24.4 ¯24.5 ¯24.6 ¯24.5 ¯24.5 ¯24.5 ¯24.5 ¯24.5 ¯24.7 ¯24.9 ¯24.9
+ ¯25.2 ¯25.4 ¯25.6 ¯25.7 ¯25.8 ¯25.8 ¯25.9 ¯25.9 ¯26.1 ¯26.2 ¯26.3 ¯26.4
+ ¯26.6 ¯26.7 ¯26.7 ¯26.9 ¯27 ¯27.1 ¯27.2 ¯27.3 ¯27.3 ¯27.4 ¯27.4 ¯27.4 
+ ¯27.6 ¯27.8 ¯27.9 ¯28 ¯28.2 ¯28.3 ¯28.3 ¯28.3 ¯28.4 ¯28.6 ¯28.6 ¯28.8
+ ¯29 ¯29.1 ¯29.2 ¯29.3 ¯29.4 ¯29.3 ¯29.3 ¯29.4 ¯29.6 ¯29.7 ¯29.8
+
 ```
 
-Given a number of temperature readings, it is also possible to sort ascending and descending using the grade up `⍋` and grade down `⍒` functions.
+A pretty good reconstruction of the data!
+
+Given the large number of temperature readings, it is also possible to sort ascending and descending using the grade up `⍋` and grade down `⍒` functions.
 
 The grade up `⍋` and grade down `⍒` functions return indices of elements of  its right argument in ascending or descending order.
 

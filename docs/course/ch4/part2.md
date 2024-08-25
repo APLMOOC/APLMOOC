@@ -14,20 +14,43 @@ In long intervals of time between antarctic expeditions, you have to process sea
 Vectors in APL are represented, and can be created, by a collection of scalars separated by spaces. The reduce / operator can be naively thought of as replacing these spaces with a function specified by its left argument, and returning the result as a scalar.
 
 ```apl
-      ⍳10
-1 2 3 4 5 6 7 8 9 10
+      SURFACE_ICE_TEMPERATURE
+¯11.15 ¯7.15 ¯7.55 ¯6.15 ¯12.15 ¯9.55
 
-      +/⍳10
-55
-      1+2+3+4+5+6+7+8+9+10
-55
+      ⍝ Sum of temperatures
+      +/SURFACE_ICE_TEMPERATURE
+¯53.7
+
+      ⍝ Sum written explicitly
+      ¯11.15+¯7.15+¯7.55+¯6.15+¯12.15+¯9.55
+¯53.7
+
+      ⍝ Average of temperatures
+      (+/SURFACE_ICE_TEMPERATURE)÷⍴SURFACE_ICE_TEMPERATURE
+¯8.95
       
-      -/⍳10
-¯5
-       1-2-3-4-5-6-7-8-9-10
-¯5
+      SURFACE_ICE_PERCENT_CHANGE
+¯6.9 ¯5.6 ¯7.2 ¯4.3 ¯2.5 ¯8.6
 
-       ∧/⍳20 ⍝ LCM of numbers from 1 to 20
+      ⍝ Convert from percent
+      SURFACE_ICE_CHANGE ← 1 + SURFACE_ICE_PERCENT_CHANGE ÷ 100
+0.931 0.944 0.928 0.957 0.975 0.914
+
+      ⍝ Product of all changes to get total change
+      SURFACE_ICE_TOTAL_CHANGE ← ×/0.931 0.944 0.928 0.957 0.975 0.914
+      SURFACE_ICE_TOTAL_CHANGE
+0.6955564796
+
+      ⍝ Product written explicitly
+      0.931×0.944×0.928×0.957×0.975×0.914
+0.6955564796
+
+      ⍝ LCM of numbers from 1 to 20
+      ∧/⍳20 
+2520
+
+      ⍝ LCM explicitly
+      1∧2∧3∧4∧5∧6∧7∧8∧9∧10∧11∧12∧13∧14∧15∧16∧17∧18∧19∧20
 2520
 ```
 
@@ -65,8 +88,13 @@ Since functions act from right to left, it is possible to construct a vector by 
 It can be seen that for-each loops in imperative programming languages are equivalent to the reduce / operator, since they both destruct a list in the most general way possible. For example, the python ``for x in range(1,11): print(x**2)`` in APL is written as
 
 ```apl
-       ⌽0,⍳10
+      0,⍳10
+0 1 2 3 4 5 6 7 8 9 10
+
+      ⍝ Rotate ⌽ function
+      ⌽0,⍳10
 10 9 8 7 6 5 4 3 2 1 0
+
        {⎕←⍺*2}/⌽0,⍳10
 1
 4
@@ -96,12 +124,18 @@ Note that we had to disclose ⊃ the resulting scalar which contained the result
 There is a dedicated built-in operator that does not have the same limitations, and calculates cumulative functions even for higher dimensional arrays. The scan \ operator cumulatively applies its left argument function on its right argument array and returns a result array of the same rank.
 
 ```apl
+      ,\⍳5
+┌─┬───┬─────┬───────┬─────────┐
+│1│1 2│1 2 3│1 2 3 4│1 2 3 4 5│
+└─┴───┴─────┴───────┴─────────┘
+
       +\⍳10
 1 3 6 10 15 21 28 36 45 55
 
       ⍝ Cumulative alternating sum
       -\⍳10
 1 ¯1 2 ¯2 3 ¯3 4 ¯4 5 ¯5
+      
 
       ⍳5 5
 ┌───┬───┬───┬───┬───┐
