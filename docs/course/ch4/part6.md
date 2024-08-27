@@ -315,7 +315,6 @@ This problem can be solved with the dyadic ⍸ interval index function. The vect
 
       'aardvark' 'abrasion' 'accessory' 'acquittance' 'adamantine' ⍸ ⊂'absolute'
 2
-
 ```
 
 ## Find
