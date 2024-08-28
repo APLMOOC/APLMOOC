@@ -208,3 +208,21 @@ The exercises are not checked or graded: use them to check your knowledge!
               +/ 1÷2*⍨⍳100
         ```
 ---
+
+!!! question "Read problem 8"
+
+    === "Input"
+
+        $$
+        \frac{1}{\frac{2}{\frac{3}{\frac{\dots}{10}}}}
+        $$
+
+        can be written in APL as
+
+    === "Output"
+
+        ```apl
+              ÷/⍳10
+        ```
+---
+
