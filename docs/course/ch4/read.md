@@ -226,3 +226,22 @@ The exercises are not checked or graded: use them to check your knowledge!
         ```
 ---
 
+!!! question "Read problem 9"
+
+    === "Input"
+
+        $$
+        \frac{F_1}{F_2},\frac{F_2}{F_3},\ldots,\frac{F_9}{F_{10}}
+        $$
+
+        where $F_n$ is the nth Fibonacci number, can be written in APL (given an array FIBB of the first 10 Fibonacci numbers) as
+
+    === "Output"
+
+        ```apl
+              2÷/FIBB
+        ```
+
+        This is a sequence of approximations to the golden ratio
+---
+
