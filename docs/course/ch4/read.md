@@ -196,13 +196,15 @@ The exercises are not checked or graded: use them to check your knowledge!
 
     === "Input"
 
-        ```apl
-              
-        ```
+        $$
+        \sum_{n=1}^{100} \frac{1}{n^2}
+        $$
+
+        can be written in APL using reduce / as...
 
     === "Output"
 
         ```apl
-              
+              +/ 1÷2*⍨⍳100
         ```
 ---
