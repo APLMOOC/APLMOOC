@@ -98,3 +98,111 @@ The exercises are not checked or graded: use them to check your knowledge!
         ```
 
 ---
+
+!!! question "Read problem 4"
+
+    === "Input"
+
+        ```apl
+              DICTIONARY
+        AA  
+        AAHED  
+        AAHING  
+        AAHS  
+        AALII  
+        AALIIS  
+        AALS  
+        AARDVARK 
+        . . .
+              DICTIONARY[1;]
+        AA
+              DICTIONARY[;1]
+        A
+        A
+        A
+        A
+        . . .
+              DICTIONARY[⍸DICTIONARY[;1]='X';]
+        ```
+
+    === "Output"
+
+        ```apl
+              DICTIONARY[⍸DICTIONARY[;1]='X']
+        XANTHAM        
+        XANTHAMS       
+        XANTHAN        
+        XANTHANS       
+        XANTHATE       
+        XANTHATES      
+        . . .
+        ```
+        All words starting with 'X'
+
+---
+
+!!! question "Read problem 5"
+
+    === "Input"
+
+        ```apl
+              'TELE' ⍷ DICTIONARY
+        0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+        0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+        0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+        0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+        0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+        0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+        0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+        0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+        0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+        0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+        . . .
+              ⍸ 'TELE' ⍷ DICTIONARY
+        ┌───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬─
+        │14061 2│14062 2│14063 2│14064 2│14065 2│18946 3│18947 3│18948 3│19107 4│19108 4│19109 4│23447 4│23448 4│23449 4│35280 4│4
+        └───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴─
+              1 1⊃(⍸ 'TELE' ⍷ DICTIONARY)
+        ```
+
+    === "Output"
+
+        ```apl
+              1 1⊃(⍸ 'TELE' ⍷ DICTIONARY)
+        14061
+        ```
+
+---
+
+!!! question "Read problem 6"
+
+    === "Input"
+
+        ```apl
+              DICTIONARY[1 1⊃(⍸ 'TELE' ⍷ DICTIONARY);]
+        ```
+
+    === "Output"
+
+        ```apl
+              DICTIONARY[1 1⊃(⍸ 'TELE' ⍷ DICTIONARY)]
+        ATELECTASES
+        ```
+        
+        First word with 'TELE'
+---
+
+!!! question "Read problem 7"
+
+    === "Input"
+
+        ```apl
+              
+        ```
+
+    === "Output"
+
+        ```apl
+              
+        ```
+---

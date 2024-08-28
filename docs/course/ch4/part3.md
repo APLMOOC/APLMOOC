@@ -333,6 +333,12 @@ If we try to get the second vector out using the square brackets, we get somethi
 ┌─────┐
 │3 4 5│
 └─────┘
+      
+      A[2;1]
+RANK ERROR
+      A[2;1]
+       ∧
+
       ⍴A[2]
 (nothing gets printed)
 ```
@@ -346,6 +352,10 @@ To set it free, we use pick!
 ```apl
       2⊃A
 3 4 5
+
+      2 1⊃A
+3
+
       ⍴2⊃A
 3
 ```
