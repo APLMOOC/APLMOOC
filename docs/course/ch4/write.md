@@ -182,10 +182,30 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     Hint: One way is to use ∊ member of and +\ plus scan
 
     <div class="problem">
-        <span class="problemspan">WORD←</span>
-        <input class="probleminput" type="text" id="input_ch4_p10" placeholder="your solution here">
+        <span class="problemspan">RUN←</span>
+        <input class="probleminput" type="text" id="input_ch4_p11" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch4_p11', 2)">Submit</button>
     </div>
     <p id="feedback_ch4_p11" style="color: red"></p>
+
+---
+
+
+!!! write-problem "Write problem 12"
+    
+    Create a dfn that generates random words with lengths specified by its right vector argument ``⍵``.
+    ```apl
+          PHRASE 3 4 5
+    OG CPD HXQO 
+    ```
+    
+    Hint: One way is to use ∊ member of and +\ plus scan
+
+    <div class="problem">
+        <span class="problemspan">PHRASE←</span>
+        <input class="probleminput" type="text" id="input_ch4_p12" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch4_p12', 2)">Submit</button>
+    </div>
+    <p id="feedback_ch4_p12" style="color: red"></p>
 
 ---
