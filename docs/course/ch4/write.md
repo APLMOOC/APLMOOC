@@ -53,3 +53,35 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     <p id="feedback_ch4_p3" style="color: red"></p>
 
 ---
+
+!!! write-problem "Write problem 4"
+    Create a dfn that evaluates the following continued fraction to 100 1s
+    $$
+          1+\frac{1}{1+\frac{1}{1+\frac{1}{\ldots}}}
+    $$
+
+    Hint: Use the reduce / operator with the right function left argument
+    <div class="problem">
+        <span class="problemspan">ratio←</span>
+        <input class="probleminput" type="text" id="input_ch4_p3" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch4_p3', 2)">Submit</button>
+    </div>
+    <p id="feedback_ch4_p3" style="color: red"></p>
+
+---
+
+!!! write-problem "Write problem 5"
+    Create a dfn that evaluates the following sum
+    $$
+          \sum_{n=0}^{100} \frac{1}{n^2}
+    $$
+
+    Hint: Use the reduce / operator
+    <div class="problem">
+        <span class="problemspan">sum←</span>
+        <input class="probleminput" type="text" id="input_ch4_p5" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch4_p5', 2)">Submit</button>
+    </div>
+    <p id="feedback_ch4_p5" style="color: red"></p>
+
+---
