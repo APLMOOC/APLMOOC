@@ -349,6 +349,14 @@ We'll get back to exactly why this is in the next chapter.
 For now, you can think of your vector as being **trapped in a box and unable to escape**.
 To set it free, we use pick!
 
+We can use it monadically to unbox the vector
+```apl
+      ⊃A[2]
+3 4 5
+```
+
+or use it dyadically to index and unbox at the same time
+
 ```apl
       2⊃A
 3 4 5

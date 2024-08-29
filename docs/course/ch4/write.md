@@ -121,69 +121,13 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 
 !!! write-problem "Write problem 9"
     
-    Recall the tape-based machine
-
-    ```apl
-          INSTRUCTIONS
-      ┌─────┬─────┬─────┐
-      │1 R 2│1 L 1│1 L 2│
-      ├─────┼─────┼─────┤
-      │1 L 3│1 R 2│1 N H│
-      └─────┴─────┴─────┘
-    ```
-
-    The first (second) row of the matrix specifies the possible instructions when the value of the section of tape is a 1 (respectively, 2). The columns similarly specify the possible instructions depending on the state of the machine.
-
-    The first element in each instruction is what to write to the section of tape, the second whether to move right 'R' left 'L' or stay in place 'N', and the last value is the next state of the machine 1, 2, 3, or 'H' for halting the machine.
-
-    Create a dfn EXECUTE that takes in a tape ⍺, a position along the tape ⍵[1], and a state ⍵[2], that simulates one step of this machine. The resulting value of the tape, and the the state of the machine must be returned.
-
-    ```apl
-          (10/1) EXECUTE 1 1
-    ┌───────────────────┬─┐
-    │1 1 1 1 1 1 1 1 1 1│2│
-    └───────────────────┴─┘
-          (10/2) EXECUTE 2 1
-    ┌───────────────────┬─┐
-    │2 1 2 2 2 2 2 2 2 2│3│
-    └───────────────────┴─┘
-          (10/1) EXECUTE 2 2
-    ┌───────────────────┬─┐
-    │1 1 1 1 1 1 1 1 1 1│1│
-    └───────────────────┴─┘
-          (2 1 2 2 2 2 2 2 2 2) (3)
-    ┌───────────────────┬─┐
-    │2 1 2 2 2 2 2 2 2 2│3│
-    └───────────────────┴─┘
-    ```
-
-    Note that you need to assign the tape to a new variable to change it, as you can't directly modify ``⍺``.
-    
-    ```apl
-          1 1{⍺[1]←⍵ ⋄ ⍺}2
-    SYNTAX ERROR
-      1 1{⍺[1]←⍵}2
-           ∧
-
-          1 1{TAPE← ⍺ ⋄ TAPE[1]←⍵ ⋄ TAPE}2
-    2 1
-    ```
-    
-    Hint: 
-    >! Use the pick ⊃ function in the following way
-    >!  ```apl
-    >!        ((TAPE_VALUE) (STATE))1⊃INSTRUCTIONS
-    >!  1
-    >!        ((TAPE_VALUE) (STATE))3⊃INSTRUCTIONS
-    >!  2
-    >!  ```
-            
+    Create a dfn that takes in a string right argument and returns the most common letter.
 
     <div class="problem">
-        <span class="problemspan">EXECUTE←</span>
-        <input class="probleminput" type="text" id="input_ch3_p9" placeholder="your solution here">
-        <button class="problembutton" onclick="submit_problem('ch3_p9', 2)">Submit</button>
+        <span class="problemspan">MODE←</span>
+        <input class="probleminput" type="text" id="input_ch4_p9" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch4_p9', 2)">Submit</button>
     </div>
-    <p id="feedback_ch3_p9" style="color: red"></p>
+    <p id="feedback_ch4_p9" style="color: red"></p>
 
 ---
