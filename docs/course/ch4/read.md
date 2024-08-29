@@ -244,3 +244,49 @@ The exercises are not checked or graded: use them to check your knowledge!
 
         This is a sequence of approximations to the golden ratio
 ---
+
+!!! question "Read problem 10"
+
+    === "Input"
+
+        ```apl
+              VOTES ← 'HAUNTED HOUSE' 'CAFE' 'CAFE' 'CAFE' 'HAUNTED HOUSE' 'HAUNTED HOUSE' 'CAFE' 'HAUNTED HOUSE' 'ANIMAL CAFE' 'CAFE' 'CAFE'
+              {⍺ ⍵}⌸VOTES
+        
+        ```
+
+    === "Output"
+
+      ```apl
+      ┌───────────────┬─────────────┐
+      │┌─────────────┐│1 5 6 8      │
+      ││HAUNTED HOUSE││             │
+      │└─────────────┘│             │
+      ├───────────────┼─────────────┤
+      │┌────┐         │2 3 4 7 10 11│
+      ││CAFE│         │             │
+      │└────┘         │             │
+      ├───────────────┼─────────────┤
+      │┌───────────┐  │9            │
+      ││ANIMAL CAFE│  │             │
+      │└───────────┘  │             │
+      └───────────────┴─────────────┘
+      ```
+---
+
+!!! question "Read problem 11"
+
+    === "Input"
+
+        ```apl
+              ({⍺}⌸VOTES)[⍒{⍴⍵}⌸VOTES]
+        ```
+
+    === "Output"
+
+        ```apl
+      ┌────┬─────────────┬───────────┐
+      │CAFE│HAUNTED HOUSE│ANIMAL CAFE│
+      └────┴─────────────┴───────────┘
+        ```
+---
