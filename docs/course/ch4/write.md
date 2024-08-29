@@ -24,3 +24,15 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     <p id="feedback_ch4_p1" style="color: red"></p>
 
 ---
+
+!!! write-problem "Write problem 2"
+    Create a dfn that returns the vector ⍺, ⍺+1, ⍺+2, ⍺+3, ..., ⍵
+    <div class="problem">
+        <span class="problemspan">interval←</span>
+        <input class="probleminput" type="text" id="input_ch4_p2" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch4_p2', 2)">Submit</button>
+    </div>
+    <p id="feedback_ch4_p2" style="color: red"></p>
+
+---
+
