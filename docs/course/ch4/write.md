@@ -131,3 +131,18 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     <p id="feedback_ch4_p9" style="color: red"></p>
 
 ---
+
+!!! write-problem "Write problem 10"
+    
+    The most common letter in the english language is the letter 'E'. A simple method of obtaining the shift (and thus deciphering) Caesar ciphered text is to look at the most common letter, and shift it back to 'E'. For example, 'GURBJYFNERABGJUNGGURLFRRZ' has most common letter 'R', shifting back 13 spaces gives us 'THEOWLSARENOTWHATTHEYSEEM'.
+
+    Create a dfn that applies this algorithm to a string right argument.
+
+    <div class="problem">
+        <span class="problemspan">DECIPHER←</span>
+        <input class="probleminput" type="text" id="input_ch4_p10" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch4_p10', 2)">Submit</button>
+    </div>
+    <p id="feedback_ch4_p10" style="color: red"></p>
+
+---
