@@ -86,7 +86,7 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 
 ---
 
-!!! write-problem "Write problem 7"
+!!! write-problem "Write problem 6"
     
     Create a dfn that returns a 1 if its left argument is totally contained in its right argument, and 0 otherwise.
     ```apl
@@ -99,6 +99,19 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     ```
     <div class="problem">
         <span class="problemspan">SUBSET←</span>
+        <input class="probleminput" type="text" id="input_ch4_p6" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch4_p6', 2)">Submit</button>
+    </div>
+    <p id="feedback_ch4_p6" style="color: red"></p>
+
+---
+
+!!! write-problem "Write problem 7"
+    
+    Create a dfn that returns 1 if ``⍵`` is prime, and 0 otherwise. A prime number is one that does not divide any number other than itself and 1, that is, the remainder of division is 0 only for 1 and ``⍵``.
+
+    <div class="problem">
+        <span class="problemspan">PRIME←</span>
         <input class="probleminput" type="text" id="input_ch4_p7" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch4_p7', 2)">Submit</button>
     </div>
@@ -108,10 +121,10 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 
 !!! write-problem "Write problem 8"
     
-    Create a dfn that returns 1 if ``⍵`` is prime, and 0 otherwise. A prime number is one that does not divide any number other than itself and 1, that is, the remainder of division is 0 only for 1 and ``⍵``.
+    Create a dfn that takes in a string right argument and returns the most common letter.
 
     <div class="problem">
-        <span class="problemspan">PRIME←</span>
+        <span class="problemspan">MODE←</span>
         <input class="probleminput" type="text" id="input_ch4_p8" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch4_p8', 2)">Submit</button>
     </div>
@@ -121,10 +134,12 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 
 !!! write-problem "Write problem 9"
     
-    Create a dfn that takes in a string right argument and returns the most common letter.
+    The most common letter in the english language is the letter 'E'. A simple method of obtaining the shift (and thus deciphering) Caesar ciphered text is to look at the most common letter, and shift it back to 'E'. For example, 'GURBJYFNERABGJUNGGURLFRRZ' has most common letter 'R', shifting back 13 spaces gives us 'THEOWLSARENOTWHATTHEYSEEM'.
+
+    Create a dfn that applies this algorithm to a string right argument.
 
     <div class="problem">
-        <span class="problemspan">MODE←</span>
+        <span class="problemspan">DECIPHER←</span>
         <input class="probleminput" type="text" id="input_ch4_p9" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch4_p9', 2)">Submit</button>
     </div>
@@ -134,15 +149,23 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 
 !!! write-problem "Write problem 10"
     
-    The most common letter in the english language is the letter 'E'. A simple method of obtaining the shift (and thus deciphering) Caesar ciphered text is to look at the most common letter, and shift it back to 'E'. For example, 'GURBJYFNERABGJUNGGURLFRRZ' has most common letter 'R', shifting back 13 spaces gives us 'THEOWLSARENOTWHATTHEYSEEM'.
+    Create a dfn that generates a random word of length ``⍵``.
 
-    Create a dfn that applies this algorithm to a string right argument.
+    ```apl
+          WORD 10
+    OJCCKXBSVA
+          WORD 5
+    SBURB 
+    ```
+
 
     <div class="problem">
-        <span class="problemspan">DECIPHER←</span>
+        <span class="problemspan">WORD←</span>
         <input class="probleminput" type="text" id="input_ch4_p10" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch4_p10', 2)">Submit</button>
     </div>
     <p id="feedback_ch4_p10" style="color: red"></p>
 
 ---
+
+    
