@@ -13,3 +13,14 @@ If you submit a correct solution at least once, you will receive points on the T
 If the write problem is red, it is unsolved. If it it green, you have solved it and received points for it on the server.
 
 ---
+
+!!! write-problem "Write problem 1"
+    Create a dfn that returns the string 'ABBCCCDDDDEEEEFFFFF...ZZZZZZZZZZZZZZZZZZZZZZZZZZ'
+    <div class="problem">
+        <span class="problemspan">ABB←</span>
+        <input class="probleminput" type="text" id="input_ch4_p1" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch4_p1', 2)">Submit</button>
+    </div>
+    <p id="feedback_ch4_p1" style="color: red"></p>
+
+---
