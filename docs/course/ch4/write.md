@@ -36,3 +36,20 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 
 ---
 
+!!! write-problem "Write problem 3"
+    Create a dfn that returns the vector ⍺, ⍺+⍵[1], ⍺+2×⍵[1], ⍺+3×⍵[1], ..., ⍺+⍵[2]×⍵[1]
+    ```apl
+          1 step 10 10
+    1 11 21 31 41 51 61 71 81 91 101
+    
+          2 step 0.5 5
+    2 2.5 3 3.5 4 4.5
+    ```
+    <div class="problem">
+        <span class="problemspan">step←</span>
+        <input class="probleminput" type="text" id="input_ch4_p3" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch4_p3', 2)">Submit</button>
+    </div>
+    <p id="feedback_ch4_p3" style="color: red"></p>
+
+---
