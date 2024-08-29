@@ -7,6 +7,7 @@
         - Iota underbar
         - Epsilon
         - Epsilon underbar
+        - Key
 
 ---
 
@@ -319,7 +320,6 @@ This problem can be solved with the dyadic ⍸ interval index function. The vect
 
 ## Find
 
-Last one for this part!
 All of the finding operations that we looked at so far have been to find _one_ element in an array.
 APL also has a function to find _subarrays_: the dyadic find function, which is written using the epsilon-underbar symbol `⍷`.
 
@@ -350,3 +350,37 @@ These occurences can also overlap:
       'ooo' ⍷ 'meoooooooow meooow'
 0 0 1 1 1 1 1 1 0 0 0 0 0 0 1 0 0 0
 ```
+
+## Key
+
+Last one for this part! The key ⌸ operator provides a way of grouping together elements of an array, and apply an arbitrary function to each group
+
+```apl
+      {⍺ ⍵}⌸'ENTENTE'
+┌─┬─────┐
+│E│1 4 7│
+├─┼─────┤
+│N│2 5  │
+├─┼─────┤
+│T│3 6  │
+└─┴─────┘
+      {⎕←⍺}⌸'ENTENTE'
+ENT
+      {⎕←⍵}⌸'ENTENTE'
+1 4 7
+2 5
+3 6
+```
+
+The left argument function for the key ⌸ operator takes as left argument the group value (in the above, the unique letters E N and T) and as right argument the indices of the elements of that group.
+
+```apl
+      PRIMER ← 'CGCAAATGGGCGGTAGGCGTG'
+      ⍝ Number of each nucleotide
+      {⍺,⍴⍵}⌸PRIMER
+C  4
+G 10
+A  4
+T  3
+```
+

@@ -217,7 +217,7 @@ The exercises are not checked or graded: use them to check your knowledge!
         \frac{1}{\frac{2}{\frac{3}{\frac{\dots}{10}}}}
         $$
 
-        can be written in APL as
+        can be written in APL using reduce / as
 
     === "Output"
 
@@ -244,4 +244,3 @@ The exercises are not checked or graded: use them to check your knowledge!
 
         This is a sequence of approximations to the golden ratio
 ---
-
