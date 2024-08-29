@@ -28,7 +28,7 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 !!! write-problem "Write problem 2"
     Create a dfn that returns the vector ⍺, ⍺+1, ⍺+2, ⍺+3, ..., ⍵
     <div class="problem">
-        <span class="problemspan">interval←</span>
+        <span class="problemspan">INT←</span>
         <input class="probleminput" type="text" id="input_ch4_p2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch4_p2', 2)">Submit</button>
     </div>
@@ -46,7 +46,7 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     2 2.5 3 3.5 4 4.5
     ```
     <div class="problem">
-        <span class="problemspan">step←</span>
+        <span class="problemspan">STEP←</span>
         <input class="probleminput" type="text" id="input_ch4_p3" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch4_p3', 2)">Submit</button>
     </div>
@@ -62,11 +62,11 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 
     Hint: Use the reduce / operator with the right function left argument
     <div class="problem">
-        <span class="problemspan">ratio←</span>
-        <input class="probleminput" type="text" id="input_ch4_p3" placeholder="your solution here">
-        <button class="problembutton" onclick="submit_problem('ch4_p3', 2)">Submit</button>
+        <span class="problemspan">RATIO←</span>
+        <input class="probleminput" type="text" id="input_ch4_p4" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch4_p4', 2)">Submit</button>
     </div>
-    <p id="feedback_ch4_p3" style="color: red"></p>
+    <p id="feedback_ch4_p4" style="color: red"></p>
 
 ---
 
@@ -78,10 +78,43 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 
     Hint: Use the reduce / operator
     <div class="problem">
-        <span class="problemspan">sum←</span>
+        <span class="problemspan">SUM←</span>
         <input class="probleminput" type="text" id="input_ch4_p5" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch4_p5', 2)">Submit</button>
     </div>
     <p id="feedback_ch4_p5" style="color: red"></p>
+
+---
+
+!!! write-problem "Write problem 7"
+    
+    Create a dfn that returns a 1 if its left argument is totally contained in its right argument, and 0 otherwise.
+    ```apl
+          1 1 2 3 SUBSET 1 2 3 4 5
+    1
+          'MEOW' SUBSET 'HOMEOWNER'
+    1
+          'I' SUBSET 'TEAM'
+    0
+    ```
+    <div class="problem">
+        <span class="problemspan">SUBSET←</span>
+        <input class="probleminput" type="text" id="input_ch4_p7" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch4_p7', 2)">Submit</button>
+    </div>
+    <p id="feedback_ch4_p7" style="color: red"></p>
+
+---
+
+!!! write-problem "Write problem 8"
+    
+    Create a dfn that returns 1 if ``⍵`` is prime, and 0 otherwise. A prime number is one that does not divide any number other than itself and 1, that is, the remainder of division is 0 only for 1 and ``⍵``.
+
+    <div class="problem">
+        <span class="problemspan">PRIME←</span>
+        <input class="probleminput" type="text" id="input_ch4_p8" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch4_p8', 2)">Submit</button>
+    </div>
+    <p id="feedback_ch4_p8" style="color: red"></p>
 
 ---
