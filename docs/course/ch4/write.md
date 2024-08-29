@@ -168,4 +168,24 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 
 ---
 
+!!! write-problem "Write problem 11"
     
+    Create a dfn that generates an array with 1s separated by 0s, where the length of each run of 0s is specified by a vector right argument ``⍵``.
+
+    ```apl
+          RUN 2 3 4
+    0 0 1 0 0 0 1 0 0 0 0 1
+          RUN 10
+    0 0 0 0 0 0 0 0 0 0 1
+    ```
+    
+    Hint: One way is to use ∊ member of and +\ plus scan
+
+    <div class="problem">
+        <span class="problemspan">WORD←</span>
+        <input class="probleminput" type="text" id="input_ch4_p10" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch4_p11', 2)">Submit</button>
+    </div>
+    <p id="feedback_ch4_p11" style="color: red"></p>
+
+---
