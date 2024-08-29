@@ -251,26 +251,21 @@ The exercises are not checked or graded: use them to check your knowledge!
 
         ```apl
               VOTES ← 'HAUNTED HOUSE' 'CAFE' 'CAFE' 'CAFE' 'HAUNTED HOUSE' 'HAUNTED HOUSE' 'CAFE' 'HAUNTED HOUSE' 'ANIMAL CAFE' 'CAFE' 'CAFE'
-              {⍺ ⍵}⌸VOTES
+              {⍺,⍴⍵}⌸VOTES
         
         ```
 
     === "Output"
 
       ```apl
-      ┌───────────────┬─────────────┐
-      │┌─────────────┐│1 5 6 8      │
-      ││HAUNTED HOUSE││             │
-      │└─────────────┘│             │
-      ├───────────────┼─────────────┤
-      │┌────┐         │2 3 4 7 10 11│
-      ││CAFE│         │             │
-      │└────┘         │             │
-      ├───────────────┼─────────────┤
-      │┌───────────┐  │9            │
-      ││ANIMAL CAFE│  │             │
-      │└───────────┘  │             │
-      └───────────────┴─────────────┘
+            {⍺,⍴⍵}⌸VOTES
+      ┌─────────────┬─┐
+      │HAUNTED HOUSE│4│
+      ├─────────────┼─┤
+      │CAFE         │6│
+      ├─────────────┼─┤
+      │ANIMAL CAFE  │1│
+      └─────────────┴─┘
       ```
 ---
 
@@ -289,4 +284,39 @@ The exercises are not checked or graded: use them to check your knowledge!
       │CAFE│HAUNTED HOUSE│ANIMAL CAFE│
       └────┴─────────────┴───────────┘
         ```
+---
+
+!!! question "Read problem 12"
+
+    === "Input"
+
+        ```apl
+              ⍝ Hours spent on homework per day
+              HOMEWORK ← 1 1 2 2 4 0 1
+              +/HOMEWORK
+              +\HOMEWORK
+              2-/HOMEWORK
+              -2-/HOMEWORK
+              +\-2-/HOMEWORK
+              +\HOMEWORK[1],-2-/HOMEWORK
+        ```
+
+    === "Output"
+
+        ```apl
+              +/HOMEWORK
+        11
+              +\HOMEWORK
+        1 2 4 6 10 10 11
+              2-/HOMEWORK
+        0 ¯1 0 ¯2 4 ¯1
+              -2-/HOMEWORK
+        0 1 0 2 ¯4 1
+              +\-2-/HOMEWORK
+        0 1 1 3 ¯1 0
+              +\HOMEWORK[1],-2-/HOMEWORK
+        1 1 2 2 4 0 1
+        ```
+
+        Notice that the cumulative sum of the first element of HOMEWORK with the first differences of HOMEWORK is the same as HOMEWORK itself. If you know a little calculus, this might look familiar as the integral of the derivative being the same function up to a constant C.
 ---

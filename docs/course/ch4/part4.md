@@ -21,7 +21,7 @@ The monadic `?` roll function generates a random number for every scalar in its 
 1 1 3 4 4 6 6 5 8 4
 
        ? 10*⍳10
-8 84 545 5254 99210 693088 7548981 55682236 454935262 2471243355
+8 84 545 4600 99210 693088 7548981 55682236 454935262 2471243355
 ```
 
 When the argument contains zero (0), a random floating point number between 0 and 1 is returned.
