@@ -1,0 +1,11 @@
+.md-sidebar--secondaty {
+    display: none;
+}
+
+.md-sidebar--secondary:not([hidden]){
+    display: none;
+}
+
+.md-typeset code{
+    font-size: 85%;
+}

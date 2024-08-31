@@ -97,11 +97,11 @@ nav:
       - 4.W - Write exercises: course/ch4/write.md
       - 4.B - Rotating an image: course/ch4/bonus.md
     - 5 - Higher dimensions:
-      - 5.1 - Choose your axis!: course/ch5/part1.md
+      - 5.1 - Elements of set theory: course/ch5/part1.md
       - 5.2 - Anything can be a scalar: course/ch5/part2.md
-      - 5.3 - (Un)matrixification: course/ch5/part3.md
-      - 5.4 - Selections and reductions: course/ch5/part4.md
-      - 5.5 - Cross-tabulation: course/ch5/part5.md
+      - 5.3 - Choose your axis: course/ch5/part3.md
+      - 5.4 - I knew he swapped those numbers!: course/ch5/part4.md
+      - 5.5 - More searching and selecting: course/ch5/part5.md
       - 5.S - Summary: course/ch5/summary.md
       - 5.R - Read exercises: course/ch5/read.md
       - 5.W - Write exercises: course/ch5/write.md
