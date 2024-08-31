@@ -11,6 +11,59 @@
 
 ---
 
+It is now time to continue the discussion we had in chapter 2 about nested arrays. This topic tends to be the most difficult part of learning APL; hopefully the following exposition will make it seem like a natural development of what we’ve already discussed.
+
+Data in APL are represented using arrays. The elements of an array are called scalars, which can contain any arbitrary types of data. They could contain arrays with rank zero (simple scalars) such as the array ``(7)``, vectors ``(7 14 21 28 35 42 49 56 63)``, matrices ``3 3⍴(7 14 21 28 35 42 49 56 63)``, or any higher rank array.
+
+Since scalars are elements of arrays, they themselves carry no rank or size. Consider the following example of a record of a forum post
+
+
+```apl
+      ⍝ Boxing will be on throughout this whole section, to help see the nesting
+      ]Box On
+Was Off
+
+      post ← '27-08-2024' '15:38' 'How good was broadcast NTSC/PAL in practice?' 'dataMoshpit'
+      post
+┌──────────┬─────┬────────────────────────────────────────────┬───────────┐
+│27-08-2024│15:38│How good was broadcast NTSC/PAL in practice?│dataMoshpit│
+└──────────┴─────┴────────────────────────────────────────────┴───────────┘
+```
+
+The variable `post` is a vector of length 4; it contains four scalars, each of which contains a string.
+
+```apl
+      ⍴ post
+4
+      post[3]
+┌────────────────────────────────────────────┐
+│How good was broadcast NTSC/PAL in practice?│
+└────────────────────────────────────────────┘
+      ⍝ Empty shape!
+      ⍴ post[3]
+
+      ⍝ Just like simple scalars
+      ⍴ 5
+
+      ⍝ Using pick ⊃ as was mentioned in the previous chapter
+      ⊃ post[3]
+How good was broadcast NTSC/PAL in practice?
+      ⍝ We can access the vector data
+      ⍴ ⊃ post[3]
+44
+      (⊃ post[3])[1]
+H
+```
+
+It is a nested vector, since these scalars contain vector data, whose depth can be measured using the monadic depth ≡ function.
+
+```apl
+      ≡ post
+2
+```
+
+
+
 In order to create a nested array out of another array, the enclose ⊂ operator can be used.
 
 ```apl
@@ -85,22 +138,7 @@ MATH
 COMPETED
 ```
 
-It is now time to continue the discussion we had in chapter 2 about nested arrays. This topic tends to be the most difficult part of learning APL; hopefully the following exposition will make it seem like a natural development of what we’ve already discussed.
 
-Data in APL are represented using arrays. The elements of an array are called scalars, which can contain any arbitrary types of data. They could contain arrays with rank zero (simple scalars), such as the array ``(7)``, vectors ``(7 14 21 28 35 42 49 56 63)``, matrices ``3 3⍴(7 14 21 28 35 42 49 56 63)``, or any higher rank array.
-
-Since scalars are elements of arrays, they themselves carry no rank or size; recall a similar example from chapter 2.
-
-```apl
-      nums ← 1 3
-      letters ← 'a' 'b' 
-      2 2 ⍴ nums letters
-┌───┬──┐
-│1 3│ab│
-├───┼──┤
-│1 3│ab│
-└───┴──┘
-```
 
 The elements of the above 2x2 array are scalars with data the vectors ‘nums’ and ‘letters’, exactly what would be expected if nums and letters were switched for simple scalars.
 
