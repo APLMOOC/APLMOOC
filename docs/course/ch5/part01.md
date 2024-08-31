@@ -44,15 +44,6 @@ The variable `post` is a vector of length 4; it contains four scalars, each of w
 
       ⍝ Just like simple scalars
       ⍴ 5
-
-      ⍝ Using pick ⊃ as was mentioned in the previous chapter
-      ⊃ post[3]
-How good was broadcast NTSC/PAL in practice?
-      ⍝ We can access the vector data
-      ⍴ ⊃ post[3]
-44
-      (⊃ post[3])[1]
-H
 ```
 
 It is a nested vector, since these scalars contain vector data, whose depth can be measured using the monadic depth ≡ function.
@@ -62,6 +53,108 @@ It is a nested vector, since these scalars contain vector data, whose depth can 
 2
 ```
 
+The data inside a nested array can be accessed using the dyadic pick ⊃ function.
+
+```apl
+      3⊃post
+How good was broadcast NTSC/PAL in practice?
+
+      ⍴ 3⊃post
+44
+```
+
+The left argument to the dyadic pick function is a special nested index vector that matches the right hand nested array. Each element of this index vector must be a valid index for each layer of nesting of the right hand array. Let's see what this means concretely for the following nested array of posts
+
+```apl
+      POSTS
+┌──────────────────────────────────────────────┬───────────────────┐
+│30-08-2024                                    │                   │
+├──────────────────────────────────────────────┼───────────────────┤
+│Why does DVB-C use QAM instead of OFDM?       │frequencySniffer   │
+├──────────────────────────────────────────────┼───────────────────┤
+│DAC in QPSK modulation                        │radioComputer      │
+├──────────────────────────────────────────────┼───────────────────┤
+│                                              │                   │
+├──────────────────────────────────────────────┼───────────────────┤
+│                                              │                   │
+└──────────────────────────────────────────────┴───────────────────┘
+┌──────────────────────────────────────────────┬───────────────────┐
+│29-08-2024                                    │                   │
+├──────────────────────────────────────────────┼───────────────────┤
+│Nordtel OC3 Express                           │corporateRaider    │
+├──────────────────────────────────────────────┼───────────────────┤
+│Record for longest television broadcast       │RedScanLine        │
+├──────────────────────────────────────────────┼───────────────────┤
+│Book on Digital Signal Processing             │vacuumTubed        │
+├──────────────────────────────────────────────┼───────────────────┤
+│Trying to obtain a clear QAM signal from cable│hadamardMardy      │
+└──────────────────────────────────────────────┴───────────────────┘
+┌──────────────────────────────────────────────┬───────────────────┐
+│28-08-2024                                    │                   │
+├──────────────────────────────────────────────┼───────────────────┤
+│Early color TV in Finland                     │televisioniini     │
+├──────────────────────────────────────────────┼───────────────────┤
+│Soviet Tube Substitute for 6TGSN7             │logorrheicLogarithm│
+├──────────────────────────────────────────────┼───────────────────┤
+│OFDM, carriers and useful data symbol rate    │selfConstructing   │
+├──────────────────────────────────────────────┼───────────────────┤
+│                                              │                   │
+└──────────────────────────────────────────────┴───────────────────┘
+┌──────────────────────────────────────────────┬───────────────────┐
+│27-08-2024                                    │                   │
+├──────────────────────────────────────────────┼───────────────────┤
+│How good was broadcast NTSC/PAL in practice?  │dataMoshpit        │
+├──────────────────────────────────────────────┼───────────────────┤
+│Looking for flyback                           │pacAttack          │
+├──────────────────────────────────────────────┼───────────────────┤
+│                                              │                   │
+├──────────────────────────────────────────────┼───────────────────┤
+│                                              │                   │
+└──────────────────────────────────────────────┴───────────────────┘
+```
+
+The depth of this array is the same as the depth of the above vector, since all values are boxed once.
+
+```apl
+      ≡POSTS
+2
+```
+
+However this array is three dimensional
+
+```apl
+      ⍴POSTS
+4 5 2
+      ⍴⍴POSTS
+3
+```
+
+To pick an element from this array, we must provide an index vector where each element is a valid index for each layer of the array. In this case, we can provide two elements, since the depth is 2. Let's get the first element of this array
+
+```apl
+      (1 1 1)⊃POSTS
+RANK ERROR
+      (1 1 1)⊃POSTS
+             ∧
+```
+
+What happened here? The reason why this doesn't work is that (1 1 1) is not a single element, it is a vector of three elements. In order to turn data into a single element, a scalar, we can enclose ⊂ it in a box.
+
+```apl
+      ⊂1 1 1
+┌─────┐
+│1 1 1│
+└─────┘
+      (⊂1 1 1)⊃POSTS
+30-08-2024
+
+      (1 1 1)1
+┌─────┬─┐
+│1 1 1│1│
+└─────┴─┘
+      ((1 1 1)1)⊃POSTS
+3
+```
 
 
 In order to create a nested array out of another array, the enclose ⊂ operator can be used.
