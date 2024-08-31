@@ -93,3 +93,50 @@ The duplicate 'XXXXXXXXXX' spam posts have been removed. Next is removing specif
 │29-08-2024│21:38│Nordtel OC3 Express                    │corporateRaider │
 └──────────┴─────┴───────────────────────────────────────┴────────────────┘
 ```
+
+That's better! Let's take a closer look at some other set functions, too.
+
+Take the following vectors of [emoticons](https://en.wikipedia.org/wiki/List_of_emoticons)
+
+```apl
+HAPPY_EMOTICONS ← ':)' ':-)' ':D' ':]' ':o)' '8)' ':3' 'c:' ':x'
+
+SAD_EMOTICONS ← '):' ':c' ']:' ')-:' 'D:' '>:(' ':/' ':x' ':|'
+```
+
+The symbol ∪ acts *dyadically* as Set Union.
+
+```apl
+       HAPPY_EMOTICONS ∪ SAD_EMOTICONS
+:) :-) :D :] :o) 8) :3 c: :x ): :c ]: )-: D: >:( :/ :|
+```
+
+Notice how the element ‘:x’ only appears once, where it would appear twice if we were to use the dyadic catenate , operator introduced in Chapter 2.
+
+```apl
+       HAPPY_EMOTICONS , SAD_EMOTICONS
+:) :-) :D :] :o) 8) :3 c: :x ): :c ]: )-: D: :x >:( :/ :|
+```
+
+Similarly, the symbol ∩ acts dyadically as the Set Intersection operation.
+
+```apl
+       HAPPY_EMOTICONS ∩ SAD_EMOTICONS
+:x
+```
+
+The symbol ~, which monadically refers to boolean NOT, is dyadically the Set Difference operation.
+
+```apl
+       HAPPY_EMOTICONS ~ SAD_EMOTICONS
+:) :-) :D :] :o) 8) :3 c:
+       ⍝ Notice the ':x' emoticon is gone
+```
+
+Monadically, the symbol ∪ acts as the Unique operator, removing duplicate entries in a vector (and duplicate rows or columns in a matrix, more on axis operations in Chapter 6).
+
+```apl
+       ∪ HAPPY_EMOTICONS , SAD_EMOTICONS
+:) :-) :D :] :o) 8) :3 c: :x ): :c ]: )-: D: >:( :/ :|
+       ⍝ Notice the ':x' emoticon only appears once
+```
