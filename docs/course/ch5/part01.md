@@ -76,7 +76,7 @@ The left argument to the dyadic pick function is a special nested index vector t
 ├──────────────────────────────────────────────┼───────────────────┤
 │                                              │                   │
 ├──────────────────────────────────────────────┼───────────────────┤
-│                                              │                   │
+│                                              |                   │
 └──────────────────────────────────────────────┴───────────────────┘
 ┌──────────────────────────────────────────────┬───────────────────┐
 │29-08-2024                                    │                   │
@@ -98,7 +98,7 @@ The left argument to the dyadic pick function is a special nested index vector t
 ├──────────────────────────────────────────────┼───────────────────┤
 │OFDM, carriers and useful data symbol rate    │selfConstructing   │
 ├──────────────────────────────────────────────┼───────────────────┤
-│                                              │                   │
+│Varicap-tuned filters                         │thomasedison96     │
 └──────────────────────────────────────────────┴───────────────────┘
 ┌──────────────────────────────────────────────┬───────────────────┐
 │27-08-2024                                    │                   │
@@ -107,9 +107,9 @@ The left argument to the dyadic pick function is a special nested index vector t
 ├──────────────────────────────────────────────┼───────────────────┤
 │Looking for flyback                           │pacAttack          │
 ├──────────────────────────────────────────────┼───────────────────┤
-│                                              │                   │
+│ CTCSS in NBFM                                │Radiovangelist     │
 ├──────────────────────────────────────────────┼───────────────────┤
-│                                              │                   │
+│ 455 kHz and 10.7 MHz as intermediate freqs   |Decibels_per_Kg    │
 └──────────────────────────────────────────────┴───────────────────┘
 ```
 
@@ -303,93 +303,85 @@ OFDM is more reliable and easily equalized over difficult channels like a radio 
 O
 ```
 
-
-
 There is also a nested variant of the , ravel function called the ∊ enlist function.
 
 ```apl
-      ∊multiplication_line
-1 2 3 4 5 6 7 8 9 10 2 4 6 8 10 12 14 16 18 20 3 6 9 12 15 18 21 24 27 30 4 8 12 16 20 24 28 32 36 40 5 10 15 20 25 30 35 40 45 50 6 12 18 24 30 36 42 48 54 60 7 14 21 28 35 42 49 56 63 70 8 16 24 32 40 48 56 64 72 80 9 18 27 36 45 54 63 72 81 90 10 20 30 40 50 60 70 80 90 100
-      ∊nested
-1 2 3     1 2 3 1 2 3    1 2  
+      ∊POSTS
+30-08-202418:52Why does DVB-C use QAM instead of OFDM?frequencySniffer30-08-202419:22OFDM is more reliable and easily equalized over difficult channels like a radio link.RedSyncLine29-08-202411:28Trying to obtain a clear QAM signal from cablehadamardMardy29-08-202415:38You need a better tunerdataMoshpit
 ```
 
-Creating nested arrays from already existing data can be done using the ⊂ enclose functions. The monadic enclose ⊂ function wraps its right argument as a scalar.
+The power of nested arrays lies in the way in which they allow applying operations on many arrays at once. Recall how arithmetic operations act each element of an array
 
 ```apl
-      ⊂⍳10
-┌────────────────────┐
-│1 2 3 4 5 6 7 8 9 10│
-└────────────────────┘
-      ⍴⍴⊂⍳10
-0
+      5 5⍴⍳25
+ 1  2  3  4  5
+ 6  7  8  9 10
+11 12 13 14 15
+16 17 18 19 20
+21 22 23 24 25
 
-      3 3 3⍴⍳9
-1 2 3
-4 5 6
-7 8 9
-     
-1 2 3
-4 5 6
-7 8 9
-     
-1 2 3
-4 5 6
-7 8 9
-      ⊂3 3 3⍴⍳9
-┌─────┐
-│1 2 3│
-│4 5 6│
-│7 8 9│
-│     │
-│1 2 3│
-│4 5 6│
-│7 8 9│
-│     │
-│1 2 3│
-│4 5 6│
-│7 8 9│
-└─────┘
-      ⍴⍴⊂3 3 3⍴⍳9
-0
+      2*5 5⍴⍳25
+      2       4       8       16       32
+     64     128     256      512     1024
+   2048    4096    8192    16384    32768
+  65536  131072  262144   524288  1048576
+2097152 4194304 8388608 16777216 33554432
 ```
 
-To see why creating a nested array might be useful, we take a closer look at the windowed reduce function. Applying the , ravel function to the windowed reduce operator to take a peek at its internal operation
+For more complex functions, the each ¨ operator allows applying a function to each element of the right argument array, potentially returning a nested array. 
 
 ```apl
-      3,/1 2 3 4 5 6
-┌─────┬─────┬─────┬─────┐
-│1 2 3│2 3 4│3 4 5│4 5 6│
-└─────┴─────┴─────┴─────┘
+      {2*⍵}¨5 5⍴⍳25
+      2       4       8       16       32
+     64     128     256      512     1024
+   2048    4096    8192    16384    32768
+  65536  131072  262144   524288  1048576
+2097152 4194304 8388608 16777216 33554432
+
+      {⍵,2*⍵}¨5 5⍴⍳25
+┌──────────┬──────────┬──────────┬───────────┬───────────┐
+│1 2       │2 4       │3 8       │4 16       │5 32       │
+├──────────┼──────────┼──────────┼───────────┼───────────┤
+│6 64      │7 128     │8 256     │9 512      │10 1024    │
+├──────────┼──────────┼──────────┼───────────┼───────────┤
+│11 2048   │12 4096   │13 8192   │14 16384   │15 32768   │
+├──────────┼──────────┼──────────┼───────────┼───────────┤
+│16 65536  │17 131072 │18 262144 │19 524288  │20 1048576 │
+├──────────┼──────────┼──────────┼───────────┼───────────┤
+│21 2097152│22 4194304│23 8388608│24 16777216│25 33554432│
+└──────────┴──────────┴──────────┴───────────┴───────────┘
+```
+It matches the left argument array scalars with the right argument array scalars and applies the function with the scalars as left or right arguments respectively
+
+```
+      2|5 5⍴⍳25
+1 0 1 0 1
+0 1 0 1 0
+1 0 1 0 1
+0 1 0 1 0
+1 0 1 0 1
+
+      (2|5 5⍴⍳25) {⍺,⍵} (5 5⍴⍳25)
+1 0 1 0 1  1  2  3  4  5
+0 1 0 1 0  6  7  8  9 10
+1 0 1 0 1 11 12 13 14 15
+0 1 0 1 0 16 17 18 19 20
+1 0 1 0 1 21 22 23 24 25
+
+      (2|5 5⍴⍳25) {⍺,⍵}¨ (5 5⍴⍳25)
+┌────┬────┬────┬────┬────┐
+│1 1 │0 2 │1 3 │0 4 │1 5 │
+├────┼────┼────┼────┼────┤
+│0 6 │1 7 │0 8 │1 9 │0 10│
+├────┼────┼────┼────┼────┤
+│1 11│0 12│1 13│0 14│1 15│
+├────┼────┼────┼────┼────┤
+│0 16│1 17│0 18│1 19│0 20│
+├────┼────┼────┼────┼────┤
+│1 21│0 22│1 23│0 24│1 25│
+└────┴────┴────┴────┴────┘
 ```
 
-We can see here that the windowed reduce operator applies the , ravel function to three element sections of the vector to produce scalars which then form the final result. Compare this to the case of the + plus function applied to the windowed reduce operator
-
-```apl
-      3+/1 2 3 4 5 6
-6 9 12 15
-      ⍝ Equivalent to (1+2+3) (2+3+4) (3+4+5) (4+5+6)
-```
-
-Since the array constructed above has scalars containing vectors, we can apply the +/ plus reduce function to each vector using the ¨ each operator.
-
-```apl
-      3,/1 2 3 4 5 6
-┌─────┬─────┬─────┬─────┐
-│1 2 3│2 3 4│3 4 5│4 5 6│
-└─────┴─────┴─────┴─────┘
-      +/¨3,/1 2 3 4 5 6
-6 9 12 15
-```
-
-Without the each operator, the plus reduce function will add up the scalars
-
-```apl
-      +/3,/1 2 3 4 5 6
-┌────────┐
-│10 14 18│
-└────────┘
-```
 
 In order to easily create and destroy such nested arrays,  we can use the enclose ⊂ function with a rank specification to denote what axis to group cells along.
 
@@ -476,111 +468,4 @@ The inverse to splitting is the Mix ↑ function. If the nested array is of irre
    
 5 6
 7 8
-      (1 2 3(4 5)6)
-┌─┬─┬─┬───┬─┐
-│1│2│3│4 5│6│
-└─┴─┴─┴───┴─┘
-      ↑(1 2 3(4 5)6)
-1 0
-2 0
-3 0
-4 5
-6 0
-      (1 2 3(4 (5 6) 7)8)
-┌─┬─┬─┬─────────┬─┐
-│1│2│3│┌─┬───┬─┐│8│
-│ │ │ ││4│5 6│7││ │
-│ │ │ │└─┴───┴─┘│ │
-└─┴─┴─┴─────────┴─┘
-      ↑(1 2 3(4 (5 6) 7)8)
-┌─┬───┬─┐
-│1│0  │0│
-├─┼───┼─┤
-│2│0  │0│
-├─┼───┼─┤
-│3│0  │0│
-├─┼───┼─┤
-│4│5 6│7│
-├─┼───┼─┤
-│8│0  │0│
-└─┴───┴─┘
 ```
-
-For a more involved example, consider the following grade book
-```apl
-      school ← ('MATH' ('101' 30 ('COMPETED')) ('102' 37 ('CANCELLED')))  ('CS' ('101' 53 ('COMPETED')) ('102' 28 ('COMPLETED')) ('103' 20 ('IN PROGRESS')))
-      school
-┌─────────────────────────────────────────────┬────────────────────────────────────────────────────────────────┐
-│┌──────┬─────────────────┬──────────────────┐│┌────┬─────────────────┬──────────────────┬────────────────────┐│
-││┌────┐│┌───┬──┬────────┐│┌───┬──┬─────────┐│││┌──┐│┌───┬──┬────────┐│┌───┬──┬─────────┐│┌───┬──┬───────────┐││
-│││MATH│││101│30│COMPETED│││102│37│CANCELLED│││││CS│││101│53│COMPETED│││102│28│COMPLETED│││103│20│IN PROGRESS│││
-││└────┘│└───┴──┴────────┘│└───┴──┴─────────┘│││└──┘│└───┴──┴────────┘│└───┴──┴─────────┘│└───┴──┴───────────┘││
-│└──────┴─────────────────┴──────────────────┘│└────┴─────────────────┴──────────────────┴────────────────────┘│
-└─────────────────────────────────────────────┴────────────────────────────────────────────────────────────────┘
-      ↑school
-┌──────┬─────────────────┬──────────────────┬────────────────────┐
-│┌────┐│┌───┬──┬────────┐│┌───┬──┬─────────┐│┌────┐              │
-││MATH│││101│30│COMPETED│││102│37│CANCELLED│││    │              │
-│└────┘│└───┴──┴────────┘│└───┴──┴─────────┘│└────┘              │
-├──────┼─────────────────┼──────────────────┼────────────────────┤
-│┌──┐  │┌───┬──┬────────┐│┌───┬──┬─────────┐│┌───┬──┬───────────┐│
-││CS│  ││101│53│COMPETED│││102│28│COMPLETED│││103│20│IN PROGRESS││
-│└──┘  │└───┴──┴────────┘│└───┴──┴─────────┘│└───┴──┴───────────┘│
-└──────┴─────────────────┴──────────────────┴────────────────────┘
-```
-
-Notice that the Math row was given an extra element with an empty nested array by the Mix function in order to match with the shape of CS row
-
-```
-      ↑↑school
-┌────┬────┬───────────┐
-│MATH│    │           │
-├────┼────┼───────────┤
-│101 │30  │COMPETED   │
-├────┼────┼───────────┤
-│102 │37  │CANCELLED  │
-├────┼────┼───────────┤
-│    │    │           │
-└────┴────┴───────────┘
-┌────┬────┬───────────┐
-│CS  │    │           │
-├────┼────┼───────────┤
-│101 │53  │COMPETED   │
-├────┼────┼───────────┤
-│102 │28  │COMPLETED  │
-├────┼────┼───────────┤
-│103 │20  │IN PROGRESS│
-└────┴────┴───────────┘
-```
-
-The depth of an array can be obtained explicitly using the monadic ≡ depth function.
-
-```apl
-       ≡10 ⍝ The depth of a scalar is 0
-0 
-       ⍳10
-1 2 3 4 5 6 7 8 9 10 
-       ≡⍳10
-1 
-       ≡ 10 10 ⍴ ⍳10
-1 
-       nested ← 2 2 ⍴ (⍳3) ('  ') ('   ') (2 2 ⍴ ('  ') (⍳3) (2 2 ⍴ (⍳3) ('  ') ('   ') (⍳2)) ('   '))
-       nested
-┌─────┬───────────────────┐
-│1 2 3│                   │
-├─────┼───────────────────┤
-│     │┌───────────┬─────┐│
-│     ││           │1 2 3││
-│     │├───────────┼─────┤│
-│     ││┌─────┬───┐│     ││
-│     │││1 2 3│   ││     ││
-│     ││├─────┼───┤│     ││
-│     │││     │1 2││     ││
-│     ││└─────┴───┘│     ││
-│     │└───────────┴─────┘│
-└─────┴───────────────────┘
-       ≡nested
-¯4 
-```
-
-We might expect a depth of 4 for the last array, but for arrays with elements with differing depths, the depth function returns the negative of the maximum depth of the array.
