@@ -37,7 +37,6 @@ The exercises are not checked or graded: use them to check your knowledge!
         │♠2│♠3│♠4│♠5│♠6│♠7│♠8│♠9│♠10│♠J│♠Q│♠K│♠A│♥2│♥3│♥4│♥5│♥6│♥7│♥8│♥9│♥10│♥J│♥Q│♥K│♥A│♦2│♦3│♦4│♦5│♦6│♦7│♦8│♦9│♦10│♦J│♦Q│♦K│♦A│♣2│♣3│♣4│♣5│♣6│♣7│♣8│♣9│♣10│♣J│♣Q│♣K│♣A│
         └──┴──┴──┴──┴──┴──┴──┴──┴───┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴───┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴───┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴───┴──┴──┴──┴──┘
 
-
               CARDS[5 ? 52]
         ```
 
@@ -62,26 +61,39 @@ The exercises are not checked or graded: use them to check your knowledge!
 
     === "Input"
 
-    ```apl
-          APL
-         ._________________.    
-         |.---------------.|    
-         ||  __  ____ __  ||    
-         || / _\(  _ (  ) ||    
-         ||/    \) __/ (_/||    
-         ||\_/\_(__) \____||    
-         ||_______________||    
-         /.-.-.-.-.-.-.-.-.\    
-        /.-.-.-.-.-.-.-.-.-.\   
-       /.-.-.-.-.-.-.-.-.-.-.\  
-      /______/__________\_____\ 
-      \_______________________/ 
-          2/APL
-    ```
-
+        ```apl
+              APL
+             ._________________.    
+             |.---------------.|    
+             ||  __  ____ __  ||    
+             || / _\(  _ (  ) ||    
+             ||/    \) __/ (_/||    
+             ||\_/\_(__) \____||    
+             ||_______________||    
+             /.-.-.-.-.-.-.-.-.\    
+            /.-.-.-.-.-.-.-.-.-.\   
+           /.-.-.-.-.-.-.-.-.-.-.\  
+          /______/__________\_____\ 
+          \_______________________/ 
+              2/APL
+        ```
+    
     === "Output"
 
-        ```apl  
+        ```apl               
+              APL
+             ._________________.    
+             |.---------------.|    
+             ||  __  ____ __  ||    
+             || / _\(  _ (  ) ||    
+             ||/    \) __/ (_/||    
+             ||\_/\_(__) \____||    
+             ||_______________||    
+             /.-.-.-.-.-.-.-.-.\    
+            /.-.-.-.-.-.-.-.-.-.\   
+           /.-.-.-.-.-.-.-.-.-.-.\  
+          /______/__________\_____\ 
+          \_______________________/ 
               2/APL
               ..__________________________________..        
               ||..------------------------------..||        
@@ -96,7 +108,6 @@ The exercises are not checked or graded: use them to check your knowledge!
         //____________//____________________\\__________\\  
         \\______________________________________________//  
         ```
-
 ---
 
 !!! question "Read problem 4"
@@ -128,7 +139,25 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Output"
 
         ```apl
-              DICTIONARY[⍸DICTIONARY[;1]='X']
+              DICTIONARY
+        AA  
+        AAHED  
+        AAHING  
+        AAHS  
+        AALII  
+        AALIIS  
+        AALS  
+        AARDVARK 
+        . . .
+              DICTIONARY[1;]
+        AA
+              DICTIONARY[;1]
+        A
+        A
+        A
+        A
+        . . .
+              DICTIONARY[⍸DICTIONARY[;1]='X';]
         XANTHAM        
         XANTHAMS       
         XANTHAN        
@@ -168,6 +197,22 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Output"
 
         ```apl
+              'TELE' ⍷ DICTIONARY
+        0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+        0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+        0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+        0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+        0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+        0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+        0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+        0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+        0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+        0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+        . . .
+              ⍸ 'TELE' ⍷ DICTIONARY
+        ┌───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬─
+        │14061 2│14062 2│14063 2│14064 2│14065 2│18946 3│18947 3│18948 3│19107 4│19108 4│19109 4│23447 4│23448 4│23449 4│35280 4│4
+        └───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴─
               1 1⊃(⍸ 'TELE' ⍷ DICTIONARY)
         14061
         ```
@@ -185,7 +230,7 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Output"
 
         ```apl
-              DICTIONARY[1 1⊃(⍸ 'TELE' ⍷ DICTIONARY)]
+              DICTIONARY[1 1⊃(⍸ 'TELE' ⍷ DICTIONARY);]
         ATELECTASES
         ```
         
@@ -194,7 +239,7 @@ The exercises are not checked or graded: use them to check your knowledge!
 
 !!! question "Read problem 7"
 
-    === "Input"
+    === "Problem"
 
         $$
         \sum_{n=1}^{100} \frac{1}{n^2}
@@ -202,7 +247,13 @@ The exercises are not checked or graded: use them to check your knowledge!
 
         can be written in APL using reduce / as...
 
-    === "Output"
+    === "Solution"
+
+        $$
+        \sum_{n=1}^{100} \frac{1}{n^2}
+        $$
+
+        can be written in APL using reduce / as...
 
         ```apl
               +/ 1÷2*⍨⍳100
@@ -211,7 +262,7 @@ The exercises are not checked or graded: use them to check your knowledge!
 
 !!! question "Read problem 8"
 
-    === "Input"
+    === "Problem"
 
         $$
         \frac{1}{\frac{2}{\frac{3}{\frac{\dots}{10}}}}
@@ -219,7 +270,13 @@ The exercises are not checked or graded: use them to check your knowledge!
 
         can be written in APL using reduce / as
 
-    === "Output"
+    === "Solution"
+
+        $$
+        \frac{1}{\frac{2}{\frac{3}{\frac{\dots}{10}}}}
+        $$
+
+        can be written in APL using reduce / as
 
         ```apl
               ÷/⍳10
@@ -237,6 +294,11 @@ The exercises are not checked or graded: use them to check your knowledge!
         where $F_n$ is the nth Fibonacci number, can be written in APL (given an array FIBB of the first 10 Fibonacci numbers) as
 
     === "Output"
+        $$
+        \frac{F_1}{F_2},\frac{F_2}{F_3},\ldots,\frac{F_9}{F_{10}}
+        $$
+
+        where $F_n$ is the nth Fibonacci number, can be written in APL (given an array FIBB of the first 10 Fibonacci numbers) as
 
         ```apl
               2÷/FIBB
@@ -252,21 +314,21 @@ The exercises are not checked or graded: use them to check your knowledge!
         ```apl
               VOTES ← 'HAUNTED HOUSE' 'CAFE' 'CAFE' 'CAFE' 'HAUNTED HOUSE' 'HAUNTED HOUSE' 'CAFE' 'HAUNTED HOUSE' 'ANIMAL CAFE' 'CAFE' 'CAFE'
               {⍺,⍴⍵}⌸VOTES
-        
         ```
 
     === "Output"
 
-      ```apl
-            {⍺,⍴⍵}⌸VOTES
-      ┌─────────────┬─┐
-      │HAUNTED HOUSE│4│
-      ├─────────────┼─┤
-      │CAFE         │6│
-      ├─────────────┼─┤
-      │ANIMAL CAFE  │1│
-      └─────────────┴─┘
-      ```
+        ```apl
+              VOTES ← 'HAUNTED HOUSE' 'CAFE' 'CAFE' 'CAFE' 'HAUNTED HOUSE' 'HAUNTED HOUSE' 'CAFE' 'HAUNTED HOUSE' 'ANIMAL CAFE' 'CAFE' 'CAFE'
+              {⍺,⍴⍵}⌸VOTES
+        ┌─────────────┬─┐
+        │HAUNTED HOUSE│4│
+        ├─────────────┼─┤
+        │CAFE         │6│
+        ├─────────────┼─┤
+        │ANIMAL CAFE  │1│
+        └─────────────┴─┘
+        ```
 ---
 
 !!! question "Read problem 11"
@@ -280,9 +342,10 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Output"
 
         ```apl
-      ┌────┬─────────────┬───────────┐
-      │CAFE│HAUNTED HOUSE│ANIMAL CAFE│
-      └────┴─────────────┴───────────┘
+              ({⍺}⌸VOTES)[⍒{⍴⍵}⌸VOTES]
+        ┌────┬─────────────┬───────────┐
+        │CAFE│HAUNTED HOUSE│ANIMAL CAFE│
+        └────┴─────────────┴───────────┘
         ```
 ---
 
@@ -294,16 +357,24 @@ The exercises are not checked or graded: use them to check your knowledge!
               ⍝ Hours spent on homework per day
               HOMEWORK ← 1 1 2 2 4 0 1
               +/HOMEWORK
+
               +\HOMEWORK
+
               2-/HOMEWORK
+
               -2-/HOMEWORK
+
               +\-2-/HOMEWORK
+
               +\HOMEWORK[1],-2-/HOMEWORK
+
         ```
 
     === "Output"
 
         ```apl
+              ⍝ Hours spent on homework per day
+              HOMEWORK ← 1 1 2 2 4 0 1
               +/HOMEWORK
         11
               +\HOMEWORK
