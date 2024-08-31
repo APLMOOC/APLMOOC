@@ -46,3 +46,50 @@ In brief intervals of time spent waiting between helping your sales staff with E
 ```
 
 Not this again, you need to get rid of all the spam before the situation gets out of hand. You first remove all duplicate posts using the monadic unique ∪ function.
+
+```apl
+      ∪ POSTS
+┌──────────┬─────┬────────────────────────────────────────────────────────────────────┬────────────────┐
+│30-08-2024│18:52│Why does DVB-C use QAM instead of OFDM?                             │frequencySniffer│
+├──────────┼─────┼────────────────────────────────────────────────────────────────────┼────────────────┤
+│30-08-2024│10:34│DAC in QPSK modulation                                              │radioComputer   │
+├──────────┼─────┼────────────────────────────────────────────────────────────────────┼────────────────┤
+│30-08-2024│02:30│We’ve Received Your Payment                                         │fccvrybkas      │
+├──────────┼─────┼────────────────────────────────────────────────────────────────────┼────────────────┤
+│30-08-2024│02:16│Order number 1045534719 / Nice savings with this offer...           │cherylebowmiq   │
+├──────────┼─────┼────────────────────────────────────────────────────────────────────┼────────────────┤
+│30-08-2024│02:03│TREND ALERT: Discover one of a kind items                           │k.a6            │
+├──────────┼─────┼────────────────────────────────────────────────────────────────────┼────────────────┤
+│30-08-2024│00:12│WARNING! This is not a joke! Carry on reading or you will be cursed!│mark0847        │
+├──────────┼─────┼────────────────────────────────────────────────────────────────────┼────────────────┤
+│29-08-2024│23:28│I know your password T.J Eckleburg                                  │johnsmith       │
+├──────────┼─────┼────────────────────────────────────────────────────────────────────┼────────────────┤
+│29-08-2024│23:17│Whats with all the spam??                                           │fluxLinker      │
+├──────────┼─────┼────────────────────────────────────────────────────────────────────┼────────────────┤
+│29-08-2024│22:36│HACKED BY APT1 // FIX YOUR SITE                                     │YouKnowWho      │
+├──────────┼─────┼────────────────────────────────────────────────────────────────────┼────────────────┤
+│01-01-1970│00:00│XXXXXXXXXX                                                          │XXXXXXXXXX      │
+├──────────┼─────┼────────────────────────────────────────────────────────────────────┼────────────────┤
+│29-08-2024│21:38│Nordtel OC3 Express                                                 │corporateRaider │
+└──────────┴─────┴────────────────────────────────────────────────────────────────────┴────────────────┘
+```
+
+The duplicate 'XXXXXXXXXX' spam posts have been removed. Next is removing specific posts using the set difference ~ function. First, listing all the indices of the post then removing the specific spam posts.
+
+```apl
+      ⍴ POSTS
+11 4
+      ⍳11
+1 2 3 4 5 6 7 8 9 10 11
+      (⍳11) ~ 3 4 5 6 7 8 9 10
+1 2 11
+      POSTS ← POSTS[(⍳13) ~ 3 4 5 6 7 8 9 10]
+      POSTS
+┌──────────┬─────┬───────────────────────────────────────┬────────────────┐
+│30-08-2024│18:52│Why does DVB-C use QAM instead of OFDM?│frequencySniffer│
+├──────────┼─────┼───────────────────────────────────────┼────────────────┤
+│30-08-2024│10:34│DAC in QPSK modulation                 │radioComputer   │
+├──────────┼─────┼───────────────────────────────────────┼────────────────┤
+│29-08-2024│21:38│Nordtel OC3 Express                    │corporateRaider │
+└──────────┴─────┴───────────────────────────────────────┴────────────────┘
+```
