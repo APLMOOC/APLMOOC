@@ -118,8 +118,8 @@ nav:
       - 6.B - Minesweeper in APL and Python: course/ch6/bonus.md
     - 7 - Programming in APL:
       - 7.1 - Development environment: course/ch7/part1.md
-      - 7.2 - Branching and looping: course/ch7/part2.md
-      - 7.3 - Execute and format: course/ch7/part3.md
+      - 7.2 - Traditional Functions: course/ch7/part2.md
+      - 7.3 - Error Handling: course/ch7/part3.md
       - 7.4 - Writing interactive programs: course/ch7/part4.md
       - 7.5 - File I/O: course/ch7/part5.md
       - 7.6 - External libraries: course/ch7/part6.md
