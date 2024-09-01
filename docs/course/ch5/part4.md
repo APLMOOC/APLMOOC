@@ -130,11 +130,21 @@ The array above is structures along three axes, the first being the week, the se
 └──────┴───────────┴──┴──┴──┴──┴──┴──┴──┘
 ```
 
-To get the total list of replies for each user, we need to enlist along the Day and Week axes to be left with a matrix of replies per User per day. Unfortunately, the 2-cells of this array are not the matrix of all replies for a single user, but the matrix of all replies for a single week, as can be seen above, or by looking at how the axes are arranged as Week × (Days × User). If we used the rank ⍤ operator, instead of getting a 7 row matrix of daily replies for each user, we'd obtain a 2 row matrix of replies per week.
+To get the total list of replies for each user, we need to enlist along the day and week axis to be left with a matrix of replies per user per day. Unfortunately, the 2-cells of this array are not the matrix of all replies for a single user, but the matrix of all replies for a single week, as can be seen above, or by looking at how the axes are arranged as Week × (Days × User). If we used the rank ⍤ operator, instead of getting a 7 row matrix of daily replies for each user, we'd obtain a 2 row matrix of replies per week.
+
+```apl
+      (,⍤2)activity
+┌──────┬──────┬──────┬──────┬───────────┬────────────────┬───────────┬──────────────┬──┬──┬──┬─┬──┬─┬──┬─┬──┬──┬──┬─┬──┬─┬──┬─┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬─┐
+│Week 1│      │      │      │RedScanLine│frequencySniffer│dataMoshpit│Radiovangelist│12│8 │15│6│10│7│12│9│14│9 │11│8│11│6│14│7│9 │10│13│5 │13│8 │16│10│10│12│15│6│
+├──────┼──────┼──────┼──────┼───────────┼────────────────┼───────────┼──────────────┼──┼──┼──┼─┼──┼─┼──┼─┼──┼──┼──┼─┼──┼─┼──┼─┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼─┤
+│Week 2│      │      │      │RedScanLine│frequencySniffer│dataMoshpit│Radiovangelist│15│11│17│8│12│9│14│7│11│10│13│5│14│8│12│9│10│7 │16│11│13│12│15│6 │12│11│14│8│
+└──────┴──────┴──────┴──────┴───────────┴────────────────┴───────────┴──────────────┴──┴──┴──┴─┴──┴─┴──┴─┴──┴──┴──┴─┴──┴─┴──┴─┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴─┘
+```
 
 The way to solve this is to swap the Week and User axes to get an array of the form User x (Week x Days), this problem is easily solved by the ⍉ transpose function. The left argument to the transpose function is a list of integers starting from 1, which represents where each axes is in the resulting array. For example, ``1 2 3 ⍉ activity`` is the same as ``activity``, but ``3 2 1⍉activity`` swaps the first and third axis.
 
 ```apl
+      ⍝ Week × Day × User
       1 2 3 ⍉ activity
 ┌───────────┬────────────────┬───────────┬──────────────┐
 │Week 1     │                │           │              │
@@ -174,6 +184,7 @@ The way to solve this is to swap the Week and User axes to get an array of the f
 ├───────────┼────────────────┼───────────┼──────────────┤
 │12         │11              │14         │8             │
 └───────────┴────────────────┴───────────┴──────────────┘
+      ⍝ User × Week × Day
       3 2 1 ⍉ activity
 ┌────────────────┬────────────────┐
 │Week 1          │Week 2          │
@@ -256,6 +267,7 @@ The way to solve this is to swap the Week and User axes to get an array of the f
 Removing the labels
 
 ```apl
+      ⍝ Check how ⍤2 acts on the above matrix
       (⊂⍤2)3 2 1 ⍉ activity
 ┌─────────────────────────┬───────────────────────────────────┬─────────────────────────┬───────────────────────────────┐
 │┌───────────┬───────────┐│┌────────────────┬────────────────┐│┌───────────┬───────────┐│┌──────────────┬──────────────┐│
@@ -278,6 +290,7 @@ Removing the labels
 ││10         │12         │││12              │11              │││15         │14         │││6             │8             ││
 │└───────────┴───────────┘│└────────────────┴────────────────┘│└───────────┴───────────┘│└──────────────┴──────────────┘│
 └─────────────────────────┴───────────────────────────────────┴─────────────────────────┴───────────────────────────────┘
+      ⍝ Use drop ↓ to remove the first two rows of every enclosed array
       2(↓⍤2)3 2 1 ⍉ activity
 12 15
 10 12
@@ -315,6 +328,7 @@ Removing the labels
  Finally obtaining the replies per user per day
 
 ```apl
+      ⍝ Ravel the above 2-cells to get the replies per day for every user
       (,⍤2)(2(↓⍤2)(3 2 1 ⍉ activity))
 12 15 10 12 14 11 11 14  9 10 13 13 10 12
  8 11  7  9  9 10  6  8 10  7  8 12 12 11
@@ -335,7 +349,7 @@ More examples of transpose
 
 ```apl
       PEOPLE ← 2 3 2 ⍴ '⍣⍤≢⍬^∧⍨⍥⌿⍀^∧'
-      ⍝ The first axis is from first couple to second couple, the second axis is from head to toe, the third axis is from side to side
+      ⍝ The first axis is from first couple to second couple, the second axis is from head to toe, the third axis is from first partner to second partner
       PEOPLE
 ⍣⍤
 ≢⍬
@@ -375,7 +389,7 @@ More examples of transpose
 
       ⍝ Transposing the array, the axes are now
 
-      ⍝ first couple to second couple, side to side, head to toe
+      ⍝ first couple to second couple, first partner to second partner, head to toe
       1 3 2⍉PEOPLE
 ⍣≢^
 ⍤⍬∧
@@ -383,7 +397,7 @@ More examples of transpose
 ⍨⌿^
 ⍥⍀∧
 
-      ⍝ head to toe, first couple to second couple, side to side
+      ⍝ head to toe, first couple to second couple, first partner to second partner
       2 1 3⍉PEOPLE
 ⍣⍤
 ⍨⍥
@@ -394,7 +408,7 @@ More examples of transpose
 ^∧
 ^∧
 
-      ⍝ side to side, head to toe, first couple to second couple
+      ⍝ first partner to second partner, head to toe, first couple to second couple
       3 2 1⍉PEOPLE
 ⍣⍨
 ≢⌿
