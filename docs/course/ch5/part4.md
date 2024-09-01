@@ -330,3 +330,79 @@ Removing the labels
  6  8  9  7  8  5  7  9  5 11 10  6  6  8
  ```
 
+
+More examples of transpose
+
+```apl
+      PEOPLE ← 2 3 2 ⍴ '⍣⍤≢⍬^∧⍨⍥⌿⍀^∧'
+      ⍝ The first axis is from first couple to second couple, the second axis is from head to toe, the third axis is from side to side
+      PEOPLE
+⍣⍤
+≢⍬
+^∧
+  
+⍨⍥
+⌿⍀
+^∧
+      ⍝ Read the indices to convince yourself of what was said above
+      (⍳2 3 2){⍺ ⍵}¨PEOPLE
+┌─────────┬─────────┐
+│┌─────┬─┐│┌─────┬─┐│
+││1 1 1│⍣│││1 1 2│⍤││
+│└─────┴─┘│└─────┴─┘│
+├─────────┼─────────┤
+│┌─────┬─┐│┌─────┬─┐│
+││1 2 1│≢│││1 2 2│⍬││
+│└─────┴─┘│└─────┴─┘│
+├─────────┼─────────┤
+│┌─────┬─┐│┌─────┬─┐│
+││1 3 1│^│││1 3 2│∧││
+│└─────┴─┘│└─────┴─┘│
+└─────────┴─────────┘
+┌─────────┬─────────┐
+│┌─────┬─┐│┌─────┬─┐│
+││2 1 1│⍨│││2 1 2│⍥││
+│└─────┴─┘│└─────┴─┘│
+├─────────┼─────────┤
+│┌─────┬─┐│┌─────┬─┐│
+││2 2 1│⌿│││2 2 2│⍀││
+│└─────┴─┘│└─────┴─┘│
+├─────────┼─────────┤
+│┌─────┬─┐│┌─────┬─┐│
+││2 3 1│^│││2 3 2│∧││
+│└─────┴─┘│└─────┴─┘│
+└─────────┴─────────┘
+
+      ⍝ Transposing the array, the axes are now
+
+      ⍝ first couple to second couple, side to side, head to toe
+      1 3 2⍉PEOPLE
+⍣≢^
+⍤⍬∧
+   
+⍨⌿^
+⍥⍀∧
+
+      ⍝ head to toe, first couple to second couple, side to side
+      2 1 3⍉PEOPLE
+⍣⍤
+⍨⍥
+  
+≢⍬
+⌿⍀
+  
+^∧
+^∧
+
+      ⍝ side to side, head to toe, first couple to second couple
+      3 2 1⍉PEOPLE
+⍣⍨
+≢⌿
+^^
+  
+⍤⍥
+⍬⍀
+∧∧
+      ⍝ They swapped partners!
+
+```
