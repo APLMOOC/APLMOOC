@@ -384,3 +384,44 @@ A  4
 T  3
 ```
 
+In the dyadic case, the ⌸ key operator groups by the left argument and uses the right argument to number the elements. Consider the following two dimensional array of fast food orders
+
+```apl
+      ORDERS
+┌───────────────┬───────┐
+│STEVE MCALE    │BURGER │
+├───────────────┼───────┤
+│JOHNSON SWEEMEY│HOT DOG│
+├───────────────┼───────┤
+│DEREK ARCHIBELD│BURGER │
+├───────────────┼───────┤
+│MIKE NANDES    │BURGER │
+├───────────────┼───────┤
+│SCOTT WESTON   │HOT DOG│
+└───────────────┴───────┘
+```
+
+Grouping by the second column, creating a list of names for each menu item, 
+
+```apl
+      ORDERS[;1]
+┌───────────┬───────────────┬───────────────┬───────────┬────────────┐
+│STEVE MCALE│JOHNSON SWEEMEY│DEREK ARCHIBELD│MIKE NANDES│SCOTT WESTON│
+└───────────┴───────────────┴───────────────┴───────────┴────────────┘
+      ORDERS[;2]
+┌──────┬───────┬──────┬──────┬───────┐
+│BURGER│HOT DOG│BURGER│BURGER│HOT DOG│
+└──────┴───────┴──────┴──────┴───────┘
+      ORDERS[;2]{⍺ ⍵}⌸ORDERS[;1]
+┌─────────┬─────────────────────────────────────────┐
+│┌──────┐ │┌───────────┬───────────────┬───────────┐│
+││BURGER│ ││STEVE MCALE│DEREK ARCHIBELD│MIKE NANDES││
+│└──────┘ │└───────────┴───────────────┴───────────┘│
+├─────────┼─────────────────────────────────────────┤
+│┌───────┐│┌───────────────┬────────────┐           │
+││HOT DOG│││JOHNSON SWEEMEY│SCOTT WESTON│           │
+│└───────┘│└───────────────┴────────────┘           │
+└─────────┴─────────────────────────────────────────┘
+```
+
+Perfect!
