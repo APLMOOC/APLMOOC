@@ -14,7 +14,7 @@ You notice that the user 'YouKnowWho' had taken over several posts and replaced 
 ├──────────────────────────────────────────────┼───────────────────┤
 │                                              │                   │
 ├──────────────────────────────────────────────┼───────────────────┤
-│                                              │                   │
+│                                              |                   │
 └──────────────────────────────────────────────┴───────────────────┘
 ┌──────────────────────────────────────────────┬───────────────────┐
 │29-08-2024                                    │                   │
@@ -30,23 +30,24 @@ You notice that the user 'YouKnowWho' had taken over several posts and replaced 
 ┌──────────────────────────────────────────────┬───────────────────┐
 │28-08-2024                                    │                   │
 ├──────────────────────────────────────────────┼───────────────────┤
-│Early color TV in Finland                     │televisioniini     │
+│Early color TV in Finland                     │YouKnowWho         │
 ├──────────────────────────────────────────────┼───────────────────┤
-│Soviet Tube Substitute for 6TGSN7             │logorrheicLogarithm│
+│Soviet Tube Substitute for 6TGSN7             │YouKnowWho         │
 ├──────────────────────────────────────────────┼───────────────────┤
-│OFDM, carriers and useful data symbol rate    │dataMoshpit        │
+│OFDM, carriers and useful data symbol rate    │YouKnowWho         │
 ├──────────────────────────────────────────────┼───────────────────┤
-│                                              │                   │
+│Varicap-tuned filters                         │thomasedison96     │
 └──────────────────────────────────────────────┴───────────────────┘
 ┌──────────────────────────────────────────────┬───────────────────┐
 │27-08-2024                                    │                   │
 ├──────────────────────────────────────────────┼───────────────────┤
-│How good was broadcast NTSC/PAL in practice?  │selfConstructing   │
+│How good was broadcast NTSC/PAL in practice?  │dataMoshpit        │
 ├──────────────────────────────────────────────┼───────────────────┤
-│Looking for flyback                           │pacAttack          │
+│Looking for flyback                           │YouKnowWho         │
 ├──────────────────────────────────────────────┼───────────────────┤
-│                                              │                   │
+│CTCSS in NBFM                                 │Radiovangelist     │
 ├──────────────────────────────────────────────┼───────────────────┤
-│                                              │                   │
+│455 kHz and 10.7 MHz as intermediate freqs    |Decibels_per_Kg    │
 └──────────────────────────────────────────────┴───────────────────┘
 ```
+

@@ -134,28 +134,28 @@ However this array is three dimensional
 To pick an element from this array, we must provide an index vector where each element is a valid index for each layer of the array. In this case, we can provide two elements, since the depth is 2. Let's get the first element of this array
 
 ```apl
-      (1 1 1)⊃POSTS
+      (1 2 1)⊃POSTS
 RANK ERROR
-      (1 1 1)⊃POSTS
+      (1 2 1)⊃POSTS
              ∧
 ```
 
-What happened here? The reason why this doesn't work is that (1 1 1) is not a single element, it is a vector of three elements. In order to turn data into a single element, a scalar, we can enclose ⊂ it in a box.
+What happened here? The reason why this doesn't work is that (1 2 1) is not a single element, it is a vector of three elements. In order to turn data into a single element, a scalar, we can enclose ⊂ it in a box.
 
 ```apl
-      ⊂1 1 1
+      ⊂1 2 1
 ┌─────┐
-│1 1 1│
+│1 2 1│
 └─────┘
-      (⊂1 1 1)⊃POSTS
-30-08-2024
+      (⊂1 2 1)⊃POSTS
+Why does DVB-C use QAM instead of OFDM?
 
-      (1 1 1)1
+      (1 2 1)1
 ┌─────┬─┐
-│1 1 1│1│
+│1 2 1│1│
 └─────┴─┘
-      ((1 1 1)1)⊃POSTS
-3
+      ((1 2 1)1)⊃POSTS
+W
 ```
 
 Let's create a more nested example, posts with replies
@@ -166,7 +166,7 @@ Let's create a more nested example, posts with replies
       post1
 ┌──────────┬─────┬───────────────────────────────────────┬────────────────┬────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
 │30-08-2024│18:52│Why does DVB-C use QAM instead of OFDM?│frequencySniffer│┌──────────┬─────┬─────────────────────────────────────────────────────────────────────────────────────┬───────────┐│
-│          │     │                                       │                ││30-08-2024│19:22│OFDM is more reliable and easily equalized over difficult channels like a radio link.│RedScamLine││
+│          │     │                                       │                ││30-08-2024│19:22│OFDM is more reliable and easily equalized over difficult channels like a radio link.│RedScanLine││
 │          │     │                                       │                │└──────────┴─────┴─────────────────────────────────────────────────────────────────────────────────────┴───────────┘│
 └──────────┴─────┴───────────────────────────────────────┴────────────────┴────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 

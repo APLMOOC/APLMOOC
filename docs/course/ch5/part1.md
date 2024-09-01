@@ -133,7 +133,7 @@ The symbol ~, which monadically refers to boolean NOT, is dyadically the Set Dif
        ⍝ Notice the ':x' emoticon is gone
 ```
 
-Monadically, the symbol ∪ acts as the Unique operator, removing duplicate entries in a vector (and duplicate rows or columns in a matrix, more on axis operations in Chapter 6).
+Monadically, the symbol ∪ acts as the Unique operator, removing duplicate entries in a vector.
 
 ```apl
        ∪ HAPPY_EMOTICONS , SAD_EMOTICONS
