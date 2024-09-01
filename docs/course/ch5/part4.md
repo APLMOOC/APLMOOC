@@ -406,3 +406,30 @@ More examples of transpose
       ⍝ They swapped partners!
 
 ```
+
+
+The dyadic `⌽` `⊖` rotate functions rotate an array by an amount specific by the left argument, around a specific axis.
+
+```apl
+       3⌽¨'hotbloods' 'mentally' 'outbreak' 'clean' 'kyoto'
+bloodshot  tallymen  breakout  ancle  tokyo
+```
+
+Another example:
+
+```apl
+SAD_EMOTICONS ← '):' ':c' ']:' ')-:' 'D:' '>:(' ':/' ':x' ':|'
+```
+
+Notice that some of the sad emoticons can be turned into happy emoticons by reflecting the emoticon vertically, turning the frown upside down! The monadic ⌽ ⊖ reverse functions reflect an array along the horizontal (last) or vertical (first) axis.
+
+```apl
+       ⌽ '):'
+:)
+       ⌽ SAD_EMOTICONS
+:|  :x  :/  >:(  D:  )-:  ]:  :c  ):
+
+       ⌽¨SAD_EMOTICONS
+ :)  c:  :]  :-)  :D  (:>  /:  x:  |:
+
+```
