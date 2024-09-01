@@ -109,9 +109,9 @@ The left argument to the dyadic pick function is a special nested index vector t
 ├──────────────────────────────────────────────┼───────────────────┤
 │Looking for flyback                           │pacAttack          │
 ├──────────────────────────────────────────────┼───────────────────┤
-│ CTCSS in NBFM                                │Radiovangelist     │
+│CTCSS in NBFM                                 │Radiovangelist     │
 ├──────────────────────────────────────────────┼───────────────────┤
-│ 455 kHz and 10.7 MHz as intermediate freqs   |Decibels_per_Kg    │
+│455 kHz and 10.7 MHz as intermediate freqs    |Decibels_per_Kg    │
 └──────────────────────────────────────────────┴───────────────────┘
 ```
 
