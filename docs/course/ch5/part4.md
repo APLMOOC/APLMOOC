@@ -366,7 +366,7 @@ More examples of transpose
 ⍨⍥
 ⌿⍀
 ^∧
-      ⍝ Convince yourself of what was said above
+      ⍝ Convince yourself of what was said above, remember that the last axis is the one that is filled first
       (⍳12){⍺ ⍵}¨PEOPLE
 ┌────┬────┐
 │1 ⍣ │2 ⍤ │
@@ -386,6 +386,7 @@ More examples of transpose
       ⍝ Transposing the array, the axes are now
 
       ⍝ first couple to second couple, first partner to second partner, head to toe
+      ⍝ The last axis is filled by people from head to toe, then the middle axis switches partner, and the first axis switches couple
       1 3 2⍉PEOPLE
 ⍣≢^
 ⍤⍬∧
