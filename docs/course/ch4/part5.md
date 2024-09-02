@@ -339,9 +339,9 @@ In this example, the ones are where each `'el'` starts in the long sentence.
 You can also do this with arrays of strings:
 
 ```apl
-      ANIMALS ← 'cow' 'dog' 'horse' 'cow' 'cat' 'horse' 'cow' 'bat' 
+      ANIMALS ← 'cow' 'horse' 'dog' 'horse' 'cow' 'cat' 'horse' 'cow' 'bat' 
       'horse' 'cow' ⍷ ANIMALS
-0 0 1 0 0 1 0 0
+0 0 0 1 0 0 1 0 0
 ```
 
 These occurences can also overlap:

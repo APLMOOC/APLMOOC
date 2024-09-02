@@ -41,7 +41,38 @@ The leading axis of the matrix is the first axis along which indexing is done. I
 ```
 
 
-the leading axis is the vertical axis of this matrix. The last axis then is the horizontal axis of this matrix. To specify the axis along which to reduce, we can use one of the two reduce operators ⌿ and /, corresponding to reducing along the leading axis and last axis respectively.
+the leading axis is the vertical axis of this matrix. The last axis then is the horizontal axis of this matrix. 
+
+Notice that elements fill an array from the last axis first
+
+```apl
+      3 3 3⍴⍳27
+ 1  2  3
+ 4  5  6
+ 7  8  9
+        
+10 11 12
+13 14 15
+16 17 18
+        
+19 20 21
+22 23 24
+25 26 27
+
+      ⍝ The last axis is filled first
+      (3 3 3⍴⍳27)[1;1;]
+1 2 3
+      ⍝ Then we move one step along the middle axis
+      (3 3 3⍴⍳27)[1;2;]
+4 5 6
+      ⍝ Repeating until we move on one step in the first axis
+      (3 3 3⍴⍳27)[1;3;]
+7 8 9
+      (3 3 3⍴⍳27)[2;1;]
+10 11 12
+```
+
+To specify the axis along which to reduce, we can use one of the two reduce operators ⌿ and /, corresponding to reducing along the leading axis and last axis respectively.
 
 
 ```apl
