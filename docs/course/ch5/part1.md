@@ -1,4 +1,13 @@
+# Elements of set theory
 
+!!! abstract "This part will cover"
+    
+    - Unique
+    - Union
+    - Set difference
+    - Intersection
+
+---
 
 You are a system administrator aboard the corporate OC-3. You are currently deploying a database change affecting 413 customers at a speed of 155.52Mbit/s.
 

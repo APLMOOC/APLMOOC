@@ -158,7 +158,7 @@ As an example, we study the action of the rank operator ⍤ on the plus reduce +
 15 20 15
 ```
 
-For n=2, +⌿⍤2 acts on the 3-cells of the array. The 2-cells of the array are the cells M[1;;], M[2;;], and M[3;;].
+For n=2, +⌿⍤2 acts on the 2-cells of the array. The 2-cells of the array are the cells M[1;;], M[2;;], and M[3;;].
 
 ```apl
      M[1;;]
@@ -273,3 +273,5 @@ It is equivalent to bracket indexing, but can be used like any other operator.
 10 13 16
 19 22 25
 ```
+
+//Add ,⍤0⍤1
