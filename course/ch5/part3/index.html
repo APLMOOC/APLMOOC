@@ -1998,7 +1998,7 @@
         
   
   <span class="md-ellipsis">
-    7.2 - Branching and looping
+    7.2 - Traditional Functions
   </span>
   
 
@@ -2019,7 +2019,7 @@
         
   
   <span class="md-ellipsis">
-    7.3 - Execute and format
+    7.3 - Error Handling
   </span>
   
 
@@ -2254,7 +2254,34 @@
 <span class="w"> </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">2</span>
 <span class="w"> </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w">  </span><span class="m">3</span>
 </code></pre></div>
-<p>the leading axis is the vertical axis of this matrix. The last axis then is the horizontal axis of this matrix. To specify the axis along which to reduce, we can use one of the two reduce operators ⌿ and /, corresponding to reducing along the leading axis and last axis respectively.</p>
+<p>the leading axis is the vertical axis of this matrix. The last axis then is the horizontal axis of this matrix. </p>
+<p>Notice that elements fill an array from the last axis first</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="o">⍴⍳</span><span class="m">27</span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">3</span>
+<span class="w"> </span><span class="m">4</span><span class="w">  </span><span class="m">5</span><span class="w">  </span><span class="m">6</span>
+<span class="w"> </span><span class="m">7</span><span class="w">  </span><span class="m">8</span><span class="w">  </span><span class="m">9</span>
+
+<span class="m">10</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">12</span>
+<span class="m">13</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">15</span>
+<span class="m">16</span><span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="m">18</span>
+
+<span class="m">19</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">21</span>
+<span class="m">22</span><span class="w"> </span><span class="m">23</span><span class="w"> </span><span class="m">24</span>
+<span class="m">25</span><span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">27</span>
+
+<span class="w">      </span><span class="c1">⍝ The last axis is filled first</span>
+<span class="w">      </span><span class="p">(</span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="o">⍴⍳</span><span class="m">27</span><span class="p">)</span><span class="sr">[</span><span class="m">1</span><span class="sr">;</span><span class="m">1</span><span class="sr">;]</span>
+<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
+<span class="w">      </span><span class="c1">⍝ Then we move one step along the middle axis</span>
+<span class="w">      </span><span class="p">(</span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="o">⍴⍳</span><span class="m">27</span><span class="p">)</span><span class="sr">[</span><span class="m">1</span><span class="sr">;</span><span class="m">2</span><span class="sr">;]</span>
+<span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span>
+<span class="w">      </span><span class="c1">⍝ Repeating until we move on one step in the first axis</span>
+<span class="w">      </span><span class="p">(</span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="o">⍴⍳</span><span class="m">27</span><span class="p">)</span><span class="sr">[</span><span class="m">1</span><span class="sr">;</span><span class="m">3</span><span class="sr">;]</span>
+<span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span>
+<span class="w">      </span><span class="p">(</span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="o">⍴⍳</span><span class="m">27</span><span class="p">)</span><span class="sr">[</span><span class="m">2</span><span class="sr">;</span><span class="m">1</span><span class="sr">;]</span>
+<span class="m">10</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">12</span>
+</code></pre></div>
+<p>To specify the axis along which to reduce, we can use one of the two reduce operators ⌿ and /, corresponding to reducing along the leading axis and last axis respectively.</p>
 <div class="highlight"><pre><span></span><code><span class="w">       </span><span class="o">+</span><span class="na">⌿</span><span class="nv">M</span>
 <span class="m">55</span><span class="w"> </span><span class="m">55</span><span class="w"> </span><span class="m">55</span><span class="w"> </span><span class="m">55</span><span class="w"> </span><span class="m">55</span><span class="w"> </span><span class="m">55</span><span class="w"> </span><span class="m">55</span><span class="w"> </span><span class="m">55</span><span class="w"> </span><span class="m">55</span><span class="w"> </span><span class="m">55</span>
 <span class="w">       </span><span class="o">+</span><span class="na">/</span><span class="nv">M</span>
@@ -2276,7 +2303,7 @@
 <span class="m">7</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">10</span>
 <span class="m">7</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">6</span>
 </code></pre></div>
-<p>It is visualized in 3-dimensional space as follows. Click and drag on the 3D view to orbit the array, use the scroll wheel to zoom in and out.</p>
+<p>It is visualized in 3-dimensional space as follows. Click and drag on the 3D view to orbit the array, use the scroll wheel to zoom in and out. Move your mouse over a ball to see it highlighted.</p>
 <div style="aspect-ratio: 1 / 1; width: 100%;">
     <iframe  src="\js\demos\rank_intro.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%;"></iframe>
 </div>
@@ -2295,6 +2322,7 @@
 <span class="m">9</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">3</span>
 <span class="m">2</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">7</span>
 </code></pre></div>
+<p>Move your mouse over a ball to see the three axis slices.</p>
 <div style="aspect-ratio: 1 / 1; width: 100%;">
     <iframe  src="\js\demos\rank_axes.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%;"></iframe>
 </div>
@@ -2349,7 +2377,7 @@
 <span class="m">21</span><span class="w">  </span><span class="m">5</span><span class="w"> </span><span class="m">16</span>
 <span class="m">15</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">15</span>
 </code></pre></div>
-<p>For n=2, +⌿⍤2 acts on the 3-cells of the array. The 2-cells of the array are the cells M[1;;], M[2;;], and M[3;;].</p>
+<p>For n=2, +⌿⍤2 acts on the 2-cells of the array. The 2-cells of the array are the cells M[1;;], M[2;;], and M[3;;].</p>
 <div class="highlight"><pre><span></span><code><span class="w">     </span><span class="nv">M</span><span class="sr">[</span><span class="m">1</span><span class="sr">;;]</span>
 <span class="m">5</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">4</span>
 <span class="m">9</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">4</span>
@@ -2448,6 +2476,7 @@
 <span class="m">10</span><span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="m">16</span>
 <span class="m">19</span><span class="w"> </span><span class="m">22</span><span class="w"> </span><span class="m">25</span>
 </code></pre></div>
+<p>//Add ,⍤0⍤1</p>
 
 
 

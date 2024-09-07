@@ -2082,7 +2082,7 @@
         
   
   <span class="md-ellipsis">
-    7.2 - Branching and looping
+    7.2 - Traditional Functions
   </span>
   
 
@@ -2103,7 +2103,7 @@
         
   
   <span class="md-ellipsis">
-    7.3 - Execute and format
+    7.3 - Error Handling
   </span>
   
 
@@ -2635,9 +2635,9 @@ APL also has a function to find <em>subarrays</em>: the dyadic find function, wh
 </code></pre></div>
 <p>In this example, the ones are where each <code>'el'</code> starts in the long sentence.
 You can also do this with arrays of strings:</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">ANIMALS</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="s1">&#39;cow&#39;</span><span class="w"> </span><span class="s1">&#39;dog&#39;</span><span class="w"> </span><span class="s1">&#39;horse&#39;</span><span class="w"> </span><span class="s1">&#39;cow&#39;</span><span class="w"> </span><span class="s1">&#39;cat&#39;</span><span class="w"> </span><span class="s1">&#39;horse&#39;</span><span class="w"> </span><span class="s1">&#39;cow&#39;</span><span class="w"> </span><span class="s1">&#39;bat&#39;</span><span class="w"> </span>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">ANIMALS</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="s1">&#39;cow&#39;</span><span class="w"> </span><span class="s1">&#39;horse&#39;</span><span class="w"> </span><span class="s1">&#39;dog&#39;</span><span class="w"> </span><span class="s1">&#39;horse&#39;</span><span class="w"> </span><span class="s1">&#39;cow&#39;</span><span class="w"> </span><span class="s1">&#39;cat&#39;</span><span class="w"> </span><span class="s1">&#39;horse&#39;</span><span class="w"> </span><span class="s1">&#39;cow&#39;</span><span class="w"> </span><span class="s1">&#39;bat&#39;</span><span class="w"> </span>
 <span class="w">      </span><span class="s1">&#39;horse&#39;</span><span class="w"> </span><span class="s1">&#39;cow&#39;</span><span class="w"> </span><span class="o">⍷</span><span class="w"> </span><span class="nv">ANIMALS</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
 </code></pre></div>
 <p>These occurences can also overlap:</p>
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="s1">&#39;ooo&#39;</span><span class="w"> </span><span class="o">⍷</span><span class="w"> </span><span class="s1">&#39;meoooooooow meooow&#39;</span>
@@ -2669,6 +2669,41 @@ You can also do this with arrays of strings:</p>
 <span class="nv">A</span><span class="w">  </span><span class="m">4</span>
 <span class="nv">T</span><span class="w">  </span><span class="m">3</span>
 </code></pre></div>
+<p>In the dyadic case, the ⌸ key operator groups by the left argument and uses the right argument to number the elements. Consider the following two dimensional array of fast food orders</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">ORDERS</span>
+<span class="err">┌───────────────┬───────┐</span>
+<span class="err">│</span><span class="nv">STEVE</span><span class="w"> </span><span class="nv">MCALE</span><span class="w">    </span><span class="err">│</span><span class="nv">BURGER</span><span class="w"> </span><span class="err">│</span>
+<span class="err">├───────────────┼───────┤</span>
+<span class="err">│</span><span class="nv">JOHNSON</span><span class="w"> </span><span class="nv">SWEEMEY</span><span class="err">│</span><span class="nv">HOT</span><span class="w"> </span><span class="nv">DOG</span><span class="err">│</span>
+<span class="err">├───────────────┼───────┤</span>
+<span class="err">│</span><span class="nv">DEREK</span><span class="w"> </span><span class="nv">ARCHIBELD</span><span class="err">│</span><span class="nv">BURGER</span><span class="w"> </span><span class="err">│</span>
+<span class="err">├───────────────┼───────┤</span>
+<span class="err">│</span><span class="nv">MIKE</span><span class="w"> </span><span class="nv">NANDES</span><span class="w">    </span><span class="err">│</span><span class="nv">BURGER</span><span class="w"> </span><span class="err">│</span>
+<span class="err">├───────────────┼───────┤</span>
+<span class="err">│</span><span class="nv">SCOTT</span><span class="w"> </span><span class="nv">WESTON</span><span class="w">   </span><span class="err">│</span><span class="nv">HOT</span><span class="w"> </span><span class="nv">DOG</span><span class="err">│</span>
+<span class="err">└───────────────┴───────┘</span>
+</code></pre></div>
+<p>Grouping by the second column, creating a list of names for each menu item, </p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">ORDERS</span><span class="sr">[;</span><span class="m">1</span><span class="sr">]</span>
+<span class="err">┌───────────┬───────────────┬───────────────┬───────────┬────────────┐</span>
+<span class="err">│</span><span class="nv">STEVE</span><span class="w"> </span><span class="nv">MCALE</span><span class="err">│</span><span class="nv">JOHNSON</span><span class="w"> </span><span class="nv">SWEEMEY</span><span class="err">│</span><span class="nv">DEREK</span><span class="w"> </span><span class="nv">ARCHIBELD</span><span class="err">│</span><span class="nv">MIKE</span><span class="w"> </span><span class="nv">NANDES</span><span class="err">│</span><span class="nv">SCOTT</span><span class="w"> </span><span class="nv">WESTON</span><span class="err">│</span>
+<span class="err">└───────────┴───────────────┴───────────────┴───────────┴────────────┘</span>
+<span class="w">      </span><span class="nv">ORDERS</span><span class="sr">[;</span><span class="m">2</span><span class="sr">]</span>
+<span class="err">┌──────┬───────┬──────┬──────┬───────┐</span>
+<span class="err">│</span><span class="nv">BURGER</span><span class="err">│</span><span class="nv">HOT</span><span class="w"> </span><span class="nv">DOG</span><span class="err">│</span><span class="nv">BURGER</span><span class="err">│</span><span class="nv">BURGER</span><span class="err">│</span><span class="nv">HOT</span><span class="w"> </span><span class="nv">DOG</span><span class="err">│</span>
+<span class="err">└──────┴───────┴──────┴──────┴───────┘</span>
+<span class="w">      </span><span class="nv">ORDERS</span><span class="sr">[;</span><span class="m">2</span><span class="sr">]</span><span class="kt">{</span><span class="bp">⍺</span><span class="w"> </span><span class="bp">⍵</span><span class="kt">}</span><span class="na">⌸</span><span class="nv">ORDERS</span><span class="sr">[;</span><span class="m">1</span><span class="sr">]</span>
+<span class="err">┌─────────┬─────────────────────────────────────────┐</span>
+<span class="err">│┌──────┐</span><span class="w"> </span><span class="err">│┌───────────┬───────────────┬───────────┐│</span>
+<span class="err">││</span><span class="nv">BURGER</span><span class="err">│</span><span class="w"> </span><span class="err">││</span><span class="nv">STEVE</span><span class="w"> </span><span class="nv">MCALE</span><span class="err">│</span><span class="nv">DEREK</span><span class="w"> </span><span class="nv">ARCHIBELD</span><span class="err">│</span><span class="nv">MIKE</span><span class="w"> </span><span class="nv">NANDES</span><span class="err">││</span>
+<span class="err">│└──────┘</span><span class="w"> </span><span class="err">│└───────────┴───────────────┴───────────┘│</span>
+<span class="err">├─────────┼─────────────────────────────────────────┤</span>
+<span class="err">│┌───────┐│┌───────────────┬────────────┐</span><span class="w">           </span><span class="err">│</span>
+<span class="err">││</span><span class="nv">HOT</span><span class="w"> </span><span class="nv">DOG</span><span class="err">│││</span><span class="nv">JOHNSON</span><span class="w"> </span><span class="nv">SWEEMEY</span><span class="err">│</span><span class="nv">SCOTT</span><span class="w"> </span><span class="nv">WESTON</span><span class="err">│</span><span class="w">           </span><span class="err">│</span>
+<span class="err">│└───────┘│└───────────────┴────────────┘</span><span class="w">           </span><span class="err">│</span>
+<span class="err">└─────────┴─────────────────────────────────────────┘</span>
+</code></pre></div>
+<p>Perfect!</p>
 
 
 

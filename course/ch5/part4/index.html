@@ -75,6 +75,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#i-knew-he-swapped-those-numbers" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -1557,6 +1562,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -1991,7 +1998,7 @@
         
   
   <span class="md-ellipsis">
-    7.2 - Branching and looping
+    7.2 - Traditional Functions
   </span>
   
 
@@ -2012,7 +2019,7 @@
         
   
   <span class="md-ellipsis">
-    7.3 - Execute and format
+    7.3 - Error Handling
   </span>
   
 
@@ -2199,6 +2206,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -2213,55 +2222,426 @@
                   
 
 
-  <h1>5.4 - I knew he swapped those numbers!</h1>
-
+<h1 id="i-knew-he-swapped-those-numbers">I knew he swapped those numbers!</h1>
+<div class="admonition abstract">
+<p class="admonition-title">This part will cover</p>
+<ul>
+<li>Transpose</li>
+<li>Reverse</li>
+<li>Rotate</li>
+</ul>
+</div>
+<hr />
+<p><link rel="stylesheet" href="/styles/ch5part2.css"></p>
 <p>With data stored in higher dimensional arrays, it is often necessary to rotate, flip, and transpose the axes of these arrays in order to make sense of them. This is especially true in the case of highly structured data.</p>
-<p>You notice that the user 'YouKnowWho' had taken over several posts and replaced the author with themselves. You've exported an array of posts to look for any suspicious activity that might hint at how the forum was compromised.</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">POSTS</span>
-<span class="err">┌──────────────────────────────────────────────┬───────────────────┐</span>
-<span class="err">│</span><span class="m">30</span><span class="o">-</span><span class="m">08</span><span class="o">-</span><span class="m">2024</span><span class="w">                                    </span><span class="err">│</span><span class="w">                   </span><span class="err">│</span>
-<span class="err">├──────────────────────────────────────────────┼───────────────────┤</span>
-<span class="err">│</span><span class="nv">Why</span><span class="w"> </span><span class="nv">does</span><span class="w"> </span><span class="nv">DVB</span><span class="o">-</span><span class="nv">C</span><span class="w"> </span><span class="nv">use</span><span class="w"> </span><span class="nv">QAM</span><span class="w"> </span><span class="nv">instead</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">OFDM</span><span class="o">?</span><span class="w">       </span><span class="err">│</span><span class="nv">frequencySniffer</span><span class="w">   </span><span class="err">│</span>
-<span class="err">├──────────────────────────────────────────────┼───────────────────┤</span>
-<span class="err">│</span><span class="nv">DAC</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">QPSK</span><span class="w"> </span><span class="nv">modulation</span><span class="w">                        </span><span class="err">│</span><span class="nv">radioComputer</span><span class="w">      </span><span class="err">│</span>
-<span class="err">├──────────────────────────────────────────────┼───────────────────┤</span>
-<span class="err">│</span><span class="w">                                              </span><span class="err">│</span><span class="w">                   </span><span class="err">│</span>
-<span class="err">├──────────────────────────────────────────────┼───────────────────┤</span>
-<span class="err">│</span><span class="w">                                              </span><span class="err">│</span><span class="w">                   </span><span class="err">│</span>
-<span class="err">└──────────────────────────────────────────────┴───────────────────┘</span>
-<span class="err">┌──────────────────────────────────────────────┬───────────────────┐</span>
-<span class="err">│</span><span class="m">29</span><span class="o">-</span><span class="m">08</span><span class="o">-</span><span class="m">2024</span><span class="w">                                    </span><span class="err">│</span><span class="w">                   </span><span class="err">│</span>
-<span class="err">├──────────────────────────────────────────────┼───────────────────┤</span>
-<span class="err">│</span><span class="nv">Nordtel</span><span class="w"> </span><span class="nv">OC3</span><span class="w"> </span><span class="nv">Express</span><span class="w">                           </span><span class="err">│</span><span class="nv">corporateRaider</span><span class="w">    </span><span class="err">│</span>
-<span class="err">├──────────────────────────────────────────────┼───────────────────┤</span>
-<span class="err">│</span><span class="nv">Record</span><span class="w"> </span><span class="nv">for</span><span class="w"> </span><span class="nv">longest</span><span class="w"> </span><span class="nv">television</span><span class="w"> </span><span class="nv">broadcast</span><span class="w">       </span><span class="err">│</span><span class="nv">YouKnowWho</span><span class="w">         </span><span class="err">│</span>
-<span class="err">├──────────────────────────────────────────────┼───────────────────┤</span>
-<span class="err">│</span><span class="nv">Book</span><span class="w"> </span><span class="nv">on</span><span class="w"> </span><span class="nv">Digital</span><span class="w"> </span><span class="nv">Signal</span><span class="w"> </span><span class="nv">Processing</span><span class="w">             </span><span class="err">│</span><span class="nv">vacuumTubed</span><span class="w">        </span><span class="err">│</span>
-<span class="err">├──────────────────────────────────────────────┼───────────────────┤</span>
-<span class="err">│</span><span class="nv">Trying</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">obtain</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">clear</span><span class="w"> </span><span class="nv">QAM</span><span class="w"> </span><span class="nv">signal</span><span class="w"> </span><span class="nv">from</span><span class="w"> </span><span class="nv">cable</span><span class="err">│</span><span class="nv">hadamardMardy</span><span class="w">      </span><span class="err">│</span>
-<span class="err">└──────────────────────────────────────────────┴───────────────────┘</span>
-<span class="err">┌──────────────────────────────────────────────┬───────────────────┐</span>
-<span class="err">│</span><span class="m">28</span><span class="o">-</span><span class="m">08</span><span class="o">-</span><span class="m">2024</span><span class="w">                                    </span><span class="err">│</span><span class="w">                   </span><span class="err">│</span>
-<span class="err">├──────────────────────────────────────────────┼───────────────────┤</span>
-<span class="err">│</span><span class="nv">Early</span><span class="w"> </span><span class="nv">color</span><span class="w"> </span><span class="nv">TV</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">Finland</span><span class="w">                     </span><span class="err">│</span><span class="nv">televisioniini</span><span class="w">     </span><span class="err">│</span>
-<span class="err">├──────────────────────────────────────────────┼───────────────────┤</span>
-<span class="err">│</span><span class="nv">Soviet</span><span class="w"> </span><span class="nv">Tube</span><span class="w"> </span><span class="nv">Substitute</span><span class="w"> </span><span class="nv">for</span><span class="w"> </span><span class="m">6</span><span class="nv">TGSN7</span><span class="w">             </span><span class="err">│</span><span class="nv">logorrheicLogarithm</span><span class="err">│</span>
-<span class="err">├──────────────────────────────────────────────┼───────────────────┤</span>
-<span class="err">│</span><span class="nv">OFDM</span><span class="o">,</span><span class="w"> </span><span class="nv">carriers</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">useful</span><span class="w"> </span><span class="nv">data</span><span class="w"> </span><span class="nv">symbol</span><span class="w"> </span><span class="nv">rate</span><span class="w">    </span><span class="err">│</span><span class="nv">dataMoshpit</span><span class="w">        </span><span class="err">│</span>
-<span class="err">├──────────────────────────────────────────────┼───────────────────┤</span>
-<span class="err">│</span><span class="w">                                              </span><span class="err">│</span><span class="w">                   </span><span class="err">│</span>
-<span class="err">└──────────────────────────────────────────────┴───────────────────┘</span>
-<span class="err">┌──────────────────────────────────────────────┬───────────────────┐</span>
-<span class="err">│</span><span class="m">27</span><span class="o">-</span><span class="m">08</span><span class="o">-</span><span class="m">2024</span><span class="w">                                    </span><span class="err">│</span><span class="w">                   </span><span class="err">│</span>
-<span class="err">├──────────────────────────────────────────────┼───────────────────┤</span>
-<span class="err">│</span><span class="nv">How</span><span class="w"> </span><span class="nv">good</span><span class="w"> </span><span class="nv">was</span><span class="w"> </span><span class="nv">broadcast</span><span class="w"> </span><span class="nv">NTSC</span><span class="na">/</span><span class="nv">PAL</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">practice</span><span class="o">?</span><span class="w">  </span><span class="err">│</span><span class="nv">selfConstructing</span><span class="w">   </span><span class="err">│</span>
-<span class="err">├──────────────────────────────────────────────┼───────────────────┤</span>
-<span class="err">│</span><span class="nv">Looking</span><span class="w"> </span><span class="nv">for</span><span class="w"> </span><span class="nv">flyback</span><span class="w">                           </span><span class="err">│</span><span class="nv">pacAttack</span><span class="w">          </span><span class="err">│</span>
-<span class="err">├──────────────────────────────────────────────┼───────────────────┤</span>
-<span class="err">│</span><span class="w">                                              </span><span class="err">│</span><span class="w">                   </span><span class="err">│</span>
-<span class="err">├──────────────────────────────────────────────┼───────────────────┤</span>
-<span class="err">│</span><span class="w">                                              </span><span class="err">│</span><span class="w">                   </span><span class="err">│</span>
-<span class="err">└──────────────────────────────────────────────┴───────────────────┘</span>
+<p>Let's look at an array tracking the number of replies a user has posted per day, for two weeks</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">w1</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="p">(</span><span class="o">⊂</span><span class="s1">&#39;Week 1&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;RedScanLine&#39;</span><span class="w"> </span><span class="s1">&#39;frequencySniffer&#39;</span><span class="w"> </span><span class="s1">&#39;dataMoshpit&#39;</span><span class="w"> </span><span class="s1">&#39;Radiovangelist&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">12</span><span class="w">    </span><span class="m">8</span><span class="w">   </span><span class="m">15</span><span class="w">  </span><span class="m">6</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">10</span><span class="w">  </span><span class="m">7</span><span class="w">   </span><span class="m">12</span><span class="w">  </span><span class="m">9</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">14</span><span class="w">  </span><span class="m">9</span><span class="w">   </span><span class="m">11</span><span class="w">  </span><span class="m">8</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">11</span><span class="w">  </span><span class="m">6</span><span class="w">   </span><span class="m">14</span><span class="w">  </span><span class="m">7</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">9</span><span class="w">   </span><span class="m">10</span><span class="w">  </span><span class="m">13</span><span class="w">  </span><span class="m">5</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">13</span><span class="w">  </span><span class="m">8</span><span class="w">   </span><span class="m">16</span><span class="w">  </span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">10</span><span class="w"> </span><span class="m">12</span><span class="w">  </span><span class="m">15</span><span class="w">  </span><span class="m">6</span><span class="p">)</span>
+<span class="w">      </span><span class="o">↑</span><span class="nv">w1</span>
+<span class="err">┌───────────┬────────────────┬───────────┬──────────────┐</span>
+<span class="err">│</span><span class="nv">Week</span><span class="w"> </span><span class="m">1</span><span class="w">     </span><span class="err">│</span><span class="w">                </span><span class="err">│</span><span class="w">           </span><span class="err">│</span><span class="w">              </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="nv">RedScanLine</span><span class="err">│</span><span class="nv">frequencySniffer</span><span class="err">│</span><span class="nv">dataMoshpit</span><span class="err">│</span><span class="nv">Radiovangelist</span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">12</span><span class="w">         </span><span class="err">│</span><span class="m">8</span><span class="w">               </span><span class="err">│</span><span class="m">15</span><span class="w">         </span><span class="err">│</span><span class="m">6</span><span class="w">             </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">10</span><span class="w">         </span><span class="err">│</span><span class="m">7</span><span class="w">               </span><span class="err">│</span><span class="m">12</span><span class="w">         </span><span class="err">│</span><span class="m">9</span><span class="w">             </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">14</span><span class="w">         </span><span class="err">│</span><span class="m">9</span><span class="w">               </span><span class="err">│</span><span class="m">11</span><span class="w">         </span><span class="err">│</span><span class="m">8</span><span class="w">             </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">11</span><span class="w">         </span><span class="err">│</span><span class="m">6</span><span class="w">               </span><span class="err">│</span><span class="m">14</span><span class="w">         </span><span class="err">│</span><span class="m">7</span><span class="w">             </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">9</span><span class="w">          </span><span class="err">│</span><span class="m">10</span><span class="w">              </span><span class="err">│</span><span class="m">13</span><span class="w">         </span><span class="err">│</span><span class="m">5</span><span class="w">             </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">13</span><span class="w">         </span><span class="err">│</span><span class="m">8</span><span class="w">               </span><span class="err">│</span><span class="m">16</span><span class="w">         </span><span class="err">│</span><span class="m">10</span><span class="w">            </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">10</span><span class="w">         </span><span class="err">│</span><span class="m">12</span><span class="w">              </span><span class="err">│</span><span class="m">15</span><span class="w">         </span><span class="err">│</span><span class="m">6</span><span class="w">             </span><span class="err">│</span>
+<span class="err">└───────────┴────────────────┴───────────┴──────────────┘</span>
+
+<span class="w">      </span><span class="nv">w2</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="p">(</span><span class="o">⊂</span><span class="s1">&#39;Week 2&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;RedScanLine&#39;</span><span class="w"> </span><span class="s1">&#39;frequencySniffer&#39;</span><span class="w"> </span><span class="s1">&#39;dataMoshpit&#39;</span><span class="w"> </span><span class="s1">&#39;Radiovangelist&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">15</span><span class="w">    </span><span class="m">11</span><span class="w">  </span><span class="m">17</span><span class="w">  </span><span class="m">8</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">12</span><span class="w">  </span><span class="m">9</span><span class="w">   </span><span class="m">14</span><span class="w">  </span><span class="m">7</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">11</span><span class="w">  </span><span class="m">10</span><span class="w">  </span><span class="m">13</span><span class="w">  </span><span class="m">5</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">14</span><span class="w">  </span><span class="m">8</span><span class="w">   </span><span class="m">12</span><span class="w">  </span><span class="m">9</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">10</span><span class="w">  </span><span class="m">7</span><span class="w">   </span><span class="m">16</span><span class="w">  </span><span class="m">11</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">13</span><span class="w"> </span><span class="m">12</span><span class="w">  </span><span class="m">15</span><span class="w">  </span><span class="m">6</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">12</span><span class="w">  </span><span class="m">11</span><span class="w">  </span><span class="m">14</span><span class="w">  </span><span class="m">8</span><span class="p">)</span>
+<span class="w">      </span><span class="o">↑</span><span class="nv">w2</span>
+<span class="err">┌───────────┬────────────────┬───────────┬──────────────┐</span>
+<span class="err">│</span><span class="nv">Week</span><span class="w"> </span><span class="m">2</span><span class="w">     </span><span class="err">│</span><span class="w">                </span><span class="err">│</span><span class="w">           </span><span class="err">│</span><span class="w">              </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="nv">RedScanLine</span><span class="err">│</span><span class="nv">frequencySniffer</span><span class="err">│</span><span class="nv">dataMoshpit</span><span class="err">│</span><span class="nv">Radiovangelist</span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">15</span><span class="w">         </span><span class="err">│</span><span class="m">11</span><span class="w">              </span><span class="err">│</span><span class="m">17</span><span class="w">         </span><span class="err">│</span><span class="m">8</span><span class="w">             </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">12</span><span class="w">         </span><span class="err">│</span><span class="m">9</span><span class="w">               </span><span class="err">│</span><span class="m">14</span><span class="w">         </span><span class="err">│</span><span class="m">7</span><span class="w">             </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">11</span><span class="w">         </span><span class="err">│</span><span class="m">10</span><span class="w">              </span><span class="err">│</span><span class="m">13</span><span class="w">         </span><span class="err">│</span><span class="m">5</span><span class="w">             </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">14</span><span class="w">         </span><span class="err">│</span><span class="m">8</span><span class="w">               </span><span class="err">│</span><span class="m">12</span><span class="w">         </span><span class="err">│</span><span class="m">9</span><span class="w">             </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">10</span><span class="w">         </span><span class="err">│</span><span class="m">7</span><span class="w">               </span><span class="err">│</span><span class="m">16</span><span class="w">         </span><span class="err">│</span><span class="m">11</span><span class="w">            </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">13</span><span class="w">         </span><span class="err">│</span><span class="m">12</span><span class="w">              </span><span class="err">│</span><span class="m">15</span><span class="w">         </span><span class="err">│</span><span class="m">6</span><span class="w">             </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">12</span><span class="w">         </span><span class="err">│</span><span class="m">11</span><span class="w">              </span><span class="err">│</span><span class="m">14</span><span class="w">         </span><span class="err">│</span><span class="m">8</span><span class="w">             </span><span class="err">│</span>
+<span class="err">└───────────┴────────────────┴───────────┴──────────────┘</span>
+
+<span class="w">      </span><span class="nv">activity</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="o">↑↑</span><span class="nv">w1</span><span class="w"> </span><span class="nv">w2</span>
+<span class="err">┌───────────┬────────────────┬───────────┬──────────────┐</span>
+<span class="err">│</span><span class="nv">Week</span><span class="w"> </span><span class="m">1</span><span class="w">     </span><span class="err">│</span><span class="w">                </span><span class="err">│</span><span class="w">           </span><span class="err">│</span><span class="w">              </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="nv">RedScanLine</span><span class="err">│</span><span class="nv">frequencySniffer</span><span class="err">│</span><span class="nv">dataMoshpit</span><span class="err">│</span><span class="nv">Radiovangelist</span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">12</span><span class="w">         </span><span class="err">│</span><span class="m">8</span><span class="w">               </span><span class="err">│</span><span class="m">15</span><span class="w">         </span><span class="err">│</span><span class="m">6</span><span class="w">             </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">10</span><span class="w">         </span><span class="err">│</span><span class="m">7</span><span class="w">               </span><span class="err">│</span><span class="m">12</span><span class="w">         </span><span class="err">│</span><span class="m">9</span><span class="w">             </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">14</span><span class="w">         </span><span class="err">│</span><span class="m">9</span><span class="w">               </span><span class="err">│</span><span class="m">11</span><span class="w">         </span><span class="err">│</span><span class="m">8</span><span class="w">             </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">11</span><span class="w">         </span><span class="err">│</span><span class="m">6</span><span class="w">               </span><span class="err">│</span><span class="m">14</span><span class="w">         </span><span class="err">│</span><span class="m">7</span><span class="w">             </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">9</span><span class="w">          </span><span class="err">│</span><span class="m">10</span><span class="w">              </span><span class="err">│</span><span class="m">13</span><span class="w">         </span><span class="err">│</span><span class="m">5</span><span class="w">             </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">13</span><span class="w">         </span><span class="err">│</span><span class="m">8</span><span class="w">               </span><span class="err">│</span><span class="m">16</span><span class="w">         </span><span class="err">│</span><span class="m">10</span><span class="w">            </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">10</span><span class="w">         </span><span class="err">│</span><span class="m">12</span><span class="w">              </span><span class="err">│</span><span class="m">15</span><span class="w">         </span><span class="err">│</span><span class="m">6</span><span class="w">             </span><span class="err">│</span>
+<span class="err">└───────────┴────────────────┴───────────┴──────────────┘</span>
+<span class="err">┌───────────┬────────────────┬───────────┬──────────────┐</span>
+<span class="err">│</span><span class="nv">Week</span><span class="w"> </span><span class="m">2</span><span class="w">     </span><span class="err">│</span><span class="w">                </span><span class="err">│</span><span class="w">           </span><span class="err">│</span><span class="w">              </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="nv">RedScanLine</span><span class="err">│</span><span class="nv">frequencySniffer</span><span class="err">│</span><span class="nv">dataMoshpit</span><span class="err">│</span><span class="nv">Radiovangelist</span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">15</span><span class="w">         </span><span class="err">│</span><span class="m">11</span><span class="w">              </span><span class="err">│</span><span class="m">17</span><span class="w">         </span><span class="err">│</span><span class="m">8</span><span class="w">             </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">12</span><span class="w">         </span><span class="err">│</span><span class="m">9</span><span class="w">               </span><span class="err">│</span><span class="m">14</span><span class="w">         </span><span class="err">│</span><span class="m">7</span><span class="w">             </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">11</span><span class="w">         </span><span class="err">│</span><span class="m">10</span><span class="w">              </span><span class="err">│</span><span class="m">13</span><span class="w">         </span><span class="err">│</span><span class="m">5</span><span class="w">             </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">14</span><span class="w">         </span><span class="err">│</span><span class="m">8</span><span class="w">               </span><span class="err">│</span><span class="m">12</span><span class="w">         </span><span class="err">│</span><span class="m">9</span><span class="w">             </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">10</span><span class="w">         </span><span class="err">│</span><span class="m">7</span><span class="w">               </span><span class="err">│</span><span class="m">16</span><span class="w">         </span><span class="err">│</span><span class="m">11</span><span class="w">            </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">13</span><span class="w">         </span><span class="err">│</span><span class="m">12</span><span class="w">              </span><span class="err">│</span><span class="m">15</span><span class="w">         </span><span class="err">│</span><span class="m">6</span><span class="w">             </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">12</span><span class="w">         </span><span class="err">│</span><span class="m">11</span><span class="w">              </span><span class="err">│</span><span class="m">14</span><span class="w">         </span><span class="err">│</span><span class="m">8</span><span class="w">             </span><span class="err">│</span>
+<span class="err">└───────────┴────────────────┴───────────┴──────────────┘</span>
+</code></pre></div>
+<p>The array above is structures along three axes, the first being the week, the second being the day of the week, and the third is the user. Note that there are also several non-data entries that are used to make the tables easier to read.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="c1">⍝ Two weeks, 7 days, 4 users (Note that there are two rows which are used for labels)</span>
+<span class="w">      </span><span class="o">⍴</span><span class="nv">activity</span>
+<span class="m">2</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">4</span>
+<span class="w">      </span><span class="nv">activity</span><span class="sr">[</span><span class="m">1</span><span class="sr">;;]</span>
+<span class="err">┌───────────┬────────────────┬───────────┬──────────────┐</span>
+<span class="err">│</span><span class="nv">Week</span><span class="w"> </span><span class="m">1</span><span class="w">     </span><span class="err">│</span><span class="w">                </span><span class="err">│</span><span class="w">           </span><span class="err">│</span><span class="w">              </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="nv">RedScanLine</span><span class="err">│</span><span class="nv">frequencySniffer</span><span class="err">│</span><span class="nv">dataMoshpit</span><span class="err">│</span><span class="nv">Radiovangelist</span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">12</span><span class="w">         </span><span class="err">│</span><span class="m">8</span><span class="w">               </span><span class="err">│</span><span class="m">15</span><span class="w">         </span><span class="err">│</span><span class="m">6</span><span class="w">             </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">10</span><span class="w">         </span><span class="err">│</span><span class="m">7</span><span class="w">               </span><span class="err">│</span><span class="m">12</span><span class="w">         </span><span class="err">│</span><span class="m">9</span><span class="w">             </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">14</span><span class="w">         </span><span class="err">│</span><span class="m">9</span><span class="w">               </span><span class="err">│</span><span class="m">11</span><span class="w">         </span><span class="err">│</span><span class="m">8</span><span class="w">             </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">11</span><span class="w">         </span><span class="err">│</span><span class="m">6</span><span class="w">               </span><span class="err">│</span><span class="m">14</span><span class="w">         </span><span class="err">│</span><span class="m">7</span><span class="w">             </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">9</span><span class="w">          </span><span class="err">│</span><span class="m">10</span><span class="w">              </span><span class="err">│</span><span class="m">13</span><span class="w">         </span><span class="err">│</span><span class="m">5</span><span class="w">             </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">13</span><span class="w">         </span><span class="err">│</span><span class="m">8</span><span class="w">               </span><span class="err">│</span><span class="m">16</span><span class="w">         </span><span class="err">│</span><span class="m">10</span><span class="w">            </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">10</span><span class="w">         </span><span class="err">│</span><span class="m">12</span><span class="w">              </span><span class="err">│</span><span class="m">15</span><span class="w">         </span><span class="err">│</span><span class="m">6</span><span class="w">             </span><span class="err">│</span>
+<span class="err">└───────────┴────────────────┴───────────┴──────────────┘</span>
+<span class="w">      </span><span class="c1">⍝ Data from first day of both weeks</span>
+<span class="w">      </span><span class="nv">activity</span><span class="sr">[;</span><span class="m">3</span><span class="sr">;]</span>
+<span class="m">12</span><span class="w">  </span><span class="m">8</span><span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="m">6</span>
+<span class="m">15</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="m">8</span>
+<span class="w">      </span><span class="nv">activity</span><span class="sr">[;;</span><span class="m">1</span><span class="sr">]</span>
+<span class="err">┌──────┬───────────┬──┬──┬──┬──┬──┬──┬──┐</span>
+<span class="err">│</span><span class="nv">Week</span><span class="w"> </span><span class="m">1</span><span class="err">│</span><span class="nv">RedScanLine</span><span class="err">│</span><span class="m">12</span><span class="err">│</span><span class="m">10</span><span class="err">│</span><span class="m">14</span><span class="err">│</span><span class="m">11</span><span class="err">│</span><span class="m">9</span><span class="w"> </span><span class="err">│</span><span class="m">13</span><span class="err">│</span><span class="m">10</span><span class="err">│</span>
+<span class="err">├──────┼───────────┼──┼──┼──┼──┼──┼──┼──┤</span>
+<span class="err">│</span><span class="nv">Week</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="nv">RedScanLine</span><span class="err">│</span><span class="m">15</span><span class="err">│</span><span class="m">12</span><span class="err">│</span><span class="m">11</span><span class="err">│</span><span class="m">14</span><span class="err">│</span><span class="m">10</span><span class="err">│</span><span class="m">13</span><span class="err">│</span><span class="m">12</span><span class="err">│</span>
+<span class="err">└──────┴───────────┴──┴──┴──┴──┴──┴──┴──┘</span>
+</code></pre></div>
+<p>To get the total list of replies for each user, we need to enlist along the day and week axis to be left with a matrix of replies per user per day. Unfortunately, the 2-cells of this array are not the matrix of all replies for a single user, but the matrix of all replies for a single week, as can be seen above, or by looking at how the axes are arranged as Week × (Days × User). If we used the rank ⍤ operator, instead of getting a 7 row matrix of daily replies for each user, we'd obtain a 2 row matrix of replies per week.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="p">(</span><span class="o">,</span><span class="na">⍤</span><span class="m">2</span><span class="p">)</span><span class="nv">activity</span>
+<span class="err">┌──────┬──────┬──────┬──────┬───────────┬────────────────┬───────────┬──────────────┬──┬──┬──┬─┬──┬─┬──┬─┬──┬──┬──┬─┬──┬─┬──┬─┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬─┐</span>
+<span class="err">│</span><span class="nv">Week</span><span class="w"> </span><span class="m">1</span><span class="err">│</span><span class="w">      </span><span class="err">│</span><span class="w">      </span><span class="err">│</span><span class="w">      </span><span class="err">│</span><span class="nv">RedScanLine</span><span class="err">│</span><span class="nv">frequencySniffer</span><span class="err">│</span><span class="nv">dataMoshpit</span><span class="err">│</span><span class="nv">Radiovangelist</span><span class="err">│</span><span class="m">12</span><span class="err">│</span><span class="m">8</span><span class="w"> </span><span class="err">│</span><span class="m">15</span><span class="err">│</span><span class="m">6</span><span class="err">│</span><span class="m">10</span><span class="err">│</span><span class="m">7</span><span class="err">│</span><span class="m">12</span><span class="err">│</span><span class="m">9</span><span class="err">│</span><span class="m">14</span><span class="err">│</span><span class="m">9</span><span class="w"> </span><span class="err">│</span><span class="m">11</span><span class="err">│</span><span class="m">8</span><span class="err">│</span><span class="m">11</span><span class="err">│</span><span class="m">6</span><span class="err">│</span><span class="m">14</span><span class="err">│</span><span class="m">7</span><span class="err">│</span><span class="m">9</span><span class="w"> </span><span class="err">│</span><span class="m">10</span><span class="err">│</span><span class="m">13</span><span class="err">│</span><span class="m">5</span><span class="w"> </span><span class="err">│</span><span class="m">13</span><span class="err">│</span><span class="m">8</span><span class="w"> </span><span class="err">│</span><span class="m">16</span><span class="err">│</span><span class="m">10</span><span class="err">│</span><span class="m">10</span><span class="err">│</span><span class="m">12</span><span class="err">│</span><span class="m">15</span><span class="err">│</span><span class="m">6</span><span class="err">│</span>
+<span class="err">├──────┼──────┼──────┼──────┼───────────┼────────────────┼───────────┼──────────────┼──┼──┼──┼─┼──┼─┼──┼─┼──┼──┼──┼─┼──┼─┼──┼─┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼─┤</span>
+<span class="err">│</span><span class="nv">Week</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="w">      </span><span class="err">│</span><span class="w">      </span><span class="err">│</span><span class="w">      </span><span class="err">│</span><span class="nv">RedScanLine</span><span class="err">│</span><span class="nv">frequencySniffer</span><span class="err">│</span><span class="nv">dataMoshpit</span><span class="err">│</span><span class="nv">Radiovangelist</span><span class="err">│</span><span class="m">15</span><span class="err">│</span><span class="m">11</span><span class="err">│</span><span class="m">17</span><span class="err">│</span><span class="m">8</span><span class="err">│</span><span class="m">12</span><span class="err">│</span><span class="m">9</span><span class="err">│</span><span class="m">14</span><span class="err">│</span><span class="m">7</span><span class="err">│</span><span class="m">11</span><span class="err">│</span><span class="m">10</span><span class="err">│</span><span class="m">13</span><span class="err">│</span><span class="m">5</span><span class="err">│</span><span class="m">14</span><span class="err">│</span><span class="m">8</span><span class="err">│</span><span class="m">12</span><span class="err">│</span><span class="m">9</span><span class="err">│</span><span class="m">10</span><span class="err">│</span><span class="m">7</span><span class="w"> </span><span class="err">│</span><span class="m">16</span><span class="err">│</span><span class="m">11</span><span class="err">│</span><span class="m">13</span><span class="err">│</span><span class="m">12</span><span class="err">│</span><span class="m">15</span><span class="err">│</span><span class="m">6</span><span class="w"> </span><span class="err">│</span><span class="m">12</span><span class="err">│</span><span class="m">11</span><span class="err">│</span><span class="m">14</span><span class="err">│</span><span class="m">8</span><span class="err">│</span>
+<span class="err">└──────┴──────┴──────┴──────┴───────────┴────────────────┴───────────┴──────────────┴──┴──┴──┴─┴──┴─┴──┴─┴──┴──┴──┴─┴──┴─┴──┴─┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴─┘</span>
+</code></pre></div>
+<p>The way to solve this is to swap the Week and User axes to get an array of the form User x (Week x Days), this problem is easily solved by the ⍉ transpose function. The left argument to the transpose function is a list of integers starting from 1, which represents where each axes is in the resulting array. For example, <code>1 2 3 ⍉ activity</code> is the same as <code>activity</code>, but <code>3 2 1⍉activity</code> swaps the first and third axis.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="c1">⍝ Week × Day × User</span>
+<span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">⍉</span><span class="w"> </span><span class="nv">activity</span>
+<span class="err">┌───────────┬────────────────┬───────────┬──────────────┐</span>
+<span class="err">│</span><span class="nv">Week</span><span class="w"> </span><span class="m">1</span><span class="w">     </span><span class="err">│</span><span class="w">                </span><span class="err">│</span><span class="w">           </span><span class="err">│</span><span class="w">              </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="nv">RedScanLine</span><span class="err">│</span><span class="nv">frequencySniffer</span><span class="err">│</span><span class="nv">dataMoshpit</span><span class="err">│</span><span class="nv">Radiovangelist</span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">12</span><span class="w">         </span><span class="err">│</span><span class="m">8</span><span class="w">               </span><span class="err">│</span><span class="m">15</span><span class="w">         </span><span class="err">│</span><span class="m">6</span><span class="w">             </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">10</span><span class="w">         </span><span class="err">│</span><span class="m">7</span><span class="w">               </span><span class="err">│</span><span class="m">12</span><span class="w">         </span><span class="err">│</span><span class="m">9</span><span class="w">             </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">14</span><span class="w">         </span><span class="err">│</span><span class="m">9</span><span class="w">               </span><span class="err">│</span><span class="m">11</span><span class="w">         </span><span class="err">│</span><span class="m">8</span><span class="w">             </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">11</span><span class="w">         </span><span class="err">│</span><span class="m">6</span><span class="w">               </span><span class="err">│</span><span class="m">14</span><span class="w">         </span><span class="err">│</span><span class="m">7</span><span class="w">             </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">9</span><span class="w">          </span><span class="err">│</span><span class="m">10</span><span class="w">              </span><span class="err">│</span><span class="m">13</span><span class="w">         </span><span class="err">│</span><span class="m">5</span><span class="w">             </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">13</span><span class="w">         </span><span class="err">│</span><span class="m">8</span><span class="w">               </span><span class="err">│</span><span class="m">16</span><span class="w">         </span><span class="err">│</span><span class="m">10</span><span class="w">            </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">10</span><span class="w">         </span><span class="err">│</span><span class="m">12</span><span class="w">              </span><span class="err">│</span><span class="m">15</span><span class="w">         </span><span class="err">│</span><span class="m">6</span><span class="w">             </span><span class="err">│</span>
+<span class="err">└───────────┴────────────────┴───────────┴──────────────┘</span>
+<span class="err">┌───────────┬────────────────┬───────────┬──────────────┐</span>
+<span class="err">│</span><span class="nv">Week</span><span class="w"> </span><span class="m">2</span><span class="w">     </span><span class="err">│</span><span class="w">                </span><span class="err">│</span><span class="w">           </span><span class="err">│</span><span class="w">              </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="nv">RedScanLine</span><span class="err">│</span><span class="nv">frequencySniffer</span><span class="err">│</span><span class="nv">dataMoshpit</span><span class="err">│</span><span class="nv">Radiovangelist</span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">15</span><span class="w">         </span><span class="err">│</span><span class="m">11</span><span class="w">              </span><span class="err">│</span><span class="m">17</span><span class="w">         </span><span class="err">│</span><span class="m">8</span><span class="w">             </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">12</span><span class="w">         </span><span class="err">│</span><span class="m">9</span><span class="w">               </span><span class="err">│</span><span class="m">14</span><span class="w">         </span><span class="err">│</span><span class="m">7</span><span class="w">             </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">11</span><span class="w">         </span><span class="err">│</span><span class="m">10</span><span class="w">              </span><span class="err">│</span><span class="m">13</span><span class="w">         </span><span class="err">│</span><span class="m">5</span><span class="w">             </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">14</span><span class="w">         </span><span class="err">│</span><span class="m">8</span><span class="w">               </span><span class="err">│</span><span class="m">12</span><span class="w">         </span><span class="err">│</span><span class="m">9</span><span class="w">             </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">10</span><span class="w">         </span><span class="err">│</span><span class="m">7</span><span class="w">               </span><span class="err">│</span><span class="m">16</span><span class="w">         </span><span class="err">│</span><span class="m">11</span><span class="w">            </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">13</span><span class="w">         </span><span class="err">│</span><span class="m">12</span><span class="w">              </span><span class="err">│</span><span class="m">15</span><span class="w">         </span><span class="err">│</span><span class="m">6</span><span class="w">             </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼───────────┼──────────────┤</span>
+<span class="err">│</span><span class="m">12</span><span class="w">         </span><span class="err">│</span><span class="m">11</span><span class="w">              </span><span class="err">│</span><span class="m">14</span><span class="w">         </span><span class="err">│</span><span class="m">8</span><span class="w">             </span><span class="err">│</span>
+<span class="err">└───────────┴────────────────┴───────────┴──────────────┘</span>
+<span class="w">      </span><span class="c1">⍝ User × Week × Day</span>
+<span class="w">      </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">⍉</span><span class="w"> </span><span class="nv">activity</span>
+<span class="err">┌────────────────┬────────────────┐</span>
+<span class="err">│</span><span class="nv">Week</span><span class="w"> </span><span class="m">1</span><span class="w">          </span><span class="err">│</span><span class="nv">Week</span><span class="w"> </span><span class="m">2</span><span class="w">          </span><span class="err">│</span>
+<span class="err">├────────────────┼────────────────┤</span>
+<span class="err">│</span><span class="nv">RedScanLine</span><span class="w">     </span><span class="err">│</span><span class="nv">RedScanLine</span><span class="w">     </span><span class="err">│</span>
+<span class="err">├────────────────┼────────────────┤</span>
+<span class="err">│</span><span class="m">12</span><span class="w">              </span><span class="err">│</span><span class="m">15</span><span class="w">              </span><span class="err">│</span>
+<span class="err">├────────────────┼────────────────┤</span>
+<span class="err">│</span><span class="m">10</span><span class="w">              </span><span class="err">│</span><span class="m">12</span><span class="w">              </span><span class="err">│</span>
+<span class="err">├────────────────┼────────────────┤</span>
+<span class="err">│</span><span class="m">14</span><span class="w">              </span><span class="err">│</span><span class="m">11</span><span class="w">              </span><span class="err">│</span>
+<span class="err">├────────────────┼────────────────┤</span>
+<span class="err">│</span><span class="m">11</span><span class="w">              </span><span class="err">│</span><span class="m">14</span><span class="w">              </span><span class="err">│</span>
+<span class="err">├────────────────┼────────────────┤</span>
+<span class="err">│</span><span class="m">9</span><span class="w">               </span><span class="err">│</span><span class="m">10</span><span class="w">              </span><span class="err">│</span>
+<span class="err">├────────────────┼────────────────┤</span>
+<span class="err">│</span><span class="m">13</span><span class="w">              </span><span class="err">│</span><span class="m">13</span><span class="w">              </span><span class="err">│</span>
+<span class="err">├────────────────┼────────────────┤</span>
+<span class="err">│</span><span class="m">10</span><span class="w">              </span><span class="err">│</span><span class="m">12</span><span class="w">              </span><span class="err">│</span>
+<span class="err">└────────────────┴────────────────┘</span>
+<span class="err">┌────────────────┬────────────────┐</span>
+<span class="err">│</span><span class="w">                </span><span class="err">│</span><span class="w">                </span><span class="err">│</span>
+<span class="err">├────────────────┼────────────────┤</span>
+<span class="err">│</span><span class="nv">frequencySniffer</span><span class="err">│</span><span class="nv">frequencySniffer</span><span class="err">│</span>
+<span class="err">├────────────────┼────────────────┤</span>
+<span class="err">│</span><span class="m">8</span><span class="w">               </span><span class="err">│</span><span class="m">11</span><span class="w">              </span><span class="err">│</span>
+<span class="err">├────────────────┼────────────────┤</span>
+<span class="err">│</span><span class="m">7</span><span class="w">               </span><span class="err">│</span><span class="m">9</span><span class="w">               </span><span class="err">│</span>
+<span class="err">├────────────────┼────────────────┤</span>
+<span class="err">│</span><span class="m">9</span><span class="w">               </span><span class="err">│</span><span class="m">10</span><span class="w">              </span><span class="err">│</span>
+<span class="err">├────────────────┼────────────────┤</span>
+<span class="err">│</span><span class="m">6</span><span class="w">               </span><span class="err">│</span><span class="m">8</span><span class="w">               </span><span class="err">│</span>
+<span class="err">├────────────────┼────────────────┤</span>
+<span class="err">│</span><span class="m">10</span><span class="w">              </span><span class="err">│</span><span class="m">7</span><span class="w">               </span><span class="err">│</span>
+<span class="err">├────────────────┼────────────────┤</span>
+<span class="err">│</span><span class="m">8</span><span class="w">               </span><span class="err">│</span><span class="m">12</span><span class="w">              </span><span class="err">│</span>
+<span class="err">├────────────────┼────────────────┤</span>
+<span class="err">│</span><span class="m">12</span><span class="w">              </span><span class="err">│</span><span class="m">11</span><span class="w">              </span><span class="err">│</span>
+<span class="err">└────────────────┴────────────────┘</span>
+<span class="err">┌────────────────┬────────────────┐</span>
+<span class="err">│</span><span class="w">                </span><span class="err">│</span><span class="w">                </span><span class="err">│</span>
+<span class="err">├────────────────┼────────────────┤</span>
+<span class="err">│</span><span class="nv">dataMoshpit</span><span class="w">     </span><span class="err">│</span><span class="nv">dataMoshpit</span><span class="w">     </span><span class="err">│</span>
+<span class="err">├────────────────┼────────────────┤</span>
+<span class="err">│</span><span class="m">15</span><span class="w">              </span><span class="err">│</span><span class="m">17</span><span class="w">              </span><span class="err">│</span>
+<span class="err">├────────────────┼────────────────┤</span>
+<span class="err">│</span><span class="m">12</span><span class="w">              </span><span class="err">│</span><span class="m">14</span><span class="w">              </span><span class="err">│</span>
+<span class="err">├────────────────┼────────────────┤</span>
+<span class="err">│</span><span class="m">11</span><span class="w">              </span><span class="err">│</span><span class="m">13</span><span class="w">              </span><span class="err">│</span>
+<span class="err">├────────────────┼────────────────┤</span>
+<span class="err">│</span><span class="m">14</span><span class="w">              </span><span class="err">│</span><span class="m">12</span><span class="w">              </span><span class="err">│</span>
+<span class="err">├────────────────┼────────────────┤</span>
+<span class="err">│</span><span class="m">13</span><span class="w">              </span><span class="err">│</span><span class="m">16</span><span class="w">              </span><span class="err">│</span>
+<span class="err">├────────────────┼────────────────┤</span>
+<span class="err">│</span><span class="m">16</span><span class="w">              </span><span class="err">│</span><span class="m">15</span><span class="w">              </span><span class="err">│</span>
+<span class="err">├────────────────┼────────────────┤</span>
+<span class="err">│</span><span class="m">15</span><span class="w">              </span><span class="err">│</span><span class="m">14</span><span class="w">              </span><span class="err">│</span>
+<span class="err">└────────────────┴────────────────┘</span>
+<span class="err">┌────────────────┬────────────────┐</span>
+<span class="err">│</span><span class="w">                </span><span class="err">│</span><span class="w">                </span><span class="err">│</span>
+<span class="err">├────────────────┼────────────────┤</span>
+<span class="err">│</span><span class="nv">Radiovangelist</span><span class="w">  </span><span class="err">│</span><span class="nv">Radiovangelist</span><span class="w">  </span><span class="err">│</span>
+<span class="err">├────────────────┼────────────────┤</span>
+<span class="err">│</span><span class="m">6</span><span class="w">               </span><span class="err">│</span><span class="m">8</span><span class="w">               </span><span class="err">│</span>
+<span class="err">├────────────────┼────────────────┤</span>
+<span class="err">│</span><span class="m">9</span><span class="w">               </span><span class="err">│</span><span class="m">7</span><span class="w">               </span><span class="err">│</span>
+<span class="err">├────────────────┼────────────────┤</span>
+<span class="err">│</span><span class="m">8</span><span class="w">               </span><span class="err">│</span><span class="m">5</span><span class="w">               </span><span class="err">│</span>
+<span class="err">├────────────────┼────────────────┤</span>
+<span class="err">│</span><span class="m">7</span><span class="w">               </span><span class="err">│</span><span class="m">9</span><span class="w">               </span><span class="err">│</span>
+<span class="err">├────────────────┼────────────────┤</span>
+<span class="err">│</span><span class="m">5</span><span class="w">               </span><span class="err">│</span><span class="m">11</span><span class="w">              </span><span class="err">│</span>
+<span class="err">├────────────────┼────────────────┤</span>
+<span class="err">│</span><span class="m">10</span><span class="w">              </span><span class="err">│</span><span class="m">6</span><span class="w">               </span><span class="err">│</span>
+<span class="err">├────────────────┼────────────────┤</span>
+<span class="err">│</span><span class="m">6</span><span class="w">               </span><span class="err">│</span><span class="m">8</span><span class="w">               </span><span class="err">│</span>
+<span class="err">└────────────────┴────────────────┘</span>
+<span class="err">``</span>
+
+<span class="nv">Removing</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">labels</span>
+
+<span class="err">```</span><span class="nv">apl</span>
+<span class="w">      </span><span class="c1">⍝ Check how ⍤2 acts on the above matrix</span>
+<span class="w">      </span><span class="p">(</span><span class="o">⊂</span><span class="na">⍤</span><span class="m">2</span><span class="p">)</span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">⍉</span><span class="w"> </span><span class="nv">activity</span>
+<span class="err">┌─────────────────────────┬───────────────────────────────────┬─────────────────────────┬───────────────────────────────┐</span>
+<span class="err">│┌───────────┬───────────┐│┌────────────────┬────────────────┐│┌───────────┬───────────┐│┌──────────────┬──────────────┐│</span>
+<span class="err">││</span><span class="nv">Week</span><span class="w"> </span><span class="m">1</span><span class="w">     </span><span class="err">│</span><span class="nv">Week</span><span class="w"> </span><span class="m">2</span><span class="w">     </span><span class="err">│││</span><span class="w">                </span><span class="err">│</span><span class="w">                </span><span class="err">│││</span><span class="w">           </span><span class="err">│</span><span class="w">           </span><span class="err">│││</span><span class="w">              </span><span class="err">│</span><span class="w">              </span><span class="err">││</span>
+<span class="err">│├───────────┼───────────┤│├────────────────┼────────────────┤│├───────────┼───────────┤│├──────────────┼──────────────┤│</span>
+<span class="err">││</span><span class="nv">RedScanLine</span><span class="err">│</span><span class="nv">RedScanLine</span><span class="err">│││</span><span class="nv">frequencySniffer</span><span class="err">│</span><span class="nv">frequencySniffer</span><span class="err">│││</span><span class="nv">dataMoshpit</span><span class="err">│</span><span class="nv">dataMoshpit</span><span class="err">│││</span><span class="nv">Radiovangelist</span><span class="err">│</span><span class="nv">Radiovangelist</span><span class="err">││</span>
+<span class="err">│├───────────┼───────────┤│├────────────────┼────────────────┤│├───────────┼───────────┤│├──────────────┼──────────────┤│</span>
+<span class="err">││</span><span class="m">12</span><span class="w">         </span><span class="err">│</span><span class="m">15</span><span class="w">         </span><span class="err">│││</span><span class="m">8</span><span class="w">               </span><span class="err">│</span><span class="m">11</span><span class="w">              </span><span class="err">│││</span><span class="m">15</span><span class="w">         </span><span class="err">│</span><span class="m">17</span><span class="w">         </span><span class="err">│││</span><span class="m">6</span><span class="w">             </span><span class="err">│</span><span class="m">8</span><span class="w">             </span><span class="err">││</span>
+<span class="err">│├───────────┼───────────┤│├────────────────┼────────────────┤│├───────────┼───────────┤│├──────────────┼──────────────┤│</span>
+<span class="err">││</span><span class="m">10</span><span class="w">         </span><span class="err">│</span><span class="m">12</span><span class="w">         </span><span class="err">│││</span><span class="m">7</span><span class="w">               </span><span class="err">│</span><span class="m">9</span><span class="w">               </span><span class="err">│││</span><span class="m">12</span><span class="w">         </span><span class="err">│</span><span class="m">14</span><span class="w">         </span><span class="err">│││</span><span class="m">9</span><span class="w">             </span><span class="err">│</span><span class="m">7</span><span class="w">             </span><span class="err">││</span>
+<span class="err">│├───────────┼───────────┤│├────────────────┼────────────────┤│├───────────┼───────────┤│├──────────────┼──────────────┤│</span>
+<span class="err">││</span><span class="m">14</span><span class="w">         </span><span class="err">│</span><span class="m">11</span><span class="w">         </span><span class="err">│││</span><span class="m">9</span><span class="w">               </span><span class="err">│</span><span class="m">10</span><span class="w">              </span><span class="err">│││</span><span class="m">11</span><span class="w">         </span><span class="err">│</span><span class="m">13</span><span class="w">         </span><span class="err">│││</span><span class="m">8</span><span class="w">             </span><span class="err">│</span><span class="m">5</span><span class="w">             </span><span class="err">││</span>
+<span class="err">│├───────────┼───────────┤│├────────────────┼────────────────┤│├───────────┼───────────┤│├──────────────┼──────────────┤│</span>
+<span class="err">││</span><span class="m">11</span><span class="w">         </span><span class="err">│</span><span class="m">14</span><span class="w">         </span><span class="err">│││</span><span class="m">6</span><span class="w">               </span><span class="err">│</span><span class="m">8</span><span class="w">               </span><span class="err">│││</span><span class="m">14</span><span class="w">         </span><span class="err">│</span><span class="m">12</span><span class="w">         </span><span class="err">│││</span><span class="m">7</span><span class="w">             </span><span class="err">│</span><span class="m">9</span><span class="w">             </span><span class="err">││</span>
+<span class="err">│├───────────┼───────────┤│├────────────────┼────────────────┤│├───────────┼───────────┤│├──────────────┼──────────────┤│</span>
+<span class="err">││</span><span class="m">9</span><span class="w">          </span><span class="err">│</span><span class="m">10</span><span class="w">         </span><span class="err">│││</span><span class="m">10</span><span class="w">              </span><span class="err">│</span><span class="m">7</span><span class="w">               </span><span class="err">│││</span><span class="m">13</span><span class="w">         </span><span class="err">│</span><span class="m">16</span><span class="w">         </span><span class="err">│││</span><span class="m">5</span><span class="w">             </span><span class="err">│</span><span class="m">11</span><span class="w">            </span><span class="err">││</span>
+<span class="err">│├───────────┼───────────┤│├────────────────┼────────────────┤│├───────────┼───────────┤│├──────────────┼──────────────┤│</span>
+<span class="err">││</span><span class="m">13</span><span class="w">         </span><span class="err">│</span><span class="m">13</span><span class="w">         </span><span class="err">│││</span><span class="m">8</span><span class="w">               </span><span class="err">│</span><span class="m">12</span><span class="w">              </span><span class="err">│││</span><span class="m">16</span><span class="w">         </span><span class="err">│</span><span class="m">15</span><span class="w">         </span><span class="err">│││</span><span class="m">10</span><span class="w">            </span><span class="err">│</span><span class="m">6</span><span class="w">             </span><span class="err">││</span>
+<span class="err">│├───────────┼───────────┤│├────────────────┼────────────────┤│├───────────┼───────────┤│├──────────────┼──────────────┤│</span>
+<span class="err">││</span><span class="m">10</span><span class="w">         </span><span class="err">│</span><span class="m">12</span><span class="w">         </span><span class="err">│││</span><span class="m">12</span><span class="w">              </span><span class="err">│</span><span class="m">11</span><span class="w">              </span><span class="err">│││</span><span class="m">15</span><span class="w">         </span><span class="err">│</span><span class="m">14</span><span class="w">         </span><span class="err">│││</span><span class="m">6</span><span class="w">             </span><span class="err">│</span><span class="m">8</span><span class="w">             </span><span class="err">││</span>
+<span class="err">│└───────────┴───────────┘│└────────────────┴────────────────┘│└───────────┴───────────┘│└──────────────┴──────────────┘│</span>
+<span class="err">└─────────────────────────┴───────────────────────────────────┴─────────────────────────┴───────────────────────────────┘</span>
+<span class="w">      </span><span class="c1">⍝ Use drop ↓ to remove the first two rows of every enclosed array</span>
+<span class="w">      </span><span class="m">2</span><span class="p">(</span><span class="o">↓</span><span class="na">⍤</span><span class="m">2</span><span class="p">)</span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">⍉</span><span class="w"> </span><span class="nv">activity</span>
+<span class="m">12</span><span class="w"> </span><span class="m">15</span>
+<span class="m">10</span><span class="w"> </span><span class="m">12</span>
+<span class="m">14</span><span class="w"> </span><span class="m">11</span>
+<span class="m">11</span><span class="w"> </span><span class="m">14</span>
+<span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">10</span>
+<span class="m">13</span><span class="w"> </span><span class="m">13</span>
+<span class="m">10</span><span class="w"> </span><span class="m">12</span>
+
+<span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">11</span>
+<span class="w"> </span><span class="m">7</span><span class="w">  </span><span class="m">9</span>
+<span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">10</span>
+<span class="w"> </span><span class="m">6</span><span class="w">  </span><span class="m">8</span>
+<span class="m">10</span><span class="w">  </span><span class="m">7</span>
+<span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">12</span>
+<span class="m">12</span><span class="w"> </span><span class="m">11</span>
+
+<span class="m">15</span><span class="w"> </span><span class="m">17</span>
+<span class="m">12</span><span class="w"> </span><span class="m">14</span>
+<span class="m">11</span><span class="w"> </span><span class="m">13</span>
+<span class="m">14</span><span class="w"> </span><span class="m">12</span>
+<span class="m">13</span><span class="w"> </span><span class="m">16</span>
+<span class="m">16</span><span class="w"> </span><span class="m">15</span>
+<span class="m">15</span><span class="w"> </span><span class="m">14</span>
+
+<span class="w"> </span><span class="m">6</span><span class="w">  </span><span class="m">8</span>
+<span class="w"> </span><span class="m">9</span><span class="w">  </span><span class="m">7</span>
+<span class="w"> </span><span class="m">8</span><span class="w">  </span><span class="m">5</span>
+<span class="w"> </span><span class="m">7</span><span class="w">  </span><span class="m">9</span>
+<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">11</span>
+<span class="m">10</span><span class="w">  </span><span class="m">6</span>
+<span class="w"> </span><span class="m">6</span><span class="w">  </span><span class="m">8</span>
+<span class="w"> </span><span class="err">```</span>
+
+<span class="w"> </span><span class="nv">Finally</span><span class="w"> </span><span class="nv">obtaining</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">replies</span><span class="w"> </span><span class="nv">per</span><span class="w"> </span><span class="nv">user</span><span class="w"> </span><span class="nv">per</span><span class="w"> </span><span class="nv">day</span>
+
+<span class="err">```</span><span class="nv">apl</span>
+<span class="w">      </span><span class="c1">⍝ Ravel the above 2-cells to get the replies per day for every user</span>
+<span class="w">      </span><span class="p">(</span><span class="o">,</span><span class="na">⍤</span><span class="m">2</span><span class="p">)(</span><span class="m">2</span><span class="p">(</span><span class="o">↓</span><span class="na">⍤</span><span class="m">2</span><span class="p">)(</span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">⍉</span><span class="w"> </span><span class="nv">activity</span><span class="p">))</span>
+<span class="m">12</span><span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">14</span><span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">12</span>
+<span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">11</span><span class="w">  </span><span class="m">7</span><span class="w">  </span><span class="m">9</span><span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">10</span><span class="w">  </span><span class="m">6</span><span class="w">  </span><span class="m">8</span><span class="w"> </span><span class="m">10</span><span class="w">  </span><span class="m">7</span><span class="w">  </span><span class="m">8</span><span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="m">11</span>
+<span class="m">15</span><span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="m">14</span>
+<span class="w"> </span><span class="m">6</span><span class="w">  </span><span class="m">8</span><span class="w">  </span><span class="m">9</span><span class="w">  </span><span class="m">7</span><span class="w">  </span><span class="m">8</span><span class="w">  </span><span class="m">5</span><span class="w">  </span><span class="m">7</span><span class="w">  </span><span class="m">9</span><span class="w">  </span><span class="m">5</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">10</span><span class="w">  </span><span class="m">6</span><span class="w">  </span><span class="m">6</span><span class="w">  </span><span class="m">8</span>
+
+<span class="w">      </span><span class="c1">⍝ Without the unnecessary parentheses</span>
+
+<span class="w">      </span><span class="p">(</span><span class="o">,</span><span class="na">⍤</span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="p">(</span><span class="o">↓</span><span class="na">⍤</span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">⍉</span><span class="w"> </span><span class="nv">activity</span>
+<span class="m">12</span><span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">14</span><span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">12</span>
+<span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">11</span><span class="w">  </span><span class="m">7</span><span class="w">  </span><span class="m">9</span><span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">10</span><span class="w">  </span><span class="m">6</span><span class="w">  </span><span class="m">8</span><span class="w"> </span><span class="m">10</span><span class="w">  </span><span class="m">7</span><span class="w">  </span><span class="m">8</span><span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="m">11</span>
+<span class="m">15</span><span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="m">14</span>
+<span class="w"> </span><span class="m">6</span><span class="w">  </span><span class="m">8</span><span class="w">  </span><span class="m">9</span><span class="w">  </span><span class="m">7</span><span class="w">  </span><span class="m">8</span><span class="w">  </span><span class="m">5</span><span class="w">  </span><span class="m">7</span><span class="w">  </span><span class="m">9</span><span class="w">  </span><span class="m">5</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">10</span><span class="w">  </span><span class="m">6</span><span class="w">  </span><span class="m">6</span><span class="w">  </span><span class="m">8</span>
+<span class="w"> </span><span class="err">```</span>
+
+
+<span class="nv">More</span><span class="w"> </span><span class="nv">examples</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">transpose</span>
+
+<span class="err">```</span><span class="nv">apl</span>
+<span class="w">      </span><span class="nv">PEOPLE</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="s1">&#39;⍣⍤≢⍬^∧⍨⍥⌿⍀^∧&#39;</span>
+<span class="w">      </span><span class="c1">⍝ The first axis is from first couple to second couple, the second axis is from head to toe, the third axis is from first partner to second partner</span>
+<span class="w">      </span><span class="nv">PEOPLE</span>
+<span class="na">⍣⍤</span>
+<span class="o">≢</span><span class="no">⍬</span>
+<span class="err">^</span><span class="o">∧</span>
+
+<span class="na">⍨⍥</span>
+<span class="na">⌿⍀</span>
+<span class="err">^</span><span class="o">∧</span>
+<span class="w">      </span><span class="c1">⍝ Convince yourself of what was said above, remember that the last axis is the one that is filled first</span>
+<span class="w">      </span><span class="p">(</span><span class="o">⍳</span><span class="m">12</span><span class="p">)</span><span class="kt">{</span><span class="bp">⍺</span><span class="w"> </span><span class="bp">⍵</span><span class="kt">}</span><span class="na">¨</span><span class="nv">PEOPLE</span>
+<span class="err">┌────┬────┐</span>
+<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="na">⍣</span><span class="w"> </span><span class="err">│</span><span class="m">2</span><span class="w"> </span><span class="na">⍤</span><span class="w"> </span><span class="err">│</span>
+<span class="err">├────┼────┤</span>
+<span class="err">│</span><span class="m">3</span><span class="w"> </span><span class="o">≢</span><span class="w"> </span><span class="err">│</span><span class="m">4</span><span class="w"> </span><span class="no">⍬</span><span class="w"> </span><span class="err">│</span>
+<span class="err">├────┼────┤</span>
+<span class="err">│</span><span class="m">5</span><span class="w"> </span><span class="err">^</span><span class="w"> </span><span class="err">│</span><span class="m">6</span><span class="w"> </span><span class="o">∧</span><span class="w"> </span><span class="err">│</span>
+<span class="err">└────┴────┘</span>
+<span class="err">┌────┬────┐</span>
+<span class="err">│</span><span class="m">7</span><span class="w"> </span><span class="na">⍨</span><span class="w"> </span><span class="err">│</span><span class="m">8</span><span class="w"> </span><span class="na">⍥</span><span class="w"> </span><span class="err">│</span>
+<span class="err">├────┼────┤</span>
+<span class="err">│</span><span class="m">9</span><span class="w"> </span><span class="na">⌿</span><span class="w"> </span><span class="err">│</span><span class="m">10</span><span class="w"> </span><span class="na">⍀</span><span class="err">│</span>
+<span class="err">├────┼────┤</span>
+<span class="err">│</span><span class="m">11</span><span class="w"> </span><span class="err">^│</span><span class="m">12</span><span class="w"> </span><span class="o">∧</span><span class="err">│</span>
+<span class="err">└────┴────┘</span>
+
+<span class="w">      </span><span class="c1">⍝ Transposing the array, the axes are now</span>
+
+<span class="w">      </span><span class="c1">⍝ first couple to second couple, first partner to second partner, head to toe</span>
+<span class="w">      </span><span class="c1">⍝ The last axis is filled by people from head to toe, then the middle axis switches partner, and the first axis switches couple</span>
+<span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="o">⍉</span><span class="nv">PEOPLE</span>
+<span class="na">⍣</span><span class="o">≢</span><span class="err">^</span>
+<span class="na">⍤</span><span class="no">⍬</span><span class="o">∧</span>
+
+<span class="na">⍨⌿</span><span class="err">^</span>
+<span class="na">⍥⍀</span><span class="o">∧</span>
+
+<span class="w">      </span><span class="c1">⍝ head to toe, first couple to second couple, first partner to second partner</span>
+<span class="w">      </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="o">⍉</span><span class="nv">PEOPLE</span>
+<span class="na">⍣⍤</span>
+<span class="na">⍨⍥</span>
+
+<span class="o">≢</span><span class="no">⍬</span>
+<span class="na">⌿⍀</span>
+
+<span class="err">^</span><span class="o">∧</span>
+<span class="err">^</span><span class="o">∧</span>
+
+<span class="w">      </span><span class="c1">⍝ first partner to second partner, head to toe, first couple to second couple</span>
+<span class="w">      </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="o">⍉</span><span class="nv">PEOPLE</span>
+<span class="na">⍣⍨</span>
+<span class="o">≢</span><span class="na">⌿</span>
+<span class="err">^^</span>
+
+<span class="na">⍤⍥</span>
+<span class="no">⍬</span><span class="na">⍀</span>
+<span class="o">∧∧</span>
+<span class="w">      </span><span class="c1">⍝ They swapped partners!</span>
+</code></pre></div>
+<p>The dyadic <code>⌽</code> <code>⊖</code> rotate functions rotate an array by an amount specific by the left argument, around a specific axis.</p>
+<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="m">3</span><span class="o">⌽</span><span class="na">¨</span><span class="s1">&#39;hotbloods&#39;</span><span class="w"> </span><span class="s1">&#39;mentally&#39;</span><span class="w"> </span><span class="s1">&#39;outbreak&#39;</span><span class="w"> </span><span class="s1">&#39;clean&#39;</span><span class="w"> </span><span class="s1">&#39;kyoto&#39;</span>
+<span class="nv">bloodshot</span><span class="w">  </span><span class="nv">tallymen</span><span class="w">  </span><span class="nv">breakout</span><span class="w">  </span><span class="nv">ancle</span><span class="w">  </span><span class="nv">tokyo</span>
+</code></pre></div>
+<p>Another example:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">SAD_EMOTICONS</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="s1">&#39;):&#39;</span><span class="w"> </span><span class="s1">&#39;:c&#39;</span><span class="w"> </span><span class="s1">&#39;]:&#39;</span><span class="w"> </span><span class="s1">&#39;)-:&#39;</span><span class="w"> </span><span class="s1">&#39;D:&#39;</span><span class="w"> </span><span class="s1">&#39;&gt;:(&#39;</span><span class="w"> </span><span class="s1">&#39;:/&#39;</span><span class="w"> </span><span class="s1">&#39;:x&#39;</span><span class="w"> </span><span class="s1">&#39;:|&#39;</span>
+</code></pre></div>
+<p>Notice that some of the sad emoticons can be turned into happy emoticons by reflecting the emoticon vertically, turning the frown upside down! The monadic ⌽ ⊖ reverse functions reflect an array along the horizontal (last) or vertical (first) axis.</p>
+<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="o">⌽</span><span class="w"> </span><span class="s1">&#39;):&#39;</span>
+<span class="bp">:</span><span class="p">)</span>
+<span class="w">       </span><span class="o">⌽</span><span class="w"> </span><span class="nv">SAD_EMOTICONS</span>
+<span class="bp">:</span><span class="o">|</span><span class="w">  </span><span class="bp">:</span><span class="nv">x</span><span class="w">  </span><span class="bp">:</span><span class="na">/</span><span class="w">  </span><span class="o">&gt;</span><span class="bp">:</span><span class="p">(</span><span class="w">  </span><span class="nv">D</span><span class="bp">:</span><span class="w">  </span><span class="p">)</span><span class="o">-</span><span class="bp">:</span><span class="w">  </span><span class="sr">]</span><span class="bp">:</span><span class="w">  </span><span class="bp">:</span><span class="nv">c</span><span class="w">  </span><span class="p">)</span><span class="bp">:</span>
+
+<span class="w">       </span><span class="o">⌽</span><span class="na">¨</span><span class="nv">SAD_EMOTICONS</span>
+<span class="w"> </span><span class="bp">:</span><span class="p">)</span><span class="w">  </span><span class="nv">c</span><span class="bp">:</span><span class="w">  </span><span class="bp">:</span><span class="sr">]</span><span class="w">  </span><span class="bp">:</span><span class="o">-</span><span class="p">)</span><span class="w">  </span><span class="bp">:</span><span class="nv">D</span><span class="w">  </span><span class="p">(</span><span class="bp">:</span><span class="o">&gt;</span><span class="w">  </span><span class="na">/</span><span class="bp">:</span><span class="w">  </span><span class="nv">x</span><span class="bp">:</span><span class="w">  </span><span class="o">|</span><span class="bp">:</span>
 </code></pre></div>
 
 

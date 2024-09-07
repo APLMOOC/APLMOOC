@@ -200,6 +200,9 @@ function animate() {
 
         var final_size;
         if(id.x == 0) final_size = new THREE.Vector3(2, 2, 2);
+
+        document.getElementById(orb.name).style = "position:absolute; left: " + (5 + orb.position.z) * 10 + "px; top: " + (100*(orb.position.x+5)/5 + (5 + orb.position.y)*5) + "px;";
+
         
         var tmp_array = []
         for(var i = 0; i < last; i++){
@@ -224,6 +227,7 @@ function animate() {
         context.font = 'Bold 30px Arial';
         context.fillStyle = 'white';
         context.fillText(`${(llerp(0, time, 0, 1) > 0)*array[0][id.y][id.z]+(llerp(1/rows, time, 0, 1) > 0)*array[1][id.y][id.z]+(llerp(2/rows, time, 0, 1) > 0)*array[2][id.y][id.z]}`, 0, 30);
+        document.getElementById(label.name).innerHTML = `${(llerp(0, time, 0, 1) > 0)*array[id.x][id.y][0]+(llerp(1/rows, time, 0, 1) > 0)*array[id.x][id.y][1]+(llerp(2/rows, time, 0, 1) > 0)*array[id.x][id.y][2]}`;
 
         const texture = new THREE.CanvasTexture(canvas);
         const spriteMaterial = new THREE.SpriteMaterial({ map: texture });

@@ -166,6 +166,49 @@ function delayed_quad(delay, t, initial, final){
 
 let orb_map = new Object();
 
+var raycaster = new THREE.Raycaster();
+
+addEventListener("mousemove", (event) => onMouseMove(event), false);
+var old_highlighted = null;
+var old_color = null;
+
+function onMouseMove(event) {
+    
+    var mouse = new THREE.Vector2();
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+    raycaster.setFromCamera(mouse, camera);
+
+    var intersects = raycaster.intersectObject(scene, true);
+
+
+
+    if (intersects.length > 0) {
+        var object = intersects[0].object;
+        if (object instanceof THREE.Mesh && object.name !== "") {
+            if (old_highlighted !== object) {
+                if (old_highlighted) {
+                    old_highlighted.material.color = old_color;
+                    document.getElementById(old_highlighted.name).style = "color: #d52a2a";
+                }
+                old_highlighted = object;
+                old_color = object.material.color.clone();
+                object.material.color.set(0x00ffff);
+                document.getElementById(object.name).style = "color: #00ffff";
+            }
+        }
+    } else {
+        if (old_highlighted) {
+            console.log(old_highlighted);
+            old_highlighted.material.color = old_color;
+            document.getElementById(old_highlighted.name).style = "color: #d52a2a";
+            old_highlighted = null;
+            old_color = null;
+        }
+    }
+}
+
 function animate() {
     requestAnimationFrame(animate);
     scene.remove(xAxis);

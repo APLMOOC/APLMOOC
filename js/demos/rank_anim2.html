@@ -5,7 +5,12 @@
 		<title>My first three.js app</title>
 		<style>
 			body { margin: 0; background-color: rgb(0, 0, 0); display: inline-flex;}
+			@font-face {
+				font-family: "APL385";
+				src:url('/styles/Apl385.ttf')
+			}
 		</style>
+
 	</head>
 	<body>		
 		<script type="importmap">
@@ -17,5 +22,18 @@
 		}
 	  </script>
 		<script type="module" src="/js/demos/rank_anim2.js"></script>
+		<p style="position:absolute;right:0;background-color: rgb(245, 245, 245);padding:16px;color:#d52a2a;font-size:21.12px;font-family:'APL385';width:100px;height:300px;" >
+			<span id="0 0 0"> 5</span><span id="0 0 1"> 2</span><span id="0 0 2"> 4</span> <br>      
+			<span id="0 1 0"> 9</span><span id="0 1 1"> 1</span><span id="0 1 2"> 4</span> <br>      
+			<span id="0 2 0"> 5</span><span id="0 2 1"> 8</span><span id="0 2 2"> 4</span> <br> 
+																									  
+			<span id="1 0 0"> 9</span><span id="1 0 1"> 5</span><span id="1 0 2"> 8</span> <br>      
+			<span id="1 1 0"> 5</span><span id="1 1 1"> 2</span><span id="1 1 2"> 2</span> <br>      
+			<span id="1 2 0"> 3</span><span id="1 2 1"> 2</span><span id="1 2 2"> 5</span> <br>
+																									  
+			<span id="2 0 0"> 2</span><span id="2 0 1"> 9</span><span id="2 0 2"> 4</span> <br>      
+			<span id="2 1 0"> 7</span><span id="2 1 1"> 2</span><span id="2 1 2">10</span> <br>      
+			<span id="2 2 0"> 7</span><span id="2 2 1">10</span><span id="2 2 2"> 6</span> <br> 
+		</p>
 	</body>
 </html>

@@ -1998,7 +1998,7 @@
         
   
   <span class="md-ellipsis">
-    7.2 - Branching and looping
+    7.2 - Traditional Functions
   </span>
   
 
@@ -2019,7 +2019,7 @@
         
   
   <span class="md-ellipsis">
-    7.3 - Execute and format
+    7.3 - Error Handling
   </span>
   
 
@@ -2315,9 +2315,9 @@
 <span class="err">├──────────────────────────────────────────────┼───────────────────┤</span>
 <span class="err">│</span><span class="nv">Looking</span><span class="w"> </span><span class="nv">for</span><span class="w"> </span><span class="nv">flyback</span><span class="w">                           </span><span class="err">│</span><span class="nv">pacAttack</span><span class="w">          </span><span class="err">│</span>
 <span class="err">├──────────────────────────────────────────────┼───────────────────┤</span>
-<span class="err">│</span><span class="w"> </span><span class="nv">CTCSS</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">NBFM</span><span class="w">                                </span><span class="err">│</span><span class="nv">Radiovangelist</span><span class="w">     </span><span class="err">│</span>
+<span class="err">│</span><span class="nv">CTCSS</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">NBFM</span><span class="w">                                 </span><span class="err">│</span><span class="nv">Radiovangelist</span><span class="w">     </span><span class="err">│</span>
 <span class="err">├──────────────────────────────────────────────┼───────────────────┤</span>
-<span class="err">│</span><span class="w"> </span><span class="m">455</span><span class="w"> </span><span class="nv">kHz</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="m">10.7</span><span class="w"> </span><span class="nv">MHz</span><span class="w"> </span><span class="nv">as</span><span class="w"> </span><span class="nv">intermediate</span><span class="w"> </span><span class="nv">freqs</span><span class="w">   </span><span class="o">|</span><span class="nv">Decibels_per_Kg</span><span class="w">    </span><span class="err">│</span>
+<span class="err">│</span><span class="m">455</span><span class="w"> </span><span class="nv">kHz</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="m">10.7</span><span class="w"> </span><span class="nv">MHz</span><span class="w"> </span><span class="nv">as</span><span class="w"> </span><span class="nv">intermediate</span><span class="w"> </span><span class="nv">freqs</span><span class="w">    </span><span class="o">|</span><span class="nv">Decibels_per_Kg</span><span class="w">    </span><span class="err">│</span>
 <span class="err">└──────────────────────────────────────────────┴───────────────────┘</span>
 </code></pre></div>
 <p>The depth of this array is the same as the depth of the above vector, since all values are boxed once.</p>
@@ -2331,25 +2331,25 @@
 <span class="m">3</span>
 </code></pre></div>
 <p>To pick an element from this array, we must provide an index vector where each element is a valid index for each layer of the array. In this case, we can provide two elements, since the depth is 2. Let's get the first element of this array</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="o">⊃</span><span class="nv">POSTS</span>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="o">⊃</span><span class="nv">POSTS</span>
 <span class="nv">RANK</span><span class="w"> </span><span class="nv">ERROR</span>
-<span class="w">      </span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="o">⊃</span><span class="nv">POSTS</span>
+<span class="w">      </span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="o">⊃</span><span class="nv">POSTS</span>
 <span class="w">             </span><span class="o">∧</span>
 </code></pre></div>
-<p>What happened here? The reason why this doesn't work is that (1 1 1) is not a single element, it is a vector of three elements. In order to turn data into a single element, a scalar, we can enclose ⊂ it in a box.</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">⊂</span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span>
+<p>What happened here? The reason why this doesn't work is that (1 2 1) is not a single element, it is a vector of three elements. In order to turn data into a single element, a scalar, we can enclose ⊂ it in a box.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">⊂</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span>
 <span class="err">┌─────┐</span>
-<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="err">│</span>
+<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="err">│</span>
 <span class="err">└─────┘</span>
-<span class="w">      </span><span class="p">(</span><span class="o">⊂</span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="o">⊃</span><span class="nv">POSTS</span>
-<span class="m">30</span><span class="o">-</span><span class="m">08</span><span class="o">-</span><span class="m">2024</span>
+<span class="w">      </span><span class="p">(</span><span class="o">⊂</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="o">⊃</span><span class="nv">POSTS</span>
+<span class="nv">Why</span><span class="w"> </span><span class="nv">does</span><span class="w"> </span><span class="nv">DVB</span><span class="o">-</span><span class="nv">C</span><span class="w"> </span><span class="nv">use</span><span class="w"> </span><span class="nv">QAM</span><span class="w"> </span><span class="nv">instead</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">OFDM</span><span class="o">?</span>
 
-<span class="w">      </span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="m">1</span>
+<span class="w">      </span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="m">1</span>
 <span class="err">┌─────┬─┐</span>
-<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="err">│</span><span class="m">1</span><span class="err">│</span>
+<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="err">│</span><span class="m">1</span><span class="err">│</span>
 <span class="err">└─────┴─┘</span>
-<span class="w">      </span><span class="p">((</span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="m">1</span><span class="p">)</span><span class="o">⊃</span><span class="nv">POSTS</span>
-<span class="m">3</span>
+<span class="w">      </span><span class="p">((</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="m">1</span><span class="p">)</span><span class="o">⊃</span><span class="nv">POSTS</span>
+<span class="nv">W</span>
 </code></pre></div>
 <p>Let's create a more nested example, posts with replies</p>
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">reply1</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="s1">&#39;30-08-2024&#39;</span><span class="w"> </span><span class="s1">&#39;19:22&#39;</span><span class="w"> </span><span class="s1">&#39;OFDM is more reliable and easily equalized over difficult channels like a radio link.&#39;</span><span class="w"> </span><span class="s1">&#39;RedScanLine&#39;</span>
@@ -2357,7 +2357,7 @@
 <span class="w">      </span><span class="nv">post1</span>
 <span class="err">┌──────────┬─────┬───────────────────────────────────────┬────────────────┬────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐</span>
 <span class="err">│</span><span class="m">30</span><span class="o">-</span><span class="m">08</span><span class="o">-</span><span class="m">2024</span><span class="err">│</span><span class="m">18</span><span class="bp">:</span><span class="m">52</span><span class="err">│</span><span class="nv">Why</span><span class="w"> </span><span class="nv">does</span><span class="w"> </span><span class="nv">DVB</span><span class="o">-</span><span class="nv">C</span><span class="w"> </span><span class="nv">use</span><span class="w"> </span><span class="nv">QAM</span><span class="w"> </span><span class="nv">instead</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">OFDM</span><span class="o">?</span><span class="err">│</span><span class="nv">frequencySniffer</span><span class="err">│┌──────────┬─────┬─────────────────────────────────────────────────────────────────────────────────────┬───────────┐│</span>
-<span class="err">│</span><span class="w">          </span><span class="err">│</span><span class="w">     </span><span class="err">│</span><span class="w">                                       </span><span class="err">│</span><span class="w">                </span><span class="err">││</span><span class="m">30</span><span class="o">-</span><span class="m">08</span><span class="o">-</span><span class="m">2024</span><span class="err">│</span><span class="m">19</span><span class="bp">:</span><span class="m">22</span><span class="err">│</span><span class="nv">OFDM</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">more</span><span class="w"> </span><span class="nv">reliable</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">easily</span><span class="w"> </span><span class="nv">equalized</span><span class="w"> </span><span class="nv">over</span><span class="w"> </span><span class="nv">difficult</span><span class="w"> </span><span class="nv">channels</span><span class="w"> </span><span class="nv">like</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">radio</span><span class="w"> </span><span class="nv">link</span><span class="na">.</span><span class="err">│</span><span class="nv">RedScamLine</span><span class="err">││</span>
+<span class="err">│</span><span class="w">          </span><span class="err">│</span><span class="w">     </span><span class="err">│</span><span class="w">                                       </span><span class="err">│</span><span class="w">                </span><span class="err">││</span><span class="m">30</span><span class="o">-</span><span class="m">08</span><span class="o">-</span><span class="m">2024</span><span class="err">│</span><span class="m">19</span><span class="bp">:</span><span class="m">22</span><span class="err">│</span><span class="nv">OFDM</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">more</span><span class="w"> </span><span class="nv">reliable</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">easily</span><span class="w"> </span><span class="nv">equalized</span><span class="w"> </span><span class="nv">over</span><span class="w"> </span><span class="nv">difficult</span><span class="w"> </span><span class="nv">channels</span><span class="w"> </span><span class="nv">like</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">radio</span><span class="w"> </span><span class="nv">link</span><span class="na">.</span><span class="err">│</span><span class="nv">RedScanLine</span><span class="err">││</span>
 <span class="err">│</span><span class="w">          </span><span class="err">│</span><span class="w">     </span><span class="err">│</span><span class="w">                                       </span><span class="err">│</span><span class="w">                </span><span class="err">│└──────────┴─────┴─────────────────────────────────────────────────────────────────────────────────────┴───────────┘│</span>
 <span class="err">└──────────┴─────┴───────────────────────────────────────┴────────────────┴────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘</span>
 

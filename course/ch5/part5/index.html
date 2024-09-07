@@ -1991,7 +1991,7 @@
         
   
   <span class="md-ellipsis">
-    7.2 - Branching and looping
+    7.2 - Traditional Functions
   </span>
   
 
@@ -2012,7 +2012,7 @@
         
   
   <span class="md-ellipsis">
-    7.3 - Execute and format
+    7.3 - Error Handling
   </span>
   
 
@@ -2216,6 +2216,90 @@
   <h1>5.5 - More searching and selecting</h1>
 
 <p>searching and selecting in higher dimensional arrays, also partition enclose</p>
+<p>You notice that the user 'YouKnowWho' had taken over several posts and replaced the author with themselves. You've exported an array of posts to look for any suspicious activity that might hint at how the forum was compromised.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">POSTS</span>
+<span class="err">┌──────────────────────────────────────────────┬───────────────────┐</span>
+<span class="err">│</span><span class="m">30</span><span class="o">-</span><span class="m">08</span><span class="o">-</span><span class="m">2024</span><span class="w">                                    </span><span class="err">│</span><span class="w">                   </span><span class="err">│</span>
+<span class="err">├──────────────────────────────────────────────┼───────────────────┤</span>
+<span class="err">│</span><span class="nv">Why</span><span class="w"> </span><span class="nv">does</span><span class="w"> </span><span class="nv">DVB</span><span class="o">-</span><span class="nv">C</span><span class="w"> </span><span class="nv">use</span><span class="w"> </span><span class="nv">QAM</span><span class="w"> </span><span class="nv">instead</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">OFDM</span><span class="o">?</span><span class="w">       </span><span class="err">│</span><span class="nv">frequencySniffer</span><span class="w">   </span><span class="err">│</span>
+<span class="err">├──────────────────────────────────────────────┼───────────────────┤</span>
+<span class="err">│</span><span class="nv">DAC</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">QPSK</span><span class="w"> </span><span class="nv">modulation</span><span class="w">                        </span><span class="err">│</span><span class="nv">radioComputer</span><span class="w">      </span><span class="err">│</span>
+<span class="err">├──────────────────────────────────────────────┼───────────────────┤</span>
+<span class="err">│</span><span class="w">                                              </span><span class="err">│</span><span class="w">                   </span><span class="err">│</span>
+<span class="err">├──────────────────────────────────────────────┼───────────────────┤</span>
+<span class="err">│</span><span class="w">                                              </span><span class="o">|</span><span class="w">                   </span><span class="err">│</span>
+<span class="err">└──────────────────────────────────────────────┴───────────────────┘</span>
+<span class="err">┌──────────────────────────────────────────────┬───────────────────┐</span>
+<span class="err">│</span><span class="m">29</span><span class="o">-</span><span class="m">08</span><span class="o">-</span><span class="m">2024</span><span class="w">                                    </span><span class="err">│</span><span class="w">                   </span><span class="err">│</span>
+<span class="err">├──────────────────────────────────────────────┼───────────────────┤</span>
+<span class="err">│</span><span class="nv">Nordtel</span><span class="w"> </span><span class="nv">OC3</span><span class="w"> </span><span class="nv">Express</span><span class="w">                           </span><span class="err">│</span><span class="nv">corporateRaider</span><span class="w">    </span><span class="err">│</span>
+<span class="err">├──────────────────────────────────────────────┼───────────────────┤</span>
+<span class="err">│</span><span class="nv">Record</span><span class="w"> </span><span class="nv">for</span><span class="w"> </span><span class="nv">longest</span><span class="w"> </span><span class="nv">television</span><span class="w"> </span><span class="nv">broadcast</span><span class="w">       </span><span class="err">│</span><span class="nv">YouKnowWho</span><span class="w">         </span><span class="err">│</span>
+<span class="err">├──────────────────────────────────────────────┼───────────────────┤</span>
+<span class="err">│</span><span class="nv">Book</span><span class="w"> </span><span class="nv">on</span><span class="w"> </span><span class="nv">Digital</span><span class="w"> </span><span class="nv">Signal</span><span class="w"> </span><span class="nv">Processing</span><span class="w">             </span><span class="err">│</span><span class="nv">vacuumTubed</span><span class="w">        </span><span class="err">│</span>
+<span class="err">├──────────────────────────────────────────────┼───────────────────┤</span>
+<span class="err">│</span><span class="nv">Trying</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">obtain</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">clear</span><span class="w"> </span><span class="nv">QAM</span><span class="w"> </span><span class="nv">signal</span><span class="w"> </span><span class="nv">from</span><span class="w"> </span><span class="nv">cable</span><span class="err">│</span><span class="nv">hadamardMardy</span><span class="w">      </span><span class="err">│</span>
+<span class="err">└──────────────────────────────────────────────┴───────────────────┘</span>
+<span class="err">┌──────────────────────────────────────────────┬───────────────────┐</span>
+<span class="err">│</span><span class="m">28</span><span class="o">-</span><span class="m">08</span><span class="o">-</span><span class="m">2024</span><span class="w">                                    </span><span class="err">│</span><span class="w">                   </span><span class="err">│</span>
+<span class="err">├──────────────────────────────────────────────┼───────────────────┤</span>
+<span class="err">│</span><span class="nv">Early</span><span class="w"> </span><span class="nv">color</span><span class="w"> </span><span class="nv">TV</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">Finland</span><span class="w">                     </span><span class="err">│</span><span class="nv">YouKnowWho</span><span class="w">         </span><span class="err">│</span>
+<span class="err">├──────────────────────────────────────────────┼───────────────────┤</span>
+<span class="err">│</span><span class="nv">Soviet</span><span class="w"> </span><span class="nv">Tube</span><span class="w"> </span><span class="nv">Substitute</span><span class="w"> </span><span class="nv">for</span><span class="w"> </span><span class="m">6</span><span class="nv">TGSN7</span><span class="w">             </span><span class="err">│</span><span class="nv">YouKnowWho</span><span class="w">         </span><span class="err">│</span>
+<span class="err">├──────────────────────────────────────────────┼───────────────────┤</span>
+<span class="err">│</span><span class="nv">OFDM</span><span class="o">,</span><span class="w"> </span><span class="nv">carriers</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">useful</span><span class="w"> </span><span class="nv">data</span><span class="w"> </span><span class="nv">symbol</span><span class="w"> </span><span class="nv">rate</span><span class="w">    </span><span class="err">│</span><span class="nv">YouKnowWho</span><span class="w">         </span><span class="err">│</span>
+<span class="err">├──────────────────────────────────────────────┼───────────────────┤</span>
+<span class="err">│</span><span class="nv">Varicap</span><span class="o">-</span><span class="nv">tuned</span><span class="w"> </span><span class="nv">filters</span><span class="w">                         </span><span class="err">│</span><span class="nv">thomasedison96</span><span class="w">     </span><span class="err">│</span>
+<span class="err">└──────────────────────────────────────────────┴───────────────────┘</span>
+<span class="err">┌──────────────────────────────────────────────┬───────────────────┐</span>
+<span class="err">│</span><span class="m">27</span><span class="o">-</span><span class="m">08</span><span class="o">-</span><span class="m">2024</span><span class="w">                                    </span><span class="err">│</span><span class="w">                   </span><span class="err">│</span>
+<span class="err">├──────────────────────────────────────────────┼───────────────────┤</span>
+<span class="err">│</span><span class="nv">How</span><span class="w"> </span><span class="nv">good</span><span class="w"> </span><span class="nv">was</span><span class="w"> </span><span class="nv">broadcast</span><span class="w"> </span><span class="nv">NTSC</span><span class="na">/</span><span class="nv">PAL</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">practice</span><span class="o">?</span><span class="w">  </span><span class="err">│</span><span class="nv">dataMoshpit</span><span class="w">        </span><span class="err">│</span>
+<span class="err">├──────────────────────────────────────────────┼───────────────────┤</span>
+<span class="err">│</span><span class="nv">Looking</span><span class="w"> </span><span class="nv">for</span><span class="w"> </span><span class="nv">flyback</span><span class="w">                           </span><span class="err">│</span><span class="nv">YouKnowWho</span><span class="w">         </span><span class="err">│</span>
+<span class="err">├──────────────────────────────────────────────┼───────────────────┤</span>
+<span class="err">│</span><span class="nv">CTCSS</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">NBFM</span><span class="w">                                 </span><span class="err">│</span><span class="nv">Radiovangelist</span><span class="w">     </span><span class="err">│</span>
+<span class="err">├──────────────────────────────────────────────┼───────────────────┤</span>
+<span class="err">│</span><span class="m">455</span><span class="w"> </span><span class="nv">kHz</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="m">10.7</span><span class="w"> </span><span class="nv">MHz</span><span class="w"> </span><span class="nv">as</span><span class="w"> </span><span class="nv">intermediate</span><span class="w"> </span><span class="nv">freqs</span><span class="w">    </span><span class="o">|</span><span class="nv">Decibels_per_Kg</span><span class="w">    </span><span class="err">│</span>
+<span class="err">└──────────────────────────────────────────────┴───────────────────┘</span>
+</code></pre></div>
+<p>This array is three dimensional, where each axis represents, respectively, Date, Post number, Post information.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="c1">⍝ First day of posts</span>
+<span class="w">      </span><span class="nv">POSTS</span><span class="sr">[</span><span class="m">1</span><span class="sr">;;]</span>
+<span class="err">┌───────────────────────────────────────┬────────────────┐</span>
+<span class="err">│</span><span class="m">30</span><span class="o">-</span><span class="m">08</span><span class="o">-</span><span class="m">2024</span><span class="w">                             </span><span class="err">│</span><span class="w">                </span><span class="err">│</span>
+<span class="err">├───────────────────────────────────────┼────────────────┤</span>
+<span class="err">│</span><span class="nv">Why</span><span class="w"> </span><span class="nv">does</span><span class="w"> </span><span class="nv">DVB</span><span class="o">-</span><span class="nv">C</span><span class="w"> </span><span class="nv">use</span><span class="w"> </span><span class="nv">QAM</span><span class="w"> </span><span class="nv">instead</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">OFDM</span><span class="o">?</span><span class="err">│</span><span class="nv">frequencySniffer</span><span class="err">│</span>
+<span class="err">├───────────────────────────────────────┼────────────────┤</span>
+<span class="err">│</span><span class="nv">DAC</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">QPSK</span><span class="w"> </span><span class="nv">modulation</span><span class="w">                 </span><span class="err">│</span><span class="nv">radioComputer</span><span class="w">   </span><span class="err">│</span>
+<span class="err">├───────────────────────────────────────┼────────────────┤</span>
+<span class="err">│</span><span class="w">                                       </span><span class="err">│</span><span class="w">                </span><span class="err">│</span>
+<span class="err">├───────────────────────────────────────┼────────────────┤</span>
+<span class="err">│</span><span class="w">                                       </span><span class="err">│</span><span class="w">                </span><span class="err">│</span>
+<span class="err">└───────────────────────────────────────┴────────────────┘</span>
+<span class="w">      </span><span class="c1">⍝ Second post from every day</span>
+<span class="w">      </span><span class="nv">POSTS</span><span class="sr">[;</span><span class="m">2</span><span class="sr">;]</span>
+<span class="err">┌────────────────────────────────────────────┬────────────────┐</span>
+<span class="err">│</span><span class="nv">Why</span><span class="w"> </span><span class="nv">does</span><span class="w"> </span><span class="nv">DVB</span><span class="o">-</span><span class="nv">C</span><span class="w"> </span><span class="nv">use</span><span class="w"> </span><span class="nv">QAM</span><span class="w"> </span><span class="nv">instead</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">OFDM</span><span class="o">?</span><span class="w">     </span><span class="err">│</span><span class="nv">frequencySniffer</span><span class="err">│</span>
+<span class="err">├────────────────────────────────────────────┼────────────────┤</span>
+<span class="err">│</span><span class="nv">Nordtel</span><span class="w"> </span><span class="nv">OC3</span><span class="w"> </span><span class="nv">Express</span><span class="w">                         </span><span class="err">│</span><span class="nv">corporateRaider</span><span class="w"> </span><span class="err">│</span>
+<span class="err">├────────────────────────────────────────────┼────────────────┤</span>
+<span class="err">│</span><span class="nv">Early</span><span class="w"> </span><span class="nv">color</span><span class="w"> </span><span class="nv">TV</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">Finland</span><span class="w">                   </span><span class="err">│</span><span class="nv">YouKnowWho</span><span class="w">      </span><span class="err">│</span>
+<span class="err">├────────────────────────────────────────────┼────────────────┤</span>
+<span class="err">│</span><span class="nv">How</span><span class="w"> </span><span class="nv">good</span><span class="w"> </span><span class="nv">was</span><span class="w"> </span><span class="nv">broadcast</span><span class="w"> </span><span class="nv">NTSC</span><span class="na">/</span><span class="nv">PAL</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">practice</span><span class="o">?</span><span class="err">│</span><span class="nv">dataMoshpit</span><span class="w">     </span><span class="err">│</span>
+<span class="err">└────────────────────────────────────────────┴────────────────┘</span>
+<span class="w">      </span><span class="c1">⍝ Username of every post</span>
+<span class="w">      </span><span class="nv">POSTS</span><span class="sr">[;;</span><span class="m">2</span><span class="sr">]</span>
+<span class="err">┌─┬────────────────┬─────────────┬──────────────┬───────────────┐</span>
+<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="nv">frequencySniffer</span><span class="err">│</span><span class="nv">radioComputer</span><span class="err">│</span><span class="w">              </span><span class="err">│</span><span class="w">               </span><span class="err">│</span>
+<span class="err">├─┼────────────────┼─────────────┼──────────────┼───────────────┤</span>
+<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="nv">corporateRaider</span><span class="w"> </span><span class="err">│</span><span class="nv">YouKnowWho</span><span class="w">   </span><span class="err">│</span><span class="nv">vacuumTubed</span><span class="w">   </span><span class="err">│</span><span class="nv">hadamardMardy</span><span class="w">  </span><span class="err">│</span>
+<span class="err">├─┼────────────────┼─────────────┼──────────────┼───────────────┤</span>
+<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="nv">YouKnowWho</span><span class="w">      </span><span class="err">│</span><span class="nv">YouKnowWho</span><span class="w">   </span><span class="err">│</span><span class="nv">YouKnowWho</span><span class="w">    </span><span class="err">│</span><span class="nv">thomasedison96</span><span class="w"> </span><span class="err">│</span>
+<span class="err">├─┼────────────────┼─────────────┼──────────────┼───────────────┤</span>
+<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="nv">dataMoshpit</span><span class="w">     </span><span class="err">│</span><span class="nv">YouKnowWho</span><span class="w">   </span><span class="err">│</span><span class="nv">Radiovangelist</span><span class="err">│</span><span class="nv">Decibels_per_Kg</span><span class="err">│</span>
+<span class="err">└─┴────────────────┴─────────────┴──────────────┴───────────────┘</span>
+</code></pre></div>
 
 
 
