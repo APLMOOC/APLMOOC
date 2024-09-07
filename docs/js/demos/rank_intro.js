@@ -166,6 +166,29 @@ function delayed_quad(delay, t, initial, final){
 
 let orb_map = new Object();
 
+var raycaster = new THREE.Raycaster();
+
+addEventListener("mousemove", (event) => onMouseMove(event), false);
+
+function onMouseMove(event) {
+    console.log("Mouse moved");
+    var mouse = new THREE.Vector2();
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+    raycaster.setFromCamera(mouse, camera);
+
+    var intersects = raycaster.intersectObject(scene, true);
+
+    if (intersects.length > 0) {
+
+        var object = intersects[0].object;
+
+        object.material.color.set( Math.random() * 0xffffff );
+
+    }
+}
+
 function animate() {
     requestAnimationFrame(animate);
     scene.remove(xAxis);
