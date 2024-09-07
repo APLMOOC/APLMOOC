@@ -270,7 +270,7 @@ The way to solve this is to swap the Week and User axes to get an array of the f
 ├────────────────┼────────────────┤
 │6               │8               │
 └────────────────┴────────────────┘
-``
+```
 
 Removing the labels
 
