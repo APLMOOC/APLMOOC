@@ -8,6 +8,8 @@
 
 ---
 
+<link rel="stylesheet" href="/styles/ch5part2.css">
+
 The astute reader may have noticed that, although the vector data is much more structured, the dates and times of the measurements have been completely forgotten.
 
 One solution is to use more vectors to organize this data. We represent dates here using floating-point decimal encoded format. This format stores the dates as decimal numbers, where the integer part stores the year, month, and day, and the fractional part stores the hour, minute, and second, yyyymmdd.hhmmss.
