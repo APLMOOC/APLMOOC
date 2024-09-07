@@ -81,21 +81,12 @@ for(let i = 0; i < last; i++){
             orb.name=`${i} ${j} ${k}`;
             orbs.push(orb);
             scene.add(orb);
-            // const labelPosition = orb.position.clone().add(new THREE.Vector3(0,2,0));
-            // const textSprite = createTextSprite(`${array[i][j][k]}`, labelPosition, 30, 30);
-            // textSprite.name=`${i} ${j} ${k}`
-            // if(i*j*k!=0) textSprite.renderOrder=10;
-            // scene.add(textSprite);
-            // labels.push(textSprite);
+            const labelPosition = orb.position.clone().add(new THREE.Vector3(0,2,0));
+            const textSprite = createTextSprite(`${array[i][j][k]}`, labelPosition, 30, 30);
+            textSprite.name=`${i} ${j} ${k}`
+            scene.add(textSprite);
+            labels.push(textSprite);
 
-            const labelPosition2 = orb.position.clone().add(new THREE.Vector3(0,2,0));
-            const textSprite2 = createTextSprite(`(${i+1},${j+1},${k+1}) ${array[i][j][k]}`, labelPosition2, 130, 30);
-            textSprite2.name=`${i} ${j} ${k}`
-            textSprite2.scale.add(new THREE.Vector3(3,0,0))
-            if(i*j*k==0){ 
-                scene.add(textSprite2); 
-                labels.push(textSprite2);
-            }
         }
     }
 }
@@ -144,6 +135,73 @@ document.addEventListener('keydown', (event) => {
 let xAxis, yAxis, zAxis;
 
 let clock = new THREE.Clock();
+
+
+var raycaster = new THREE.Raycaster();
+
+addEventListener("mousemove", (event) => onMouseMove(event), false);
+var colors = [0x000000, 0xff0000, 0x00ff00, 0x0000ff];
+
+function blendColors(colorA, colorB, colorC) {
+    if(!colorB){
+        return '#' + colorA;
+    }
+    const [rA, gA, bA] = colorA.match(/\w\w/g).map((c) => parseInt(c, 16));
+    const [rB, gB, bB] = colorB.match(/\w\w/g).map((c) => parseInt(c, 16));
+    if(!colorC){
+        return '#' + Math.round((rA + rB) / 2).toString(16).padStart(2, '0') + Math.round((gA + gB) / 2).toString(16).padStart(2, '0') + Math.round((bA + bB) / 2).toString(16).padStart(2, '0');
+    }
+    const [rC, gC, bC] = colorC.match(/\w\w/g).map((c) => parseInt(c, 16));
+    return '#' + Math.round((rA + rB + rC) / 3).toString(16).padStart(2, '0') + Math.round((gA + gB + gC) / 3).toString(16).padStart(2, '0') + Math.round((bA + bB + bC) / 3).toString(16).padStart(2, '0');
+}
+
+function onMouseMove(event) {
+    
+    var mouse = new THREE.Vector2();
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+    raycaster.setFromCamera(mouse, camera);
+
+    var intersects = raycaster.intersectObject(scene, true);
+
+
+    
+    if (intersects.length > 0) {
+        while(!(object instanceof THREE.Mesh && object.name != "")){
+            if (intersects.length == 0){
+                return;
+            }
+            var object = intersects[0].object;
+            intersects.shift();
+        }
+        
+            cube.position.set(0,object.position.y,0);
+            cube1.position.set(0,0,object.position.z);
+            cube2.position.set(object.position.x,0,0);
+            
+            for(let i = 0;i < 3;i++){
+                for(let j = 0;j < 3;j++){
+                    for(let k = 0;k < 3;k++){
+                        var cs = [];
+                        var conditions = [i-1 == object.position.x/spacing, j-1 == object.position.y/spacing, k-1 == object.position.z/spacing];
+
+                        for(let l = 0; l < 3; l++){
+                            if(conditions[l]){
+                                cs.push(colors[l+1]);
+                            }
+                        }
+                        
+                        var color = blendColors(...cs.map(c => c.toString(16).padStart(6, '0')));
+                        
+                        document.getElementById(`${i} ${j} ${k}`).style = "background-color: " + color;
+                        
+                    }
+                }
+            }
+        }
+        
+}
 
 function delayed_lerp(delay, t, initial, final){
     var xi = initial.clone();
