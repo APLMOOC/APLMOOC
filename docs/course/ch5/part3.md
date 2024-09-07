@@ -103,7 +103,7 @@ Consider the following random 3-dimensional array
 7 10 6
 ```
 
-It is visualized in 3-dimensional space as follows. Click and drag on the 3D view to orbit the array, use the scroll wheel to zoom in and out.
+It is visualized in 3-dimensional space as follows. Click and drag on the 3D view to orbit the array, use the scroll wheel to zoom in and out. Move your mouse over a ball to see it highlighted.
 
 <div style="aspect-ratio: 1 / 1; width: 100%;">
     <iframe  src="\js\demos\rank_intro.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%;"></iframe>
