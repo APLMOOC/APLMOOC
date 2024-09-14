@@ -17,6 +17,7 @@ theme:
   features:
     - navigation.tabs
     - nagivation.top
+    - navigation.footer
     - content.code.annotate
   font:
     code: APL385
@@ -24,6 +25,13 @@ markdown_extensions:
   - md_in_html
   - pymdownx.arithmatex:
       generic: true
+copyright: Contact us <u><a href="https://docs.google.com/forms/d/e/1FAIpQLSdp_GHoS9uLPCAj-807tW-ZZ8Km8f3n1Gkr5YgCQ9taWPFj2w/viewform">here</a></u>. Anonymous messages welcome.
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/APLMOOC/APLMOOC
+      name: GitHub
 extra_css:
   - styles/main.css
   - https://unpkg.com/katex@0/dist/katex.min.css
