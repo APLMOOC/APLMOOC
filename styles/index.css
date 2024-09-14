@@ -1,0 +1,6 @@
+.md-sidebar{
+    display: none;
+}
+div.md-sidebar:nth-child(2){
+    display:none;
+}
