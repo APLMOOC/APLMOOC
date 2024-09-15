@@ -77,6 +77,16 @@ otherworldlier
 │super│sonic│ally│
 └─────┴─────┴────┘
 
+      (1=4|⍳12) ⊂ 'showmanships'
+┌────┬────┬────┐
+│show│mans│hips│
+└────┴────┴────┘
+
+      (1=4|⍳10) ⊂ 'workfellow'
+┌────┬────┬──┐
+│work│fell│ow│
+└────┴────┴──┘
+
       1 1 1 1 ⊂ 'bars'
 ┌─┬─┬─┬─┐
 │b│a│r│s│
@@ -200,4 +210,62 @@ This array is three dimensional, where each axis represents, respectively, Date,
 │ │dataMoshpit     │YouKnowWho   │Radiovangelist│Decibels_per_Kg│
 └─┴────────────────┴─────────────┴──────────────┴───────────────┘
 ```
-// write about ⍷ and ⌸ with nested arrays
+
+Obtaining the indices of 'YouKnowWho' using ⍷ where
+
+```apl
+      'YouKnowWho' ⍷ POSTS[;;2]
+0 0 0 0 0
+0 0 0 0 0
+0 0 0 0 0
+0 0 0 0 0
+```
+
+we run into a problem. The where ⍷ function returns all zeroes! The reason for this is that 'YouKnowWho' really isn't in the array, only the box that contains 'YouKnowWho'
+
+```apl
+      POSTS[;;2][2;3]
+┌──────────┐
+│YouKnowWho│
+└──────────┘
+```
+
+Then, replacing 'YouKnowWho' with ⊂'YouKnowWho',
+
+```apl
+      (⊂'YouKnowWho') ⍷ POSTS[;;2]
+0 0 0 0 0
+0 0 1 0 0
+0 1 1 1 0
+0 0 1 0 0
+      ⍸(⊂'YouKnowWho') ⍷ POSTS[;;2]
+┌───┬───┬───┬───┬───┐
+│2 3│3 2│3 3│3 4│4 3│
+└───┴───┴───┴───┴───┘
+      POSTS[;;1][⍸(⊂'YouKnowWho') ⍷ POSTS[;;2]]
+┌───────────────────────────────────────┬─────────────────────────┬─────────────────────────────────┬─────────────────────
+│Record for longest television broadcast│Early color TV in Finland│Soviet Tube Substitute for 6TGSN7│OFDM, carriers and us
+└───────────────────────────────────────┴─────────────────────────┴─────────────────────────────────┴─────────────────────
+      ─────────────────────┬───────────────────┐
+      eful data symbol rate│Looking for flyback│
+      ─────────────────────┴───────────────────┘
+```
+
+Nothing yet, maybe if you take the first letter of each title?
+
+```apl
+      ↑POSTS[;;1][⍸(⊂'YouKnowWho') ⍷ POSTS[;;2]]
+Record for longest television broadcast   
+Early color TV in Finland                 
+Soviet Tube Substitute for 6TGSN7         
+OFDM, carriers and useful data symbol rate
+Looking for flyback    
+
+      (↑POSTS[;;1][⍸(⊂'YouKnowWho') ⍷ POSTS[;;2]])[;1]
+RESOL
+
+      ⌽(↑POSTS[;;1][⍸(⊂'YouKnowWho') ⍷ POSTS[;;2]])[;1]
+LOSER
+```
+
+You decide to show the forum down.
