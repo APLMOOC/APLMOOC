@@ -388,6 +388,8 @@ The exercises are not checked or graded: use them to check your knowledge!
               +\HOMEWORK[1],-2-/HOMEWORK
         1 1 2 2 4 0 1
         ```
+        
+        The first number is the total number of hours spent on homework, the second is the cumulative number of hours, the third the difference in number of hours between the days.
 
         Notice that the cumulative sum of the first element of HOMEWORK with the first differences of HOMEWORK is the same as HOMEWORK itself. If you know a little calculus, this might look familiar as the integral of the derivative being the same function up to a constant C.
 ---
