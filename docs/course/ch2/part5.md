@@ -6,6 +6,7 @@
     - How to catenate vectors properly
 
 ---
+<link rel="stylesheet" href="/styles/ch5part2.css">
 
 Be warned, elements of arrays can be vectors, or matrices, or arrays of higher rank as well! We will discuss this in depth in Chapter 5, so take this section as a word of warning.
 
