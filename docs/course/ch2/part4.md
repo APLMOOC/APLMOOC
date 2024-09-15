@@ -32,8 +32,6 @@ and access dates and times using the same index;
 00010101.084700
 ```
 
-There is a built-in function to deal with dates and times, the ⎕DT command, which will be introduced in chapter 3.
-
 However, this lack of structure is exactly what introducing vectors was supposed to solve; two closely related pieces of information, the time of a measurement and the value of the measurement, are kept separate when they should logically be part of the same collection of data. Measurement data of this form are usually stored in tables, and it is only natural to try to store them in the same manner in a computer system.
 
 You decide to start over yet again, and decide to store data in a matrix instead
