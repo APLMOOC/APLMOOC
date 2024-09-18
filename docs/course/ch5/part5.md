@@ -268,4 +268,4 @@ RESOL
 LOSER
 ```
 
-You decide to show the forum down.
+You decide to shut the forum down.
