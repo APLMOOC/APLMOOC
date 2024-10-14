@@ -160,7 +160,16 @@ lier
 └──────────────────────────────────────────────┴───────────────────┘
 ```
 
-This array is three dimensional, where each axis represents, respectively, Date, Post order, Post information.
+A similar function is the partition ⊆ function, which acts a little differently based on its left argument array than the partitioned enclose ⊂ function. Zeroes indicate dropped elements, and partitions begin when the elements increase in value.
+
+```apl
+      0 0 0 1 1 0 0 0 1 2 0 0⊆'flamethrower'
+┌──┬─┬─┐
+│me│o│w│
+└──┴─┴─┘
+```
+
+The array of posts is three dimensional, where each axis represents, respectively, Date, Post order, Post information.
 
 ```apl
       ⍝ First day of posts
