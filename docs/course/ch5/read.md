@@ -58,3 +58,44 @@ The exercises are not checked or graded: use them to check your knowledge!
         The union ∪ function adds to the left array elements of the right array not already in the right array.
 
 ---
+
+
+!!! question "Read problem 3"
+
+    === "Input"
+    
+        ```apl
+              words
+        the of and to a in for is on that ...
+              mots
+        de la à le et les des une en un ...
+              sanat
+        on ei ja se hän en mitä että ole olen ...
+        
+              words ∩ mots
+        
+              words ∩ sanat
+              
+              mots ∩ sanat
+              
+        ```
+
+    === "Output"
+
+        ```apl
+              words
+        the of and to a in for is on that ...
+              mots
+        de la à le et les des une en un ...
+              sanat
+        on ei ja se hän en mitä että ole olen ...
+
+              words ∩ mots
+        est par plus son dont sans premier pays fin place millions site chef grand ensemble formation moment match public service question tour services ... 
+              words ∩ sanat
+        on he anna kai no asia asian auto oven ok lisa radio join uni
+              mots ∩ sanat
+        en plus son se ne fin loi peloton rien aura bon moi voit toi vois saisit union
+        ```
+
+---
