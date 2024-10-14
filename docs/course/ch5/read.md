@@ -119,3 +119,21 @@ The exercises are not checked or graded: use them to check your knowledge!
         ```
 
 ---
+
+!!! question "Read problem 5"
+
+    === "Input"
+    
+        ```apl
+              (⊂'re'),¨'play' 'cord' 'peat' 'serve' 'quest' 'present'
+
+        ```
+
+    === "Output"
+
+        ```apl
+              (⊂'re'),¨'play' 'cord' 'peat' 'serve' 'quest' 'present'
+        replay  record  repeat  reserve  request  represent
+        ```
+
+---
