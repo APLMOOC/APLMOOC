@@ -137,3 +137,39 @@ The exercises are not checked or graded: use them to check your knowledge!
         ```
 
 ---
+
+!!! question "Read problem 6"
+
+    === "Input"
+    
+        ```apl
+              arrow
+         ▉▉    
+         ▉▉    
+         ▉▉    
+        ▉▉▉▉   
+         ▉▉    
+              ⍉arrow
+              
+        ```
+
+    === "Output"
+
+        ```apl
+              arrow
+         ▉▉    
+         ▉▉    
+         ▉▉    
+        ▉▉▉▉   
+         ▉▉    
+              ⍉arrow
+           ▉ 
+        ▉▉▉▉▉
+        ▉▉▉▉▉
+           ▉ 
+      
+      
+      
+        ```
+
+---
