@@ -23,6 +23,38 @@ The exercises are not checked or graded: use them to check your knowledge!
         fad
         ```
 
-        The set difference ~ operator removes all occurences of the right-hand array elements from the left-hand array
+        The set difference ~ function removes all occurences of the right-hand array elements from the left-hand array
+
+---
+
+!!! question "Read problem 2"
+
+    === "Input"
+    
+        ```apl
+              'platform'∪'formatting'
+        
+              'emergency'∪'encyclopedia'
+
+              'networking'∪'kingdom'
+
+              'spring'∪'ringtone'
+
+        ```
+
+    === "Output"
+
+        ```apl
+              'platform'∪'formatting'
+        platforming
+              'emergency'∪'encyclopedia
+        emergencylopdia
+              'network'∪'kingdom'
+        networkingdom
+              'spring'∪'ringtone'
+        springtoe
+        ```
+
+        The union ∪ function adds to the left array elements of the right array not already in the right array.
 
 ---
