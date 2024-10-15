@@ -307,4 +307,47 @@ It is equivalent to bracket indexing, but can be used like any other operator.
 19 22 25
 ```
 
-//Add ,⍤0⍤1
+It is also possible to pair up cells of different rank using the rank operator by specifying an integer array right argument.
+
+```apl
+      3 3 ⍴ ⎕A
+ABC
+DEF
+GHI
+
+      3 3 ⍴ ⍳9
+1 2 3
+4 5 6
+7 8 9
+
+      (3 3 ⍴ ⎕A) (,⍤1) (3 3 ⍴ ⍳9)
+ABC 1 2 3
+DEF 4 5 6
+GHI 7 8 9
+
+      (3 3 ⍴ ⎕A) (,⍤1 2) (3 3 ⍴ ⍳9)
+A 1 2 3
+B 4 5 6
+C 7 8 9
+       
+D 1 2 3
+E 4 5 6
+F 7 8 9
+       
+G 1 2 3
+H 4 5 6
+I 7 8 9
+
+      (3 3 ⍴ ⎕A) (,⍤2 1) (3 3 ⍴ ⍳9)
+ABC 1
+DEF 2
+GHI 3
+     
+ABC 4
+DEF 5
+GHI 6
+     
+ABC 7
+DEF 8
+GHI 9
+```
