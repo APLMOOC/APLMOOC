@@ -173,3 +173,38 @@ The exercises are not checked or graded: use them to check your knowledge!
         ```
 
 ---
+
+
+!!! question "Read problem 7"
+
+    === "Input"
+    
+    
+        ```apl
+              'm'{(⍺≠⍵)⊆⍵}'nonemployments'
+
+
+
+              'i'(≠⊆⊢)'pestilentially'
+
+
+
+        ```
+
+    === "Output"
+
+        ```apl
+              'm'{(⍺≠⍵)⊆⍵}'nonemployments'
+        ┌────┬────┬────┐
+        │none│ploy│ents│
+        └────┴────┴────┘
+              'i'(≠⊆⊢)'pestilentially'
+        ┌────┬────┬────┐
+        │pest│lent│ally│
+        └────┴────┴────┘
+        ```
+
+        The second function is a tacit form of the first function.
+
+---
+
