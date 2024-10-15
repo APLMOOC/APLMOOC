@@ -89,7 +89,7 @@ This isn't multiplication, it's exponentiation! What's going on here?
     Mathematicians love weird and funny symbols.
 
     This was the time before Unicode, the standard way in which we encode characters today, was invented.
-    As such, the creators were free to invent any typewriter symbols they wanted (yes, APL was written on a typewriter),
+    As such, the creators were free to invent any typewriter symbols they wanted (yes, [APL was written on a typewriter](https://www.youtube.com/watch?v=_DTpQ4Kk2wA)),
     and added a lot of special symbols that look really cool but aren't found on any modern keyboards.
     There are lots of symbols implemented in Unicode even today
     just because they were invented by APL'ers before any proper standards were written.
