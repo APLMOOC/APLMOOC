@@ -63,6 +63,8 @@ The exercises are not checked or graded: use them to check your knowledge!
 !!! question "Read problem 3"
 
     === "Input"
+
+        The following three arrays contain arrays of words in different languages, what kind of arrays will the following code output?
     
         ```apl
               words
@@ -89,11 +91,14 @@ The exercises are not checked or graded: use them to check your knowledge!
         de la à le et les des une en un ...
               sanat
         on ei ja se hän en mitä että ole olen ...
-
+              
+              ⍝ Words in both English and French
               words ∩ mots
         est par plus son dont sans premier pays fin place millions site chef grand ensemble formation moment match public service question tour services ... 
+              ⍝ Words in both English and Finnish
               words ∩ sanat
         on he anna kai no asia asian auto oven ok lisa radio join uni
+              ⍝ Words in both Finnish and French
               mots ∩ sanat
         en plus son se ne fin loi peloton rien aura bon moi voit toi vois saisit union
         ```
@@ -117,6 +122,8 @@ The exercises are not checked or graded: use them to check your knowledge!
               ('re'),¨'play' 'cord' 'peat' 'serve' 'quest' 'present'
                     ∧
         ```
+
+        What the previous code attempts to do is catenate each element of the left array, 'r' and 'e', with the right array, but the lengths clearly do not match.
 
 ---
 
@@ -213,6 +220,7 @@ The exercises are not checked or graded: use them to check your knowledge!
 
     === "Input"
     
+        The following code makes heavy use of the ⍨ commute operator, try rewriting it using parentheses to figure out what it does.
     
         ```apl
               ↓↑1,⍨¨0/⍨¨1-⍨⍳5
@@ -297,5 +305,7 @@ The exercises are not checked or graded: use them to check your knowledge!
         ███    ███
         ████  ████
         ```
+
+        (/⍤1 2) matches the 1-cells of the left-hand argument with the 2-cells of the right-hand argument. Since the right-hand array is only 1-dimensional, a 2-cell is interpreted as the whole array instead of returning an error. That is, the rows of the left-hand array are matched with the whole of the right-hand array.
 
 ---
