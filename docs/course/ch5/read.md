@@ -309,3 +309,35 @@ The exercises are not checked or graded: use them to check your knowledge!
         (/⍤1 2) matches the 1-cells of the left-hand argument with the 2-cells of the right-hand argument. Since the right-hand array is only 1-dimensional, a 2-cell is interpreted as the whole array instead of returning an error. That is, the rows of the left-hand array are matched with the whole of the right-hand array.
 
 ---
+
+!!! question "Read problem 9"
+
+    === "Input"
+    
+    
+        ```apl
+              ⎕ ← v ← 2*⍳10
+              
+              ⍴v
+
+              ⍉⍪v
+
+              ⍴⍉⍪v
+        ```
+
+    === "Output"
+
+        ```apl
+              ⎕ ← v ← 2*⍳10
+        2 4 8 16 32 64 128 256 512 1024
+              ⍴v
+        10
+              ⍉⍪v
+        2 4 8 16 32 64 128 256 512 1024
+              ⍴⍉⍪v
+        1 10
+        ```
+
+        The phrase ⍉⍪ can be used to turn a vector into a matrix.
+
+---
