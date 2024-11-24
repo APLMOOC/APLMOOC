@@ -310,7 +310,7 @@ The exercises are not checked or graded: use them to check your knowledge!
 
 ---
 
-!!! question "Read problem 9"
+!!! question "Read problem 11"
 
     === "Input"
     
@@ -339,5 +339,33 @@ The exercises are not checked or graded: use them to check your knowledge!
         ```
 
         The phrase ⍉⍪ can be used to turn a vector into a matrix.
+
+---
+
+!!! question "Read problem 12"
+
+    === "Input"
+    
+    
+        ```apl
+              ⎕ ← M ← ⍉⍪2*⍳10
+              
+              ⎕ ← M ⍪← 3*⍳10
+              
+              M,⍪'XY'
+        ```
+
+    === "Output"
+
+        ```apl
+              ⎕ ← M ← ⍉⍪2*⍳10
+        2 4 8 16 32 64 128 256 512 1024
+              M⍪3*⍳10
+        2 4  8 16  32  64  128  256   512  1024
+        3 9 27 81 243 729 2187 6561 19683 59049
+              M,⍪'XY'
+        2 4  8 16  32  64  128  256   512  1024 X
+        3 9 27 81 243 729 2187 6561 19683 59049 Y
+        ```
 
 ---
