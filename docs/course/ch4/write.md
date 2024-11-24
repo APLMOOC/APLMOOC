@@ -199,7 +199,7 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     OG CPD HXQO 
     ```
     
-    Hint: One way is to use ∊ member of and +\ plus scan
+    Hint: One way is to create a random string of the right length including spaces, then use the function of the previous exercise to place the spaces
 
     <div class="problem">
         <span class="problemspan">PHRASE←</span>
