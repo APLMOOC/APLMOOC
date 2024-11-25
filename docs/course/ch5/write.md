@@ -130,3 +130,36 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     <p id="feedback_ch5_p4" style="color: red"></p>
 
 ---
+
+!!! write-problem "Write problem 5"
+    
+    Write a function to add an extra floor number column to a hotel reservation array. The floor number is always the first digit of the room number. 
+
+    ```apl
+          bookings
+    ┌─────────┬──────────┬───┐
+    │Jari N.  │2024-12-01│427│
+    ├─────────┼──────────┼───┤
+    │Erik O.  │2024-12-01│506│
+    ├─────────┼──────────┼───┤
+    │Michel A.│2024-12-03│315│
+    └─────────┴──────────┴───┘
+          floor bookings
+    ┌─────────┬──────────┬───┬─┐
+    │Jari N.  │2024-12-01│427│4│
+    ├─────────┼──────────┼───┼─┤
+    │Erik O.  │2024-12-01│506│5│
+    ├─────────┼──────────┼───┼─┤
+    │Michel A.│2024-12-03│315│3│
+    └─────────┴──────────┴───┴─┘
+    ```
+    
+
+    <div class="problem">
+        <span class="problemspan">floor←</span>
+        <input class="probleminput" type="text" id="input_ch5_p5" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch5_p5', 2)">Submit</button>
+    </div>
+    <p id="feedback_ch5_p5" style="color: red"></p>
+
+---
