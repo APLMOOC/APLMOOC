@@ -135,7 +135,7 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 
 !!! write-problem "Write problem 5"
     
-    Write a function to add an extra floor number column to a hotel reservation array. The floor number is always the first digit of the room number, which is stored as a string.
+    Write a function to add an extra floor number column to a hotel reservation array. The floor number is always the first digit of the room number, which is stored as a character vector.
 
     ```apl
           bookings
@@ -352,5 +352,40 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
         <button class="problembutton" onclick="submit_problem('ch5_p11', 2)">Submit</button>
     </div>
     <p id="feedback_ch5_p11" style="color: red"></p>
+
+---
+
+
+!!! write-problem "Write problem 12"
+    
+    Write a function that takes in a right argument character vector and returns the matrix that the character vector represents.
+
+    The character vector will have elements seprated by commas, 1-cells separated by semicolons, and 2-cells seprated by colons.
+
+    ```apl
+          a
+    a,b,c,d;e,f,g,h:1,2,3,4;5,6,7,8
+    
+          array a
+    ┌─┬─┬─┬─┐
+    │a│b│c│d│
+    ├─┼─┼─┼─┤
+    │e│f│g│h│
+    └─┴─┴─┴─┘
+    ┌─┬─┬─┬─┐
+    │1│2│3│4│
+    ├─┼─┼─┼─┤
+    │5│6│7│8│
+    └─┴─┴─┴─┘
+    ```
+
+    Hint: Use the partition ⊆ function
+
+    <div class="problem">
+        <span class="problemspan">array←</span>
+        <input class="probleminput" type="text" id="input_ch5_p12" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch5_p12', 2)">Submit</button>
+    </div>
+    <p id="feedback_ch5_p12" style="color: red"></p>
 
 ---
