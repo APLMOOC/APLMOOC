@@ -17,7 +17,7 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 
 !!! write-problem "Write problem 2"
     
-    Write a function to add a new entry at the top of the following leaderboard array as right argument ⍵ with a score of 1000000 with the name "PhotonFury".
+    Write a function to add a new entry at the top of the following leaderboard array as right argument ⍵ with a score of 1000000 with a name given by a left argument ⍺.
 
     ```apl
           leaderboard
@@ -32,7 +32,7 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     ├────────────┼──────┤
     │AlienNation │545990│
     └────────────┴──────┘
-          cheat leaderboard
+          'PhotonFury' cheat leaderboard
     ┌────────────┬───────┐
     │PhotonFury  │1000000│
     ├────────────┼───────┤
@@ -58,7 +58,39 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 
 ---
 
+
 !!! write-problem "Write problem 3"
+    
+    Write a function to filter for all flights on the date given as a right function argument ⍵
+
+    ```apl
+          flights
+    ┌─────────┬─────────┬───────────┬──────────┬─────┐
+    │Jari N.  │Helsinki │Tallinn    │2024-12-01│08:00│
+    ├─────────┼─────────┼───────────┼──────────┼─────┤
+    │Erik O.  │Stockholm│Gothenburg │2024-12-01│14:00│
+    ├─────────┼─────────┼───────────┼──────────┼─────┤
+    │Michel A.│London   │Los Angeles│2024-12-03│11:30│
+    └─────────┴─────────┴───────────┴──────────┴─────┘
+          flights on_date '2024-12-01'
+    ┌─────────┬─────────┬───────────┬──────────┬─────┐
+    │Jari N.  │Helsinki │Tallinn    │2024-12-01│08:00│
+    ├─────────┼─────────┼───────────┼──────────┼─────┤
+    │Erik O.  │Stockholm│Gothenburg │2024-12-01│14:00│
+    └─────────┴─────────┴───────────┴──────────┴─────┘
+    ```
+    
+
+    <div class="problem">
+        <span class="problemspan">on_date←</span>
+        <input class="probleminput" type="text" id="input_ch5_p4" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch5_p4', 2)">Submit</button>
+    </div>
+    <p id="feedback_ch5_p4" style="color: red"></p>
+
+---
+
+!!! write-problem "Write problem 4"
     
     Given an array of cities with their latitudes and longitudes as right argument ⍵, create a function to return a matrix of absolute differences in their latitude and longitudes in the following format
 
@@ -91,7 +123,7 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     
 
     <div class="problem">
-        <span class="problemspan">cheat←</span>
+        <span class="problemspan">distance←</span>
         <input class="probleminput" type="text" id="input_ch5_p2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch5_p2', 2)">Submit</button>
     </div>
@@ -100,40 +132,10 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 ---
 
 
-!!! write-problem "Write problem 4"
-    
-    Write a function to filter for all flights on the first of december
-
-    ```apl
-          flights
-    ┌─────────┬─────────┬───────────┬──────────┬─────┐
-    │Jari N.  │Helsinki │Tallinn    │2024-12-01│08:00│
-    ├─────────┼─────────┼───────────┼──────────┼─────┤
-    │Erik O.  │Stockholm│Gothenburg │2024-12-01│14:00│
-    ├─────────┼─────────┼───────────┼──────────┼─────┤
-    │Michel A.│London   │Los Angeles│2024-12-03│11:30│
-    └─────────┴─────────┴───────────┴──────────┴─────┘
-          filter flights
-    ┌─────────┬─────────┬───────────┬──────────┬─────┐
-    │Jari N.  │Helsinki │Tallinn    │2024-12-01│08:00│
-    ├─────────┼─────────┼───────────┼──────────┼─────┤
-    │Erik O.  │Stockholm│Gothenburg │2024-12-01│14:00│
-    └─────────┴─────────┴───────────┴──────────┴─────┘
-    ```
-    
-
-    <div class="problem">
-        <span class="problemspan">filter←</span>
-        <input class="probleminput" type="text" id="input_ch5_p4" placeholder="your solution here">
-        <button class="problembutton" onclick="submit_problem('ch5_p4', 2)">Submit</button>
-    </div>
-    <p id="feedback_ch5_p4" style="color: red"></p>
-
----
 
 !!! write-problem "Write problem 5"
     
-    Write a function to add an extra floor number column to a hotel reservation array. The floor number is always the first digit of the room number. 
+    Write a function to add an extra floor number column to a hotel reservation array. The floor number is always the first digit of the room number, which is stored as a string.
 
     ```apl
           bookings
@@ -166,7 +168,7 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 
 !!! write-problem "Write problem 6"
     
-    Write a function to group an array of hotel bookings by floor
+    Write a function to group an array of hotel bookings by floor.
 
     ```apl
           bookings
@@ -195,6 +197,36 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 
     <div class="problem">
         <span class="problemspan">group←</span>
+        <input class="probleminput" type="text" id="input_ch5_p6" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch5_p6', 2)">Submit</button>
+    </div>
+    <p id="feedback_ch5_p6" style="color: red"></p>
+
+---
+
+!!! write-problem "Write problem 7"
+    
+    Write a function to turn the elements of a matrix into proportions of the sum of their row.
+
+    ```apl
+          matrix
+    0 0 0 0 1
+    0 0 0 1 1
+    1 1 1 1 1
+    0 0 0 3 1
+    0 1 1 1 1
+          proportion matrix
+    0   0    0    0    1   
+    0   0    0    0.5  0.5 
+    0.2 0.2  0.2  0.2  0.2 
+    0   0    0    0.75 0.25
+    0   0.25 0.25 0.25 0.25
+    
+    ```
+    
+
+    <div class="problem">
+        <span class="problemspan">proportion←</span>
         <input class="probleminput" type="text" id="input_ch5_p6" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch5_p6', 2)">Submit</button>
     </div>
