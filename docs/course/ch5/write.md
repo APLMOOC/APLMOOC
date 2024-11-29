@@ -233,3 +233,23 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     <p id="feedback_ch5_p6" style="color: red"></p>
 
 ---
+
+!!! write-problem "Write problem 8"
+    
+    Write a function to group runs of elements which are equal.
+
+    ```apl
+          runs 1 1 9 9 9 2 2 3 4 4
+    ┌───┬─────┬───┬─┬───┐
+    │1 1│9 9 9│2 2│3│4 4│
+    └───┴─────┴───┴─┴───┘
+    ```
+
+    <div class="problem">
+        <span class="problemspan">runs←</span>
+        <input class="probleminput" type="text" id="input_ch5_p6" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch5_p6', 2)">Submit</button>
+    </div>
+    <p id="feedback_ch5_p6" style="color: red"></p>
+
+---
