@@ -83,10 +83,10 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 
     <div class="problem">
         <span class="problemspan">on_date←</span>
-        <input class="probleminput" type="text" id="input_ch5_p4" placeholder="your solution here">
-        <button class="problembutton" onclick="submit_problem('ch5_p4', 2)">Submit</button>
+        <input class="probleminput" type="text" id="input_ch5_p3" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch5_p3', 2)">Submit</button>
     </div>
-    <p id="feedback_ch5_p4" style="color: red"></p>
+    <p id="feedback_ch5_p3" style="color: red"></p>
 
 ---
 
@@ -124,10 +124,10 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 
     <div class="problem">
         <span class="problemspan">distance←</span>
-        <input class="probleminput" type="text" id="input_ch5_p2" placeholder="your solution here">
-        <button class="problembutton" onclick="submit_problem('ch5_p2', 2)">Submit</button>
+        <input class="probleminput" type="text" id="input_ch5_p4" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch5_p4', 2)">Submit</button>
     </div>
-    <p id="feedback_ch5_p2" style="color: red"></p>
+    <p id="feedback_ch5_p4" style="color: red"></p>
 
 ---
 
@@ -227,10 +227,10 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 
     <div class="problem">
         <span class="problemspan">proportion←</span>
-        <input class="probleminput" type="text" id="input_ch5_p6" placeholder="your solution here">
-        <button class="problembutton" onclick="submit_problem('ch5_p6', 2)">Submit</button>
+        <input class="probleminput" type="text" id="input_ch5_p7" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch5_p7', 2)">Submit</button>
     </div>
-    <p id="feedback_ch5_p6" style="color: red"></p>
+    <p id="feedback_ch5_p7" style="color: red"></p>
 
 ---
 
@@ -247,10 +247,10 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 
     <div class="problem">
         <span class="problemspan">runs←</span>
-        <input class="probleminput" type="text" id="input_ch5_p6" placeholder="your solution here">
-        <button class="problembutton" onclick="submit_problem('ch5_p6', 2)">Submit</button>
+        <input class="probleminput" type="text" id="input_ch5_p8" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch5_p8', 2)">Submit</button>
     </div>
-    <p id="feedback_ch5_p6" style="color: red"></p>
+    <p id="feedback_ch5_p8" style="color: red"></p>
 
 ---
 
@@ -297,10 +297,10 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 
     <div class="problem">
         <span class="problemspan">trig_table←</span>
-        <input class="probleminput" type="text" id="input_ch5_p6" placeholder="your solution here">
-        <button class="problembutton" onclick="submit_problem('ch5_p6', 2)">Submit</button>
+        <input class="probleminput" type="text" id="input_ch5_p9" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch5_p9', 2)">Submit</button>
     </div>
-    <p id="feedback_ch5_p6" style="color: red"></p>
+    <p id="feedback_ch5_p9" style="color: red"></p>
 
 ---
 
@@ -311,9 +311,46 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 
     <div class="problem">
         <span class="problemspan">nonzero←</span>
-        <input class="probleminput" type="text" id="input_ch5_p6" placeholder="your solution here">
-        <button class="problembutton" onclick="submit_problem('ch5_p6', 2)">Submit</button>
+        <input class="probleminput" type="text" id="input_ch5_p10" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch5_p10', 2)">Submit</button>
     </div>
-    <p id="feedback_ch5_p6" style="color: red"></p>
+    <p id="feedback_ch5_p10" style="color: red"></p>
+
+---
+
+!!! write-problem "Write problem 11"
+    
+    Write a function to remove all 2-cells of a matrix with sum less than 10.
+
+    ```apl
+          M
+    1  1  1
+    1  1  1
+    1  1  1
+            
+    1  2  3
+    4  5  6
+    7  8  9
+            
+    10 11 12
+    13 14 15
+    16 17 18
+
+          significant M
+    1  2  3
+    4  5  6
+    7  8  9
+            
+    10 11 12
+    13 14 15
+    16 17 18
+    ```
+
+    <div class="problem">
+        <span class="problemspan">significant←</span>
+        <input class="probleminput" type="text" id="input_ch5_p11" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch5_p11', 2)">Submit</button>
+    </div>
+    <p id="feedback_ch5_p11" style="color: red"></p>
 
 ---
