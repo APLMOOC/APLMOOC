@@ -303,3 +303,17 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     <p id="feedback_ch5_p6" style="color: red"></p>
 
 ---
+
+
+!!! write-problem "Write problem 10"
+    
+    Write a function to remove all zero columns from a matrix.
+
+    <div class="problem">
+        <span class="problemspan">nonzero←</span>
+        <input class="probleminput" type="text" id="input_ch5_p6" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch5_p6', 2)">Submit</button>
+    </div>
+    <p id="feedback_ch5_p6" style="color: red"></p>
+
+---
