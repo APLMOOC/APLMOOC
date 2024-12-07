@@ -160,7 +160,7 @@ Then, using the bracket-axis notation, is it possible to obtain all 3 possible r
     <iframe  src="\js\demos\rank_anim1.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%;"></iframe>
 </div>
 
-Note that there is also a different method of specifying axes for functions which is more general than bracket-axis notation, since it behaves consistently and can be applied to any arbitrary function. The rank ⍤ operator allows for such general axis specification of a function left argument, via an integer right argument which specifies what rank cells to act on. 
+Note that there is also a different method of specifying axes for functions which is more general than bracket-axis notation, since it behaves consistently and can be applied to any arbitrary function. The rank ``⍤`` operator allows for such general axis specification of a function left argument, via an integer right argument which specifies what rank cells to act on. 
 
 An n-cell of a rank r array is a rank n array formed from picking (r-n) indices from that array. Some n-cells of the above array are
 
@@ -178,7 +178,7 @@ An n-cell of a rank r array is a rank n array formed from picking (r-n) indices 
 5
 ```
 
-As an example, we study the action of the rank operator ⍤ on the plus reduce +⌿ function, +⌿⍤n. For n=3, the modified plus reduce function +⌿⍤3 acts on the 3-cells of the array. Since the whole array is of rank 3, there is only one 3-cell which is the array itself. Then, +⌿⍤3 is equivalent to the action of the plus reduce +⌿ function on the whole array, adding up terms along its leading axis.
+As an example, we study the action of the rank operator ``⍤`` on the plus reduce ``+⌿`` function, ``+⌿⍤n``. For n=3, the modified plus reduce function ``+⌿⍤3`` acts on the 3-cells of the array. Since the whole array is of rank 3, there is only one 3-cell which is the array itself. Then, ``+⌿⍤3`` is equivalent to the action of the plus reduce ``+⌿`` function on the whole array, adding up terms along its leading axis.
 
 ```apl
       (+⌿⍤3)M
@@ -191,7 +191,7 @@ As an example, we study the action of the rank operator ⍤ on the plus reduce +
 15 20 15
 ```
 
-For n=2, +⌿⍤2 acts on the 2-cells of the array. The 2-cells of the array are the cells M[1;;], M[2;;], and M[3;;].
+For n=2, ``+⌿⍤2`` acts on the 2-cells of the array. The 2-cells of the array are the cells ``M[1;;]``, ``M[2;;]``, and ``M[3;;]``.
 
 ```apl
      M[1;;]
@@ -208,7 +208,7 @@ For n=2, +⌿⍤2 acts on the 2-cells of the array. The 2-cells of the array are
 7 10  6
 ```
 
-The leading axis of these 2-cells is vertical, hence the plus reduce first +⌿ function will return the sum of the columns of these arrays.
+The leading axis of these 2-cells is vertical, hence the plus reduce first ``+⌿`` function will return the sum of the columns of these arrays.
 
 ```apl
       +⌿M[1;;]
@@ -217,22 +217,19 @@ The leading axis of these 2-cells is vertical, hence the plus reduce first +⌿ 
 17 9 15
       +⌿M[3;;]
 16 21 20
-```
 
-Then, the action of +⌿⍤2 on the original array is equivalent to adding up along its second axis.
-
-```apl
       (+⌿⍤2)M
 19 11 12
 17  9 15
 16 21 20
+
       +⌿[2]M
 19 11 12
 17  9 15
 16 21 20
 ```
 
-Similarly, for n=1, the action of (+⌿⍤1) on the array is adding up its 1-cells, which is equivalent to adding along its last axis.
+Similarly, for n=1, the action of ``+⌿⍤1`` on the array is adding up its 1-cells, which is equivalent to adding along its last axis.
 
 ```apl
       M[1;1;]
@@ -257,7 +254,7 @@ Similarly, for n=1, the action of (+⌿⍤1) on the array is adding up its 1-cel
 15 19 23
 ```
 
-An operator form of (partially) indexing a matrix, such as M[1;3;], is given by the squad (”squish quad”) indexing ⌷ operator. 
+An operator form of (partially) indexing a matrix, such as ``M[1;3;]``, is given by the squad (”squish quad”) indexing ``⌷`` operator. 
 ```apl
       M[1;3;]
 5 8 4

@@ -378,7 +378,7 @@ Removing the labels
 ├────────────────┼────────────────┤
 │6               │8               │
 └────────────────┴────────────────┘
- ```
+```
 
  Finally obtaining the replies per user per day
 
@@ -406,7 +406,7 @@ Removing the labels
 ├────────────────┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┤
 │Radiovangelist  │6 │8 │9 │7 │8 │5 │7 │9 │5 │11│10│6 │6 │8 │
 └────────────────┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┘
- ```
+```
 
 
 More examples of transpose
@@ -494,9 +494,9 @@ Notice that some of the sad emoticons can be turned into happy emoticons by refl
        ⌽ '):'
 :)
        ⌽ SAD_EMOTICONS
-:|  :x  :/  >:(  D:  )-:  ]:  :c  ):
+): :c ]: )-: D: >:( :/ :x :| 
 
        ⌽¨SAD_EMOTICONS
- :)  c:  :]  :-)  :D  (:>  /:  x:  |:
+:) c: :] :-) :D (:> /: x: |:
 
 ```
