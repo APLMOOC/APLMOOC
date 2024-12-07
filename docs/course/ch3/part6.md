@@ -70,7 +70,7 @@ Nothing seems to be happening, adding a ⎕ quad to look at intermediate values,
 ...
 ```
 
-They quickly halt the program using ``Action > Interrupt`` in RIDE, through a rush of fear and excitement. realising an infinite number of computations have been specified with a finite number of symbols, by calling the function within itself. The special symbol `∇` can also be used in place of the function name. Trying to do this for the infinite sum,
+They quickly halt the program using ``Action > Interrupt`` in RIDE, realising an infinite number of computations have been specified with a finite number of symbols, by calling the function within itself. The special symbol `∇` can also be used in place of the function name. Trying to do this for the infinite sum,
 
 ```apl
       sum ← {
@@ -94,7 +94,7 @@ They quickly halt the program using ``Action > Interrupt`` in RIDE, through a ru
 
 The above function takes in a right argument ⍵ and a left argument ⍺. It displays the right argument ⍵, then applies the function again incrementing the left argument ⍺ by one, and adding ``0.99*⍺`` to the right argument ⍵. Expanding it out, ``0 sum 0`` gives ``⎕ ← 0`` and ``(0+1) sum 0.99*0`` which is ``1 sum 1``, giving ``⎕ ← 1`` and ``2 sum 1.99``, and so on. That is, the right argument sums up ``(0.99*0)+(0.99*1)+(0.99*2)+...`` using the left argument to keep track of what term comes next.
 
-However, infinite computations on their own will never be terminate on finite machines, and hence not useful for real computations. Thankfully, there is a way to stop and control these infinite computations, using guarded expressions.
+However, infinite computations on their own will never be terminate on finite machines, and hence not useful for real computations. Thankfully, there is a way to stop these infinite computations when a certain condition is reached, using guarded expressions.
 
 Guarded expressions are conditional expressions; they only execute a statement if some condition holds. The engineer rewrites the function, this time stopping the computation if the terms get smaller than ``10*¯10``,
 
