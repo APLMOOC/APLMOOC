@@ -7,6 +7,8 @@
 
 ---
 
+<link rel="stylesheet" href="/styles/ch5part2.css">
+
 Your training as a climate sceintist has prepared you to deal with measurement of real-life systems, which can have a large amount of noise that has to be dealt with before making any inferences. Trying to test your data reduction methods on the computer, you first generate artificially noisy data.
 
 The monadic `?` roll function generates a random number for every scalar in its right argument, from 1 to the value of that scalar. 
@@ -150,7 +152,7 @@ To get a moving average, the windowed reduce function can be applied to the + pl
 
 A pretty good reconstruction of the data!
 
-Given the large number of temperature readings, it is also possible to sort ascending and descending using the grade up `⍋` and grade down `⍒` functions.
+Given the large number of temperature readings, it would be helpful to know how to sort ascending and descending using the grade up `⍋` and grade down `⍒` functions.
 
 The grade up `⍋` and grade down `⍒` functions return indices of elements of  its right argument in ascending or descending order.
 
