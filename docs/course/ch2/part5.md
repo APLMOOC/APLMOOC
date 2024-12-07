@@ -8,7 +8,9 @@
 ---
 <link rel="stylesheet" href="/styles/ch5part2.css">
 
-Be warned, elements of arrays can be vectors, or matrices, or arrays of higher rank as well! We will discuss this in depth in Chapter 5, so take this section as a word of warning.
+Be warned, elements of arrays can be vectors, or matrices, or arrays of higher rank in their own right! 
+
+We will discuss this in depth in Chapter 5, so take this section as a word of warning.
 
 Look what happens when we try to create the new temperature matrix from the already existing temperature vectors
 
@@ -30,7 +32,7 @@ Look what happens when we try to create the new temperature matrix from the alre
 └───────────────────────────────┴──────────────────────────────┘
 ```
 
-compared to the expected result, which is
+Compared to the expected result, which is
 
 ```apl
 21.4 00010101.074200 

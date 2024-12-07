@@ -171,7 +171,7 @@ Index matrix, square
 ---
 
 !!! write-problem "Write problem 9"
-    Given the coefficients list C of a quadratic $P(x) = C[1] x^2 + C[2] x + C[3]$, evaluate the polynomial for a value X. For example, for C ← 1 2 3, and X ← 10, this should evaluate to $ 1 \cdot 10^2 + 2 \cdot 10 + 3 = 123 $.
+    Given the coefficients list C of a quadratic $P(x) = C[1] x^2 + C[2] x + C[3]$, evaluate the polynomial for a value X. For example, for ``C ← 1 2 3``, and ``X ← 10``, this should evaluate to $ 1 \cdot 10^2 + 2 \cdot 10 + 3 = 123 $.
     <div class="problem">
         <span class="problemspan">⎕←</span>
         <input class="probleminput" type="text" id="input_ch2_p9" placeholder="your solution here">

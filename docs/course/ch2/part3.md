@@ -7,11 +7,15 @@
 
 ---
 
-You might wonder, why would we want to put a bunch of numbers inside a vector? Is it just to organise data? Let’s say you mistakenly bought a bunch of measuring equipment from America, and only found out later that all the readings are in Fahrenheit. Terrible news! After about 2000 milliseconds of googling about it, you found this formula to convert it into Celsius:
+<link rel="stylesheet" href="/styles/ch5part2.css">
+
+You might wonder, is there any additional benefit to putting data in vectors beyond just organising data? 
+
+After you've made all your measurements, you suddenly realise that all the American temperature sensors have been giving values in Fahrenheit! Terrible news! After about 2000 milliseconds of googling, you find the formula to convert them to better units:
 
 Celsius = (Fahrenheit - 32) * 5 / 9
 
-To test it out, you looked up the current room temperature reading, which says 72.1. Doing the calculation in APL:
+To test it out, you try to convert the current room temperature reading of 72.1. Doing the calculation in APL:
 
 ```apl
       (5 × 72.1 - 32) ÷ 9
@@ -24,14 +28,14 @@ Great! What’s not so great is that the temperature sensor has been left genera
       TEMP_F ← 71.2 71.4 73.3 73.0 73.1 72.8 72.5
 ```
 
-You are going to spend ages plugging the data from this one sensor, and you have 200 of them lying around! Fortunately, APL is designed to deal with data assorted in a vector. You can:
+It would take you much longer than your legally mandated lunch break to convert the data from this sensor, and there are 200 of them lying around! Fortunately, APL is designed to process vector data. You can write the following
 
 ```apl
       ⎕ ← TEMP_CELSIUS ← (5 × TEMP_F - 32) ÷ 9
 21.77777778 21.88888889 22.94444444 22.77777778 22.83333333 22.66666667 22.5
 ```
 
-There’s all the Celsius! What’s going on here?
+That's all in Celsius! What’s going on here?
 
 In APL, all the basic arithmetic functions apply to all the elements of a vector. If you are familiar with functional programming, you might know the `map` function, which applies a function to each element of a vector. In APL, this is done automatically for all the basic arithmetic functions, if one of the parameters is a scalar:
 

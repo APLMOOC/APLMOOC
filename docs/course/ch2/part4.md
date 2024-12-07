@@ -12,9 +12,14 @@
 
 The astute reader may have noticed that, although the vector data is much more structured, the dates and times of the measurements have been completely forgotten.
 
-One solution is to use more vectors to organize this data. We represent dates here using floating-point decimal encoded format. This format stores the dates as decimal numbers, where the integer part stores the year, month, and day, and the fractional part stores the hour, minute, and second, yyyymmdd.hhmmss.
+First, we need a format to represent dates and times. For now, we will represent dates using floating-point decimal encoded format. 
 
-For example, 20240806.070130 is year 2024, month 08, day 06, hour 05, minute 01, and second 30.
+This format stores the dates as decimal numbers, where the integer part stores the year, month, and day, and the fractional part stores the hour, minute, and second. For example, the time with year 2024, month 08, day 06, hour 05, minute 01, and second 30, is represented as ``20240806.070130``.
+
+!!! info "Dates and times"
+     In a later chapter, we will learn how to deal with dates and times properly with the datetime ``⎕DT`` function.
+
+Then, we will need a way to store the datetime data. One solution is to use two vectors instead of one, where each element of the measurement vector has a corresponding element in the time vector.
 
 ```apl
       TEMPERATURE_PAGE1 ← 21.4 21.8 22.0 21.5 21.3 22.3
@@ -23,18 +28,20 @@ For example, 20240806.070130 is year 2024, month 08, day 06, hour 05, minute 01,
       TEMPERATURE_PAGE2_DATE ← 00010101.182300 00010101.193000 00010101.211200 00010102.071500 00010102.083000 00010102.094500
 ```
 
-and access dates and times using the same index;
+For the second measurement, 
 
-```apl
+```
       TEMPERATURE_PAGE1[2]
 21.8
       TEMPERATURE_PAGE1_DATE[2]
 00010101.084700
 ```
 
+We can see that the temperature is 21.8 degrees, and the time is year 0001, month 01, day 01, hour 08, minute 47, and second 00.
+
 However, this lack of structure is exactly what introducing vectors was supposed to solve; two closely related pieces of information, the time of a measurement and the value of the measurement, are kept separate when they should logically be part of the same collection of data. Measurement data of this form are usually stored in tables, and it is only natural to try to store them in the same manner in a computer system.
 
-You decide to start over yet again, and decide to store data in a matrix instead
+You decide to start over yet again, and store data in a matrix instead
 
 ```apl
       TEMPERATURE_PAGE1 ← 6 2 ⍴ 21.4 00010101.074200 21.8 00010101.084700 22.0 00010101.101000 21.5 00010101.120100 21.3 00010101.143600 22.3 00010101.165000
@@ -57,7 +64,7 @@ Matrices are rectangles of data. They can be created by reshaping (⍴) a vector
 	
 	The former function is the monadic function associated to the symbol ⍴, and the latter is the dyadic function associated with the symbol ⍴. 
 
-The reshape function acts by returning an array whose entries are the entries of its right argument, and whose axes are specified by a vector of integers as its left argument, more concretely,
+The reshape function takes a vector of elements as its right argument, and reshapes them to fit the dimensions specified by the left argument. Concretely, turning the temperature data from a vector to a 6 by 2 matrix
 
 ```apl
       TEMPERATURE_DATA ← 21.4 00010101.074200 21.8 00010101.084700 22.0 00010101.101000 21.5 00010101.120100 21.3 00010101.143600 22.3 00010101.165000
@@ -71,7 +78,7 @@ The reshape function acts by returning an array whose entries are the entries of
       ⍝ The reshaped matrix has 6 rows and 2 columns
 ```
 
-turns the vector TEMPERATURE_DATA into a matrix with axes of length six and two, consisting of the entries in TEMPERATURE_DATA.
+Another example is the following 5 by 5 pyramid
 
 ```apl
      PYRAMID_ENTRIES ← 1 1 1 1 1 1 2 2 2 1 1 2 3 2 1 1 2 2 2 1 1 1 1 1 1 1
@@ -83,7 +90,7 @@ turns the vector TEMPERATURE_DATA into a matrix with axes of length six and two,
 1 1 1 1 1
 ```
 
-*Strings* in APL are vectors of characters, defined using single quotes. The useful ⎕A system constant stores the upper-case english alphabet 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.
+*Strings* in APL are vectors of characters, defined using single quotes. The useful ``⎕A`` constant stores the upper-case english alphabet 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.
 
 ```
       WORD ← 'STONE'
@@ -120,13 +127,16 @@ The shape (monadic ⍴) function acts on one array, its right argument, by retur
       TEMPERATURE_PAGE1 ← 6 2 ⍴ TEMPERATURE_DATA
       ⍴TEMPERATURE_PAGE1
 6 2
-      ⍴100 ⍝ The shape of a scalar is the empty list
+      ⍴100 ⍝ (1)
 
-      ⍴⎕A ⍝ Number of letters in the alphabet
+      ⍴⎕A ⍝ (2)
 26
 ```
 
-Since elements in matrices are ordered along two axes, an element of a matrix can be specified by two position, the row and column. If only a row position (or column position) is specified, the whole row (or column) is returned.
+1. A scalar has no axes, and so the result is an empty vector
+2. The number of letters in the english alphabet
+
+Since elements in matrices are ordered along two axes, an element of a matrix can be specified by two position, the row and column. If only a row position (or column position) is specified, the whole row (respectively, column) is returned.
 
 ```apl
 
