@@ -412,66 +412,45 @@ Removing the labels
 More examples of transpose
 
 ```apl
-      PEOPLE ← 2 3 2 ⍴ '⍣⍤≢⍬^∧⍨⍥⌿⍀^∧'
-      ⍝ The first axis is from first couple to second couple, the second axis is from head to toe, the third axis is from first partner to second partner
-      PEOPLE
-⍣⍤
-≢⍬
-^∧
-  
-⍨⍥
-⌿⍀
-^∧
-      ⍝ Convince yourself of what was said above, remember that the last axis is the one that is filled first
-      (⍳12){⍺ ⍵}¨PEOPLE
-┌────┬────┐
-│1 ⍣ │2 ⍤ │
-├────┼────┤
-│3 ≢ │4 ⍬ │
-├────┼────┤
-│5 ^ │6 ∧ │
-└────┴────┘
-┌────┬────┐
-│7 ⍨ │8 ⍥ │
-├────┼────┤
-│9 ⌿ │10 ⍀│
-├────┼────┤
-│11 ^│12 ∧│
-└────┴────┘
+      SYMBOLS ← 2 3 2 ⍴ 'A1B2C3あ一い二う三'
+      ⍝ The first axis is from English to Japanese, the second axis is alphanumeric order, and the third axis is from letters to numbers
+      SYMBOLS
+A1
+B2
+C3
 
-      ⍝ Transposing the array, the axes are now
+あ一
+い二
+う三
 
-      ⍝ first couple to second couple, first partner to second partner, head to toe
-      ⍝ The last axis is filled by people from head to toe, then the middle axis switches partner, and the first axis switches couple
-      1 3 2⍉PEOPLE
-⍣≢^
-⍤⍬∧
+      ⍝ Transposing the last two axes, so that the second axis is now from letters to numbers
+      1 3 2⍉SYMBOLS
+ABC
+123
    
-⍨⌿^
-⍥⍀∧
+あいう
+一二三
 
-      ⍝ head to toe, first couple to second couple, first partner to second partner
-      2 1 3⍉PEOPLE
-⍣⍤
-⍨⍥
+      ⍝ Transposing the first two axis, so that the first axis is now alphanumeric order
+      2 1 3⍉SYMBOLS
+A1
+あ一
   
-≢⍬
-⌿⍀
+B2
+い二
   
-^∧
-^∧
+C3
+う三
 
-      ⍝ first partner to second partner, head to toe, first couple to second couple
-      3 2 1⍉PEOPLE
-⍣⍨
-≢⌿
-^^
+      ⍝ Transposing the first and last axis, so that the first axis is now letters to numbers
+      3 2 1⍉SYMBOLS
+Aあ
+Bい
+Cう
   
-⍤⍥
-⍬⍀
-∧∧
-      ⍝ They swapped partners!
-
+1一
+2二
+3三
 ```
 
 
