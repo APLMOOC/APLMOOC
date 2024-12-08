@@ -108,7 +108,6 @@ If we picture the image as being in front of the camera, with the camera facing 
        ,∘1¨(((⍳5 5)÷5)-⊂0.6 0.6)
 ┌───────────┬───────────┬────────┬──────────┬──────────┐
 │¯0.4 ¯0.4 1│¯0.4 ¯0.2 1│¯0.4 0 1│¯0.4 0.2 1│¯0.4 0.4 1│
-
 ├───────────┼───────────┼────────┼──────────┼──────────┤
 │¯0.2 ¯0.4 1│¯0.2 ¯0.2 1│¯0.2 0 1│¯0.2 0.2 1│¯0.2 0.4 1│
 ├───────────┼───────────┼────────┼──────────┼──────────┤
@@ -195,8 +194,8 @@ We can construct this vector by calculating how much the distance function chang
 ```apl
        small ← 0.0001 0 0
        P ← 2 0 0
-	     Δenv_x ← (env (P+small)) - env (P-small)
-	     Δenv_x
+	Δenv_x ← (env (P+small)) - env (P-small)
+	Δenv_x
 0.0002
 ```
 
@@ -205,25 +204,16 @@ We can use the rotate ⌽ operator to make the small vector in the y and z direc
 ```apl
        1 ⌽ small
 0 0 0.0001
-       (⌽∘(0.0001 0 0))¨3 2 1
+
+       ⎕ ← small_xyz ← (⌽∘small)¨⌽⍳3
 ┌──────────┬──────────┬──────────┐
 │0.0001 0 0│0 0.0001 0│0 0 0.0001│
 └──────────┴──────────┴──────────┘
-       ⌽⍳3
-3 2 1
-       (⌽∘small)¨⌽⍳3
-┌──────────┬──────────┬──────────┐
-│0.0001 0 0│0 0.0001 0│0 0 0.0001│
-└──────────┴──────────┴──────────┘
-       P ((env+)-(env-))⍨ small
-0.0002
-       P ((env+)-(env-))⍨((⌽∘(0.0001 0 0))¨⌽⍳3)
-┌──────────┐
-│0.0002 0 0│
-└──────────┘
-       ⊃ P ((env+)-(env-))⍨((⌽∘(0.0001 0 0))¨⌽⍳3)
+
+       P ((env+)-(env-))¨ small_xyz
 0.0002 0 0
-       norm ← {normalize ⊃ ⍵ ((env+)-(env-))⍨((⌽∘(0.0001 0 0))¨⌽⍳3)}
+
+       norm ← {normalize ⍵ ((env+)-(env-))⍨ small_xyz}
        norm P
 1 0 0
 ```
@@ -231,12 +221,14 @@ We can use the rotate ⌽ operator to make the small vector in the y and z direc
 Finally, we are now ready to write the ray marching function. The marching function should take the camera’s initial position, and move it along a ray according to the distance function for either a maximum number of marches or a point is hit, and for the latter return the dot product of the normal at that point with the vector from that point to the light source.
 
 ```apl
-       march←({cur_pos←⊃⍵ 
+       march←({
+              cur_pos←⊃⍵ 
             ⋄ ray←2⊃⍵
             ⋄ i←3⊃⍵ 
             ⋄ cur_pos ← cur_pos + (env cur_pos)×ray 
-            ⋄ (env cur_pos)<0.0001:0⌈(norm cur_pos)(+.×)(normalize cur_pos-light)   
-            ⋄  cur_pos ray (i+1)}⍣{(1=≢⍺)∨((⍺,0 0)[3]>32)})
+            ⋄ (env cur_pos) < 0.0001: 0⌈(norm cur_pos)(+.×)(normalize cur_pos-light)   
+            ⋄  cur_pos ray (i+1)}
+            ⍣ {(1=≢⍺)∨((⍺,0 0)[3]>32)})
             
        camera ← 0 0 ¯10
        ray ← 0 0 1
@@ -251,7 +243,11 @@ Finally, we are now ready to write the ray marching function. The marching funct
 
 Let’s go through the above code step by step.
 
-The function takes in a three element nested array, the first being the camera position, the second is the ray to march along, and the third is a counter variable. It starts from the camera position and adds to it the distance to the environment times the ray. If the distance to the environment is less than a small value, then it returns the dot product of the vector to the light source with the normal to the environment at that point, or zero, depending on which is greater. If not, then it returns the current position, ray, and counter incremented by one.
+The function takes in a three element nested array, the first being the camera position, the second is the ray to march along, and the third is a counter variable. 
+
+It starts from the camera position and adds to it the distance to the environment times the ray. 
+
+If the distance to the environment is less than a small value, then it returns the dot product of the vector to the light source with the normal to the environment at that point, or zero, depending on which is greater. If not, then it returns the current position, ray, and counter incremented by one.
 
 The power operator f⍣g allows us to evaluate the function f until the function g returns a value of 1. The function g takes in the previous return value of f, and the current return value of f, as left and right arguments. 
 
@@ -269,6 +265,7 @@ Wrapping the march function in a function that returns zero if the result is not
 0 0.8900597217 0.8571428571 0.145402276 0
 0 0            0.3004347993 0           0
 0 0            0            0           0
+
        image ← color¨pxl_directions
 ```
 
