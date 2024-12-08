@@ -36,31 +36,39 @@ This is not the most efficient, or readable, method to input data into your syst
 
 *Vectors* are lines of values. They are defined by writing values separated by one or more spaces. 
 	
-Vectors are also ordered, it is possible to talk about the element at a specific position, called an index. For example, the first (1) element, the second (2) element, and so on. In code, they can be accessed by adding square brackets to the vector with an index (or multiple indices) in between.
+The order of elements in a vector matters! Each element is given a number called an *index* according to the order in which they were written. Indices can be used to access the elements of a vector, they start at ``1`` and increase by one for each new element.
+
+To show the difference between vectors and scalars, we give some examples of both.
 
 ```apl
-      ⍝ Examples of scalars
+      ⍝ Scalars
       SUM ← ¯1÷12
       EPSILON ← 2*¯53
       PIGS ← 3
       BROTHERS ← 7
-      PI ← 11.001001 ⍝ Note that the decimal separator in APL is the dot
+      ⍝ Note that the decimal separator in APL is the dot
+      PI ← 11.001001
       THIEVES ← 40
       PRIME ← 57
       MAGIC ← 1597463007
 
-
-      ⍝ Examples of vectors
+      ⍝ Vectors
       FIBB ← 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181
       QUARTER ← 1 ¯2 3 ¯4 5 ¯6 7 ¯8 9 ¯10 11 ¯12 13 ¯14 15 ¯16 17 ¯18
       KEY ← 9 249 17 2 157 116 227 91 216 65 86 197 99 86 136 192 
+```
 
+Scalar variables can be used to construct new vectors, such as in the following
 
-      ⍝ This is a vector
+```apl
       LIST ← SUM EPSILON PIGS BROTHERS PI THIEVES PRIME MAGIC
       LIST
 ¯0.08333333333 1.110223025E¯16 3 7 11.001001 40 57 1597463007
+```
 
+Selecting indices from a vector can be done using square brackets as shown below
+
+```apl
       ⍝ Selecting a single element using an index
       LIST[1] 
 ¯0.08333333333
@@ -73,9 +81,11 @@ Vectors are also ordered, it is possible to talk about the element at a specific
       INDICES ← 5 6 7
       LIST[INDICES] 
 11.001001 40 57
+```
 
+Finally, returning to our original problem, we can represent the lists of temperatures as vectors
 
-      ⍝ The above temperature lists as vectors
+```apl
       TEMPERATURE_PAGE1 ← 21.4 21.8 22.0 21.5 21.3 22.3
       TEMPERATURE_PAGE2 ← 22.8 21.5 22.1 22.0 21.9 22.4
       
