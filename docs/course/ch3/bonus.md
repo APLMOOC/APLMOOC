@@ -54,36 +54,6 @@ We use <span style="color:blue;"> 1 </span> for standard movements and <span sty
 
 
 ```apl
-      M ← 7 7 ⍴ 1 1 1 0 0 0 0
-      M
-1 1 1 0 0 0 0
-1 1 1 0 0 0 0
-1 1 1 0 0 0 0
-1 1 1 0 0 0 0
-1 1 1 0 0 0 0
-1 1 1 0 0 0 0
-1 1 1 0 0 0 0
-      ⍝ Not quite
-      M ← 7 7 ⍴ 1 1 1 0 0 0 0 0
-      M
-1 1 1 0 0 0 0
-0 1 1 1 0 0 0
-0 0 1 1 1 0 0
-0 0 0 1 1 1 0
-0 0 0 0 1 1 1
-0 0 0 0 0 1 1
-1 0 0 0 0 0 1
-      ⍝ Closer
-      M ← 7 7 ⍴ 1 1 0 0 0 0 0 1
-      M
-1 1 0 0 0 0 0
-1 1 1 0 0 0 0
-0 1 1 1 0 0 0
-0 0 1 1 1 0 0
-0 0 0 1 1 1 0
-0 0 0 0 1 1 1
-0 0 0 0 0 1 1
-      ⍝ Getting there
       M ← 7 7 ⍴ 1 1 1 0 0 0 1 1
       M
 1 1 1 0 0 0 1
@@ -118,10 +88,14 @@ We use <span style="color:blue;"> 1 </span> for standard movements and <span sty
 ```
 
 
-The next step is to figure out, given a note, what the next possible notes are. This is very easily done using the matrix multiplication +.× operator. This operator is actually the inner product operator . applied to the functions + and ×, see [Inner and Outer product section]. Represent a note with scale degree N as a vector with a 1 in the Nth slot, and 0 otherwise, then matrix multiplication with M represents picking out the Nth row, which as we mentioned above corresponds to selecting the edges in the graph where N is the starting note.
+The next step is to figure out, given a note, what the next possible notes are. This is very easily done using the matrix multiplication ``+.×`` operator.
+
+What we want to obtain is the Nth row of the matrix, this tells us where we can walk to, and what the preferred next notes are, for the note N.
+
+If we represent each note as a vector, with a 1 in the Nth slot, then matrix multiplication does exactly that.
 
 !!! info inline end ""
-	Recall that ⍳7 is 1 2 3 4 5 6 7, this is equivalent to 2=1 2 3 4 5 6 7
+	Recall that ⍳7 is 1 2 3 4 5 6 7
 	<br><br><br>
 	The subsequence notes are I (Preferred), II, III (Preferred), and IV
 
@@ -170,23 +144,10 @@ Using this, we want to decide on a movement to another note, weighed by priority
 0 0 1 0 0 0 0
 ```
 
-This is the basic algorithm we will use to generate our melodies. Let’s enclose our note generation algorithm in a direct function and generate a melody.
-
-!!! info inline end "" 
-	A direct function/dfn (pronounced dee-fun) is defined using {curly braces}. The right argument to the function is called ⍵, and the left ⍺.
-	<br><br>
-	Statements in a dfn can be separated by a ⋄ diamond. However, only it stops as soon as a statement which returns a value is evaluated
-	<br><br>
-	The replicate / operator generates copies of its right argument elements depending on their left arguments
-	<br>
-	In this case, it replicates 0 of everything other than one copy of D
+This is the basic algorithm we will use to generate our melodies. Let’s enclose our note generation algorithm in a direct function to use in a later melody function.
 
 ```apl
-	    10 {⍺+⍵} 2
-12
-      10 {⍺+⍵ ⋄ ⍺-⍵} 2 
-12
-      
+
       NEXT←{(⍳7)=1⌷⍒?(⍵×10)+.×M} 
       NEXT 1 0 0 0 0 0 0
 0 1 0 0 0 0 0
@@ -197,23 +158,32 @@ D
 
 ```
 
-<br>	
-	
+The replicate / function generates copies of its right argument elements depending on their left arguments. In the above case, it replicates 0 of everything and one copy of D.
 
+Using the symbol ⍞ to print the output without adding a newline, we write the function to generate the melodies.
+
+<div style="font-size: 0.8rem">
 ```apl
       MELODY←{res ← NEXT ⍵ ⋄ ⍞←res/NOTES ⋄ MELODY res}
 	    MELODY 1 0 0 0 0 0 0
 CDCECEGBGAGGGBBAAGBGEDEDFFEDCDCDECCDCECDECECEFEFEEGEGECEFEDEGBBBGBG
 ```
+</div>
 
 This function will run forever, generating notes until interrupted. One way of running the defun for a fixed number of steps is to add a variable representing the number of steps. We will use the left argument ⍺ as this variable.
 
 ```apl
-      MELODY←{ ⍺ ← 0 ⋄ ⍺>20: '♫' ⋄ res ← NEXT ⍵ ⋄ ⍞←res/NOTES ⋄ (⍺+1) MELODY res}
+      MELODY←{ 
+            ⍺ ← 0
+            ⍺>20: '♫'
+            res ← NEXT ⍵
+            ⍞←res/NOTES
+            (⍺+1) MELODY res}
       MELODY 1 0 0 0 0 0 0
 CCDEGAFDCEGFDEDCDCECC♫
 ```
-Assigning a value to the left argument ⍺ gives a dfns a default left argument. The assignment is only executed if the function is called monadically, that is, if there is no supplied left argument. In this case, the left argument ⍺ starts at 0. The generation of the next note, the "(⍺+1) MELODY res" statement, is executed with an incremented left argument. The *guarded expression* ⍺>20: '♫' states that ♫ is returned when ⍺ is becomes greater than 20. Since the execution of a dfn stops as soon as a statement returns a value, the code to generate the next note is no longer executed.
+
+The left argument ⍺ starts at 0, which is increased every time the function loops (The "(⍺+1) MELODY res" statement, is executed with an incremented left argument) until it becomes greater than 20 and finally returns a musical symbol ``♫``.
 
 This is the result we were after! With just a couple lines of APL, we were able to encode general guidelines for melodic composition and write a function generating random melodies according to these principles algorithmically by tracing out a random walk through a graph. These random graph processes are more generally known as Markov Processes and have a much broader range of applicability than our case here. Applications include the Google PageRank algorithm which powered the Google search engine, particle physics simulations of quantum field theory on a lattice, and speech recognition systems. 
 
@@ -232,6 +202,6 @@ Your browser does not support the audio element.
 </audio> 
 
  <audio controls>
-  <source src="../../assets/5_3_melody3.mp3" type="audio/mpeg">
+  <source src="../../assets/3_b_melody3.mp3" type="audio/mpeg">
 Your browser does not support the audio element.
 </audio>

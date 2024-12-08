@@ -25,13 +25,18 @@ Monadic `⌈` and `⌊` : Ceil & Floor
 
 Dyadic `⌈` and `⌊` : Max & Min
 ```apl
-      4 ⌈ 5 ⍝ This simply returns the larger argument
+      ⍝ This simply returns the larger argument
+      4 ⌈ 5 
 5
-      4 ⌊ 5 ⍝ This is for the smaller one
+      ⍝ This is for the smaller one
+      4 ⌊ 5 
 4
-      4 ⌈ 1 3 5 7 9 8 6 4 2 0 ⍝ "Clips" the value of elements to a minimum
+      ⍝ "Clips" the value of elements to a minimum
+      4 ⌈ 1 3 5 7 9 8 6 4 2 0 
 4 4 5 7 9 8 6 4 4 4
-      4 ⌊ 1 3 5 7 9 8 6 4 2 0 ⍝ Similarly "clips" down
+
+      ⍝ Similarly "clips" down
+      4 ⌊ 1 3 5 7 9 8 6 4 2 0 
 1 3 4 4 4 4 4 4 2 0
 ```
 
@@ -39,7 +44,8 @@ The "modulo" operator in other languages is called the residue in APL, and the o
 
 Dyadic `|` : Residue
 ```apl
-      ⍝ 100 - 13 × 7 = 9, note this is in reverse order as `%` operator in C
+      ⍝ 100 - 13 × 7 = 9
+      ⍝ This is in reverse order as `%` operator in C
       13 | 100 
 9
 
@@ -109,10 +115,12 @@ Dyadic `∨` & `∧` : GCD and LCM
       ⍝ The result is non-negative for GCD
       ¯2 ∨ ¯15 
 1
-      ⍝ But the LCM is defined as product of two numbers divided by their GCD, so it could be negative
+
       ¯4 ∧ 10 
 ¯20
 ```
+
+Note that the LCM is defined as product of two numbers divided by their GCD, so it could be negative as in the last example.
 
 As suggested by the choice of glyphs for these two operations, these two operations are also used for the boolean logic "or" and "and" operations. More on this in the next section.
 
@@ -127,7 +135,8 @@ Monadic `-` : Negate
 ```apl
       - 4 ¯5 6
 ¯4 5 ¯6
-      ⍝ Remember this is different from ¯, since it could be monadic and also applies to the whole array
+
+      ⍝ Remember this is different from ¯
       ⍝ Here, -4 -5 -6 is -(4-(5-6)) = ¯5
       -4 -5 -6 
 ¯5

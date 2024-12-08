@@ -73,10 +73,9 @@ Note that for the Fibonacci function, a constant value phi for the golden ratio 
 
 In order to let the Fibonacci function define its own phi, we have to define it inside the function itself. APL allows any number of assignment statements inside a function before the statement which evaluates the result, using the diamond-shaped statement separator ⋄, or placing the statements on new lines. The following two functions are equivalent.
 
-<div style="font-size: .6rem">
+
 
 ```apl
-      fibonacci ← {PHI ← 0.5× 1 + 5*.5 ⋄ ((PHI*⍵) - (-PHI)*-⍵) ÷ (¯1 + 2×PHI)}
       fibonacci ← {
             PHI ← 0.5× 1 + 5*.5
             ((PHI*⍵) - (-PHI)*-⍵) ÷ (¯1 + 2×PHI)
@@ -87,9 +86,10 @@ In order to let the Fibonacci function define its own phi, we have to define it 
 2
 ```
 
-1. Hint: The empty vector character ⍬ is added here as filler since functions always require a right argument
+1. The empty vector character ⍬ is added here as filler since functions always require a right argument
 
-</div>
+
+
 
 As seen with the last function, any code beyond the first statement which produces a value is not evaluated.
 
