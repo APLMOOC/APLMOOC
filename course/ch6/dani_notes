@@ -1,0 +1,11 @@
+Chapter 6 is quite difficult to write because it doesn't really have a consistent theme. There are several topics that weren't covered before that could be covered now, for example, deeops.
+
+The first chapter is an easy taster, chapter 2 is a first look at arrays (data), chapter 3 is functions, chapter 4 is advanced functions, chapter 5 is advanced data.
+
+The actual programming aspect is covered, and you could write your own programs. I feel the remaining chapters should be plugging into wider APL context, reading and writing  to existing programs.
+
+There are some functions which were not covered in the former chapters which would be instructive to cover.
+
+I think the best use of time now is to go back and refine the previous chapters according to other materials, trying to write chapter 6 is quite difficult.
+
+Last thing to do: Fix chapter 5 animation to stop at earlier time
