@@ -115,11 +115,10 @@ nav:
       - 5.W - Write exercises: course/ch5/write.md
       - 5.B - Computer graphics: course/ch5/bonus.md
     - 6 - Everything else you need to know:
-      - 6.1 - String manipulation: course/ch6/part1.md
+      - 6.1 - Execute and Format: course/ch6/part1.md
       - 6.2 - Inner and outer products: course/ch6/part2.md
       - 6.3 - Encoding and decoding: course/ch6/part3.md
       - 6.4 - Operators: course/ch6/part4.md
-      - 6.5 - Choo choo: course/ch6/part5.md
       - 6.S - Summary: course/ch6/summary.md
       - 6.R - Read exercises: course/ch6/read.md
       - 6.W - Write exercises: course/ch6/write.md

@@ -17,7 +17,7 @@ First, we need a format to represent dates and times. For now, we will represent
 This format stores the dates as decimal numbers, where the integer part stores the year, month, and day, and the fractional part stores the hour, minute, and second. For example, the time with year 2024, month 08, day 06, hour 05, minute 01, and second 30, is represented as ``20240806.070130``.
 
 !!! info "Dates and times"
-     In a later chapter, we will learn how to deal with dates and times properly with the datetime ``⎕DT`` function.
+     The datetime ``⎕DT`` function can be used to convert date-times, see more at [Datetime](https://help.dyalog.com/19.0/Content/Language/System%20Functions/dt.htm).
 
 Then, we will need a way to store the datetime data. One solution is to use two vectors instead of one, where each element of the measurement vector has a corresponding element in the time vector.
 

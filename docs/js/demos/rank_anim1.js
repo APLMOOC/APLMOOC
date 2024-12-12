@@ -236,7 +236,7 @@ function animate() {
         label.material.color = orb_map[label.name].material.color;
     })
 
-    if(elapsedTime > 10000){
+    if(elapsedTime > 7500){
         clock.stop();
         clock = new THREE.Clock();
         time = 0;

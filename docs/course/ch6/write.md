@@ -13,3 +13,40 @@ If you submit a correct solution at least once, you will receive points on the T
 If the write problem is red, it is unsolved. If it it green, you have solved it and received points for it on the server.
 
 ---
+
+
+
+!!! write-problem "Write problem 4"
+    
+    Write a function to delay all flights on the first of december by 5 minutes. You can assume that all the times listed end with '30' or '00'.
+
+    ```apl
+          flights
+    ┌─────────┬─────────┬───────────┬──────────┬─────┐
+    │Jari N.  │Helsinki │Tallinn    │2024-12-01│08:00│
+    ├─────────┼─────────┼───────────┼──────────┼─────┤
+    │Erik O.  │Stockholm│Gothenburg │2024-12-01│14:00│
+    ├─────────┼─────────┼───────────┼──────────┼─────┤
+    │Michel A.│London   │Los Angeles│2024-12-03│11:30│
+    └─────────┴─────────┴───────────┴──────────┴─────┘
+          delay flights
+    ┌─────────┬─────────┬───────────┬──────────┬─────┐
+    │Jari N.  │Helsinki │Tallinn    │2024-12-01│08:05│
+    ├─────────┼─────────┼───────────┼──────────┼─────┤
+    │Erik O.  │Stockholm│Gothenburg │2024-12-01│14:05│
+    ├─────────┼─────────┼───────────┼──────────┼─────┤
+    │Michel A.│London   │Los Angeles│2024-12-03│11:30│
+    └─────────┴─────────┴───────────┴──────────┴─────┘
+    ```
+
+    Hint: You can use 
+    
+
+    <div class="problem">
+        <span class="problemspan">delay←</span>
+        <input class="probleminput" type="text" id="input_ch5_p4" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch5_p4', 2)">Submit</button>
+    </div>
+    <p id="feedback_ch5_p4" style="color: red"></p>
+
+---

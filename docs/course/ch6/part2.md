@@ -1,4 +1,4 @@
-# Inner and outer products
+# Inner and Outer products
 
 !!! abstract "This part will cover"
     
