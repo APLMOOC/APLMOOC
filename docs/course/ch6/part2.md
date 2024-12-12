@@ -8,6 +8,8 @@
 
 ---
 
+<link rel="stylesheet" href="/styles/ch5part2.css">
+
 Recall the Rank ⍤ operator which specified what rank cells a function acts on,
 ```apl
       M ← ? 5 5 ⍴ 10
@@ -89,7 +91,7 @@ This specifies the cells to act on monadically; for dyadic functions, two ranks 
 136 153 171 190 210
 231 253 276 300 325
       
-      ⍝ Pairing of 1-cells of v and 1-cells of M
+      ⍝ Pairing of 1-cells of N and 1-cells of M
       N({⍺,'-',⍵}⍤(1 1))M
   1   3   6  10  15 -  1  2  3  4  5
  21  28  36  45  55 -  6  7  8  9 10
@@ -151,39 +153,53 @@ There is a specific operator for this operation called the outer product (∘.f)
 ├─────────┼──────────┼─────────┼─────────┤
 │SYNTHROCK│SYNTHMETAL│SYNTHPUNK│SYNTHWAVE│
 └─────────┴──────────┴─────────┴─────────┘
-      
-
-      ⍝ Multiplication table
-      (⍳10)(∘.×)⍳10
- 1  2  3  4  5  6  7  8  9  10
- 2  4  6  8 10 12 14 16 18  20
- 3  6  9 12 15 18 21 24 27  30
- 4  8 12 16 20 24 28 32 36  40
- 5 10 15 20 25 30 35 40 45  50
- 6 12 18 24 30 36 42 48 54  60
- 7 14 21 28 35 42 49 56 63  70
- 8 16 24 32 40 48 56 64 72  80
- 9 18 27 36 45 54 63 72 81  90
-10 20 30 40 50 60 70 80 90 100
-
-      ⍝ Composite numbers
-      (1+⍳9)(∘.×)1+⍳9
- 4  6  8 10 12 14 16 18  20
- 6  9 12 15 18 21 24 27  30
- 8 12 16 20 24 28 32 36  40
-10 15 20 25 30 35 40 45  50
-12 18 24 30 36 42 48 54  60
-14 21 28 35 42 49 56 63  70
-16 24 32 40 48 56 64 72  80
-18 27 36 45 54 63 72 81  90
-20 30 40 50 60 70 80 90 100
-
-      ⍝ Prime numbers up to N as numbers minus composite numbers up to N/2
-      (⍳100) ~ (1+⍳49)(∘.×)1+⍳49
-1 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97
 ```
 
-In many applications, it is useful to reduce over the diagonal of the outer product. That is, match each element of the vectors in order, then reduce over them. The inner product of vectors is an example of this, which APL generalizes using the inner product (f.g) operator.
+For higher rank arrays, the outer product works similarly, matching each element of both arrays
+
+```apl
+      ⍳2 2
+┌───┬───┐
+│1 1│1 2│
+├───┼───┤
+│2 1│2 2│
+└───┴───┘
+
+      ((⍳2 2)⌷¨¨⊂⊂'AB')
+┌──┬──┐
+│AA│AB│
+├──┼──┤
+│BA│BB│
+└──┴──┘
+
+      (⍳2 2)∘.,((⍳2 2)⌷¨¨⊂⊂'AB')
+┌──────┬──────┐
+│1 1 AA│1 1 AB│
+├──────┼──────┤
+│1 1 BA│1 1 BB│
+└──────┴──────┘
+┌──────┬──────┐
+│1 2 AA│1 2 AB│
+├──────┼──────┤
+│1 2 BA│1 2 BB│
+└──────┴──────┘
+               
+┌──────┬──────┐
+│2 1 AA│2 1 AB│
+├──────┼──────┤
+│2 1 BA│2 1 BB│
+└──────┴──────┘
+┌──────┬──────┐
+│2 2 AA│2 2 AB│
+├──────┼──────┤
+│2 2 BA│2 2 BB│
+└──────┴──────┘
+```
+
+In many applications, it is useful to reduce over the diagonal of the outer product. The inner product of vectors ``+.×`` is an example of this, which APL generalizes using the inner product ``f.g`` operator.
+
+
+For arbitrary arrays, the inner product ``X(f.g)Y`` is the same (Make note that this is slightly different in Dyalog APL) as reducing using f over each ``f/¨`` application of ``g`` between the trailing vectors of the left argument (rows) ``(⊂[⍴⍴x]X)`` and the leading vectors of the right argument (columns) ``⊂[1]Y``, ``(⊂[⍴⍴X]X)∘.g ⊂[1]Y``. When ``X`` and ``Y`` are matrices, ``+.×`` is exactly matrix multiplication, ``+/¨ (⊂[2]X) ∘.× ⊂[1]Y``.
 
 ```apl
       v1 ← 3 -⍨ ? 5 ⍴ 5
@@ -228,7 +244,7 @@ In many applications, it is useful to reduce over the diagonal of the outer prod
 2
 ```
 
-The inner product function +.× applied to matrices is the matrix product function
+The inner product function ``+.×`` applied to matrices is the matrix product function
 
 ```apl
       M ← (⍳5)∘.=⍳5
