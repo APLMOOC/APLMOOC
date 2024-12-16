@@ -11,6 +11,8 @@
 
 ---
 
+<link rel="stylesheet" href="/styles/ch5part2.css">
+
 One of the central advantages of APL over other programming languages is that it provides a powerful notation for reasoning about higher dimensional data. When writing code in other languages, there are times where using this notation would simplify code significantly, and luckily, APL code can be used in Python programs, and vice versa, using the Py'n'APL interface. 
 
 In this section, we will write a simple minesweeper game in APL, using Py'n'APL to connect to a user interface written in Python.
@@ -53,7 +55,7 @@ average = apl.fn("+/÷≢")
 print(average([1,2,3,4,5]))
 ```
 
-The result is 3.
+The result is ``3``.
 
 To define functions in APL, `fix` is used rather than than the `eval`.
 
@@ -66,7 +68,9 @@ apl.fix("average ← +/÷≢")
 print(apl.eval("average 1 2 3 4 5"))
 ```
 
-The result is 3.
+The result is also ``3``.
+
+---
 
 Minesweeper is a logic game, where the goal is to find out the location of all hidden 'mines' on a board. The size of the board and number of mines vary depending on difficulty; here we will implement a rectangular board of width 30 and height 16, with 99 mines. 
 
@@ -75,7 +79,9 @@ If the user right-clicks on a tile, that tile is flagged, representing where the
 
 The game is won when all hidden mine tiles are flagged, and all other tiles are uncovered.
 
-We recommend the reader to play at-least one game of minesweeper, in order to get familiar with the rules we will implement.
+We recommend the reader play at least one game of minesweeper, in order to get familiar with the rules we will implement.
+
+## Board creation
 
 We first need to create the board, which will be represented with a 2D matrix of values, 1 being mine and 0 a blank tile. 
 
@@ -166,6 +172,8 @@ print(apl.eval("board"));
 #[0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0], 
 #[0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0]]
 ```
+
+## Adjacency matrix
 
 Next, we need to obtain the number of adjacent mines for every tile on the board. Consider a 1-dimensional board first, for simplicity.
 
@@ -302,6 +310,27 @@ def calculate_adjacency():
   apl.eval("adjacency ← ({+/,⍵}⌺3 3)board")
 ```
 
+The current code is
+
+```python
+from pynapl import APL
+apl = APL.APL()
+
+def new_board():
+    apl.eval("board ←  (16×30) ⍴ 0")
+    apl.eval("board ← (1 @ (99 ? 16×30)) board")
+    apl.eval("board ← 16 30 ⍴ board")
+
+def calculate_adjacency():
+  apl.eval("adjacency ← ({+/,⍵}⌺3 3)board")
+
+
+new_board();
+calculate_adjacency();
+```
+
+## Board interaction
+
 The last thing that is needed is a function to decide what happens when a tile is clicked. The first thing to implement is the uncovering of tiles. Whenever a tile that does not contain a mine is left-clicked, it is uncovered, and any tiles with no adjacent mines automatically uncover the adjacent tiles. We will use `¯1` to denote uncovered tiles on the board. For checking if the tile is a mine, we write a simple `is_mine` function that can be called from the Python code
 
 ```apl
@@ -382,7 +411,7 @@ Finally, the `@` at operator can be used to replace the board indices to be unco
 1  1  1  1 1
 ```
 
-Putting these functions in the Python code
+Testing these functions in the python code
 
 ```python
 from pynapl import APL
@@ -407,14 +436,28 @@ def uncover(x, y):
       return
   apl.eval("board ← (¯1@(uncover ∆))board", x, y)
   
+# Test board
 apl.eval("board ← (0@(1 + ⍳ 3 3))(5 5)⍴1")
 calculate_adjacency();
+
+# Check the result of uncovering at 3 3
 uncover(3,3);
 print(apl.eval("board"))
-
 ```
 
-The result is `[[1, 1, 1, 1, 1], [1, -1, -1, -1, 1], [1, -1, -1, -1, 1], [1, -1, -1, -1, 1], [1, 1, 1, 1, 1]]`, as is expected.
+The result is 
+
+```python
+[[1,  1,  1,  1, 1],
+ [1, -1, -1, -1, 1],
+ [1, -1, -1, -1, 1],
+ [1, -1, -1, -1, 1],
+ [1,  1,  1,  1, 1]]
+```
+
+as is expected.
+
+## Flagging, Winning, and Losing
 
 The last piece of logic needed is flagging, and win/loss states. We will create a separate board to keep track of tile icons, '⚑' for flags, '⛯' for mines, and numbers for adjacency numbers of uncovered tiles. We write a function that takes in a tile index to be flagged, and flags it if it is not already uncovered.
 
@@ -486,3 +529,41 @@ def uncover(x, y):
   apl.eval("board ← (¯1@(uncover ∆))board", x, y)
   apl.eval("((board=¯1)/¨labels) ← adjacency")
 ```
+
+The code is now
+```python
+from pynapl import APL
+apl = APL.APL()
+
+def new_board():
+	apl.eval("board ←  (16×30) ⍴ 0")
+	apl.eval("board ← (1 @ (99 ? 16×30)) board")
+	apl.eval("board ← 16 30 ⍴ board")
+
+def calculate_adjacency():
+  apl.eval("adjacency ← ({+/,⍵}⌺3 3)board")
+
+apl.fix("in_bounds ← {(+/⍵<⍴board)∧(∧/⍵>(0 0))>0}")
+apl.eval("directions ← (1 0)(0 1)(¯1 0)(0 ¯1)(1 1)(¯1 ¯1)(1 ¯1)(¯1 1)")
+apl.fix("uncover ← {(in_bounds ⍵)=0: ⍬ ⋄ ⍵⌷adjacency=0: (⊂⍵), uncover¨((⊂⍵)+¨directions) ⋄ ⍵}")
+is_mine = apl.fn("{(⍵⌷board)=1}")
+
+apl.eval("labels ← (⍴ board) ⍴ ' '")
+def flag(x, y):
+	if(apl.eval("∆⌷board", x, y)!=-1): #Not uncovered
+	  apl.eval("∆⌷labels ← \'⚑\'", x, y)
+
+def uncover(x, y):
+  if(is_mine([x,y])):
+      apl.eval("((board=1)/¨labels) ← \'⛯\'")
+      # Lose
+      return
+  apl.eval("board ← (¯1@(uncover ∆))board", x, y)
+  apl.eval("((board=¯1)/¨labels) ← adjacency")
+  
+new_board();
+calculate_adjacency();
+```
+
+## User interface
+

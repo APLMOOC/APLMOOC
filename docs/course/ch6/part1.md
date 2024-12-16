@@ -50,8 +50,6 @@ ABCDEFGHIJKLMNOP
 
 Execute ``⍎`` is a powerful function, and is considered unsafe when used together with arbitrary user input since it allows for arbitrary code execution.
 
-Write about user input ['] and []VFI and []FI
-
 If the only tools available to deal with quotations were strings and the execute ``⍎`` function, then it would only ever be possible to create quotations specified by the program itself when writing the program. Quoting a numerical array as the result of a computation would not be possible. This naturally leads to the creation of the Format ``⍕`` function. The Format ``⍕`` function allows not only this basic functionality, but also extra styling options for the resulting string
 
 ```apl
