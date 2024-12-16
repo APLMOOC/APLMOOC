@@ -7,7 +7,7 @@
 
 ---
 
-Just as the reduce / operator destructs a list by iterating through it from the right, the power ⍣ operator can be thought of as destructing a number n by repeating n times. The power operator repeats its left function argument the amount of times specified by its right argument.
+Just as the reduce ``/`` operator destructs a list by iterating through it from the right, the power ``⍣`` operator can be thought of as destructing a number ``n`` by repeating ``n`` times. The power operator repeats its left function argument the amount of times specified by its right argument.
 
 ```apl
       2(+⍣3)5
@@ -46,7 +46,7 @@ Just as the reduce / operator destructs a list by iterating through it from the 
 └───────────────┘
 ```
 
-Note that X (f⍣g) Y is equivalent to binding the left argument as the left argument to f, (X∘f⍣g) Y.
+Note that ``X(f⍣g)Y`` is equivalent to binding the left argument as the left argument to ``f``, ``(X∘f⍣g)Y``.
 
 ```apl
       2(×⍣3)5
@@ -55,7 +55,7 @@ Note that X (f⍣g) Y is equivalent to binding the left argument as the left arg
 40
 ```
 
-The right argument to the power ⍣ operator can be a function, f⍣g, where the f is applied until g, applied to the current and previous value of f, returns 1. For example, the following code multiplies 5 by 2 until the current value is greater than 100.
+The right argument to the power ``⍣`` operator can be a function, ``f⍣g``, where ``f`` is applied until the value of ``⍺g⍵``, with left and right arguments the current and previous value of ``f``, returns ``1``. For example, the following code multiplies ``5`` by ``2`` until the current value is greater than ``100``.
 
 ```apl
       2 (×⍣{⍺>100})5
@@ -86,7 +86,7 @@ For a more complicated example, the power operator can also be used to find fixe
 0.6411857445
 ```
 
-The code applies 0.5∘* until the current and previous values are equal.
+The code applies ``0.5∘*`` until the current and previous values are equal.
 
 When the power operator is applied to a negative right argument, it acts as the repeated inverse operator for its function left argument, for certain functions.
 
@@ -202,7 +202,7 @@ With replicate each, the right-hand side can also be an array of the same shape 
 21 V  W  X  Y
 ```
 
-For other types of replacements, the At @ operator comes in handy. For array left and right arguments, the At @ operator returns a function which replaces the elements at the indices specified by the right argument, using the values of the left argument. Note that the arrays have to match shape. Then, replacing each element masked by B using successive letters of the alphabet,
+For other types of replacements, the At ``@`` operator comes in handy. For array left and right arguments, the At ``@`` operator returns a function which replaces the elements at the indices specified by the right argument, using the values of the left argument. Note that the arrays have to match shape. Then, replacing each element masked by ``B`` using successive letters of the alphabet,
 
 ```apl
       M ← 5 5 ⍴ ⍳25
@@ -222,7 +222,7 @@ ABCDEFGHIJKLM
 21 J  K  L  M
 ```
 
-The arguments to @ can be functions instead, where the left argument function is the function to apply to the selected elements, and the right argument is a logical function that selects the elements out of the right argument array.
+The arguments to ``@`` can be functions instead, where the left argument function is the function to apply to the selected elements, and the right argument is a logical function that selects the elements out of the right argument array.
 
 ```apl
       M ← 5 5 ⍴ ⍳25

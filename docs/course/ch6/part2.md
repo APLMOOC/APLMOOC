@@ -233,7 +233,7 @@ In many applications, it is useful to reduce over the diagonal of the outer prod
 └───────────────┘
 ```
 
-For arbitrary arrays, the inner product ``X(f.g)Y`` is the same as taking the outer product using ``f/(g¨)`` of the trailing vectors of the left argument (rows) ``(⊂[⍴⍴x]X)`` and the leading vectors of the right argument (columns) ``⊂[1]Y``, then removing a layer of depth ````. For example, the elements of ``X(+.×)Y`` are the sum of the product of a row of ``X`` and a column of ``Y``, which is exactly matrix multiplication.
+For arbitrary arrays, the inner product ``X(f.g)Y`` is the same as taking the outer product ``∘.(f/ (g¨))`` of the rows of the left argument (trailing vectors) ``(⊂[⍴⍴x]X)`` and the columns of the right argument (leading vectors) ``⊂[1]Y``, then removing a layer of depth ``⊃⍤1``. For example, the elements of ``X(+.×)Y`` are the sum of the product ``∘.(+/ (×¨))`` of a row of ``X`` and a column of ``Y``, which is exactly matrix multiplication.
 
 
 ```apl

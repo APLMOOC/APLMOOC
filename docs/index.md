@@ -10,7 +10,7 @@ When complete, it is intended to be an official 5 ECTS credit course at the Univ
 
 ## Contact Us
 
-This course is written and developed by University of Helsinki students Sergey Ichtchenko, Dani Adham, and Hex. Feel free to contact us [here](https://docs.google.com/forms/d/e/1FAIpQLSdp_GHoS9uLPCAj-807tW-ZZ8Km8f3n1Gkr5YgCQ9taWPFj2w/viewform) for any questions, comments, or otherwise. Anonymous messages welcome.
+This course is written and developed by University of Helsinki students. Feel free to contact us [here](https://docs.google.com/forms/d/e/1FAIpQLSdp_GHoS9uLPCAj-807tW-ZZ8Km8f3n1Gkr5YgCQ9taWPFj2w/viewform) for any questions, comments, or otherwise. Anonymous messages welcome.
 
 ---
 
