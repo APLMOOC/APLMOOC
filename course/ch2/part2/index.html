@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../assets/_favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.47">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
     
     
       
@@ -1742,7 +1742,7 @@
         
   
   <span class="md-ellipsis">
-    6.1 - String manipulation
+    6.1 - Execute and format
   </span>
   
 
@@ -1805,28 +1805,7 @@
         
   
   <span class="md-ellipsis">
-    6.4 - Operators
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ch6/part5/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    6.5 - Choo choo
+    6.4 - Repeat and masking
   </span>
   
 
@@ -2251,30 +2230,31 @@
 <p>This is not the most efficient, or readable, method to input data into your system, and while flicking through your APL notes now crowded with temperatures, you refresh your workspace and instead decide to store your data using vectors.</p>
 <hr />
 <p><em>Vectors</em> are lines of values. They are defined by writing values separated by one or more spaces. </p>
-<p>Vectors are also ordered, it is possible to talk about the element at a specific position, called an index. For example, the first (1) element, the second (2) element, and so on. In code, they can be accessed by adding square brackets to the vector with an index (or multiple indices) in between.</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="c1">⍝ Examples of scalars</span>
+<p>The order of elements in a vector matters! Each element is given a number called an <em>index</em> according to the order in which they were written. Indices can be used to access the elements of a vector, they start at <code>1</code> and increase by one for each new element.</p>
+<p>To show the difference between vectors and scalars, we give some examples of both.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="c1">⍝ Scalars</span>
 <span class="w">      </span><span class="nv">SUM</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">¯1</span><span class="o">÷</span><span class="m">12</span>
 <span class="w">      </span><span class="nv">EPSILON</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">2</span><span class="o">*</span><span class="m">¯53</span>
 <span class="w">      </span><span class="nv">PIGS</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">3</span>
 <span class="w">      </span><span class="nv">BROTHERS</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">7</span>
-<span class="w">      </span><span class="nv">PI</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">11.001001</span><span class="w"> </span><span class="c1">⍝ Note that the decimal separator in APL is the dot</span>
+<span class="w">      </span><span class="c1">⍝ Note that the decimal separator in APL is the dot</span>
+<span class="w">      </span><span class="nv">PI</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">11.001001</span>
 <span class="w">      </span><span class="nv">THIEVES</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">40</span>
 <span class="w">      </span><span class="nv">PRIME</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">57</span>
 <span class="w">      </span><span class="nv">MAGIC</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">1597463007</span>
 
-
-<span class="w">      </span><span class="c1">⍝ Examples of vectors</span>
+<span class="w">      </span><span class="c1">⍝ Vectors</span>
 <span class="w">      </span><span class="nv">FIBB</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">34</span><span class="w"> </span><span class="m">55</span><span class="w"> </span><span class="m">89</span><span class="w"> </span><span class="m">144</span><span class="w"> </span><span class="m">233</span><span class="w"> </span><span class="m">377</span><span class="w"> </span><span class="m">610</span><span class="w"> </span><span class="m">987</span><span class="w"> </span><span class="m">1597</span><span class="w"> </span><span class="m">2584</span><span class="w"> </span><span class="m">4181</span>
 <span class="w">      </span><span class="nv">QUARTER</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">¯2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">¯4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">¯6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">¯8</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">¯10</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">¯12</span><span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="m">¯14</span><span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="m">¯16</span><span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="m">¯18</span>
 <span class="w">      </span><span class="nv">KEY</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">249</span><span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">157</span><span class="w"> </span><span class="m">116</span><span class="w"> </span><span class="m">227</span><span class="w"> </span><span class="m">91</span><span class="w"> </span><span class="m">216</span><span class="w"> </span><span class="m">65</span><span class="w"> </span><span class="m">86</span><span class="w"> </span><span class="m">197</span><span class="w"> </span><span class="m">99</span><span class="w"> </span><span class="m">86</span><span class="w"> </span><span class="m">136</span><span class="w"> </span><span class="m">192</span><span class="w"> </span>
-
-
-<span class="w">      </span><span class="c1">⍝ This is a vector</span>
-<span class="w">      </span><span class="nv">LIST</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">SUM</span><span class="w"> </span><span class="nv">EPSILON</span><span class="w"> </span><span class="nv">PIGS</span><span class="w"> </span><span class="nv">BROTHERS</span><span class="w"> </span><span class="nv">PI</span><span class="w"> </span><span class="nv">THIEVES</span><span class="w"> </span><span class="nv">PRIME</span><span class="w"> </span><span class="nv">MAGIC</span>
+</code></pre></div>
+<p>Scalar variables can be used to construct new vectors, such as in the following</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">LIST</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">SUM</span><span class="w"> </span><span class="nv">EPSILON</span><span class="w"> </span><span class="nv">PIGS</span><span class="w"> </span><span class="nv">BROTHERS</span><span class="w"> </span><span class="nv">PI</span><span class="w"> </span><span class="nv">THIEVES</span><span class="w"> </span><span class="nv">PRIME</span><span class="w"> </span><span class="nv">MAGIC</span>
 <span class="w">      </span><span class="nv">LIST</span>
 <span class="m">¯0.08333333333</span><span class="w"> </span><span class="m">1.110223025E¯16</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">11.001001</span><span class="w"> </span><span class="m">40</span><span class="w"> </span><span class="m">57</span><span class="w"> </span><span class="m">1597463007</span>
-
-<span class="w">      </span><span class="c1">⍝ Selecting a single element using an index</span>
+</code></pre></div>
+<p>Selecting indices from a vector can be done using square brackets as shown below</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="c1">⍝ Selecting a single element using an index</span>
 <span class="w">      </span><span class="nv">LIST</span><span class="sr">[</span><span class="m">1</span><span class="sr">]</span><span class="w"> </span>
 <span class="m">¯0.08333333333</span>
 
@@ -2286,10 +2266,9 @@
 <span class="w">      </span><span class="nv">INDICES</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span>
 <span class="w">      </span><span class="nv">LIST</span><span class="sr">[</span><span class="nv">INDICES</span><span class="sr">]</span><span class="w"> </span>
 <span class="m">11.001001</span><span class="w"> </span><span class="m">40</span><span class="w"> </span><span class="m">57</span>
-
-
-<span class="w">      </span><span class="c1">⍝ The above temperature lists as vectors</span>
-<span class="w">      </span><span class="nv">TEMPERATURE_PAGE1</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">21.4</span><span class="w"> </span><span class="m">21.8</span><span class="w"> </span><span class="m">22.0</span><span class="w"> </span><span class="m">21.5</span><span class="w"> </span><span class="m">21.3</span><span class="w"> </span><span class="m">22.3</span>
+</code></pre></div>
+<p>Finally, returning to our original problem, we can represent the lists of temperatures as vectors</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">TEMPERATURE_PAGE1</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">21.4</span><span class="w"> </span><span class="m">21.8</span><span class="w"> </span><span class="m">22.0</span><span class="w"> </span><span class="m">21.5</span><span class="w"> </span><span class="m">21.3</span><span class="w"> </span><span class="m">22.3</span>
 <span class="w">      </span><span class="nv">TEMPERATURE_PAGE2</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">22.8</span><span class="w"> </span><span class="m">21.5</span><span class="w"> </span><span class="m">22.1</span><span class="w"> </span><span class="m">22.0</span><span class="w"> </span><span class="m">21.9</span><span class="w"> </span><span class="m">22.4</span>
 
 <span class="w">      </span><span class="nv">TEMPERATURE_PAGE1</span><span class="sr">[</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="sr">]</span>

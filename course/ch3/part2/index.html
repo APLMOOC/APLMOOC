@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../assets/_favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.47">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
     
     
       
@@ -1742,7 +1742,7 @@
         
   
   <span class="md-ellipsis">
-    6.1 - String manipulation
+    6.1 - Execute and format
   </span>
   
 
@@ -1805,28 +1805,7 @@
         
   
   <span class="md-ellipsis">
-    6.4 - Operators
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ch6/part5/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    6.5 - Choo choo
+    6.4 - Repeat and masking
   </span>
   
 
@@ -2242,18 +2221,24 @@
 <span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">¯3</span><span class="w"> </span><span class="m">¯3</span>
 </code></pre></div></p>
 <p>Dyadic <code>⌈</code> and <code>⌊</code> : Max &amp; Min
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="m">4</span><span class="w"> </span><span class="o">⌈</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="c1">⍝ This simply returns the larger argument</span>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="c1">⍝ This simply returns the larger argument</span>
+<span class="w">      </span><span class="m">4</span><span class="w"> </span><span class="o">⌈</span><span class="w"> </span><span class="m">5</span><span class="w"> </span>
 <span class="m">5</span>
-<span class="w">      </span><span class="m">4</span><span class="w"> </span><span class="o">⌊</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="c1">⍝ This is for the smaller one</span>
+<span class="w">      </span><span class="c1">⍝ This is for the smaller one</span>
+<span class="w">      </span><span class="m">4</span><span class="w"> </span><span class="o">⌊</span><span class="w"> </span><span class="m">5</span><span class="w"> </span>
 <span class="m">4</span>
-<span class="w">      </span><span class="m">4</span><span class="w"> </span><span class="o">⌈</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="c1">⍝ &quot;Clips&quot; the value of elements to a minimum</span>
+<span class="w">      </span><span class="c1">⍝ &quot;Clips&quot; the value of elements to a minimum</span>
+<span class="w">      </span><span class="m">4</span><span class="w"> </span><span class="o">⌈</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>
 <span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span>
-<span class="w">      </span><span class="m">4</span><span class="w"> </span><span class="o">⌊</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="c1">⍝ Similarly &quot;clips&quot; down</span>
+
+<span class="w">      </span><span class="c1">⍝ Similarly &quot;clips&quot; down</span>
+<span class="w">      </span><span class="m">4</span><span class="w"> </span><span class="o">⌊</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>
 <span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">0</span>
 </code></pre></div></p>
 <p>The "modulo" operator in other languages is called the residue in APL, and the order of the arguments is reversed. The residue function calculates the residue of the division of the right argument by the left.</p>
 <p>Dyadic <code>|</code> : Residue
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="c1">⍝ 100 - 13 × 7 = 9, note this is in reverse order as `%` operator in C</span>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="c1">⍝ 100 - 13 × 7 = 9</span>
+<span class="w">      </span><span class="c1">⍝ This is in reverse order as `%` operator in C</span>
 <span class="w">      </span><span class="m">13</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="m">100</span><span class="w"> </span>
 <span class="m">9</span>
 
@@ -2312,10 +2297,11 @@
 <span class="w">      </span><span class="c1">⍝ The result is non-negative for GCD</span>
 <span class="w">      </span><span class="m">¯2</span><span class="w"> </span><span class="o">∨</span><span class="w"> </span><span class="m">¯15</span><span class="w"> </span>
 <span class="m">1</span>
-<span class="w">      </span><span class="c1">⍝ But the LCM is defined as product of two numbers divided by their GCD, so it could be negative</span>
+
 <span class="w">      </span><span class="m">¯4</span><span class="w"> </span><span class="o">∧</span><span class="w"> </span><span class="m">10</span><span class="w"> </span>
 <span class="m">¯20</span>
 </code></pre></div></p>
+<p>Note that the LCM is defined as product of two numbers divided by their GCD, so it could be negative as in the last example.</p>
 <p>As suggested by the choice of glyphs for these two operations, these two operations are also used for the boolean logic "or" and "and" operations. More on this in the next section.</p>
 <p>Monadic <code>+</code> : Complex Conjugate
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">+</span><span class="w"> </span><span class="m">0j1</span><span class="w"> </span><span class="m">1j¯1</span><span class="w"> </span><span class="m">3j4</span>
@@ -2324,7 +2310,8 @@
 <p>Monadic <code>-</code> : Negate
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">-</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">¯5</span><span class="w"> </span><span class="m">6</span>
 <span class="m">¯4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">¯6</span>
-<span class="w">      </span><span class="c1">⍝ Remember this is different from ¯, since it could be monadic and also applies to the whole array</span>
+
+<span class="w">      </span><span class="c1">⍝ Remember this is different from ¯</span>
 <span class="w">      </span><span class="c1">⍝ Here, -4 -5 -6 is -(4-(5-6)) = ¯5</span>
 <span class="w">      </span><span class="o">-</span><span class="m">4</span><span class="w"> </span><span class="o">-</span><span class="m">5</span><span class="w"> </span><span class="o">-</span><span class="m">6</span><span class="w"> </span>
 <span class="m">¯5</span>

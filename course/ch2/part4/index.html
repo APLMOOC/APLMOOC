@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../assets/_favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.47">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
     
     
       
@@ -1742,7 +1742,7 @@
         
   
   <span class="md-ellipsis">
-    6.1 - String manipulation
+    6.1 - Execute and format
   </span>
   
 
@@ -1805,28 +1805,7 @@
         
   
   <span class="md-ellipsis">
-    6.4 - Operators
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ch6/part5/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    6.5 - Choo choo
+    6.4 - Repeat and masking
   </span>
   
 
@@ -2238,7 +2217,7 @@
 <p>This format stores the dates as decimal numbers, where the integer part stores the year, month, and day, and the fractional part stores the hour, minute, and second. For example, the time with year 2024, month 08, day 06, hour 05, minute 01, and second 30, is represented as <code>20240806.070130</code>.</p>
 <div class="admonition info">
 <p class="admonition-title">Dates and times</p>
-<p>In a later chapter, we will learn how to deal with dates and times properly with the datetime <code>⎕DT</code> function.</p>
+<p>The datetime <code>⎕DT</code> function can be used to convert date-times, see more at <a href="https://help.dyalog.com/19.0/Content/Language/System%20Functions/dt.htm">Datetime</a>.</p>
 </div>
 <p>Then, we will need a way to store the datetime data. One solution is to use two vectors instead of one, where each element of the measurement vector has a corresponding element in the time vector.</p>
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">TEMPERATURE_PAGE1</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">21.4</span><span class="w"> </span><span class="m">21.8</span><span class="w"> </span><span class="m">22.0</span><span class="w"> </span><span class="m">21.5</span><span class="w"> </span><span class="m">21.3</span><span class="w"> </span><span class="m">22.3</span>

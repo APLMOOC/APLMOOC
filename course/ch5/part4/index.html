@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../assets/_favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.47">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
     
     
       
@@ -1742,7 +1742,7 @@
         
   
   <span class="md-ellipsis">
-    6.1 - String manipulation
+    6.1 - Execute and format
   </span>
   
 
@@ -1805,28 +1805,7 @@
         
   
   <span class="md-ellipsis">
-    6.4 - Operators
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ch6/part5/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    6.5 - Choo choo
+    6.4 - Repeat and masking
   </span>
   
 
@@ -2609,65 +2588,45 @@
 <span class="err">└────────────────┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┘</span>
 </code></pre></div>
 <p>More examples of transpose</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">PEOPLE</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="s1">&#39;⍣⍤≢⍬^∧⍨⍥⌿⍀^∧&#39;</span>
-<span class="w">      </span><span class="c1">⍝ The first axis is from first couple to second couple, the second axis is from head to toe, the third axis is from first partner to second partner</span>
-<span class="w">      </span><span class="nv">PEOPLE</span>
-<span class="na">⍣⍤</span>
-<span class="o">≢</span><span class="no">⍬</span>
-<span class="err">^</span><span class="o">∧</span>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">SYMBOLS</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="s1">&#39;A1B2C3あ一い二う三&#39;</span>
+<span class="w">      </span><span class="c1">⍝ The first axis is from English to Japanese, the second axis is alphanumeric order, and the third axis is from letters to numbers</span>
+<span class="w">      </span><span class="nv">SYMBOLS</span>
+<span class="nv">A1</span>
+<span class="nv">B2</span>
+<span class="nv">C3</span>
 
-<span class="na">⍨⍥</span>
-<span class="na">⌿⍀</span>
-<span class="err">^</span><span class="o">∧</span>
-<span class="w">      </span><span class="c1">⍝ Convince yourself of what was said above, remember that the last axis is the one that is filled first</span>
-<span class="w">      </span><span class="p">(</span><span class="o">⍳</span><span class="m">12</span><span class="p">)</span><span class="kt">{</span><span class="bp">⍺</span><span class="w"> </span><span class="bp">⍵</span><span class="kt">}</span><span class="na">¨</span><span class="nv">PEOPLE</span>
-<span class="err">┌────┬────┐</span>
-<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="na">⍣</span><span class="w"> </span><span class="err">│</span><span class="m">2</span><span class="w"> </span><span class="na">⍤</span><span class="w"> </span><span class="err">│</span>
-<span class="err">├────┼────┤</span>
-<span class="err">│</span><span class="m">3</span><span class="w"> </span><span class="o">≢</span><span class="w"> </span><span class="err">│</span><span class="m">4</span><span class="w"> </span><span class="no">⍬</span><span class="w"> </span><span class="err">│</span>
-<span class="err">├────┼────┤</span>
-<span class="err">│</span><span class="m">5</span><span class="w"> </span><span class="err">^</span><span class="w"> </span><span class="err">│</span><span class="m">6</span><span class="w"> </span><span class="o">∧</span><span class="w"> </span><span class="err">│</span>
-<span class="err">└────┴────┘</span>
-<span class="err">┌────┬────┐</span>
-<span class="err">│</span><span class="m">7</span><span class="w"> </span><span class="na">⍨</span><span class="w"> </span><span class="err">│</span><span class="m">8</span><span class="w"> </span><span class="na">⍥</span><span class="w"> </span><span class="err">│</span>
-<span class="err">├────┼────┤</span>
-<span class="err">│</span><span class="m">9</span><span class="w"> </span><span class="na">⌿</span><span class="w"> </span><span class="err">│</span><span class="m">10</span><span class="w"> </span><span class="na">⍀</span><span class="err">│</span>
-<span class="err">├────┼────┤</span>
-<span class="err">│</span><span class="m">11</span><span class="w"> </span><span class="err">^│</span><span class="m">12</span><span class="w"> </span><span class="o">∧</span><span class="err">│</span>
-<span class="err">└────┴────┘</span>
+<span class="err">あ一</span>
+<span class="err">い二</span>
+<span class="err">う三</span>
 
-<span class="w">      </span><span class="c1">⍝ Transposing the array, the axes are now</span>
+<span class="w">      </span><span class="c1">⍝ Transposing the last two axes, so that the second axis is now from letters to numbers</span>
+<span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="o">⍉</span><span class="nv">SYMBOLS</span>
+<span class="nv">ABC</span>
+<span class="m">123</span>
 
-<span class="w">      </span><span class="c1">⍝ first couple to second couple, first partner to second partner, head to toe</span>
-<span class="w">      </span><span class="c1">⍝ The last axis is filled by people from head to toe, then the middle axis switches partner, and the first axis switches couple</span>
-<span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="o">⍉</span><span class="nv">PEOPLE</span>
-<span class="na">⍣</span><span class="o">≢</span><span class="err">^</span>
-<span class="na">⍤</span><span class="no">⍬</span><span class="o">∧</span>
+<span class="err">あいう</span>
+<span class="err">一二三</span>
 
-<span class="na">⍨⌿</span><span class="err">^</span>
-<span class="na">⍥⍀</span><span class="o">∧</span>
+<span class="w">      </span><span class="c1">⍝ Transposing the first two axis, so that the first axis is now alphanumeric order</span>
+<span class="w">      </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="o">⍉</span><span class="nv">SYMBOLS</span>
+<span class="nv">A1</span>
+<span class="err">あ一</span>
 
-<span class="w">      </span><span class="c1">⍝ head to toe, first couple to second couple, first partner to second partner</span>
-<span class="w">      </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="o">⍉</span><span class="nv">PEOPLE</span>
-<span class="na">⍣⍤</span>
-<span class="na">⍨⍥</span>
+<span class="nv">B2</span>
+<span class="err">い二</span>
 
-<span class="o">≢</span><span class="no">⍬</span>
-<span class="na">⌿⍀</span>
+<span class="nv">C3</span>
+<span class="err">う三</span>
 
-<span class="err">^</span><span class="o">∧</span>
-<span class="err">^</span><span class="o">∧</span>
+<span class="w">      </span><span class="c1">⍝ Transposing the first and last axis, so that the first axis is now letters to numbers</span>
+<span class="w">      </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="o">⍉</span><span class="nv">SYMBOLS</span>
+<span class="nv">A</span><span class="err">あ</span>
+<span class="nv">B</span><span class="err">い</span>
+<span class="nv">C</span><span class="err">う</span>
 
-<span class="w">      </span><span class="c1">⍝ first partner to second partner, head to toe, first couple to second couple</span>
-<span class="w">      </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="o">⍉</span><span class="nv">PEOPLE</span>
-<span class="na">⍣⍨</span>
-<span class="o">≢</span><span class="na">⌿</span>
-<span class="err">^^</span>
-
-<span class="na">⍤⍥</span>
-<span class="no">⍬</span><span class="na">⍀</span>
-<span class="o">∧∧</span>
-<span class="w">      </span><span class="c1">⍝ They swapped partners!</span>
+<span class="m">1</span><span class="err">一</span>
+<span class="m">2</span><span class="err">二</span>
+<span class="m">3</span><span class="err">三</span>
 </code></pre></div>
 <p>The dyadic <code>⌽</code> <code>⊖</code> rotate functions rotate an array by an amount specific by the left argument, around a specific axis.</p>
 <div class="highlight"><pre><span></span><code><span class="w">       </span><span class="m">3</span><span class="o">⌽</span><span class="na">¨</span><span class="s1">&#39;hotbloods&#39;</span><span class="w"> </span><span class="s1">&#39;mentally&#39;</span><span class="w"> </span><span class="s1">&#39;outbreak&#39;</span><span class="w"> </span><span class="s1">&#39;clean&#39;</span><span class="w"> </span><span class="s1">&#39;kyoto&#39;</span>

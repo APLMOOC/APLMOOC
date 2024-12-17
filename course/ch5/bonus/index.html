@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../assets/_favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.47">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
     
     
       
@@ -1742,7 +1742,7 @@
         
   
   <span class="md-ellipsis">
-    6.1 - String manipulation
+    6.1 - Execute and format
   </span>
   
 
@@ -1805,28 +1805,7 @@
         
   
   <span class="md-ellipsis">
-    6.4 - Operators
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ch6/part5/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    6.5 - Choo choo
+    6.4 - Repeat and masking
   </span>
   
 
@@ -2307,7 +2286,6 @@ The company created several animated sequences for the movie, including animatin
 <div class="highlight"><pre><span></span><code><span class="w">       </span><span class="o">,</span><span class="na">∘</span><span class="m">1</span><span class="na">¨</span><span class="p">(((</span><span class="o">⍳</span><span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="p">)</span><span class="o">÷</span><span class="m">5</span><span class="p">)</span><span class="o">-⊂</span><span class="m">0.6</span><span class="w"> </span><span class="m">0.6</span><span class="p">)</span>
 <span class="err">┌───────────┬───────────┬────────┬──────────┬──────────┐</span>
 <span class="err">│</span><span class="m">¯0.4</span><span class="w"> </span><span class="m">¯0.4</span><span class="w"> </span><span class="m">1</span><span class="err">│</span><span class="m">¯0.4</span><span class="w"> </span><span class="m">¯0.2</span><span class="w"> </span><span class="m">1</span><span class="err">│</span><span class="m">¯0.4</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="err">│</span><span class="m">¯0.4</span><span class="w"> </span><span class="m">0.2</span><span class="w"> </span><span class="m">1</span><span class="err">│</span><span class="m">¯0.4</span><span class="w"> </span><span class="m">0.4</span><span class="w"> </span><span class="m">1</span><span class="err">│</span>
-
 <span class="err">├───────────┼───────────┼────────┼──────────┼──────────┤</span>
 <span class="err">│</span><span class="m">¯0.2</span><span class="w"> </span><span class="m">¯0.4</span><span class="w"> </span><span class="m">1</span><span class="err">│</span><span class="m">¯0.2</span><span class="w"> </span><span class="m">¯0.2</span><span class="w"> </span><span class="m">1</span><span class="err">│</span><span class="m">¯0.2</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="err">│</span><span class="m">¯0.2</span><span class="w"> </span><span class="m">0.2</span><span class="w"> </span><span class="m">1</span><span class="err">│</span><span class="m">¯0.2</span><span class="w"> </span><span class="m">0.4</span><span class="w"> </span><span class="m">1</span><span class="err">│</span>
 <span class="err">├───────────┼───────────┼────────┼──────────┼──────────┤</span>
@@ -2367,42 +2345,35 @@ The company created several animated sequences for the movie, including animatin
 <p>We can construct this vector by calculating how much the distance function changes with a small variation in the x, y, and z directions, and normalizing the resulting vector. Small variations are needed so that we only consider points close to the surface point. In vector analysis terms, we are calculating the gradient of the distance function at that point.</p>
 <div class="highlight"><pre><span></span><code><span class="w">       </span><span class="nv">small</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">0.0001</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
 <span class="w">       </span><span class="nv">P</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="w">         </span><span class="nv">Δenv_x</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="p">(</span><span class="nv">env</span><span class="w"> </span><span class="p">(</span><span class="nv">P</span><span class="o">+</span><span class="nv">small</span><span class="p">))</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">env</span><span class="w"> </span><span class="p">(</span><span class="nv">P</span><span class="o">-</span><span class="nv">small</span><span class="p">)</span>
-<span class="w">         </span><span class="nv">Δenv_x</span>
+<span class="w">    </span><span class="nv">Δenv_x</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="p">(</span><span class="nv">env</span><span class="w"> </span><span class="p">(</span><span class="nv">P</span><span class="o">+</span><span class="nv">small</span><span class="p">))</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">env</span><span class="w"> </span><span class="p">(</span><span class="nv">P</span><span class="o">-</span><span class="nv">small</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">Δenv_x</span>
 <span class="m">0.0002</span>
 </code></pre></div>
 <p>We can use the rotate ⌽ operator to make the small vector in the y and z direction too.</p>
 <div class="highlight"><pre><span></span><code><span class="w">       </span><span class="m">1</span><span class="w"> </span><span class="o">⌽</span><span class="w"> </span><span class="nv">small</span>
 <span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0.0001</span>
-<span class="w">       </span><span class="p">(</span><span class="o">⌽</span><span class="na">∘</span><span class="p">(</span><span class="m">0.0001</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="p">))</span><span class="na">¨</span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span>
+
+<span class="w">       </span><span class="vg">⎕</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">small_xyz</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="p">(</span><span class="o">⌽</span><span class="na">∘</span><span class="nv">small</span><span class="p">)</span><span class="na">¨</span><span class="o">⌽⍳</span><span class="m">3</span>
 <span class="err">┌──────────┬──────────┬──────────┐</span>
 <span class="err">│</span><span class="m">0.0001</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">0.0001</span><span class="w"> </span><span class="m">0</span><span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0.0001</span><span class="err">│</span>
 <span class="err">└──────────┴──────────┴──────────┘</span>
-<span class="w">       </span><span class="o">⌽⍳</span><span class="m">3</span>
-<span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span>
-<span class="w">       </span><span class="p">(</span><span class="o">⌽</span><span class="na">∘</span><span class="nv">small</span><span class="p">)</span><span class="na">¨</span><span class="o">⌽⍳</span><span class="m">3</span>
-<span class="err">┌──────────┬──────────┬──────────┐</span>
-<span class="err">│</span><span class="m">0.0001</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">0.0001</span><span class="w"> </span><span class="m">0</span><span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0.0001</span><span class="err">│</span>
-<span class="err">└──────────┴──────────┴──────────┘</span>
-<span class="w">       </span><span class="nv">P</span><span class="w"> </span><span class="p">((</span><span class="nv">env</span><span class="o">+</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="nv">env</span><span class="o">-</span><span class="p">))</span><span class="na">⍨</span><span class="w"> </span><span class="nv">small</span>
-<span class="m">0.0002</span>
-<span class="w">       </span><span class="nv">P</span><span class="w"> </span><span class="p">((</span><span class="nv">env</span><span class="o">+</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="nv">env</span><span class="o">-</span><span class="p">))</span><span class="na">⍨</span><span class="p">((</span><span class="o">⌽</span><span class="na">∘</span><span class="p">(</span><span class="m">0.0001</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="p">))</span><span class="na">¨</span><span class="o">⌽⍳</span><span class="m">3</span><span class="p">)</span>
-<span class="err">┌──────────┐</span>
-<span class="err">│</span><span class="m">0.0002</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="err">│</span>
-<span class="err">└──────────┘</span>
-<span class="w">       </span><span class="o">⊃</span><span class="w"> </span><span class="nv">P</span><span class="w"> </span><span class="p">((</span><span class="nv">env</span><span class="o">+</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="nv">env</span><span class="o">-</span><span class="p">))</span><span class="na">⍨</span><span class="p">((</span><span class="o">⌽</span><span class="na">∘</span><span class="p">(</span><span class="m">0.0001</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="p">))</span><span class="na">¨</span><span class="o">⌽⍳</span><span class="m">3</span><span class="p">)</span>
+
+<span class="w">       </span><span class="nv">P</span><span class="w"> </span><span class="p">((</span><span class="nv">env</span><span class="o">+</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="nv">env</span><span class="o">-</span><span class="p">))</span><span class="na">¨</span><span class="w"> </span><span class="nv">small_xyz</span>
 <span class="m">0.0002</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="w">       </span><span class="nv">norm</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="nv">normalize</span><span class="w"> </span><span class="o">⊃</span><span class="w"> </span><span class="bp">⍵</span><span class="w"> </span><span class="p">((</span><span class="nv">env</span><span class="o">+</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="nv">env</span><span class="o">-</span><span class="p">))</span><span class="na">⍨</span><span class="p">((</span><span class="o">⌽</span><span class="na">∘</span><span class="p">(</span><span class="m">0.0001</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="p">))</span><span class="na">¨</span><span class="o">⌽⍳</span><span class="m">3</span><span class="p">)</span><span class="kt">}</span>
+
+<span class="w">       </span><span class="nv">norm</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="nv">normalize</span><span class="w"> </span><span class="bp">⍵</span><span class="w"> </span><span class="p">((</span><span class="nv">env</span><span class="o">+</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="nv">env</span><span class="o">-</span><span class="p">))</span><span class="na">⍨</span><span class="w"> </span><span class="nv">small_xyz</span><span class="kt">}</span>
 <span class="w">       </span><span class="nv">norm</span><span class="w"> </span><span class="nv">P</span>
 <span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
 </code></pre></div>
 <p>Finally, we are now ready to write the ray marching function. The marching function should take the camera’s initial position, and move it along a ray according to the distance function for either a maximum number of marches or a point is hit, and for the latter return the dot product of the normal at that point with the vector from that point to the light source.</p>
-<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="nv">march</span><span class="kd">←</span><span class="p">(</span><span class="kt">{</span><span class="nv">cur_pos</span><span class="kd">←</span><span class="o">⊃</span><span class="bp">⍵</span><span class="w"> </span>
+<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="nv">march</span><span class="kd">←</span><span class="p">(</span><span class="kt">{</span>
+<span class="w">              </span><span class="nv">cur_pos</span><span class="kd">←</span><span class="o">⊃</span><span class="bp">⍵</span><span class="w"> </span>
 <span class="w">            </span><span class="p">⋄</span><span class="w"> </span><span class="nv">ray</span><span class="kd">←</span><span class="m">2</span><span class="o">⊃</span><span class="bp">⍵</span>
 <span class="w">            </span><span class="p">⋄</span><span class="w"> </span><span class="nv">i</span><span class="kd">←</span><span class="m">3</span><span class="o">⊃</span><span class="bp">⍵</span><span class="w"> </span>
 <span class="w">            </span><span class="p">⋄</span><span class="w"> </span><span class="nv">cur_pos</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">cur_pos</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="nv">env</span><span class="w"> </span><span class="nv">cur_pos</span><span class="p">)</span><span class="o">×</span><span class="nv">ray</span><span class="w"> </span>
-<span class="w">            </span><span class="p">⋄</span><span class="w"> </span><span class="p">(</span><span class="nv">env</span><span class="w"> </span><span class="nv">cur_pos</span><span class="p">)</span><span class="o">&lt;</span><span class="m">0.0001</span><span class="bp">:</span><span class="m">0</span><span class="o">⌈</span><span class="p">(</span><span class="nv">norm</span><span class="w"> </span><span class="nv">cur_pos</span><span class="p">)(</span><span class="o">+</span><span class="na">.</span><span class="o">×</span><span class="p">)(</span><span class="nv">normalize</span><span class="w"> </span><span class="nv">cur_pos</span><span class="o">-</span><span class="nv">light</span><span class="p">)</span><span class="w">   </span>
-<span class="w">            </span><span class="p">⋄</span><span class="w">  </span><span class="nv">cur_pos</span><span class="w"> </span><span class="nv">ray</span><span class="w"> </span><span class="p">(</span><span class="nv">i</span><span class="o">+</span><span class="m">1</span><span class="p">)</span><span class="kt">}</span><span class="na">⍣</span><span class="kt">{</span><span class="p">(</span><span class="m">1</span><span class="o">=≢</span><span class="bp">⍺</span><span class="p">)</span><span class="o">∨</span><span class="p">((</span><span class="bp">⍺</span><span class="o">,</span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="sr">[</span><span class="m">3</span><span class="sr">]</span><span class="o">&gt;</span><span class="m">32</span><span class="p">)</span><span class="kt">}</span><span class="p">)</span>
+<span class="w">            </span><span class="p">⋄</span><span class="w"> </span><span class="p">(</span><span class="nv">env</span><span class="w"> </span><span class="nv">cur_pos</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.0001</span><span class="bp">:</span><span class="w"> </span><span class="m">0</span><span class="o">⌈</span><span class="p">(</span><span class="nv">norm</span><span class="w"> </span><span class="nv">cur_pos</span><span class="p">)(</span><span class="o">+</span><span class="na">.</span><span class="o">×</span><span class="p">)(</span><span class="nv">normalize</span><span class="w"> </span><span class="nv">cur_pos</span><span class="o">-</span><span class="nv">light</span><span class="p">)</span><span class="w">   </span>
+<span class="w">            </span><span class="p">⋄</span><span class="w">  </span><span class="nv">cur_pos</span><span class="w"> </span><span class="nv">ray</span><span class="w"> </span><span class="p">(</span><span class="nv">i</span><span class="o">+</span><span class="m">1</span><span class="p">)</span><span class="kt">}</span>
+<span class="w">            </span><span class="na">⍣</span><span class="w"> </span><span class="kt">{</span><span class="p">(</span><span class="m">1</span><span class="o">=≢</span><span class="bp">⍺</span><span class="p">)</span><span class="o">∨</span><span class="p">((</span><span class="bp">⍺</span><span class="o">,</span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="sr">[</span><span class="m">3</span><span class="sr">]</span><span class="o">&gt;</span><span class="m">32</span><span class="p">)</span><span class="kt">}</span><span class="p">)</span>
 
 <span class="w">       </span><span class="nv">camera</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">¯10</span>
 <span class="w">       </span><span class="nv">ray</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span>
@@ -2415,7 +2386,9 @@ The company created several animated sequences for the movie, including animatin
 <span class="err">└────────────────────┴─────┴──┘</span>
 </code></pre></div>
 <p>Let’s go through the above code step by step.</p>
-<p>The function takes in a three element nested array, the first being the camera position, the second is the ray to march along, and the third is a counter variable. It starts from the camera position and adds to it the distance to the environment times the ray. If the distance to the environment is less than a small value, then it returns the dot product of the vector to the light source with the normal to the environment at that point, or zero, depending on which is greater. If not, then it returns the current position, ray, and counter incremented by one.</p>
+<p>The function takes in a three element nested array, the first being the camera position, the second is the ray to march along, and the third is a counter variable. </p>
+<p>It starts from the camera position and adds to it the distance to the environment times the ray. </p>
+<p>If the distance to the environment is less than a small value, then it returns the dot product of the vector to the light source with the normal to the environment at that point, or zero, depending on which is greater. If not, then it returns the current position, ray, and counter incremented by one.</p>
 <p>The power operator f⍣g allows us to evaluate the function f until the function g returns a value of 1. The function g takes in the previous return value of f, and the current return value of f, as left and right arguments. </p>
 <p>Here, the march function keeps moving the current position along the ray until either the result is a single value, that is, if the if statement in the march function returns either 0 or the dot product, by checking the number of elements (1=≢⍺), or if the number of iterations exceeds 32, ⍺[3]&gt;32.</p>
 <p>Wrapping the march function in a function that returns zero if the result is not a single number, we apply the function to the pixel coordinates and store the result.</p>
@@ -2428,6 +2401,7 @@ The company created several animated sequences for the movie, including animatin
 <span class="m">0</span><span class="w"> </span><span class="m">0.8900597217</span><span class="w"> </span><span class="m">0.8571428571</span><span class="w"> </span><span class="m">0.145402276</span><span class="w"> </span><span class="m">0</span>
 <span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w">            </span><span class="m">0.3004347993</span><span class="w"> </span><span class="m">0</span><span class="w">           </span><span class="m">0</span>
 <span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w">            </span><span class="m">0</span><span class="w">            </span><span class="m">0</span><span class="w">           </span><span class="m">0</span>
+
 <span class="w">       </span><span class="nv">image</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">color</span><span class="na">¨</span><span class="nv">pxl_directions</span>
 </code></pre></div>
 <p>This calculation might take a couple seconds.</p>
@@ -2530,13 +2504,13 @@ The company created several animated sequences for the movie, including animatin
         
         
           
-          <a href="../../ch6/part1/" class="md-footer__link md-footer__link--next" aria-label="Next: 6.1 - String manipulation">
+          <a href="../../ch6/part1/" class="md-footer__link md-footer__link--next" aria-label="Next: 6.1 - Execute and format">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                6.1 - String manipulation
+                6.1 - Execute and format
               </div>
             </div>
             <div class="md-footer__button md-icon">

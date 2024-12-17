@@ -16,11 +16,11 @@
       
       
       <link rel="icon" href="../../assets/_favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.47">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
     
     
       
-        <title>6.1 - String manipulation - APL MOOC</title>
+        <title>6.1 - Execute and format - APL MOOC</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#string-manipulation" class="md-skip">
+        <a href="#execute-and-format" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              6.1 - String manipulation
+              6.1 - Execute and format
             
           </span>
         </div>
@@ -1741,7 +1741,7 @@
         
   
   <span class="md-ellipsis">
-    6.1 - String manipulation
+    6.1 - Execute and format
   </span>
   
 
@@ -1805,28 +1805,7 @@
         
   
   <span class="md-ellipsis">
-    6.4 - Operators
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../part5/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    6.5 - Choo choo
+    6.4 - Repeat and masking
   </span>
   
 
@@ -2222,16 +2201,99 @@
                   
 
 
-<h1 id="string-manipulation">String manipulation</h1>
+<h1 id="execute-and-format">Execute and Format</h1>
 <div class="admonition abstract">
 <p class="admonition-title">This part will cover</p>
 <ul>
-<li>Partition</li>
-<li>Partitioned enclose</li>
-<li>Interval index</li>
+<li>Execute</li>
+<li>User Input</li>
+<li>Format</li>
 </ul>
 </div>
 <hr />
+<p><link rel="stylesheet" href="/styles/ch5part2.css"></p>
+<p>Quotation is an important part of reasoning about language; being able to refer to a statement in the abstract allows sentences such as, "the first word in 'Quotation is an important part of language' is 'Quotation'", which use language to describe language itself. Quotations refer to the sentences they are quoting, and so unquoting to retrieve the quoted sentence is always possible. </p>
+<p>Thus, if a programming language allows referring to itself in such a way, it must allow not only the creation of quotations, but also the ability to unquote these quotations. In APL, this functionality is provided by Strings, and the Format <code>⍕</code> and Execute <code>⍎</code>  functions.</p>
+<p>Strings were mentioned earlier in the course, as arrays of individual characters denoted using <code>'</code> quotation marks like <code>'the following'</code>. String also allow quotation marks as characters, using two quotation marks <code>''</code> one after the other, <code>'like ''this''!'</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="s1">&#39;like &#39;&#39;this&#39;&#39;!&#39;</span>
+<span class="nv">like</span><span class="w"> </span><span class="s1">&#39;this&#39;</span><span class="o">!</span>
+</code></pre></div>
+<p>Then, the Execute <code>⍎</code> function, as its name suggests, executes expressions stored in a string.</p>
+<p><div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">⍎</span><span class="s1">&#39;10/1&#39;</span>
+<span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span>
+
+<span class="w">      </span><span class="o">⍎</span><span class="s1">&#39;X ← ⍳10&#39;</span>
+<span class="w">      </span><span class="o">⍎</span><span class="s1">&#39;X&#39;</span>
+<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">10</span>
+
+<span class="w">      </span><span class="o">⍎</span><span class="s1">&#39;Y ← &#39;&#39;X ← 0&#39;&#39;&#39;</span>
+<span class="w">      </span><span class="nv">Y</span>
+<span class="nv">X</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">0</span>
+<span class="w">      </span><span class="o">⍎</span><span class="nv">Y</span>
+<span class="w">      </span><span class="nv">X</span>
+<span class="m">0</span>
+</code></pre></div>
+Using Each <code>¨</code>, we can execute an array of statements at once</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="p">(</span><span class="nf">⎕A</span><span class="o">,</span><span class="na">¨</span><span class="p">(</span><span class="s1">&#39;←&#39;</span><span class="p">)</span><span class="o">,</span><span class="na">¨</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;&#39;</span><span class="p">)</span><span class="o">,</span><span class="na">¨</span><span class="p">(</span><span class="o">,</span><span class="na">\</span><span class="nf">⎕A</span><span class="p">)</span><span class="o">,</span><span class="na">¨</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;&#39;</span><span class="p">))</span>
+<span class="err">┌─────┬──────┬───────┬────────┬─────────┬──────────┬───────────┬────────────┬─────────────┬──────────────┬───────────────┬────────────────┬─────────────────┬──────────────────┬───────────────────┬────────────────────┬─────────────────────┬──────────────────────┬───────────────────────┬────────────────────────┬─────────────────────────┬──────────────────────────┬───────────────────────────┬────────────────────────────┬─────────────────────────────┬──────────────────────────────┐</span>
+<span class="err">│</span><span class="nv">A</span><span class="kd">←</span><span class="s1">&#39;A&#39;</span><span class="err">│</span><span class="nv">B</span><span class="kd">←</span><span class="s1">&#39;AB&#39;</span><span class="err">│</span><span class="nv">C</span><span class="kd">←</span><span class="s1">&#39;ABC&#39;</span><span class="err">│</span><span class="nv">D</span><span class="kd">←</span><span class="s1">&#39;ABCD&#39;</span><span class="err">│</span><span class="nv">E</span><span class="kd">←</span><span class="s1">&#39;ABCDE&#39;</span><span class="err">│</span><span class="nv">F</span><span class="kd">←</span><span class="s1">&#39;ABCDEF&#39;</span><span class="err">│</span><span class="nv">G</span><span class="kd">←</span><span class="s1">&#39;ABCDEFG&#39;</span><span class="err">│</span><span class="nv">H</span><span class="kd">←</span><span class="s1">&#39;ABCDEFGH&#39;</span><span class="err">│</span><span class="nv">I</span><span class="kd">←</span><span class="s1">&#39;ABCDEFGHI&#39;</span><span class="err">│</span><span class="nv">J</span><span class="kd">←</span><span class="s1">&#39;ABCDEFGHIJ&#39;</span><span class="err">│</span><span class="nv">K</span><span class="kd">←</span><span class="s1">&#39;ABCDEFGHIJK&#39;</span><span class="err">│</span><span class="nv">L</span><span class="kd">←</span><span class="s1">&#39;ABCDEFGHIJKL&#39;</span><span class="err">│</span><span class="nv">M</span><span class="kd">←</span><span class="s1">&#39;ABCDEFGHIJKLM&#39;</span><span class="err">│</span><span class="nv">N</span><span class="kd">←</span><span class="s1">&#39;ABCDEFGHIJKLMN&#39;</span><span class="err">│</span><span class="nv">O</span><span class="kd">←</span><span class="s1">&#39;ABCDEFGHIJKLMNO&#39;</span><span class="err">│</span><span class="nv">P</span><span class="kd">←</span><span class="s1">&#39;ABCDEFGHIJKLMNOP&#39;</span><span class="err">│</span><span class="nv">Q</span><span class="kd">←</span><span class="s1">&#39;ABCDEFGHIJKLMNOPQ&#39;</span><span class="err">│</span><span class="nv">R</span><span class="kd">←</span><span class="s1">&#39;ABCDEFGHIJKLMNOPQR&#39;</span><span class="err">│</span><span class="nv">S</span><span class="kd">←</span><span class="s1">&#39;ABCDEFGHIJKLMNOPQRS&#39;</span><span class="err">│</span><span class="nv">T</span><span class="kd">←</span><span class="s1">&#39;ABCDEFGHIJKLMNOPQRST&#39;</span><span class="err">│</span><span class="nv">U</span><span class="kd">←</span><span class="s1">&#39;ABCDEFGHIJKLMNOPQRSTU&#39;</span><span class="err">│</span><span class="nv">V</span><span class="kd">←</span><span class="s1">&#39;ABCDEFGHIJKLMNOPQRSTUV&#39;</span><span class="err">│</span><span class="nv">W</span><span class="kd">←</span><span class="s1">&#39;ABCDEFGHIJKLMNOPQRSTUVW&#39;</span><span class="err">│</span><span class="nv">X</span><span class="kd">←</span><span class="s1">&#39;ABCDEFGHIJKLMNOPQRSTUVWX&#39;</span><span class="err">│</span><span class="nv">Y</span><span class="kd">←</span><span class="s1">&#39;ABCDEFGHIJKLMNOPQRSTUVWXY&#39;</span><span class="err">│</span><span class="nv">Z</span><span class="kd">←</span><span class="s1">&#39;ABCDEFGHIJKLMNOPQRSTUVWXYZ&#39;</span><span class="err">│</span>
+<span class="err">└─────┴──────┴───────┴────────┴─────────┴──────────┴───────────┴────────────┴─────────────┴──────────────┴───────────────┴────────────────┴─────────────────┴──────────────────┴───────────────────┴────────────────────┴─────────────────────┴──────────────────────┴───────────────────────┴────────────────────────┴─────────────────────────┴──────────────────────────┴───────────────────────────┴────────────────────────────┴─────────────────────────────┴──────────────────────────────┘</span>
+<span class="w">      </span><span class="o">⍎</span><span class="na">¨</span><span class="p">(</span><span class="nf">⎕A</span><span class="o">,</span><span class="na">¨</span><span class="p">(</span><span class="s1">&#39;←&#39;</span><span class="p">)</span><span class="o">,</span><span class="na">¨</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;&#39;</span><span class="p">)</span><span class="o">,</span><span class="na">¨</span><span class="p">(</span><span class="o">,</span><span class="na">\</span><span class="nf">⎕A</span><span class="p">)</span><span class="o">,</span><span class="na">¨</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;&#39;</span><span class="p">))</span>
+<span class="w">      </span><span class="nv">P</span>
+<span class="nv">ABCDEFGHIJKLMNOP</span>
+</code></pre></div>
+<p>Execute <code>⍎</code> is a powerful function, and is considered unsafe when used together with arbitrary user input since it allows for arbitrary code execution.</p>
+<p>If the only tools available to deal with quotations were strings and the execute <code>⍎</code> function, then it would only ever be possible to create quotations specified by the program itself when writing the program. Quoting a numerical array as the result of a computation would not be possible. This naturally leads to the creation of the Format <code>⍕</code> function. The Format <code>⍕</code> function allows not only this basic functionality, but also extra styling options for the resulting string</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">X</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">4423</span>
+<span class="w">      </span><span class="c1">⍝ First character of the quote of X</span>
+<span class="w">      </span><span class="p">(</span><span class="o">⍕</span><span class="nv">X</span><span class="p">)</span><span class="sr">[</span><span class="m">1</span><span class="sr">]</span>
+<span class="m">4</span>
+<span class="w">      </span><span class="c1">⍝ Length of the quote of X </span>
+<span class="w">      </span><span class="o">⍴⍕</span><span class="nv">X</span>
+<span class="m">4</span>
+
+
+<span class="w">      </span><span class="nv">Y</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="o">⍳</span><span class="m">5</span><span class="w"> </span><span class="m">5</span>
+<span class="w">      </span><span class="nv">Y</span>
+<span class="err">┌───┬───┬───┬───┬───┐</span>
+<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">4</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">5</span><span class="err">│</span>
+<span class="err">├───┼───┼───┼───┼───┤</span>
+<span class="err">│</span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="err">│</span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="err">│</span><span class="m">2</span><span class="w"> </span><span class="m">4</span><span class="err">│</span><span class="m">2</span><span class="w"> </span><span class="m">5</span><span class="err">│</span>
+<span class="err">├───┼───┼───┼───┼───┤</span>
+<span class="err">│</span><span class="m">3</span><span class="w"> </span><span class="m">1</span><span class="err">│</span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="err">│</span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="err">│</span><span class="m">3</span><span class="w"> </span><span class="m">5</span><span class="err">│</span>
+<span class="err">├───┼───┼───┼───┼───┤</span>
+<span class="err">│</span><span class="m">4</span><span class="w"> </span><span class="m">1</span><span class="err">│</span><span class="m">4</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">4</span><span class="w"> </span><span class="m">3</span><span class="err">│</span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="err">│</span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="err">│</span>
+<span class="err">├───┼───┼───┼───┼───┤</span>
+<span class="err">│</span><span class="m">5</span><span class="w"> </span><span class="m">1</span><span class="err">│</span><span class="m">5</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">5</span><span class="w"> </span><span class="m">3</span><span class="err">│</span><span class="m">5</span><span class="w"> </span><span class="m">4</span><span class="err">│</span><span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="err">│</span>
+<span class="err">└───┴───┴───┴───┴───┘</span>
+
+<span class="w">      </span><span class="o">⍕</span><span class="nv">Y</span>
+<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w">  </span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="w">  </span><span class="m">1</span><span class="w"> </span><span class="m">4</span><span class="w">  </span><span class="m">1</span><span class="w"> </span><span class="m">5</span><span class="w"> </span>
+<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w">  </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w">  </span><span class="m">2</span><span class="w"> </span><span class="m">4</span><span class="w">  </span><span class="m">2</span><span class="w"> </span><span class="m">5</span><span class="w"> </span>
+<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">1</span><span class="w">  </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w">  </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w">  </span><span class="m">3</span><span class="w"> </span><span class="m">5</span><span class="w"> </span>
+<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">1</span><span class="w">  </span><span class="m">4</span><span class="w"> </span><span class="m">2</span><span class="w">  </span><span class="m">4</span><span class="w"> </span><span class="m">3</span><span class="w">  </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w">  </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span>
+<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">1</span><span class="w">  </span><span class="m">5</span><span class="w"> </span><span class="m">2</span><span class="w">  </span><span class="m">5</span><span class="w"> </span><span class="m">3</span><span class="w">  </span><span class="m">5</span><span class="w"> </span><span class="m">4</span><span class="w">  </span><span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="w"> </span>
+
+<span class="w">      </span><span class="o">⍴⍕</span><span class="nv">Y</span>
+<span class="m">5</span><span class="w"> </span><span class="m">25</span>
+</code></pre></div>
+<p>Notice that the quote of the array Y is a string of shape <code>5 25</code>, giving <code>5</code> characters for each column of the array. This can be modified by providing a right argument array</p>
+<div class="highlight"><pre><span></span><code>      Z ← 5 5⍴÷⍳25
+      Z
+1             0.5           0.3333333333  0.25          0.2          
+0.1666666667  0.1428571429  0.125         0.1111111111  0.1          
+0.09090909091 0.08333333333 0.07692307692 0.07142857143 0.06666666667
+0.0625        0.05882352941 0.05555555556 0.05263157895 0.05         
+0.04761904762 0.04545454545 0.04347826087 0.04166666667 0.04         
+
+      10 2⍕Z
+      1.00      0.50      0.33      0.25      0.20
+      0.17      0.14      0.13      0.11      0.10
+      0.09      0.08      0.08      0.07      0.07
+      0.06      0.06      0.06      0.05      0.05
+      0.05      0.05      0.04      0.04      0.04
+</code></pre></div>
+<p>The first element of the right argument array specifies the characters per column, and the second element the number of decimal places each number should be formatted to.</p>
 
 
 

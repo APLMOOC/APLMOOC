@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../assets/_favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.47">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
     
     
       
@@ -1790,7 +1790,7 @@
         
   
   <span class="md-ellipsis">
-    6.1 - String manipulation
+    6.1 - Execute and format
   </span>
   
 
@@ -1853,28 +1853,7 @@
         
   
   <span class="md-ellipsis">
-    6.4 - Operators
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ch6/part5/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    6.5 - Choo choo
+    6.4 - Repeat and masking
   </span>
   
 
@@ -2329,37 +2308,7 @@ There are no exercises related to this content.</p>
 <p>Then, the data is a list of triples, consisting of the starting note, the ending note, and the color (or, priority) of the arrow between those notes. We can lay out this data in the form of a table as follows, where the row represents the starting note and the column represents the ending note. For example, the first row says that, for I as the starting note, we can get to I itself, II, or III with equal preference, 1 1 1.</p>
 <p><img src="../../assets/3_b_note_graph_table.svg" style="width:50%; margin-left: auto; margin-right: auto; display: block;" /></p>
 <p>We use <span style="color:blue;"> 1 </span> for standard movements and <span style="color:red;"> 2 </span> for preferred movements. Let’s write try to create this matrix in APL using the reshape ⍴ operator, remembering that if the right argument is not long enough, it will repeat it to fill the required dimensions.</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">M</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="w">      </span><span class="nv">M</span>
-<span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="w">      </span><span class="c1">⍝ Not quite</span>
-<span class="w">      </span><span class="nv">M</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="w">      </span><span class="nv">M</span>
-<span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span>
-<span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span>
-<span class="w">      </span><span class="c1">⍝ Closer</span>
-<span class="w">      </span><span class="nv">M</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span>
-<span class="w">      </span><span class="nv">M</span>
-<span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span>
-<span class="w">      </span><span class="c1">⍝ Getting there</span>
-<span class="w">      </span><span class="nv">M</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">M</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span>
 <span class="w">      </span><span class="nv">M</span>
 <span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span>
 <span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
@@ -2389,9 +2338,11 @@ There are no exercises related to this content.</p>
 <span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span>
 <span class="w">      </span><span class="c1">⍝ Perfect</span>
 </code></pre></div>
-<p>The next step is to figure out, given a note, what the next possible notes are. This is very easily done using the matrix multiplication +.× operator. This operator is actually the inner product operator . applied to the functions + and ×, see [Inner and Outer product section]. Represent a note with scale degree N as a vector with a 1 in the Nth slot, and 0 otherwise, then matrix multiplication with M represents picking out the Nth row, which as we mentioned above corresponds to selecting the edges in the graph where N is the starting note.</p>
+<p>The next step is to figure out, given a note, what the next possible notes are. This is very easily done using the matrix multiplication <code>+.×</code> operator.</p>
+<p>What we want to obtain is the Nth row of the matrix, this tells us where we can walk to, and what the preferred next notes are, for the note N.</p>
+<p>If we represent each note as a vector, with a 1 in the Nth slot, then matrix multiplication does exactly that.</p>
 <div class="admonition info inline end">
-<p>Recall that ⍳7 is 1 2 3 4 5 6 7, this is equivalent to 2=1 2 3 4 5 6 7
+<p>Recall that ⍳7 is 1 2 3 4 5 6 7
 <br><br><br>
 The subsequence notes are I (Preferred), II, III (Preferred), and IV</p>
 </div>
@@ -2435,22 +2386,8 @@ This is III.</p>
 <span class="w">      </span><span class="p">(</span><span class="o">⍳</span><span class="m">7</span><span class="p">)</span><span class="o">=</span><span class="m">1</span><span class="o">⌷⍒</span><span class="nv">NR</span>
 <span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
 </code></pre></div>
-<p>This is the basic algorithm we will use to generate our melodies. Let’s enclose our note generation algorithm in a direct function and generate a melody.</p>
-<div class="admonition info inline end">
-<p>A direct function/dfn (pronounced dee-fun) is defined using {curly braces}. The right argument to the function is called ⍵, and the left ⍺.
-<br><br>
-Statements in a dfn can be separated by a ⋄ diamond. However, only it stops as soon as a statement which returns a value is evaluated
-<br><br>
-The replicate / operator generates copies of its right argument elements depending on their left arguments
-<br>
-In this case, it replicates 0 of everything other than one copy of D</p>
-</div>
-<div class="highlight"><pre><span></span><code><span class="w">        </span><span class="m">10</span><span class="w"> </span><span class="kt">{</span><span class="bp">⍺</span><span class="o">+</span><span class="bp">⍵</span><span class="kt">}</span><span class="w"> </span><span class="m">2</span>
-<span class="m">12</span>
-<span class="w">      </span><span class="m">10</span><span class="w"> </span><span class="kt">{</span><span class="bp">⍺</span><span class="o">+</span><span class="bp">⍵</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span><span class="bp">⍺</span><span class="o">-</span><span class="bp">⍵</span><span class="kt">}</span><span class="w"> </span><span class="m">2</span><span class="w"> </span>
-<span class="m">12</span>
-
-<span class="w">      </span><span class="nv">NEXT</span><span class="kd">←</span><span class="kt">{</span><span class="p">(</span><span class="o">⍳</span><span class="m">7</span><span class="p">)</span><span class="o">=</span><span class="m">1</span><span class="o">⌷⍒?</span><span class="p">(</span><span class="bp">⍵</span><span class="o">×</span><span class="m">10</span><span class="p">)</span><span class="o">+</span><span class="na">.</span><span class="o">×</span><span class="nv">M</span><span class="kt">}</span><span class="w"> </span>
+<p>This is the basic algorithm we will use to generate our melodies. Let’s enclose our note generation algorithm in a direct function to use in a later melody function.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">NEXT</span><span class="kd">←</span><span class="kt">{</span><span class="p">(</span><span class="o">⍳</span><span class="m">7</span><span class="p">)</span><span class="o">=</span><span class="m">1</span><span class="o">⌷⍒?</span><span class="p">(</span><span class="bp">⍵</span><span class="o">×</span><span class="m">10</span><span class="p">)</span><span class="o">+</span><span class="na">.</span><span class="o">×</span><span class="nv">M</span><span class="kt">}</span><span class="w"> </span>
 <span class="w">      </span><span class="nv">NEXT</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
 <span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
 
@@ -2458,17 +2395,26 @@ In this case, it replicates 0 of everything other than one copy of D</p>
 <span class="w">      </span><span class="p">(</span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="na">/</span><span class="nv">NOTES</span>
 <span class="nv">D</span>
 </code></pre></div>
-<p><br>    </p>
+<p>The replicate / function generates copies of its right argument elements depending on their left arguments. In the above case, it replicates 0 of everything and one copy of D.</p>
+<p>Using the symbol ⍞ to print the output without adding a newline, we write the function to generate the melodies.</p>
+<div style="font-size: 0.8rem">
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">MELODY</span><span class="kd">←</span><span class="kt">{</span><span class="nv">res</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">NEXT</span><span class="w"> </span><span class="bp">⍵</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span><span class="vg">⍞</span><span class="kd">←</span><span class="nv">res</span><span class="na">/</span><span class="nv">NOTES</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span><span class="nv">MELODY</span><span class="w"> </span><span class="nv">res</span><span class="kt">}</span>
 <span class="w">        </span><span class="nv">MELODY</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
 <span class="nv">CDCECEGBGAGGGBBAAGBGEDEDFFEDCDCDECCDCECDECECEFEFEEGEGECEFEDEGBBBGBG</span>
 </code></pre></div>
+</div>
+
 <p>This function will run forever, generating notes until interrupted. One way of running the defun for a fixed number of steps is to add a variable representing the number of steps. We will use the left argument ⍺ as this variable.</p>
-<p><div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">MELODY</span><span class="kd">←</span><span class="kt">{</span><span class="w"> </span><span class="bp">⍺</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span><span class="bp">⍺</span><span class="o">&gt;</span><span class="m">20</span><span class="bp">:</span><span class="w"> </span><span class="s1">&#39;♫&#39;</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span><span class="nv">res</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">NEXT</span><span class="w"> </span><span class="bp">⍵</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span><span class="vg">⍞</span><span class="kd">←</span><span class="nv">res</span><span class="na">/</span><span class="nv">NOTES</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span><span class="p">(</span><span class="bp">⍺</span><span class="o">+</span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="nv">MELODY</span><span class="w"> </span><span class="nv">res</span><span class="kt">}</span>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">MELODY</span><span class="kd">←</span><span class="kt">{</span><span class="w"> </span>
+<span class="w">            </span><span class="bp">⍺</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">0</span>
+<span class="w">            </span><span class="bp">⍺</span><span class="o">&gt;</span><span class="m">20</span><span class="bp">:</span><span class="w"> </span><span class="s1">&#39;♫&#39;</span>
+<span class="w">            </span><span class="nv">res</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">NEXT</span><span class="w"> </span><span class="bp">⍵</span>
+<span class="w">            </span><span class="vg">⍞</span><span class="kd">←</span><span class="nv">res</span><span class="na">/</span><span class="nv">NOTES</span>
+<span class="w">            </span><span class="p">(</span><span class="bp">⍺</span><span class="o">+</span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="nv">MELODY</span><span class="w"> </span><span class="nv">res</span><span class="kt">}</span>
 <span class="w">      </span><span class="nv">MELODY</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
 <span class="nv">CCDEGAFDCEGFDEDCDCECC</span><span class="err">♫</span>
 </code></pre></div>
-Assigning a value to the left argument ⍺ gives a dfns a default left argument. The assignment is only executed if the function is called monadically, that is, if there is no supplied left argument. In this case, the left argument ⍺ starts at 0. The generation of the next note, the "(⍺+1) MELODY res" statement, is executed with an incremented left argument. The <em>guarded expression</em> ⍺&gt;20: '♫' states that ♫ is returned when ⍺ is becomes greater than 20. Since the execution of a dfn stops as soon as a statement returns a value, the code to generate the next note is no longer executed.</p>
+<p>The left argument ⍺ starts at 0, which is increased every time the function loops (The "(⍺+1) MELODY res" statement, is executed with an incremented left argument) until it becomes greater than 20 and finally returns a musical symbol <code>♫</code>.</p>
 <p>This is the result we were after! With just a couple lines of APL, we were able to encode general guidelines for melodic composition and write a function generating random melodies according to these principles algorithmically by tracing out a random walk through a graph. These random graph processes are more generally known as Markov Processes and have a much broader range of applicability than our case here. Applications include the Google PageRank algorithm which powered the Google search engine, particle physics simulations of quantum field theory on a lattice, and speech recognition systems. </p>
 <p>There is clearly so much more we could add to our program, from generating rhythm to accompany the melody, to adding chord progressions and harmony, and there will always be more to add. We will however stop here to enjoy the melodies our program has generated, and leave it up to the interested reader to write their own digital musicians.</p>
 <p>Some of the generated melodies are included below.</p>
@@ -2481,7 +2427,7 @@ Your browser does not support the audio element.
 Your browser does not support the audio element.
 </audio> </p>
 <p><audio controls>
-  <source src="../../assets/5_3_melody3.mp3" type="audio/mpeg">
+  <source src="../../assets/3_b_melody3.mp3" type="audio/mpeg">
 Your browser does not support the audio element.
 </audio></p>
 

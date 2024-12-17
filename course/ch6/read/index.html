@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../assets/_favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.47">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
     
     
       
@@ -1732,7 +1732,7 @@
         
   
   <span class="md-ellipsis">
-    6.1 - String manipulation
+    6.1 - Execute and format
   </span>
   
 
@@ -1795,28 +1795,7 @@
         
   
   <span class="md-ellipsis">
-    6.4 - Operators
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../part5/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    6.5 - Choo choo
+    6.4 - Repeat and masking
   </span>
   
 
@@ -2227,6 +2206,35 @@
 Check your answers by opening the "Output" tab.</p>
 <p>If you think an error will occur, try to predict <em>which</em> error it will be and where the arrow will point to.</p>
 <p>The exercises are not checked or graded: use them to check your knowledge!</p>
+<pre><code>  ⍝ Multiplication table
+  (⍳10)(∘.×)⍳10
+</code></pre>
+<p>1  2  3  4  5  6  7  8  9  10
+ 2  4  6  8 10 12 14 16 18  20
+ 3  6  9 12 15 18 21 24 27  30
+ 4  8 12 16 20 24 28 32 36  40
+ 5 10 15 20 25 30 35 40 45  50
+ 6 12 18 24 30 36 42 48 54  60
+ 7 14 21 28 35 42 49 56 63  70
+ 8 16 24 32 40 48 56 64 72  80
+ 9 18 27 36 45 54 63 72 81  90
+10 20 30 40 50 60 70 80 90 100</p>
+<pre><code>  ⍝ Composite numbers
+  (1+⍳9)(∘.×)1+⍳9
+</code></pre>
+<p>4  6  8 10 12 14 16 18  20
+ 6  9 12 15 18 21 24 27  30
+ 8 12 16 20 24 28 32 36  40
+10 15 20 25 30 35 40 45  50
+12 18 24 30 36 42 48 54  60
+14 21 28 35 42 49 56 63  70
+16 24 32 40 48 56 64 72  80
+18 27 36 45 54 63 72 81  90
+20 30 40 50 60 70 80 90 100</p>
+<pre><code>  ⍝ Prime numbers up to N as numbers minus composite numbers up to N/2
+  (⍳100) ~ (1+⍳49)(∘.×)1+⍳49
+</code></pre>
+<p>1 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97</p>
 
 
 
