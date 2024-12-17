@@ -8,6 +8,8 @@
 
 ---
 
+<link rel="stylesheet" href="/styles/ch5part2.css">
+
 Quotation is an important part of reasoning about language; being able to refer to a statement in the abstract allows sentences such as, "the first word in 'Quotation is an important part of language' is 'Quotation'", which use language to describe language itself. Quotations refer to the sentences they are quoting, and so unquoting to retrieve the quoted sentence is always possible. 
 
 Thus, if a programming language allows referring to itself in such a way, it must allow not only the creation of quotations, but also the ability to unquote these quotations. In APL, this functionality is provided by Strings, and the Format ``⍕`` and Execute ``⍎``  functions.

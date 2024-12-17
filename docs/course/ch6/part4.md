@@ -1,4 +1,4 @@
-# Repeat, Masking
+# Repeat and Masking
 
 !!! abstract "This part will cover"
     
