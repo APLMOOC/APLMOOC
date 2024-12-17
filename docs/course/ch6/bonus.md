@@ -92,52 +92,29 @@ We first need to create the board, which will be represented with a 2D matrix of
 Random unique positions for the mines can be obtained using deal ? dyadic function.
 
 ```apl
-       99 ? 16×30
-215 385 164 68 310 453 255 115 28 234 239 456 243 39 302 447 263 383 94 236 10 337 35 98 432 127 403 431 408 237 356 330 2
-      30 201 351 438 130 377 434 71 258 34 13 312 55 62 95 137 382 387 154 3 66 427 12 257 30 70 113 304 283 50 180 207 22
-      7 77 333 409 53 369 473 428 266 100 24 297 323 424 309 276 160 170 110 460 459 184 376 364 268 256 328 305 174 196 6
-      0 359 350 396 6
+       ⎕←pos←99 ? 16×30
+215 385 164 68 310 453 255 ...
 ```
 
 it is possible to see which 2D positions these numbers encode using the encode `⊤` function
 
 ```apl
-       (16 30 ⊤ (99 ? 16×30))
- 8 10  8 13 8  4 11 14 0 10  4  1 11  9  5  6 9 12 10  6 11 3 14 14 2 12  5 1 10  5 15 14 5 11  5 2  0 14  0  2  9 12 11 1
-17 20 12 15 7 27  6  0 8 24 19 22 27 12 29 23 7 18 11 11 12 2 29 18 3  3 12 9  5 20 17  8 1 16 27 0 15  3 24 19 19 26  0  
-       4 13  7  7  4  1 6 10 5  3 10 12  9 14 14  3 15  7 2 13 0  3 3 6 10 8  4 15  2 10 5 5 4 13 11  8 15 15 13 6 11 1  4 
-       2 13 10 20 15 14 7 13 3 23 29  4 25  7 24 28 22 17 8  4 7 20 1 6 17 3 20  1 12  7 9 7 1 21  8 13 11 12 27 1  1 5 14 
-       2  7 4  0  9 7  6  6 9  3  9 15 11
-       9 27 6 23 20 6 21 12 1 10 10  8 28
-       (16 30 ⊤ (99 ? 16×30))[;1]
-7 27
+       16 30 ⊤ 215
+7 5
+
+       (16 30 ⊤ pos)
+7 12  5 2 10 15  8 ...
+5 25 14 8 10  3 15 ...
 ```
 
 Assigning these positions to 1 on the board by (un)raveling the board into a vector, then using the `@` at operator
 
 ```apl
-      positions ← 99 ? 16×30
       board ← ,board
       board
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-      0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-      0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-      0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-      0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-      0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-      0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-      0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-      0 0 0 0 0 0 0 0 0 0 0 0 0
-      (1 @ positions) board
-0 0 0 0 0 1 0 0 0 0 0 1 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 1 0 1 0 0 0 0 0 0 0 1 0 1 0 0 0 0 0 
-      0 0 0 1 0 0 0 0 0 1 1 0 0 0 0 0 1 0 1 0 0 0 0 0 0 0 1 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-      1 0 0 0 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 0 0 0 0 0 1 1 0 1 0 0 0 1 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 
-      0 0 0 1 0 0 0 0 1 1 1 1 0 0 0 1 0 0 0 0 1 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 1 0 0 1 0 0 0 0 0 0 1 0 0 
-      0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-      0 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 1 0 1 1 0 0 0 0 0 1 0 0 1 0 0 0 0 0 1 0 1 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 
-      0 1 0 1 1 0 1 0 0 0 0 0 1 0 0 0 1 0 1 0 0 0 1 0 0 0 0 1 0 1 0 0 0 1 0 1 0 0 0 0 0 0 0 0 1 0 0 0 1 1 0 1 0 0 0 1 0 0 
-      0 0 0 0 0 0 0 0 1 0 1 0 0 1 1 0 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 1 1 0 0 0 1 
-      1 0 1 0 0 0 1 0 1 1 0 0 1
+0 0 0 0 0 0 0 0 0 0 0 0 ...
+      (1 @ pos) board
+0 0 0 0 0 1 0 0 0 0 0 1 ...
       board ← 16 30 ⍴ board
 ```
 
@@ -153,24 +130,6 @@ def new_board():
 	apl.eval("board ← 16 30 ⍴ board")
 
 new_board();
-print(apl.eval("board"));
-# The output is 
-#[[0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0], 
-#[1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1], 
-#[0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], 
-#[0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0], 
-#[0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
-#[0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1], 
-#[0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], 
-#[0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0], 
-#[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1], 
-#[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0], 
-#[1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0], 
-#[0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0], 
-#[0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0], 
-#[0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0], 
-#[0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0], 
-#[0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0]]
 ```
 
 ## Adjacency matrix
@@ -337,81 +296,37 @@ The last thing that is needed is a function to decide what happens when a tile i
       is_mine ← {(⍵⌷board)=1}
       board ← 1 -⍨ ? 5 5 ⍴ 2
       board
-0 1 1 1 0
-1 0 0 1 0
-0 1 0 0 1
-1 1 1 0 1
-0 1 0 0 0
-      is_mine ⊂(1 2)
+0 0 1 0 1
+0 0 1 1 0
+1 1 1 1 1
+0 1 0 1 0
+1 0 1 0 0
+      is_mine ⊂(3 2)
 1
 ```
 
-We will write the tile uncovering algorithm recursively. If the tile clicked does not have any adjacent mines, then the tiles adjacent to that tile are uncovered too, forming a list of tile positions to be uncovered in the process. This is the usual flood-fill algorithm. 
+The tile uncovering algorithm is a simple combination of the stencil operator ``⌺`` and the repeat ``⍣`` operator. 
 
-The following function makes sure the indices we are checking are not beyond the bounds of the board matrix. 
-
-```apl
-      in_bounds ← {∧/∊(⍵<⍴board)(⍵>(0 0))}
-```
-
-For example, using the clearly invalid index `¯1 3`, it is less than the maximum index `⍴board`, but not greater than `(0 0)`.
+Intuitively, the algorithm should calculate the neighbours of every tile ``⌺3 3``, uncovering the tile by setting it to ``¯1`` if one of its neighbours is uncovered ``¯1∊⍵`` and ``∧`` if it isn't a mine ``⍵[2;2]≠1``, otherwise return the original tile ``⍵[2;2]``, in code ``{(¯1∊⍵)∧⍵[2;2]≠1: ¯1 ⋄ ⍵[2;2]}⌺3 3``. It should repeat this process until the board does not change ``⍣≡``.
 
 ```apl
-       ⍴board
-5 5
-
-       ¯1 3 < ⍴board
-1 1
-       0 0 < ¯1 3
-0 1
-
-       ∊ (¯1 3 < ⍴board)(0 0 < ¯1 3)
-1 1 0 1
-
-       ∧/∊ (¯1 3 < ⍴board)(0 0 < ¯1 3)
-0
-       in_bounds ¯1 3
-0
-```
-
-```apl
-      directions ← (1 0)(0 1)(¯1 0)(0 ¯1)(1 1)(¯1 ¯1)(1 ¯1)(¯1 1)
-      uncover ← {(in_bounds ⍵)=0: ⍬ ⋄ ⍵⌷adjacency=0: (⊂⍵), uncover¨((⊂⍵)+¨directions) ⋄ ⍵}
-      
-      board ← (0@(1 + ⍳ 3 3))(5 5)⍴1
+      board[1;1]←¯1
       board
-1 1 1 1 1
-1 0 0 0 1
-1 0 0 0 1
-1 0 0 0 1
-1 1 1 1 1
-      adjacency ← ({+/,⍵}⌺3 3)board 
-      adjacency
-3 4 3 4 3
-4 5 3 5 4
-3 3 0 3 3
-4 5 3 5 4
-3 4 3 4 3
-      uncover 3 3
-┌───┬───┬───┬───┬───┬───┬───┬───┬───┐
-│3 3│4 3│3 4│2 3│3 2│4 4│2 2│4 2│2 4│
-└───┴───┴───┴───┴───┴───┴───┴───┴───┘
+¯1 0 1 0 1
+ 0 0 1 1 0
+ 1 1 1 1 1
+ 0 1 0 1 0
+ 1 0 1 0 0
+
+      ({(¯1∊⍵)∧⍵[2;2]≠1: ¯1 ⋄ ⍵[2;2]}⌺3 3⍣≡)board
+¯1 ¯1 1 0 1
+¯1 ¯1 1 1 0
+ 1  1 1 1 1
+ 0  1 0 1 0
+ 1  0 1 0 0
 ```
 
-The uncover function constructs a list of indices to mark as uncovered. The function first checks if the index is within the right bounds, if not it returns an empty array. If it is in the right bounds and it has no adjacent mines, then it returns the index catenated to the result of uncovering the tiles in all directions (since a tile with no adjacent mines needs to uncover all adjacent tiles), otherwise it just returns the index of the tile. Notice how the enclose functions is used here to apply `+` between `⍵` and every direction.
-
-Finally, the `@` at operator can be used to replace the board indices to be uncovered with `¯1`.
-
-```apl
-      (¯1@(uncover 3 3))board
-1  1  1  1 1
-1 ¯1 ¯1 ¯1 1
-1 ¯1 ¯1 ¯1 1
-1 ¯1 ¯1 ¯1 1
-1  1  1  1 1
-```
-
-Testing these functions in the python code
+The code is now
 
 ```python
 from pynapl import APL
@@ -425,9 +340,8 @@ def new_board():
 def calculate_adjacency():
   apl.eval("adjacency ← ({+/,⍵}⌺3 3)board")
 
-apl.fix("in_bounds ← {(+/⍵<⍴board)∧(∧/⍵>(0 0))>0}")
-apl.eval("directions ← (1 0)(0 1)(¯1 0)(0 ¯1)(1 1)(¯1 ¯1)(1 ¯1)(¯1 1)")
-apl.fix("uncover ← {(in_bounds ⍵)=0: ⍬ ⋄ ⍵⌷adjacency=0: (⊂⍵), uncover¨((⊂⍵)+¨directions) ⋄ ⍵}")
+apl.fix("uncover ← ({(¯1∊⍵)∧⍵[2;2]≠1: ¯1 ⋄ ⍵[2;2]}⌺3 3⍣≡)")
+
 is_mine = apl.fn("{(⍵⌷board)=1}")
 
 def uncover(x, y):
@@ -436,26 +350,10 @@ def uncover(x, y):
       return
   apl.eval("board ← (¯1@(uncover ∆))board", x, y)
   
-# Test board
-apl.eval("board ← (0@(1 + ⍳ 3 3))(5 5)⍴1")
-calculate_adjacency();
-
-# Check the result of uncovering at 3 3
-uncover(3,3);
-print(apl.eval("board"))
+create_board()
+calculate_adjacency()
 ```
 
-The result is 
-
-```python
-[[1,  1,  1,  1, 1],
- [1, -1, -1, -1, 1],
- [1, -1, -1, -1, 1],
- [1, -1, -1, -1, 1],
- [1,  1,  1,  1, 1]]
-```
-
-as is expected.
 
 ## Flagging, Winning, and Losing
 
@@ -505,6 +403,10 @@ We also need to update the adjacency numbers shown to the player when more tiles
       ((board=¯1)/¨labels) ← adjacency
       labels
    2 2  
+
+
+
+
 ```
 
 Putting this in our uncover function
@@ -530,7 +432,8 @@ def uncover(x, y):
   apl.eval("((board=¯1)/¨labels) ← adjacency")
 ```
 
-The code is now
+The code is finally
+
 ```python
 from pynapl import APL
 apl = APL.APL()
@@ -543,12 +446,12 @@ def new_board():
 def calculate_adjacency():
   apl.eval("adjacency ← ({+/,⍵}⌺3 3)board")
 
-apl.fix("in_bounds ← {(+/⍵<⍴board)∧(∧/⍵>(0 0))>0}")
-apl.eval("directions ← (1 0)(0 1)(¯1 0)(0 ¯1)(1 1)(¯1 ¯1)(1 ¯1)(¯1 1)")
-apl.fix("uncover ← {(in_bounds ⍵)=0: ⍬ ⋄ ⍵⌷adjacency=0: (⊂⍵), uncover¨((⊂⍵)+¨directions) ⋄ ⍵}")
+apl.fix("uncover ← ({(¯1∊⍵)∧⍵[2;2]≠1: ¯1 ⋄ ⍵[2;2]}⌺3 3⍣≡)")
+
 is_mine = apl.fn("{(⍵⌷board)=1}")
 
 apl.eval("labels ← (⍴ board) ⍴ ' '")
+
 def flag(x, y):
 	if(apl.eval("∆⌷board", x, y)!=-1): #Not uncovered
 	  apl.eval("∆⌷labels ← \'⚑\'", x, y)
@@ -565,5 +468,8 @@ new_board();
 calculate_adjacency();
 ```
 
+That's all the logic needed for our simple recreation! Since the geometry of minesweeper is the geometry of 2D arrays, which is part of the general geometry of arrays, we were able to implement the logic of Minesweeper in APL without ever resorting to manipulating indices.
+
 ## User interface
 
+Now that the game logic is written, we can move onto creating the user interface. The convenience of using the Py'n'APL interface can be seen here; we can use any python packages we'd like to create our UI that we might not have had easy access to from APL. The rest of the code does not involve APL in an interesting way, only that the flag and uncover functions are called whenever the user right or left clicks a tile respectively, and so the full code can be seen [here](example.com).
