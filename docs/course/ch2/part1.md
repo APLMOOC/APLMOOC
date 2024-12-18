@@ -30,8 +30,7 @@ Here is an example of assignment:
 As you can see, there is no output, because assignment does not return anything.
 This is what's called a *shy operation* in APL.
 
-It is convention to use capital letters for variable names in APL.
-You can also use lowercase letters, underscores, and numbers (but a variable name cannot start with a number).
+You can use capital letters, lowercase letters, underscores, and numbers (but a variable name cannot start with a number).
 In addition, you can use the characters `∆` and `⍙`, called *delta* and *delta underbar*.
 These have no special meaning, and can be used to separate parts of a variable.
 

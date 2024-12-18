@@ -10,7 +10,7 @@
 
 <link rel="stylesheet" href="/styles/ch5part2.css">
 
-Recall the Rank ⍤ operator which specified what rank cells a function acts on,
+Recall the Rank ``⍤`` operator which specified what rank cells a function acts on,
 ```apl
       M ← ? 5 5 ⍴ 10
 3 2  2 9 5

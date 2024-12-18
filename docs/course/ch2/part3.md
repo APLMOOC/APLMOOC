@@ -9,20 +9,20 @@
 
 <link rel="stylesheet" href="/styles/ch5part2.css">
 
-You might wonder, is there any additional benefit to putting data in vectors beyond just organising data? 
+You might wonder, is there any additional benefit to putting data in vectors beyond just organisation? 
 
 After you've made all your measurements, you suddenly realise that all the American temperature sensors have been giving values in Fahrenheit! Terrible news! After about 2000 milliseconds of googling, you find the formula to convert them to better units:
 
-Celsius = (Fahrenheit - 32) * 5 / 9
+$$Celsius = (Fahrenheit - 32) \cdot \frac{5}{9}$$
 
-To test it out, you try to convert the current room temperature reading of 72.1. Doing the calculation in APL:
+To test it out, you try to convert the current room temperature reading of 72.1
 
 ```apl
       (5 × 72.1 - 32) ÷ 9
 22.27777778
 ```
 
-Great! What’s not so great is that the temperature sensor has been left generating data for the whole week, and there are a bunch of readings to convert to Celsius.
+Great! What’s not so great is that the temperature sensor has been left generating data for the whole week, and there are a bunch of readings to convert to Celsius
 
 ```apl
       TEMP_F ← 71.2 71.4 73.3 73.0 73.1 72.8 72.5

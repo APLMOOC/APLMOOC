@@ -12,9 +12,23 @@
 
 The astute reader may have noticed that, although the vector data is much more structured, the dates and times of the measurements have been completely forgotten.
 
-First, we need a format to represent dates and times. For now, we will represent dates using floating-point decimal encoded format. 
+First, we need a format to represent dates and times. For now, we will represent dates using strings. 
 
-This format stores the dates as decimal numbers, where the integer part stores the year, month, and day, and the fractional part stores the hour, minute, and second. For example, the time with year 2024, month 08, day 06, hour 05, minute 01, and second 30, is represented as ``20240806.070130``.
+*Strings* in APL are vectors of characters, defined using single quotes. The useful ``⎕A`` constant stores the upper-case english alphabet 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.
+
+```
+      WORD ← 'STONE'
+      WORD
+STONE
+
+      ALPHABET ← ⎕A 
+      ALPHABET
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+
+      DATE ← 'Day 1, 10:00'
+      DATE
+Day 1, 10:00
+```
 
 !!! info "Dates and times"
      The datetime ``⎕DT`` function can be used to convert date-times, see more at [Datetime](https://help.dyalog.com/19.0/Content/Language/System%20Functions/dt.htm).
@@ -23,9 +37,9 @@ Then, we will need a way to store the datetime data. One solution is to use two 
 
 ```apl
       TEMPERATURE_PAGE1 ← 21.4 21.8 22.0 21.5 21.3 22.3
-      TEMPERATURE_PAGE1_DATE ← 00010101.074200 00010101.084700 00010101.101000 00010101.120100 00010101.143600 00010101.165000
+      TEMPERATURE_PAGE1_DATE ← 'Day 1, 07:42' 'Day 1, 08:47' 'Day 1, 10:10' 'Day 1, 12:01' 'Day 1, 14:36' 'Day 1, 16:50'
       TEMPERATURE_PAGE2 ← 22.8 21.5 22.1 22.0 21.9 22.4
-      TEMPERATURE_PAGE2_DATE ← 00010101.182300 00010101.193000 00010101.211200 00010102.071500 00010102.083000 00010102.094500
+      TEMPERATURE_PAGE2_DATE ← 'Day 1, 18:23' 'Day 1, 19:30' 'Day 1, 21:12' 'Day 2, 07:15' 'Day 2, 08:30' 'Day 2, 09:45'
 ```
 
 For the second measurement, 
@@ -34,18 +48,18 @@ For the second measurement,
       TEMPERATURE_PAGE1[2]
 21.8
       TEMPERATURE_PAGE1_DATE[2]
-00010101.084700
+Day 1, 08:47
 ```
 
-We can see that the temperature is 21.8 degrees, and the time is year 0001, month 01, day 01, hour 08, minute 47, and second 00.
+We can see that the temperature is 21.8 degrees on day 1 at 08:47.
 
 However, this lack of structure is exactly what introducing vectors was supposed to solve; two closely related pieces of information, the time of a measurement and the value of the measurement, are kept separate when they should logically be part of the same collection of data. Measurement data of this form are usually stored in tables, and it is only natural to try to store them in the same manner in a computer system.
 
 You decide to start over yet again, and store data in a matrix instead
 
 ```apl
-      TEMPERATURE_PAGE1 ← 6 2 ⍴ 21.4 00010101.074200 21.8 00010101.084700 22.0 00010101.101000 21.5 00010101.120100 21.3 00010101.143600 22.3 00010101.165000
-      TEMPERATURE_PAGE2 ← 6 2 ⍴ 22.8 00010101.182300 21.5 00010101.193000 22.1 00010102.211200 22.0 00010103.071500 21.9 00010103.083000 22.4 00010103.094500
+      TEMPERATURE_PAGE1 ← 6 2 ⍴ 21.4 'Day 1, 07:42' 21.8 'Day 1, 08:47' 22.0 'Day 1, 10:10' 21.5 'Day 1, 12:01' 21.3 'Day 1, 14:36' 22.3 'Day 1, 16:50'
+      TEMPERATURE_PAGE2 ← 6 2 ⍴ 22.8 'Day 1, 18:23' 21.5 'Day 1, 19:30' 22.1 'Day 2, 21:12' 22.0 'Day 3, 07:15' 21.9 'Day 3, 08:30' 22.4 'Day 3, 09:45'
 ```
 
 ---
@@ -67,14 +81,14 @@ Matrices are rectangles of data. They can be created by reshaping (⍴) a vector
 The reshape function takes a vector of elements as its right argument, and reshapes them to fit the dimensions specified by the left argument. Concretely, turning the temperature data from a vector to a 6 by 2 matrix
 
 ```apl
-      TEMPERATURE_DATA ← 21.4 00010101.074200 21.8 00010101.084700 22.0 00010101.101000 21.5 00010101.120100 21.3 00010101.143600 22.3 00010101.165000
+      TEMPERATURE_DATA ← 21.4 'Day 1 07:42' 21.8 'Day 1 08:47' 22.0 'Day 1 10:10' 21.5 'Day 1 12:01' 21.3 'Day 1 14:36' 22.3 'Day 1 16:50'
       6 2 ⍴ TEMPERATURE_DATA
-21.4 10101.0742
-21.8 10101.0847
-22   10101.101
-21.5 10101.1201
-21.3 10101.1436
-22.3 10101.165
+21.4 'Day 1 07:42'
+21.8 'Day 1 08:47'
+22   'Day 1 10:10'
+21.5 'Day 1 12:01'
+21.3 'Day 1 14:36'
+22.3 'Day 1 16:50'
       ⍝ The reshaped matrix has 6 rows and 2 columns
 ```
 
@@ -88,18 +102,6 @@ Another example is the following 5 by 5 pyramid
 1 2 3 2 1
 1 2 2 2 1
 1 1 1 1 1
-```
-
-*Strings* in APL are vectors of characters, defined using single quotes. The useful ``⎕A`` constant stores the upper-case english alphabet 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.
-
-```
-      WORD ← 'STONE'
-      WORD
-STONE
-
-      ALPHABET ← ⎕A 
-      ALPHABET
-ABCDEFGHIJKLMNOPQRSTUVWXYZ
 ```
 
 If the right argument is too short to fill the array, the reshape (dyadic ⍴) function repeats the right argument's entries.
@@ -123,10 +125,11 @@ TONE
 The shape (monadic ⍴) function acts on one array, its right argument, by returning a vector whose entries are the lengths of the axes.
 
 ```apl
-      TEMPERATURE_DATA ← 21.4 00010101.074200 21.8 00010101.084700 22.0 00010101.101000 21.5 00010101.120100 21.3 00010101.143600 22.3 00010101.165000
+      TEMPERATURE_DATA ← 21.4 'Day 1 07:42' 21.8 'Day 1 08:47' 22.0 'Day 1 10:10' 21.5 'Day 1 12:01' 21.3 'Day 1 14:36' 22.3 'Day 1 16:50'
       TEMPERATURE_PAGE1 ← 6 2 ⍴ TEMPERATURE_DATA
       ⍴TEMPERATURE_PAGE1
 6 2
+
       ⍴100 ⍝ (1)
 
       ⍴⎕A ⍝ (2)
@@ -171,41 +174,40 @@ TREND
      WORD_SQUARE[;5]
 TREND
 
-      TEMPERATURE_DATA1 ← 21.4 00010101.074200 21.8 00010101.084700 22.0 00010101.101000 21.5 00010101.120100 21.3 00010101.143600 22.3 00010101.165000
-      TEMPERATURE_PAGE1 ← 6 2 ⍴ TEMPERATURE_DATA1
-      TEMPERATURE_PAGE1
-21.4 10101.0742
-21.8 10101.0847
-22   10101.101
-21.5 10101.1201
-21.3 10101.1436
-22.3 10101.165
-      TEMPERATURE_PAGE1[1;1]
+     TEMPERATURE_DATA1 ← 21.4 'Day 1 07:42' 21.8 'Day 1 08:47' 22.0 'Day 1 10:10' 21.5 'Day 1 12:01' 21.3 'Day 1 14:36' 22.3 'Day 1 16:50'
+     TEMPERATURE_PAGE1 ← 6 2 ⍴ TEMPERATURE_DATA1
+     TEMPERATURE_PAGE1
+21.4 'Day 1 07:42'
+21.8 'Day 1 08:47'
+22   'Day 1 10:10'
+21.5 'Day 1 12:01'
+21.3 'Day 1 14:36'
+22.3 'Day 1 16:50'
+     TEMPERATURE_PAGE1[1;1]
 21.4
-      TEMPERATURE_PAGE1[1;2]
-10101.0742
-      TEMPERATURE_PAGE1[1;]
-21.4 10101.0742
-      TEMPERATURE_PAGE1[3;2]
-10101.101
+     TEMPERATURE_PAGE1[1;2]
+'Day 1 07:42'
+     TEMPERATURE_PAGE1[1;]
+21.4 'Day 1 07:42'
+     TEMPERATURE_PAGE1[3;2]
+'Day 1 10:10'
 
-     TEMPERATURE_PAGE2 ← 6 2 ⍴ 22.8 00010101.182300 21.5 00010101.193000 22.1 00010102.211200 22.0 00010103.071500 21.9 00010103.083000 22.4 00010103.094500
+     TEMPERATURE_PAGE2 ← 6 2 ⍴ 22.8 'Day 1 18:23' 21.5 'Day 1 19:30' 22.1 'Day 2 21:12' 22.0 'Day 3 07:15' 21.9 'Day 3 08:30' 22.4 'Day 3 09:45'
      TEMPERATURE_PAGE2
-22.8 10101.1823
-21.5 10101.193 
-22.1 10102.2112
-22   10103.0715
-21.9 10103.083 
-22.4 10103.0945
+22.8 'Day 1 18:23'
+21.5 'Day 1 19:30'
+22.1 'Day 2 21:12'
+22   'Day 3 07:15'
+21.9 'Day 3 08:30'
+22.4 'Day 3 09:45'
      TEMPERATURE_PAGE2[1;2]
-10101.1823
+'Day 1 18:23'
      TEMPERATURE_PAGE2[2;2]
-10101.193
+'Day 1 19:30'
      TEMPERATURE_PAGE2[3;2]
-10102.2112
+'Day 2 21:12'
      TEMPERATURE_PAGE2[;2]
-0101.1823 10101.193 10102.2112 10103.0715 10103.083 10103.0945
-
+'Day 1 18:23' 'Day 1 19:30' 'Day 2 21:12' 'Day 3 07:15' 'Day 3 08:30' 'Day 3 09:45'
 ```
 
 Multiple numbers can be specified for both row and column indices.
@@ -226,22 +228,22 @@ KLM
 
 However again, the data measurements are separated without reason, the problem that introducing matrices was supposed to solve. Going one dimension further, the data can be arranged in a three-dimensional ordered collection of data:
 
-```apl
-     TEMPERATURE_ARRAY ← 2 6 2 ⍴ 21.4 00010101.074200 21.8 00010101.084700 22.0 00010101.101000 21.5 00010101.120100 21.3 00010101.143600 22.3 00010101.165000 22.8 00010101.182300 21.5 00010101.193000 22.1 00010102.211200 22.0 00010103.071500 21.9 00010103.083000 22.4 00010103.094500
+```
+     TEMPERATURE_ARRAY ← 2 6 2 ⍴ 21.4 'Day 1 07:42' 21.8 'Day 1 08:47' 22.0 'Day 1 10:10' 21.5 'Day 1 12:01' 21.3 'Day 1 14:36' 22.3 'Day 1 16:50' 22.8 'Day 1 18:23' 21.5 'Day 1 19:30' 22.1 'Day 2 21:12' 22.0 'Day 3 07:15' 21.9 'Day 3 08:30' 22.4 'Day 3 09:45'
      TEMPERATURE_ARRAY
-21.4 10101.0742
-21.8 10101.0847
-22   10101.101 
-21.5 10101.1201
-21.3 10101.1436
-22.3 10101.165 
+21.4 'Day 1 07:42'
+21.8 'Day 1 08:47'
+22   'Day 1 10:10'
+21.5 'Day 1 12:01'
+21.3 'Day 1 14:36'
+22.3 'Day 1 16:50'
                
-22.8 10101.1823
-21.5 10101.193 
-22.1 10102.2112
-22   10103.0715
-21.9 10103.083 
-22.4 10103.0945
+22.8 'Day 1 18:23'
+21.5 'Day 1 19:30'
+22.1 'Day 2 21:12'
+22   'Day 3 07:15'
+21.9 'Day 3 08:30'
+22.4 'Day 3 09:45'
 
      ⍴TEMPERATURE_ARRAY 
 2 6 2
@@ -250,20 +252,20 @@ However again, the data measurements are separated without reason, the problem t
 3
 
      TEMPERATURE_ARRAY[1;;]
-21.4 10101.0742
-21.8 10101.0847
-22   10101.101 
-21.5 10101.1201
-21.3 10101.1436
-22.3 10101.165
+21.4 'Day 1 07:42'
+21.8 'Day 1 08:47'
+22   'Day 1 10:10'
+21.5 'Day 1 12:01'
+21.3 'Day 1 14:36'
+22.3 'Day 1 16:50'
 
      TEMPERATURE_ARRAY[2;;]
-22.8 10101.1823
-21.5 10101.193 
-22.1 10102.2112
-22   10103.0715
-21.9 10103.083 
-22.4 10103.0945
+22.8 'Day 1 18:23'
+21.5 'Day 1 19:30'
+22.1 'Day 2 21:12'
+22   'Day 3 07:15'
+21.9 'Day 3 08:30'
+22.4 'Day 3 09:45'
 
      TEMPERATURE_ARRAY[;;1]
 21.4 21.8 22   21.5 21.3 22.3
