@@ -7,6 +7,8 @@
 
 ---
 
+<link rel="stylesheet" href="/styles/ch5part2.css">
+
 Now that we know how data is structured in APL, it’s time to look at how to use this data, more specifically, how to make your own functions from already existing ones.
 
 You are an engineer sitting at your [cubicle](https://en.wikipedia.org/wiki/Cubicle). You are currently orbiting the Earth at an altitude of 160m at a speed of 1,600km/h.

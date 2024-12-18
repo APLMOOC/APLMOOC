@@ -22,6 +22,8 @@ theme:
   font:
     code: APL385
 markdown_extensions:
+  - pymdownx.highlight:
+      use_pygments: false
   - md_in_html
   - pymdownx.arithmatex:
       generic: true

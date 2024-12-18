@@ -16,7 +16,7 @@ First, we need a format to represent dates and times. For now, we will represent
 
 *Strings* in APL are vectors of characters, defined using single quotes. The useful ``⎕A`` constant stores the upper-case english alphabet 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.
 
-```
+```apl
       WORD ← 'STONE'
       WORD
 STONE
@@ -44,7 +44,7 @@ Then, we will need a way to store the datetime data. One solution is to use two 
 
 For the second measurement, 
 
-```
+```apl
       TEMPERATURE_PAGE1[2]
 21.8
       TEMPERATURE_PAGE1_DATE[2]
