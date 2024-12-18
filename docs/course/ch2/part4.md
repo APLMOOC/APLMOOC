@@ -25,9 +25,9 @@ STONE
       ALPHABET
 ABCDEFGHIJKLMNOPQRSTUVWXYZ
 
-      DATE ← 'Day 1, 10:00'
+      DATE ← 'Day 1 10:00'
       DATE
-Day 1, 10:00
+Day 1 10:00
 ```
 
 !!! info "Dates and times"
@@ -37,9 +37,9 @@ Then, we will need a way to store the datetime data. One solution is to use two 
 
 ```apl
       TEMPERATURE_PAGE1 ← 21.4 21.8 22.0 21.5 21.3 22.3
-      TEMPERATURE_PAGE1_DATE ← 'Day 1, 07:42' 'Day 1, 08:47' 'Day 1, 10:10' 'Day 1, 12:01' 'Day 1, 14:36' 'Day 1, 16:50'
+      TEMPERATURE_PAGE1_DATE ← 'Day 1 07:42' 'Day 1 08:47' 'Day 1 10:10' 'Day 1 12:01' 'Day 1 14:36' 'Day 1 16:50'
       TEMPERATURE_PAGE2 ← 22.8 21.5 22.1 22.0 21.9 22.4
-      TEMPERATURE_PAGE2_DATE ← 'Day 1, 18:23' 'Day 1, 19:30' 'Day 1, 21:12' 'Day 2, 07:15' 'Day 2, 08:30' 'Day 2, 09:45'
+      TEMPERATURE_PAGE2_DATE ← 'Day 1 18:23' 'Day 1 19:30' 'Day 1 21:12' 'Day 2, 07:15' 'Day 2, 08:30' 'Day 2, 09:45'
 ```
 
 For the second measurement, 
@@ -48,7 +48,7 @@ For the second measurement,
       TEMPERATURE_PAGE1[2]
 21.8
       TEMPERATURE_PAGE1_DATE[2]
-Day 1, 08:47
+Day 1 08:47
 ```
 
 We can see that the temperature is 21.8 degrees on day 1 at 08:47.
@@ -58,8 +58,8 @@ However, this lack of structure is exactly what introducing vectors was supposed
 You decide to start over yet again, and store data in a matrix instead
 
 ```apl
-      TEMPERATURE_PAGE1 ← 6 2 ⍴ 21.4 'Day 1, 07:42' 21.8 'Day 1, 08:47' 22.0 'Day 1, 10:10' 21.5 'Day 1, 12:01' 21.3 'Day 1, 14:36' 22.3 'Day 1, 16:50'
-      TEMPERATURE_PAGE2 ← 6 2 ⍴ 22.8 'Day 1, 18:23' 21.5 'Day 1, 19:30' 22.1 'Day 2, 21:12' 22.0 'Day 3, 07:15' 21.9 'Day 3, 08:30' 22.4 'Day 3, 09:45'
+      TEMPERATURE_PAGE1 ← 6 2 ⍴ 21.4 'Day 1 07:42' 21.8 'Day 1 08:47' 22.0 'Day 1 10:10' 21.5 'Day 1 12:01' 21.3 'Day 1 14:36' 22.3 'Day 1 16:50'
+      TEMPERATURE_PAGE2 ← 6 2 ⍴ 22.8 'Day 1 18:23' 21.5 'Day 1 19:30' 22.1 'Day 2, 21:12' 22.0 'Day 3, 07:15' 21.9 'Day 3, 08:30' 22.4 'Day 3, 09:45'
 ```
 
 ---
@@ -83,12 +83,12 @@ The reshape function takes a vector of elements as its right argument, and resha
 ```apl
       TEMPERATURE_DATA ← 21.4 'Day 1 07:42' 21.8 'Day 1 08:47' 22.0 'Day 1 10:10' 21.5 'Day 1 12:01' 21.3 'Day 1 14:36' 22.3 'Day 1 16:50'
       6 2 ⍴ TEMPERATURE_DATA
-21.4 'Day 1 07:42'
-21.8 'Day 1 08:47'
-22   'Day 1 10:10'
-21.5 'Day 1 12:01'
-21.3 'Day 1 14:36'
-22.3 'Day 1 16:50'
+21.4 Day 1 07:42
+21.8 Day 1 08:47
+22   Day 1 10:10
+21.5 Day 1 12:01
+21.3 Day 1 14:36
+22.3 Day 1 16:50
       ⍝ The reshaped matrix has 6 rows and 2 columns
 ```
 
@@ -177,37 +177,37 @@ TREND
      TEMPERATURE_DATA1 ← 21.4 'Day 1 07:42' 21.8 'Day 1 08:47' 22.0 'Day 1 10:10' 21.5 'Day 1 12:01' 21.3 'Day 1 14:36' 22.3 'Day 1 16:50'
      TEMPERATURE_PAGE1 ← 6 2 ⍴ TEMPERATURE_DATA1
      TEMPERATURE_PAGE1
-21.4 'Day 1 07:42'
-21.8 'Day 1 08:47'
-22   'Day 1 10:10'
-21.5 'Day 1 12:01'
-21.3 'Day 1 14:36'
-22.3 'Day 1 16:50'
+21.4 Day 1 07:42
+21.8 Day 1 08:47
+22   Day 1 10:10
+21.5 Day 1 12:01
+21.3 Day 1 14:36
+22.3 Day 1 16:50
      TEMPERATURE_PAGE1[1;1]
 21.4
      TEMPERATURE_PAGE1[1;2]
-'Day 1 07:42'
+Day 1 07:42
      TEMPERATURE_PAGE1[1;]
-21.4 'Day 1 07:42'
+21.4 Day 1 07:42
      TEMPERATURE_PAGE1[3;2]
-'Day 1 10:10'
+Day 1 10:10
 
      TEMPERATURE_PAGE2 ← 6 2 ⍴ 22.8 'Day 1 18:23' 21.5 'Day 1 19:30' 22.1 'Day 2 21:12' 22.0 'Day 3 07:15' 21.9 'Day 3 08:30' 22.4 'Day 3 09:45'
      TEMPERATURE_PAGE2
-22.8 'Day 1 18:23'
-21.5 'Day 1 19:30'
-22.1 'Day 2 21:12'
-22   'Day 3 07:15'
-21.9 'Day 3 08:30'
-22.4 'Day 3 09:45'
+22.8 Day 1 18:23
+21.5 Day 1 19:30
+22.1 Day 2 21:12
+22   Day 3 07:15
+21.9 Day 3 08:30
+22.4 Day 3 09:45
      TEMPERATURE_PAGE2[1;2]
-'Day 1 18:23'
+Day 1 18:23
      TEMPERATURE_PAGE2[2;2]
-'Day 1 19:30'
+Day 1 19:30
      TEMPERATURE_PAGE2[3;2]
-'Day 2 21:12'
+Day 2 21:12
      TEMPERATURE_PAGE2[;2]
-'Day 1 18:23' 'Day 1 19:30' 'Day 2 21:12' 'Day 3 07:15' 'Day 3 08:30' 'Day 3 09:45'
+Day 1 18:23 Day 1 19:30 Day 2 21:12 Day 3 07:15 Day 3 08:30 Day 3 09:45
 ```
 
 Multiple numbers can be specified for both row and column indices.
@@ -231,19 +231,19 @@ However again, the data measurements are separated without reason, the problem t
 ```
      TEMPERATURE_ARRAY ← 2 6 2 ⍴ 21.4 'Day 1 07:42' 21.8 'Day 1 08:47' 22.0 'Day 1 10:10' 21.5 'Day 1 12:01' 21.3 'Day 1 14:36' 22.3 'Day 1 16:50' 22.8 'Day 1 18:23' 21.5 'Day 1 19:30' 22.1 'Day 2 21:12' 22.0 'Day 3 07:15' 21.9 'Day 3 08:30' 22.4 'Day 3 09:45'
      TEMPERATURE_ARRAY
-21.4 'Day 1 07:42'
-21.8 'Day 1 08:47'
-22   'Day 1 10:10'
-21.5 'Day 1 12:01'
-21.3 'Day 1 14:36'
-22.3 'Day 1 16:50'
+21.4 Day 1 07:42
+21.8 Day 1 08:47
+22   Day 1 10:10
+21.5 Day 1 12:01
+21.3 Day 1 14:36
+22.3 Day 1 16:50
                
-22.8 'Day 1 18:23'
-21.5 'Day 1 19:30'
-22.1 'Day 2 21:12'
-22   'Day 3 07:15'
-21.9 'Day 3 08:30'
-22.4 'Day 3 09:45'
+22.8 Day 1 18:23
+21.5 Day 1 19:30
+22.1 Day 2 21:12
+22   Day 3 07:15
+21.9 Day 3 08:30
+22.4 Day 3 09:45
 
      ⍴TEMPERATURE_ARRAY 
 2 6 2
@@ -252,20 +252,20 @@ However again, the data measurements are separated without reason, the problem t
 3
 
      TEMPERATURE_ARRAY[1;;]
-21.4 'Day 1 07:42'
-21.8 'Day 1 08:47'
-22   'Day 1 10:10'
-21.5 'Day 1 12:01'
-21.3 'Day 1 14:36'
-22.3 'Day 1 16:50'
+21.4 Day 1 07:42
+21.8 Day 1 08:47
+22   Day 1 10:10
+21.5 Day 1 12:01
+21.3 Day 1 14:36
+22.3 Day 1 16:50
 
      TEMPERATURE_ARRAY[2;;]
-22.8 'Day 1 18:23'
-21.5 'Day 1 19:30'
-22.1 'Day 2 21:12'
-22   'Day 3 07:15'
-21.9 'Day 3 08:30'
-22.4 'Day 3 09:45'
+22.8 Day 1 18:23
+21.5 Day 1 19:30
+22.1 Day 2 21:12
+22   Day 3 07:15
+21.9 Day 3 08:30
+22.4 Day 3 09:45
 
      TEMPERATURE_ARRAY[;;1]
 21.4 21.8 22   21.5 21.3 22.3
@@ -283,34 +283,34 @@ Now with your temperature table safely stored in your APL workspace, you can onl
 
 ```apl
      TEMPERATURE_ARRAY
-21.4 10101.0742
-21.8 10101.0847
-226  10101.101 
-21.5 10101.1201
-21.3 10101.1436
-22.3 10101.165 
+21.4  Day 1 07:42
+21.8  Day 1 08:47
+226   Day 1 10:01
+21.5  Day 1 12:01
+21.3  Day 1 14:36
+22.3  Day 1 16:50
                
-22.8 10101.1823
-21.5 10101.193 
-22.1 10102.2112
-22   10103.0715
-21.9 10103.083 
-22.4 10103.0945
+22.8  Day 1 18:23
+21.5  Day 1 19:30
+22.1  Day 2 21:12
+22    Day 3 07:15
+21.9  Day 3 08:30
+22.4  Day 3 09:45
      TEMPERATURE_ARRAY[1;3;1] ← 22.6
      TEMPERATURE_ARRAY
-21.4 10101.0742
-21.8 10101.0847
-22.6 10101.101 
-21.5 10101.1201
-21.3 10101.1436
-22.3 10101.165 
+21.4  Day 1 07:42
+21.8  Day 1 08:47
+22.6  Day 1 10:01
+21.5  Day 1 12:01
+21.3  Day 1 14:36
+22.3  Day 1 16:50
                
-22.8 10101.1823
-21.5 10101.193 
-22.1 10102.2112
-22   10103.0715
-21.9 10103.083 
-22.4 10103.0945
+22.8  Day 1 18:23
+21.5  Day 1 19:30
+22.1  Day 2 21:12
+22    Day 3 07:15
+21.9  Day 3 08:30
+22.4  Day 3 09:45
 ```
 
 That was close!
