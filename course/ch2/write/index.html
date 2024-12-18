@@ -2210,15 +2210,6 @@ Your submissions are graded using TMC.</p>
 If you submit a correct solution at least once, you will receive points on the TMC server and be able to see the model solution.</p>
 <p>If the write problem is red, it is unsolved. If it it green, you have solved it and received points for it on the server.</p>
 <hr />
-<p>Create vector
-Manipulate vector
-Index vector
-Index vector, multiple</p>
-<p>Create matrix
-Manipulate matrix
-Index matrix (1)
-Index matrix (2)
-Index matrix, square</p>
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 1</p>
 <p>Create a vector consisting of the first ten prime numbers called PRIMES
@@ -2408,11 +2399,11 @@ Get the first letter of each of the games listed using indexing
 <p class="admonition-title">Write problem 12</p>
 <p>Consider a tape-controlled computer which operates by reading a certain section of a tape, changing its internal state based on the value of that section, writing a certain value to that section, then possibly moving the tape along to the next or previous section. For this specific machine, the value of the tape sections is either a 1 or a 2, the internal state of the machine is either 1 2 or 3, and the matrix which specifies the actions to be taken is the following
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">INSTRUCTIONS</span>
-<span class="w">  </span><span class="err">┌─────┬─────┬─────┐</span>
-<span class="w">  </span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="nv">R</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="nv">L</span><span class="w"> </span><span class="m">1</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="nv">L</span><span class="w"> </span><span class="m">2</span><span class="err">│</span>
-<span class="w">  </span><span class="err">├─────┼─────┼─────┤</span>
-<span class="w">  </span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="nv">L</span><span class="w"> </span><span class="m">3</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="nv">R</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="nv">N</span><span class="w"> </span><span class="nv">H</span><span class="err">│</span>
-<span class="w">  </span><span class="err">└─────┴─────┴─────┘</span>
+<span class="err">┌─────┬─────┬─────┐</span>
+<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="nv">R</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="nv">L</span><span class="w"> </span><span class="m">1</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="nv">L</span><span class="w"> </span><span class="m">2</span><span class="err">│</span>
+<span class="err">├─────┼─────┼─────┤</span>
+<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="nv">L</span><span class="w"> </span><span class="m">3</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="nv">R</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="nv">N</span><span class="w"> </span><span class="nv">H</span><span class="err">│</span>
+<span class="err">└─────┴─────┴─────┘</span>
 </code></pre></div>
 The first value in each element is what to write to the section of tape, the second whether to move right 'R' left 'L' or stay in place 'N', and the last value is the next state of the machine 1, 2, 3, or 'H' for halting the machine.</p>
 <p>The first (second) row of the matrix specifies the possible instructions when the value of the section of tape is a 1 (2). The columns similarly specify the possible instructions depending on the state of the machine.</p>

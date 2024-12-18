@@ -208,3 +208,14 @@ div.problem button.problembutton {
 .jBox-Tooltip span {
     font-family: "APL385";
 }
+
+
+/* Syntax highlighting */
+
+:root > * {
+    --md-code-hl-variable-color: #555555; 
+    --md-code-hl-keyword-color: #5376ff;
+    --md-code-hl-number-color: #e67d3e;
+    --md-code-hl-operator-color: #854eff;
+    --md-code-hl-special-color: #000;
+}

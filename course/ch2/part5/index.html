@@ -2214,42 +2214,37 @@
 <p>Be warned, elements of arrays can be vectors, or matrices, or arrays of higher rank in their own right! </p>
 <p>We will discuss this in depth in Chapter 5, so take this section as a word of warning.</p>
 <p>Look what happens when we try to create the new temperature matrix from the already existing temperature vectors</p>
-<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="nv">TEMPERATURE_DATA1</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">21.4</span><span class="w"> </span><span class="m">00010101.074200</span><span class="w"> </span><span class="m">21.8</span><span class="w"> </span><span class="m">00010101.084700</span>
-<span class="w">       </span><span class="nv">TEMPERATURE_DATA2</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">22.8</span><span class="w"> </span><span class="m">00010101.182300</span><span class="w"> </span><span class="m">21.5</span><span class="w"> </span><span class="m">00010101.193000</span><span class="w"> </span>
-<span class="w">       </span><span class="nv">TEMPERATURE_ARRAY</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="nv">TEMPERATURE_DATA1</span><span class="w"> </span><span class="nv">TEMPERATURE_DATA2</span>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">TEMPERATURE_DATA1</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">21.4</span><span class="w"> </span><span class="s1">&#39;Day 1, 07:42&#39;</span><span class="w"> </span><span class="m">21.8</span><span class="w"> </span><span class="s1">&#39;Day 1, 08:47&#39;</span>
+<span class="w">      </span><span class="nv">TEMPERATURE_DATA2</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">22.8</span><span class="w"> </span><span class="s1">&#39;Day 1, 18:23&#39;</span><span class="w"> </span><span class="m">21.5</span><span class="w"> </span><span class="s1">&#39;Day 1, 19:30&#39;</span>
+<span class="w">      </span><span class="nv">TEMPERATURE_ARRAY</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="nv">TEMPERATURE_DATA1</span><span class="w"> </span><span class="nv">TEMPERATURE_DATA2</span>
 
-<span class="w">       </span><span class="nv">TEMPERATURE_ARRAY</span>
-<span class="err">┌───────────────────────────────┬──────────────────────────────┐</span>
-<span class="err">│</span><span class="m">21.4</span><span class="w"> </span><span class="m">10101.0742</span><span class="w"> </span><span class="m">21.8</span><span class="w"> </span><span class="m">10101.0847</span><span class="err">│</span><span class="m">22.8</span><span class="w"> </span><span class="m">10101.1823</span><span class="w"> </span><span class="m">21.5</span><span class="w"> </span><span class="m">10101.193</span><span class="err">│</span>
-<span class="err">├───────────────────────────────┼──────────────────────────────┤</span>
-<span class="err">│</span><span class="m">21.4</span><span class="w"> </span><span class="m">10101.0742</span><span class="w"> </span><span class="m">21.8</span><span class="w"> </span><span class="m">10101.0847</span><span class="err">│</span><span class="m">22.8</span><span class="w"> </span><span class="m">10101.1823</span><span class="w"> </span><span class="m">21.5</span><span class="w"> </span><span class="m">10101.193</span><span class="err">│</span>
-<span class="err">└───────────────────────────────┴──────────────────────────────┘</span>
-<span class="err">┌───────────────────────────────┬──────────────────────────────┐</span>
-<span class="err">│</span><span class="m">21.4</span><span class="w"> </span><span class="m">10101.0742</span><span class="w"> </span><span class="m">21.8</span><span class="w"> </span><span class="m">10101.0847</span><span class="err">│</span><span class="m">22.8</span><span class="w"> </span><span class="m">10101.1823</span><span class="w"> </span><span class="m">21.5</span><span class="w"> </span><span class="m">10101.193</span><span class="err">│</span>
-<span class="err">├───────────────────────────────┼──────────────────────────────┤</span>
-<span class="err">│</span><span class="m">21.4</span><span class="w"> </span><span class="m">10101.0742</span><span class="w"> </span><span class="m">21.8</span><span class="w"> </span><span class="m">10101.0847</span><span class="err">│</span><span class="m">22.8</span><span class="w"> </span><span class="m">10101.1823</span><span class="w"> </span><span class="m">21.5</span><span class="w"> </span><span class="m">10101.193</span><span class="err">│</span>
-<span class="err">└───────────────────────────────┴──────────────────────────────┘</span>
+<span class="w">      </span><span class="nv">TEMPERATURE_ARRAY</span>
+<span class="w"> </span><span class="m">21.4</span><span class="w">  </span><span class="nv">Day</span><span class="w"> </span><span class="m">1</span><span class="o">,</span><span class="w"> </span><span class="m">07</span><span class="bp">:</span><span class="m">42</span><span class="w">  </span><span class="m">21.8</span><span class="w">  </span><span class="nv">Day</span><span class="w"> </span><span class="m">1</span><span class="o">,</span><span class="w"> </span><span class="m">08</span><span class="bp">:</span><span class="m">47</span><span class="w">   </span><span class="m">22.8</span><span class="w">  </span><span class="nv">Day</span><span class="w"> </span><span class="m">1</span><span class="o">,</span><span class="w"> </span><span class="m">18</span><span class="bp">:</span><span class="m">23</span><span class="w">  </span><span class="m">21.5</span><span class="w">  </span><span class="nv">Day</span><span class="w"> </span><span class="m">1</span><span class="o">,</span><span class="w"> </span><span class="m">19</span><span class="bp">:</span><span class="m">30</span><span class="w">  </span>
+<span class="w"> </span><span class="m">21.4</span><span class="w">  </span><span class="nv">Day</span><span class="w"> </span><span class="m">1</span><span class="o">,</span><span class="w"> </span><span class="m">07</span><span class="bp">:</span><span class="m">42</span><span class="w">  </span><span class="m">21.8</span><span class="w">  </span><span class="nv">Day</span><span class="w"> </span><span class="m">1</span><span class="o">,</span><span class="w"> </span><span class="m">08</span><span class="bp">:</span><span class="m">47</span><span class="w">   </span><span class="m">22.8</span><span class="w">  </span><span class="nv">Day</span><span class="w"> </span><span class="m">1</span><span class="o">,</span><span class="w"> </span><span class="m">18</span><span class="bp">:</span><span class="m">23</span><span class="w">  </span><span class="m">21.5</span><span class="w">  </span><span class="nv">Day</span><span class="w"> </span><span class="m">1</span><span class="o">,</span><span class="w"> </span><span class="m">19</span><span class="bp">:</span><span class="m">30</span><span class="w">  </span>
+
+<span class="w"> </span><span class="m">21.4</span><span class="w">  </span><span class="nv">Day</span><span class="w"> </span><span class="m">1</span><span class="o">,</span><span class="w"> </span><span class="m">07</span><span class="bp">:</span><span class="m">42</span><span class="w">  </span><span class="m">21.8</span><span class="w">  </span><span class="nv">Day</span><span class="w"> </span><span class="m">1</span><span class="o">,</span><span class="w"> </span><span class="m">08</span><span class="bp">:</span><span class="m">47</span><span class="w">   </span><span class="m">22.8</span><span class="w">  </span><span class="nv">Day</span><span class="w"> </span><span class="m">1</span><span class="o">,</span><span class="w"> </span><span class="m">18</span><span class="bp">:</span><span class="m">23</span><span class="w">  </span><span class="m">21.5</span><span class="w">  </span><span class="nv">Day</span><span class="w"> </span><span class="m">1</span><span class="o">,</span><span class="w"> </span><span class="m">19</span><span class="bp">:</span><span class="m">30</span><span class="w">  </span>
+<span class="w"> </span><span class="m">21.4</span><span class="w">  </span><span class="nv">Day</span><span class="w"> </span><span class="m">1</span><span class="o">,</span><span class="w"> </span><span class="m">07</span><span class="bp">:</span><span class="m">42</span><span class="w">  </span><span class="m">21.8</span><span class="w">  </span><span class="nv">Day</span><span class="w"> </span><span class="m">1</span><span class="o">,</span><span class="w"> </span><span class="m">08</span><span class="bp">:</span><span class="m">47</span><span class="w">   </span><span class="m">22.8</span><span class="w">  </span><span class="nv">Day</span><span class="w"> </span><span class="m">1</span><span class="o">,</span><span class="w"> </span><span class="m">18</span><span class="bp">:</span><span class="m">23</span><span class="w">  </span><span class="m">21.5</span><span class="w">  </span><span class="nv">Day</span><span class="w"> </span><span class="m">1</span><span class="o">,</span><span class="w"> </span><span class="m">19</span><span class="bp">:</span><span class="m">30</span><span class="w">  </span>
 </code></pre></div>
 <p>Compared to the expected result, which is</p>
-<div class="highlight"><pre><span></span><code><span class="m">21.4</span><span class="w"> </span><span class="m">00010101.074200</span><span class="w"> </span>
-<span class="m">21.8</span><span class="w"> </span><span class="m">00010101.084700</span>
+<div class="highlight"><pre><span></span><code><span class="m">21.4</span><span class="w"> </span><span class="nv">Day</span><span class="w"> </span><span class="m">1</span><span class="o">,</span><span class="w"> </span><span class="m">07</span><span class="bp">:</span><span class="m">42</span>
+<span class="m">21.8</span><span class="w"> </span><span class="nv">Day</span><span class="w"> </span><span class="m">1</span><span class="o">,</span><span class="w"> </span><span class="m">08</span><span class="bp">:</span><span class="m">47</span>
 
-<span class="m">22.8</span><span class="w"> </span><span class="m">00010101.182300</span><span class="w"> </span>
-<span class="m">21.5</span><span class="w"> </span><span class="m">00010101.193000</span>
+<span class="m">22.8</span><span class="w"> </span><span class="nv">Day</span><span class="w"> </span><span class="m">1</span><span class="o">,</span><span class="w"> </span><span class="m">18</span><span class="bp">:</span><span class="m">23</span>
+<span class="m">21.5</span><span class="w"> </span><span class="nv">Day</span><span class="w"> </span><span class="m">1</span><span class="o">,</span><span class="w"> </span><span class="m">19</span><span class="bp">:</span><span class="m">30</span>
 </code></pre></div>
-<p>Attempting to access the elements of the rank 3 array returns vectors, this is because we’ve accidentally created an array of vectors rather than an array of their elements. </p>
-<p>If we replace TEMPERATURE_DATA1 and TEMPERATURE_DATA2 with scalars, the situation is a bit more clear.
-<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="nv">ARRAY</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="s1">&#39;AB&#39;</span>
-<span class="w">       </span><span class="nv">ARRAY</span>
-<span class="nv">A</span><span class="w"> </span><span class="nv">B</span>
-<span class="nv">A</span><span class="w"> </span><span class="nv">B</span>
+<p>Replacing the vectors by strings, the situation is a little more clear</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">ARRAY</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="s1">&#39;TEMPERATURE_DATA1&#39;</span><span class="w"> </span><span class="s1">&#39;TEMPERATURE_DATA2&#39;</span>
+<span class="w">      </span><span class="nv">ARRAY</span>
+<span class="w"> </span><span class="nv">TEMPERATURE_DATA1</span><span class="w">  </span><span class="nv">TEMPERATURE_DATA2</span><span class="w"> </span>
+<span class="w"> </span><span class="nv">TEMPERATURE_DATA1</span><span class="w">  </span><span class="nv">TEMPERATURE_DATA2</span><span class="w"> </span>
 
-<span class="nv">A</span><span class="w"> </span><span class="nv">B</span>
-<span class="nv">A</span><span class="w"> </span><span class="nv">B</span>
-</code></pre></div></p>
+<span class="w"> </span><span class="nv">TEMPERATURE_DATA1</span><span class="w">  </span><span class="nv">TEMPERATURE_DATA2</span><span class="w"> </span>
+<span class="w"> </span><span class="nv">TEMPERATURE_DATA1</span><span class="w">  </span><span class="nv">TEMPERATURE_DATA2</span><span class="w"> </span>
+</code></pre></div>
+<p>In APL, elements of arrays can be of any rank. In the above code, we've accidentally created an array of vectors rather than an array of their scalars! This is because we did not combine the vectors into a larger vector, but made a new vector whose elements are <code>TEMPERATURE_DATA1</code> and <code>TEMPERATURE_DATA2</code>. </p>
 <p>The proper way to combine two vectors into a single longer vector is using the catenate <code>,</code> function,  generally joining two arrays along a common edge. Monadically, the ravel <code>,</code> function can be used to "unravel" a matrix into a vector of its elements in top-down left-right order, called ravel order.</p>
-<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="nv">WORD</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="s1">&#39;BOROSILICATE&#39;</span>
-<span class="w">       </span><span class="nv">WORD</span>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">WORD</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="s1">&#39;BOROSILICATE&#39;</span>
+<span class="w">      </span><span class="nv">WORD</span>
 <span class="nv">BO</span>
 <span class="nv">RO</span>
 
@@ -2259,10 +2254,10 @@
 <span class="nv">CA</span>
 <span class="nv">TE</span>
 
-<span class="w">       </span><span class="o">,</span><span class="nv">WORD</span>
+<span class="w">      </span><span class="o">,</span><span class="nv">WORD</span>
 <span class="nv">BOROSILICATE</span>
 
-<span class="w">       </span><span class="nv">WORD</span><span class="o">,</span><span class="s1">&#39;T&#39;</span>
+<span class="w">      </span><span class="nv">WORD</span><span class="o">,</span><span class="s1">&#39;T&#39;</span>
 <span class="nv">BOT</span>
 <span class="nv">ROT</span>
 
@@ -2272,7 +2267,7 @@
 <span class="nv">CAT</span>
 <span class="nv">TET</span>
 
-<span class="w">       </span><span class="nv">WORD</span><span class="o">,</span><span class="nv">WORD</span>
+<span class="w">      </span><span class="nv">WORD</span><span class="o">,</span><span class="nv">WORD</span>
 <span class="nv">BOBO</span>
 <span class="nv">RORO</span>
 
@@ -2282,28 +2277,28 @@
 <span class="nv">CACA</span>
 <span class="nv">TETE</span>
 
-<span class="w">       </span><span class="nv">TEMPERATURE_DATA1</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">21.4</span><span class="w"> </span><span class="m">00010101.074200</span><span class="w"> </span><span class="m">21.8</span><span class="w"> </span><span class="m">00010101.084700</span>
-<span class="w">       </span><span class="nv">TEMPERATURE_DATA2</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">22.8</span><span class="w"> </span><span class="m">00010101.182300</span><span class="w"> </span><span class="m">21.5</span><span class="w"> </span><span class="m">00010101.193000</span><span class="w"> </span>
-<span class="w">       </span><span class="nv">TEMPERATURE_ARRAY</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="nv">TEMPERATURE_DATA1</span><span class="w"> </span><span class="o">,</span><span class="w"> </span><span class="nv">TEMPERATURE_DATA2</span>
-<span class="m">21.4</span><span class="w"> </span><span class="m">10101.0742</span>
-<span class="m">21.8</span><span class="w"> </span><span class="m">10101.0847</span>
+<span class="w">      </span><span class="nv">TEMPERATURE_DATA1</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">21.4</span><span class="w"> </span><span class="s1">&#39;Day 1, 07:42&#39;</span><span class="w"> </span><span class="m">21.8</span><span class="w"> </span><span class="s1">&#39;Day 1, 08:47&#39;</span>
+<span class="w">      </span><span class="nv">TEMPERATURE_DATA2</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">22.8</span><span class="w"> </span><span class="s1">&#39;Day 1, 18:23&#39;</span><span class="w"> </span><span class="m">21.5</span><span class="w"> </span><span class="s1">&#39;Day 1, 19:30&#39;</span>
+<span class="w">      </span><span class="nv">TEMPERATURE_ARRAY</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="nv">TEMPERATURE_DATA1</span><span class="w"> </span><span class="o">,</span><span class="w"> </span><span class="nv">TEMPERATURE_DATA2</span>
+<span class="m">21.4</span><span class="w"> </span><span class="nv">Day</span><span class="w"> </span><span class="m">1</span><span class="o">,</span><span class="w"> </span><span class="m">07</span><span class="bp">:</span><span class="m">42</span>
+<span class="m">21.8</span><span class="w"> </span><span class="nv">Day</span><span class="w"> </span><span class="m">1</span><span class="o">,</span><span class="w"> </span><span class="m">08</span><span class="bp">:</span><span class="m">47</span>
 
-<span class="m">22.8</span><span class="w"> </span><span class="m">10101.1823</span>
-<span class="m">21.5</span><span class="w"> </span><span class="m">10101.193</span>
+<span class="m">22.8</span><span class="w"> </span><span class="nv">Day</span><span class="w"> </span><span class="m">1</span><span class="o">,</span><span class="w"> </span><span class="m">18</span><span class="bp">:</span><span class="m">23</span>
+<span class="m">21.5</span><span class="w"> </span><span class="nv">Day</span><span class="w"> </span><span class="m">1</span><span class="o">,</span><span class="w"> </span><span class="m">19</span><span class="bp">:</span><span class="m">30</span>
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Boxing</p>
 <p>The ]Box user command controls how array output is displayed, with levels of nesting shown as boxes.</p>
-<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="nv">nested</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="p">(</span><span class="o">⍳</span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;  &#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;   &#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;  &#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">⍳</span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="p">(</span><span class="o">⍳</span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;  &#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;   &#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">⍳</span><span class="m">2</span><span class="p">))</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;   &#39;</span><span class="p">))</span>
-<span class="w">       </span><span class="nv">nested</span>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">nested</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="p">(</span><span class="o">⍳</span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;  &#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;   &#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;  &#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">⍳</span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="p">(</span><span class="o">⍳</span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;  &#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;   &#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">⍳</span><span class="m">2</span><span class="p">))</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;   &#39;</span><span class="p">))</span>
+<span class="w">      </span><span class="nv">nested</span>
 <span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w">                        </span>
 <span class="w">                </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w">  </span>
 <span class="w">   </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w">               </span>
 <span class="w">          </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w">          </span>
 
-<span class="w">       </span><span class="sr">]</span><span class="nv">Box</span><span class="w"> </span><span class="nv">on</span>
+<span class="w">      </span><span class="sr">]</span><span class="nv">Box</span><span class="w"> </span><span class="nv">on</span>
 <span class="nv">Was</span><span class="w"> </span><span class="nv">OFF</span>
-<span class="w">       </span><span class="nv">nested</span>
+<span class="w">      </span><span class="nv">nested</span>
 <span class="err">┌─────┬───────────────────┐</span>
 <span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="err">│</span><span class="w">                   </span><span class="err">│</span>
 <span class="err">├─────┼───────────────────┤</span>

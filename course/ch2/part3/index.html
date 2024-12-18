@@ -2211,14 +2211,14 @@
 </div>
 <hr />
 <p><link rel="stylesheet" href="/styles/ch5part2.css"></p>
-<p>You might wonder, is there any additional benefit to putting data in vectors beyond just organising data? </p>
+<p>You might wonder, is there any additional benefit to putting data in vectors beyond just organisation? </p>
 <p>After you've made all your measurements, you suddenly realise that all the American temperature sensors have been giving values in Fahrenheit! Terrible news! After about 2000 milliseconds of googling, you find the formula to convert them to better units:</p>
-<p>Celsius = (Fahrenheit - 32) * 5 / 9</p>
-<p>To test it out, you try to convert the current room temperature reading of 72.1. Doing the calculation in APL:</p>
+<p>$$Celsius = (Fahrenheit - 32) \cdot \frac{5}{9}$$</p>
+<p>To test it out, you try to convert the current room temperature reading of 72.1</p>
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="p">(</span><span class="m">5</span><span class="w"> </span><span class="o">×</span><span class="w"> </span><span class="m">72.1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">32</span><span class="p">)</span><span class="w"> </span><span class="o">÷</span><span class="w"> </span><span class="m">9</span>
 <span class="m">22.27777778</span>
 </code></pre></div>
-<p>Great! What’s not so great is that the temperature sensor has been left generating data for the whole week, and there are a bunch of readings to convert to Celsius.</p>
+<p>Great! What’s not so great is that the temperature sensor has been left generating data for the whole week, and there are a bunch of readings to convert to Celsius</p>
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">TEMP_F</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">71.2</span><span class="w"> </span><span class="m">71.4</span><span class="w"> </span><span class="m">73.3</span><span class="w"> </span><span class="m">73.0</span><span class="w"> </span><span class="m">73.1</span><span class="w"> </span><span class="m">72.8</span><span class="w"> </span><span class="m">72.5</span>
 </code></pre></div>
 <p>It would take you much longer than your legally mandated lunch break to convert the data from this sensor, and there are 200 of them lying around! Fortunately, APL is designed to process vector data. You can write the following</p>
