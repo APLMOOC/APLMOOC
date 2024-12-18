@@ -15,46 +15,41 @@ We will discuss this in depth in Chapter 5, so take this section as a word of wa
 Look what happens when we try to create the new temperature matrix from the already existing temperature vectors
 
 ```apl
-       TEMPERATURE_DATA1 ← 21.4 00010101.074200 21.8 00010101.084700
-       TEMPERATURE_DATA2 ← 22.8 00010101.182300 21.5 00010101.193000 
+       TEMPERATURE_DATA1 ← 21.4 'Day 1, 07:42' 21.8 'Day 1, 08:47'
+       TEMPERATURE_DATA2 ← 22.8 'Day 1, 18:23' 21.5 'Day 1, 19:30'
        TEMPERATURE_ARRAY ← 2 2 2 ⍴ TEMPERATURE_DATA1 TEMPERATURE_DATA2
 
        TEMPERATURE_ARRAY
-┌───────────────────────────────┬──────────────────────────────┐
-│21.4 10101.0742 21.8 10101.0847│22.8 10101.1823 21.5 10101.193│
-├───────────────────────────────┼──────────────────────────────┤
-│21.4 10101.0742 21.8 10101.0847│22.8 10101.1823 21.5 10101.193│
-└───────────────────────────────┴──────────────────────────────┘
-┌───────────────────────────────┬──────────────────────────────┐
-│21.4 10101.0742 21.8 10101.0847│22.8 10101.1823 21.5 10101.193│
-├───────────────────────────────┼──────────────────────────────┤
-│21.4 10101.0742 21.8 10101.0847│22.8 10101.1823 21.5 10101.193│
-└───────────────────────────────┴──────────────────────────────┘
+ 21.4  Day 1, 07:42  21.8  Day 1, 08:47   22.8  Day 1, 18:23  21.5  Day 1, 19:30  
+ 21.4  Day 1, 07:42  21.8  Day 1, 08:47   22.8  Day 1, 18:23  21.5  Day 1, 19:30  
+                                                                                  
+ 21.4  Day 1, 07:42  21.8  Day 1, 08:47   22.8  Day 1, 18:23  21.5  Day 1, 19:30  
+ 21.4  Day 1, 07:42  21.8  Day 1, 08:47   22.8  Day 1, 18:23  21.5  Day 1, 19:30  
 ```
 
 Compared to the expected result, which is
 
 ```apl
-21.4 00010101.074200 
-21.8 00010101.084700
+21.4 Day 1, 07:42
+21.8 Day 1, 08:47
 
-22.8 00010101.182300 
-21.5 00010101.193000
+22.8 Day 1, 18:23
+21.5 Day 1, 19:30
 ```
 
-Attempting to access the elements of the rank 3 array returns vectors, this is because we’ve accidentally created an array of vectors rather than an array of their elements. 
+Replacing the vectors by strings, the situation is a little more clear
 
-
-If we replace TEMPERATURE_DATA1 and TEMPERATURE_DATA2 with scalars, the situation is a bit more clear.
 ```apl
-	   ARRAY ← 2 2 2 ⍴ 'AB'
+	   ARRAY ← 2 2 2 ⍴ 'TEMPERATURE_DATA1' 'TEMPERATURE_DATA2'
 	   ARRAY
-A B
-A B
-   
-A B
-A B
+ TEMPERATURE_DATA1  TEMPERATURE_DATA2 
+ TEMPERATURE_DATA1  TEMPERATURE_DATA2 
+                                      
+ TEMPERATURE_DATA1  TEMPERATURE_DATA2 
+ TEMPERATURE_DATA1  TEMPERATURE_DATA2 
 ```
+
+In APL, elements of arrays can be of any rank. In the above code, we've accidentally created an array of vectors rather than an array of their scalars! This is because we did not combine the vectors into a larger vector, but made a new vector whose elements are ``TEMPERATURE_DATA1`` and ``TEMPERATURE_DATA2``. 
 
 The proper way to combine two vectors into a single longer vector is using the catenate `,` function,  generally joining two arrays along a common edge. Monadically, the ravel `,` function can be used to "unravel" a matrix into a vector of its elements in top-down left-right order, called ravel order.
 
@@ -93,14 +88,14 @@ LILI
 CACA
 TETE
 
-       TEMPERATURE_DATA1 ← 21.4 00010101.074200 21.8 00010101.084700
-       TEMPERATURE_DATA2 ← 22.8 00010101.182300 21.5 00010101.193000 
+       TEMPERATURE_DATA1 ← 21.4 'Day 1, 07:42' 21.8 'Day 1, 08:47'
+       TEMPERATURE_DATA2 ← 22.8 'Day 1, 18:23' 21.5 'Day 1, 19:30'
        TEMPERATURE_ARRAY ← 2 2 2 ⍴ TEMPERATURE_DATA1 , TEMPERATURE_DATA2
-21.4 10101.0742
-21.8 10101.0847
-               
-22.8 10101.1823
-21.5 10101.193
+21.4 Day 1, 07:42
+21.8 Day 1, 08:47
+
+22.8 Day 1, 18:23
+21.5 Day 1, 19:30
 ```
 
 
