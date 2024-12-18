@@ -12,12 +12,13 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Input"
 
         ```apl
-        1 4 9 16 25[4]
+              1 4 9 16 25[4]
         ```
 
     === "Output"
 
         ```apl
+              1 4 9 16 25[4]
         16
         ```
 
@@ -34,6 +35,7 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Output"
 
         ```apl
+              1 4 9 16 25[3 4 5]
         9 16 25
         ```
 
@@ -44,12 +46,13 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Input"
 
         ```apl
-        (2×1 4 9 16 25)[4]
+              (2×1 4 9 16 25)[4]
         ```
 
     === "Output"
 
         ```apl
+              (2×1 4 9 16 25)[4]
         32
         ```
         Remember, creating a vector takes precedence over any other operations.
@@ -61,12 +64,13 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Input"
 
         ```apl
-        (2×1) 4 9 16 25[4]
+              (2×1) 4 9 16 25[4]
         ```
 
     === "Output"
 
         ```apl
+              (2×1) 4 9 16 25[4]
         16
         ```
 
@@ -77,12 +81,13 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Input"
 
         ```apl
-        ¯1 4 9 16 25[2]
+              ¯1 4 9 16 25[2]
         ```
 
     === "Output"
 
         ```apl
+              ¯1 4 9 16 25[2]
         4
         ```
 
@@ -93,12 +98,13 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Input"
 
         ```apl
-        -1 4 9 16 25[2]
+              -1 4 9 16 25[2]
         ```
 
     === "Output"
 
         ```apl
+              -1 4 9 16 25[2]
         ¯4
         ```
         - is a function, which is applied to the whole vector, ¯ is the correct way to write negative numbers
@@ -110,12 +116,13 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Input"
 
         ```apl
-        1 2 3 4 ÷ 2 3 4 5
+              1 2 3 4 ÷ 2 3 4 5
         ```
 
     === "Output"
 
         ```apl
+              1 2 3 4 ÷ 2 3 4 5
         0.5 0.6666666667 0.75 0.8
         ```
 
@@ -126,12 +133,13 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Input"
 
         ```apl
-        1 2 ÷ 2 3 4 5
+              1 2 ÷ 2 3 4 5
         ```
 
     === "Output"
 
         ```apl
+              1 2 ÷ 2 3 4 5
         LENGTH ERROR: Mismatched left and right argument shapes
         1 2÷3 4 5
            ∧
@@ -145,12 +153,13 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Input"
 
         ```apl
-        5 5 ⍴ 0
+              5 5 ⍴ 0
         ```
 
     === "Output"
 
         ```apl
+              5 5 ⍴ 0
         0 0 0 0 0
         0 0 0 0 0
         0 0 0 0 0
@@ -165,12 +174,13 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Input"
 
         ```apl
-        5 5 ⍴ ⎕A
+              5 5 ⍴ ⎕A
         ```
 
     === "Output"
 
         ```apl
+              5 5 ⍴ ⎕A
         ABCDE
         FGHIJ
         KLMNO
@@ -185,12 +195,13 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Input"
 
         ```apl
-        (5 5 ⍴ ⎕A)[2 3 4;2 3 4]
+              (5 5 ⍴ ⎕A)[2 3 4;2 3 4]
         ```
 
     === "Output"
 
         ```apl
+              (5 5 ⍴ ⎕A)[2 3 4;2 3 4]
         GHI
         LMN
         QRS
@@ -204,12 +215,13 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Input"
 
         ```apl
-        10 11 ⍴ '╚╗░'
+              10 11 ⍴ '╚╗░'
         ```
 
     === "Output"
 
         ```apl
+              10 11 ⍴ '╚╗░'
         ╚╗░╚╗░╚╗░╚╗
         ░╚╗░╚╗░╚╗░╚
         ╗░╚╗░╚╗░╚╗░

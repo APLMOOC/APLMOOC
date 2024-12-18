@@ -14,17 +14,6 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 
 ---
 
-Create vector
-Manipulate vector
-Index vector
-Index vector, multiple
-
-Create matrix
-Manipulate matrix
-Index matrix (1)
-Index matrix (2)
-Index matrix, square
-
 !!! write-problem "Write problem 1"
     Create a vector consisting of the first ten prime numbers called PRIMES
     <div class="problem">
@@ -218,11 +207,11 @@ Index matrix, square
     Consider a tape-controlled computer which operates by reading a certain section of a tape, changing its internal state based on the value of that section, writing a certain value to that section, then possibly moving the tape along to the next or previous section. For this specific machine, the value of the tape sections is either a 1 or a 2, the internal state of the machine is either 1 2 or 3, and the matrix which specifies the actions to be taken is the following
     ```apl
           INSTRUCTIONS
-      ┌─────┬─────┬─────┐
-      │1 R 2│1 L 1│1 L 2│
-      ├─────┼─────┼─────┤
-      │1 L 3│1 R 2│1 N H│
-      └─────┴─────┴─────┘
+    ┌─────┬─────┬─────┐
+    │1 R 2│1 L 1│1 L 2│
+    ├─────┼─────┼─────┤
+    │1 L 3│1 R 2│1 N H│
+    └─────┴─────┴─────┘
     ```
     The first value in each element is what to write to the section of tape, the second whether to move right 'R' left 'L' or stay in place 'N', and the last value is the next state of the machine 1, 2, 3, or 'H' for halting the machine.
     

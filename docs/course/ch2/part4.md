@@ -213,14 +213,14 @@ Day 1 18:23 Day 1 19:30 Day 2 21:12 Day 3 07:15 Day 3 08:30 Day 3 09:45
 Multiple numbers can be specified for both row and column indices.
 
 ```apl
-       ALPHABET ← 5 5⍴⎕A
-       ALPHABET[1;]
+      ALPHABET ← 5 5⍴⎕A
+      ALPHABET[1;]
 ABCDE
-       ALPHABET[1 2 3;]
+      ALPHABET[1 2 3;]
 ABCDE
 FGHIJ
 KLMNO
-       ALPHABET[1 2 3; 1 2 3]
+      ALPHABET[1 2 3; 1 2 3]
 ABC
 FGH
 KLM
@@ -229,15 +229,15 @@ KLM
 However again, the data measurements are separated without reason, the problem that introducing matrices was supposed to solve. Going one dimension further, the data can be arranged in a three-dimensional ordered collection of data:
 
 ```
-     TEMPERATURE_ARRAY ← 2 6 2 ⍴ 21.4 'Day 1 07:42' 21.8 'Day 1 08:47' 22.0 'Day 1 10:10' 21.5 'Day 1 12:01' 21.3 'Day 1 14:36' 22.3 'Day 1 16:50' 22.8 'Day 1 18:23' 21.5 'Day 1 19:30' 22.1 'Day 2 21:12' 22.0 'Day 3 07:15' 21.9 'Day 3 08:30' 22.4 'Day 3 09:45'
-     TEMPERATURE_ARRAY
+      TEMPERATURE_ARRAY ← 2 6 2 ⍴ 21.4 'Day 1 07:42' 21.8 'Day 1 08:47' 22.0 'Day 1 10:10' 21.5 'Day 1 12:01' 21.3 'Day 1 14:36' 22.3 'Day 1 16:50' 22.8 'Day 1 18:23' 21.5 'Day 1 19:30' 22.1 'Day 2 21:12' 22.0 'Day 3 07:15' 21.9 'Day 3 08:30' 22.4 'Day 3 09:45'
+      TEMPERATURE_ARRAY
 21.4 Day 1 07:42
 21.8 Day 1 08:47
 22   Day 1 10:10
 21.5 Day 1 12:01
 21.3 Day 1 14:36
 22.3 Day 1 16:50
-               
+             
 22.8 Day 1 18:23
 21.5 Day 1 19:30
 22.1 Day 2 21:12
@@ -245,13 +245,13 @@ However again, the data measurements are separated without reason, the problem t
 21.9 Day 3 08:30
 22.4 Day 3 09:45
 
-     ⍴TEMPERATURE_ARRAY 
+      ⍴TEMPERATURE_ARRAY 
 2 6 2
 
-     ⍴⍴TEMPERATURE_ARRAY 
+      ⍴⍴TEMPERATURE_ARRAY 
 3
 
-     TEMPERATURE_ARRAY[1;;]
+      TEMPERATURE_ARRAY[1;;]
 21.4 Day 1 07:42
 21.8 Day 1 08:47
 22   Day 1 10:10
@@ -259,7 +259,7 @@ However again, the data measurements are separated without reason, the problem t
 21.3 Day 1 14:36
 22.3 Day 1 16:50
 
-     TEMPERATURE_ARRAY[2;;]
+      TEMPERATURE_ARRAY[2;;]
 22.8 Day 1 18:23
 21.5 Day 1 19:30
 22.1 Day 2 21:12
@@ -267,7 +267,7 @@ However again, the data measurements are separated without reason, the problem t
 21.9 Day 3 08:30
 22.4 Day 3 09:45
 
-     TEMPERATURE_ARRAY[;;1]
+      TEMPERATURE_ARRAY[;;1]
 21.4 21.8 22   21.5 21.3 22.3
 22.8 21.5 22.1 22   21.9 22.4
 ```
@@ -282,29 +282,29 @@ However again, the data measurements are separated without reason, the problem t
 Now with your temperature table safely stored in your APL workspace, you can only imagine how many more values you can log and maintain. You excitedly gesture at one of your unimpressed coworkers before you notice you’ve accidentally logged the temperature of the cabin as 226 degrees. Before they have a chance to look at your mistake, you quickly and shamefully change the value.
 
 ```apl
-     TEMPERATURE_ARRAY
+      TEMPERATURE_ARRAY
 21.4  Day 1 07:42
 21.8  Day 1 08:47
 226   Day 1 10:01
 21.5  Day 1 12:01
 21.3  Day 1 14:36
 22.3  Day 1 16:50
-               
+             
 22.8  Day 1 18:23
 21.5  Day 1 19:30
 22.1  Day 2 21:12
 22    Day 3 07:15
 21.9  Day 3 08:30
 22.4  Day 3 09:45
-     TEMPERATURE_ARRAY[1;3;1] ← 22.6
-     TEMPERATURE_ARRAY
+      TEMPERATURE_ARRAY[1;3;1] ← 22.6
+      TEMPERATURE_ARRAY
 21.4  Day 1 07:42
 21.8  Day 1 08:47
 22.6  Day 1 10:01
 21.5  Day 1 12:01
 21.3  Day 1 14:36
 22.3  Day 1 16:50
-               
+             
 22.8  Day 1 18:23
 21.5  Day 1 19:30
 22.1  Day 2 21:12
@@ -318,35 +318,35 @@ That was close!
 Changing values in arrays acts in the same manner as it does for the case of changing variables, specify the element(s) to change and assign a new value.
 
 ```apl
-     BOX ← '╔═══╗║TRY║╠═ ═╣║APL║╚═══╝'
-     BOX ← 5 5 ⍴ BOX
-     BOX
+      BOX ← '╔═══╗║TRY║╠═ ═╣║APL║╚═══╝'
+      BOX ← 5 5 ⍴ BOX
+      BOX
 ╔═══╗
 ║TRY║
 ╠═ ═╣
 ║APL║
 ╚═══╝
 
-     BOX[3;3] ← '═'
-     BOX
+      BOX[3;3] ← '═'
+      BOX
 ╔═══╗
 ║TRY║
 ╠═══╣
 ║APL║
 ╚═══╝
 
-     BOX[3;]
+      BOX[3;]
 ╠═══╣
-     BOX[3;] ← '║   ║'
-     BOX
+      BOX[3;] ← '║   ║'
+      BOX
 ╔═══╗
 ║TRY║
 ║   ║
 ║APL║
 ╚═══╝
 
-     BOX[3;] ← '╬'
-     BOX
+      BOX[3;] ← '╬'
+      BOX
 ╔═══╗
 ║TRY║
 ╬╬╬╬╬
