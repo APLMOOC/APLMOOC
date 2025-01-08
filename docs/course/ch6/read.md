@@ -105,3 +105,34 @@ The exercises are not checked or graded: use them to check your knowledge!
         
 
 ---
+
+!!! question "Read problem 5"
+
+    === "Input"
+
+        Try to identify out the axes of the following outer product
+    
+        ```apl
+              ((⊂'Chapter'),¨⍳2) ∘., ('Read' 'Write',¨⊂' Exercise') ∘., ⍳2
+        ```
+
+    === "Output"
+
+        ```apl
+              ((⊂'Chapter'),¨⍳2) ∘., ('Read' 'Write',¨⊂' Exercise') ∘., ⍳2
+          ┌──────────────────────────┬──────────────────────────┐
+          │Chapter 1 Read Exercise 1 │Chapter 1 Read Exercise 2 │
+          ├──────────────────────────┼──────────────────────────┤
+          │Chapter 1 Write Exercise 1│Chapter 1 Write Exercise 2│
+          └──────────────────────────┴──────────────────────────┘
+          ┌──────────────────────────┬──────────────────────────┐
+          │Chapter 2 Read Exercise 1 │Chapter 2 Read Exercise 2 │
+          ├──────────────────────────┼──────────────────────────┤
+          │Chapter 2 Write Exercise 1│Chapter 2 Write Exercise 2│
+          └──────────────────────────┴──────────────────────────┘
+        ```
+
+        The last axis is along ``⍳2``, the intermediate axis is along ``('Read' 'Write',¨⊂' Exercise')``, and the leading axis is along ``((⊂'Chapter'),¨⍳2)``.
+
+
+---
