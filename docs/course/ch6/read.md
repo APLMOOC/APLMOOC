@@ -88,13 +88,20 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Input"
     
         ```apl
-              
+              1+∘÷⍣=1
         ```
 
     === "Output"
 
         ```apl
-              
+              1+∘÷⍣=1
+          1.618033989
         ```
+
+        This formula computes the golden ratio, it applies the dyadic function ``(+∘÷⍣=)`` with left and right arguments ``1``. The function ``(+∘÷⍣=)`` repeats ``+∘÷`` until the previous and current iteration are equal ``=``. The formula ``1(+∘÷)1(+∘÷)1(+∘÷)1...`` is equivalent to ``1+÷1+÷1+÷1...``, which is the continued fraction formula for the golden ratio
+
+        
+        $$\phi=1+\frac{1}{1+\frac{1}{1+\frac{1}{1+\frac{1}{\ldots}}}}$$ 
+        
 
 ---
