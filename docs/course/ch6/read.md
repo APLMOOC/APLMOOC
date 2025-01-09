@@ -136,3 +136,74 @@ The exercises are not checked or graded: use them to check your knowledge!
 
 
 ---
+
+
+!!! question "Read problem 6"
+
+    === "Input"
+
+        ```apl
+              ∘.!⍨ 0,⍳15
+        ```
+
+    === "Output"
+
+        ```apl
+              ∘.!⍨ 0,⍳15
+            1 1 1 1 1  1  1  1  1   1   1   1   1    1    1    1
+            0 1 2 3 4  5  6  7  8   9  10  11  12   13   14   15
+            0 0 1 3 6 10 15 21 28  36  45  55  66   78   91  105
+            0 0 0 1 4 10 20 35 56  84 120 165 220  286  364  455
+            0 0 0 0 1  5 15 35 70 126 210 330 495  715 1001 1365
+            0 0 0 0 0  1  6 21 56 126 252 462 792 1287 2002 3003
+            0 0 0 0 0  0  1  7 28  84 210 462 924 1716 3003 5005
+            0 0 0 0 0  0  0  1  8  36 120 330 792 1716 3432 6435
+            0 0 0 0 0  0  0  0  1   9  45 165 495 1287 3003 6435
+            0 0 0 0 0  0  0  0  0   1  10  55 220  715 2002 5005
+            0 0 0 0 0  0  0  0  0   0   1  11  66  286 1001 3003
+            0 0 0 0 0  0  0  0  0   0   0   1  12   78  364 1365
+            0 0 0 0 0  0  0  0  0   0   0   0   1   13   91  455
+            0 0 0 0 0  0  0  0  0   0   0   0   0    1   14  105
+            0 0 0 0 0  0  0  0  0   0   0   0   0    0    1   15
+            0 0 0 0 0  0  0  0  0   0   0   0   0    0    0    1
+        ```
+        
+        This is a matrix of binomial coefficients, the upper triangular part of this matrix is called Pascal's Triangle.
+
+---
+
+
+
+!!! question "Read problem 7"
+
+    === "Input"
+
+        ```apl
+              ' █'[1+2|(∘.!⍨(0,⍳15))]
+        ```
+
+    === "Output"
+
+        ```apl
+              ' █'[1+2|(∘.!⍨(0,⍳15))]
+            ████████████████
+             █ █ █ █ █ █ █ █
+              ██  ██  ██  ██
+               █   █   █   █
+                ████    ████
+                 █ █     █ █
+                  ██      ██
+                   █       █
+                    ████████
+                     █ █ █ █
+                      ██  ██
+                       █   █
+                        ████
+                         █ █
+                          ██
+                           █
+        ```
+        
+        This is a graphical representation of the remainder mod 2 of the matrix of binomial coefficients. Notice that the upper triangular part of this matrix is the Sierpiński fractal triangle.
+
+---
