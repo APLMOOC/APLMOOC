@@ -206,4 +206,118 @@ In the next section, we will introduce recursively-defined operators which make 
 
 ### All pairs
 
-In order to instead match all pairs of scalars, we can use ``∘.f`` the outer product operator.
+In order to instead match all pairs of scalars, we can use ``∘.f`` the outer product operator. Suppose we wanted to match every scalar in the arrays ``B`` and ``C`` together, we can first apply the ``∊`` enlist function to both arrays, the apply the outer product with the ``,`` catenate function
+
+```apl
+      ∊B
+1 1 1 1 1 0
+      ∊C 
+2 2 2 2 2 2
+      (∊B)∘.,(∊C)
+┌───┬───┬───┬───┬───┬───┐
+│1 2│1 2│1 2│1 2│1 2│1 2│
+├───┼───┼───┼───┼───┼───┤
+│1 2│1 2│1 2│1 2│1 2│1 2│
+├───┼───┼───┼───┼───┼───┤
+│1 2│1 2│1 2│1 2│1 2│1 2│
+├───┼───┼───┼───┼───┼───┤
+│1 2│1 2│1 2│1 2│1 2│1 2│
+├───┼───┼───┼───┼───┼───┤
+│1 2│1 2│1 2│1 2│1 2│1 2│
+├───┼───┼───┼───┼───┼───┤
+│0 2│0 2│0 2│0 2│0 2│0 2│
+└───┴───┴───┴───┴───┴───┘
+```
+
+## Scalar-vector matching
+
+### One vector
+
+#### Using depth
+
+The ``⊂`` enclose function can be used, along with ``¨`` each, to apply a list of scalars to a vector. Consider the following construction of the ``CIPHER`` array from previous write exercises using the rotate ``⌽`` function with ``¨⊂`` each and enclose
+
+```apl
+      ⎕A
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+      (0 1 2)⌽¨⊂⎕A
+┌──────────────────────────┬──────────────────────────┬──────────────────────────┐
+│ABCDEFGHIJKLMNOPQRSTUVWXYZ│BCDEFGHIJKLMNOPQRSTUVWXYZA│CDEFGHIJKLMNOPQRSTUVWXYZAB│
+└──────────────────────────┴──────────────────────────┴──────────────────────────┘
+      ↑ (0 , ⍳25)⌽¨⊂⎕A
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+BCDEFGHIJKLMNOPQRSTUVWXYZA
+CDEFGHIJKLMNOPQRSTUVWXYZAB
+DEFGHIJKLMNOPQRSTUVWXYZABC
+EFGHIJKLMNOPQRSTUVWXYZABCD
+FGHIJKLMNOPQRSTUVWXYZABCDE
+GHIJKLMNOPQRSTUVWXYZABCDEF
+HIJKLMNOPQRSTUVWXYZABCDEFG
+IJKLMNOPQRSTUVWXYZABCDEFGH
+JKLMNOPQRSTUVWXYZABCDEFGHI
+KLMNOPQRSTUVWXYZABCDEFGHIJ
+LMNOPQRSTUVWXYZABCDEFGHIJK
+MNOPQRSTUVWXYZABCDEFGHIJKL
+NOPQRSTUVWXYZABCDEFGHIJKLM
+OPQRSTUVWXYZABCDEFGHIJKLMN
+PQRSTUVWXYZABCDEFGHIJKLMNO
+QRSTUVWXYZABCDEFGHIJKLMNOP
+RSTUVWXYZABCDEFGHIJKLMNOPQ
+STUVWXYZABCDEFGHIJKLMNOPQR
+TUVWXYZABCDEFGHIJKLMNOPQRS
+UVWXYZABCDEFGHIJKLMNOPQRST
+VWXYZABCDEFGHIJKLMNOPQRSTU
+WXYZABCDEFGHIJKLMNOPQRSTUV
+XYZABCDEFGHIJKLMNOPQRSTUVW
+YZABCDEFGHIJKLMNOPQRSTUVWX
+ZABCDEFGHIJKLMNOPQRSTUVWXY
+```
+
+The so-called "chipmunk" operator ``⊃¨⊂`` is the use of the ``⊃`` pick function with ``¨⊂`` each and enclose to index elements of a right array with left indices, which works even with nested arrays
+
+```apl 
+      ⊢X ← 10 10 ⍴ ? 100/6
+2 2 4 3 1 4 5 3 3 6
+5 4 3 3 4 2 1 1 6 1
+5 1 3 2 4 4 4 2 3 4
+2 1 2 5 5 2 5 4 1 1
+1 3 5 3 6 6 6 3 3 5
+4 3 6 1 6 2 4 1 2 1
+1 1 5 3 4 4 4 6 3 2
+5 4 5 3 2 6 6 5 3 3
+1 6 1 2 5 6 5 3 6 3
+2 1 3 1 3 2 3 2 4 1
+
+      X ⊃¨⊂ '.o○0O⋄'
+.○.O0○.○O○
+○○.0..oO0O
+o○○⋄○○.o○⋄
+⋄○.⋄oOO.○O
+⋄O○o⋄.0○.O
+○O○○⋄.O.⋄0
+⋄○⋄⋄⋄OO0○○
+⋄⋄○O○⋄00○.
+.0○OO⋄.oO⋄
+⋄○0O○O..0⋄
+
+      ⊢X ← 5 5 ⍴ ? 25/6
+
+      X ⊃¨⊂ 'Welcome' 'Tervetuloa' 'Bienvenue' 'Ahlan wa Sahlan' 'Kruihcuipae' 'Huān Yíng'
+┌───────────┬───────────────┬───────────────┬───────────────┬───────────┐
+│Tervetuloa │Bienvenue      │Huān Yíng      │Huān Yíng      │Kruihcuipae│
+├───────────┼───────────────┼───────────────┼───────────────┼───────────┤
+│Huān Yíng  │Ahlan wa Sahlan│Huān Yíng      │Tervetuloa     │Bienvenue  │
+├───────────┼───────────────┼───────────────┼───────────────┼───────────┤
+│Kruihcuipae│Ahlan wa Sahlan│Kruihcuipae    │Huān Yíng      │Kruihcuipae│
+├───────────┼───────────────┼───────────────┼───────────────┼───────────┤
+│Welcome    │Welcome        │Huān Yíng      │Welcome        │Welcome    │
+├───────────┼───────────────┼───────────────┼───────────────┼───────────┤
+│Tervetuloa │Ahlan wa Sahlan│Ahlan wa Sahlan│Ahlan wa Sahlan│Bienvenue  │
+└───────────┴───────────────┴───────────────┴───────────────┴───────────┘
+```
+
+#### Using rank
+
+### Many vectors
+
+#### Using split
