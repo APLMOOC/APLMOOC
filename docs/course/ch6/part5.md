@@ -268,13 +268,15 @@ To illustrate this matching, using ``,`` catenate instead of ``,¨`` catenate ea
 
 This is one example of a general pattern that we will see in this section, which is that the rank ``⍤`` operator is powerful enough to express most of the matchings without using nested arrays.
 
+### Scalar extension
+
 ## Scalar-vector matching
 
 ### One vector
 
 #### Using depth
 
-The ``⊂`` enclose function can be used, along with ``¨`` each, to apply a list of scalars to a vector. Consider the following construction of the ``CIPHER`` array from previous write exercises using the rotate ``⌽`` function with ``¨⊂`` each and enclose
+The ``⊂`` enclose function can be used, along with ``¨`` each, to apply a list of scalars to a vector. The way this works is that the ``⊂`` enclose function turns the vector into a scalar, which allows ``¨`` each to apply each scalar from the left argument to the single scalar on the right argument using scalar extension. Consider the following construction of the ``CIPHER`` array from previous write exercises using the rotate ``⌽`` function with ``¨⊂`` each and enclose
 
 ```apl
       ⎕A
@@ -371,6 +373,9 @@ HaHaHaHaHaHaHa
 HaHaHaHaHaHaHaHa    
 HaHaHaHaHaHaHaHaHa  
 HaHaHaHaHaHaHaHaHaHa
+
+      (⌽⍳99) (∊,¨⍤0 1) 'Bottles of beer on the wall' 'Bottles of beer. Take one down pass it around,'
+99 Bottles of beer on the wall 99 Bottles of beer. Take one down pass it around, 98 Bottles of beer on the wall 98 Bottles of beer ...
 ```
 
 
@@ -395,6 +400,35 @@ Here, the string ``'Who'``, taken as a scalar, is catenated to ``' is it?'``, ta
 
 ### Many vectors
 
+#### Using depth
+
+In order to match scalars with vectors in a single operation, the vectors must be compiled in an array, either using a nested array or a matrix. If a nested array is used, the vectors can be treated as scalars, and the same methods mentioned above can be used. Note that using enclose ``⊂`` is not necessary if the vectors are already in a nested array.
+
+```apl
+      ⊢LHS ← (⍕¨ ⍳10) ,¨⊂ '! = '
+┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬──────┐
+│1! = │2! = │3! = │4! = │5! = │6! = │7! = │8! = │9! = │10! = │
+└─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴──────┘
+
+      ⊢RHS ← ⍕¨ !⍳10
+1 2 6 24 120 720 5040 40320 362880 3628800
+
+      LHS,¨RHS
+┌──────┬──────┬──────┬───────┬────────┬────────┬─────────┬──────────┬───────────┬─────────────┐
+│1! = 1│2! = 2│3! = 6│4! = 24│5! = 120│6! = 720│7! = 5040│8! = 40320│9! = 362880│10! = 3628800│
+└──────┴──────┴──────┴───────┴────────┴────────┴─────────┴──────────┴───────────┴─────────────┘
+```
+
+#### Using depth
 
 
-#### Using split
+
+
+
+
+```apl
+      pronouns ← 'Minä' 'Sinä' 'Hän' 'Me' 'Te' 'He'
+      present ← 'n' 't' 'a' 'mme' 'tte' 'vat'
+
+      pronouns ,¨ 'halua' ,¨ present
+```
