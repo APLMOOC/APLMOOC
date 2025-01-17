@@ -229,6 +229,45 @@ In order to instead match all pairs of scalars, we can use ``∘.f`` the outer p
 └───┴───┴───┴───┴───┴───┘
 ```
 
+We already know that the outer product can also be expressed using the rank ``⍤`` operator as follows
+
+```apl
+      (∊B)(,¨⍤0 1)(∊C)
+┌───┬───┬───┬───┬───┬───┐
+│1 2│1 2│1 2│1 2│1 2│1 2│
+├───┼───┼───┼───┼───┼───┤
+│1 2│1 2│1 2│1 2│1 2│1 2│
+├───┼───┼───┼───┼───┼───┤
+│1 2│1 2│1 2│1 2│1 2│1 2│
+├───┼───┼───┼───┼───┼───┤
+│1 2│1 2│1 2│1 2│1 2│1 2│
+├───┼───┼───┼───┼───┼───┤
+│1 2│1 2│1 2│1 2│1 2│1 2│
+├───┼───┼───┼───┼───┼───┤
+│0 2│0 2│0 2│0 2│0 2│0 2│
+└───┴───┴───┴───┴───┴───┘
+```
+
+The rank operator ``⍤`` here takes in a right argument array ``(0 1)`` that matches the 0-cells of the left argument (scalars) with the 1-cells of the right argument (the entire vector), with the left function argument to be applied ``,¨`` catenate each, which applies catenate with the scalars of the left argument to each element of the right argument vector. We can also use ``⍤0 99`` instead of ``⍤0 1`` to signify taking the whole right argument.
+
+To illustrate this matching, using ``,`` catenate instead of ``,¨`` catenate each
+
+```apl
+      (∊B)
+1 1 1 1 1 0
+      (∊C)
+2 2 2 2 2 2
+      (∊B)(,⍤0 1)(∊C)
+1 2 2 2 2 2 2
+1 2 2 2 2 2 2
+1 2 2 2 2 2 2
+1 2 2 2 2 2 2
+1 2 2 2 2 2 2
+0 2 2 2 2 2 2
+```
+
+This is one example of a general pattern that we will see in this section, which is that the rank ``⍤`` operator is powerful enough to express most of the matchings without using nested arrays.
+
 ## Scalar-vector matching
 
 ### One vector
@@ -318,6 +357,44 @@ o○○⋄○○.o○⋄
 
 #### Using rank
 
+The rank operator ``⍤`` can be straightforwardly applied here with the right argument ``(0 1)`` to apply the scalars of the left argument to the vector right argument, or vice versa. 
+
+```apl
+      (2×⍳10) (⍴⍤0 1) 'Ha'
+Ha                  
+HaHa                
+HaHaHa              
+HaHaHaHa            
+HaHaHaHaHa          
+HaHaHaHaHaHa        
+HaHaHaHaHaHaHa      
+HaHaHaHaHaHaHaHa    
+HaHaHaHaHaHaHaHaHa  
+HaHaHaHaHaHaHaHaHaHa
+```
+
+
+Note that the rank operator does not remove layers of depth, see the following example
+
+```apl
+      'Who' 'What' 'When' 'Why' 'How' (,⍤0 1) ' is it?'
+┌────┬─┬─┬─┬─┬─┬─┬─┐
+│Who │ │i│s│ │i│t│?│
+├────┼─┼─┼─┼─┼─┼─┼─┤
+│What│ │i│s│ │i│t│?│
+├────┼─┼─┼─┼─┼─┼─┼─┤
+│When│ │i│s│ │i│t│?│
+├────┼─┼─┼─┼─┼─┼─┼─┤
+│Why │ │i│s│ │i│t│?│
+├────┼─┼─┼─┼─┼─┼─┼─┤
+│How │ │i│s│ │i│t│?│
+└────┴─┴─┴─┴─┴─┴─┴─┘
+```
+
+Here, the string ``'Who'``, taken as a scalar, is catenated to ``' is it?'``, taken as a vector, hence the result is the same as ``(⊂'Who') , ' is it?'``. To combine these strings properly, we need to match the vector ``'Who'`` with the vector ``' is it?'``, which will be covered in the Vector matching subsection.
+
 ### Many vectors
+
+
 
 #### Using split
