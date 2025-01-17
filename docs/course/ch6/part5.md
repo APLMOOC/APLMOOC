@@ -270,6 +270,22 @@ This is one example of a general pattern that we will see in this section, which
 
 ### Scalar extension
 
+Some functions in APL allow a scalar to act as if it were a higher-dimensional array by implicitly expanding it out to the required shape. The simplest examples are the arithmetic operations, instead of writing
+
+```apl
+      2 2 2 2 2 2 2 2 2 2 * ⍳10
+2 4 8 16 32 64 128 256 512 1024
+```
+
+We can simply write
+
+```apl
+      2 * ⍳10
+2 4 8 16 32 64 128 256 512 1024
+```
+
+More importantly, this also applies to non-simple scalars such as enclosed arrays, and in the following, we will see how to exploit this to match higher dimensional data. 
+
 ## Scalar-vector matching
 
 ### One vector
