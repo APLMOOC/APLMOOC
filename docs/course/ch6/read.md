@@ -207,3 +207,17 @@ The exercises are not checked or graded: use them to check your knowledge!
         This is a graphical representation of the remainder mod 2 of the matrix of binomial coefficients. Notice that the upper triangular part of this matrix is the Sierpiński fractal triangle.
 
 ---
+
+
+```apl
+      ⊢angles ← ○ ÷ 6 4 3 2 1
+0.5235987756 0.7853981634 1.047197551 1.570796327 3.141592654
+      
+      ⍝ Sin Cos Tan
+      ⊢functions ← 1 2 3 
+
+      (functions ∘.○ angles)
+0.5          0.7071067812 0.8660254038 1.000000000E0    0
+0.8660254038 0.7071067812 0.5          6.123233996E¯17 ¯1.000000000E0  
+0.5773502692 1            1.732050808  1.633123935E16   0
+```

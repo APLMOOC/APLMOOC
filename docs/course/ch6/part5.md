@@ -4,7 +4,6 @@
     
     - Scalar matching
     - Scalar-vector matching
-    - Vector matching
     - Higher dimensional matching
 
 ---
@@ -435,16 +434,205 @@ In order to match scalars with vectors in a single operation, the vectors must b
 └──────┴──────┴──────┴───────┴────────┴────────┴─────────┴──────────┴───────────┴─────────────┘
 ```
 
-#### Using depth
+#### Using rank
 
-
-
-
-
+The same argument to the rank operator mentioned above ``⍤0 1`` can be used to match the scalars (0-cells) of the left array argument to the vectors (1-cells) of the right array argument, thus the vectors have to be assembled in a matrix
 
 ```apl
-      pronouns ← 'Minä' 'Sinä' 'Hän' 'Me' 'Te' 'He'
-      present ← 'n' 't' 'a' 'mme' 'tte' 'vat'
+      'Ha' 'Hi' 'Hu' 'He' 'Ho'
+┌──┬──┬──┬──┬──┐
+│Ha│Hi│Hu│He│Ho│
+└──┴──┴──┴──┴──┘
+      ↑'Ha' 'Hi' 'Hu' 'He' 'Ho'
+Ha
+Hi
+Hu
+He
+Ho
+      (2×⍳5) (⍴⍤0 1) ↑'Ha' 'Hi' 'Hu' 'He' 'Ho'
+Ha        
+HiHi      
+HuHuHu    
+HeHeHeHe  
+HoHoHoHoHo
+```
 
-      pronouns ,¨ 'halua' ,¨ present
+## Higher dimensional matching
+
+### Using depth
+
+As above, nesting turns arrays into scalars, which allows operators like ``¨`` each to match arbitrary rank arrays together as if they were scalars.
+
+For example, we can create the conjugation table of the finnish verb 'haluta' in the present by matching vectors of strings together
+
+```apl
+      ⊢pronouns ← 'Minä' 'Sinä' 'Hän' 'Me' 'Te' 'He'
+┌────┬────┬───┬──┬──┬──┐
+│Minä│Sinä│Hän│Me│Te│He│
+└────┴────┴───┴──┴──┴──┘
+
+      ⊢present ← 'n' 't' 'a' 'mme' 'tte' 'vat'
+┌─┬─┬─┬───┬───┬───┐
+│n│t│a│mme│tte│vat│
+└─┴─┴─┴───┴───┴───┘
+
+      ↑ pronouns ,¨ (⊂' halua') ,¨ present
+Minä haluan
+Sinä haluat
+Hän haluaa 
+Me haluamme
+Te haluatte
+He haluavat
+```
+
+Matching matrices together is also straightforward
+
+```apl
+      (3 3⍴⎕A) (3 3⍴⍳9)
+┌───┬─────┐
+│ABC│1 2 3│
+│DEF│4 5 6│
+│GHI│7 8 9│
+└───┴─────┘
+      (3 3⍴1 0) (3 3⍴0 1)
+┌─────┬─────┐
+│1 0 1│0 1 0│
+│0 1 0│1 0 1│
+│1 0 1│0 1 0│
+└─────┴─────┘
+      (3 3⍴1 0) (3 3⍴0 1) /¨¨ (3 3⍴⎕A) (3 3⍴⍳9)
+┌───────┬───────┐
+│┌─┬─┬─┐│┌─┬─┬─┐│
+││A│ │C│││ │2│ ││
+│├─┼─┼─┤│├─┼─┼─┤│
+││ │E│ │││4│ │6││
+│├─┼─┼─┤│├─┼─┼─┤│
+││G│ │I│││ │8│ ││
+│└─┴─┴─┘│└─┴─┴─┘│
+└───────┴───────┘
+      ,/[1] ↑ (3 3⍴1 0) (3 3⍴0 1) /¨¨ (3 3⍴⎕A) (3 3⍴⍳9)
+┌─┬─┬─┐
+│A│2│C│
+├─┼─┼─┤
+│4│E│6│
+├─┼─┼─┤
+│G│8│I│
+└─┴─┴─┘
+```
+
+### Using rank
+
+For higher dimensional data, the rank ``⍤`` operator is the simplest way to match arbitrary rank cells from its right and left array arguments. The rank ``⍤`` operator can also be applied multiple times for more complex matching operations. For example, taking the example from the Scalar-vector subsection
+
+```apl
+      'Who' 'What' 'When' 'Why' 'How' (,⍤0 1) ' is it?'
+┌────┬─┬─┬─┬─┬─┬─┬─┐
+│Who │ │i│s│ │i│t│?│
+├────┼─┼─┼─┼─┼─┼─┼─┤
+│What│ │i│s│ │i│t│?│
+├────┼─┼─┼─┼─┼─┼─┼─┤
+│When│ │i│s│ │i│t│?│
+├────┼─┼─┼─┼─┼─┼─┼─┤
+│Why │ │i│s│ │i│t│?│
+├────┼─┼─┼─┼─┼─┼─┼─┤
+│How │ │i│s│ │i│t│?│
+└────┴─┴─┴─┴─┴─┴─┴─┘
+```
+
+Instead, we match the 1-cells of the left array argument with the right array argument
+```
+      ↑('Who' 'What' 'When' 'Why' 'How')
+Who 
+What
+When
+Why 
+How
+      (↑'Who' 'What' 'When' 'Why' 'How') (,⍤1 99) ' is it?'
+Who  is it?
+What is it?
+When is it?
+Why  is it?
+How  is it?
+```
+
+We can also expand this example to more tenses by repeated application of the rank ``⍤`` operator. Separating out the perfect tenses into a different dimension 
+
+```apl
+      ↑(↑' is it?' ' was it?') (↑' has it been?' ' had it been?')
+ is it?      
+ was it?     
+             
+ has it been?
+ had it been?
+      (↑'Who' 'What' 'When' 'Why' 'How') ({⍺ ⍵}⍤1 99) ↑(↑' is it?' ' was it?') (↑' has it been?' ' had it been?')
+┌────┬─────────────┐
+│Who │ is it?      │
+│    │ was it?     │
+│    │             │
+│    │ has it been?│
+│    │ had it been?│
+├────┼─────────────┤
+│What│ is it?      │
+│    │ was it?     │
+│    │             │
+│    │ has it been?│
+│    │ had it been?│
+├────┼─────────────┤
+│When│ is it?      │
+│    │ was it?     │
+│    │             │
+│    │ has it been?│
+│    │ had it been?│
+├────┼─────────────┤
+│Why │ is it?      │
+│    │ was it?     │
+│    │             │
+│    │ has it been?│
+│    │ had it been?│
+├────┼─────────────┤
+│How │ is it?      │
+│    │ was it?     │
+│    │             │
+│    │ has it been?│
+│    │ had it been?│
+└────┴─────────────┘
+```
+
+We can see that each matching has one string from the left array argument and the whole right argument array. Applying ``,⍤1 1`` catenate with the rank operator here will match the aforementioned string with the vectors of the right argument array
+
+```apl
+      (↑'Who' 'What' 'When' 'Why' 'How') (,⍤1 1⍤1 99) (↑' is it?' ' was it?' ' will it be?' ' would it be?')
+Who  is it?      
+Who  was it?     
+                 
+Who  has it been?
+Who  had it been?
+                 
+                 
+What is it?      
+What was it?     
+                 
+What has it been?
+What had it been?
+                 
+                 
+When is it?      
+When was it?     
+                 
+When has it been?
+When had it been?
+                 
+                 
+Why  is it?      
+Why  was it?     
+                 
+Why  has it been?
+Why  had it been?
+                 
+                 
+How  is it?      
+How  was it?     
+                 
+How  has it been?
+How  had it been?
 ```
