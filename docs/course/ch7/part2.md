@@ -1,9 +1,8 @@
-# Branching and looping
+# Development environment
 
 !!! abstract "This part will cover"
     
-    - The branch operator
-    - If, else if, else
-    - For, while
+    - How to use Dyalog RIDE
+    - Text files with Dyalog LINK
 
 ---

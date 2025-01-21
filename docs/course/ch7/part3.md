@@ -1,8 +1,9 @@
-# Execute and format
+# Branching and looping
 
 !!! abstract "This part will cover"
     
-    - Execute
-    - Format
+    - The branch operator
+    - If, else if, else
+    - For, while
 
 ---
