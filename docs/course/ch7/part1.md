@@ -22,6 +22,7 @@ By the end of the tutorial, you will be able to open RIDE, which looks something
 
     This part is split up into different sections based on your operating system.
     Choose the one that you're using:
+    
     - Ubuntu / Debian
     - Nix / NixOS
     - Windows
