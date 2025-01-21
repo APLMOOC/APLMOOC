@@ -3,4 +3,4 @@ flake.lock
 flake.nix
 .vscode
 ignore*
-.gitignore
+.venv
