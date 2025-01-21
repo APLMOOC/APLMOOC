@@ -1,1 +1,3 @@
 For arbitrary arrays, the inner product ``X(f.g)Y`` is the same as reducing using f over each ``f/¨`` application of ``g`` between the trailing vectors of the left argument (rows) ``(⊂[⍴⍴x]X)`` and the leading vectors of the right argument (columns) ``⊂[1]Y``, ``(⊂[⍴⍴X]X) ∘.g ⊂[1]Y``. When ``X`` and ``Y`` are matrices, ``+.×`` is exactly matrix multiplication, ``+/¨ (⊂[2]X) ∘.× ⊂[1]Y``.
+
+All functions except Mix derive fill elements from the argument's prototype. In Mix, each element of the argument is extended with fills from its own prototype. 
