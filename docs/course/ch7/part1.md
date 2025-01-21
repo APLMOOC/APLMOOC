@@ -22,7 +22,7 @@ By the end of the tutorial, you will be able to open RIDE, which looks something
 
     This part is split up into different sections based on your operating system.
     Choose the one that you're using:
-    
+
     - Ubuntu / Debian
     - Nix / NixOS
     - Windows
@@ -37,29 +37,29 @@ First, let's install Dyalog:
 1. Accept the conditions
 1. Click on `Download Unregistered`
 1. Click on `19.0.50027 for Linux (DEB)`
-  - The long version number may be different
-  - This will download a `.deb` file
+    - The long version number may be different
+    - This will download a `.deb` file
 1. Open your command line
 1. Navigate to where you downloaded the `.deb` file
-  - In most cases this is done with `cd Downloads`
+    - In most cases this is done with `cd Downloads`
 1. Run `sudo apt update`
 1. Run `sudo apt install ./linux_64_19.0.50027_unicode.x86_64.deb`
-  - Again, the version number might be different
-  - Just use the filename of the file you downloaded
+    - Again, the version number might be different
+    - Just use the filename of the file you downloaded
 
 Then, let's install RIDE:
 
 1. Go to <https://github.com/Dyalog/ride/releases/latest>
 1. Click on `ride-4.5.4100-1_amd64.deb`
-  - The long version number may be different
-  - This will download a `.deb` file
+    - The long version number may be different
+    - This will download a `.deb` file
 1. Open your command line
 1. Navigate to where you downloaded the `.deb` file
-  - In most cases this is done with `cd Downloads`
+    - In most cases this is done with `cd Downloads`
 1. Run `sudo apt update`
 1. Run `sudo apt install ./ride-4.5.4100-1_amd64.deb`
-  - Again, the version number might be different
-  - Just use the filename of the file you downloaded
+    - Again, the version number might be different
+    - Just use the filename of the file you downloaded
 
 Now, you can start Dyalog RIDE by going into your program menu (press the Windows key) and searching up `RIDE`.
 That's it!
@@ -104,8 +104,8 @@ First, let's install Dyalog:
 1. Accept the conditions
 1. Click on `Download Unregistered`
 1. Click on `19.0.50074 for Windows`
-  - The long version number may be different
-  - This will download a `.zip` file
+    - The long version number may be different
+    - This will download a `.zip` file
 1. Open your Downloads
 1. Unzip the downloaded file
 1. Run `setup.exe` in the unzipped folder
@@ -119,8 +119,8 @@ Then, let's install RIDE:
 
 1. Go to <https://github.com/Dyalog/ride/releases/latest>
 1. Click on `ride-4.5.4100_windows.zip`
-  - The long version number may be different
-  - This will download a `.zip` file
+    - The long version number may be different
+    - This will download a `.zip` file
 1. Open your Downloads
 1. Unzip the downloaded file
 1. Run `setup_ride.exe` in the unzipped folder
