@@ -222,10 +222,40 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Output"
 
         ```apl
-              {'Sqrt(',(⍕⍵*2),')'}¨ (2*0.5) (2÷⍨2*0.5) (4÷3*0.5)
+              {'Sqrt(',(4 2⍕⍵*2),')'}¨ (2*0.5) (2÷⍨2*0.5) (4÷3*0.5)
         ┌──────────┬──────────┬──────────┐
         │Sqrt(2.00)│Sqrt(0.50)│Sqrt(5.33)│
         └──────────┴──────────┴──────────┘
         ```
 
+---
+
+!!! question "Read problem 9"
+
+    === "Input"
+
+        Recall the ``○`` circle function from Chapter 2
+
+        ```apl
+              angles ← ○ ÷ 6 4 3 2 1
+              functions ← 1 2 3
+              (functions ∘.({'Sqrt(',(4 2⍕⍵*2),')'}○) angles)
+        ```
+
+    === "Output"
+
+        ```apl
+              angles ← ○ ÷ 6 4 3 2 1
+              functions ← 1 2 3
+              (functions ∘.({'Sqrt(',(4 2⍕⍵*2),')'}○) angles)
+        ┌──────────┬──────────┬──────────┬──────────┬──────────┐
+        │Sqrt(0.25)│Sqrt(0.50)│Sqrt(0.75)│Sqrt(1.00)│Sqrt(0.00)│
+        ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        │Sqrt(0.75)│Sqrt(0.50)│Sqrt(0.25)│Sqrt(0.00)│Sqrt(1.00)│
+        ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        │Sqrt(0.33)│Sqrt(1.00)│Sqrt(3.00)│Sqrt(****)│Sqrt(0.00)│
+        └──────────┴──────────┴──────────┴──────────┴──────────┘
+        ```
+
+        This is a table of trigonometric values for the functions Sine ``1○``, Cosine ``2○``, and Tangent ``3○``. 
 ---
