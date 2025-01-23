@@ -50,3 +50,6 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     <p id="feedback_ch5_p4" style="color: red"></p>
 
 ---
+
+
+{'Pi/',⍕÷⍵÷○1}○÷6 4 3 2 1 write exercise angle to name

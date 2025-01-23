@@ -108,9 +108,9 @@ The exercises are not checked or graded: use them to check your knowledge!
 
 !!! question "Read problem 5"
 
-    === "Input"
+    Try to identify out the axes of the following outer product
 
-        Try to identify out the axes of the following outer product
+    === "Input"
     
         ```apl
               ((⊂'Chapter'),¨⍳2) ∘., ('Read' 'Write',¨⊂' Exercise') ∘., ⍳2
@@ -140,9 +140,10 @@ The exercises are not checked or graded: use them to check your knowledge!
 
 !!! question "Read problem 6"
 
-    === "Input"
+    
+    Recall that ``⍺!⍵`` is the binomial coefficient ``⍺ Choose ⍵``. What will the following outer product look like?
 
-        Recall that ``⍺!⍵`` is the binomial coefficient ``⍺ Choose ⍵``. What will the following outer product look like?
+    === "Input"
 
         ```apl
               ∘.!⍨ 0,⍳15
@@ -232,9 +233,10 @@ The exercises are not checked or graded: use them to check your knowledge!
 
 !!! question "Read problem 9"
 
-    === "Input"
+    
+    Recall the ``○`` circle function from Chapter 2
 
-        Recall the ``○`` circle function from Chapter 2
+    === "Input"
 
         ```apl
               angles ← ○ ÷ 6 4 3 2 1
@@ -258,4 +260,38 @@ The exercises are not checked or graded: use them to check your knowledge!
         ```
 
         This is a table of trigonometric values for the functions Sine ``1○``, Cosine ``2○``, and Tangent ``3○``. 
+---
+
+!!! question "Read problem 10"
+
+    Consider the vector ``G`` of matrices representing permutations of three elements, where the notation ``(1 2 3)`` means 1 goes to 2, 2 goes to 3, and 3 goes to 1.
+
+    === "Input"
+
+        ```apl
+              ⊢G ← (3 3⍴1 0 0 0 1 0 0 0 1) (3 3⍴0 1 0 1 0 0 0 0 1) (3 3⍴1 0 0 0 0 1 0 1 0) (3 3⍴0 0 1 0 1 0 1 0 0) (3 3⍴0 1 0 0 0 1 1 0 0) (3 3⍴0 0 1 1 0 0 0 1 0)
+
+              ⊢Gl ← '()' '(1 2)' '(2 3)' '(1 3)' '(1 2 3)' '(1 3 2)'
+
+              Gl[G⍳⊂(3 3⍴0 0 1 0 1 0 1 0 0)]
+        ```
+
+    === "Output"
+
+        ```apl
+              ⊢G ← (3 3⍴1 0 0 0 1 0 0 0 1) (3 3⍴0 1 0 1 0 0 0 0 1) (3 3⍴1 0 0 0 0 1 0 1 0) (3 3⍴0 0 1 0 1 0 1 0 0) (3 3⍴0 1 0 0 0 1 1 0 0) (3 3⍴0 0 1 1 0 0 0 1 0)
+        ┌─────┬─────┬─────┬─────┬─────┬─────┐
+        │1 0 0│0 1 0│1 0 0│0 0 1│0 1 0│0 0 1│
+        │0 1 0│1 0 0│0 0 1│0 1 0│0 0 1│1 0 0│
+        │0 0 1│0 0 1│0 1 0│1 0 0│1 0 0│0 1 0│
+        └─────┴─────┴─────┴─────┴─────┴─────┘
+              ⊢Gl ← '()' '(1 2)' '(2 3)' '(1 3)' '(1 2 3)' '(1 3 2)'
+        ┌──┬─────┬─────┬─────┬───────┬───────┐
+        │()│(1 2)│(2 3)│(1 3)│(1 2 3)│(1 3 2)│
+        └──┴─────┴─────┴─────┴───────┴───────┘
+              Gl[G⍳⊂(3 3⍴0 0 1 0 1 0 1 0 0)]
+        ┌─────┐
+        │(1 3)│
+        └─────┘
+        ```
 ---
