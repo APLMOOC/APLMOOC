@@ -295,3 +295,32 @@ The exercises are not checked or graded: use them to check your knowledge!
         └─────┘
         ```
 ---
+
+!!! question "Read problem 11"
+
+    Using the vector ``G`` from before
+
+    === "Input"
+
+        ```apl
+              ⍕{Gl[G⍳⊂⍵]}¨(G∘.(+.×)G)
+        ```
+
+    === "Output"
+
+        ```apl
+              ⍕{Gl[G⍳⊂⍵]}¨(G∘.(+.×)G)
+        ()         (1 2)      (2 3)      (1 3)      (1 2 3)    (1 3 2)  
+        (1 2)      ()         (1 3 2)    (1 2 3)    (1 3)      (2 3)    
+        (2 3)      (1 2 3)    ()         (1 3 2)    (1 2)      (1 3)    
+        (1 3)      (1 3 2)    (1 2 3)    ()         (2 3)      (1 2)    
+        (1 2 3)    (2 3)      (1 3)      (1 2)      (1 3 2)    ()       
+        (1 3 2)    (1 3)      (1 2)      (2 3)      ()         (1 2 3) 
+        ```
+
+        This is the multiplication table (Cayley table) for the group of permutations of 3 elements, S3.
+---
+
+!!! question "Read problem 12"
+
+---
