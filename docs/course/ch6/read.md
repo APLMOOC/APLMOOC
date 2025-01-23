@@ -142,6 +142,8 @@ The exercises are not checked or graded: use them to check your knowledge!
 
     === "Input"
 
+        Recall that ``⍺!⍵`` is the binomial coefficient ``⍺ Choose ⍵``. What will the following outer product look like?
+
         ```apl
               ∘.!⍨ 0,⍳15
         ```
@@ -209,15 +211,21 @@ The exercises are not checked or graded: use them to check your knowledge!
 ---
 
 
-```apl
-      ⊢angles ← ○ ÷ 6 4 3 2 1
-0.5235987756 0.7853981634 1.047197551 1.570796327 3.141592654
-      
-      ⍝ Sin Cos Tan
-      ⊢functions ← 1 2 3 
+!!! question "Read problem 8"
 
-      (functions ∘.○ angles)
-0.5          0.7071067812 0.8660254038 1.000000000E0    0
-0.8660254038 0.7071067812 0.5          6.123233996E¯17 ¯1.000000000E0  
-0.5773502692 1            1.732050808  1.633123935E16   0
-```
+    === "Input"
+
+        ```apl
+              {'Sqrt(',(4 2⍕⍵*2),')'}¨ (2*0.5) (2÷⍨2*0.5) (4÷3*0.5)
+        ```
+
+    === "Output"
+
+        ```apl
+              {'Sqrt(',(⍕⍵*2),')'}¨ (2*0.5) (2÷⍨2*0.5) (4÷3*0.5)
+        ┌──────────┬──────────┬──────────┐
+        │Sqrt(2.00)│Sqrt(0.50)│Sqrt(5.33)│
+        └──────────┴──────────┴──────────┘
+        ```
+
+---
