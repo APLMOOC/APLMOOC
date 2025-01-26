@@ -235,7 +235,7 @@ The arguments to ``@`` can be functions instead, where the left argument functio
 ¯21  22  23 ¯24  25
       
       M ← 5 5 ⍴ ⍳25
-	    ⍝ Reverse list of elements which are multiples of 3
+	⍝ Reverse list of elements which are multiples of 3
       (⊖@{0=3|⍵})M
  1  2 24  4  5
 21  7  8 18 10
