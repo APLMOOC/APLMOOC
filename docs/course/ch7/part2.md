@@ -262,6 +262,7 @@ Open the folder you created, and voilà: your code has been saved!
     - `.apln` for namespaces
 
 Now, you no longer have to use the `)save` or `)load` command to store workspaces: all you have to do is use LINK!
+Actually, if you're using LINK, don't use the `)save` and `)load` commands. Strage things will happen if you do...
 
 ## Loading your code from a linked folder
 
