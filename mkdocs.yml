@@ -130,8 +130,8 @@ nav:
     - 7 - Programming in APL:
       - 7.1 - Installing Dyalog: course/ch7/part1.md
       - 7.2 - Development environment: course/ch7/part2.md
-      - 7.3 - Traditional Functions: course/ch7/part3.md
-      - 7.4 - Error Handling: course/ch7/part4.md
+      - 7.3 - Traditional functions: course/ch7/part3.md
+      - 7.4 - Error handling: course/ch7/part4.md
       - 7.5 - Writing interactive programs: course/ch7/part5.md
       - 7.6 - File I/O: course/ch7/part6.md
       - 7.7 - External libraries: course/ch7/part7.md

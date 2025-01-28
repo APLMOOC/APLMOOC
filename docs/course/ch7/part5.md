@@ -4,6 +4,8 @@
     
     - Writing interactive programs
     - Input and output
+    - Execute
+    - Format
     - Configurability
 
 ---

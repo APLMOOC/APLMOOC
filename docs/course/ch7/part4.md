@@ -1,8 +1,7 @@
-# Execute and format
+# Error handling
 
 !!! abstract "This part will cover"
     
-    - Execute
-    - Format
+    - Dealing with nasty errors
 
 ---
