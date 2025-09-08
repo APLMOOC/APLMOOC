@@ -8,48 +8,52 @@
 ---
 <link rel="stylesheet" href="/styles/ch5part2.css">
 
-Be warned, elements of arrays can be vectors, or matrices, or arrays of higher rank in their own right! 
+Be warned, elements of arrays can be vectors, or matrices, or arrays of higher rank in their own right!  We will discuss this in depth in Chapter 5, so take this section as a warning.
 
-We will discuss this in depth in Chapter 5, so take this section as a word of warning.
-
-Look what happens when we try to create the new temperature matrix from the already existing temperature vectors
+Recall that in previous sections our temperature arrays contained both numbers and vectors of characters.
 
 ```apl
-      TEMPERATURE_DATA1 ← 21.4 'Day 1, 07:42' 21.8 'Day 1, 08:47'
-      TEMPERATURE_DATA2 ← 22.8 'Day 1, 18:23' 21.5 'Day 1, 19:30'
-      TEMPERATURE_ARRAY ← 2 2 2 ⍴ TEMPERATURE_DATA1 TEMPERATURE_DATA2
-
-      TEMPERATURE_ARRAY
- 21.4  Day 1, 07:42  21.8  Day 1, 08:47   22.8  Day 1, 18:23  21.5  Day 1, 19:30  
- 21.4  Day 1, 07:42  21.8  Day 1, 08:47   22.8  Day 1, 18:23  21.5  Day 1, 19:30  
-                                                                                  
- 21.4  Day 1, 07:42  21.8  Day 1, 08:47   22.8  Day 1, 18:23  21.5  Day 1, 19:30  
- 21.4  Day 1, 07:42  21.8  Day 1, 08:47   22.8  Day 1, 18:23  21.5  Day 1, 19:30  
+      T1
+┌────┬───────────┐
+│21.4│Day 1 07:42│
+├────┼───────────┤
+│21.8│Day 1 08:47│
+├────┼───────────┤
+│22  │Day 1 10:10│
+├────┼───────────┤
+│21.5│Day 1 12:01│
+├────┼───────────┤
+│21.3│Day 1 14:36│
+├────┼───────────┤
+│22.3│Day 1 16:50│
+└────┴───────────┘
 ```
 
-Compared to the expected result, which is
+Because the contents of this array are mixed, if boxing is enabled, APL draws boxes to separate the entries visually.
+
+This also means that it's possible to accidentally create a matrix of vectors rather than a matrix of their elements. Suppose we created the full array ``TData`` immediately from T1 and T2 like so
 
 ```apl
-21.4 Day 1, 07:42
-21.8 Day 1, 08:47
+      T1 ← [ 21.4 'Day 1 07:42' ⋄ 
+            21.8 'Day 1 08:47' ⋄
+            22.0 'Day 1 10:10' ⋄
+            21.5 'Day 1 12:01' ⋄
+            21.3 'Day 1 14:36' ⋄
+            22.3 'Day 1 16:50' ]
 
-22.8 Day 1, 18:23
-21.5 Day 1, 19:30
+      T2 ← [ 22.8 'Day 1 18:23'  ⋄ 
+             21.5 'Day 1 19:30'  ⋄
+             22.1 'Day 2, 21:12' ⋄
+             22.0 'Day 3, 07:15' ⋄
+             21.9 'Day 3, 08:30' ⋄
+             22.4 'Day 3, 09:45' ]
+
+      TData ← 2 2 6 ⍴ T1 T2
 ```
 
-Replacing the vectors by strings, the situation is a little more clear
+We would get a very large array of the vectors T1 and T2! (Try it!) 
 
-```apl
-      ARRAY ← 2 2 2 ⍴ 'TEMPERATURE_DATA1' 'TEMPERATURE_DATA2'
-      ARRAY
- TEMPERATURE_DATA1  TEMPERATURE_DATA2 
- TEMPERATURE_DATA1  TEMPERATURE_DATA2 
-                                      
- TEMPERATURE_DATA1  TEMPERATURE_DATA2 
- TEMPERATURE_DATA1  TEMPERATURE_DATA2 
-```
-
-In APL, elements of arrays can be of any rank. In the above code, we've accidentally created an array of vectors rather than an array of their scalars! This is because we did not combine the vectors into a larger vector, but made a new vector whose elements are ``TEMPERATURE_DATA1`` and ``TEMPERATURE_DATA2``. 
+In APL, elements of arrays can be of any rank. In the above code, we create an array of vectors rather than an array of their scalars because ``T1 T2`` is a vector whose elements are ``T1`` and ``T2``. 
 
 The proper way to combine two vectors into a single longer vector is using the catenate `,` function,  generally joining two arrays along a common edge. Monadically, the ravel `,` function can be used to "unravel" a matrix into a vector of its elements in top-down left-right order, called ravel order.
 
@@ -88,19 +92,54 @@ LILI
 CACA
 TETE
 
-      TEMPERATURE_DATA1 ← 21.4 'Day 1, 07:42' 21.8 'Day 1, 08:47'
-      TEMPERATURE_DATA2 ← 22.8 'Day 1, 18:23' 21.5 'Day 1, 19:30'
-      TEMPERATURE_ARRAY ← 2 2 2 ⍴ TEMPERATURE_DATA1 , TEMPERATURE_DATA2
-21.4 Day 1, 07:42
-21.8 Day 1, 08:47
+      T1 ← [ 21.4 'Day 1 07:42' ⋄ 
+            21.8 'Day 1 08:47' ⋄
+            22.0 'Day 1 10:10' ⋄
+            21.5 'Day 1 12:01' ⋄
+            21.3 'Day 1 14:36' ⋄
+            22.3 'Day 1 16:50' ]
 
-22.8 Day 1, 18:23
-21.5 Day 1, 19:30
+      T2 ← [ 22.8 'Day 1 18:23'  ⋄ 
+             21.5 'Day 1 19:30'  ⋄
+             22.1 'Day 2, 21:12' ⋄
+             22.0 'Day 3, 07:15' ⋄
+             21.9 'Day 3, 08:30' ⋄
+             22.4 'Day 3, 09:45' ]
+
+      TData ← 2 2 6 ⍴ T1,T2
+      TData
+┌────┬───────────┐
+│21.4│Day 1 07:42│
+├────┼───────────┤
+│21.8│Day 1 08:47│
+├────┼───────────┤
+│22  │Day 1 10:10│
+├────┼───────────┤
+│21.5│Day 1 12:01│
+├────┼───────────┤
+│21.3│Day 1 14:36│
+├────┼───────────┤
+│22.3│Day 1 16:50│
+└────┴───────────┘
+┌────┬───────────┐
+│22.8│Day 1 18:23│
+├────┼───────────┤
+│21.5│Day 1 19:30│
+├────┼───────────┤
+│22.1│Day 2 21:12│
+├────┼───────────┤
+│22  │Day 3 07:15│
+├────┼───────────┤
+│21.9│Day 3 08:30│
+├────┼───────────┤
+│22.4│Day 3 09:45│
+└────┴───────────┘
 ```
 
 
 !!! info "Boxing"
-       The ]Box user command controls how array output is displayed, with levels of nesting shown as boxes.
+       
+       In TryAPL, boxing is enabled by default; however, to manually control boxing, the ]Box user command can be used.
        
        ```apl
              nested ← 2 2 ⍴ (⍳3) ('  ') ('   ') (2 2 ⍴ ('  ') (⍳3) (2 2 ⍴ (⍳3) ('  ') ('   ') (⍳2)) ('   '))

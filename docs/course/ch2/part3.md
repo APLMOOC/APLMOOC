@@ -9,13 +9,15 @@
 
 <link rel="stylesheet" href="/styles/ch5part2.css">
 
-You might wonder, is there any additional benefit to putting data in vectors beyond just organisation? 
+After a couple days of logging temperatures into your large notebook, you realise you've made a catastrophic mistake! You wonder how you haven't noticed it before, but some of the sensors are in Fahrenheit!
 
-After you've made all your measurements, you suddenly realise that all the American temperature sensors have been giving values in Fahrenheit! Terrible news! After about 2000 milliseconds of googling, you find the formula to convert them to better units:
+Terrible news! 
+
+You nag your coworker about it until they eventually give up and tell you that the formula to convert from Fahrenheit to Celcius is 
 
 $$Celsius = (Fahrenheit - 32) \cdot \frac{5}{9}$$
 
-To test it out, you try to convert the current room temperature reading of 72.1
+To try it out, you convert the current room temperature reading of 72.1
 
 ```apl
       (5 × 72.1 - 32) ÷ 9

@@ -10,18 +10,14 @@
 
 <link rel="stylesheet" href="/styles/ch5part2.css">
 
-The astute reader may have noticed that, although the vector data is much more structured, the dates and times of the measurements have been completely forgotten.
+The astute reader may have noticed that although the vector data is much more structured, there is no date or time information! This data is not useful unless the date and time of measurement is also logged.
 
 First, we need a format to represent dates and times. For now, we will represent dates using strings. 
 
-*Strings* in APL are vectors of characters, defined using single quotes. The useful ``⎕A`` constant stores the upper-case english alphabet 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.
+**Strings** in APL are vectors of characters, defined using single quotes. The useful ``⎕A`` constant stores the upper-case english alphabet ``'ABCDEFGHIJKLMNOPQRSTUVWXYZ'``.
 
 ```apl
-      WORD ← 'STONE'
-      WORD
-STONE
-
-      ALPHABET ← ⎕A 
+      ALPHABET ← ⎕A
       ALPHABET
 ABCDEFGHIJKLMNOPQRSTUVWXYZ
 
@@ -36,67 +32,86 @@ Day 1 10:00
 Then, we will need a way to store the datetime data. One solution is to use two vectors instead of one, where each element of the measurement vector has a corresponding element in the time vector.
 
 ```apl
-      TEMPERATURE_PAGE1 ← 21.4 21.8 22.0 21.5 21.3 22.3
-      TEMPERATURE_PAGE1_DATE ← 'Day 1 07:42' 'Day 1 08:47' 'Day 1 10:10' 'Day 1 12:01' 'Day 1 14:36' 'Day 1 16:50'
-      TEMPERATURE_PAGE2 ← 22.8 21.5 22.1 22.0 21.9 22.4
-      TEMPERATURE_PAGE2_DATE ← 'Day 1 18:23' 'Day 1 19:30' 'Day 1 21:12' 'Day 2, 07:15' 'Day 2, 08:30' 'Day 2, 09:45'
+      T1 ← 21.4 21.8 22.0 21.5 21.3 22.3
+      T1D ← 'Day 1 07:42' 'Day 1 08:47' 'Day 1 10:10' 'Day 1 12:01' 'Day 1 14:36' 'Day 1 16:50'
+      T2 ← 22.8 21.5 22.1 22.0 21.9 22.4
+      T2D ← 'Day 1 18:23' 'Day 1 19:30' 'Day 1 21:12' 'Day 2, 07:15' 'Day 2, 08:30' 'Day 2, 09:45'
 ```
 
-For the second measurement, 
+Then we can access the information for the second measurement on the first page using the index ``2``.
 
 ```apl
-      TEMPERATURE_PAGE1[2]
+      T1[2]
 21.8
-      TEMPERATURE_PAGE1_DATE[2]
+      T1D[2]
 Day 1 08:47
 ```
 
-We can see that the temperature is 21.8 degrees on day 1 at 08:47.
+We can see that the temperature is 21.8 degrees on the first day of the journey at 08:47.
 
-However, this lack of structure is exactly what introducing vectors was supposed to solve; two closely related pieces of information, the time of a measurement and the value of the measurement, are kept separate when they should logically be part of the same collection of data. Measurement data of this form are usually stored in tables, and it is only natural to try to store them in the same manner in a computer system.
+However, this lack of structure is exactly what introducing vectors was supposed to solve! Two closely related pieces of information, the time of a measurement and the value of the measurement, are kept separate when they should logically be part of the same collection of data. Measurement data of this form are usually stored in tables, and it is only natural to try to store them in the same manner in a computer system.
 
-You decide to start over yet again, and store data in a matrix instead
+You decide to start over yet again, and store data in a matrix instead.
+
+**Matrices** are rectangles of data, they take two indices for each element as opposed to vectors' one index per element. They can be created by wrapping the rows as vectors in ``[square brackers]``, separated by ``⋄`` diamonds; or using the ``⍴`` reshape function on a vector.
 
 ```apl
-      TEMPERATURE_PAGE1 ← 6 2 ⍴ 21.4 'Day 1 07:42' 21.8 'Day 1 08:47' 22.0 'Day 1 10:10' 21.5 'Day 1 12:01' 21.3 'Day 1 14:36' 22.3 'Day 1 16:50'
-      TEMPERATURE_PAGE2 ← 6 2 ⍴ 22.8 'Day 1 18:23' 21.5 'Day 1 19:30' 22.1 'Day 2, 21:12' 22.0 'Day 3, 07:15' 21.9 'Day 3, 08:30' 22.4 'Day 3, 09:45'
+      T1 ← [ 21.4 'Day 1 07:42' ⋄ 
+             21.8 'Day 1 08:47' ⋄
+             22.0 'Day 1 10:10' ⋄
+             21.5 'Day 1 12:01' ⋄
+             21.3 'Day 1 14:36' ⋄
+             22.3 'Day 1 16:50' ]
+
+      T2 ← [ 22.8 'Day 1 18:23'  ⋄ 
+             21.5 'Day 1 19:30'  ⋄
+             22.1 'Day 2, 21:12' ⋄
+             22.0 'Day 3, 07:15' ⋄
+             21.9 'Day 3, 08:30' ⋄
+             22.4 'Day 3, 09:45' ]
+
+      T1
+┌────┬───────────┐
+│21.4│Day 1 07:42│
+├────┼───────────┤
+│21.8│Day 1 08:47│
+├────┼───────────┤
+│22  │Day 1 10:10│
+├────┼───────────┤
+│21.5│Day 1 12:01│
+├────┼───────────┤
+│21.3│Day 1 14:36│
+├────┼───────────┤
+│22.3│Day 1 16:50│
+└────┴───────────┘
 ```
 
----
-
-Matrices are rectangles of data. They can be created by reshaping (⍴) a vector.
-
-!!! info "Typing the reshape function `⍴`"
-     Prefix method: <kbd>PREFIX</kbd> <kbd>r</kbd>
-     Tab method: <kbd>r</kbd> <kbd>r</kbd> ++tab++
-
-!!! info "Function Valence"
-	
-	The symbol ⍴ actually represents two different functions depending on the manner in which arguments are given. 
-	
-	When applied to a single argument, ⍴X, it acts as the *shape* function; when two arguments are given one on either side, X⍴Y, it acts as the *reshape* function. 
-	
-	The former function is the monadic function associated to the symbol ⍴, and the latter is the dyadic function associated with the symbol ⍴. 
+!!! info "Typing the diamond glyph `⋄`"
+     Prefix method: <kbd>PREFIX</kbd> <kbd>`</kbd>
+     Tab method: <kbd><</kbd> <kbd>></kbd> ++tab++
 
 The reshape function takes a vector of elements as its right argument, and reshapes them to fit the dimensions specified by the left argument. Concretely, turning the temperature data from a vector to a 6 by 2 matrix
 
 ```apl
-      TEMPERATURE_DATA ← 21.4 'Day 1 07:42' 21.8 'Day 1 08:47' 22.0 'Day 1 10:10' 21.5 'Day 1 12:01' 21.3 'Day 1 14:36' 22.3 'Day 1 16:50'
-      6 2 ⍴ TEMPERATURE_DATA
+      T ← 21.4 'Day 1 07:42' 21.8 'Day 1 08:47' 22.0 'Day 1 10:10' 21.5 'Day 1 12:01' 21.3 'Day 1 14:36' 22.3 'Day 1 16:50'
+      6 2 ⍴ T
 21.4 Day 1 07:42
 21.8 Day 1 08:47
 22   Day 1 10:10
 21.5 Day 1 12:01
 21.3 Day 1 14:36
 22.3 Day 1 16:50
-      ⍝ The reshaped matrix has 6 rows and 2 columns
 ```
+
+!!! info "Typing the reshape function `⍴`"
+     Prefix method: <kbd>PREFIX</kbd> <kbd>r</kbd>
+     Tab method: <kbd>p</kbd> <kbd>p</kbd> ++tab++
 
 Another example is the following 5 by 5 pyramid
 
 ```apl
      PYRAMID_ENTRIES ← 1 1 1 1 1 1 2 2 2 1 1 2 3 2 1 1 2 2 2 1 1 1 1 1 1 1
-      5 5 ⍴ PYRAMID_ENTRIES ⍝ 5 rows and 5 columns
+      5 5 ⍴ PYRAMID_ENTRIES
 1 1 1 1 1
 1 2 2 2 1
 1 2 3 2 1
@@ -104,9 +119,9 @@ Another example is the following 5 by 5 pyramid
 1 1 1 1 1
 ```
 
-If the right argument is too short to fill the array, the reshape (dyadic ⍴) function repeats the right argument's entries.
+If the right argument is too short to fill the array, the reshape ``⍴`` function repeats the right argument's entries.
 
-```
+```apl
       5 25 ⍴ ALPHABET 
 ABCDEFGHIJKLMNOPQRSTUVWXY
 ZABCDEFGHIJKLMNOPQRSTUVWX
@@ -114,6 +129,7 @@ YZABCDEFGHIJKLMNOPQRSTUVW
 XYZABCDEFGHIJKLMNOPQRSTUV
 WXYZABCDEFGHIJKLMNOPQRSTU
 
+      WORD ← 'STONE'
       5 4⍴WORD
 STON
 ESTO
@@ -122,43 +138,34 @@ ONES
 TONE
 ```
 
-The shape (monadic ⍴) function acts on one array, its right argument, by returning a vector whose entries are the lengths of the axes.
+
+!!! info "Function Valence"
+	
+	Glyphs can represent different functions depending on the manner in which arguments are given.
+	
+	For the glyph ``⍴``, when applied to a single argument, ⍴X, it acts as the *shape* function; when two arguments are given one on either side, X⍴Y, it acts as the *reshape* function. 
+	
+	The former function is called the monadic function associated to the symbol ⍴, and the latter is called the dyadic function associated with the symbol ⍴. 
+
+
+The shape ``⍴`` function acts on one array, its right argument, by returning a vector whose entries are the lengths of the axes.
 
 ```apl
-      TEMPERATURE_DATA ← 21.4 'Day 1 07:42' 21.8 'Day 1 08:47' 22.0 'Day 1 10:10' 21.5 'Day 1 12:01' 21.3 'Day 1 14:36' 22.3 'Day 1 16:50'
-      TEMPERATURE_PAGE1 ← 6 2 ⍴ TEMPERATURE_DATA
-      ⍴TEMPERATURE_PAGE1
+      ⍴T1
 6 2
 
-      ⍴100 ⍝ (1)
+      ⍴100
 
-      ⍴⎕A ⍝ (2)
+      ⍴⎕A
 26
 ```
 
-1. A scalar has no axes, and so the result is an empty vector
-2. The number of letters in the english alphabet
+Note that a scalar has no axes, and so the result of ``⍴100`` is an empty vector.
 
-Since elements in matrices are ordered along two axes, an element of a matrix can be specified by two position, the row and column. If only a row position (or column position) is specified, the whole row (respectively, column) is returned.
+Since elements in matrices are ordered along two axes, an element of a matrix can be specified by two position, the row and column. If only a row position (or column position) is specified, the whole row (respectively, column) is returned. The indices are always separated by a semicolon ``;``.
 
 ```apl
-
-     TABLE ← 5 5 ⍴ 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
-     TABLE
- 1  2  3  4  5
- 6  7  8  9 10
-11 12 13 14 15
-16 17 18 19 20
-21 22 23 24 25
-
-     TABLE[1;1]
-1
-     TABLE[1;]
-1 2 3 4 5
-     TABLE[;1]
-1 6 11 16 21
-
-     WORD_SQUARE ← 5 5 ⍴ "HEARTEMBERABUSERESINTREND"
+     WORD_SQUARE ← 5 5 ⍴ 'HEARTEMBERABUSERESINTREND'
      WORD_SQUARE
 HEART
 EMBER
@@ -173,41 +180,24 @@ HEART
 TREND
      WORD_SQUARE[;5]
 TREND
-
-     TEMPERATURE_DATA1 ← 21.4 'Day 1 07:42' 21.8 'Day 1 08:47' 22.0 'Day 1 10:10' 21.5 'Day 1 12:01' 21.3 'Day 1 14:36' 22.3 'Day 1 16:50'
-     TEMPERATURE_PAGE1 ← 6 2 ⍴ TEMPERATURE_DATA1
-     TEMPERATURE_PAGE1
-21.4 Day 1 07:42
-21.8 Day 1 08:47
-22   Day 1 10:10
-21.5 Day 1 12:01
-21.3 Day 1 14:36
-22.3 Day 1 16:50
-     TEMPERATURE_PAGE1[1;1]
-21.4
-     TEMPERATURE_PAGE1[1;2]
-Day 1 07:42
-     TEMPERATURE_PAGE1[1;]
-21.4 Day 1 07:42
-     TEMPERATURE_PAGE1[3;2]
-Day 1 10:10
-
-     TEMPERATURE_PAGE2 ← 6 2 ⍴ 22.8 'Day 1 18:23' 21.5 'Day 1 19:30' 22.1 'Day 2 21:12' 22.0 'Day 3 07:15' 21.9 'Day 3 08:30' 22.4 'Day 3 09:45'
-     TEMPERATURE_PAGE2
-22.8 Day 1 18:23
-21.5 Day 1 19:30
-22.1 Day 2 21:12
-22   Day 3 07:15
-21.9 Day 3 08:30
-22.4 Day 3 09:45
-     TEMPERATURE_PAGE2[1;2]
-Day 1 18:23
-     TEMPERATURE_PAGE2[2;2]
-Day 1 19:30
-     TEMPERATURE_PAGE2[3;2]
-Day 2 21:12
-     TEMPERATURE_PAGE2[;2]
-Day 1 18:23 Day 1 19:30 Day 2 21:12 Day 3 07:15 Day 3 08:30 Day 3 09:45
+      T1
+┌────┬───────────┐
+│21.4│Day 1 07:42│
+├────┼───────────┤
+│21.8│Day 1 08:47│
+├────┼───────────┤
+│22  │Day 1 10:10│
+├────┼───────────┤
+│21.5│Day 1 12:01│
+├────┼───────────┤
+│21.3│Day 1 14:36│
+├────┼───────────┤
+│22.3│Day 1 16:50│
+└────┴───────────┘
+      T1[2;]
+┌────┬───────────┐
+│21.8│Day 1 08:47│
+└────┴───────────┘
 ```
 
 Multiple numbers can be specified for both row and column indices.
@@ -226,50 +216,86 @@ FGH
 KLM
 ```
 
-However again, the data measurements are separated without reason, the problem that introducing matrices was supposed to solve. Going one dimension further, the data can be arranged in a three-dimensional ordered collection of data:
+At this point you may ask yourself, if we have multiple temperature matrices now, instead of accessing the individual variables ``T1`` and ``T2``, could we arrange them into an array with 3 indices, one for each variable and the other two for row and column index?
 
+If you did, you are thinking like a true array language user!
+
+Arrays of higher dimension are just as easy to create as matrices, again using array notation or the reshape ``⍴`` function.
+
+```apl
+      TData ← [[21.4 'Day 1 07:42' ⋄
+                21.8 'Day 1 08:47' ⋄
+                22.0 'Day 1 10:10' ⋄
+                21.5 'Day 1 12:01' ⋄
+                21.3 'Day 1 14:36' ⋄
+                22.3 'Day 1 16:50'] ⋄
+
+                [22.8 'Day 1 18:23' ⋄
+                21.5 'Day 1 19:30' ⋄
+                22.1 'Day 2 21:12' ⋄
+                22.0 'Day 3 07:15' ⋄
+                21.9 'Day 3 08:30' ⋄
+                22.4 'Day 3 09:45']]
+      TData
+┌────┬───────────┐
+│21.4│Day 1 07:42│
+├────┼───────────┤
+│21.8│Day 1 08:47│
+├────┼───────────┤
+│22  │Day 1 10:10│
+├────┼───────────┤
+│21.5│Day 1 12:01│
+├────┼───────────┤
+│21.3│Day 1 14:36│
+├────┼───────────┤
+│22.3│Day 1 16:50│
+└────┴───────────┘
+┌────┬───────────┐
+│22.8│Day 1 18:23│
+├────┼───────────┤
+│21.5│Day 1 19:30│
+├────┼───────────┤
+│22.1│Day 2 21:12│
+├────┼───────────┤
+│22  │Day 3 07:15│
+├────┼───────────┤
+│21.9│Day 3 08:30│
+├────┼───────────┤
+│22.4│Day 3 09:45│
+└────┴───────────┘
 ```
-      TEMPERATURE_ARRAY ← 2 6 2 ⍴ 21.4 'Day 1 07:42' 21.8 'Day 1 08:47' 22.0 'Day 1 10:10' 21.5 'Day 1 12:01' 21.3 'Day 1 14:36' 22.3 'Day 1 16:50' 22.8 'Day 1 18:23' 21.5 'Day 1 19:30' 22.1 'Day 2 21:12' 22.0 'Day 3 07:15' 21.9 'Day 3 08:30' 22.4 'Day 3 09:45'
-      TEMPERATURE_ARRAY
-21.4 Day 1 07:42
-21.8 Day 1 08:47
-22   Day 1 10:10
-21.5 Day 1 12:01
-21.3 Day 1 14:36
-22.3 Day 1 16:50
-             
-22.8 Day 1 18:23
-21.5 Day 1 19:30
-22.1 Day 2 21:12
-22   Day 3 07:15
-21.9 Day 3 08:30
-22.4 Day 3 09:45
 
-      ⍴TEMPERATURE_ARRAY 
-2 6 2
+Again, this can also be achieved using the reshape ``⍴`` function with three axis lengths instead of two.
 
-      ⍴⍴TEMPERATURE_ARRAY 
-3
-
-      TEMPERATURE_ARRAY[1;;]
-21.4 Day 1 07:42
-21.8 Day 1 08:47
-22   Day 1 10:10
-21.5 Day 1 12:01
-21.3 Day 1 14:36
-22.3 Day 1 16:50
-
-      TEMPERATURE_ARRAY[2;;]
-22.8 Day 1 18:23
-21.5 Day 1 19:30
-22.1 Day 2 21:12
-22   Day 3 07:15
-21.9 Day 3 08:30
-22.4 Day 3 09:45
-
-      TEMPERATURE_ARRAY[;;1]
-21.4 21.8 22   21.5 21.3 22.3
-22.8 21.5 22.1 22   21.9 22.4
+```apl
+      TData ← 2 6 2 ⍴ 21.4 'Day 1 07:42' 21.8 'Day 1 08:47' 22.0 'Day 1 10:10' 21.5 'Day 1 12:01' 21.3 'Day 1 14:36' 22.3 'Day 1 16:50' 22.8 'Day 1 18:23' 21.5 'Day 1 19:30' 22.1 'Day 2 21:12' 22.0 'Day 3 07:15' 21.9 'Day 3 08:30' 22.4 'Day 3 09:45'
+      TData
+┌────┬───────────┐
+│21.4│Day 1 07:42│
+├────┼───────────┤
+│21.8│Day 1 08:47│
+├────┼───────────┤
+│22  │Day 1 10:10│
+├────┼───────────┤
+│21.5│Day 1 12:01│
+├────┼───────────┤
+│21.3│Day 1 14:36│
+├────┼───────────┤
+│22.3│Day 1 16:50│
+└────┴───────────┘
+┌────┬───────────┐
+│22.8│Day 1 18:23│
+├────┼───────────┤
+│21.5│Day 1 19:30│
+├────┼───────────┤
+│22.1│Day 2 21:12│
+├────┼───────────┤
+│22  │Day 3 07:15│
+├────┼───────────┤
+│21.9│Day 3 08:30│
+├────┼───────────┤
+│22.4│Day 3 09:45│
+└────┴───────────┘
 ```
 
 !!! info "Rank"
@@ -279,43 +305,71 @@ However again, the data measurements are separated without reason, the problem t
       
       A useful idiom for getting the rank of an array is the shape of the shape of an array, ⍴⍴X.
 
-Now with your temperature table safely stored in your APL workspace, you can only imagine how many more values you can log and maintain. You excitedly gesture at one of your unimpressed coworkers before you notice you’ve accidentally logged the temperature of the cabin as 226 degrees. Before they have a chance to look at your mistake, you quickly and shamefully change the value.
+Now with your temperature table safely stored in your APL workspace, you can only imagine how many more values you can log and maintain. You excitedly gesture at one of your unimpressed coworkers before you notice you’ve accidentally logged the temperature of the cabin as 218 degrees. Before they have a chance to look at your mistake, you quickly and shamefully change the value.
 
 ```apl
-      TEMPERATURE_ARRAY
-21.4  Day 1 07:42
-21.8  Day 1 08:47
-226   Day 1 10:01
-21.5  Day 1 12:01
-21.3  Day 1 14:36
-22.3  Day 1 16:50
-             
-22.8  Day 1 18:23
-21.5  Day 1 19:30
-22.1  Day 2 21:12
-22    Day 3 07:15
-21.9  Day 3 08:30
-22.4  Day 3 09:45
-      TEMPERATURE_ARRAY[1;3;1] ← 22.6
-      TEMPERATURE_ARRAY
-21.4  Day 1 07:42
-21.8  Day 1 08:47
-22.6  Day 1 10:01
-21.5  Day 1 12:01
-21.3  Day 1 14:36
-22.3  Day 1 16:50
-             
-22.8  Day 1 18:23
-21.5  Day 1 19:30
-22.1  Day 2 21:12
-22    Day 3 07:15
-21.9  Day 3 08:30
-22.4  Day 3 09:45
+      TData
+┌────┬───────────┐
+│21.4│Day 1 07:42│
+├────┼───────────┤
+│218 │Day 1 08:47│
+├────┼───────────┤
+│22  │Day 1 10:10│
+├────┼───────────┤
+│21.5│Day 1 12:01│
+├────┼───────────┤
+│21.3│Day 1 14:36│
+├────┼───────────┤
+│22.3│Day 1 16:50│
+└────┴───────────┘
+┌────┬───────────┐
+│22.8│Day 1 18:23│
+├────┼───────────┤
+│21.5│Day 1 19:30│
+├────┼───────────┤
+│22.1│Day 2 21:12│
+├────┼───────────┤
+│22  │Day 3 07:15│
+├────┼───────────┤
+│21.9│Day 3 08:30│
+├────┼───────────┤
+│22.4│Day 3 09:45│
+└────┴───────────┘
+      TData[1;2;1] ← 22.8
+      TData
+┌────┬───────────┐
+│21.4│Day 1 07:42│
+├────┼───────────┤
+│21.8│Day 1 08:47│
+├────┼───────────┤
+│22  │Day 1 10:10│
+├────┼───────────┤
+│21.5│Day 1 12:01│
+├────┼───────────┤
+│21.3│Day 1 14:36│
+├────┼───────────┤
+│22.3│Day 1 16:50│
+└────┴───────────┘
+┌────┬───────────┐
+│22.8│Day 1 18:23│
+├────┼───────────┤
+│21.5│Day 1 19:30│
+├────┼───────────┤
+│22.1│Day 2 21:12│
+├────┼───────────┤
+│22  │Day 3 07:15│
+├────┼───────────┤
+│21.9│Day 3 08:30│
+├────┼───────────┤
+│22.4│Day 3 09:45│
+└────┴───────────┘
 ```
 
 That was close!
 
 Changing values in arrays acts in the same manner as it does for the case of changing variables, specify the element(s) to change and assign a new value.
+
+Here's an example using Unicode box drawing characters for fun!
 
 ```apl
       BOX ← '╔═══╗║TRY║╠═ ═╣║APL║╚═══╝'

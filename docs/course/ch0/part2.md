@@ -62,6 +62,12 @@ APL is just as readable as any language.
 An English person can't read Finnish either without a little practice!
 
 On the contrary, APL is sometimes _easier_ to read than imperative languages.
+
+As some early APL users at NASA [remarked](https://ntrs.nasa.gov/api/citations/19690020561/downloads/19690020561.pdf) in relation to its (chiefly imperative) contemporaries (notably Fortran and Algol):
+> This is one of the important features of APL. it is possible to learn enough to write a useful program without having to know all there is in the language.
+> Even with the cursory acquaintance with the language, I could see its power,
+and in particular, its advantages in dealing with arrays and matrices.
+
 Consider the following problem:
 
 !!! question "Example problem"

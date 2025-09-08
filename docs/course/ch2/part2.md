@@ -9,86 +9,81 @@
 
 <link rel="stylesheet" href="/styles/ch5part2.css">
 
-You are an astronaut aboard the [International Space Station](https://archive.org/details/MeetMeAtTheStationiss). You are currently orbiting the Earth at an altitude of 413km at a speed of 28,013km/h.
+APL really is a practical general-purpose programming language, with a wide variety of users including both [NASA](https://ntrs.nasa.gov/api/citations/19690020561/downloads/19690020561.pdf) and [Roscosmos](https://dl.acm.org/doi/10.1145/130647.130656); although we won't be looking at the physics of antenna design nor at the thermodynamics of heat shielding that these agencies have used APL for, we can nevertheless show how useful it can be even for everyday trivialities.  
 
-In brief intervals of time spent waiting between tasks, you enjoy logging temperatures from sensors all around the ship into a small notebook. Unfortunately for you, your notebook’s completely filled, and none of your colleagues seem to share your enthusiasm for data collection. Unfortunately for mission control, you’ve decided to use critical APL machines on board to store your data.
+Suppose you are an astronaut aboard the [International Space Station](https://archive.org/details/MeetMeAtTheStationiss), orbiting the Earth at an altitude of 413km at a speed of 28,013km/h. 
+
+While doing your daily maintenance tasks, you enjoy logging temperatures from sensors all around the ship into your small notebook. Unfortunately for you, your notebook’s completely filled, and none of your colleagues seem to share your enthusiasm for data collection. Unfortunately for mission control, you’ve decided to use mission-critical APL machines on board to store your data.
 
 Typing as fast as possible without the aid of gravity, you manage to write some data without being caught.
 
 ```apl
-      TEMPERATURE_PAGE1_YEAR1_DAY2_HOUR7_MINUTE42 ← 21.4
-      TEMPERATURE_PAGE1_YEAR1_DAY2_HOUR8_MINUTE47 ← 21.8
-      TEMPERATURE_PAGE1_YEAR1_DAY2_HOUR10_MINUTE10 ← 22.0
-      TEMPERATURE_PAGE1_YEAR1_DAY2_HOUR12_MINUTE01 ← 21.5
-      TEMPERATURE_PAGE1_YEAR1_DAY2_HOUR14_MINUTE36 ← 21.3
-      TEMPERATURE_PAGE1_YEAR1_DAY2_HOUR16_MINUTE50 ← 22.3
-      TEMPERATURE_PAGE2_YEAR1_DAY2_HOUR18_MINUTE23 ← 22.8
-      TEMPERATURE_PAGE2_YEAR1_DAY2_HOUR19_MINUTE30 ← 21.5
-      TEMPERATURE_PAGE2_YEAR1_DAY2_HOUR21_MINUTE12 ← 22.1
-      TEMPERATURE_PAGE2_YEAR1_DAY3_HOUR7_MINUTE15 ← 22.0
-      TEMPERATURE_PAGE2_YEAR1_DAY3_HOUR8_MINUTE30 ← 21.9
-      TEMPERATURE_PAGE2_YEAR1_DAY3_HOUR9_MINUTE45 ← 22.4
+      T1 ← 21.4
+      T2 ← 21.8
+      T3 ← 22.0
+      T4 ← 21.5
+      T5 ← 21.3
+      T6 ← 22.3
+      T7 ← 22.8
+      T8 ← 21.5
+      T9 ← 22.1
+      T10 ← 22.0
+      T11 ← 21.9
+      T12 ← 22.4
 ```
 
-This is not the most efficient, or readable, method to input data into your system, and while flicking through your APL notes now crowded with temperatures, you refresh your workspace and instead decide to store your data using vectors.
+This is not the most efficient or readable method to input data into your system, and your hand is starting to cramp. Flicking through your APL notes now crowded with temperatures, you realize that you should store the temperatures as vectors!
 
----
-
-*Vectors* are lines of values. They are defined by writing values separated by one or more spaces. 
+**Vectors** are lines of values. They are defined by writing values separated by one or more spaces. 
 	
-The order of elements in a vector matters! Each element is given a number called an *index* according to the order in which they were written. Indices can be used to access the elements of a vector, they start at ``1`` and increase by one for each new element.
+The order of elements in a vector matters! Each element is given a number called an **index** according to the order in which they were written. Indices can be used to access the elements of a vector, they start at ``1`` and increase by one for each new element.
 
-To show the difference between vectors and scalars, we give some examples of both.
-
-```apl
-      ⍝ Scalars
-      SUM ← ¯1÷12
-      EPSILON ← 2*¯53
-      PIGS ← 3
-      BROTHERS ← 7
-      ⍝ Note that the decimal separator in APL is the dot
-      PI ← 11.001001
-      THIEVES ← 40
-      PRIME ← 57
-      MAGIC ← 1597463007
-
-      ⍝ Vectors
-      FIBB ← 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181
-      QUARTER ← 1 ¯2 3 ¯4 5 ¯6 7 ¯8 9 ¯10 11 ¯12 13 ¯14 15 ¯16 17 ¯18
-      KEY ← 9 249 17 2 157 116 227 91 216 65 86 197 99 86 136 192 
-```
-
-Scalar variables can be used to construct new vectors, such as in the following
+You write out the temperatures as vectors, seperating them by page number. Note that the decimal separator in APL is a period!
 
 ```apl
-      LIST ← SUM EPSILON PIGS BROTHERS PI THIEVES PRIME MAGIC
-      LIST
-¯0.08333333333 1.110223025E¯16 3 7 11.001001 40 57 1597463007
-```
-
-Selecting indices from a vector can be done using square brackets as shown below
-
-```apl
-      ⍝ Selecting a single element using an index
-      LIST[1] 
-¯0.08333333333
-
-      ⍝ Selecting multiple values using indices
-      LIST[3 4 5]
-3 7 11.001001
-
-      ⍝ Selecting multiple values using a vector of indices
-      INDICES ← 5 6 7
-      LIST[INDICES] 
-11.001001 40 57
-```
-
-Finally, returning to our original problem, we can represent the lists of temperatures as vectors
-
-```apl
-      TEMPERATURE_PAGE1 ← 21.4 21.8 22.0 21.5 21.3 22.3
-      TEMPERATURE_PAGE2 ← 22.8 21.5 22.1 22.0 21.9 22.4
+      T1 ← 21.4 21.8 22.0 21.5 21.3 22.3
+      T2 ← 22.8 21.5 22.1 22.0 21.9 22.4
       
-      TEMPERATURE_PAGE1[1 2 3]
+      T1[1 2 3]
       21.4 21.8 22.0
+```
+
+Much better. 
+
+Since you're already at the new machines, you may as well snoop around to see what everyone else has been up to. You use the ``)VARS`` [system command](https://dyalog.github.io/documentation/20.0/language-reference-guide/system-commands/introduction/) to list all variables in the current workspace.
+
+```apl
+      )VARS
+CAPACITY        INSPECTION_DATE INSTALLATION_DATE       MAINTENANCE    
+MANUFACTURER    SERIAL  USER    VERSION budget_left     crew_count     
+crew_salary     supplies_needed yearly_budget  
+```
+
+You feel like you and your best friend deserve a raise, looking over your shoulder to make sure no supervisor is watching, you change the crew salary variable for the lowest two salaries.
+
+```apl
+      crew_salary
+87500 113200 95800 148700 132400
+      crew_salary[1 3]
+87500 95800
+      crew_salary[1 3] ← 130200 120000
+      crew_salary
+130200 113200 120000 148700 132400
+```
+
+Of course, your salary is higher because you took the initiative, which is a very important skill for an astronaut.
+
+You also feel like a new notebook for your very mission-critical logging hobby would be nice.
+
+```apl
+      supplies_needed
+4 O2TANK (IMMEDIATELY)
+```
+
+You remember that vectors can store characters as well as numbers! Using ``'single quotes'`` around the characters you want to add, you change the needed supplies vector.
+
+```apl
+      supplies_needed ← '1 NOTEBOOK (IMMEDIATELY)'
+      supplies_needed
+1 NOTEBOOK (IMMEDIATELY)
 ```
