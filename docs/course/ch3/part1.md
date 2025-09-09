@@ -73,7 +73,7 @@ One of the ways of defining a function, taking in array arguments and outputting
 
 Note that for the Fibonacci function, a constant value phi for the golden ratio was used. If the value of phi is changed, the Fibonacci function will use the updated value. 
 
-In order to let the Fibonacci function define its own phi, we have to define it inside the function itself. APL allows any number of assignment statements inside a function before the statement which evaluates the result, using the diamond-shaped statement separator ⋄, or placing the statements on new lines. The following two functions are equivalent.
+In order to let the Fibonacci function define its own phi, we have to define it inside the function itself. APL allows any number of assignment statements inside a function before the statement which evaluates the result, using the diamond-shaped statement separator ``⋄``, or placing the statements on new lines. The following two functions are equivalent.
 
 
 
@@ -84,11 +84,11 @@ In order to let the Fibonacci function define its own phi, we have to define it 
       }
 
       separator_test ← {a ← 1 ⋄ a + a ⋄ a - a}
-      separator_test ⍬ ⍝ (1)
+      separator_test ⍬
 2
 ```
 
-1. The empty vector character ⍬ is added here as filler since functions always require a right argument
+The empty vector character ⍬ is added here as filler since functions always require a right argument
 
 
 

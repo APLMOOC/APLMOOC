@@ -71,7 +71,7 @@ Dyadic `|` : Residue
 3
 ```
 
-The residue function X|Y in APL can be written in terms of previously discussed functions. In fact, from the definition as the remainder of division, we might think it's defined as ``Y-X×(⌊Y÷X)``; however, ``Y÷X`` is not defined when ``X`` is zero. We'd want a function that is equal to 1 when X is 0, and X when X is not zero, ``X+(X=0)`` is one solution.
+The residue function X|Y in APL can be written in terms of previously discussed functions. In fact, from the definition as the remainder of division, we might think it's defined as ``Y-X×(⌊Y÷X)``; however, ``Y÷X`` is not defined when ``X`` is zero. We'd want a function that is equal to ``1`` when ``X`` is ``0``, and ``X`` when ``X`` is not zero, ``X+(X=0)`` is one solution.
 
 ```apl
       ⍝ X|Y is
