@@ -9,54 +9,76 @@
 
 
 <link rel="stylesheet" href="/styles/ch5part2.css">
+ 
+In this section, suppose you are (or maybe you really are!) a moviegoer. You are orbiting the Earth at an elevation of 26 meters and a speed of 1340 kilometers per hour.
 
-You are a climate scientist at a remote reserach station in Antarctica. You are orbiting the Earth at an elevation of 2500 meters and a speed of 0.00008 kilometers per hour.
+After your trips to the cinema, you like to log and rate the movies you've watched. Unfortunately for you, your pretentiousness stops you from rating them on easily accessible public websites. Unfortunately for your friends, you're going to make them install APL to see your movie lists.
 
-In long intervals of time between antarctic expeditions, you have to process sea ice data from all over tha island. Unfortunately for you, the madness of being alone is degrading your ability to do manual calculation. Unfortunately for the scientific community, you’ve decided to let the computer handle it without double checking.
-
-Vectors in APL are represented, and can be created, by a collection of scalars separated by spaces. The reduce / operator can be naively thought of as replacing these spaces with a function specified by its left argument, and returning the result as a scalar.
-
-Given a list of surface ice temperatures, we can calculate the average temperature easily using this operator
+You start logging your first few movies as an APL array
 
 ```apl
-      T_ICE
-¯11.15 ¯7.15 ¯7.55 ¯6.15 ¯12.15 ¯9.55
-
-      ⍝ Sum of temperatures
-      +/T_ICE
-¯53.7
-
-      ¯11.15+¯7.15+¯7.55+¯6.15+¯12.15+¯9.55
-¯53.7
-
-      ⍝ Average of temperatures
-      (+/T_ICE)÷⍴T_ICE
-¯8.95
+MovieDB ← [ 'Title' 'Year' 'Rating' 'Runtime' 'Watches' 'Genre' ⋄
+            'Real Genius' 1985 4 108 3 'Comedy' ⋄ 
+            'Eraserhead' 1977 3.5 89 1 'Fantasy' ⋄
+            'The Devil Wears Prada' 2006 4.5 109 2 'Comedy' ⋄
+            '12 Angry Men' 1957 5 96 4 'Thriller'
+            ]
+      MovieDB
+┌─────────────────────┬────┬──────┬───────┬───────┬────────┐
+│Title                │Year│Rating│Runtime│Watches│Genre   │
+├─────────────────────┼────┼──────┼───────┼───────┼────────┤
+│Real Genius          │1985│4     │108    │3      │Comedy  │
+├─────────────────────┼────┼──────┼───────┼───────┼────────┤
+│Eraserhead           │1977│3.5   │89     │1      │Fantasy │
+├─────────────────────┼────┼──────┼───────┼───────┼────────┤
+│The Devil Wears Prada│2006│4.5   │109    │2      │Comedy  │
+├─────────────────────┼────┼──────┼───────┼───────┼────────┤
+│12 Angry Men         │1957│5     │96     │4      │Thriller│
+└─────────────────────┴────┴──────┴───────┴───────┴────────┘
 ```
 
-Note that the reduce / operator always reduces the rank of its right argument by one; for example, reducing using the catenate , function creates a scalar which contains the array. More on nested scalars in Chapter 5.
+The first thing you want to do is calculate the total amount of time you've spent watching these movies. You first get the array of runtimes, then the array of times watched, and multiply them together. 
+
+Note that you need to remove the first element of the arrays to get rid of the column labels, more on the drop  function ``↓`` in part 4.
 
 ```apl
-      ,/⍳10
-┌────────────────────┐
-│1 2 3 4 5 6 7 8 9 10│
-└────────────────────┘
-
-      1,2,3,4,5,6,7,8,9,10
-1 2 3 4 5 6 7 8 9 10
+      1↓MovieDB[;4]
+108 89 109 96
+      1↓MovieDB[;5]
+3 1 2 4
+      (1↓MovieDB[;4])×1↓MovieDB[;5]
+324 89 218 384
 ```
 
-It can be seen that for-each loops in imperative programming languages are equivalent to the reduce / operator, since they both destruct a list in the most general way possible. For example, the python ``for x in range(1,11): print(x**2)`` in APL is written as
+To get the total, you need to sum up all the elements of this array, reducing it to a single number. This is where the reduce ``/`` operator comes in!
+
+The reduce operator ``/`` takes a left function argument and a right array argument. On vectors, ``f/v`` applies the function ``f`` between the elements of the vector ``v``, reducing its rank by one.
 
 ```apl
-      0,⍳10
-0 1 2 3 4 5 6 7 8 9 10
+      +/(1↓MovieDB[;4])×1↓MovieDB[;5]
+1015
+```
 
-      ⍝ Rotate ⌽ function
-      ⌽0,⍳10
+Note that the reduce ``/`` operator always reduces the rank of its right argument by one; for example, reducing using the catenate ``,`` function creates a scalar which contains the array. More on nested scalars in Chapter 5.
+
+```apl
+      1↓MovieDB[;1]
+┌───────────┬──────────┬─────────────────────┬────────────┐
+│Real Genius│Eraserhead│The Devil Wears Prada│12 Angry Men│
+└───────────┴──────────┴─────────────────────┴────────────┘
+      {⍺,' ',⍵}/1↓MovieDB[;1]
+┌─────────────────────────────────────────────────────────┐
+│Real Genius Eraserhead The Devil Wears Prada 12 Angry Men│
+└─────────────────────────────────────────────────────────┘
+```
+
+As an aside, it can be seen that for-each loops in imperative programming languages are equivalent to the reduce ``/`` operator, since they both destruct a list in the most general way possible. For example, the python ``for x in range(1,11): print(x**2)`` in APL is written as, after first generating the list of values we want using the indices ``⍳`` function:
+
+```apl
+      10-0,⍳10
 10 9 8 7 6 5 4 3 2 1 0
 
-       {⎕←⍺*2}/⌽0,⍳10
+       {⎕←⍺*2}/10-0,⍳10
 1
 4
 9
@@ -69,103 +91,27 @@ It can be seen that for-each loops in imperative programming languages are equiv
 100
 ```
 
-The cumulative sum of a list can also be easily expressed using the reduce / operator.
+Next, you're planning on hosting a movie marathon for a couple friends who've never seen your favorites. You're not sure how long it would take, so you try and calculate how long each sequence of movies would take. The cumulative sum of the runtimes can be easily expressed using the reduce ``/`` operator.
 
 ```apl
-       {⍺,⍺+⍵}/⍳10
-┌──────────────────────────┐
-│1 3 6 10 15 21 28 36 45 55│
-└──────────────────────────┘
-       ⊃{⍺,⍺+⍵}/⍳10
-1 3 6 10 15 21 28 36 45 55
+       {⍺,⍺+⍵}/1↓MovieDB[;4]
+┌───────────────┐
+│108 197 306 402│
+└───────────────┘
 ```
 
-Note that we had to disclose ⊃ the resulting scalar which contained the resulting vector. More on this in Chapter 5.
+More conveniently, there is a built-in operator that calculates cumulative functions even for higher dimensional arrays, without reducing the rank of its argument array. The scan ``\`` operator cumulatively applies its left argument function on its right argument array and returns a result array of the same rank.
 
-There is a dedicated built-in operator that does not have the same limitations, and calculates cumulative functions even for higher dimensional arrays. The scan \ operator cumulatively applies its left argument function on its right argument array and returns a result array of the same rank.
+Here, we get the cumulative runtime and the movies to watch. 
 
 ```apl
-      ,\⍳5
-┌─┬───┬─────┬───────┬─────────┐
-│1│1 2│1 2 3│1 2 3 4│1 2 3 4 5│
-└─┴───┴─────┴───────┴─────────┘
+      +\1↓MovieDB[;4]
+108 197 306 402
 
-      +\⍳10
-1 3 6 10 15 21 28 36 45 55
-
-      ⍝ Cumulative alternating sum
-      -\⍳10
-1 ¯1 2 ¯2 3 ¯3 4 ¯4 5 ¯5
+      {⍺,' ',⍵}\1↓MovieDB[;1]
+┌───────────┬──────────────────────┬────────────────────────────────────────────┬─────────────────────────────────────────────────────────┐
+│Real Genius│Real Genius Eraserhead│Real Genius Eraserhead The Devil Wears Prada│Real Genius Eraserhead The Devil Wears Prada 12 Angry Men│
+└───────────┴──────────────────────┴────────────────────────────────────────────┴─────────────────────────────────────────────────────────┘
 ```
 
-Some examples of reduce and scan on higher rank arrays
-
-```apl
-
-      ⍳5 5
-┌───┬───┬───┬───┬───┐
-│1 1│1 2│1 3│1 4│1 5│
-├───┼───┼───┼───┼───┤
-│2 1│2 2│2 3│2 4│2 5│
-├───┼───┼───┼───┼───┤
-│3 1│3 2│3 3│3 4│3 5│
-├───┼───┼───┼───┼───┤
-│4 1│4 2│4 3│4 4│4 5│
-├───┼───┼───┼───┼───┤
-│5 1│5 2│5 3│5 4│5 5│
-└───┴───┴───┴───┴───┘
-
-      +/⍳5 5
-┌────┬─────┬─────┬─────┬─────┐
-│5 15│10 15│15 15│20 15│25 15│
-└────┴─────┴─────┴─────┴─────┘
-
-      +\⍳5 5
-┌───┬────┬────┬─────┬─────┐
-│1 1│2 3 │3 6 │4 10 │5 15 │
-├───┼────┼────┼─────┼─────┤
-│2 1│4 3 │6 6 │8 10 │10 15│
-├───┼────┼────┼─────┼─────┤
-│3 1│6 3 │9 6 │12 10│15 15│
-├───┼────┼────┼─────┼─────┤
-│4 1│8 3 │12 6│16 10│20 15│
-├───┼────┼────┼─────┼─────┤
-│5 1│10 3│15 6│20 10│25 15│
-└───┴────┴────┴─────┴─────┘
-
-	⍝ Cumulative maximum
-      ⌈\ 1 0 1 2 3 2 ¯1 4 2 1
-1 1 1 2 3 3 3 4 4 4
-
-      ⍝ Cumulative minimum
-      ⌊\ 1 0 1 2 3 2 ¯1 4 2 1
-1 0 0 0 0 0 ¯1 ¯1 ¯1 ¯1
-      
-      M ← ? 5 5 ⍴ 10
-      M
-9 10 2 1  4
-8  2 9 3  2
-6  4 3 2  8
-8  5 5 2  1
-2 10 2 2 10
-
-      ⌈/M
-10 9 8 8 10
-
-      ⌈\M
-9 10 10 10 10
-8  8  9  9  9
-6  6  6  6  8
-8  8  8  8  8
-2 10 10 10 10
-
-      ⌊/M
-1 2 2 1 2
-
-      ⌊\M
-9 9 2 1 1
-8 2 2 2 2
-6 4 3 2 2
-8 5 5 2 1
-2 2 2 2 2
-```
+This shows you that watching the first three movies would take roughly five hours, but this list of movies doesn't prioritize your favorites. You'd rather watch your highest rated movie first! We will continue planning this event in the next section.
