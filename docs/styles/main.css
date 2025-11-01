@@ -19,16 +19,6 @@ input#user:focus, input#pass:focus {
     outline: solid 5px var(--md-primary-fg-color);
 }
 
-
-
-/* .md-header {
-    position: relative;
-}
-
-.md-header .ngn_lb {
-    position: sticky;
-} */
-
 /* Problem admonitions */
 
 .md-typeset .admonition.write-problem,
