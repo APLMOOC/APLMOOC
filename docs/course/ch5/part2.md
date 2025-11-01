@@ -48,14 +48,14 @@ The variable `post` is a vector of length 4; it contains four scalars, each of w
       ⍴ 5
 ```
 
-It is a nested vector, since these scalars contain vector data, whose depth can be measured using the monadic depth ≡ function.
+It is a nested vector, since these scalars contain vector data, whose depth can be measured using the monadic depth `≡` function.
 
 ```apl
       ≡ post
 2
 ```
 
-The data inside a nested array can be accessed using the dyadic pick ⊃ function.
+The data inside a nested array can be accessed using the dyadic pick `⊃` function.
 
 ```apl
       3⊃post
@@ -140,7 +140,7 @@ RANK ERROR
              ∧
 ```
 
-What happened here? The reason why this doesn't work is that (1 2 1) is not a single element, it is a vector of three elements. In order to turn data into a single element, a scalar, we can enclose ⊂ it in a box.
+What happened here? The reason why this doesn't work is that `(1 2 1)` is not a single element, it is a vector of three elements. In order to turn data into a single element, a scalar, we can enclose `⊂` it in a box.
 
 ```apl
       ⊂1 2 1
@@ -157,6 +157,8 @@ Why does DVB-C use QAM instead of OFDM?
       ((1 2 1)1)⊃POSTS
 W
 ```
+
+## Combining nested arrays
 
 Let's create a more nested example, posts with replies
 
@@ -203,7 +205,7 @@ There are several ways to combine these vectors into a matrix, the first is to u
 └──────────┴─────┴──────────────────────────────────────────────┴────────────────┴────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-This method requires us to know what the size is, and resize correctly. For more complex nested arrays, it might be too bothersome. Thankfully, there is a very useful function to mix ↑ nested vectors together by reducing the level of nesting.
+This method requires us to know what the size is, and resize correctly. For more complex nested arrays, it might be too bothersome. Thankfully, there is a very useful function to mix `↑` nested vectors together by reducing the level of nesting.
 
 ```apl
       post1 post2
@@ -227,7 +229,7 @@ This method requires us to know what the size is, and resize correctly. For more
 └──────────┴─────┴──────────────────────────────────────────────┴────────────────┴────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-Another example of mix ↑
+Another example of mix `↑`
 
 ```apl
       school ← ('MATH' ('101' 30 ('COMPETED')) ('102' 37 ('CANCELLED')))  ('CS' ('101' 53 ('COMPETED')) ('102' 28 ('COMPLETED')) ('103' 20 ('IN PROGRESS')))
@@ -275,7 +277,9 @@ Notice that the Math row was given an extra element with an empty nested array b
 └────┴────┴───────────┘
 ```
 
-To access elements in the POSTS array,
+## Accessing elements of deeper arrays
+
+To access elements in the `POSTS` array,
 
 ```apl
      POSTS ← ↑ post1 post2
@@ -305,7 +309,7 @@ OFDM is more reliable and easily equalized over difficult channels like a radio 
 O
 ```
 
-There is also a nested variant of the , ravel function called the ∊ enlist function.
+There is also a nested variant of the , ravel function called the `∊` enlist function.
 
 ```apl
       ∊POSTS
@@ -330,7 +334,7 @@ The power of nested arrays lies in the way in which they allow applying operatio
 2097152 4194304 8388608 16777216 33554432
 ```
 
-For more complex functions, the each ¨ operator allows applying a function to each element of the right argument array, potentially returning a nested array. 
+For more complex functions, the each `¨` operator allows applying a function to each element of the right argument array, potentially returning a nested array. 
 
 ```apl
       {2*⍵}¨5 5⍴⍳25
@@ -355,7 +359,7 @@ For more complex functions, the each ¨ operator allows applying a function to e
 ```
 It matches the left argument array scalars with the right argument array scalars and applies the function with the scalars as left or right arguments respectively
 
-```
+```apl
       2|5 5⍴⍳25
 1 0 1 0 1
 0 1 0 1 0
@@ -384,7 +388,7 @@ It matches the left argument array scalars with the right argument array scalars
 └────┴────┴────┴────┴────┘
 ```
 
-Since scalars can contain array data, array operations can be applied on many arrays at once. Suppose we wanted to add an 'X' at the start of each deleted post, and replace the username with [deleted]
+Since scalars can contain array data, array operations can be applied on many arrays at once. Suppose we wanted to add an 'X' at the start of each deleted post, and replace the username with `[deleted]`
 
 ```apl
       POSTS
@@ -399,7 +403,7 @@ Since scalars can contain array data, array operations can be applied on many ar
 0 1 0
 ```
 
-The first thing to do is enclose the three rows separately, which can be done using the inverse to mix, the split ↓ function
+The first thing to do is enclose the three rows separately, which can be done using the inverse to mix, the split `↓` function
 
 ```apl
       ↓POSTS

@@ -19,6 +19,16 @@ input#user:focus, input#pass:focus {
     outline: solid 5px var(--md-primary-fg-color);
 }
 
+
+
+/* .md-header {
+    position: relative;
+}
+
+.md-header .ngn_lb {
+    position: sticky;
+} */
+
 /* Problem admonitions */
 
 .md-typeset .admonition.write-problem,
@@ -126,7 +136,7 @@ div.problem button.problembutton {
     padding: 0 0.125rem;
     font-weight: normal;
     border-radius: 0.125rem;
-    font-size: 1.65em;
+    font-size: 1.3em;
 }
 
 .ngn_lb b:hover,
