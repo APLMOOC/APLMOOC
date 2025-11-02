@@ -108,7 +108,9 @@ The array above is structured along three axes, the first being the week, the se
 2 9 4
 ```
 
-To get the total list of replies for each user, we need to forget the day and week axes to be left with only user information. If we try to use the rank operator to enlist along the 2-cells of this array, we don't get what we want.
+To get the total list of replies for each user, we need to sum along the week and day axes. We can, of course, remove the labels and use bracket-axis operations to sum along these two axes, giving ``+/[1]`` for the week axis and ``+/[2]`` for the day axis. However, since the ``⍤`` rank operator is much more general than bracket axis notation, let's try to find a way to use it in this case!
+
+Notice that ``⍤2`` will not be immediately correct, since the day and week axes are not the last two axes of our array. 
 
 ```apl
       (,⍤2)activity
@@ -119,44 +121,7 @@ To get the total list of replies for each user, we need to forget the day and we
 └──────┴──────┴──────┴──────┴───────────┴────────────────┴───────────┴──────────────┴──┴──┴──┴─┴──┴─┴──┴─┴──┴──┴──┴─┴──┴─┴──┴─┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴─┘
 ```
 
-This is because the last two axes of the array are Day and User.
-
-```apl
-      ⍝ First week
-      activity[1;;]
-┌───────────┬────────────────┬───────────┬──────────────┐
-│Week 1     │                │           │              │
-├───────────┼────────────────┼───────────┼──────────────┤
-│RedScanLine│frequencySniffer│dataMoshpit│Radiovangelist│
-├───────────┼────────────────┼───────────┼──────────────┤
-│12         │8               │15         │6             │
-├───────────┼────────────────┼───────────┼──────────────┤
-│10         │7               │12         │9             │
-├───────────┼────────────────┼───────────┼──────────────┤
-│14         │9               │11         │8             │
-├───────────┼────────────────┼───────────┼──────────────┤
-│11         │6               │14         │7             │
-├───────────┼────────────────┼───────────┼──────────────┤
-│9          │10              │13         │5             │
-├───────────┼────────────────┼───────────┼──────────────┤
-│13         │8               │16         │10            │
-├───────────┼────────────────┼───────────┼──────────────┤
-│10         │12              │15         │6             │
-└───────────┴────────────────┴───────────┴──────────────┘
-      ⍝ First day of either week
-      activity[;3;]
-12  8 15 6
-15 11 17 8
-      ⍝ First user
-      activity[;;1]
-┌──────┬───────────┬──┬──┬──┬──┬──┬──┬──┐
-│Week 1│RedScanLine│12│10│14│11│9 │13│10│
-├──────┼───────────┼──┼──┼──┼──┼──┼──┼──┤
-│Week 2│RedScanLine│15│12│11│14│10│13│12│
-└──────┴───────────┴──┴──┴──┴──┴──┴──┴──┘
-```
-
-The way to solve this is to swap the Week and User axes to get an array where the last axes are Week and Day, this problem is easily solved by the ⍉ transpose function. 
+The way to solve this is to swap the week and user axes to get an array where the last axes are week and day, this problem is easily solved by the ⍉ transpose function. 
 
 The left argument to the transpose function is a list of integers starting from 1, which represents where each axes is in the resulting array. For example, ``1 2 3 ⍉ activity`` is the same as ``activity``, but ``3 2 1⍉activity`` swaps the first and third axis.
 
@@ -281,7 +246,7 @@ The left argument to the transpose function is a list of integers starting from 
 └────────────────┴────────────────┘
 ```
 
-Removing the labels
+Removing the labels and summing the last two axes, we obtain the result we're looking for.
 
 ```apl
       ⍝ Check how ⍤2 acts on the above matrix
@@ -308,151 +273,46 @@ Removing the labels
 │└───────────┴───────────┘│└────────────────┴────────────────┘│└───────────┴───────────┘│└──────────────┴──────────────┘│
 └─────────────────────────┴───────────────────────────────────┴─────────────────────────┴───────────────────────────────┘
       
-      ⍝ Use drop ↓ to remove the week label
-      1 (↓⍤2) 3 2 1 ⍉ activity
-┌────────────────┬────────────────┐
-│RedScanLine     │RedScanLine     │
-├────────────────┼────────────────┤
-│12              │15              │
-├────────────────┼────────────────┤
-│10              │12              │
-├────────────────┼────────────────┤
-│14              │11              │
-├────────────────┼────────────────┤
-│11              │14              │
-├────────────────┼────────────────┤
-│9               │10              │
-├────────────────┼────────────────┤
-│13              │13              │
-├────────────────┼────────────────┤
-│10              │12              │
-└────────────────┴────────────────┘
-┌────────────────┬────────────────┐
-│frequencySniffer│frequencySniffer│
-├────────────────┼────────────────┤
-│8               │11              │
-├────────────────┼────────────────┤
-│7               │9               │
-├────────────────┼────────────────┤
-│9               │10              │
-├────────────────┼────────────────┤
-│6               │8               │
-├────────────────┼────────────────┤
-│10              │7               │
-├────────────────┼────────────────┤
-│8               │12              │
-├────────────────┼────────────────┤
-│12              │11              │
-└────────────────┴────────────────┘
-┌────────────────┬────────────────┐
-│dataMoshpit     │dataMoshpit     │
-├────────────────┼────────────────┤
-│15              │17              │
-├────────────────┼────────────────┤
-│12              │14              │
-├────────────────┼────────────────┤
-│11              │13              │
-├────────────────┼────────────────┤
-│14              │12              │
-├────────────────┼────────────────┤
-│13              │16              │
-├────────────────┼────────────────┤
-│16              │15              │
-├────────────────┼────────────────┤
-│15              │14              │
-└────────────────┴────────────────┘
-┌────────────────┬────────────────┐
-│Radiovangelist  │Radiovangelist  │
-├────────────────┼────────────────┤
-│6               │8               │
-├────────────────┼────────────────┤
-│9               │7               │
-├────────────────┼────────────────┤
-│8               │5               │
-├────────────────┼────────────────┤
-│7               │9               │
-├────────────────┼────────────────┤
-│5               │11              │
-├────────────────┼────────────────┤
-│10              │6               │
-├────────────────┼────────────────┤
-│6               │8               │
-└────────────────┴────────────────┘
+      ⍝ Use drop ↓ to remove the labels
+      2 (↓⍤2) 3 2 1 ⍉ activity
+12 15
+10 12
+14 11
+11 14
+ 9 10
+13 13
+10 12
+     
+ 8 11
+ 7  9
+ 9 10
+ 6  8
+10  7
+ 8 12
+12 11
+     
+15 17
+12 14
+11 13
+14 12
+13 16
+16 15
+15 14
+     
+ 6  8
+ 9  7
+ 8  5
+ 7  9
+ 5 11
+10  6
+ 6  8
+
+      ⍝ Taking the sum
+      (+/+/⍤2) 2 (↓⍤2) (3 2 1 ⍉ activity)
+166 128 197 105
 ```
 
- Finally obtaining the replies per user per day
-
-```apl
-      ⍝ Ravel the above 2-cells to get the replies per day for every user
-      (,⍤2) 1 (↓⍤2) (3 2 1 ⍉ activity)
-┌────────────────┬────────────────┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┐
-│RedScanLine     │RedScanLine     │12│15│10│12│14│11│11│14│9 │10│13│13│10│12│
-├────────────────┼────────────────┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┤
-│frequencySniffer│frequencySniffer│8 │11│7 │9 │9 │10│6 │8 │10│7 │8 │12│12│11│
-├────────────────┼────────────────┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┤
-│dataMoshpit     │dataMoshpit     │15│17│12│14│11│13│14│12│13│16│16│15│15│14│
-├────────────────┼────────────────┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┤
-│Radiovangelist  │Radiovangelist  │6 │8 │9 │7 │8 │5 │7 │9 │5 │11│10│6 │6 │8 │
-└────────────────┴────────────────┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┘
-      
-      ⍝ Remove the duplicate user label using (↓⍤1) drop on 1-cells
-      1 (↓⍤1) (,⍤2) 1(↓⍤2) (3 2 1 ⍉ activity)
-┌────────────────┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┐
-│RedScanLine     │12│15│10│12│14│11│11│14│9 │10│13│13│10│12│
-├────────────────┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┤
-│frequencySniffer│8 │11│7 │9 │9 │10│6 │8 │10│7 │8 │12│12│11│
-├────────────────┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┤
-│dataMoshpit     │15│17│12│14│11│13│14│12│13│16│16│15│15│14│
-├────────────────┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┤
-│Radiovangelist  │6 │8 │9 │7 │8 │5 │7 │9 │5 │11│10│6 │6 │8 │
-└────────────────┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┘
-```
-
-
-More examples of transpose
-
-```apl
-      SYMBOLS ← 2 3 2 ⍴ 'A1B2C3あ一い二う三'
-      ⍝ The first axis is from English to Japanese, the second axis is alphanumeric order, and the third axis is from letters to numbers
-      SYMBOLS
-A1
-B2
-C3
-
-あ一
-い二
-う三
-
-      ⍝ Transposing the last two axes, so that the second axis is now from letters to numbers
-      1 3 2⍉SYMBOLS
-ABC
-123
-   
-あいう
-一二三
-
-      ⍝ Transposing the first two axis, so that the first axis is now alphanumeric order
-      2 1 3⍉SYMBOLS
-A1
-あ一
-  
-B2
-い二
-  
-C3
-う三
-
-      ⍝ Transposing the first and last axis, so that the first axis is now letters to numbers
-      3 2 1⍉SYMBOLS
-Aあ
-Bい
-Cう
-  
-1一
-2二
-3三
-```
-
+Another way to rotate elements around an array is by rotating along an axis, as opposed to the axes themselves.
 
 The dyadic `⌽` `⊖` rotate functions rotate an array by an amount specific by the left argument, around a specific axis.
 
