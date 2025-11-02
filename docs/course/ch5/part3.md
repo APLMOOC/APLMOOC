@@ -86,47 +86,109 @@ Since the leading axis is the vertical axis, the plus reduce first `+⌿` functi
 
 There is special syntax that allows for such general axis specification for certain built-in functions. It consists of adding a set of square brackets `[ ]` after the function containing an increasing integer axis number starting from 1, corresponding to the leading axis.
 
-Instead of an explanation using a mystifying array of random numbers that makes the calculations difficult to fully grasp, consider instead the following delicious rendered piece of cheesecake.
-
-<div style="aspect-ratio: 1 / 1; width: 100%;">
-<iframe  src="\js\demos\cake_intro.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%;"></iframe>
-</div>
+Instead of an explanation using a mystifying array of random numbers that makes the calculations difficult to fully grasp, consider instead the following delicious rendered piece of cheesecake, represented as an APL array.
 
 This cake is arranged along three axis, as is the case with most physical objects, and will serve as a suitable example for our axis-selective operations. Click and drag on the 3D view to orbit the array, use the scroll wheel to zoom in and out. Move your mouse over a section to see it highlighted.
 
-
-The three axes of the array can be seen, with the red axis representing the leading axis, the green axis representing the intermediate axis, and the blue axis representing the last axis.
-
-Move your mouse over a section to see the three axis slices.
-
-<div style="aspect-ratio: 1 / 1; width: 100%;">
-<iframe  src="\js\demos\rank_axes.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%;"></iframe>
+<div style="aspect-ratio: 5 / 3; width: 100%;">
+<iframe class="lazy-iframe" data-src="\js\demos\cake_intro.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%;width:100%;height:100%;"></iframe>
 </div>
 
+Using bracket-axis notation, we can now play with our food and reduce along all three axes! Click one of the buttons below to visualize each reduction.
 
-Then, using the bracket-axis notation, is it possible to obtain all 3 possible reductions.
-
-<div style="aspect-ratio: 1 / 1; width: 100%;">
-<iframe  src="\js\demos\rank_anim3.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%;"></iframe>
+<div style="display: flex; justify-content: center; gap: 15px; margin: 20px 0;">
+    <button onclick="document.getElementById('cake_rank').contentWindow.reductionAxis='x'" 
+            style="flex: 1; padding: 8px 16px; font-size: 14px; font-family: 'APL385', 'DejaVu Sans Mono', monospace;
+                   background: #f0f0f0;
+                   border: 1px solid #ccc; border-top-color: #ddd; border-left-color: #ddd;
+                   border-radius: 3px; color: #333; cursor: pointer;
+                   box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 1px 2px rgba(0,0,0,0.1);"
+            onmousedown="this.style.background='#e0e0e0'; this.style.boxShadow='inset 0 1px 3px rgba(0,0,0,0.2)';"
+            onmouseup="this.style.background='#f0f0f0'; this.style.boxShadow='inset 0 1px 0 rgba(255,255,255,0.5), 0 1px 2px rgba(0,0,0,0.1)';"
+            onmouseover="this.style.background='#f5f5f5';"
+            onmouseout="this.style.background='#f0f0f0';">
+        +/[1]Cake
+    </button>
+    
+    <button onclick="document.getElementById('cake_rank').contentWindow.reductionAxis='y'" 
+            style="flex: 1; padding: 8px 16px; font-size: 14px; font-family: 'APL385', 'DejaVu Sans Mono', monospace;
+                   background: #f0f0f0;
+                   border: 1px solid #ccc; border-top-color: #ddd; border-left-color: #ddd;
+                   border-radius: 3px; color: #333; cursor: pointer;
+                   box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 1px 2px rgba(0,0,0,0.1);"
+            onmousedown="this.style.background='#e0e0e0'; this.style.boxShadow='inset 0 1px 3px rgba(0,0,0,0.2)';"
+            onmouseup="this.style.background='#f0f0f0'; this.style.boxShadow='inset 0 1px 0 rgba(255,255,255,0.5), 0 1px 2px rgba(0,0,0,0.1)';"
+            onmouseover="this.style.background='#f5f5f5';"
+            onmouseout="this.style.background='#f0f0f0';">
+        +/[2]Cake
+    </button>
+    
+    <button onclick="document.getElementById('cake_rank').contentWindow.reductionAxis='z'" 
+            style="flex: 1; padding: 8px 16px; font-size: 14px; font-family: 'APL385', 'DejaVu Sans Mono', monospace;
+                   background: #f0f0f0;
+                   border: 1px solid #ccc; border-top-color: #ddd; border-left-color: #ddd;
+                   border-radius: 3px; color: #333; cursor: pointer;
+                   box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 1px 2px rgba(0,0,0,0.1);"
+            onmousedown="this.style.background='#e0e0e0'; this.style.boxShadow='inset 0 1px 3px rgba(0,0,0,0.2)';"
+            onmouseup="this.style.background='#f0f0f0'; this.style.boxShadow='inset 0 1px 0 rgba(255,255,255,0.5), 0 1px 2px rgba(0,0,0,0.1)';"
+            onmouseover="this.style.background='#f5f5f5';"
+            onmouseout="this.style.background='#f0f0f0';">
+        +/[3]Cake
+    </button>
 </div>
+
+<div style="aspect-ratio: 5/3; width:100%">
+<iframe id="cake_rank" class="lazy-iframe" data-src="\js\demos\cake_rank.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%"></iframe>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const lazyIframes = document.querySelectorAll('.lazy-iframe');
+    const loadedIframes = new Set(); // Track loaded iframes
+    
+    if (!('IntersectionObserver' in window)) {
+        lazyIframes.forEach(iframe => {
+            iframe.src = iframe.dataset.src;
+            loadedIframes.add(iframe);
+        });
+        return;
+    }
+    
+    const iframeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const iframe = entry.target;
+            
+            if (entry.isIntersecting) {
+                if (!loadedIframes.has(iframe)) {
+                    iframe.src = iframe.dataset.src;
+                    loadedIframes.add(iframe);
+                    iframe.classList.remove('lazy-iframe');
+                }
+            } else {
+                if (loadedIframes.has(iframe)) {
+                    if (iframe.src && iframe.src !== 'about:blank') {
+                        iframe.dataset.src = iframe.src;
+                    }
+                    iframe.src = 'about:blank';
+                    loadedIframes.delete(iframe);
+                    iframe.classList.add('lazy-iframe');
+                }
+            }
+        });
+    }, {
+        rootMargin: '200px 0px',
+        threshold: 0.01
+    });
+    
+    lazyIframes.forEach(iframe => {
+        iframeObserver.observe(iframe);
+    });
+});
+</script>
 
 Note that there is also a different method of specifying axes for functions which is more general than bracket-axis notation, since it behaves consistently and can be applied to any arbitrary function. The rank ``⍤`` operator allows for such general axis specification of a function left argument, via an integer right argument which specifies what rank cells to act on. 
 
-An n-cell of a rank r array is a rank n array formed from picking (r-n) indices from that array. Some n-cells of the above array are
-
-```apl
-      ⍝ 2-cell of M
-      M[1;;]
-5 2 4
-9 1 4
-5 8 4
-      ⍝ 1-cell of M
-      M[1;1;]
-5 2 4
-      ⍝ 0-cell of M
-      M[1;1;1]
-5
-```
+An ``n``-cell of a rank ``r`` array is a rank n array formed from picking ``r-n`` indices from that array. Click the buttons below to view the ``n``-cells of the above Cake array.
 
 As an example, we study the action of the rank operator ``⍤`` on the plus reduce ``+⌿`` function, ``+⌿⍤n``. For n=3, the modified plus reduce function ``+⌿⍤3`` acts on the 3-cells of the array. Since the whole array is of rank 3, there is only one 3-cell which is the array itself. Then, ``+⌿⍤3`` is equivalent to the action of the plus reduce ``+⌿`` function on the whole array, adding up terms along its leading axis.
 
