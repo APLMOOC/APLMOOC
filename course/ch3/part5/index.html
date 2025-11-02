@@ -12,7 +12,7 @@
         <link rel="prev" href="../part4/">
       
       
-        <link rel="next" href="../part6/">
+        <link rel="next" href="../summary/">
       
       
       <link rel="icon" href="../../assets/_favicon.svg">
@@ -20,7 +20,7 @@
     
     
       
-        <title>3.6 - Traditional fun - APL MOOC</title>
+        <title>3.5 - All aboard! - APL MOOC</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#traditional-fun" class="md-skip">
+        <a href="#all-aboard" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              3.6 - Traditional fun
+              3.5 - All aboard!
             
           </span>
         </div>
@@ -1124,7 +1124,7 @@
   
   
   <span class="md-ellipsis">
-    3.5 - Installing Dyalog
+    3.4 - Infinite fun
     
   </span>
   
@@ -1156,59 +1156,13 @@
   
   
   <span class="md-ellipsis">
-    3.6 - Traditional fun
+    3.5 - All aboard!
     
   </span>
   
 
       </a>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../part6/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    3.7 - Infinite fun
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../part7/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    3.8 - All aboard!
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -2423,83 +2377,158 @@
 
 
 
-<h1 id="traditional-fun">Traditional fun</h1>
-<div class="admonition tip">
-<p class="admonition-title">Move this section to Chapter 7</p>
-<p>This section should be introduced in Chapter 7</p>
-</div>
-<hr />
+<h1 id="all-aboard">All aboard!</h1>
 <div class="admonition abstract">
 <p class="admonition-title">This part will cover</p>
 <ul>
-<li>Traditional functions</li>
-<li>Variable Scope</li>
+<li>Forks and Atops</li>
+<li>The tack functions</li>
+<li>Reduce function</li>
 </ul>
 </div>
 <hr />
-<p>Another way of defining functions is using traditional functions, abbreviated tradfn. ("trad-fun") These functions look a lot more similar to functions in imperative programming languages.</p>
-<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="bp">∇</span><span class="w"> </span><span class="p">(</span><span class="nv">R1</span><span class="w"> </span><span class="nv">R2</span><span class="p">)</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">solve_quadratic</span><span class="w"> </span><span class="nv">A</span><span class="w"> </span><span class="nv">B</span><span class="w"> </span><span class="nv">C</span><span class="sr">;</span><span class="nv">root</span><span class="sr">;</span><span class="nv">vertex</span><span class="w"> </span>
-<span class="w">          </span><span class="nv">root</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="p">((</span><span class="nv">B</span><span class="o">*</span><span class="m">2</span><span class="p">)</span><span class="o">-</span><span class="m">4</span><span class="o">×</span><span class="nv">A</span><span class="o">×</span><span class="nv">C</span><span class="p">)</span><span class="o">*</span><span class="m">1</span><span class="o">÷</span><span class="m">2</span>
-<span class="w">          </span><span class="nv">vertex</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="o">-</span><span class="nv">B</span><span class="o">÷</span><span class="m">2</span><span class="o">×</span><span class="nv">A</span>
-<span class="w">          </span><span class="nv">R1</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">vertex</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">root</span><span class="o">÷</span><span class="m">2</span><span class="o">×</span><span class="nv">A</span>
-<span class="w">          </span><span class="nv">R2</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">vertex</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">root</span><span class="o">÷</span><span class="m">2</span><span class="o">×</span><span class="nv">A</span>
-<span class="w">       </span><span class="bp">∇</span>
-<span class="w">       </span><span class="nv">solve_quadratic</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">¯1</span><span class="w"> </span><span class="m">¯1</span>
-<span class="m">1.618033989</span><span class="w"> </span><span class="m">¯0.6180339887</span>
-
-<span class="w">       </span><span class="c1">⍝ ∇ results ← name arguments;local_variable1;local_variable2</span>
-<span class="w">       </span><span class="c1">⍝   ...</span>
-<span class="w">       </span><span class="c1">⍝   Instructions</span>
-<span class="w">       </span><span class="c1">⍝   ...</span>
-<span class="w">       </span><span class="c1">⍝   results ← values</span>
-<span class="w">       </span><span class="c1">⍝ ∇</span>
+<p>Before starting this section, we briefly introduce the commonly used monadic reduce <code>/</code> operator, which applies its left function argument between every element of a vector. More on this in Chapter 4.</p>
+<p>For example, the sum of all the elements of a vector is given by plus reduce <code>+/</code> as shown below.</p>
+<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="o">⍳</span><span class="m">10</span>
+<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">10</span>
+<span class="w">       </span><span class="o">+</span><span class="na">/</span><span class="o">⍳</span><span class="m">10</span>
+<span class="m">55</span>
+<span class="w">       </span><span class="m">1</span><span class="o">+</span><span class="m">2</span><span class="o">+</span><span class="m">3</span><span class="o">+</span><span class="m">4</span><span class="o">+</span><span class="m">5</span><span class="o">+</span><span class="m">6</span><span class="o">+</span><span class="m">7</span><span class="o">+</span><span class="m">8</span><span class="o">+</span><span class="m">9</span><span class="o">+</span><span class="m">10</span>
+<span class="m">55</span>
 </code></pre></div>
-<p>Tradfns are delimited by dels ∇ and consist of a header and body. The header defines the (left or right) arguments, the variables which are local to that function (variables which do not affect the rest of the workspace), and the values that are returned. Above, the arguments are A B and C, with local variables root and vertex, returning the vector (R1 R2).</p>
-<p>If we try to access any of the local variables of the function outside the function, we will encounter an error. </p>
-<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="nv">R1</span>
-<span class="nv">VALUE</span><span class="w"> </span><span class="nv">ERROR</span><span class="bp">:</span><span class="w"> </span><span class="nv">Undefined</span><span class="w"> </span><span class="nv">name</span><span class="bp">:</span><span class="w"> </span><span class="nv">R1</span>
-<span class="w">       </span><span class="nv">vertex</span>
-<span class="nv">VALUE</span><span class="w"> </span><span class="nv">ERROR</span><span class="bp">:</span><span class="w"> </span><span class="nv">Undefined</span><span class="w"> </span><span class="nv">name</span><span class="bp">:</span><span class="w"> </span><span class="nv">vertex</span>
+<p>Some other important functions are the dyadic right and left identity/“tack” functions which return their right or left arguments. They "point" towards which argument they return.</p>
+<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="s2">&quot;True&quot;</span><span class="o">⊣</span><span class="s2">&quot;False&quot;</span>
+<span class="nv">True</span>
+<span class="w">       </span><span class="s2">&quot;True&quot;</span><span class="o">⊢</span><span class="s2">&quot;False&quot;</span>
+<span class="nv">False</span>
 </code></pre></div>
-<p>Instead of guarded expressions, there are control flow structures like :If and :For. We will see these structures in detail in Chapter 7.</p>
-<div class="admonition warn">
-<p class="admonition-title">Variable Scope</p>
-<p>In tradfns, variables outside the function can be accessed and modified unless specified to be local. In dfns however, while it is possible to access variables outside the function, it is not possible to assign to them.
-<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="nv">i</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">10</span>
-<span class="w">       </span><span class="nv">d_increment</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="nv">i</span><span class="kd">←</span><span class="nv">i</span><span class="o">+</span><span class="m">1</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span><span class="nv">i</span><span class="kt">}</span>
+<p>At this point, all the functions we've defined have explicitly referred to the left <code>⍺</code> and right <code>⍵</code> arguments, for example in the following function <code>range</code> which takes the difference of the largest and smallest values of a vector. It takes the maximum <code>⌈/</code> minus the minimum <code>⌊/</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">⌈</span><span class="na">/</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span>
+<span class="m">8</span>
 
-<span class="w">       </span><span class="nv">i</span>
-<span class="m">10</span>
-<span class="w">       </span><span class="nv">increment</span><span class="w"> </span><span class="no">⍬</span>
-<span class="m">11</span><span class="w">  </span>
-<span class="w">       </span><span class="nv">i</span>
-<span class="m">10</span>
+<span class="w">      </span><span class="nv">range</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="p">(</span><span class="o">⌈</span><span class="na">/</span><span class="bp">⍵</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="o">⌊</span><span class="na">/</span><span class="bp">⍵</span><span class="p">)</span><span class="kt">}</span>
 
-<span class="w">       </span><span class="bp">∇</span><span class="w"> </span><span class="nv">res</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">t_increment</span>
-<span class="w">               </span><span class="nv">i</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">i</span><span class="o">+</span><span class="m">1</span>
-<span class="w">           </span><span class="nv">res</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">i</span>
-<span class="w">       </span><span class="bp">∇</span>
+<span class="w">      </span><span class="nv">range</span><span class="w"> </span><span class="m">80</span><span class="w"> </span><span class="m">49</span><span class="w"> </span><span class="m">56</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="m">99</span><span class="w"> </span><span class="m">23</span><span class="w"> </span><span class="m">19</span><span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">50</span><span class="w"> </span><span class="m">7</span>
+<span class="m">50</span>
+</code></pre></div>
+<p>or in the following function which takes the (weighted) average of a vector. First, the average function can be written as below.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="c1">⍝ Average</span>
+<span class="w">      </span><span class="p">(</span><span class="o">+</span><span class="na">/</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">100</span><span class="p">)</span><span class="w"> </span><span class="o">÷</span><span class="w"> </span><span class="m">3</span>
+<span class="m">37</span>
 
-<span class="w">       </span><span class="nv">i</span>
-<span class="w">   </span><span class="m">10</span>
-<span class="w">          </span><span class="nv">t_increment</span>
-<span class="m">11</span>
-<span class="w">       </span><span class="nv">i</span>
-<span class="w">   </span><span class="m">11</span>
+<span class="w">      </span><span class="nv">avg</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="p">(</span><span class="o">+</span><span class="na">/</span><span class="bp">⍵</span><span class="p">)</span><span class="o">÷⍴</span><span class="bp">⍵</span><span class="kt">}</span>
+
+<span class="w">      </span><span class="nv">avg</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">100</span>
+<span class="m">37</span>
+</code></pre></div>
+<p>Then, for a weighted average, before we sum up the elements, we multiply them by weights and divide by the total weight.</p>
+<div class="highlight"><pre><span></span><code>      ⍝ Weighing the average by 1 1 1
+      (+/ 1 10 100 × 1 1 1) ÷ (+/ 1 1 1)
+37
+
+      ⍝ Weighing the average by 2 3 4
+      (+/ 1 10 100 × 2 3 4) ÷ (+/ 2 3 4)
+48
+
+      weighted_avg ← {+/(⍺×⍵)÷(+/⍺)}
+
+      2 3 4 weighted_avg 1 10 100
+48
+</code></pre></div>
+<p>also in the "plus or minus" function and rounded (or floored) division function</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">plusminus</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="p">(</span><span class="bp">⍺</span><span class="o">-</span><span class="bp">⍵</span><span class="p">)</span><span class="o">,</span><span class="bp">⍺</span><span class="o">,</span><span class="bp">⍺</span><span class="o">+</span><span class="bp">⍵</span><span class="kt">}</span>
+
+<span class="w">       </span><span class="m">5.7</span><span class="w"> </span><span class="nv">plusminus</span><span class="w"> </span><span class="m">0.5</span>
+<span class="m">5.05</span><span class="w"> </span><span class="m">5.7</span><span class="w"> </span><span class="m">6.35</span>
+
+<span class="w">      </span><span class="nv">round_div</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="o">⌊</span><span class="m">0.5</span><span class="o">+</span><span class="bp">⍺</span><span class="o">÷</span><span class="bp">⍵</span><span class="kt">}</span>
+
+<span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="nv">round_div</span><span class="w"> </span><span class="m">3</span>
+<span class="m">0</span>
+
+<span class="w">      </span><span class="m">2</span><span class="w"> </span><span class="nv">round_div</span><span class="w"> </span><span class="m">3</span>
+<span class="m">1</span>
+
+<span class="w">      </span><span class="nv">floor_div</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="o">⌊</span><span class="bp">⍺</span><span class="o">÷</span><span class="bp">⍵</span><span class="kt">}</span>
+
+<span class="w">      </span><span class="m">2</span><span class="w"> </span><span class="nv">floor_div</span><span class="w"> </span><span class="m">3</span>
+<span class="m">0</span>
+
+<span class="w">      </span><span class="m">4</span><span class="w"> </span><span class="nv">floor_div</span><span class="w"> </span><span class="m">3</span>
+<span class="m">1</span>
+</code></pre></div>
+<p>All of these functions can instead be expressed in terms of special combinations of functions, without referring to the arguments ⍺ and ⍵ at all! Just like magic, it takes some time to learn, but once you do it reveals a rich world of programming spells.</p>
+<p>This style of programming is called tacit or "point-free" programming, borrowed from mathematics where it means taking data described using points to be more fundamental than the points themselves, avoiding the need to refer to points explicitly. In this case, taking functions to be more fundamental than their description in terms of explicit arguments. These point-free functions are called trains. </p>
+<p>There are two fundamental types of trains which can be created by stringing functions together, more advanced trains will be covered in Chapter 6. The most basic train is the 2-train (fg), in operator form f⍤g, called an atop. The atop evaluates the function f on the result of g applied to the arguments of the train.</p>
+<p>In mathematical notation, a 2-train (fg) is expressed as composition,</p>
+<p>$$⍺(fg)⍵=f(g(⍺,⍵)).$$</p>
+<p>Floored division can be conveniently expressed as an atop.
+<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="m">12</span><span class="o">÷</span><span class="m">5</span>
+<span class="m">2.4</span>
+<span class="w">       </span><span class="o">⌊</span><span class="m">2.4</span>
+<span class="m">2</span>
+<span class="w">       </span><span class="m">12</span><span class="p">(</span><span class="o">⌊÷</span><span class="p">)</span><span class="m">5</span>
+<span class="m">2</span>
 </code></pre></div></p>
+<p>The second fundamental type of train is the 3-train (fgh), called a fork. When acting on arguments <code>⍺</code> and <code>⍵</code>, it applies g dyadically to <code>⍺f⍵</code> and <code>⍺h⍵</code>. </p>
+<p>In mathematical notation, a fork is described as</p>
+<p>$$⍺(fgh)⍵=g(f(⍺,⍵),h(⍺,⍵)).$$</p>
+<p>The motivation for this specific definition is to match with mathematics, where it is possible to write f+g to get the sum of the values of the functions f and g,</p>
+<p>$$f+g = f(⍺,⍵)+g(⍺,⍵).$$</p>
+<div class="admonition info">
+<p class="admonition-title">Train trees</p>
+<p>The ]Box user command controls how trains are displayed, it is beneficial to set -trains=tree to see a tree-like representation of trains.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">f</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="na">...</span><span class="kt">}</span>
+<span class="w">      </span><span class="nv">g</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="na">...</span><span class="kt">}</span>
+
+<span class="w">      </span><span class="nv">f</span><span class="o">+</span><span class="nv">g</span>
+<span class="nv">f</span><span class="o">+</span><span class="nv">g</span>
+
+<span class="w">      </span><span class="sr">]</span><span class="nv">Box</span><span class="w"> </span><span class="nv">ON</span>
+<span class="nv">Was</span><span class="w"> </span><span class="nv">OFF</span>
+<span class="w">      </span><span class="sr">]</span><span class="nv">Box</span><span class="w"> </span><span class="o">-</span><span class="nv">trains</span><span class="o">=</span><span class="nv">tree</span>
+<span class="nv">Was</span><span class="w"> </span><span class="o">-</span><span class="nv">trains</span><span class="o">=</span><span class="nv">box</span>
+
+<span class="w">      </span><span class="nv">f</span><span class="o">+</span><span class="nv">g</span>
+<span class="err">┌─┼─┐</span>
+<span class="nv">f</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">g</span>
+</code></pre></div>
+<p>Forks here look like forks! The trees are read from bottom up, if there are only two functions at the end of a branch, the result of the right function is applied to the left function, if there are three functions, the middle function is applied to the result of the right and left functions. The values then go up the tree until it reaches the root, at which point it is returned.</p>
 </div>
-<p>The follwing code gets the final velocities of a one-dimensional perfectly elastic collision of two objects with initial velocities u1 and u2 and masses m1 and m2.</p>
-<div class="highlight"><pre><span></span><code><span class="w">   </span><span class="bp">∇</span><span class="w"> </span><span class="p">(</span><span class="nv">v1</span><span class="w"> </span><span class="nv">v2</span><span class="p">)</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">collision</span><span class="w"> </span><span class="p">(</span><span class="nv">u1</span><span class="w"> </span><span class="nv">u2</span><span class="w"> </span><span class="nv">m1</span><span class="w"> </span><span class="nv">m2</span><span class="p">)</span><span class="sr">;</span><span class="nv">rsumM</span><span class="sr">;</span><span class="nv">diffM</span>
-<span class="w">      </span><span class="nv">rsumM</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="o">÷</span><span class="nv">m1</span><span class="o">+</span><span class="nv">m2</span>
-<span class="w">      </span><span class="nv">diffM</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">m1</span><span class="o">-</span><span class="nv">m2</span>
-<span class="w">      </span><span class="nv">v1</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="p">(</span><span class="nv">diffM</span><span class="w"> </span><span class="o">×</span><span class="w"> </span><span class="nv">rsumM</span><span class="w"> </span><span class="o">×</span><span class="w"> </span><span class="nv">u1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">×</span><span class="w"> </span><span class="nv">m2</span><span class="w"> </span><span class="o">×</span><span class="w"> </span><span class="nv">rsumM</span><span class="w"> </span><span class="o">×</span><span class="w"> </span><span class="nv">u2</span>
-<span class="w">      </span><span class="nv">v2</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="p">(</span><span class="m">2</span><span class="w"> </span><span class="o">×</span><span class="w"> </span><span class="nv">m1</span><span class="w"> </span><span class="o">×</span><span class="w"> </span><span class="nv">rsumM</span><span class="w"> </span><span class="o">×</span><span class="w"> </span><span class="nv">u1</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">diffM</span><span class="w"> </span><span class="o">×</span><span class="w"> </span><span class="nv">rsumM</span><span class="w"> </span><span class="o">×</span><span class="w"> </span><span class="nv">u2</span>
-<span class="w">   </span><span class="bp">∇</span>
-<span class="w">   </span><span class="c1">⍝ Collision of two object moving with opposite velocities towards each other</span>
-<span class="w">   </span><span class="c1">⍝ where one object is twice as massive</span>
-<span class="w">   </span><span class="c1">⍝ ∘→  ←○</span>
-<span class="w">   </span><span class="nv">collision</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">¯1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span>
-<span class="m">¯1.666666667</span><span class="w"> </span><span class="m">0.3333333333</span>
+<p>Most of the above functions can be expressed as combinations of forks and atops, let's take a look at a few important cases.</p>
+<p>The range function is the most straightforward example, it can be written as a single fork</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">range</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="o">⌈</span><span class="na">/</span><span class="o">-⌊</span><span class="na">/</span>
+<span class="w">      </span><span class="nv">range</span>
+<span class="w">  </span><span class="err">┌─┼─┐</span>
+<span class="w">  </span><span class="na">/</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="na">/</span>
+<span class="err">┌─┘</span><span class="w"> </span><span class="err">┌─┘</span>
+<span class="o">⌈</span><span class="w">   </span><span class="o">⌊</span>
+</code></pre></div>
+<p>The functions f and h here are the maximum <code>⌈/</code> and the minumum <code>⌊/</code>, with g being the difference <code>-</code>. When only given a right argument, the above range function evaluates the maximum <code>⌈/⍵</code> and the minimum <code>⌊/⍵</code>, then takes the difference <code>-</code> between them, as is intended.</p>
+<p>An example of a fork over a fork is the <code>plusminus</code> function,</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">plusminus</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="o">-,⊣,+</span>
+<span class="w">      </span><span class="nv">plusminus</span>
+<span class="err">┌─┼───┐</span>
+<span class="o">-</span><span class="w"> </span><span class="o">,</span><span class="w"> </span><span class="err">┌─┼─┐</span>
+<span class="w">    </span><span class="o">⊣</span><span class="w"> </span><span class="o">,</span><span class="w"> </span><span class="o">+</span>
+</code></pre></div>
+<p>From the tree representation of plusminus, it is first seen that the function evaluates <code>⊣</code> and <code>+</code> to the arguments <code>⍺</code> and <code>⍵</code>, then applies <code>,</code> between them. The result is then applied to the <code>,</code> above with the result of <code>-</code>. The final result is <code>(⍺-⍵),((⍺⊣⍵),(⍺+⍵))</code> which is exactly <code>(⍺-⍵),⍺,⍺+⍵</code>. </p>
+<p>The reason plusminus is interpreted as a fork over a fork is that APL function evaluation is always read from right to left. This extends to longer trains where, for example, (f g h i j k) is interpreted as (f (g h (i j k))), an atop over a fork over a fork.</p>
+<p>The rounded division function can be written as an atop over an atop,</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">⌊</span><span class="p">((</span><span class="m">0.5</span><span class="o">+</span><span class="p">)</span><span class="o">÷</span><span class="p">)</span>
+<span class="nv">SYNTAX</span><span class="w"> </span><span class="nv">ERROR</span><span class="bp">:</span><span class="w"> </span><span class="nv">Missing</span><span class="w"> </span><span class="nv">right</span><span class="w"> </span><span class="nv">argument</span>
+<span class="w">      </span><span class="o">⌊</span><span class="p">((</span><span class="m">0.5</span><span class="o">+</span><span class="p">)</span><span class="o">÷</span><span class="p">)</span>
+<span class="w">            </span><span class="o">∧</span>
+</code></pre></div>
+<p>What's going on here! Well, the reason this doesn't work is that <code>⌊((0.5+)÷)</code> is not purely composed of functions, it contains a value <code>0.5</code> and thus is not interpreted as a train. </p>
+<p>One way around this is to write <code>⌊({0.5+⍵}÷)</code> to turn the addition of <code>0.5</code> into a function without any values, but which defeats the purpose of point-free programming. Instead, the bind <code>∘</code> function can be used to create a monadic function from a dyadic one. In this case, the dyadic function <code>+</code> is bound to the left argument <code>0.5</code> as <code>0.5∘+</code>, which is now a monadic function equivalent to <code>{0.5+⍵}</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">round_div</span><span class="w"> </span><span class="kd">←</span><span class="w">  </span><span class="o">⌊</span><span class="p">(</span><span class="m">0.5</span><span class="na">∘</span><span class="o">+÷</span><span class="p">)</span>
+<span class="w">      </span><span class="nv">round_div</span>
+<span class="err">┌┴─┐</span>
+<span class="o">⌊</span><span class="w"> </span><span class="err">┌┴┐</span>
+<span class="w">  </span><span class="na">∘</span><span class="w"> </span><span class="o">÷</span>
+<span class="err">┌─┴─┐</span>
+<span class="m">0.5</span><span class="w"> </span><span class="o">+</span>
 </code></pre></div>
 
 
@@ -2530,7 +2559,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../part4/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 3.5 - Installing Dyalog">
+          <a href="../part4/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 3.4 - Infinite fun">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2540,20 +2569,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                3.5 - Installing Dyalog
+                3.4 - Infinite fun
               </div>
             </div>
           </a>
         
         
           
-          <a href="../part6/" class="md-footer__link md-footer__link--next" aria-label="Next: 3.7 - Infinite fun">
+          <a href="../summary/" class="md-footer__link md-footer__link--next" aria-label="Next: 3.S - Summary">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                3.7 - Infinite fun
+                3.S - Summary
               </div>
             </div>
             <div class="md-footer__button md-icon">

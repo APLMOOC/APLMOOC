@@ -1134,7 +1134,7 @@
   
   
   <span class="md-ellipsis">
-    3.5 - Installing Dyalog
+    3.4 - Infinite fun
     
   </span>
   
@@ -1157,53 +1157,7 @@
   
   
   <span class="md-ellipsis">
-    3.6 - Traditional fun
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../part6/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    3.7 - Infinite fun
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../part7/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    3.8 - All aboard!
+    3.5 - All aboard!
     
   </span>
   
@@ -2485,7 +2439,7 @@
 <span class="w">      </span><span class="m">0</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="m">3</span><span class="w"> </span>
 <span class="m">3</span>
 </code></pre></div></p>
-<p>The residue function X|Y in APL can be written in terms of previously discussed functions. In fact, from the definition as the remainder of division, we might think it's defined as <code>Y-X×(⌊Y÷X)</code>; however, <code>Y÷X</code> is not defined when <code>X</code> is zero. We'd want a function that is equal to 1 when X is 0, and X when X is not zero, <code>X+(X=0)</code> is one solution.</p>
+<p>The residue function X|Y in APL can be written in terms of previously discussed functions. In fact, from the definition as the remainder of division, we might think it's defined as <code>Y-X×(⌊Y÷X)</code>; however, <code>Y÷X</code> is not defined when <code>X</code> is zero. We'd want a function that is equal to <code>1</code> when <code>X</code> is <code>0</code>, and <code>X</code> when <code>X</code> is not zero, <code>X+(X=0)</code> is one solution.</p>
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="c1">⍝ X|Y is</span>
 <span class="w">      </span><span class="nv">Y</span><span class="o">-</span><span class="nv">X</span><span class="o">×</span><span class="p">(</span><span class="o">⌊</span><span class="nv">Y</span><span class="o">÷</span><span class="p">(</span><span class="nv">X</span><span class="o">+</span><span class="p">(</span><span class="nv">X</span><span class="o">=</span><span class="m">0</span><span class="p">)))</span>
 <span class="w">      </span><span class="c1">⍝ Without the unnecessary parentheses</span>

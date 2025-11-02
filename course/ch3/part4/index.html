@@ -20,7 +20,7 @@
     
     
       
-        <title>3.5 - Installing Dyalog - APL MOOC</title>
+        <title>3.4 - Infinite fun - APL MOOC</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#installing-dyalog" class="md-skip">
+        <a href="#infinite-fun" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              3.5 - Installing Dyalog
+              3.4 - Infinite fun
             
           </span>
         </div>
@@ -1133,7 +1133,7 @@
   
   
   <span class="md-ellipsis">
-    3.5 - Installing Dyalog
+    3.4 - Infinite fun
     
   </span>
   
@@ -1157,53 +1157,7 @@
   
   
   <span class="md-ellipsis">
-    3.6 - Traditional fun
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../part6/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    3.7 - Infinite fun
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../part7/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    3.8 - All aboard!
+    3.5 - All aboard!
     
   </span>
   
@@ -2423,15 +2377,144 @@
 
 
 
-<h1 id="installing-dyalog">Installing Dyalog</h1>
+<h1 id="infinite-fun">Infinite fun</h1>
 <div class="admonition abstract">
 <p class="admonition-title">This part will cover</p>
 <ul>
-<li>Instructions on installing the Dyalog IDE, Dyalog RIDE, and Dyalogscript</li>
-<li>Basic usage instructions</li>
+<li>How to define recursive dfns</li>
+<li>Guard syntax in dfns</li>
 </ul>
 </div>
 <hr />
+<p>The engineer sits hunched over their cubicle, focused as they diligently type out</p>
+<div class="highlight"><pre><span></span><code><span class="w">   </span><span class="m">1</span><span class="o">+</span><span class="p">(</span><span class="m">0.99</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="m">0.99</span><span class="o">*</span><span class="m">2</span><span class="p">)</span>
+<span class="m">2.9701</span>
+
+<span class="w">   </span><span class="m">1</span><span class="o">+</span><span class="p">(</span><span class="m">0.99</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="m">0.99</span><span class="o">*</span><span class="m">2</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="m">0.99</span><span class="o">*</span><span class="m">3</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="m">0.99</span><span class="o">*</span><span class="m">4</span><span class="p">)</span>
+<span class="m">4.90099501</span>
+
+<span class="w">   </span><span class="m">1</span><span class="o">+</span><span class="p">(</span><span class="m">0.99</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="m">0.99</span><span class="o">*</span><span class="m">2</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="m">0.99</span><span class="o">*</span><span class="m">3</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="m">0.99</span><span class="o">*</span><span class="m">4</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="m">0.99</span><span class="o">*</span><span class="m">5</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="m">0.99</span><span class="o">*</span><span class="m">6</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="m">0.99</span><span class="o">*</span><span class="m">7</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="m">0.99</span><span class="o">*</span><span class="m">8</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="m">0.99</span><span class="o">*</span><span class="m">9</span><span class="p">)</span>
+<span class="m">9.561792499</span>
+</code></pre></div>
+<p>In the back of their mind, they know the task they are trying to achieve is impossible, approximating the sum of powers of 0.99 to a reasonable precision would take thousands of terms. Their anxiety grows as they reach the 20th term, the line of terms now stands longer than their computer monitor.</p>
+<p>A coworker suggested using a function, and provided some code to evaluate the sequence. Not wanting their skills to be overshadowed, the engineer refused the help and started creating their own function </p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">a</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="m">0.99</span><span class="o">*</span><span class="bp">⍵</span><span class="kt">}</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">a</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="nv">a</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="nv">a</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="nv">a</span><span class="w"> </span><span class="m">3</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="nv">a</span><span class="w"> </span><span class="m">4</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="nv">a</span><span class="w"> </span><span class="m">5</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="nv">a</span><span class="w"> </span><span class="m">6</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="nv">a</span><span class="w"> </span><span class="m">7</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="nv">a</span><span class="w"> </span><span class="m">8</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="nv">a</span><span class="w"> </span><span class="m">9</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="nv">a</span><span class="w"> </span><span class="m">10</span><span class="p">)</span>
+<span class="m">9.561792499</span>
+</code></pre></div>
+<p>Now reaching the 50th term, the series is no closer to being evaluated. If only there were a way to define a function that repeatedly calls itself. The engineer thinks for a bit, then with a renewed burst of motivation they write the following.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">function</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="nv">function</span><span class="w"> </span><span class="bp">⍵</span><span class="o">+</span><span class="m">1</span><span class="kt">}</span>
+<span class="w">      </span><span class="nv">function</span><span class="w"> </span><span class="m">1</span>
+</code></pre></div>
+<p>Nothing seems to be happening, adding a ⎕ quad to look at intermediate values,</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">function</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span>
+<span class="w">            </span><span class="vg">⎕</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="bp">⍵</span>
+<span class="w">            </span><span class="nv">function</span><span class="w"> </span><span class="bp">⍵</span><span class="o">+</span><span class="m">1</span>
+<span class="w">      </span><span class="kt">}</span>
+<span class="w">      </span><span class="nv">function</span><span class="w"> </span><span class="m">1</span>
+
+<span class="m">1</span>
+<span class="m">2</span>
+<span class="m">3</span>
+<span class="m">4</span>
+<span class="m">5</span>
+<span class="m">6</span>
+<span class="m">7</span>
+<span class="m">8</span>
+<span class="m">9</span>
+<span class="m">10</span>
+<span class="m">11</span>
+<span class="m">12</span>
+<span class="m">13</span>
+<span class="m">14</span>
+<span class="m">15</span>
+<span class="m">16</span>
+<span class="m">17</span>
+<span class="m">18</span>
+<span class="na">...</span>
+</code></pre></div>
+<p>They quickly halt the program using <code>Action &gt; Interrupt</code> in RIDE, realising a never-ending series of computations have been specified, by calling the function within itself. The special symbol <code>∇</code> can also be used in place of the function name. Trying to do this for the infinite sum, where the right argument is set to be the accumulated result, and the left argument is the index of the term to sum up, the computation succeeds.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">sum</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span>
+<span class="w">            </span><span class="vg">⎕</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="bp">⍵</span>
+<span class="w">            </span><span class="p">(</span><span class="bp">⍺</span><span class="o">+</span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="nv">sum</span><span class="w"> </span><span class="bp">⍵</span><span class="o">+</span><span class="m">0.99</span><span class="o">*</span><span class="bp">⍺</span>
+<span class="w">      </span><span class="kt">}</span>
+<span class="w">      </span><span class="m">0</span><span class="w"> </span><span class="nv">sum</span><span class="w"> </span><span class="m">0</span>
+<span class="m">0</span>
+<span class="m">1</span>
+<span class="m">1.99</span>
+<span class="m">2.9701</span>
+<span class="m">3.940399</span>
+<span class="m">4.90099501</span>
+<span class="m">5.85198506</span>
+<span class="m">6.793465209</span>
+<span class="m">7.725530557</span>
+<span class="m">8.648275252</span>
+<span class="m">9.561792499</span>
+<span class="na">...</span>
+</code></pre></div>
+<p>Write out the first few evaluation steps of the function to verify it for yourself!</p>
+<p>However, infinite computations on their own will never be terminate on finite machines, and hence not useful for real computations. Thankfully, there is a way to stop these infinite computations when a certain condition is reached, using guarded expressions.</p>
+<p>Guarded expressions are conditional expressions; they only execute a statement if some condition holds. The engineer rewrites the function, this time stopping the computation if the terms get smaller than <code>10*¯10</code>,</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">sum</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span>
+<span class="w">          </span><span class="p">(</span><span class="m">10</span><span class="o">*</span><span class="m">¯10</span><span class="p">)</span><span class="o">&gt;</span><span class="m">0.99</span><span class="o">*</span><span class="bp">⍺:</span><span class="w"> </span><span class="vg">⎕</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="bp">⍵</span>
+<span class="w">          </span><span class="p">(</span><span class="bp">⍺</span><span class="o">+</span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="nv">sum</span><span class="w"> </span><span class="bp">⍵</span><span class="o">+</span><span class="m">0.99</span><span class="o">*</span><span class="bp">⍺</span>
+<span class="w">      </span><span class="kt">}</span>
+<span class="w">      </span><span class="m">0</span><span class="w"> </span><span class="nv">sum</span><span class="w"> </span><span class="m">0</span>
+<span class="m">99.99999999</span>
+</code></pre></div>
+<p>The guarded expression in the above function is <code>(10*¯10)&gt;0.99*⍺: ⎕ ← ⍵</code>. The guarded expression consists of a logical expression <code>(10*¯10)&gt;0.99*⍺</code> followed by a colon <code>:</code>, and another expression <code>⎕ ← ⍵</code>, meaning <code>⎕ ← ⍵</code> will be executed only if <code>0.99*⍺</code> is less than <code>(10*¯10)</code>.</p>
+<p>Staring excitedly at your computer, you email your coworker and tell them about your solution. Your smile slowly fades as you read that your coworker had a solution that was exact, and required only one computation.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">sum_geometric</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="m">1</span><span class="o">÷</span><span class="m">1</span><span class="o">-</span><span class="bp">⍵</span><span class="kt">}</span>
+<span class="w">      </span><span class="nv">sum_geometric</span><span class="w"> </span><span class="m">0.99</span>
+<span class="m">100</span>
+</code></pre></div>
+<p>That was embarrasing. You did learn a new programming technique to control infinite amounts of computation, so you try to make the most of it by writing a couple more useful programs.</p>
+<p>The factorial function is typically defined as <code>f(n) = n \cdot f(n-1)</code>, such that <code>f(0)=1</code>. Thinking in terms of guarded expressions, if the argument of the function is 0 the result should be 1 (in symbols, <code>⍵=0: 1</code>), otherwise multiply the right argument (<code>⍵</code>) by the result of the function itself (<code>∇</code>) evaluated for the right argument minus 1 (<code>⍵ - 1</code>).  </p>
+<p>Putting it together, we obtain a recursive function that evaluates the factorial function.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">factorial</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="bp">⍵</span><span class="o">=</span><span class="m">0</span><span class="bp">:</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span><span class="bp">⍵</span><span class="w"> </span><span class="o">×</span><span class="w"> </span><span class="bp">∇</span><span class="w"> </span><span class="bp">⍵</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="kt">}</span><span class="w"> </span>
+</code></pre></div>
+<p>This function consists of two statements, separated by the separator <code>⋄</code>.
+The first statement in this function is an example of a guarded expression, if <code>⍵=0</code> is true, that is, when <code>⍵</code> is equal to 0, the expression 1 is evaluated. Otherwise, the expression <code>⍵ × ∇ ⍵ - 1</code> is evaluated. </p>
+<p>For example, the evaluation of factorial 2 can be visualised as:</p>
+<div class="highlight"><pre><span></span><code><span class="w">           </span><span class="kt">{</span><span class="bp">⍵</span><span class="o">=</span><span class="m">0</span><span class="bp">:</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span><span class="bp">⍵</span><span class="w"> </span><span class="o">×</span><span class="w"> </span><span class="bp">∇</span><span class="w"> </span><span class="bp">⍵</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="kt">}</span><span class="w"> </span><span class="m">2</span>
+<span class="w">      </span><span class="c1">⍝    Since 2=0 is 0, the guarded statement is not evaluated.</span>
+<span class="w">      </span><span class="c1">⍝    2 × ∇ 1</span>
+<span class="w">      </span><span class="c1">⍝    2 × {⍵=0: 1 ⋄ ⍵ × ∇ ⍵ - 1} 1</span>
+<span class="w">      </span><span class="c1">⍝    Since 1=0 is 0, the guarded statement is not evaluated.</span>
+<span class="w">      </span><span class="c1">⍝    2 × 1 × ∇ 0</span>
+<span class="w">      </span><span class="c1">⍝    2 × 1 × {⍵=0: 1 ⋄ ⍵ × ∇ ⍵ - 1} 0</span>
+<span class="w">      </span><span class="c1">⍝    Since 0=0 is 1, the guarded statement is evaluated.</span>
+<span class="w">      </span><span class="c1">⍝    2 × 1 × 1</span>
+<span class="w">      </span><span class="nv">factorial</span><span class="w"> </span><span class="m">2</span>
+<span class="m">2</span>
+<span class="w">      </span><span class="nv">factorial</span><span class="w"> </span><span class="m">3</span>
+<span class="m">6</span>
+<span class="w">      </span><span class="nv">factorial</span><span class="w"> </span><span class="m">4</span>
+<span class="m">24</span>
+</code></pre></div>
+<p>The next function we will look at calculates the Collatz sequence of a number. </p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">collatz</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span>
+<span class="w">            </span><span class="bp">⍵</span><span class="o">=</span><span class="m">1</span><span class="bp">:</span><span class="w"> </span><span class="m">1</span>
+<span class="w">            </span><span class="m">0</span><span class="o">=</span><span class="m">2</span><span class="o">|</span><span class="bp">⍵:</span><span class="w"> </span><span class="bp">⍵</span><span class="w"> </span><span class="o">,</span><span class="w"> </span><span class="bp">∇</span><span class="w"> </span><span class="bp">⍵</span><span class="o">÷</span><span class="m">2</span>
+<span class="w">            </span><span class="bp">⍵</span><span class="w"> </span><span class="o">,</span><span class="w"> </span><span class="bp">∇</span><span class="w"> </span><span class="m">1</span><span class="o">+</span><span class="m">3</span><span class="o">×</span><span class="bp">⍵</span><span class="kt">}</span>
+</code></pre></div>
+<p>If the <code>⍵</code> is even, (<code>0=2|⍵</code>) divide it by two and add it to the list (<code>⍵ , ∇ ⍵÷2</code>). If it is not, multiply it by three, add one, and add it to the list (<code>⍵ , ∇ 1+3×⍵</code>). Repeat this process until <code>⍵</code> reaches 1.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="c1">⍝ Example:</span>
+<span class="w">      </span><span class="c1">⍝     collatz 3 </span>
+<span class="w">      </span><span class="c1">⍝     3 , ∇ 1+3×3</span>
+<span class="w">      </span><span class="c1">⍝     3 , collatz  1+3×3</span>
+<span class="w">      </span><span class="c1">⍝     3 , collatz 10</span>
+<span class="w">      </span><span class="c1">⍝     3 , 10 , ∇ 10÷2</span>
+<span class="w">      </span><span class="c1">⍝     3 10 , collatz  10÷2</span>
+<span class="w">      </span><span class="c1">⍝     3 10 , collatz  5</span>
+<span class="w">      </span><span class="c1">⍝     and so on</span>
+<span class="w">      </span><span class="nv">collatz</span><span class="w"> </span><span class="m">3</span>
+<span class="m">3</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span>
+<span class="w">      </span><span class="nv">collatz</span><span class="w"> </span><span class="m">100</span>
+<span class="m">100</span><span class="w"> </span><span class="m">50</span><span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">76</span><span class="w"> </span><span class="m">38</span><span class="w"> </span><span class="m">19</span><span class="w"> </span><span class="m">58</span><span class="w"> </span><span class="m">29</span><span class="w"> </span><span class="m">88</span><span class="w"> </span><span class="m">44</span><span class="w"> </span><span class="m">22</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">34</span><span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="m">52</span><span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="m">40</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span>
+<span class="w">      </span><span class="nv">collatz</span><span class="w"> </span><span class="m">2</span><span class="o">*</span><span class="m">10</span>
+<span class="m">1024</span><span class="w"> </span><span class="m">512</span><span class="w"> </span><span class="m">256</span><span class="w"> </span><span class="m">128</span><span class="w"> </span><span class="m">64</span><span class="w"> </span><span class="m">32</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span>
+</code></pre></div>
 
 
 
@@ -2478,13 +2561,13 @@
         
         
           
-          <a href="../part5/" class="md-footer__link md-footer__link--next" aria-label="Next: 3.6 - Traditional fun">
+          <a href="../part5/" class="md-footer__link md-footer__link--next" aria-label="Next: 3.5 - All aboard!">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                3.6 - Traditional fun
+                3.5 - All aboard!
               </div>
             </div>
             <div class="md-footer__button md-icon">

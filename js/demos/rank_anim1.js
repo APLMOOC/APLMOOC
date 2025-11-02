@@ -35,136 +35,137 @@ function createAxes(){
 
 }
 
-function createOrb(size, color) {
-    const geometry = new THREE.SphereGeometry(size, 32, 32);
-    const material = new THREE.MeshStandardMaterial({ color: color, transparent: true, opacity: 0.8, roughness: 0.5 });
-    const orb = new THREE.Mesh(geometry, material);
-    return orb;
-}
-
-function createTextSprite(text, position) {
-    const canvas = document.createElement('canvas');
-    canvas.width = 30
-    canvas.height = 30
-    const context = canvas.getContext('2d');
-    context.font = 'Bold 30px Arial';
-    context.fillStyle = 'white';
-    context.fillText(text, 0, 30);
-
-    const texture = new THREE.CanvasTexture(canvas);
-    const spriteMaterial = new THREE.SpriteMaterial({ map: texture });
-    const sprite = new THREE.Sprite(spriteMaterial);
-    sprite.position.copy(position);
-
-    return sprite;
-}
-
-const last = 3;
-const rows = 3;
-const cols = 3;
-const spacing = 5;
-const center = new THREE.Vector3((cols-1)*spacing, (rows-1)*spacing, (last-1)*spacing);
-var array = [[[5,2,4],[9,1,4],[5,8,4]],[[9,5,8],[5,2,2],[3,2,5]],[[2,9,4],[7,2,10],[7,10,6]]];
-for(let i = 0; i < last; i++){
-    for (let j = 0; j < cols; j++) {
-        for (let k = 0; k < rows; k++) {
-            
-            const color = new THREE.Color(`hsl(${array[i][j][k]*360/20}, 56%, 47%)`);//new THREE.Color(`hsl(${(k + j*cols + (rows-i)*rows*cols) * 2}, 100%, 50%)`);
-            
-            const orb = createOrb(1, color);
-            
-            orb.position.set(...new THREE.Vector3(i * spacing, j * spacing, k * spacing).sub(center.clone().multiplyScalar(0.5)));
-
-            const size = array[i][j][k]/7;
-            orb.scale.set(...new THREE.Vector3(size,size,size));
-            orb.name=`${i} ${j} ${k}`;
-            orbs.push(orb);
-            scene.add(orb);
-            const labelPosition = orb.position.clone().add(new THREE.Vector3(0,2,0));
-            const textSprite = createTextSprite(`${array[i][j][k]}`, labelPosition);
-            textSprite.name=`${i} ${j} ${k}`
-            scene.add(textSprite);
-            labels.push(textSprite);
-        }
-    }
-}
-
-
-const arrowLength = 5;
-const arrowHeadLength = 1;
-const arrowHeadWidth = 0.5;
-
-
-
-// function logCameraPositionAndRotation() {
-//     console.log(`Camera Position: x=${camera.position.x}, y=${camera.position.y}, z=${camera.position.z}`);
-//     console.log(`Camera Rotation: x=${camera.rotation.x}, y=${camera.rotation.y}, z=${camera.rotation.z}`);
+// function createOrb(size, color) {
+//     const geometry = new THREE.SphereGeometry(size, 32, 32);
+//     const material = new THREE.MeshStandardMaterial({ color: color, transparent: true, opacity: 0.8, roughness: 0.5 });
+//     const orb = new THREE.Mesh(geometry, material);
+//     return orb;
 // }
 
-// document.addEventListener('keydown', (event) => {
-//     if (event.code === 'Space') {
-//         logCameraPositionAndRotation();
+// function createTextSprite(text, position) {
+//     const canvas = document.createElement('canvas');
+//     canvas.width = 30
+//     canvas.height = 30
+//     const context = canvas.getContext('2d');
+//     context.font = 'Bold 30px Arial';
+//     context.fillStyle = 'white';
+//     context.fillText(text, 0, 30);
+
+//     const texture = new THREE.CanvasTexture(canvas);
+//     const spriteMaterial = new THREE.SpriteMaterial({ map: texture });
+//     const sprite = new THREE.Sprite(spriteMaterial);
+//     sprite.position.copy(position);
+
+//     return sprite;
+// }
+
+
+// const last = 3;
+// const rows = 3;
+// const cols = 3;
+// const spacing = 5;
+// const center = new THREE.Vector3((cols-1)*spacing, (rows-1)*spacing, (last-1)*spacing);
+// var array = [[[5,2,4],[9,1,4],[5,8,4]],[[9,5,8],[5,2,2],[3,2,5]],[[2,9,4],[7,2,10],[7,10,6]]];
+// for(let i = 0; i < last; i++){
+//     for (let j = 0; j < cols; j++) {
+//         for (let k = 0; k < rows; k++) {
+            
+//             const color = new THREE.Color(`hsl(${array[i][j][k]*360/20}, 56%, 47%)`);//new THREE.Color(`hsl(${(k + j*cols + (rows-i)*rows*cols) * 2}, 100%, 50%)`);
+            
+//             const orb = createOrb(1, color);
+            
+//             orb.position.set(...new THREE.Vector3(i * spacing, j * spacing, k * spacing).sub(center.clone().multiplyScalar(0.5)));
+
+//             const size = array[i][j][k]/7;
+//             orb.scale.set(...new THREE.Vector3(size,size,size));
+//             orb.name=`${i} ${j} ${k}`;
+//             orbs.push(orb);
+//             scene.add(orb);
+//             const labelPosition = orb.position.clone().add(new THREE.Vector3(0,2,0));
+//             const textSprite = createTextSprite(`${array[i][j][k]}`, labelPosition);
+//             textSprite.name=`${i} ${j} ${k}`
+//             scene.add(textSprite);
+//             labels.push(textSprite);
+//         }
 //     }
-// });
+// }
 
-let xAxis, yAxis, zAxis;
 
-let clock = new THREE.Clock();
+// const arrowLength = 5;
+// const arrowHeadLength = 1;
+// const arrowHeadWidth = 0.5;
 
-function delayed_lerp(delay, t, initial, final){
-    var xi = initial.clone();
-    var xf = final.clone();
-    if(t > delay){
-        t = (t - delay) / (1 - delay);
-        return xi.multiplyScalar(1 - t).add(xf.multiplyScalar(t));
-    }
-    return initial;
-}
 
-function llerp(delay, t, initial, final) {
-    var xi = initial;
-    var xf = final;
-    if (t > delay) {
-        t = (t - delay) / (1 - delay);
-        return xi * (1 - t) + xf * t;
-    }
-    return initial;
-}
 
-function stepwise_sum(numbers) {
+// // function logCameraPositionAndRotation() {
+// //     console.log(`Camera Position: x=${camera.position.x}, y=${camera.position.y}, z=${camera.position.z}`);
+// //     console.log(`Camera Rotation: x=${camera.rotation.x}, y=${camera.rotation.y}, z=${camera.rotation.z}`);
+// // }
 
-    return function (t) {
-        var sum = 0;
-        for (var i = 0; i < numbers.length; i++) {
-            var currentSum = numbers.slice(0, i + 1).reduce((a, b) => a + b, 0);
-            var nextSum = numbers.slice(0, i + 2).reduce((a, b) => a + b, 0);
-            var start = i;
-            var end = (i + 1);
+// // document.addEventListener('keydown', (event) => {
+// //     if (event.code === 'Space') {
+// //         logCameraPositionAndRotation();
+// //     }
+// // });
 
-            if (t < start) {
-                break;
-            } else if (t >= start && t <= end) {
-                sum = llerp(0, (t%1)*(t%1), currentSum, nextSum);
-                break;
-            } else {
-                sum = nextSum;
-            }
-        }
-        return sum;
-    };
-}
+// let xAxis, yAxis, zAxis;
 
-function delayed_quad(delay, t, initial, final){
-    var xi = initial.clone();
-    var xf = final.clone();
-    if(t > delay){
-        t = (t-delay)/(1-delay);
-        return xi.multiplyScalar(1-t*t).add(xf.multiplyScalar(t*t));
-    }
-    return initial;
-}
+// let clock = new THREE.Clock();
 
-let orb_map = new Object();
+// function delayed_lerp(delay, t, initial, final){
+//     var xi = initial.clone();
+//     var xf = final.clone();
+//     if(t > delay){
+//         t = (t - delay) / (1 - delay);
+//         return xi.multiplyScalar(1 - t).add(xf.multiplyScalar(t));
+//     }
+//     return initial;
+// }
+
+// function llerp(delay, t, initial, final) {
+//     var xi = initial;
+//     var xf = final;
+//     if (t > delay) {
+//         t = (t - delay) / (1 - delay);
+//         return xi * (1 - t) + xf * t;
+//     }
+//     return initial;
+// }
+
+// function stepwise_sum(numbers) {
+
+//     return function (t) {
+//         var sum = 0;
+//         for (var i = 0; i < numbers.length; i++) {
+//             var currentSum = numbers.slice(0, i + 1).reduce((a, b) => a + b, 0);
+//             var nextSum = numbers.slice(0, i + 2).reduce((a, b) => a + b, 0);
+//             var start = i;
+//             var end = (i + 1);
+
+//             if (t < start) {
+//                 break;
+//             } else if (t >= start && t <= end) {
+//                 sum = llerp(0, (t%1)*(t%1), currentSum, nextSum);
+//                 break;
+//             } else {
+//                 sum = nextSum;
+//             }
+//         }
+//         return sum;
+//     };
+// }
+
+// function delayed_quad(delay, t, initial, final){
+//     var xi = initial.clone();
+//     var xf = final.clone();
+//     if(t > delay){
+//         t = (t-delay)/(1-delay);
+//         return xi.multiplyScalar(1-t*t).add(xf.multiplyScalar(t*t));
+//     }
+//     return initial;
+// }
+
+// let orb_map = new Object();
 
 function animate() {
     requestAnimationFrame(animate);

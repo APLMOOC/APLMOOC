@@ -1134,7 +1134,7 @@
   
   
   <span class="md-ellipsis">
-    3.5 - Installing Dyalog
+    3.4 - Infinite fun
     
   </span>
   
@@ -1157,53 +1157,7 @@
   
   
   <span class="md-ellipsis">
-    3.6 - Traditional fun
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../part6/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    3.7 - Infinite fun
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../part7/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    3.8 - All aboard!
+    3.5 - All aboard!
     
   </span>
   
@@ -2489,19 +2443,17 @@
 <span class="m">55</span>
 </code></pre></div>
 <p>Note that for the Fibonacci function, a constant value phi for the golden ratio was used. If the value of phi is changed, the Fibonacci function will use the updated value. </p>
-<p>In order to let the Fibonacci function define its own phi, we have to define it inside the function itself. APL allows any number of assignment statements inside a function before the statement which evaluates the result, using the diamond-shaped statement separator ⋄, or placing the statements on new lines. The following two functions are equivalent.</p>
+<p>In order to let the Fibonacci function define its own phi, we have to define it inside the function itself. APL allows any number of assignment statements inside a function before the statement which evaluates the result, using the diamond-shaped statement separator <code>⋄</code>, or placing the statements on new lines. The following two functions are equivalent.</p>
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">fibonacci</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span>
 <span class="w">            </span><span class="nv">PHI</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">0.5</span><span class="o">×</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">5</span><span class="o">*</span><span class="m">.5</span>
 <span class="w">            </span><span class="p">((</span><span class="nv">PHI</span><span class="o">*</span><span class="bp">⍵</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="nv">PHI</span><span class="p">)</span><span class="o">*-</span><span class="bp">⍵</span><span class="p">)</span><span class="w"> </span><span class="o">÷</span><span class="w"> </span><span class="p">(</span><span class="m">¯1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">2</span><span class="o">×</span><span class="nv">PHI</span><span class="p">)</span>
 <span class="w">      </span><span class="kt">}</span>
 
 <span class="w">      </span><span class="nv">separator_test</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="nv">a</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">a</span><span class="kt">}</span>
-<span class="w">      </span><span class="nv">separator_test</span><span class="w"> </span><span class="no">⍬</span><span class="w"> </span><span class="c1">⍝ (1)</span>
+<span class="w">      </span><span class="nv">separator_test</span><span class="w"> </span><span class="no">⍬</span>
 <span class="m">2</span>
 </code></pre></div>
-<ol>
-<li>The empty vector character ⍬ is added here as filler since functions always require a right argument</li>
-</ol>
+<p>The empty vector character ⍬ is added here as filler since functions always require a right argument</p>
 <p>As seen with the last function, any code beyond the first statement which produces a value is not evaluated.</p>
 <div class="admonition warn">
 <p class="admonition-title">Variable Scope</p>

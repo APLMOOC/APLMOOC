@@ -1122,7 +1122,7 @@
   
   
   <span class="md-ellipsis">
-    3.5 - Installing Dyalog
+    3.4 - Infinite fun
     
   </span>
   
@@ -1145,53 +1145,7 @@
   
   
   <span class="md-ellipsis">
-    3.6 - Traditional fun
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ch3/part6/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    3.7 - Infinite fun
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ch3/part7/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    3.8 - All aboard!
+    3.5 - All aboard!
     
   </span>
   
@@ -2482,163 +2436,177 @@
 <span class="w">      </span><span class="p">(</span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="o">⍴⍳</span><span class="m">27</span><span class="p">)</span><span class="sr">[</span><span class="m">2</span><span class="sr">;</span><span class="m">1</span><span class="sr">;]</span>
 <span class="m">10</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">12</span>
 </code></pre></div>
-<p>To specify the axis along which to reduce, we can use one of the two reduce operators ⌿ and /, corresponding to reducing along the leading axis and last axis respectively.</p>
+<p>To specify the axis along which to reduce, we can use one of the two reduce operators <code>⌿</code> and <code>/</code>, corresponding to reducing along the leading axis and last axis respectively; equivalently, along columns or rows.</p>
 <div class="highlight"><pre><span></span><code><span class="w">       </span><span class="o">+</span><span class="na">⌿</span><span class="nv">M</span>
 <span class="m">55</span><span class="w"> </span><span class="m">55</span><span class="w"> </span><span class="m">55</span><span class="w"> </span><span class="m">55</span><span class="w"> </span><span class="m">55</span><span class="w"> </span><span class="m">55</span><span class="w"> </span><span class="m">55</span><span class="w"> </span><span class="m">55</span><span class="w"> </span><span class="m">55</span><span class="w"> </span><span class="m">55</span>
 <span class="w">       </span><span class="o">+</span><span class="na">/</span><span class="nv">M</span>
 <span class="m">10</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="m">40</span><span class="w"> </span><span class="m">50</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="m">70</span><span class="w"> </span><span class="m">80</span><span class="w"> </span><span class="m">90</span><span class="w"> </span><span class="m">100</span>
 </code></pre></div>
-<p>Since the leading axis is the vertical axis, the plus reduce first +⌿ function returned the sums of the vertical columns of the matrix; similarly, the plus reduce last +/ function returned the sums of the horizontal rows of the matrix. For higher dimensional arrays, only reducing along either the leading axis or the last axis is not sufficient, as there are intermediate axes that need to be considered.</p>
-<p>There is special syntax that allows for such general axis specification for certain built-in functions. It consists of adding a set of square brackets [ ] after the function containing an increasing integer axis number starting from 1, corresponding to the leading axis.</p>
-<p>Consider the following random 3-dimensional array</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">?</span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="o">⍴</span><span class="m">10</span>
-<span class="m">5</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">4</span>
-<span class="m">9</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">4</span>
-<span class="m">5</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">4</span>
-
-<span class="m">9</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">8</span>
-<span class="m">5</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span>
-<span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">5</span>
-
-<span class="m">2</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">4</span>
-<span class="m">7</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">10</span>
-<span class="m">7</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">6</span>
-</code></pre></div>
-<p>It is visualized in 3-dimensional space as follows. Click and drag on the 3D view to orbit the array, use the scroll wheel to zoom in and out. Move your mouse over a ball to see it highlighted.</p>
-<div style="aspect-ratio: 1 / 1; width: 100%;">
-    <iframe  src="\js\demos\rank_intro.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%;"></iframe>
+<p>Since the leading axis is the vertical axis, the plus reduce first <code>+⌿</code> function returned the sums of the vertical columns of the matrix; similarly, the plus reduce last <code>+/</code> function returned the sums of the horizontal rows of the matrix. For higher dimensional arrays, only reducing along either the leading axis or the last axis is not sufficient, as there are intermediate axes that need to be considered.</p>
+<p>There is special syntax that allows for such general axis specification for certain built-in functions. It consists of adding a set of square brackets <code>[ ]</code> after the function containing an increasing integer axis number starting from 1, corresponding to the leading axis.</p>
+<p>Instead of an explanation using a mystifying array of random numbers that makes the calculations difficult to fully grasp, consider instead the following delicious rendered piece of cheesecake, represented as an APL array.</p>
+<p>This cake is arranged along three axis, as is the case with most physical objects, and will serve as a suitable example for our axis-selective operations. Click and drag on the 3D view to orbit the array, use the scroll wheel to zoom in and out. Move your mouse over a section to see it highlighted.</p>
+<p>Try to get familiar with the order of the axes.</p>
+<div style="aspect-ratio: 5 / 3; width: 100%;">
+<iframe class="lazy-iframe" data-src="\js\demos\cake_intro.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%;width:100%;height:100%;"></iframe>
 </div>
 
-<p>The three axes of the array can be seen, with the red axis representing the leading axis, the green axis representing the intermediate axis, and the blue axis representing the last axis.</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">M</span><span class="sr">[</span><span class="m">1</span><span class="sr">;;]</span>
-<span class="m">5</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">4</span>
-<span class="m">9</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">4</span>
-<span class="m">5</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">4</span>
-<span class="w">      </span><span class="nv">M</span><span class="sr">[;</span><span class="m">1</span><span class="sr">;]</span>
-<span class="m">5</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">4</span>
-<span class="m">9</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">8</span>
-<span class="m">2</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">4</span>
-<span class="w">      </span><span class="nv">M</span><span class="sr">[;;</span><span class="m">1</span><span class="sr">]</span>
-<span class="m">5</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">5</span>
-<span class="m">9</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">3</span>
-<span class="m">2</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">7</span>
-</code></pre></div>
-<p>Move your mouse over a ball to see the three axis slices.</p>
-<div style="aspect-ratio: 1 / 1; width: 100%;">
-    <iframe  src="\js\demos\rank_axes.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%;"></iframe>
+<p>Using bracket-axis notation, we can now play with our food and reduce along all three axes! Click one of the buttons below to visualize each reduction. Use your knowledge of the axis order to guess the direction of each reduction!</p>
+<div style="display: flex; justify-content: center; gap: 15px; margin: 20px 0;">
+    <button onclick="document.getElementById('cake_rank').contentWindow.reductionAxis='x'" 
+            style="flex: 1; padding: 8px 16px; font-size: 14px; font-family: 'APL385', 'DejaVu Sans Mono', monospace;
+                   background: #f0f0f0;
+                   border: 1px solid #ccc; border-top-color: #ddd; border-left-color: #ddd;
+                   border-radius: 3px; color: #333; cursor: pointer;
+                   box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 1px 2px rgba(0,0,0,0.1);"
+            onmousedown="this.style.background='#e0e0e0'; this.style.boxShadow='inset 0 1px 3px rgba(0,0,0,0.2)';"
+            onmouseup="this.style.background='#f0f0f0'; this.style.boxShadow='inset 0 1px 0 rgba(255,255,255,0.5), 0 1px 2px rgba(0,0,0,0.1)';"
+            onmouseover="this.style.background='#f5f5f5';"
+            onmouseout="this.style.background='#f0f0f0';">
+        +/[1]Cake
+    </button>
+
+    <button onclick="document.getElementById('cake_rank').contentWindow.reductionAxis='z'" 
+            style="flex: 1; padding: 8px 16px; font-size: 14px; font-family: 'APL385', 'DejaVu Sans Mono', monospace;
+                   background: #f0f0f0;
+                   border: 1px solid #ccc; border-top-color: #ddd; border-left-color: #ddd;
+                   border-radius: 3px; color: #333; cursor: pointer;
+                   box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 1px 2px rgba(0,0,0,0.1);"
+            onmousedown="this.style.background='#e0e0e0'; this.style.boxShadow='inset 0 1px 3px rgba(0,0,0,0.2)';"
+            onmouseup="this.style.background='#f0f0f0'; this.style.boxShadow='inset 0 1px 0 rgba(255,255,255,0.5), 0 1px 2px rgba(0,0,0,0.1)';"
+            onmouseover="this.style.background='#f5f5f5';"
+            onmouseout="this.style.background='#f0f0f0';">
+        +/[2]Cake
+    </button>
+
+    <button onclick="document.getElementById('cake_rank').contentWindow.reductionAxis='y'" 
+            style="flex: 1; padding: 8px 16px; font-size: 14px; font-family: 'APL385', 'DejaVu Sans Mono', monospace;
+                   background: #f0f0f0;
+                   border: 1px solid #ccc; border-top-color: #ddd; border-left-color: #ddd;
+                   border-radius: 3px; color: #333; cursor: pointer;
+                   box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 1px 2px rgba(0,0,0,0.1);"
+            onmousedown="this.style.background='#e0e0e0'; this.style.boxShadow='inset 0 1px 3px rgba(0,0,0,0.2)';"
+            onmouseup="this.style.background='#f0f0f0'; this.style.boxShadow='inset 0 1px 0 rgba(255,255,255,0.5), 0 1px 2px rgba(0,0,0,0.1)';"
+            onmouseover="this.style.background='#f5f5f5';"
+            onmouseout="this.style.background='#f0f0f0';">
+        +/[3]Cake
+    </button>
 </div>
 
-<p>Then, using the bracket-axis notation, is it possible to obtain all 3 possible reductions.
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="p">(</span><span class="o">+</span><span class="na">/</span><span class="sr">[</span><span class="m">1</span><span class="sr">]</span><span class="p">)</span><span class="nv">M</span>
-<span class="m">16</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">16</span>
-<span class="m">21</span><span class="w">  </span><span class="m">5</span><span class="w"> </span><span class="m">16</span>
-<span class="m">15</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">15</span>
-<span class="w">      </span><span class="p">(</span><span class="o">+</span><span class="na">/</span><span class="sr">[</span><span class="m">2</span><span class="sr">]</span><span class="p">)</span><span class="nv">M</span>
-<span class="m">19</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">12</span>
-<span class="m">17</span><span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">15</span>
-<span class="m">16</span><span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">20</span>
-<span class="w">      </span><span class="p">(</span><span class="o">+</span><span class="na">/</span><span class="sr">[</span><span class="m">3</span><span class="sr">]</span><span class="p">)</span><span class="nv">M</span>
-<span class="m">11</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">17</span>
-<span class="m">22</span><span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">10</span>
-<span class="m">15</span><span class="w"> </span><span class="m">19</span><span class="w"> </span><span class="m">23</span>
-</code></pre></div></p>
-<div style="aspect-ratio: 1 / 1; width: 100%;">
-    <iframe  src="\js\demos\rank_anim3.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%;"></iframe>
+<div style="aspect-ratio: 5/3; width:100%">
+<iframe id="cake_rank" class="lazy-iframe" data-src="\js\demos\cake_rank.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%"></iframe>
 </div>
 
-<div style="aspect-ratio: 1 / 1; width: 100%;">
-    <iframe  src="\js\demos\rank_anim2.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%;"></iframe>
-</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const lazyIframes = document.querySelectorAll('.lazy-iframe');
+    const loadedIframes = new Set(); // Track loaded iframes
 
-<div style="aspect-ratio: 1 / 1; width: 100%;">
-    <iframe  src="\js\demos\rank_anim1.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%;"></iframe>
-</div>
+    if (!('IntersectionObserver' in window)) {
+        lazyIframes.forEach(iframe => {
+            iframe.src = iframe.dataset.src;
+            loadedIframes.add(iframe);
+        });
+        return;
+    }
+
+    const iframeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const iframe = entry.target;
+
+            if (entry.isIntersecting) {
+                if (!loadedIframes.has(iframe)) {
+                    iframe.src = iframe.dataset.src;
+                    loadedIframes.add(iframe);
+                    iframe.classList.remove('lazy-iframe');
+                }
+            } else {
+                if (loadedIframes.has(iframe)) {
+                    if (iframe.src && iframe.src !== 'about:blank') {
+                        iframe.dataset.src = iframe.src;
+                    }
+                    iframe.src = 'about:blank';
+                    loadedIframes.delete(iframe);
+                    iframe.classList.add('lazy-iframe');
+                }
+            }
+        });
+    }, {
+        rootMargin: '200px 0px',
+        threshold: 0.01
+    });
+
+    lazyIframes.forEach(iframe => {
+        iframeObserver.observe(iframe);
+    });
+});
+</script>
 
 <p>Note that there is also a different method of specifying axes for functions which is more general than bracket-axis notation, since it behaves consistently and can be applied to any arbitrary function. The rank <code>⍤</code> operator allows for such general axis specification of a function left argument, via an integer right argument which specifies what rank cells to act on. </p>
-<p>An n-cell of a rank r array is a rank n array formed from picking (r-n) indices from that array. Some n-cells of the above array are</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="c1">⍝ 2-cell of M</span>
-<span class="w">      </span><span class="nv">M</span><span class="sr">[</span><span class="m">1</span><span class="sr">;;]</span>
-<span class="m">5</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">4</span>
-<span class="m">9</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">4</span>
-<span class="m">5</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">4</span>
-<span class="w">      </span><span class="c1">⍝ 1-cell of M</span>
-<span class="w">      </span><span class="nv">M</span><span class="sr">[</span><span class="m">1</span><span class="sr">;</span><span class="m">1</span><span class="sr">;]</span>
-<span class="m">5</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">4</span>
-<span class="w">      </span><span class="c1">⍝ 0-cell of M</span>
-<span class="w">      </span><span class="nv">M</span><span class="sr">[</span><span class="m">1</span><span class="sr">;</span><span class="m">1</span><span class="sr">;</span><span class="m">1</span><span class="sr">]</span>
-<span class="m">5</span>
-</code></pre></div>
-<p>As an example, we study the action of the rank operator <code>⍤</code> on the plus reduce <code>+⌿</code> function, <code>+⌿⍤n</code>. For n=3, the modified plus reduce function <code>+⌿⍤3</code> acts on the 3-cells of the array. Since the whole array is of rank 3, there is only one 3-cell which is the array itself. Then, <code>+⌿⍤3</code> is equivalent to the action of the plus reduce <code>+⌿</code> function on the whole array, adding up terms along its leading axis.</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="p">(</span><span class="o">+</span><span class="na">⌿⍤</span><span class="m">3</span><span class="p">)</span><span class="nv">M</span>
-<span class="m">16</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">16</span>
-<span class="m">21</span><span class="w">  </span><span class="m">5</span><span class="w"> </span><span class="m">16</span>
-<span class="m">15</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">15</span>
-<span class="w">      </span><span class="o">+</span><span class="na">⌿</span><span class="nv">M</span>
-<span class="m">16</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">16</span>
-<span class="m">21</span><span class="w">  </span><span class="m">5</span><span class="w"> </span><span class="m">16</span>
-<span class="m">15</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">15</span>
-</code></pre></div>
-<p>For n=2, <code>+⌿⍤2</code> acts on the 2-cells of the array. The 2-cells of the array are the cells <code>M[1;;]</code>, <code>M[2;;]</code>, and <code>M[3;;]</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="w">     </span><span class="nv">M</span><span class="sr">[</span><span class="m">1</span><span class="sr">;;]</span>
-<span class="m">5</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">4</span>
-<span class="m">9</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">4</span>
-<span class="m">5</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">4</span>
-<span class="w">      </span><span class="nv">M</span><span class="sr">[</span><span class="m">2</span><span class="sr">;;]</span>
-<span class="m">9</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">8</span>
-<span class="m">5</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span>
-<span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">5</span>
-<span class="w">      </span><span class="nv">M</span><span class="sr">[</span><span class="m">3</span><span class="sr">;;]</span>
-<span class="m">2</span><span class="w">  </span><span class="m">9</span><span class="w">  </span><span class="m">4</span>
-<span class="m">7</span><span class="w">  </span><span class="m">2</span><span class="w"> </span><span class="m">10</span>
-<span class="m">7</span><span class="w"> </span><span class="m">10</span><span class="w">  </span><span class="m">6</span>
-</code></pre></div>
-<p>The leading axis of these 2-cells is vertical, hence the plus reduce first <code>+⌿</code> function will return the sum of the columns of these arrays.</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">+</span><span class="na">⌿</span><span class="nv">M</span><span class="sr">[</span><span class="m">1</span><span class="sr">;;]</span>
-<span class="m">19</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">12</span>
-<span class="w">      </span><span class="o">+</span><span class="na">⌿</span><span class="nv">M</span><span class="sr">[</span><span class="m">2</span><span class="sr">;;]</span>
-<span class="m">17</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">15</span>
-<span class="w">      </span><span class="o">+</span><span class="na">⌿</span><span class="nv">M</span><span class="sr">[</span><span class="m">3</span><span class="sr">;;]</span>
-<span class="m">16</span><span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">20</span>
+<p>An <code>n</code>-cell of a rank <code>r</code> array is a rank n array formed from picking <code>r-n</code> indices from that array, equivalently, they're formed from the last <code>n</code> axes of the array. Try to use your knowledge of the order of the axes to guess what the cells of the Cake array would be, press the buttons below to verify your understanding.</p>
+<div style="display: flex; justify-content: center; gap: 15px; margin: 20px 0;">
+    <button onclick="document.getElementById('cake_cell').contentWindow.nCell=0" 
+            style="flex: 1; padding: 8px 16px; font-size: 14px; font-family: 'APL385', 'DejaVu Sans Mono', monospace;
+                   background: #f0f0f0;
+                   border: 1px solid #ccc; border-top-color: #ddd; border-left-color: #ddd;
+                   border-radius: 3px; color: #333; cursor: pointer;
+                   box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 1px 2px rgba(0,0,0,0.1);"
+            onmousedown="this.style.background='#e0e0e0'; this.style.boxShadow='inset 0 1px 3px rgba(0,0,0,0.2)';"
+            onmouseup="this.style.background='#f0f0f0'; this.style.boxShadow='inset 0 1px 0 rgba(255,255,255,0.5), 0 1px 2px rgba(0,0,0,0.1)';"
+            onmouseover="this.style.background='#f5f5f5';"
+            onmouseout="this.style.background='#f0f0f0';">
+        0-cells
+    </button>
 
-<span class="w">      </span><span class="p">(</span><span class="o">+</span><span class="na">⌿⍤</span><span class="m">2</span><span class="p">)</span><span class="nv">M</span>
-<span class="m">19</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">12</span>
-<span class="m">17</span><span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">15</span>
-<span class="m">16</span><span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">20</span>
+    <button onclick="document.getElementById('cake_cell').contentWindow.nCell=1" 
+            style="flex: 1; padding: 8px 16px; font-size: 14px; font-family: 'APL385', 'DejaVu Sans Mono', monospace;
+                   background: #f0f0f0;
+                   border: 1px solid #ccc; border-top-color: #ddd; border-left-color: #ddd;
+                   border-radius: 3px; color: #333; cursor: pointer;
+                   box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 1px 2px rgba(0,0,0,0.1);"
+            onmousedown="this.style.background='#e0e0e0'; this.style.boxShadow='inset 0 1px 3px rgba(0,0,0,0.2)';"
+            onmouseup="this.style.background='#f0f0f0'; this.style.boxShadow='inset 0 1px 0 rgba(255,255,255,0.5), 0 1px 2px rgba(0,0,0,0.1)';"
+            onmouseover="this.style.background='#f5f5f5';"
+            onmouseout="this.style.background='#f0f0f0';">
+        1-cells
+    </button>
 
-<span class="w">      </span><span class="o">+</span><span class="na">⌿</span><span class="sr">[</span><span class="m">2</span><span class="sr">]</span><span class="nv">M</span>
-<span class="m">19</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">12</span>
-<span class="m">17</span><span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">15</span>
-<span class="m">16</span><span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">20</span>
-</code></pre></div>
+    <button onclick="document.getElementById('cake_cell').contentWindow.nCell=2" 
+            style="flex: 1; padding: 8px 16px; font-size: 14px; font-family: 'APL385', 'DejaVu Sans Mono', monospace;
+                   background: #f0f0f0;
+                   border: 1px solid #ccc; border-top-color: #ddd; border-left-color: #ddd;
+                   border-radius: 3px; color: #333; cursor: pointer;
+                   box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 1px 2px rgba(0,0,0,0.1);"
+            onmousedown="this.style.background='#e0e0e0'; this.style.boxShadow='inset 0 1px 3px rgba(0,0,0,0.2)';"
+            onmouseup="this.style.background='#f0f0f0'; this.style.boxShadow='inset 0 1px 0 rgba(255,255,255,0.5), 0 1px 2px rgba(0,0,0,0.1)';"
+            onmouseover="this.style.background='#f5f5f5';"
+            onmouseout="this.style.background='#f0f0f0';">
+        2-cells
+    </button>
+
+    <button onclick="document.getElementById('cake_cell').contentWindow.nCell=3" 
+            style="flex: 1; padding: 8px 16px; font-size: 14px; font-family: 'APL385', 'DejaVu Sans Mono', monospace;
+                   background: #f0f0f0;
+                   border: 1px solid #ccc; border-top-color: #ddd; border-left-color: #ddd;
+                   border-radius: 3px; color: #333; cursor: pointer;
+                   box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 1px 2px rgba(0,0,0,0.1);"
+            onmousedown="this.style.background='#e0e0e0'; this.style.boxShadow='inset 0 1px 3px rgba(0,0,0,0.2)';"
+            onmouseup="this.style.background='#f0f0f0'; this.style.boxShadow='inset 0 1px 0 rgba(255,255,255,0.5), 0 1px 2px rgba(0,0,0,0.1)';"
+            onmouseover="this.style.background='#f5f5f5';"
+            onmouseout="this.style.background='#f0f0f0';">
+        3-cells
+    </button>
+</div>
+
+<div style="aspect-ratio: 5/3; width:100%">
+<iframe id="cake_cell" class="lazy-iframe" data-src="\js\demos\cake_cell.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%"></iframe>
+</div>
+
+<p>As an example, we study the action of the rank operator <code>⍤</code> on the plus reduce <code>+⌿</code> function, <code>+⌿⍤n</code>. </p>
+<p>For <code>n=3</code>, the modified plus reduce function <code>+⌿⍤3</code> acts on the 3-cells of the array. Since the whole array is of rank 3, there is only one 3-cell which is the array itself. Then, <code>+⌿⍤3</code> is equivalent to the action of the plus reduce <code>+⌿</code> function on the whole array, adding up terms along its leading axis. </p>
+<p>For <code>n=2</code>, <code>+⌿⍤2</code> acts on the 2-cells of the array. The 2-cells of the array are the cells <code>M[1;;]</code>, <code>M[2;;]</code>, and <code>M[3;;]</code>. The leading axis of these 2-cells is vertical, hence the plus reduce first <code>+⌿</code> function will return the sum of the columns of these arrays.</p>
 <p>Similarly, for n=1, the action of <code>+⌿⍤1</code> on the array is adding up its 1-cells, which is equivalent to adding along its last axis.</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">M</span><span class="sr">[</span><span class="m">1</span><span class="sr">;</span><span class="m">1</span><span class="sr">;]</span>
-<span class="m">5</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">4</span>
-<span class="w">      </span><span class="nv">M</span><span class="sr">[</span><span class="m">1</span><span class="sr">;</span><span class="m">2</span><span class="sr">;]</span>
-<span class="m">9</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">4</span>
-<span class="w">      </span><span class="nv">M</span><span class="sr">[</span><span class="m">1</span><span class="sr">;</span><span class="m">3</span><span class="sr">;]</span>
-<span class="m">5</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">4</span>
-<span class="w">      </span><span class="o">+</span><span class="na">⌿</span><span class="nv">M</span><span class="sr">[</span><span class="m">1</span><span class="sr">;</span><span class="m">1</span><span class="sr">;]</span>
-<span class="m">11</span>
-<span class="w">      </span><span class="o">+</span><span class="na">⌿</span><span class="nv">M</span><span class="sr">[</span><span class="m">1</span><span class="sr">;</span><span class="m">2</span><span class="sr">;]</span>
-<span class="m">14</span>
-<span class="w">      </span><span class="o">+</span><span class="na">⌿</span><span class="nv">M</span><span class="sr">[</span><span class="m">1</span><span class="sr">;</span><span class="m">3</span><span class="sr">;]</span>
-<span class="m">17</span>
-<span class="w">      </span><span class="p">(</span><span class="o">+</span><span class="na">⌿⍤</span><span class="m">1</span><span class="p">)</span><span class="nv">M</span>
-<span class="m">11</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">17</span>
-<span class="m">22</span><span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">10</span>
-<span class="m">15</span><span class="w"> </span><span class="m">19</span><span class="w"> </span><span class="m">23</span>
-<span class="w">      </span><span class="o">+</span><span class="na">⌿</span><span class="sr">[</span><span class="m">3</span><span class="sr">]</span><span class="nv">M</span>
-<span class="m">11</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">17</span>
-<span class="m">22</span><span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">10</span>
-<span class="m">15</span><span class="w"> </span><span class="m">19</span><span class="w"> </span><span class="m">23</span>
-</code></pre></div>
-<p>An operator form of (partially) indexing a matrix, such as <code>M[1;3;]</code>, is given by the squad (”squish quad”) indexing <code>⌷</code> operator. 
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">M</span><span class="sr">[</span><span class="m">1</span><span class="sr">;</span><span class="m">3</span><span class="sr">;]</span>
-<span class="m">5</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">4</span>
-<span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="o">⌷</span><span class="nv">M</span>
-<span class="m">5</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">4</span>
-</code></pre></div></p>
-<p>It is equivalent to bracket indexing, but can be used like any other operator.</p>
+<p>An operator form of (partially) indexing a matrix, such as <code>M[1;3;]</code>, is given by the squad (”squish quad”) indexing <code>⌷</code> operator. It is equivalent to bracket indexing, but can be used like any other operator.</p>
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">N</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="o">⍳</span><span class="m">27</span>
 <span class="w">      </span><span class="nv">N</span>
 <span class="w"> </span><span class="m">1</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">3</span>

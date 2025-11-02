@@ -7,6 +7,10 @@ html {
     font-size: 150%;
 }
 
+.md-typeset {
+    font-size: 0.7rem;
+}
+
 .md-typeset code {
     font-size: 110%;
 }
@@ -126,7 +130,7 @@ div.problem button.problembutton {
     padding: 0 0.125rem;
     font-weight: normal;
     border-radius: 0.125rem;
-    font-size: 1.65em;
+    font-size: 1.3em;
 }
 
 .ngn_lb b:hover,

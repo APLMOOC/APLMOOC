@@ -1122,7 +1122,7 @@
   
   
   <span class="md-ellipsis">
-    3.5 - Installing Dyalog
+    3.4 - Infinite fun
     
   </span>
   
@@ -1145,53 +1145,7 @@
   
   
   <span class="md-ellipsis">
-    3.6 - Traditional fun
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ch3/part6/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    3.7 - Infinite fun
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ch3/part7/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    3.8 - All aboard!
+    3.5 - All aboard!
     
   </span>
   
@@ -2433,129 +2387,83 @@
 </div>
 <hr />
 <p><link rel="stylesheet" href="/styles/ch5part2.css"></p>
-<p>Your training as a climate sceintist has prepared you to deal with measurement of real-life systems, which can have a large amount of noise that has to be dealt with before making any inferences. Trying to test your data reduction methods on the computer, you first generate artificially noisy data.</p>
-<p>The monadic <code>?</code> roll function generates a random number for every scalar in its right argument, from 1 to the value of that scalar. </p>
-<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="c1">⍝ Roll a 6-sided die</span>
-<span class="w">       </span><span class="o">?</span><span class="w"> </span><span class="m">6</span>
-<span class="m">2</span>
-<span class="w">       </span><span class="o">?</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">6</span>
-<span class="m">6</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">3</span>
-<span class="w">       </span><span class="o">?</span><span class="w"> </span><span class="o">⍳</span><span class="m">10</span>
-<span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">4</span>
-
-<span class="w">       </span><span class="o">?</span><span class="w"> </span><span class="m">10</span><span class="o">*⍳</span><span class="m">10</span>
-<span class="m">8</span><span class="w"> </span><span class="m">84</span><span class="w"> </span><span class="m">545</span><span class="w"> </span><span class="m">4600</span><span class="w"> </span><span class="m">99210</span><span class="w"> </span><span class="m">693088</span><span class="w"> </span><span class="m">7548981</span><span class="w"> </span><span class="m">55682236</span><span class="w"> </span><span class="m">454935262</span><span class="w"> </span><span class="m">2471243355</span>
-</code></pre></div>
-<p>When the argument contains zero (0), a random floating point number between 0 and 1 is returned.</p>
-<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="o">?</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0.5073955156</span><span class="w"> </span><span class="m">0.1942971103</span><span class="w"> </span><span class="m">0.3645209613</span><span class="w"> </span><span class="m">0.8563507943</span>
-<span class="w">       </span><span class="o">?</span><span class="w"> </span><span class="m">0</span><span class="o">,⍳</span><span class="m">4</span>
-<span class="m">0.1770380776</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">4</span>
-</code></pre></div>
-<p>The dyadic <code>?</code> deal function works similarly, but generates a list of random numbers without repeats.</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="m">5</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="m">5</span>
-<span class="m">2</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">3</span>
-<span class="w">      </span><span class="m">5</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="m">10</span>
-<span class="m">5</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">8</span>
-<span class="w">      </span><span class="m">10</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="m">10</span>
-<span class="m">7</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">3</span>
-<span class="w">      </span><span class="m">11</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="m">10</span>
-<span class="nv">DOMAIN</span><span class="w"> </span><span class="nv">ERROR</span><span class="bp">:</span><span class="w"> </span><span class="nv">Deal</span><span class="w"> </span><span class="nv">right</span><span class="w"> </span><span class="nv">argument</span><span class="w"> </span><span class="nv">must</span><span class="w"> </span><span class="nv">be</span><span class="w"> </span><span class="nv">greater</span><span class="w"> </span><span class="nv">than</span><span class="w"> </span><span class="nv">or</span><span class="w"> </span><span class="nv">equal</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">left</span><span class="w"> </span><span class="nv">argument</span>
-<span class="w">      </span><span class="m">11</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="m">10</span>
-<span class="w">         </span><span class="o">∧</span>
-</code></pre></div>
-<p>The replicate function can be used to generate a large number of random number in a certain range, by creating a vector of the same number of arbitrary length.</p>
-<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="m">6</span><span class="w"> </span><span class="na">/</span><span class="w"> </span><span class="m">10</span>
-<span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span>
-<span class="w">       </span><span class="o">?</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="na">/</span><span class="w"> </span><span class="m">10</span>
-<span class="m">9</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">6</span>
-</code></pre></div>
-<p>Simulating measuring a temperature of 21 degrees with some noise, fluctuating between -0.5 and 0.5</p>
-<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="nv">DATA</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="o">?</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="na">/</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">0.5</span>
-<span class="m">20.51270976</span><span class="w"> </span><span class="m">20.84443059</span><span class="w"> </span><span class="m">21.20961766</span><span class="w"> </span><span class="m">20.85869017</span><span class="w"> </span><span class="m">21.05525209</span><span class="w"> </span><span class="m">20.8088396</span><span class="w"> </span><span class="m">21.00197974</span><span class="w"> </span><span class="m">20.88101536</span><span class="w"> </span><span class="m">20.70209893</span><span class="w"> </span><span class="m">21.28923291</span>
-<span class="w">      </span><span class="m">20.62552888</span><span class="w"> </span><span class="m">20.95059287</span><span class="w"> </span><span class="m">20.78032757</span><span class="w"> </span><span class="m">20.52831086</span><span class="w"> </span><span class="m">21.29706401</span><span class="w"> </span><span class="m">21.45739671</span><span class="w"> </span><span class="m">20.94876038</span><span class="w"> </span><span class="m">20.84444697</span><span class="w"> </span><span class="m">20.66278673</span>
-<span class="w">      </span><span class="m">20.76248039</span>
-</code></pre></div>
-<p>It is possible to recover the original data by taking an average, using the reduce <code>/</code> operator on <code>+</code> plus then dividing by the <code>≢</code> tally of the <code>DATA</code> vector.</p>
-<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="p">(</span><span class="o">+</span><span class="na">/</span><span class="nv">DATA</span><span class="p">)</span><span class="o">÷</span><span class="p">(</span><span class="o">≢</span><span class="nv">DATA</span><span class="p">)</span>
-<span class="m">20.90107811</span>
-<span class="w">       </span><span class="p">(</span><span class="o">+</span><span class="na">/</span><span class="o">÷≢</span><span class="p">)</span><span class="w"> </span><span class="nv">DATA</span>
-<span class="m">20.90107811</span>
-</code></pre></div>
-<p>For measurements of time-varying data, it would be useful instead to do a moving average instead. Take, for example, a simulated temperature reading of air temperature that goes from ¯20 to ¯30 over the course of a day's measurements.</p>
-<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="nv">DATA</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">¯20</span><span class="o">-</span><span class="p">(</span><span class="m">1</span><span class="o">÷</span><span class="m">10</span><span class="p">)</span><span class="o">×⍳</span><span class="m">100</span>
-<span class="m">¯20.1</span><span class="w"> </span><span class="m">¯20.2</span><span class="w"> </span><span class="m">¯20.3</span><span class="w"> </span><span class="m">¯20.4</span><span class="w"> </span><span class="m">¯20.5</span><span class="w"> </span><span class="m">¯20.6</span><span class="w"> </span><span class="m">¯20.7</span><span class="w"> </span><span class="m">¯20.8</span><span class="w"> </span><span class="m">¯20.9</span><span class="w"> </span><span class="m">¯21</span><span class="w"> </span><span class="m">¯21.1</span><span class="w"> </span><span class="m">¯21.2</span>
-<span class="w"> </span><span class="m">¯21.3</span><span class="w"> </span><span class="m">¯21.4</span><span class="w"> </span><span class="m">¯21.5</span><span class="w"> </span><span class="m">¯21.6</span><span class="w"> </span><span class="m">¯21.7</span><span class="w"> </span><span class="m">¯21.8</span><span class="w"> </span><span class="m">¯21.9</span><span class="w"> </span><span class="m">¯22</span><span class="w"> </span><span class="m">¯22.1</span><span class="w"> </span><span class="m">¯22.2</span><span class="w"> </span><span class="m">¯22.3</span><span class="w"> </span><span class="m">¯22.4</span>
-<span class="w"> </span><span class="m">¯22.5</span><span class="w"> </span><span class="m">¯22.6</span><span class="w"> </span><span class="m">¯22.7</span><span class="w"> </span><span class="m">¯22.8</span><span class="w"> </span><span class="m">¯22.9</span><span class="w"> </span><span class="m">¯23</span><span class="w"> </span><span class="m">¯23.1</span><span class="w"> </span><span class="m">¯23.2</span><span class="w"> </span><span class="m">¯23.3</span><span class="w"> </span><span class="m">¯23.4</span><span class="w"> </span><span class="m">¯23.5</span><span class="w"> </span><span class="m">¯23.6</span>
-<span class="w"> </span><span class="m">¯23.7</span><span class="w"> </span><span class="m">¯23.8</span><span class="w"> </span><span class="m">¯23.9</span><span class="w"> </span><span class="m">¯24</span><span class="w"> </span><span class="m">¯24.1</span><span class="w"> </span><span class="m">¯24.2</span><span class="w"> </span><span class="m">¯24.3</span><span class="w"> </span><span class="m">¯24.4</span><span class="w"> </span><span class="m">¯24.5</span><span class="w"> </span><span class="m">¯24.6</span><span class="w"> </span><span class="m">¯24.7</span><span class="w"> </span><span class="m">¯24.8</span>
-<span class="w"> </span><span class="m">¯24.9</span><span class="w"> </span><span class="m">¯25</span><span class="w"> </span><span class="m">¯25.1</span><span class="w"> </span><span class="m">¯25.2</span><span class="w"> </span><span class="m">¯25.3</span><span class="w"> </span><span class="m">¯25.4</span><span class="w"> </span><span class="m">¯25.5</span><span class="w"> </span><span class="m">¯25.6</span><span class="w"> </span><span class="m">¯25.7</span><span class="w"> </span><span class="m">¯25.8</span><span class="w"> </span><span class="m">¯25.9</span><span class="w"> </span><span class="m">¯26</span>
-<span class="w"> </span><span class="m">¯26.1</span><span class="w"> </span><span class="m">¯26.2</span><span class="w"> </span><span class="m">¯26.3</span><span class="w"> </span><span class="m">¯26.4</span><span class="w"> </span><span class="m">¯26.5</span><span class="w"> </span><span class="m">¯26.6</span><span class="w"> </span><span class="m">¯26.7</span><span class="w"> </span><span class="m">¯26.8</span><span class="w"> </span><span class="m">¯26.9</span><span class="w"> </span><span class="m">¯27</span><span class="w"> </span><span class="m">¯27.1</span><span class="w"> </span><span class="m">¯27.2</span>
-<span class="w"> </span><span class="m">¯27.3</span><span class="w"> </span><span class="m">¯27.4</span><span class="w"> </span><span class="m">¯27.5</span><span class="w"> </span><span class="m">¯27.6</span><span class="w"> </span><span class="m">¯27.7</span><span class="w"> </span><span class="m">¯27.8</span><span class="w"> </span><span class="m">¯27.9</span><span class="w"> </span><span class="m">¯28</span><span class="w"> </span><span class="m">¯28.1</span><span class="w"> </span><span class="m">¯28.2</span><span class="w"> </span><span class="m">¯28.3</span><span class="w"> </span><span class="m">¯28.4</span>
-<span class="w"> </span><span class="m">¯28.5</span><span class="w"> </span><span class="m">¯28.6</span><span class="w"> </span><span class="m">¯28.7</span><span class="w"> </span><span class="m">¯28.8</span><span class="w"> </span><span class="m">¯28.9</span><span class="w"> </span><span class="m">¯29</span><span class="w"> </span><span class="m">¯29.1</span><span class="w"> </span><span class="m">¯29.2</span><span class="w"> </span><span class="m">¯29.3</span><span class="w"> </span><span class="m">¯29.4</span><span class="w"> </span><span class="m">¯29.5</span><span class="w"> </span><span class="m">¯29.6</span>
-<span class="w"> </span><span class="m">¯29.7</span><span class="w"> </span><span class="m">¯29.8</span><span class="w"> </span><span class="m">¯29.9</span><span class="w"> </span><span class="m">¯30</span>
-
-
-<span class="w">      </span><span class="c1">⍝ Add noise</span>
-<span class="w">      </span><span class="nv">DATA</span><span class="w"> </span><span class="o">+</span><span class="kd">←</span><span class="w"> </span><span class="p">(</span><span class="o">?</span><span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="na">/</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">0.5</span>
-</code></pre></div>
-<p>In order to do a moving average, a function that takes moving windows of a vector is needed, the windowed reduce <code>/</code> operator is exactly that. It applies the reduce function on moving segments of its right argument specific by its left argument. </p>
-<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="m">3</span><span class="w"> </span><span class="o">,</span><span class="na">/</span><span class="w"> </span><span class="o">⍳</span><span class="m">10</span>
-<span class="err">┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬──────┐</span>
-<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="err">│</span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="err">│</span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="err">│</span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="err">│</span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="err">│</span><span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="err">│</span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="err">│</span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">10</span><span class="err">│</span>
-<span class="err">└─────┴─────┴─────┴─────┴─────┴─────┴─────┴──────┘</span>
-
-<span class="w">       </span><span class="m">3</span><span class="w"> </span><span class="o">+</span><span class="na">/</span><span class="w"> </span><span class="o">⍳</span><span class="m">10</span>
-<span class="m">6</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">27</span>
-<span class="w">       </span><span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="m">2</span><span class="o">+</span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">2</span><span class="o">+</span><span class="m">3</span><span class="o">+</span><span class="m">4</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">3</span><span class="o">+</span><span class="m">4</span><span class="o">+</span><span class="m">5</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">4</span><span class="o">+</span><span class="m">5</span><span class="o">+</span><span class="m">6</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">5</span><span class="o">+</span><span class="m">6</span><span class="o">+</span><span class="m">7</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">6</span><span class="o">+</span><span class="m">7</span><span class="o">+</span><span class="m">8</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">7</span><span class="o">+</span><span class="m">8</span><span class="o">+</span><span class="m">9</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">8</span><span class="o">+</span><span class="m">9</span><span class="o">+</span><span class="m">10</span><span class="p">)</span>
-<span class="m">6</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">27</span>
-
-<span class="w">       </span><span class="m">2</span><span class="w"> </span><span class="o">×</span><span class="na">/</span><span class="w"> </span><span class="o">⍳</span><span class="m">10</span>
-<span class="m">2</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="m">42</span><span class="w"> </span><span class="m">56</span><span class="w"> </span><span class="m">72</span><span class="w"> </span><span class="m">90</span>
-<span class="w">       </span><span class="p">(</span><span class="m">1</span><span class="o">×</span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">2</span><span class="o">×</span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">3</span><span class="o">×</span><span class="m">4</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">4</span><span class="o">×</span><span class="m">5</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">5</span><span class="o">×</span><span class="m">6</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">6</span><span class="o">×</span><span class="m">7</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">7</span><span class="o">×</span><span class="m">8</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">8</span><span class="o">×</span><span class="m">9</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">9</span><span class="o">×</span><span class="m">10</span><span class="p">)</span>
-<span class="m">2</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="m">42</span><span class="w"> </span><span class="m">56</span><span class="w"> </span><span class="m">72</span><span class="w"> </span><span class="m">90</span>
-
-<span class="w">       </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="o">⍳</span><span class="m">9</span>
-<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
-<span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span>
-<span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span>
-<span class="w">       </span><span class="m">2</span><span class="o">,</span><span class="na">/</span><span class="p">(</span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="o">⍳</span><span class="m">9</span><span class="p">)</span>
-<span class="err">┌───┬───┐</span>
-<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="err">│</span>
-<span class="err">├───┼───┤</span>
-<span class="err">│</span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="err">│</span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="err">│</span>
-<span class="err">├───┼───┤</span>
-<span class="err">│</span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="err">│</span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="err">│</span>
-<span class="err">└───┴───┘</span>
-<span class="w">      </span><span class="m">2</span><span class="o">+</span><span class="na">/</span><span class="p">(</span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="o">⍳</span><span class="m">9</span><span class="p">)</span>
-<span class="w"> </span><span class="m">3</span><span class="w">  </span><span class="m">5</span>
-<span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">11</span>
-<span class="m">15</span><span class="w"> </span><span class="m">17</span>
-</code></pre></div>
-<p>To get a moving average, the windowed reduce function can be applied to the + plus function and then divided by the size of the window, in this case 5. The result is then rounded to 1 decimal place.</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">RESULT</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="p">(</span><span class="m">5</span><span class="o">+</span><span class="na">/</span><span class="nv">DATA</span><span class="p">)</span><span class="o">÷</span><span class="m">5</span>
-<span class="w">      </span><span class="p">(</span><span class="o">⌈</span><span class="nv">RESULT</span><span class="o">×</span><span class="m">10</span><span class="p">)</span><span class="o">÷</span><span class="m">10</span>
-<span class="m">¯20.4</span><span class="w"> </span><span class="m">¯20.5</span><span class="w"> </span><span class="m">¯20.7</span><span class="w"> </span><span class="m">¯20.7</span><span class="w"> </span><span class="m">¯20.8</span><span class="w"> </span><span class="m">¯20.8</span><span class="w"> </span><span class="m">¯20.9</span><span class="w"> </span><span class="m">¯20.9</span><span class="w"> </span><span class="m">¯21.1</span><span class="w"> </span><span class="m">¯21.1</span><span class="w"> </span><span class="m">¯21.2</span><span class="w"> </span><span class="m">¯21.4</span>
-<span class="w"> </span><span class="m">¯21.5</span><span class="w"> </span><span class="m">¯21.6</span><span class="w"> </span><span class="m">¯21.8</span><span class="w"> </span><span class="m">¯21.9</span><span class="w"> </span><span class="m">¯21.9</span><span class="w"> </span><span class="m">¯22.1</span><span class="w"> </span><span class="m">¯22.2</span><span class="w"> </span><span class="m">¯22.3</span><span class="w"> </span><span class="m">¯22.5</span><span class="w"> </span><span class="m">¯22.7</span><span class="w"> </span><span class="m">¯22.7</span><span class="w"> </span><span class="m">¯22.8</span>
-<span class="w"> </span><span class="m">¯22.8</span><span class="w"> </span><span class="m">¯22.8</span><span class="w"> </span><span class="m">¯22.8</span><span class="w"> </span><span class="m">¯22.9</span><span class="w"> </span><span class="m">¯23</span><span class="w"> </span><span class="m">¯23.1</span><span class="w"> </span><span class="m">¯23.2</span><span class="w"> </span><span class="m">¯23.5</span><span class="w"> </span><span class="m">¯23.7</span><span class="w"> </span><span class="m">¯23.6</span><span class="w"> </span><span class="m">¯23.8</span><span class="w"> </span><span class="m">¯23.9</span><span class="w"> </span><span class="m">¯24</span>
-<span class="w"> </span><span class="m">¯24.1</span><span class="w"> </span><span class="m">¯24.4</span><span class="w"> </span><span class="m">¯24.5</span><span class="w"> </span><span class="m">¯24.6</span><span class="w"> </span><span class="m">¯24.5</span><span class="w"> </span><span class="m">¯24.5</span><span class="w"> </span><span class="m">¯24.5</span><span class="w"> </span><span class="m">¯24.5</span><span class="w"> </span><span class="m">¯24.5</span><span class="w"> </span><span class="m">¯24.7</span><span class="w"> </span><span class="m">¯24.9</span><span class="w"> </span><span class="m">¯24.9</span>
-<span class="w"> </span><span class="m">¯25.2</span><span class="w"> </span><span class="m">¯25.4</span><span class="w"> </span><span class="m">¯25.6</span><span class="w"> </span><span class="m">¯25.7</span><span class="w"> </span><span class="m">¯25.8</span><span class="w"> </span><span class="m">¯25.8</span><span class="w"> </span><span class="m">¯25.9</span><span class="w"> </span><span class="m">¯25.9</span><span class="w"> </span><span class="m">¯26.1</span><span class="w"> </span><span class="m">¯26.2</span><span class="w"> </span><span class="m">¯26.3</span><span class="w"> </span><span class="m">¯26.4</span>
-<span class="w"> </span><span class="m">¯26.6</span><span class="w"> </span><span class="m">¯26.7</span><span class="w"> </span><span class="m">¯26.7</span><span class="w"> </span><span class="m">¯26.9</span><span class="w"> </span><span class="m">¯27</span><span class="w"> </span><span class="m">¯27.1</span><span class="w"> </span><span class="m">¯27.2</span><span class="w"> </span><span class="m">¯27.3</span><span class="w"> </span><span class="m">¯27.3</span><span class="w"> </span><span class="m">¯27.4</span><span class="w"> </span><span class="m">¯27.4</span><span class="w"> </span><span class="m">¯27.4</span><span class="w"> </span>
-<span class="w"> </span><span class="m">¯27.6</span><span class="w"> </span><span class="m">¯27.8</span><span class="w"> </span><span class="m">¯27.9</span><span class="w"> </span><span class="m">¯28</span><span class="w"> </span><span class="m">¯28.2</span><span class="w"> </span><span class="m">¯28.3</span><span class="w"> </span><span class="m">¯28.3</span><span class="w"> </span><span class="m">¯28.3</span><span class="w"> </span><span class="m">¯28.4</span><span class="w"> </span><span class="m">¯28.6</span><span class="w"> </span><span class="m">¯28.6</span><span class="w"> </span><span class="m">¯28.8</span>
-<span class="w"> </span><span class="m">¯29</span><span class="w"> </span><span class="m">¯29.1</span><span class="w"> </span><span class="m">¯29.2</span><span class="w"> </span><span class="m">¯29.3</span><span class="w"> </span><span class="m">¯29.4</span><span class="w"> </span><span class="m">¯29.3</span><span class="w"> </span><span class="m">¯29.3</span><span class="w"> </span><span class="m">¯29.4</span><span class="w"> </span><span class="m">¯29.6</span><span class="w"> </span><span class="m">¯29.7</span><span class="w"> </span><span class="m">¯29.8</span>
-</code></pre></div>
-<p>A pretty good reconstruction of the data!</p>
-<p>Given the large number of temperature readings, it would be helpful to know how to sort ascending and descending using the grade up <code>⍋</code> and grade down <code>⍒</code> functions.</p>
-<p>The grade up <code>⍋</code> and grade down <code>⍒</code> functions return indices of elements of  its right argument in ascending or descending order.</p>
-<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="nv">DATA</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">19</span><span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">22</span>
-<span class="w">       </span><span class="o">⍋</span><span class="nv">DATA</span>
-<span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span>
-<span class="w">       </span><span class="nv">DATA</span><span class="sr">[</span><span class="o">⍋</span><span class="nv">DATA</span><span class="sr">]</span>
-<span class="m">19</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">22</span>
-<span class="w">       </span><span class="o">⍒</span><span class="nv">DATA</span>
+<p>As a moviegoer, you love to share the movies you've watched with friends and family. It would be ideal if they could watch all of them, but since your friends have busy schedules you'd like to prioritize your most favorite ones. In order to do this, you need to first sort your movies by rating.</p>
+<p>Luckily, APL implements functions that help sort a list, but they're a little different from other languages. Instead of returning a sorted list, grade up <code>⍋</code> and grade down <code>⍒</code> return the indices of the elements of the final sorted array in the initial unsorted array.</p>
+<p>Given your array of movies, you get the array of ratings and use the grade down function.</p>
+<div class="highlight"><pre><span></span><code><span class="nv">MovieDB</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="sr">[</span><span class="w"> </span><span class="s1">&#39;Title&#39;</span><span class="w"> </span><span class="s1">&#39;Year&#39;</span><span class="w"> </span><span class="s1">&#39;Rating&#39;</span><span class="w"> </span><span class="s1">&#39;Runtime&#39;</span><span class="w"> </span><span class="s1">&#39;Watches&#39;</span><span class="w"> </span><span class="s1">&#39;Genre&#39;</span><span class="w"> </span><span class="p">⋄</span>
+<span class="w">            </span><span class="s1">&#39;Real Genius&#39;</span><span class="w"> </span><span class="m">1985</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">108</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="s1">&#39;Comedy&#39;</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span>
+<span class="w">            </span><span class="s1">&#39;Eraserhead&#39;</span><span class="w"> </span><span class="m">1977</span><span class="w"> </span><span class="m">3.5</span><span class="w"> </span><span class="m">89</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="s1">&#39;Fantasy&#39;</span><span class="w"> </span><span class="p">⋄</span>
+<span class="w">            </span><span class="s1">&#39;The Devil Wears Prada&#39;</span><span class="w"> </span><span class="m">2006</span><span class="w"> </span><span class="m">4.5</span><span class="w"> </span><span class="m">109</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="s1">&#39;Comedy&#39;</span><span class="w"> </span><span class="p">⋄</span>
+<span class="w">            </span><span class="s1">&#39;12 Angry Men&#39;</span><span class="w"> </span><span class="m">1957</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">96</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="s1">&#39;Thriller&#39;</span>
+<span class="w">            </span><span class="sr">]</span>
+<span class="w">       </span><span class="nv">MovieDB</span>
+<span class="err">┌─────────────────────┬────┬──────┬───────┬───────┬────────┐</span>
+<span class="err">│</span><span class="nv">Title</span><span class="w">                </span><span class="err">│</span><span class="nv">Year</span><span class="err">│</span><span class="nv">Rating</span><span class="err">│</span><span class="nv">Runtime</span><span class="err">│</span><span class="nv">Watches</span><span class="err">│</span><span class="nv">Genre</span><span class="w">   </span><span class="err">│</span>
+<span class="err">├─────────────────────┼────┼──────┼───────┼───────┼────────┤</span>
+<span class="err">│</span><span class="nv">Real</span><span class="w"> </span><span class="nv">Genius</span><span class="w">          </span><span class="err">│</span><span class="m">1985</span><span class="err">│</span><span class="m">4</span><span class="w">     </span><span class="err">│</span><span class="m">108</span><span class="w">    </span><span class="err">│</span><span class="m">3</span><span class="w">      </span><span class="err">│</span><span class="nv">Comedy</span><span class="w">  </span><span class="err">│</span>
+<span class="err">├─────────────────────┼────┼──────┼───────┼───────┼────────┤</span>
+<span class="err">│</span><span class="nv">Eraserhead</span><span class="w">           </span><span class="err">│</span><span class="m">1977</span><span class="err">│</span><span class="m">3.5</span><span class="w">   </span><span class="err">│</span><span class="m">89</span><span class="w">     </span><span class="err">│</span><span class="m">1</span><span class="w">      </span><span class="err">│</span><span class="nv">Fantasy</span><span class="w"> </span><span class="err">│</span>
+<span class="err">├─────────────────────┼────┼──────┼───────┼───────┼────────┤</span>
+<span class="err">│</span><span class="nv">The</span><span class="w"> </span><span class="nv">Devil</span><span class="w"> </span><span class="nv">Wears</span><span class="w"> </span><span class="nv">Prada</span><span class="err">│</span><span class="m">2006</span><span class="err">│</span><span class="m">4.5</span><span class="w">   </span><span class="err">│</span><span class="m">109</span><span class="w">    </span><span class="err">│</span><span class="m">2</span><span class="w">      </span><span class="err">│</span><span class="nv">Comedy</span><span class="w">  </span><span class="err">│</span>
+<span class="err">├─────────────────────┼────┼──────┼───────┼───────┼────────┤</span>
+<span class="err">│</span><span class="m">12</span><span class="w"> </span><span class="nv">Angry</span><span class="w"> </span><span class="nv">Men</span><span class="w">         </span><span class="err">│</span><span class="m">1957</span><span class="err">│</span><span class="m">5</span><span class="w">     </span><span class="err">│</span><span class="m">96</span><span class="w">     </span><span class="err">│</span><span class="m">4</span><span class="w">      </span><span class="err">│</span><span class="nv">Thriller</span><span class="err">│</span>
+<span class="err">└─────────────────────┴────┴──────┴───────┴───────┴────────┘</span>
+<span class="w">      </span><span class="m">1</span><span class="o">↓</span><span class="nv">MovieDB</span><span class="sr">[;</span><span class="m">3</span><span class="sr">]</span>
+<span class="m">4</span><span class="w"> </span><span class="m">3.5</span><span class="w"> </span><span class="m">4.5</span><span class="w"> </span><span class="m">5</span>
+<span class="w">      </span><span class="o">⍒</span><span class="m">1</span><span class="o">↓</span><span class="nv">MovieDB</span><span class="sr">[;</span><span class="m">3</span><span class="sr">]</span>
 <span class="m">4</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span>
-<span class="w">       </span><span class="nv">DATA</span><span class="sr">[</span><span class="o">⍒</span><span class="nv">DATA</span><span class="sr">]</span>
-<span class="m">22</span><span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">19</span>
 </code></pre></div>
+<p>This result tells us that the first element of the sorted array is the <code>4</code>th element of the ratings array, the second is the <code>3</code>rd, and so on. We can obtain the sorted array by accessing these indices.</p>
+<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="p">(</span><span class="m">1</span><span class="o">↓</span><span class="nv">MovieDB</span><span class="sr">[;</span><span class="m">3</span><span class="sr">]</span><span class="p">)</span><span class="sr">[</span><span class="o">⍒</span><span class="m">1</span><span class="o">↓</span><span class="nv">MovieDB</span><span class="sr">[;</span><span class="m">3</span><span class="sr">]]</span>
+<span class="m">5</span><span class="w"> </span><span class="m">4.5</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">3.5</span>
+</code></pre></div>
+<p>The result is as expected. Since the array obtained from grade down is in terms of indices, then we can also use it to access the movie title and movie runtime arrays.</p>
+<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="p">(</span><span class="m">1</span><span class="o">↓</span><span class="nv">MovieDB</span><span class="sr">[;</span><span class="m">1</span><span class="sr">]</span><span class="p">)</span>
+<span class="err">┌───────────┬──────────┬─────────────────────┬────────────┐</span>
+<span class="err">│</span><span class="nv">Real</span><span class="w"> </span><span class="nv">Genius</span><span class="err">│</span><span class="nv">Eraserhead</span><span class="err">│</span><span class="nv">The</span><span class="w"> </span><span class="nv">Devil</span><span class="w"> </span><span class="nv">Wears</span><span class="w"> </span><span class="nv">Prada</span><span class="err">│</span><span class="m">12</span><span class="w"> </span><span class="nv">Angry</span><span class="w"> </span><span class="nv">Men</span><span class="err">│</span>
+<span class="err">└───────────┴──────────┴─────────────────────┴────────────┘</span>
+<span class="w">       </span><span class="p">(</span><span class="m">1</span><span class="o">↓</span><span class="nv">MovieDB</span><span class="sr">[;</span><span class="m">1</span><span class="sr">]</span><span class="p">)</span><span class="sr">[</span><span class="o">⍒</span><span class="m">1</span><span class="o">↓</span><span class="nv">MovieDB</span><span class="sr">[;</span><span class="m">3</span><span class="sr">]]</span>
+<span class="err">┌────────────┬─────────────────────┬───────────┬──────────┐</span>
+<span class="err">│</span><span class="m">12</span><span class="w"> </span><span class="nv">Angry</span><span class="w"> </span><span class="nv">Men</span><span class="err">│</span><span class="nv">The</span><span class="w"> </span><span class="nv">Devil</span><span class="w"> </span><span class="nv">Wears</span><span class="w"> </span><span class="nv">Prada</span><span class="err">│</span><span class="nv">Real</span><span class="w"> </span><span class="nv">Genius</span><span class="err">│</span><span class="nv">Eraserhead</span><span class="err">│</span>
+<span class="err">└────────────┴─────────────────────┴───────────┴──────────┘</span>
+</code></pre></div>
+<p>As expected! Then, you find the cumulative watch time of the sorted array.</p>
+<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="o">+</span><span class="na">\</span><span class="p">(</span><span class="m">1</span><span class="o">↓</span><span class="nv">MovieDB</span><span class="sr">[;</span><span class="m">4</span><span class="sr">]</span><span class="p">)</span><span class="sr">[</span><span class="o">⍒</span><span class="m">1</span><span class="o">↓</span><span class="nv">MovieDB</span><span class="sr">[;</span><span class="m">3</span><span class="sr">]]</span>
+<span class="m">96</span><span class="w"> </span><span class="m">205</span><span class="w"> </span><span class="m">313</span><span class="w"> </span><span class="m">402</span>
+</code></pre></div>
+<p>You think roughly three hours is a reasonable amount of time to get people together for, but then you realise the tone of the movies would be all over the place! You realise you'd like movies of the same genre instead.</p>
+<p>First, you sort by genre.</p>
+<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="p">(</span><span class="m">1</span><span class="o">↓</span><span class="nv">MovieDB</span><span class="sr">[;</span><span class="m">6</span><span class="sr">]</span><span class="p">)</span><span class="sr">[</span><span class="o">⍒</span><span class="m">1</span><span class="o">↓</span><span class="nv">MovieDB</span><span class="sr">[;</span><span class="m">6</span><span class="sr">]]</span>
+<span class="err">┌────────┬───────┬──────┬──────┐</span>
+<span class="err">│</span><span class="nv">Thriller</span><span class="err">│</span><span class="nv">Fantasy</span><span class="err">│</span><span class="nv">Comedy</span><span class="err">│</span><span class="nv">Comedy</span><span class="err">│</span>
+<span class="err">└────────┴───────┴──────┴──────┘</span>
+<span class="w">       </span><span class="p">(</span><span class="m">1</span><span class="o">↓</span><span class="nv">MovieDB</span><span class="sr">[;</span><span class="m">1</span><span class="sr">]</span><span class="p">)</span><span class="sr">[</span><span class="o">⍒</span><span class="m">1</span><span class="o">↓</span><span class="nv">MovieDB</span><span class="sr">[;</span><span class="m">6</span><span class="sr">]]</span>
+<span class="err">┌────────────┬──────────┬───────────┬─────────────────────┐</span>
+<span class="err">│</span><span class="m">12</span><span class="w"> </span><span class="nv">Angry</span><span class="w"> </span><span class="nv">Men</span><span class="err">│</span><span class="nv">Eraserhead</span><span class="err">│</span><span class="nv">Real</span><span class="w"> </span><span class="nv">Genius</span><span class="err">│</span><span class="nv">The</span><span class="w"> </span><span class="nv">Devil</span><span class="w"> </span><span class="nv">Wears</span><span class="w"> </span><span class="nv">Prada</span><span class="err">│</span>
+<span class="err">└────────────┴──────────┴───────────┴─────────────────────┘</span>
+</code></pre></div>
+<p>Then, you'd like to compare the genre of each successive pair of movies, this is where a special kind of reduction called windowed reduction can be used. In addition to reducing a whole vector, you can also reduce successive chunks of a vector by specifying an integer left argument.</p>
+<p>For a simple array <code>⎕A</code> of the alphabet, the result of reducing along catenate with chunks of length 2, <code>2,/</code>, is pairs of successive letters.</p>
+<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="m">2</span><span class="o">,</span><span class="na">/</span><span class="nf">⎕A</span>
+<span class="err">┌──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┐</span>
+<span class="err">│</span><span class="nv">AB</span><span class="err">│</span><span class="nv">BC</span><span class="err">│</span><span class="nv">CD</span><span class="err">│</span><span class="nv">DE</span><span class="err">│</span><span class="nv">EF</span><span class="err">│</span><span class="nv">FG</span><span class="err">│</span><span class="nv">GH</span><span class="err">│</span><span class="nv">HI</span><span class="err">│</span><span class="nv">IJ</span><span class="err">│</span><span class="nv">JK</span><span class="err">│</span><span class="nv">KL</span><span class="err">│</span><span class="nv">LM</span><span class="err">│</span><span class="nv">MN</span><span class="err">│</span><span class="nv">NO</span><span class="err">│</span><span class="nv">OP</span><span class="err">│</span><span class="nv">PQ</span><span class="err">│</span><span class="nv">QR</span><span class="err">│</span><span class="nv">RS</span><span class="err">│</span><span class="nv">ST</span><span class="err">│</span><span class="nv">TU</span><span class="err">│</span><span class="nv">UV</span><span class="err">│</span><span class="nv">VW</span><span class="err">│</span><span class="nv">WX</span><span class="err">│</span><span class="nv">XY</span><span class="err">│</span><span class="nv">YZ</span><span class="err">│</span>
+<span class="err">└──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┘</span>
+</code></pre></div>
+<p>For our list of genres, we'd like to check for equality, then access the first index with a matching genre. We will use the indices of <code>⍸</code> function, which returns the indices of <code>1</code>s, more on searching in Part 5.</p>
+<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="nv">sorted_genres</span><span class="kd">←</span><span class="p">(</span><span class="m">1</span><span class="o">↓</span><span class="nv">MovieDB</span><span class="sr">[;</span><span class="m">6</span><span class="sr">]</span><span class="p">)</span><span class="sr">[</span><span class="o">⍒</span><span class="m">1</span><span class="o">↓</span><span class="nv">MovieDB</span><span class="sr">[;</span><span class="m">6</span><span class="sr">]]</span>
+<span class="err">┌────────┬───────┬──────┬──────┐</span>
+<span class="err">│</span><span class="nv">Thriller</span><span class="err">│</span><span class="nv">Fantasy</span><span class="err">│</span><span class="nv">Comedy</span><span class="err">│</span><span class="nv">Comedy</span><span class="err">│</span>
+<span class="err">└────────┴───────┴──────┴──────┘</span>
+<span class="w">       </span><span class="m">2</span><span class="o">≡</span><span class="na">/</span><span class="nv">sorted_genres</span>
+<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span>
+<span class="w">       </span><span class="o">⍸</span><span class="m">2</span><span class="o">≡</span><span class="na">/</span><span class="nv">sorted_genres</span>
+<span class="m">3</span>
+<span class="w">       </span><span class="p">(</span><span class="nv">sorted_genres</span><span class="p">)</span><span class="sr">[</span><span class="o">⍸</span><span class="m">2</span><span class="o">≡</span><span class="na">/</span><span class="nv">sorted_genres</span><span class="sr">]</span>
+<span class="err">┌──────┐</span>
+<span class="err">│</span><span class="nv">Comedy</span><span class="err">│</span>
+<span class="err">└──────┘</span>
+</code></pre></div>
+<p>Comedy it is!</p>
 
 
 
