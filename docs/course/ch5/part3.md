@@ -90,11 +90,13 @@ Instead of an explanation using a mystifying array of random numbers that makes 
 
 This cake is arranged along three axis, as is the case with most physical objects, and will serve as a suitable example for our axis-selective operations. Click and drag on the 3D view to orbit the array, use the scroll wheel to zoom in and out. Move your mouse over a section to see it highlighted.
 
+Try to get familiar with the order of the axes.
+
 <div style="aspect-ratio: 5 / 3; width: 100%;">
 <iframe class="lazy-iframe" data-src="\js\demos\cake_intro.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%;width:100%;height:100%;"></iframe>
 </div>
 
-Using bracket-axis notation, we can now play with our food and reduce along all three axes! Click one of the buttons below to visualize each reduction.
+Using bracket-axis notation, we can now play with our food and reduce along all three axes! Click one of the buttons below to visualize each reduction. Use your knowledge of the axis order to guess the direction of each reduction!
 
 <div style="display: flex; justify-content: center; gap: 15px; margin: 20px 0;">
     <button onclick="document.getElementById('cake_rank').contentWindow.reductionAxis='x'" 
@@ -110,7 +112,7 @@ Using bracket-axis notation, we can now play with our food and reduce along all 
         +/[1]Cake
     </button>
     
-    <button onclick="document.getElementById('cake_rank').contentWindow.reductionAxis='y'" 
+    <button onclick="document.getElementById('cake_rank').contentWindow.reductionAxis='z'" 
             style="flex: 1; padding: 8px 16px; font-size: 14px; font-family: 'APL385', 'DejaVu Sans Mono', monospace;
                    background: #f0f0f0;
                    border: 1px solid #ccc; border-top-color: #ddd; border-left-color: #ddd;
@@ -123,7 +125,7 @@ Using bracket-axis notation, we can now play with our food and reduce along all 
         +/[2]Cake
     </button>
     
-    <button onclick="document.getElementById('cake_rank').contentWindow.reductionAxis='z'" 
+    <button onclick="document.getElementById('cake_rank').contentWindow.reductionAxis='y'" 
             style="flex: 1; padding: 8px 16px; font-size: 14px; font-family: 'APL385', 'DejaVu Sans Mono', monospace;
                    background: #f0f0f0;
                    border: 1px solid #ccc; border-top-color: #ddd; border-left-color: #ddd;
@@ -188,93 +190,77 @@ document.addEventListener('DOMContentLoaded', function() {
 
 Note that there is also a different method of specifying axes for functions which is more general than bracket-axis notation, since it behaves consistently and can be applied to any arbitrary function. The rank ``⍤`` operator allows for such general axis specification of a function left argument, via an integer right argument which specifies what rank cells to act on. 
 
-An ``n``-cell of a rank ``r`` array is a rank n array formed from picking ``r-n`` indices from that array. Click the buttons below to view the ``n``-cells of the above Cake array.
+An ``n``-cell of a rank ``r`` array is a rank n array formed from picking ``r-n`` indices from that array, equivalently, they're formed from the last ``n`` axes of the array. Try to use your knowledge of the order of the axes to guess what the cells of the Cake array would be, press the buttons below to verify your understanding.
 
-As an example, we study the action of the rank operator ``⍤`` on the plus reduce ``+⌿`` function, ``+⌿⍤n``. For n=3, the modified plus reduce function ``+⌿⍤3`` acts on the 3-cells of the array. Since the whole array is of rank 3, there is only one 3-cell which is the array itself. Then, ``+⌿⍤3`` is equivalent to the action of the plus reduce ``+⌿`` function on the whole array, adding up terms along its leading axis.
+<div style="display: flex; justify-content: center; gap: 15px; margin: 20px 0;">
+    <button onclick="document.getElementById('cake_cell').contentWindow.nCell=0" 
+            style="flex: 1; padding: 8px 16px; font-size: 14px; font-family: 'APL385', 'DejaVu Sans Mono', monospace;
+                   background: #f0f0f0;
+                   border: 1px solid #ccc; border-top-color: #ddd; border-left-color: #ddd;
+                   border-radius: 3px; color: #333; cursor: pointer;
+                   box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 1px 2px rgba(0,0,0,0.1);"
+            onmousedown="this.style.background='#e0e0e0'; this.style.boxShadow='inset 0 1px 3px rgba(0,0,0,0.2)';"
+            onmouseup="this.style.background='#f0f0f0'; this.style.boxShadow='inset 0 1px 0 rgba(255,255,255,0.5), 0 1px 2px rgba(0,0,0,0.1)';"
+            onmouseover="this.style.background='#f5f5f5';"
+            onmouseout="this.style.background='#f0f0f0';">
+        0-cells
+    </button>
+    
+    <button onclick="document.getElementById('cake_cell').contentWindow.nCell=1" 
+            style="flex: 1; padding: 8px 16px; font-size: 14px; font-family: 'APL385', 'DejaVu Sans Mono', monospace;
+                   background: #f0f0f0;
+                   border: 1px solid #ccc; border-top-color: #ddd; border-left-color: #ddd;
+                   border-radius: 3px; color: #333; cursor: pointer;
+                   box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 1px 2px rgba(0,0,0,0.1);"
+            onmousedown="this.style.background='#e0e0e0'; this.style.boxShadow='inset 0 1px 3px rgba(0,0,0,0.2)';"
+            onmouseup="this.style.background='#f0f0f0'; this.style.boxShadow='inset 0 1px 0 rgba(255,255,255,0.5), 0 1px 2px rgba(0,0,0,0.1)';"
+            onmouseover="this.style.background='#f5f5f5';"
+            onmouseout="this.style.background='#f0f0f0';">
+        1-cells
+    </button>
+    
+    <button onclick="document.getElementById('cake_cell').contentWindow.nCell=2" 
+            style="flex: 1; padding: 8px 16px; font-size: 14px; font-family: 'APL385', 'DejaVu Sans Mono', monospace;
+                   background: #f0f0f0;
+                   border: 1px solid #ccc; border-top-color: #ddd; border-left-color: #ddd;
+                   border-radius: 3px; color: #333; cursor: pointer;
+                   box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 1px 2px rgba(0,0,0,0.1);"
+            onmousedown="this.style.background='#e0e0e0'; this.style.boxShadow='inset 0 1px 3px rgba(0,0,0,0.2)';"
+            onmouseup="this.style.background='#f0f0f0'; this.style.boxShadow='inset 0 1px 0 rgba(255,255,255,0.5), 0 1px 2px rgba(0,0,0,0.1)';"
+            onmouseover="this.style.background='#f5f5f5';"
+            onmouseout="this.style.background='#f0f0f0';">
+        2-cells
+    </button>
+    
+    <button onclick="document.getElementById('cake_cell').contentWindow.nCell=3" 
+            style="flex: 1; padding: 8px 16px; font-size: 14px; font-family: 'APL385', 'DejaVu Sans Mono', monospace;
+                   background: #f0f0f0;
+                   border: 1px solid #ccc; border-top-color: #ddd; border-left-color: #ddd;
+                   border-radius: 3px; color: #333; cursor: pointer;
+                   box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 1px 2px rgba(0,0,0,0.1);"
+            onmousedown="this.style.background='#e0e0e0'; this.style.boxShadow='inset 0 1px 3px rgba(0,0,0,0.2)';"
+            onmouseup="this.style.background='#f0f0f0'; this.style.boxShadow='inset 0 1px 0 rgba(255,255,255,0.5), 0 1px 2px rgba(0,0,0,0.1)';"
+            onmouseover="this.style.background='#f5f5f5';"
+            onmouseout="this.style.background='#f0f0f0';">
+        3-cells
+    </button>
+</div>
 
-```apl
-      (+⌿⍤3)M
-16 16 16
-21  5 16
-15 20 15
-      +⌿M
-16 16 16
-21  5 16
-15 20 15
-```
+<div style="aspect-ratio: 5/3; width:100%">
+<iframe id="cake_cell" class="lazy-iframe" data-src="\js\demos\cake_cell.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%"></iframe>
+</div>
 
-For n=2, ``+⌿⍤2`` acts on the 2-cells of the array. The 2-cells of the array are the cells ``M[1;;]``, ``M[2;;]``, and ``M[3;;]``.
 
-```apl
-     M[1;;]
-5 2 4
-9 1 4
-5 8 4
-      M[2;;]
-9 5 8
-5 2 2
-3 2 5
-      M[3;;]
-2  9  4
-7  2 10
-7 10  6
-```
 
-The leading axis of these 2-cells is vertical, hence the plus reduce first ``+⌿`` function will return the sum of the columns of these arrays.
+As an example, we study the action of the rank operator ``⍤`` on the plus reduce ``+⌿`` function, ``+⌿⍤n``. 
 
-```apl
-      +⌿M[1;;]
-19 11 12
-      +⌿M[2;;]
-17 9 15
-      +⌿M[3;;]
-16 21 20
+For ``n=3``, the modified plus reduce function ``+⌿⍤3`` acts on the 3-cells of the array. Since the whole array is of rank 3, there is only one 3-cell which is the array itself. Then, ``+⌿⍤3`` is equivalent to the action of the plus reduce ``+⌿`` function on the whole array, adding up terms along its leading axis. 
 
-      (+⌿⍤2)M
-19 11 12
-17  9 15
-16 21 20
-
-      +⌿[2]M
-19 11 12
-17  9 15
-16 21 20
-```
+For ``n=2``, ``+⌿⍤2`` acts on the 2-cells of the array. The 2-cells of the array are the cells ``M[1;;]``, ``M[2;;]``, and ``M[3;;]``. The leading axis of these 2-cells is vertical, hence the plus reduce first ``+⌿`` function will return the sum of the columns of these arrays.
 
 Similarly, for n=1, the action of ``+⌿⍤1`` on the array is adding up its 1-cells, which is equivalent to adding along its last axis.
 
-```apl
-      M[1;1;]
-5 2 4
-      M[1;2;]
-9 1 4
-      M[1;3;]
-5 8 4
-      +⌿M[1;1;]
-11
-      +⌿M[1;2;]
-14
-      +⌿M[1;3;]
-17
-      (+⌿⍤1)M
-11 14 17
-22  9 10
-15 19 23
-      +⌿[3]M
-11 14 17
-22  9 10
-15 19 23
-```
-
-An operator form of (partially) indexing a matrix, such as ``M[1;3;]``, is given by the squad (”squish quad”) indexing ``⌷`` operator. 
-```apl
-      M[1;3;]
-5 8 4
-      1 3⌷M
-5 8 4
-```
-
-It is equivalent to bracket indexing, but can be used like any other operator.
+An operator form of (partially) indexing a matrix, such as ``M[1;3;]``, is given by the squad (”squish quad”) indexing ``⌷`` operator. It is equivalent to bracket indexing, but can be used like any other operator.
 
 ```apl
       N ← 3 3 3 ⍴ ⍳27
