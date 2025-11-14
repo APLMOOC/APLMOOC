@@ -1,11 +1,8 @@
-# External libraries
+# File I/O
 
 !!! abstract "This part will cover"
     
-    - Tatin package manager
-    - Using external libraries
-        - HTTP server
-        - OpenAI
-        - etc.
+    - File reading and writing
+    - Quad CSV
 
 ---

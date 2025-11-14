@@ -1,9 +1,7 @@
-# Writing interactive programs
+# Error handling
 
 !!! abstract "This part will cover"
     
-    - Writing interactive programs
-    - Input and output
-    - Configurability
+    - Dealing with nasty errors
 
 ---

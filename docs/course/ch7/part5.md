@@ -1,8 +1,11 @@
-# File I/O
+# Writing interactive programs
 
 !!! abstract "This part will cover"
     
-    - File reading and writing
-    - Quad CSV
+    - Writing interactive programs
+    - Input and output
+    - Execute
+    - Format
+    - Configurability
 
 ---
