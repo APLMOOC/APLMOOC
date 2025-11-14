@@ -707,9 +707,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#excessive-install-the-apl-keyboard" class="md-nav__link">
+  <a href="#excessive-use-text-replacement-scripts-to-type-apl-everywhere" class="md-nav__link">
     <span class="md-ellipsis">
-      Excessive: Install the APL Keyboard
+      Excessive: Use text replacement scripts to type APL everywhere
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#excessive-install-the-apl-keyboard-to-type-apl-everywhere" class="md-nav__link">
+    <span class="md-ellipsis">
+      Excessive: Install the APL Keyboard to type APL everywhere
     </span>
   </a>
   
@@ -2180,7 +2189,7 @@
   
   
   <span class="md-ellipsis">
-    7.1 - Development environment
+    7.1 - Installing Dyalog
     
   </span>
   
@@ -2203,7 +2212,7 @@
   
   
   <span class="md-ellipsis">
-    7.2 - Traditional Functions
+    7.2 - Development environment
     
   </span>
   
@@ -2226,7 +2235,7 @@
   
   
   <span class="md-ellipsis">
-    7.3 - Error Handling
+    7.3 - Traditional functions
     
   </span>
   
@@ -2249,7 +2258,7 @@
   
   
   <span class="md-ellipsis">
-    7.4 - Writing interactive programs
+    7.4 - Error handling
     
   </span>
   
@@ -2272,7 +2281,7 @@
   
   
   <span class="md-ellipsis">
-    7.5 - File I/O
+    7.5 - Writing interactive programs
     
   </span>
   
@@ -2295,7 +2304,53 @@
   
   
   <span class="md-ellipsis">
-    7.6 - External libraries
+    7.6 - File I/O
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ch7/part7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    7.7 - External libraries
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ch7/part8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    7.7 - Example project
     
   </span>
   
@@ -2465,9 +2520,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#excessive-install-the-apl-keyboard" class="md-nav__link">
+  <a href="#excessive-use-text-replacement-scripts-to-type-apl-everywhere" class="md-nav__link">
     <span class="md-ellipsis">
-      Excessive: Install the APL Keyboard
+      Excessive: Use text replacement scripts to type APL everywhere
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#excessive-install-the-apl-keyboard-to-type-apl-everywhere" class="md-nav__link">
+    <span class="md-ellipsis">
+      Excessive: Install the APL Keyboard to type APL everywhere
     </span>
   </a>
   
@@ -2502,7 +2566,7 @@ You can also hover over them to get a quick overview of what each symbol does in
 Find some alternatives below.</p>
 <hr />
 <h3 id="quickest-use-keyboard-shortcuts">Quickest: Use keyboard shortcuts</h3>
-<p>On TryAPL (and this page), you can use <strong>prefixes</strong> to insert various special symbols.</p>
+<p>On TryAPL (and this page), you can use <strong>prefixes</strong> to insert various special symbols. </p>
 <p>You can use any of the following keys as a prefix:
 <kbd>`</kbd> <kbd>§</kbd> <kbd>°</kbd> <kbd>²</kbd> <kbd>µ</kbd> <kbd>º</kbd> <kbd>½</kbd> <kbd>ù</kbd></p>
 <p>On Finnish keyboards, the <kbd>§</kbd> key (located to the left of <kbd>1</kbd>) is the easiest to use.
@@ -2520,7 +2584,7 @@ These are just instructions telling you to do what we did above.</p>
 <p>Sometimes, if you have a Finnish keyboard, you will be unable to type certain prefix shortcuts that were designed for US keyboards.
 Thankfully, there is an alternative: tab completions.
 You can find the keys needed for tab completion in the same tooltip that shows you what keys to use for the prefix shortcuts.</p>
-<p>For example, hovering over the arrow symbol (<code>←</code>) shows the follwing information: <code>&lt; - &lt;tab&gt;</code>.
+<p>For example, hovering over the arrow symbol (<code>←</code>) shows the following information: <code>&lt; - &lt;tab&gt;</code>.
 Just follow the instructions and hit the keys <kbd>&lt;</kbd> <kbd>-</kbd> <span class="keys"><kbd class="key-tab">Tab</kbd></span>.
 You'll notice that the alternative, <kbd>PREFIX</kbd> <kbd>[</kbd> is impossible to type on a Finnish keyboard,
 as it doesn't have a separate <kbd>[</kbd> key (and using <kbd>AltGr</kbd> breaks the APL shortcut).</p>
@@ -2532,11 +2596,25 @@ which is that it's designed with only US keyboards in mind.</p>
 (and various other non-US) keyboards natively.</p>
 </div>
 <hr />
-<h3 id="excessive-install-the-apl-keyboard">Excessive: Install the APL Keyboard</h3>
-<p>You can install a dedicated keyboard for APL glyphs.
+<h3 id="excessive-use-text-replacement-scripts-to-type-apl-everywhere">Excessive: Use text replacement scripts to type APL everywhere</h3>
+<p>You can install a text expander like <a href="https://espanso.org/">Espanso</a> to use tab completions everywhere.</p>
+<p>Installation instructions for espanso are available on their site. After installing espanso, follow the instructions below to install APL completions</p>
+<ol>
+<li>Download the APL match file, <a href="../apl.yml">apl.yml</a></li>
+<li>Navigate to your espanso match directory<ul>
+<li>On Windows and Mac, right-click the espanso icon in your system tray, click <code>Open config folder</code>, and enter the match directory</li>
+<li>On Linux, type <code>espanso path</code> to find the path to your config folder, then navigate to the match subdirectory</li>
+</ul>
+</li>
+<li>Move the <code>apl.yml</code> file from your downloads to this directory</li>
+<li>Restart espanso, if it was already running</li>
+</ol>
+<p>That's it! You should be able to type <code>×</code> by pressing <kbd>x</kbd> <kbd>x</kbd> <span class="keys"><kbd class="key-tab">Tab</kbd></span>.</p>
+<h3 id="excessive-install-the-apl-keyboard-to-type-apl-everywhere">Excessive: Install the APL Keyboard to type APL everywhere</h3>
+<p>You can install a dedicated keyboard layout for APL glyphs.
 See further instructions <a href="https://www.dyalog.com/apl-font-keyboard.htm">on the Dyalog website</a>.
 This method provides no extra benefits unless you want to type APL outside of TryAPL, this webpage, or the IDE.</p>
-<p>We will also see in a later chapter how to install a plugin for Visual Studio Code that allows you to type APL characters.</p>
+<p>On Windows, the default installation of Dyalog provides this automatically!</p>
 
 
 

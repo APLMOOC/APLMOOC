@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../part2/">
+        <link rel="prev" href="../part6/">
       
       
-        <link rel="next" href="../part4/">
+        <link rel="next" href="../part8/">
       
       
       <link rel="icon" href="../../assets/_favicon.svg">
@@ -20,7 +20,7 @@
     
     
       
-        <title>7.3 - Traditional functions - APL MOOC</title>
+        <title>7.7 - External libraries - APL MOOC</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#traditional-functions" class="md-skip">
+        <a href="#external-libraries" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              7.3 - Traditional functions
+              7.7 - External libraries
             
           </span>
         </div>
@@ -2140,32 +2140,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    7.3 - Traditional functions
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../part3/" class="md-nav__link">
         
   
   
@@ -2176,53 +2154,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#one-more-bit-of-setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      One more bit of setup
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tradfns" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tradfns
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#parameters-and-return-values" class="md-nav__link">
-    <span class="md-ellipsis">
-      Parameters and return values
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2301,10 +2232,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../part7/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2315,6 +2255,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -2468,41 +2409,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#one-more-bit-of-setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      One more bit of setup
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tradfns" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tradfns
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#parameters-and-return-values" class="md-nav__link">
-    <span class="md-ellipsis">
-      Parameters and return values
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -2517,104 +2423,20 @@
 
 
 
-<h1 id="traditional-functions">Traditional functions</h1>
+<h1 id="external-libraries">External libraries</h1>
 <div class="admonition abstract">
 <p class="admonition-title">This part will cover</p>
 <ul>
-<li>Tradfns</li>
-<li>The branch operator</li>
-<li>If, else if, else</li>
-<li>For, while</li>
+<li>Tatin package manager</li>
+<li>Using external libraries<ul>
+<li>HTTP server</li>
+<li>OpenAI</li>
+<li>etc.</li>
+</ul>
+</li>
 </ul>
 </div>
 <hr />
-<h2 id="one-more-bit-of-setup">One more bit of setup</h2>
-<p>Before moving on, let's add a quick shortcut that will help us very soon: saving with Ctrl+S.</p>
-<p>Go into <code>Edit &gt; Preferences &gt; Shortcuts</code> and search <code>FX</code> in the search bar.
-Then, set the "Fix the current function" option to <kbd>Ctrl</kbd> <kbd>S</kbd>.
-It should look a little something like this:</p>
-<p><img alt="A picture showing the shortcuts menu with the right settings selected" src="../../assets/7_3_preferences.png" /></p>
-<h2 id="tradfns">Tradfns</h2>
-<p>Finally, we can get to the actual programming part ;D</p>
-<p>Imagine for a second that you've been programming for a long time, and came up with this code that'll simulate dealing a hand from a pack of cards:</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">CARDS</span><span class="kd">←</span><span class="m">5</span><span class="o">?</span><span class="m">52</span>
-<span class="w">      </span><span class="nv">SUITS</span><span class="kd">←</span><span class="m">1</span><span class="o">+⌊</span><span class="p">(</span><span class="nv">CARDS</span><span class="o">-</span><span class="m">1</span><span class="p">)</span><span class="o">÷</span><span class="m">13</span>
-<span class="w">      </span><span class="nv">SUITS</span><span class="kd">←</span><span class="s1">&#39;SHDC&#39;</span><span class="sr">[</span><span class="nv">SUITS</span><span class="sr">]</span>
-<span class="w">      </span><span class="nv">CARDS</span><span class="kd">←</span><span class="m">1</span><span class="o">+</span><span class="m">13</span><span class="o">|</span><span class="nv">CARDS</span><span class="o">-</span><span class="m">1</span>
-<span class="w">      </span><span class="nv">CARDS</span><span class="kd">←</span><span class="s1">&#39;A23456789TJQK&#39;</span><span class="sr">[</span><span class="nv">CARDS</span><span class="sr">]</span>
-<span class="w">      </span><span class="nv">HAND</span><span class="kd">←</span><span class="m">14</span><span class="o">⍴</span><span class="s1">&#39; &#39;</span>
-<span class="w">      </span><span class="nv">HAND</span><span class="sr">[</span><span class="m">1</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">13</span><span class="sr">]</span><span class="kd">←</span><span class="nv">CARDS</span>
-<span class="w">      </span><span class="nv">HAND</span><span class="sr">[</span><span class="m">2</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">14</span><span class="sr">]</span><span class="kd">←</span><span class="nv">SUITS</span>
-<span class="w">      </span><span class="nv">HAND</span>
-<span class="m">2</span><span class="nv">D</span><span class="w"> </span><span class="nv">AS</span><span class="w"> </span><span class="m">7</span><span class="nv">D</span><span class="w"> </span><span class="m">5</span><span class="nv">D</span><span class="w"> </span><span class="nv">AH</span>
-</code></pre></div>
-<p>Now, this is cool, but running this again is annoying (I don't really want to copy-paste all of the code every time I want a new hand).</p>
-<p>Tradfns - pronounced exactly like you'd expect - are a way to write longer and more involved functions in APL.
-You'll finally be able to write program logic that spans multiple lines instead of having to cram everything into one line!</p>
-<div class="admonition note">
-<p class="admonition-title">Typing the Del operator <code>∇</code></p>
-<p>Prefix method: <kbd>PREFIX</kbd> <kbd>G</kbd></p>
-<p>You can remember this since G stands for Giza and the symbol looks like the pyramid of Giza (but flipped upside-down for whatever reason lol)</p>
-</div>
-<p>To create a tradfn, we use the Del operator <code>∇</code> followed by the name of the function we want to create.
-RIDE will then go into a function writing mode: it will spit out a line number <code>[1]</code> and ask you to write the first line of your function.
-If you press enter, it will move on to line number <code>[2]</code> etc.
-Now, we could write all of our functions this way, but we'll do something a little more clever.
-Instead of writing any code, let's just end the function (and leave it empty) by typing <code>∇</code> again:</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="bp">∇</span><span class="w"> </span><span class="nv">DealHand</span>
-<span class="sr">[</span><span class="m">1</span><span class="sr">]</span><span class="w">  </span><span class="bp">∇</span>
-</code></pre></div>
-<p>Now, for the interesting part: we can double-click the text <code>DealHand</code> in the editor to open the function in a separate tab for editing!</p>
-<p><img alt="A picture showing the editor split into edit mode and interactive mode" src="../../assets/7_3_editmode.png" /></p>
-<p>Now, let's paste our card-dealing code in the editor, and save with <kbd>Ctrl</kbd> <kbd>S</kbd>.
-Then, we can run the function by typing its name in the left-hand pane.</p>
-<p><img alt="A picture showing some functional code in the editor" src="../../assets/7_3_running.png" /></p>
-<div class="admonition tip">
-<p class="admonition-title">Software development flow</p>
-<p>When developing larger programs in APL, always use functions for storing code.
-For example: you can have a tradfn called <code>Main</code> that has your main program logic, and which calls other tradfns that actually implement your code.</p>
-<p>This way, all of your code will be stored in the workspace and work nicely with LINK.
-If you have LINK set up, all tradfns will be stored automatically.
-Remember that dfns and variables are not stored automatically in LINK: if they are outside a tradfn, they are considered to be for "testing purposes" and not a part of your actual code.</p>
-</div>
-<h2 id="parameters-and-return-values">Parameters and return values</h2>
-<p>Okay, that's great, but now our functions are just names for chunks of code.
-This is good for our main function but not so ideal if we actually wanna calculate and compute stuff.
-We can make them more useful by letting them take parameters and return values!</p>
-<p>We can convert our card dealing function to take in how many cards we want to deal
-Here's the code that lets you change the number of cards based on the variable <code>COUNT</code>
-and whether it uses uppercase or lowercase letters using the variable <code>UPPERCASE</code> (bonus points if you can see how it works):</p>
-<div class="highlight"><pre><span></span><code><span class="nv">COUNT</span><span class="kd">←</span><span class="m">5</span>
-<span class="nv">UPPERCASE</span><span class="kd">←</span><span class="m">1</span>
-<span class="nv">CARDS</span><span class="kd">←</span><span class="nv">COUNT</span><span class="o">?</span><span class="m">52</span>
-<span class="nv">SUITS</span><span class="kd">←</span><span class="m">1</span><span class="o">+⌊</span><span class="p">(</span><span class="nv">CARDS</span><span class="o">-</span><span class="m">1</span><span class="p">)</span><span class="o">÷</span><span class="m">13</span>
-<span class="nv">SUITS</span><span class="kd">←</span><span class="p">((</span><span class="m">1</span><span class="o">+</span><span class="nv">UPPERCASE</span><span class="p">)</span><span class="o">⊃</span><span class="s1">&#39;shdc&#39;</span><span class="w"> </span><span class="s1">&#39;SHDC&#39;</span><span class="p">)</span><span class="sr">[</span><span class="nv">SUITS</span><span class="sr">]</span>
-<span class="nv">CARDS</span><span class="kd">←</span><span class="m">1</span><span class="o">+</span><span class="m">13</span><span class="o">|</span><span class="nv">CARDS</span><span class="o">-</span><span class="m">1</span>
-<span class="nv">CARDS</span><span class="kd">←</span><span class="p">((</span><span class="m">1</span><span class="o">+</span><span class="nv">UPPERCASE</span><span class="p">)</span><span class="o">⊃</span><span class="s1">&#39;a23456789tjqk&#39;</span><span class="w"> </span><span class="s1">&#39;A23456789TJQK&#39;</span><span class="p">)</span><span class="sr">[</span><span class="nv">CARDS</span><span class="sr">]</span>
-<span class="nv">HAND</span><span class="kd">←</span><span class="p">(</span><span class="m">¯1</span><span class="o">+</span><span class="m">3</span><span class="o">×</span><span class="nv">COUNT</span><span class="p">)</span><span class="o">⍴</span><span class="s1">&#39; &#39;</span>
-<span class="nv">HAND</span><span class="sr">[</span><span class="m">¯2</span><span class="o">+</span><span class="m">3</span><span class="o">×⍳</span><span class="nv">COUNT</span><span class="sr">]</span><span class="kd">←</span><span class="nv">CARDS</span>
-<span class="nv">HAND</span><span class="sr">[</span><span class="m">¯1</span><span class="o">+</span><span class="m">3</span><span class="o">×⍳</span><span class="nv">COUNT</span><span class="sr">]</span><span class="kd">←</span><span class="nv">SUITS</span>
-</code></pre></div>
-<p>Now, obviously, we don't want to adjust the two variables manually: let's make them parameters of our <code>DealHand</code> function.</p>
-<p>In APL, the 0th line of a function is called the <em>header line</em>.
-Here, you can specify your program's paramters and what variable it returns after exiting.
-The syntax is the same as when you run a function: a function <code>FUNC</code> that takes in a left argument <code>LEFT</code>, right argument <code>RIGHT</code>, and returns a result <code>RESULT</code> will have the header line <code>RESULT ← LEFT FUNC RIGHT</code>.</p>
-<p>Here's what it looks like for our code:
-<img alt="A picture of the full dealing code in action" src="../../assets/7_3_dealing.png" /></p>
-<p>If you have sharp eyes, you'll see that some of the variables in our function are grey and some are black.
-What's up with that?</p>
-<p>When writing a tradfn, any variables you include in the header line will be local variables (grey) and anything else will be global variables (black).
-What does this mean? Local variables are erased when the function exits, while global variables get stored in your workspace.
-When writing code, you <strong>almost always want your variables to be local</strong>.
-To do this, we can put them in the header line using semicolons after our function definition.
-This is how it should ideally look like:</p>
-<p><img alt="A picture of the corrected dealing function with local variables" src="../../assets/7_3_correctdealing.png" /></p>
-<div class="admonition warning">
-<p class="admonition-title">Local vs global variables</p>
-<p>If you have any black-coloured variables in your code, you should make them grey by including them in the header line.
-If you don't do this, you risk filling up your workspace with garbage: global variables stay in your workspace even after running your function, and will hang around until you delete them manually.</p>
-<p>Unless you are using a tradfn to define some global variables that you need in the editor, you should make them local!</p>
-</div>
 
 
 
@@ -2644,7 +2466,7 @@ If you don't do this, you risk filling up your workspace with garbage: global va
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../part2/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 7.2 - Development environment">
+          <a href="../part6/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 7.6 - File I/O">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2654,20 +2476,20 @@ If you don't do this, you risk filling up your workspace with garbage: global va
                 Previous
               </span>
               <div class="md-ellipsis">
-                7.2 - Development environment
+                7.6 - File I/O
               </div>
             </div>
           </a>
         
         
           
-          <a href="../part4/" class="md-footer__link md-footer__link--next" aria-label="Next: 7.4 - Error handling">
+          <a href="../part8/" class="md-footer__link md-footer__link--next" aria-label="Next: 7.7 - Example project">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                7.4 - Error handling
+                7.7 - Example project
               </div>
             </div>
             <div class="md-footer__button md-icon">
