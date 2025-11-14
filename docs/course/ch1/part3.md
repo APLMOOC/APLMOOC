@@ -21,7 +21,7 @@ Find some alternatives below.
 
 ### Quickest: Use keyboard shortcuts
 
-On TryAPL (and this page), you can use **prefixes** to insert various special symbols.
+On TryAPL (and this page), you can use **prefixes** to insert various special symbols. 
 
 You can use any of the following keys as a prefix:
 <kbd>`</kbd> <kbd>§</kbd> <kbd>°</kbd> <kbd>²</kbd> <kbd>µ</kbd> <kbd>º</kbd> <kbd>½</kbd> <kbd>ù</kbd>
@@ -47,7 +47,7 @@ Sometimes, if you have a Finnish keyboard, you will be unable to type certain pr
 Thankfully, there is an alternative: tab completions.
 You can find the keys needed for tab completion in the same tooltip that shows you what keys to use for the prefix shortcuts.
 
-For example, hovering over the arrow symbol (`←`) shows the follwing information: `< - <tab>`.
+For example, hovering over the arrow symbol (`←`) shows the following information: `< - <tab>`.
 Just follow the instructions and hit the keys <kbd><</kbd> <kbd>-</kbd> ++tab++.
 You'll notice that the alternative, <kbd>PREFIX</kbd> <kbd>[</kbd> is impossible to type on a Finnish keyboard,
 as it doesn't have a separate <kbd>[</kbd> key (and using <kbd>AltGr</kbd> breaks the APL shortcut).
@@ -62,10 +62,25 @@ as it doesn't have a separate <kbd>[</kbd> key (and using <kbd>AltGr</kbd> break
 
 ---
 
-### Excessive: Install the APL Keyboard
+### Excessive: Use text replacement scripts to type APL everywhere
 
-You can install a dedicated keyboard for APL glyphs.
+You can install a text expander like [Espanso](https://espanso.org/) to use tab completions everywhere.
+
+Installation instructions for espanso are available on their site. After installing espanso, follow the instructions below to install APL completions
+
+1. Download the APL match file, [apl.yml](/course/ch1/apl.yml)
+1. Navigate to your espanso match directory
+    - On Windows and Mac, right-click the espanso icon in your system tray, click `Open config folder`, and enter the match directory
+    - On Linux, type `espanso path` to find the path to your config folder, then navigate to the match subdirectory
+1. Move the `apl.yml` file from your downloads to this directory
+1. Restart espanso, if it was already running
+
+That's it! You should be able to type `×` by pressing <kbd>x</kbd> <kbd>x</kbd> ++tab++.
+
+### Excessive: Install the APL Keyboard to type APL everywhere
+
+You can install a dedicated keyboard layout for APL glyphs.
 See further instructions [on the Dyalog website](https://www.dyalog.com/apl-font-keyboard.htm).
 This method provides no extra benefits unless you want to type APL outside of TryAPL, this webpage, or the IDE.
 
-We will also see in a later chapter how to install a plugin for Visual Studio Code that allows you to type APL characters.
+On Windows, the default installation of Dyalog provides this automatically!

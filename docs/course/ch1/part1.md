@@ -28,3 +28,5 @@ Thankfully, since we live in the 21st century, some APL developers have realised
 and let programmers write their code in text files that are executed by an APL interpreter.
 This is fairly straightforward to do but requires some configuration, so we will get back to this in a later chapter.
 For now, the TryAPL interpreter will be enough.
+
+If you would like to install the cross-platform Dyalog IDE anyway, navigate to [Chapter 7 Part 1](../ch7/part1.md).

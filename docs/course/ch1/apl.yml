@@ -1,0 +1,232 @@
+# Espanso hotstrings configuration (Tab only)
+
+matches:
+    - trigger: "<-\t"
+      replace: "←"
+      tabbed: true
+    - trigger: "xx\t"
+      replace: "×"
+      tabbed: true
+    - trigger: ":-\t"
+      replace: "÷"
+      tabbed: true
+    - trigger: "*O\t"
+      replace: "⍟"
+      tabbed: true
+    - trigger: "[-\t"
+      replace: "⌹"
+      tabbed: true
+    - trigger: "]-\t"
+      replace: "⌹"
+      tabbed: true
+    - trigger: "OO\t"
+      replace: "○"
+      tabbed: true
+    - trigger: "77\t"
+      replace: "⌈"
+      tabbed: true
+    - trigger: "FF\t"
+      replace: "⌈"
+      tabbed: true
+    - trigger: "ll\t"
+      replace: "⌊"
+      tabbed: true
+    - trigger: "LL\t"
+      replace: "⌊"
+      tabbed: true
+    - trigger: "|_\t"
+      replace: "⊥"
+      tabbed: true
+    - trigger: "TT\t"
+      replace: "⊤"
+      tabbed: true
+    - trigger: "|-\t"
+      replace: "⊣"
+      tabbed: true
+    - trigger: "|-\t"
+      replace: "⊢"
+      tabbed: true
+    - trigger: "=/\t"
+      replace: "≠"
+      tabbed: true
+    - trigger: "<_\t"
+      replace: "≤"
+      tabbed: true
+    - trigger: ">_\t"
+      replace: "≥"
+      tabbed: true
+    - trigger: "==\t"
+      replace: "≡"
+      tabbed: true
+    - trigger: "=_\t"
+      replace: "≡"
+      tabbed: true
+    - trigger: "7=\t"
+      replace: "≢"
+      tabbed: true
+    - trigger: "Z-\t"
+      replace: "≢"
+      tabbed: true
+    - trigger: "vv\t"
+      replace: "∨"
+      tabbed: true
+    - trigger: "^^\t"
+      replace: "∧"
+      tabbed: true
+    - trigger: "^~\t"
+      replace: "⍲"
+      tabbed: true
+    - trigger: "v~\t"
+      replace: "⍱"
+      tabbed: true
+    - trigger: "^|\t"
+      replace: "↑"
+      tabbed: true
+    - trigger: "v|\t"
+      replace: "↓"
+      tabbed: true
+    - trigger: "cc\t"
+      replace: "⊂"
+      tabbed: true
+    - trigger: "))\t"
+      replace: "⊃"
+      tabbed: true
+    - trigger: "c_\t"
+      replace: "⊆"
+      tabbed: true
+    - trigger: "[|\t"
+      replace: "⌷"
+      tabbed: true
+    - trigger: "|]\t"
+      replace: "⌷"
+      tabbed: true
+    - trigger: "A|\t"
+      replace: "⍋"
+      tabbed: true
+    - trigger: "V|\t"
+      replace: "⍒"
+      tabbed: true
+    - trigger: "ii\t"
+      replace: "⍳"
+      tabbed: true
+    - trigger: "i_\t"
+      replace: "⍸"
+      tabbed: true
+    - trigger: "ee\t"
+      replace: "∊"
+      tabbed: true
+    - trigger: "e_\t"
+      replace: "⍷"
+      tabbed: true
+    - trigger: "uu\t"
+      replace: "∪"
+      tabbed: true
+    - trigger: "nn\t"
+      replace: "∩"
+      tabbed: true
+    - trigger: "/-\t"
+      replace: "⌿"
+      tabbed: true
+    - trigger: "\\-\t"
+      replace: "⍀"
+      tabbed: true
+    - trigger: ",-\t"
+      replace: "⍪"
+      tabbed: true
+    - trigger: "rr\t"
+      replace: "⍴"
+      tabbed: true
+    - trigger: "pp\t"
+      replace: "⍴"
+      tabbed: true
+    - trigger: "O|\t"
+      replace: "⌽"
+      tabbed: true
+    - trigger: "O-\t"
+      replace: "⊖"
+      tabbed: true
+    - trigger: "O\\\t"
+      replace: "⍉"
+      tabbed: true
+    - trigger: "::\t"
+      replace: "¨"
+      tabbed: true
+    - trigger: ":\"\"\t"
+      replace: "¨"
+      tabbed: true
+    - trigger: "~:\t"
+      replace: "⍨"
+      tabbed: true
+    - trigger: "*:\t"
+      replace: "⍣"
+      tabbed: true
+    - trigger: "oo\t"
+      replace: "∘"
+      tabbed: true
+    - trigger: "o:\t"
+      replace: "⍤"
+      tabbed: true
+    - trigger: "O:\t"
+      replace: "⍥"
+      tabbed: true
+    - trigger: "[]\t"
+      replace: "⎕"
+      tabbed: true
+    - trigger: "[:\t"
+      replace: "⍠"
+      tabbed: true
+    - trigger: ":]\t"
+      replace: "⍠"
+      tabbed: true
+    - trigger: "[=\t"
+      replace: "⌸"
+      tabbed: true
+    - trigger: "=]\t"
+      replace: "⌸"
+      tabbed: true
+    - trigger: "[<\t"
+      replace: "⌺"
+      tabbed: true
+    - trigger: ":>]\t"
+      replace: "⌺"
+      tabbed: true
+    - trigger: "T_\t"
+      replace: "⌶"
+      tabbed: true
+    - trigger: "II\t"
+      replace: "⌶"
+      tabbed: true
+    - trigger: "o_\t"
+      replace: "⍎"
+      tabbed: true
+    - trigger: "o-\t"
+      replace: "⍕"
+      tabbed: true
+    - trigger: "To\t"
+      replace: "⍕"
+      tabbed: true
+    - trigger: "<>\t"
+      replace: "⋄"
+      tabbed: true
+    - trigger: "on\t"
+      replace: "⍝"
+      tabbed: true
+    - trigger: "ww\t"
+      replace: "⍵"
+      tabbed: true
+    - trigger: "aa\t"
+      replace: "⍺"
+      tabbed: true
+    - trigger: "VV\t"
+      replace: "∇"
+      tabbed: true
+    - trigger: "^-\t"
+      replace: "∆"
+      tabbed: true
+    - trigger: "--\t"
+      replace: "¯"
+      tabbed: true
+    - trigger: "0~\t"
+      replace: "⍬"
+      tabbed: true
+  
