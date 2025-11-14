@@ -68,7 +68,7 @@ You can install a text expander like [Espanso](https://espanso.org/) to use tab 
 
 Installation instructions for espanso are available on their site. After installing espanso, follow the instructions below to install APL completions
 
-1. Download the APL match file, [apl.yml](/course/ch1/apl.yml)
+1. Download the APL match file, [apl.yml](apl.yml)
 1. Navigate to your espanso match directory
     - On Windows and Mac, right-click the espanso icon in your system tray, click `Open config folder`, and enter the match directory
     - On Linux, type `espanso path` to find the path to your config folder, then navigate to the match subdirectory
