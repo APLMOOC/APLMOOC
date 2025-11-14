@@ -55,7 +55,6 @@ It could work if zero was never a valid index; however, `⍳` is index-sensitive
       'asdfghjkl' ⍳ 'agl'
 0 4 8
 
-      ⎕IO ← 1
 ```
 
 Instead of returning zero (or a negative number), the APL developers decided to be clever and return a number that's one larger than the length of the array.
@@ -221,13 +220,6 @@ Step-by-step:
       (40=PRICES)/⍳⍴PRICES
 3 6
 ```
-
-!!! tip "Slashiotarho"
-
-    Look at the three symbols: slash, iota, and rho.
-    This way of finding where values are is so useful that it has its own name: **SLASHIOTARHO**!
-
-    Chant it to yourself before bed and remember it well.
 
 Slashiotarho is also more powerful than the dyadic `⍳` function we looked at earlier, since we can use it to find any condition we like.
 For example, if we wanted to find all prices that are _at most_ 40, we can just change one symbol:

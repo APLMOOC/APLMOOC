@@ -56,7 +56,7 @@ In brief intervals of time spent waiting between helping your sales staff with E
 └──────────┴─────┴────────────────────────────────────────────────────────────────────┴────────────────┘
 ```
 
-Not this again, you need to get rid of all the spam before the situation gets out of hand. You first remove all duplicate posts using the monadic unique ∪ function.
+Not this again, you need to get rid of all the spam before the situation gets out of hand. You first remove all duplicate posts using the monadic unique ``∪`` function.
 
 ```apl
       ∪ POSTS
@@ -85,7 +85,7 @@ Not this again, you need to get rid of all the spam before the situation gets ou
 └──────────┴─────┴────────────────────────────────────────────────────────────────────┴────────────────┘
 ```
 
-The duplicate 'XXXXXXXXXX' spam posts have been removed. Next is removing specific posts using the set difference ~ function. First, listing all the indices of the post then removing the specific spam posts.
+The duplicate ``XXXXXXXXXX`` spam posts have been removed. Next is removing specific posts using the set difference ``~`` function. First, listing all the indices of the post then removing the specific spam posts.
 
 ```apl
       ⍴ POSTS
@@ -115,28 +115,28 @@ HAPPY_EMOTICONS ← ':)' ':-)' ':D' ':]' ':o)' '8)' ':3' 'c:' ':x'
 SAD_EMOTICONS ← '):' ':c' ']:' ')-:' 'D:' '>:(' ':/' ':x' ':|'
 ```
 
-The symbol ∪ acts *dyadically* as Set Union.
+The symbol ``∪`` acts *dyadically* as Set Union.
 
 ```apl
        HAPPY_EMOTICONS ∪ SAD_EMOTICONS
 :) :-) :D :] :o) 8) :3 c: :x ): :c ]: )-: D: >:( :/ :|
 ```
 
-Notice how the element ‘:x’ only appears once, where it would appear twice if we were to use the dyadic catenate , operator introduced in Chapter 2.
+Notice how the element ``:x`` only appears once, where it would appear twice if we were to use the dyadic catenate ``,`` operator introduced in Chapter 2.
 
 ```apl
        HAPPY_EMOTICONS , SAD_EMOTICONS
 :) :-) :D :] :o) 8) :3 c: :x ): :c ]: )-: D: :x >:( :/ :|
 ```
 
-Similarly, the symbol ∩ acts dyadically as the Set Intersection operation.
+Similarly, the symbol ``∩`` acts dyadically as the Set Intersection operation.
 
 ```apl
        HAPPY_EMOTICONS ∩ SAD_EMOTICONS
 :x
 ```
 
-The symbol ~, which monadically refers to boolean NOT, is dyadically the Set Difference operation.
+The symbol ``~``, which monadically refers to boolean NOT, is dyadically the Set Difference operation.
 
 ```apl
        HAPPY_EMOTICONS ~ SAD_EMOTICONS
@@ -144,7 +144,7 @@ The symbol ~, which monadically refers to boolean NOT, is dyadically the Set Dif
        ⍝ Notice the ':x' emoticon is gone
 ```
 
-Monadically, the symbol ∪ acts as the Unique operator, removing duplicate entries in a vector.
+Monadically, the symbol ``∪`` acts as the Unique operator, removing duplicate entries in a vector.
 
 ```apl
        ∪ HAPPY_EMOTICONS , SAD_EMOTICONS

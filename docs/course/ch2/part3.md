@@ -70,6 +70,10 @@ Now you can do arithmetic to a list of numbers however you like! After figuring 
 That’s some extreme temperature right there! And it makes you start to wonder, what temperature difference is the hull bearing? Turns out it’s also very simple in APL:
 
 ```apl
+      TEMP_OUTSIDE
+118.5 97.1 59.5 30.0 ¯9.7 ¯62.3 ¯113.2
+      TEMP_CELSIUS
+21.77777778 21.88888889 22.94444444 22.77777778 22.83333333 22.66666667 22.5
       ⎕ ← TEMP_DIFF ← TEMP_OUTSIDE - TEMP_CELSIUS
 96.72222222 75.21111111 36.55555556 7.222222222 ¯32.53333333 ¯84.96666667 ¯135.7
 ```

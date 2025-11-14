@@ -20,7 +20,7 @@ The engineer sits hunched over their cubicle, focused as they diligently type ou
 9.561792499
 ```
 
-In the back of their mind, they know the task they are trying to achieve is impossible, approximating the sum of powers of 0.99 to a reasonable precision would take thousands of terms. Their anxiety grows as they reach the 20th term, the line of terms now stands longer than their computer monitor.
+In the back of their mind, they know the task they are trying to achieve is impossible, approximating the sum of powers of ``0.99`` to a reasonable precision would take thousands of terms.
 
 A coworker suggested using a function, and provided some code to evaluate the sequence. Not wanting their skills to be overshadowed, the engineer refused the help and started creating their own function 
 
@@ -30,22 +30,22 @@ A coworker suggested using a function, and provided some code to evaluate the se
 9.561792499
 ```
 
-Now reaching the 50th term, the series is no closer to being evaluated. If only there were a way to define a function that repeatedly calls itself. The engineer thinks for a bit, then with a renewed burst of motivation they write the following.
+Now reaching the 50th term, the series is no closer to being evaluated. If only there were a way to define a function that repeatedly applies itself. The engineer thinks for a bit, and writes the following.
 
 ```apl
-      function ← {function ⍵+1}
-      function 1
+      test ← {test ⍵+1}
+      test 1
 
 ```
 
-Nothing seems to be happening, adding a ⎕ quad to look at intermediate values,
+Nothing seems to be happening, adding a `⎕` quad to look at intermediate values,
 
 ```apl
-      function ← {
+      test ← {
             ⎕ ← ⍵
-            function ⍵+1
+            test ⍵+1
       }
-      function 1
+      test 1
 
 1
 2
@@ -107,7 +107,16 @@ Guarded expressions are conditional expressions; they only execute a statement i
 
 The guarded expression in the above function is ``(10*¯10)>0.99*⍺: ⎕ ← ⍵``. The guarded expression consists of a logical expression ``(10*¯10)>0.99*⍺`` followed by a colon `:`, and another expression ``⎕ ← ⍵``, meaning ``⎕ ← ⍵`` will be executed only if ``0.99*⍺`` is less than ``(10*¯10)``.
 
-Staring excitedly at your computer, you email your coworker and tell them about your solution. Your smile slowly fades as you read that your coworker had a solution that was exact, and required only one computation.
+This is similar to the mathematical specification of piecewise functions, in fact, the above function would be written as follows.
+
+\\[
+\text{Sum}(\alpha,\omega)=\begin{cases}
+\square\leftarrow\omega & 10^{-10}>0.99\^{\alpha}\\\\
+\text{Sum}(\alpha+1,\omega+0.99^{\alpha}) & \text{otherwise}
+\end{cases}
+\\]
+
+Staring excitedly at your computer, you email your coworker and tell them about your solution. However, your coworker had a solution that was exact, and required only one computation.
 
 ```apl
       sum_geometric ← {1÷1-⍵}
@@ -117,7 +126,7 @@ Staring excitedly at your computer, you email your coworker and tell them about 
 
 That was embarrasing. You did learn a new programming technique to control infinite amounts of computation, so you try to make the most of it by writing a couple more useful programs.
 
-The factorial function is typically defined as ``f(n) = n \cdot f(n-1)``, such that ``f(0)=1``. Thinking in terms of guarded expressions, if the argument of the function is 0 the result should be 1 (in symbols, `⍵=0: 1`), otherwise multiply the right argument (`⍵`) by the result of the function itself (`∇`) evaluated for the right argument minus 1 (`⍵ - 1`).  
+The factorial function is typically defined as $$f(n) = n \cdot f(n-1)$$ such that $$f(0)=1$$ Thinking in terms of guarded expressions, if the argument of the function is 0 the result should be 1 (in symbols, `⍵=0: 1`), otherwise multiply the right argument (`⍵`) by the result of the function itself (`∇`) evaluated for the right argument minus 1 (`⍵ - 1`).  
 
 Putting it together, we obtain a recursive function that evaluates the factorial function.
 
@@ -157,7 +166,7 @@ The next function we will look at calculates the Collatz sequence of a number.
             ⍵ , ∇ 1+3×⍵}
 ```
 
-If the `⍵` is even, (``0=2|⍵``) divide it by two and add it to the list (``⍵ , ∇ ⍵÷2``). If it is not, multiply it by three, add one, and add it to the list (``⍵ , ∇ 1+3×⍵``). Repeat this process until `⍵` reaches 1.
+If `⍵` is even (``0=2|⍵``) then divide it by two and add it to the list (``⍵ , ∇ ⍵÷2``). If it is not, multiply it by three, add one, and add it to the list (``⍵ , ∇ 1+3×⍵``). Repeat this process until `⍵` reaches 1.
 
 ```apl
       ⍝ Example:

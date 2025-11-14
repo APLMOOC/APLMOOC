@@ -185,13 +185,7 @@ Let's see what happens when we change the index origin:
 
 Note that now `⍳` still generates a vector of the *length* you give it, and not *up to the value* you give it.
 
-Remember to always change back the index origin after you're done to avoid messing up other code that expects it to be 1:
-
-```apl
-      ⎕IO ← 1
-      ⎕IO
-1
-```
+It's recommended not to change the index origin repeatedly in the same program, since it can make it hard to read. Make the decision at the very start of a program to avoid confusion.
 
 ## Reshape
 
@@ -351,15 +345,13 @@ The expression `3?5` means: "generate 3 numbers from 1 to 5 **without** any repe
 
 What if we wanted to include zero?
 We could, of course, subtract 1 from everything.
-However, deal is origin-sensitive, so we can just use our favourite `⎕IO` variable (remember to set it back once you're done).
+However, deal is origin-sensitive, so we can just set our favourite `⎕IO` variable at the very beginning of our program.
 
 ```apl
       ⎕IO←0
 
       5?5
 1 2 0 4 3
-
-      ⎕IO←1
 ```
 
 Ok, but what if we want repetitions?
@@ -373,8 +365,6 @@ Just trying to force APL to generate these doesn't end well...
 DOMAIN ERROR: Deal right argument must be greater than or equal to the left argument
       10?2
         ∧
-      
-      ⎕IO←1
 ```
 
 There is actually another way to use deal that gives you numbers without replacement: it's called roll (like rolling a die)!
@@ -417,8 +407,6 @@ And, before we forget to answer the question we had before, here's how to genera
 
       ?15⍴2
 0 0 0 1 0 0 0 1 1 1 1 0 1 0 1
-
-      ⎕IO←1
 ```
 
 ## Catenate

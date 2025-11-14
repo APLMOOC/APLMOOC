@@ -165,7 +165,7 @@ One last handy symbol: `⍝`.
 Can you figure out what it does from this example?
 
 ```apl
-      ⍝ asdfada (1)
+      ⍝ asdfada
       ⍝ adsfljsakfdjlkdsajflkdsajf
       ⍝ =≠∨¯≥>≠≠=≤<¯äö'j∆⊃⊂⌈∊↑j|⊤⊂⍪AQWED⊆A⍰≤5≥>∨8∧´§Ä&⍤⍨⌿&¤⊆≡⍎^Å
       2+2  ⍝ This is addition
@@ -173,8 +173,6 @@ Can you figure out what it does from this example?
       123×456  ⍝ yay
 56088
 ```
-
-1. Hint: ong it kinda looks like ඞ
 
 That's right, it's a comment.
 It makes the APL interpreter ignore whatever symbols come after it on the same line.

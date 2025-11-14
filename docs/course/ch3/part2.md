@@ -9,9 +9,11 @@
 
 Being an engineer, you have a lot of varied computational needs which require a large range of mathematical functions. 
 
-Thankfully, APL comes with a lot of math functions! Here we go through a bunch of them, so you can always come back to check. Remember to also check the toolbar in TryAPL and RIDE, they come with very helpful tooltips to remind you what an operator does!
+Thankfully, APL comes with a lot of math functions! Here we go through a bunch of them, so you can always come back to check. 
 
-The notation of ceiling ⌈x⌉ and ⌊x⌋ floor in mathematics matches with the corresponding APL functions, in fact, the notation of ceiling and floor (and the use of those words to describe rounding up and down) comes from APL! Before APL, there was no consistent standard to represent the ceiling and floor functions. Ceiling rounds up to the nearest integer, and floor rounds down to the nearest integer.
+Feel free to skip this section for now, and come back when you see a mathematical operation you don't recognize! Remember to also check the toolbar in TryAPL and RIDE, they come with very helpful tooltips to remind you what an operator does!
+
+The notation of ceiling ``⌈x⌉`` and ``⌊x⌋``      floor in mathematics matches with the corresponding APL functions, in fact, the notation of ceiling and floor (and the use of those words to describe rounding up and down) comes from APL! Before APL, there was no consistent standard to represent the ceiling and floor functions. Ceiling rounds up to the nearest integer, and floor rounds down to the nearest integer.
 
 Monadic `⌈` and `⌊` : Ceil & Floor
 ```apl

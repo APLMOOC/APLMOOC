@@ -13,12 +13,12 @@ Many tasks that require data processing and operations on large amounts of struc
 
 You might have heard that programming languages can be classified into a few different types:
 
-- Imperative languages (Python, Java, C, R, etc.)
+- Imperative languages (Python, Java, C, etc.)
 - Functional languages (Haskell, Clojure, etc.)
 
 A new addition to this list, which you might not have heard of, is
 
-- Array languages (APL and its derivatives, Fortran, etc.)
+- Array languages (APL and its derivatives, etc.)
 
 Array languages are considered separate from the previous two categories, as they operate differently.
 Instead of having variables and operations (imperative) or functions (functional) as primitive objects,
@@ -40,7 +40,7 @@ Don't be afraid: while mysterious at first, you'll grow to learn and love them.
 ### ...is untyped.
 
 There is no concept of type in APL.
-The underlying interpreter abstracts it all away from you and lets you focus on processing data, not its types.
+The underlying interpreter abstracts it all away from you to stay close to its roots as mathematical array processing notation.
 
 ---
 
@@ -61,7 +61,7 @@ However, I disagree.
 APL is just as readable as any language.
 An English person can't read Finnish either without a little practice!
 
-On the contrary, APL is sometimes _easier_ to read than imperative languages.
+On the contrary, APL is sometimes _easier_ to read and write than imperative languages.
 
 As some early APL users at NASA [remarked](https://ntrs.nasa.gov/api/citations/19690020561/downloads/19690020561.pdf) in relation to its (chiefly imperative) contemporaries (notably Fortran and Algol):
 > This is one of the important features of APL. it is possible to learn enough to write a useful program without having to know all there is in the language.

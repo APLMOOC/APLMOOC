@@ -115,10 +115,10 @@ Let's try them out:
 ¯56088
 ```
 
-Funkar som den ska.
+As we say in Swedish, funkar som den ska.
 
 !!! info "Significant figures"
 
-      APL will display results of your calculations to 10 significant figures.
-      Internally, APL calculates all floating-point operations to 16 or 17 significant figures,
-      which is a suitable level of accuracy for most (if not all) applications.
+      Internally, APL calculates all floating-point operations using 64-bit floating point numbers; however, APL will only display results of your calculations to 10 significant figures. 
+      
+      The number of significant figures is set by the ``⎕PP`` variable in your workspace, which can go up to 34 significant figures.

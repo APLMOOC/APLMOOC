@@ -160,7 +160,7 @@ lier
 └──────────────────────────────────────────────┴───────────────────┘
 ```
 
-A similar function is the partition ⊆ function, which acts a little differently based on its left argument array than the partitioned enclose ⊂ function. Zeroes indicate dropped elements, and partitions begin when the elements increase in value.
+A similar function is the partition ``⊆`` function, which acts a little differently based on its left argument array than the partitioned enclose ``⊂`` function. Zeroes indicate dropped elements, and partitions begin when the elements increase in value.
 
 ```apl
       0 0 0 1 1 0 0 0 1 2 0 0⊆'flamethrower'

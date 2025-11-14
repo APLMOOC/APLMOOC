@@ -54,12 +54,15 @@ Since you're already at the new machines, you may as well snoop around to see wh
 
 ```apl
       )VARS
-CAPACITY        INSPECTION_DATE INSTALLATION_DATE       MAINTENANCE    
-MANUFACTURER    SERIAL  USER    VERSION budget_left     crew_count     
-crew_salary     supplies_needed yearly_budget  
+budget_left     CAPACITY        crew_count     crew_salary
+INSPECTION_DATE INSTALLATION_DATE MAINTENANCE   MANUFACTURER
+SERIAL          supplies_needed  T1             T2
+USER            VERSION          yearly_budget
 ```
 
-You feel like you and your best friend deserve a raise, looking over your shoulder to make sure no supervisor is watching, you change the crew salary variable for the lowest two salaries.
+You feel like you and your best friend deserve a raise, you change the crew salary variable for the lowest two salaries.
+
+To replace a value in a vector, write out the elements as you would access them, then assign a list of new values.
 
 ```apl
       crew_salary
@@ -71,8 +74,6 @@ You feel like you and your best friend deserve a raise, looking over your should
 130200 113200 120000 148700 132400
 ```
 
-Of course, your salary is higher because you took the initiative, which is a very important skill for an astronaut.
-
 You also feel like a new notebook for your very mission-critical logging hobby would be nice.
 
 ```apl
@@ -80,7 +81,16 @@ You also feel like a new notebook for your very mission-critical logging hobby w
 4 O2TANK (IMMEDIATELY)
 ```
 
-You remember that vectors can store characters as well as numbers! Using ``'single quotes'`` around the characters you want to add, you change the needed supplies vector.
+This variable is a vector of individual text characters, in order to create a vector of characters use ``'single quotes'`` around the characters you want to add. You can even create a vector of individual characters in the same way you would a vector of numbers.
+
+```apl
+      'abcdef'
+abcdef
+      'a' 'b' 'c' 'd' 'e' 'f'
+abcdef
+```
+
+You change the ``supplies_needed`` vector to contain a new vector of characters.
 
 ```apl
       supplies_needed ← '1 NOTEBOOK (IMMEDIATELY)'

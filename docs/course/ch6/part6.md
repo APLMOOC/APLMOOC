@@ -60,7 +60,7 @@ In general, we might not a priori know how many ``¨`` each operators are needed
       }
 ```
 
-The only new syntax in this dop that does not already exist in a dfn is the ``⍺⍺`` argument. Recall that all operators (except for the outer product ``∘.f``!) take a function argument on the right, and possibly another function argument on the left, these function arguments are called "operands". These operands are denoted as ``⍺⍺`` and ``⍵⍵`` in dops, and the function resulting from applying an operator to operands is called a "derived function". Then, the second line of the dop can be read as "If the magnitude of the depth of the vector ``⍺ ⍵ ⍵`` is less than two, then apply the left operand ``⍺⍺`` to the array left argument ``⍺`` and array right argument ``⍵``". 
+The only new syntax in this dop that does not already exist in a dfn is the ``⍺⍺`` argument. Recall that all operators (except for the outer product ``∘.f``!) take a function argument on the left, and possibly another function argument on the right, these function arguments are called "operands". These operands are denoted as ``⍺⍺`` and ``⍵⍵`` in dops, and the function resulting from applying an operator to operands is called a "derived function". Then, the second line of the dop can be read as "If the magnitude of the depth of the vector ``⍺ ⍵ ⍵`` is less than two, then apply the left operand ``⍺⍺`` to the array left argument ``⍺`` and array right argument ``⍵``". 
 
 Dops also has two different types of recursion. Using a single del `∇` refers to the derived function, and a double del `∇∇` refers to the dop itself.
 

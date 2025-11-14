@@ -139,7 +139,7 @@ TETE
 
 !!! info "Boxing"
        
-       In TryAPL, boxing is enabled by default; however, to manually control boxing, the ]Box user command can be used.
+       In TryAPL, boxing is enabled by default; however, to manually control boxing, the `]Box` user command can be used.
        
        ```apl
              nested ← 2 2 ⍴ (⍳3) ('  ') ('   ') (2 2 ⍴ ('  ') (⍳3) (2 2 ⍴ (⍳3) ('  ') ('   ') (⍳2)) ('   '))

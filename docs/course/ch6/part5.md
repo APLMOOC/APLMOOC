@@ -540,7 +540,7 @@ For higher dimensional data, the rank ``⍤`` operator is the simplest way to ma
 ```
 
 Instead, we match the 1-cells of the left array argument with the right array argument
-```
+```apl
       ↑('Who' 'What' 'When' 'Why' 'How')
 Who 
 What

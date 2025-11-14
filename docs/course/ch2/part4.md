@@ -53,7 +53,9 @@ However, this lack of structure is exactly what introducing vectors was supposed
 
 You decide to start over yet again, and store data in a matrix instead.
 
-**Matrices** are rectangles of data, they take two indices for each element as opposed to vectors' one index per element. They can be created by wrapping the rows as vectors in ``[square brackers]``, separated by ``⋄`` diamonds; or using the ``⍴`` reshape function on a vector.
+**Matrices** are rectangles of data, they take two indices for each element as opposed to vectors' one index per element. They are said to lay data out along two **axes**, as opposed the single **axis** vectors use; the number of axes can be thought of as the number of indices each element uses. Matrices and vectors are examples of **arrays**, which are any collection of data in APL.
+
+Matrices can be created by wrapping the rows as vectors in ``[square brackets]``, separated by ``⋄`` diamonds; or using the ``⍴`` reshape function on a vector.
 
 ```apl
       T1 ← [ 21.4 'Day 1 07:42' ⋄ 
@@ -110,7 +112,7 @@ The reshape function takes a vector of elements as its right argument, and resha
 Another example is the following 5 by 5 pyramid
 
 ```apl
-     PYRAMID_ENTRIES ← 1 1 1 1 1 1 2 2 2 1 1 2 3 2 1 1 2 2 2 1 1 1 1 1 1 1
+      PYRAMID_ENTRIES ← 1 1 1 1 1 1 2 2 2 1 1 2 3 2 1 1 2 2 2 1 1 1 1 1 1 1
       5 5 ⍴ PYRAMID_ENTRIES
 1 1 1 1 1
 1 2 2 2 1
@@ -143,7 +145,7 @@ TONE
 	
 	Glyphs can represent different functions depending on the manner in which arguments are given.
 	
-	For the glyph ``⍴``, when applied to a single argument, ⍴X, it acts as the *shape* function; when two arguments are given one on either side, X⍴Y, it acts as the *reshape* function. 
+	For the glyph ``⍴``, when applied to a single argument, `⍴X`, it acts as the *shape* function; when two arguments are given one on either side, `X⍴Y`, it acts as the *reshape* function. 
 	
 	The former function is called the monadic function associated to the symbol ⍴, and the latter is called the dyadic function associated with the symbol ⍴. 
 
@@ -160,9 +162,9 @@ The shape ``⍴`` function acts on one array, its right argument, by returning a
 26
 ```
 
-Note that a scalar has no axes, and so the result of ``⍴100`` is an empty vector.
+The number ``100`` above is called a **scalar** array, it does not have any axes (it has rank 0/is "zero-dimensional") and has only a single value, and so the result of ``⍴100`` is an empty vector.
 
-Since elements in matrices are ordered along two axes, an element of a matrix can be specified by two position, the row and column. If only a row position (or column position) is specified, the whole row (respectively, column) is returned. The indices are always separated by a semicolon ``;``.
+Since elements in matrices are ordered along two axes, an element of a matrix can be specified by two positions, the row and column. If only a row position (or column position) is specified, the whole row (respectively, column) is returned. The indices are always separated by a semicolon ``;``.
 
 ```apl
      WORD_SQUARE ← 5 5 ⍴ 'HEARTEMBERABUSERESINTREND'
@@ -203,7 +205,12 @@ TREND
 Multiple numbers can be specified for both row and column indices.
 
 ```apl
-      ALPHABET ← 5 5⍴⎕A
+      ⎕ ← ALPHABET ← 5 5⍴⎕A
+ABCDE
+FGHIJ
+KLMNO
+PQRST
+UVWXY
       ALPHABET[1;]
 ABCDE
       ALPHABET[1 2 3;]
@@ -303,7 +310,7 @@ Again, this can also be achieved using the reshape ``⍴`` function with three a
       
       The arrays we’ve constructed so far are of rank 0 (scalars), rank 1 (vectors), rank 2 (matrices), and rank 3. The maximum rank of an array in Dyalog APL is 15. 
       
-      A useful idiom for getting the rank of an array is the shape of the shape of an array, ⍴⍴X.
+      A useful idiom for getting the rank of an array is the shape of the shape of an array, `⍴⍴X`.
 
 Now with your temperature table safely stored in your APL workspace, you can only imagine how many more values you can log and maintain. You excitedly gesture at one of your unimpressed coworkers before you notice you’ve accidentally logged the temperature of the cabin as 218 degrees. Before they have a chance to look at your mistake, you quickly and shamefully change the value.
 
@@ -335,7 +342,7 @@ Now with your temperature table safely stored in your APL workspace, you can onl
 ├────┼───────────┤
 │22.4│Day 3 09:45│
 └────┴───────────┘
-      TData[1;2;1] ← 22.8
+      TData[1;2;1] ← 21.8
       TData
 ┌────┬───────────┐
 │21.4│Day 1 07:42│

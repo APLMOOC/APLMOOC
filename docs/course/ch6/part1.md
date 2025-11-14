@@ -89,9 +89,9 @@ If the only tools available to deal with quotations were strings and the execute
 5 25
 ```
 
-Notice that the quote of the array Y is a string of shape ``5 25``, giving ``5`` characters for each column of the array. This can be modified by providing a right argument array
+Notice that the quote of the array Y is a string of shape ``5 25``, giving ``5`` characters for each column of the array. This can be modified by providing a left argument array
 
-```
+```apl
       Z ← 5 5⍴÷⍳25
       Z
 1             0.5           0.3333333333  0.25          0.2          
@@ -108,4 +108,4 @@ Notice that the quote of the array Y is a string of shape ``5 25``, giving ``5``
       0.05      0.05      0.04      0.04      0.04
 ```
 
-The first element of the right argument array specifies the characters per column, and the second element the number of decimal places each number should be formatted to.
+The first element of the left argument array specifies the characters per column, and the second element the number of decimal places each number should be formatted to.
