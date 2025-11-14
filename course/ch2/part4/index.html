@@ -2418,7 +2418,8 @@
 <p>We can see that the temperature is 21.8 degrees on the first day of the journey at 08:47.</p>
 <p>However, this lack of structure is exactly what introducing vectors was supposed to solve! Two closely related pieces of information, the time of a measurement and the value of the measurement, are kept separate when they should logically be part of the same collection of data. Measurement data of this form are usually stored in tables, and it is only natural to try to store them in the same manner in a computer system.</p>
 <p>You decide to start over yet again, and store data in a matrix instead.</p>
-<p><strong>Matrices</strong> are rectangles of data, they take two indices for each element as opposed to vectors' one index per element. They can be created by wrapping the rows as vectors in <code>[square brackers]</code>, separated by <code>⋄</code> diamonds; or using the <code>⍴</code> reshape function on a vector.</p>
+<p><strong>Matrices</strong> are rectangles of data, they take two indices for each element as opposed to vectors' one index per element. They are said to lay data out along two <strong>axes</strong>, as opposed the single <strong>axis</strong> vectors use; the number of axes can be thought of as the number of indices each element uses. Matrices and vectors are examples of <strong>arrays</strong>, which are any collection of data in APL.</p>
+<p>Matrices can be created by wrapping the rows as vectors in <code>[square brackets]</code>, separated by <code>⋄</code> diamonds; or using the <code>⍴</code> reshape function on a vector.</p>
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">T1</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="sr">[</span><span class="w"> </span><span class="m">21.4</span><span class="w"> </span><span class="s1">&#39;Day 1 07:42&#39;</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span>
 <span class="w">             </span><span class="m">21.8</span><span class="w"> </span><span class="s1">&#39;Day 1 08:47&#39;</span><span class="w"> </span><span class="p">⋄</span>
 <span class="w">             </span><span class="m">22.0</span><span class="w"> </span><span class="s1">&#39;Day 1 10:10&#39;</span><span class="w"> </span><span class="p">⋄</span>
@@ -2469,7 +2470,7 @@
  Tab method: <kbd>p</kbd> <kbd>p</kbd> <span class="keys"><kbd class="key-tab">Tab</kbd></span></p>
 </div>
 <p>Another example is the following 5 by 5 pyramid</p>
-<div class="highlight"><pre><span></span><code><span class="w">     </span><span class="nv">PYRAMID_ENTRIES</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">PYRAMID_ENTRIES</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span>
 <span class="w">      </span><span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="nv">PYRAMID_ENTRIES</span>
 <span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span>
 <span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span>
@@ -2496,7 +2497,7 @@
 <div class="admonition info">
 <p class="admonition-title">Function Valence</p>
 <p>Glyphs can represent different functions depending on the manner in which arguments are given.</p>
-<p>For the glyph <code>⍴</code>, when applied to a single argument, ⍴X, it acts as the <em>shape</em> function; when two arguments are given one on either side, X⍴Y, it acts as the <em>reshape</em> function. </p>
+<p>For the glyph <code>⍴</code>, when applied to a single argument, <code>⍴X</code>, it acts as the <em>shape</em> function; when two arguments are given one on either side, <code>X⍴Y</code>, it acts as the <em>reshape</em> function. </p>
 <p>The former function is called the monadic function associated to the symbol ⍴, and the latter is called the dyadic function associated with the symbol ⍴. </p>
 </div>
 <p>The shape <code>⍴</code> function acts on one array, its right argument, by returning a vector whose entries are the lengths of the axes.</p>
@@ -2508,8 +2509,8 @@
 <span class="w">      </span><span class="o">⍴</span><span class="nf">⎕A</span>
 <span class="m">26</span>
 </code></pre></div>
-<p>Note that a scalar has no axes, and so the result of <code>⍴100</code> is an empty vector.</p>
-<p>Since elements in matrices are ordered along two axes, an element of a matrix can be specified by two position, the row and column. If only a row position (or column position) is specified, the whole row (respectively, column) is returned. The indices are always separated by a semicolon <code>;</code>.</p>
+<p>The number <code>100</code> above is called a <strong>scalar</strong> array, it does not have any axes (it has rank 0/is "zero-dimensional") and has only a single value, and so the result of <code>⍴100</code> is an empty vector.</p>
+<p>Since elements in matrices are ordered along two axes, an element of a matrix can be specified by two positions, the row and column. If only a row position (or column position) is specified, the whole row (respectively, column) is returned. The indices are always separated by a semicolon <code>;</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="w">     </span><span class="nv">WORD_SQUARE</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="s1">&#39;HEARTEMBERABUSERESINTREND&#39;</span>
 <span class="w">     </span><span class="nv">WORD_SQUARE</span>
 <span class="nv">HEART</span>
@@ -2545,7 +2546,12 @@
 <span class="err">└────┴───────────┘</span>
 </code></pre></div>
 <p>Multiple numbers can be specified for both row and column indices.</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">ALPHABET</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="o">⍴</span><span class="nf">⎕A</span>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="vg">⎕</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">ALPHABET</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="o">⍴</span><span class="nf">⎕A</span>
+<span class="nv">ABCDE</span>
+<span class="nv">FGHIJ</span>
+<span class="nv">KLMNO</span>
+<span class="nv">PQRST</span>
+<span class="nv">UVWXY</span>
 <span class="w">      </span><span class="nv">ALPHABET</span><span class="sr">[</span><span class="m">1</span><span class="sr">;]</span>
 <span class="nv">ABCDE</span>
 <span class="w">      </span><span class="nv">ALPHABET</span><span class="sr">[</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="sr">;]</span>
@@ -2635,7 +2641,7 @@
 <p class="admonition-title">Rank</p>
 <p>The number of axes of an array is called the rank of the array. </p>
 <p>The arrays we’ve constructed so far are of rank 0 (scalars), rank 1 (vectors), rank 2 (matrices), and rank 3. The maximum rank of an array in Dyalog APL is 15. </p>
-<p>A useful idiom for getting the rank of an array is the shape of the shape of an array, ⍴⍴X.</p>
+<p>A useful idiom for getting the rank of an array is the shape of the shape of an array, <code>⍴⍴X</code>.</p>
 </div>
 <p>Now with your temperature table safely stored in your APL workspace, you can only imagine how many more values you can log and maintain. You excitedly gesture at one of your unimpressed coworkers before you notice you’ve accidentally logged the temperature of the cabin as 218 degrees. Before they have a chance to look at your mistake, you quickly and shamefully change the value.</p>
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">TData</span>
@@ -2665,7 +2671,7 @@
 <span class="err">├────┼───────────┤</span>
 <span class="err">│</span><span class="m">22.4</span><span class="err">│</span><span class="nv">Day</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">09</span><span class="bp">:</span><span class="m">45</span><span class="err">│</span>
 <span class="err">└────┴───────────┘</span>
-<span class="w">      </span><span class="nv">TData</span><span class="sr">[</span><span class="m">1</span><span class="sr">;</span><span class="m">2</span><span class="sr">;</span><span class="m">1</span><span class="sr">]</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">22.8</span>
+<span class="w">      </span><span class="nv">TData</span><span class="sr">[</span><span class="m">1</span><span class="sr">;</span><span class="m">2</span><span class="sr">;</span><span class="m">1</span><span class="sr">]</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">21.8</span>
 <span class="w">      </span><span class="nv">TData</span>
 <span class="err">┌────┬───────────┐</span>
 <span class="err">│</span><span class="m">21.4</span><span class="err">│</span><span class="nv">Day</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">07</span><span class="bp">:</span><span class="m">42</span><span class="err">│</span>

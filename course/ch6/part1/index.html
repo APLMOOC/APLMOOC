@@ -2453,23 +2453,23 @@ Using Each <code>¨</code>, we can execute an array of statements at once</p>
 <span class="w">      </span><span class="o">⍴⍕</span><span class="nv">Y</span>
 <span class="m">5</span><span class="w"> </span><span class="m">25</span>
 </code></pre></div>
-<p>Notice that the quote of the array Y is a string of shape <code>5 25</code>, giving <code>5</code> characters for each column of the array. This can be modified by providing a right argument array</p>
-<div class="highlight"><pre><span></span><code>      Z ← 5 5⍴÷⍳25
-      Z
-1             0.5           0.3333333333  0.25          0.2          
-0.1666666667  0.1428571429  0.125         0.1111111111  0.1          
-0.09090909091 0.08333333333 0.07692307692 0.07142857143 0.06666666667
-0.0625        0.05882352941 0.05555555556 0.05263157895 0.05         
-0.04761904762 0.04545454545 0.04347826087 0.04166666667 0.04         
+<p>Notice that the quote of the array Y is a string of shape <code>5 25</code>, giving <code>5</code> characters for each column of the array. This can be modified by providing a left argument array</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">Z</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="o">⍴÷⍳</span><span class="m">25</span>
+<span class="w">      </span><span class="nv">Z</span>
+<span class="m">1</span><span class="w">             </span><span class="m">0.5</span><span class="w">           </span><span class="m">0.3333333333</span><span class="w">  </span><span class="m">0.25</span><span class="w">          </span><span class="m">0.2</span><span class="w">          </span>
+<span class="m">0.1666666667</span><span class="w">  </span><span class="m">0.1428571429</span><span class="w">  </span><span class="m">0.125</span><span class="w">         </span><span class="m">0.1111111111</span><span class="w">  </span><span class="m">0.1</span><span class="w">          </span>
+<span class="m">0.09090909091</span><span class="w"> </span><span class="m">0.08333333333</span><span class="w"> </span><span class="m">0.07692307692</span><span class="w"> </span><span class="m">0.07142857143</span><span class="w"> </span><span class="m">0.06666666667</span>
+<span class="m">0.0625</span><span class="w">        </span><span class="m">0.05882352941</span><span class="w"> </span><span class="m">0.05555555556</span><span class="w"> </span><span class="m">0.05263157895</span><span class="w"> </span><span class="m">0.05</span><span class="w">         </span>
+<span class="m">0.04761904762</span><span class="w"> </span><span class="m">0.04545454545</span><span class="w"> </span><span class="m">0.04347826087</span><span class="w"> </span><span class="m">0.04166666667</span><span class="w"> </span><span class="m">0.04</span><span class="w">         </span>
 
-      10 2⍕Z
-      1.00      0.50      0.33      0.25      0.20
-      0.17      0.14      0.13      0.11      0.10
-      0.09      0.08      0.08      0.07      0.07
-      0.06      0.06      0.06      0.05      0.05
-      0.05      0.05      0.04      0.04      0.04
+<span class="w">      </span><span class="m">10</span><span class="w"> </span><span class="m">2</span><span class="o">⍕</span><span class="nv">Z</span>
+<span class="w">      </span><span class="m">1.00</span><span class="w">      </span><span class="m">0.50</span><span class="w">      </span><span class="m">0.33</span><span class="w">      </span><span class="m">0.25</span><span class="w">      </span><span class="m">0.20</span>
+<span class="w">      </span><span class="m">0.17</span><span class="w">      </span><span class="m">0.14</span><span class="w">      </span><span class="m">0.13</span><span class="w">      </span><span class="m">0.11</span><span class="w">      </span><span class="m">0.10</span>
+<span class="w">      </span><span class="m">0.09</span><span class="w">      </span><span class="m">0.08</span><span class="w">      </span><span class="m">0.08</span><span class="w">      </span><span class="m">0.07</span><span class="w">      </span><span class="m">0.07</span>
+<span class="w">      </span><span class="m">0.06</span><span class="w">      </span><span class="m">0.06</span><span class="w">      </span><span class="m">0.06</span><span class="w">      </span><span class="m">0.05</span><span class="w">      </span><span class="m">0.05</span>
+<span class="w">      </span><span class="m">0.05</span><span class="w">      </span><span class="m">0.05</span><span class="w">      </span><span class="m">0.04</span><span class="w">      </span><span class="m">0.04</span><span class="w">      </span><span class="m">0.04</span>
 </code></pre></div>
-<p>The first element of the right argument array specifies the characters per column, and the second element the number of decimal places each number should be formatted to.</p>
+<p>The first element of the left argument array specifies the characters per column, and the second element the number of decimal places each number should be formatted to.</p>
 
 
 

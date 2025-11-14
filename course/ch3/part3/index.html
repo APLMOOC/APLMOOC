@@ -2388,7 +2388,7 @@
 </ul>
 </div>
 <hr />
-<p>APL also comes the standard comparison functions, with the expected representative symbols.</p>
+<p>APL also comes with the standard comparison functions, with the expected representative symbols.</p>
 <p>Dyadic <code>=</code>, <code>≠</code>, <code>≤</code>, <code>&lt;</code>, <code>&gt;</code>, <code>≥</code> : Comparison Functions
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="m">0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
 <span class="m">1</span>
@@ -2417,7 +2417,7 @@
 <span class="w">      </span><span class="s1">&#39;hello&#39;</span><span class="w"> </span><span class="o">≡</span><span class="w"> </span><span class="s1">&#39;hello&#39;</span>
 <span class="m">1</span>
 </code></pre></div>
-<p>One useful feature of APL in real-world applications is the ability to change the tolerance of comparison when it comes to floating point values (except for comparison against zero!), and the displayed precision of numbers. The tolerance can be read (and set) via the ⎕CT system variable, and the precision shown is read (and set) via ⎕PP. The tolerance can be anything from 0 (exact comparisons) to 10*¯10.</p>
+<p>One useful feature of APL in real-world applications is the ability to change the tolerance of comparison when it comes to floating point values (except for comparison against zero!), and the displayed precision of numbers. The tolerance can be read (and set) via the <code>⎕CT</code> system variable, and the precision shown is read (and set) via <code>⎕PP</code>. The tolerance can be anything from <code>0</code> (exact comparisons) to <code>10*¯10</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="c1">⍝ 1 + Sine of Pi</span>
 <span class="w">      </span><span class="nv">X</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">○</span><span class="w"> </span><span class="o">○</span><span class="w"> </span><span class="m">1</span>
 <span class="w">      </span><span class="nv">X</span>
@@ -2444,7 +2444,7 @@ skipping a beat, Ken replied, "Any carpenter knows that!" and went on
 to the next question. </p>
 <p>—Paul Berry</p>
 </blockquote>
-<p>As suggested by the choice of glyphs for the Greatest Common Divisor ∧ and the Least Common Multiple ∨, these two operations are also used for the boolean logic "or" and "and" operations. This is because 0 is divisible by everything, as the remainder is always 0. So the Greatest Common Divisor of 0 and x is just x, since x divides both 0 and x. Dually, 0 is also a multiple of everything, so the Least Common Multiple of 0 and x is just 0, since 0 is a multiple of both x and 0 (and it’s the smallest!).</p>
+<p>As suggested by the choice of glyphs for the Greatest Common Divisor <code>∧</code> and the Least Common Multiple <code>∨</code>, these two operations are also used for the boolean logic "or" and "and" operations. This is because 0 is divisible by everything, as the remainder is always 0. So the Greatest Common Divisor of 0 and x is just x, since x divides both 0 and x. Dually, 0 is also a multiple of everything, so the Least Common Multiple of 0 and x is just 0, since 0 is a multiple of both x and 0 (and it’s the smallest!).</p>
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="m">3</span><span class="w"> </span><span class="o">∧</span><span class="w"> </span><span class="m">0</span>
 <span class="m">0</span>
 <span class="w">      </span><span class="m">0</span><span class="w"> </span><span class="o">∨</span><span class="w"> </span><span class="m">3</span>

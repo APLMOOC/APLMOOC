@@ -2417,11 +2417,13 @@
 <p>Much better. </p>
 <p>Since you're already at the new machines, you may as well snoop around to see what everyone else has been up to. You use the <code>)VARS</code> <a href="https://dyalog.github.io/documentation/20.0/language-reference-guide/system-commands/introduction/">system command</a> to list all variables in the current workspace.</p>
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="p">)</span><span class="nv">VARS</span>
-<span class="nv">CAPACITY</span><span class="w">        </span><span class="nv">INSPECTION_DATE</span><span class="w"> </span><span class="nv">INSTALLATION_DATE</span><span class="w">       </span><span class="nv">MAINTENANCE</span><span class="w">    </span>
-<span class="nv">MANUFACTURER</span><span class="w">    </span><span class="nv">SERIAL</span><span class="w">  </span><span class="nv">USER</span><span class="w">    </span><span class="nv">VERSION</span><span class="w"> </span><span class="nv">budget_left</span><span class="w">     </span><span class="nv">crew_count</span><span class="w">     </span>
-<span class="nv">crew_salary</span><span class="w">     </span><span class="nv">supplies_needed</span><span class="w"> </span><span class="nv">yearly_budget</span><span class="w">  </span>
+<span class="nv">budget_left</span><span class="w">     </span><span class="nv">CAPACITY</span><span class="w">        </span><span class="nv">crew_count</span><span class="w">     </span><span class="nv">crew_salary</span>
+<span class="nv">INSPECTION_DATE</span><span class="w"> </span><span class="nv">INSTALLATION_DATE</span><span class="w"> </span><span class="nv">MAINTENANCE</span><span class="w">   </span><span class="nv">MANUFACTURER</span>
+<span class="nv">SERIAL</span><span class="w">          </span><span class="nv">supplies_needed</span><span class="w">  </span><span class="nv">T1</span><span class="w">             </span><span class="nv">T2</span>
+<span class="nv">USER</span><span class="w">            </span><span class="nv">VERSION</span><span class="w">          </span><span class="nv">yearly_budget</span>
 </code></pre></div>
-<p>You feel like you and your best friend deserve a raise, looking over your shoulder to make sure no supervisor is watching, you change the crew salary variable for the lowest two salaries.</p>
+<p>You feel like you and your best friend deserve a raise, you change the crew salary variable for the lowest two salaries.</p>
+<p>To replace a value in a vector, write out the elements as you would access them, then assign a list of new values.</p>
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">crew_salary</span>
 <span class="m">87500</span><span class="w"> </span><span class="m">113200</span><span class="w"> </span><span class="m">95800</span><span class="w"> </span><span class="m">148700</span><span class="w"> </span><span class="m">132400</span>
 <span class="w">      </span><span class="nv">crew_salary</span><span class="sr">[</span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="sr">]</span>
@@ -2430,12 +2432,17 @@
 <span class="w">      </span><span class="nv">crew_salary</span>
 <span class="m">130200</span><span class="w"> </span><span class="m">113200</span><span class="w"> </span><span class="m">120000</span><span class="w"> </span><span class="m">148700</span><span class="w"> </span><span class="m">132400</span>
 </code></pre></div>
-<p>Of course, your salary is higher because you took the initiative, which is a very important skill for an astronaut.</p>
 <p>You also feel like a new notebook for your very mission-critical logging hobby would be nice.</p>
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">supplies_needed</span>
 <span class="m">4</span><span class="w"> </span><span class="nv">O2TANK</span><span class="w"> </span><span class="p">(</span><span class="nv">IMMEDIATELY</span><span class="p">)</span>
 </code></pre></div>
-<p>You remember that vectors can store characters as well as numbers! Using <code>'single quotes'</code> around the characters you want to add, you change the needed supplies vector.</p>
+<p>This variable is a vector of individual text characters, in order to create a vector of characters use <code>'single quotes'</code> around the characters you want to add. You can even create a vector of individual characters in the same way you would a vector of numbers.</p>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="s1">&#39;abcdef&#39;</span>
+<span class="nv">abcdef</span>
+<span class="w">      </span><span class="s1">&#39;a&#39;</span><span class="w"> </span><span class="s1">&#39;b&#39;</span><span class="w"> </span><span class="s1">&#39;c&#39;</span><span class="w"> </span><span class="s1">&#39;d&#39;</span><span class="w"> </span><span class="s1">&#39;e&#39;</span><span class="w"> </span><span class="s1">&#39;f&#39;</span>
+<span class="nv">abcdef</span>
+</code></pre></div>
+<p>You change the <code>supplies_needed</code> vector to contain a new vector of characters.</p>
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">supplies_needed</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="s1">&#39;1 NOTEBOOK (IMMEDIATELY)&#39;</span>
 <span class="w">      </span><span class="nv">supplies_needed</span>
 <span class="m">1</span><span class="w"> </span><span class="nv">NOTEBOOK</span><span class="w"> </span><span class="p">(</span><span class="nv">IMMEDIATELY</span><span class="p">)</span>

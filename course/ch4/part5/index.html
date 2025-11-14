@@ -2575,8 +2575,6 @@ It could work if zero was never a valid index; however, <code>⍳</code> is inde
 
 <span class="w">      </span><span class="s1">&#39;asdfghjkl&#39;</span><span class="w"> </span><span class="o">⍳</span><span class="w"> </span><span class="s1">&#39;agl&#39;</span>
 <span class="m">0</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">8</span>
-
-<span class="w">      </span><span class="nf">⎕IO</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">1</span>
 </code></pre></div>
 <p>Instead of returning zero (or a negative number), the APL developers decided to be clever and return a number that's one larger than the length of the array.</p>
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="s1">&#39;asdfghjkl&#39;</span><span class="w"> </span><span class="o">⍳</span><span class="w"> </span><span class="s1">&#39;agl&#39;</span>
@@ -2701,12 +2699,6 @@ A good strategy is to:</p>
 <span class="w">      </span><span class="p">(</span><span class="m">40</span><span class="o">=</span><span class="nv">PRICES</span><span class="p">)</span><span class="na">/</span><span class="o">⍳⍴</span><span class="nv">PRICES</span>
 <span class="m">3</span><span class="w"> </span><span class="m">6</span>
 </code></pre></div>
-<div class="admonition tip">
-<p class="admonition-title">Slashiotarho</p>
-<p>Look at the three symbols: slash, iota, and rho.
-This way of finding where values are is so useful that it has its own name: <strong>SLASHIOTARHO</strong>!</p>
-<p>Chant it to yourself before bed and remember it well.</p>
-</div>
 <p>Slashiotarho is also more powerful than the dyadic <code>⍳</code> function we looked at earlier, since we can use it to find any condition we like.
 For example, if we wanted to find all prices that are <em>at most</em> 40, we can just change one symbol:</p>
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">PRICES</span>

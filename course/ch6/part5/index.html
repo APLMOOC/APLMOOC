@@ -3185,18 +3185,18 @@
 <span class="err">└────┴─┴─┴─┴─┴─┴─┴─┘</span>
 </code></pre></div>
 <p>Instead, we match the 1-cells of the left array argument with the right array argument
-<div class="highlight"><pre><span></span><code>      ↑(&#39;Who&#39; &#39;What&#39; &#39;When&#39; &#39;Why&#39; &#39;How&#39;)
-Who 
-What
-When
-Why 
-How
-      (↑&#39;Who&#39; &#39;What&#39; &#39;When&#39; &#39;Why&#39; &#39;How&#39;) (,⍤1 99) &#39; is it?&#39;
-Who  is it?
-What is it?
-When is it?
-Why  is it?
-How  is it?
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">↑</span><span class="p">(</span><span class="s1">&#39;Who&#39;</span><span class="w"> </span><span class="s1">&#39;What&#39;</span><span class="w"> </span><span class="s1">&#39;When&#39;</span><span class="w"> </span><span class="s1">&#39;Why&#39;</span><span class="w"> </span><span class="s1">&#39;How&#39;</span><span class="p">)</span>
+<span class="nv">Who</span><span class="w"> </span>
+<span class="nv">What</span>
+<span class="nv">When</span>
+<span class="nv">Why</span><span class="w"> </span>
+<span class="nv">How</span>
+<span class="w">      </span><span class="p">(</span><span class="o">↑</span><span class="s1">&#39;Who&#39;</span><span class="w"> </span><span class="s1">&#39;What&#39;</span><span class="w"> </span><span class="s1">&#39;When&#39;</span><span class="w"> </span><span class="s1">&#39;Why&#39;</span><span class="w"> </span><span class="s1">&#39;How&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">,</span><span class="na">⍤</span><span class="m">1</span><span class="w"> </span><span class="m">99</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39; is it?&#39;</span>
+<span class="nv">Who</span><span class="w">  </span><span class="nv">is</span><span class="w"> </span><span class="nv">it</span><span class="o">?</span>
+<span class="nv">What</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">it</span><span class="o">?</span>
+<span class="nv">When</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">it</span><span class="o">?</span>
+<span class="nv">Why</span><span class="w">  </span><span class="nv">is</span><span class="w"> </span><span class="nv">it</span><span class="o">?</span>
+<span class="nv">How</span><span class="w">  </span><span class="nv">is</span><span class="w"> </span><span class="nv">it</span><span class="o">?</span>
 </code></pre></div></p>
 <p>We can also expand this example to more tenses by repeated application of the rank <code>⍤</code> operator. Separating out the perfect tenses into a different dimension </p>
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">↑</span><span class="p">(</span><span class="o">↑</span><span class="s1">&#39; is it?&#39;</span><span class="w"> </span><span class="s1">&#39; was it?&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">↑</span><span class="s1">&#39; has it been?&#39;</span><span class="w"> </span><span class="s1">&#39; had it been?&#39;</span><span class="p">)</span>

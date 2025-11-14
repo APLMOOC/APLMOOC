@@ -2672,11 +2672,7 @@ Let's see what happens when we change the index origin:</p>
 <span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span>
 </code></pre></div>
 <p>Note that now <code>⍳</code> still generates a vector of the <em>length</em> you give it, and not <em>up to the value</em> you give it.</p>
-<p>Remember to always change back the index origin after you're done to avoid messing up other code that expects it to be 1:</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nf">⎕IO</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">1</span>
-<span class="w">      </span><span class="nf">⎕IO</span>
-<span class="m">1</span>
-</code></pre></div>
+<p>It's recommended not to change the index origin repeatedly in the same program, since it can make it hard to read. Make the decision at the very start of a program to avoid confusion.</p>
 <h2 id="reshape">Reshape</h2>
 <p>You've already seen this one, but let's see how it works in more detail.</p>
 <div class="admonition note">
@@ -2799,13 +2795,11 @@ The expression <code>3?5</code> means: "generate 3 numbers from 1 to 5 <strong>w
 </div>
 <p>What if we wanted to include zero?
 We could, of course, subtract 1 from everything.
-However, deal is origin-sensitive, so we can just use our favourite <code>⎕IO</code> variable (remember to set it back once you're done).</p>
+However, deal is origin-sensitive, so we can just set our favourite <code>⎕IO</code> variable at the very beginning of our program.</p>
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nf">⎕IO</span><span class="kd">←</span><span class="m">0</span>
 
 <span class="w">      </span><span class="m">5</span><span class="o">?</span><span class="m">5</span>
 <span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">3</span>
-
-<span class="w">      </span><span class="nf">⎕IO</span><span class="kd">←</span><span class="m">1</span>
 </code></pre></div>
 <p>Ok, but what if we want repetitions?
 Say I wanted a random list of ones and zeros.
@@ -2816,8 +2810,6 @@ Just trying to force APL to generate these doesn't end well...</p>
 <span class="nv">DOMAIN</span><span class="w"> </span><span class="nv">ERROR</span><span class="bp">:</span><span class="w"> </span><span class="nv">Deal</span><span class="w"> </span><span class="nv">right</span><span class="w"> </span><span class="nv">argument</span><span class="w"> </span><span class="nv">must</span><span class="w"> </span><span class="nv">be</span><span class="w"> </span><span class="nv">greater</span><span class="w"> </span><span class="nv">than</span><span class="w"> </span><span class="nv">or</span><span class="w"> </span><span class="nv">equal</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">left</span><span class="w"> </span><span class="nv">argument</span>
 <span class="w">      </span><span class="m">10</span><span class="o">?</span><span class="m">2</span>
 <span class="w">        </span><span class="o">∧</span>
-
-<span class="w">      </span><span class="nf">⎕IO</span><span class="kd">←</span><span class="m">1</span>
 </code></pre></div>
 <p>There is actually another way to use deal that gives you numbers without replacement: it's called roll (like rolling a die)!
 And we don't even need another symbol: it's just the monadic version of <code>?</code>.</p>
@@ -2848,8 +2840,6 @@ Here's two possible answers:</p>
 
 <span class="w">      </span><span class="o">?</span><span class="m">15</span><span class="o">⍴</span><span class="m">2</span>
 <span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span>
-
-<span class="w">      </span><span class="nf">⎕IO</span><span class="kd">←</span><span class="m">1</span>
 </code></pre></div>
 <h2 id="catenate">Catenate</h2>
 <p>You're also familiar with this one!
