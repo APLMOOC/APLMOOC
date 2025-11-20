@@ -16,7 +16,7 @@ This part is going to go through some tips and tricks and get you familiar with 
 The prefix method of typing glpyhs works just as before in RIDE.
 Make sure to go to `Edit > Preferences > Keyboard` and change your keyboard layout and prefix key to the right settings.
 
-The tab method doesn't work in RIDE.
+The tab method doesn't work in RIDE, unless you installed a tab completion script as mentioned in [Chapter 1](/course/ch1/part3).
 However, the "bug" where you couldn't type certain prefix combinations is fixed as long as you set the right layout.
 For example, on TryAPL, if you are using a Finnish keyboard, you can't type the `←` symbol using the prefix method, since <kbd>PREFIX</kbd> <kbd>]</kbd> does not work.
 But in RIDE, the prefix is changed to <kbd>PREFIX</kbd> <kbd>å</kbd>, which works natively on your keyboard!
@@ -70,9 +70,9 @@ Then, to save this as a workspace, you can use the `)save filename` command, rep
 test.dws ⍝ saved Tue Jan 28 20:03:04 2025
 ```
 
-!!! warning "REMEMBER TO SAVE BEFORE CLOSING RIDE"
+!!! warning "***Remember to save your workspaces***"
 
-    REMEMBER TO SAVE BEFORE CLOSING RIDE
+    Sometimes, before exiting your session, RIDE will suggest to save your workspace; however, always ***remember to save your workspaces***
 
 Once you close and re-open RIDE, you can load your workspace by using the `)load filename` command:
 
@@ -111,8 +111,12 @@ clear ws
 
 For many years, APL programmers relied on workspaces to write their APL code.
 If they needed to send code to a friend or coworker, they would just email the workspace file to them!
-To us zoomers this is completely crazy, but some older APL programmers still swear by workspaces.
-The developers of APL eventually realised that workspaces on their own were a terrible idea: you couldn't save code in Git, you couldn't manage projects with more than one person, and making small changes to any code required you to load the whole binary workspace blob with all of the variables and other history included.
+
+
+To us modern programmers, this is completely crazy, but some older APL programmers still swear by workspaces.
+The developers of APL eventually realised that workspaces on their own were a terrible idea: you couldn't use version control (for example, git), you couldn't manage projects with more than one person, and making small changes to any code required you to load the whole binary workspace blob with all of the variables and other history included.
+
+
 To fix this, they created a _user command_ called LINK!
 
 !!! tip "User commands"
@@ -214,16 +218,22 @@ Link a namespace with a directory (create one but not both if non-existent)
 ```
 
 Ok, enough documentation. Time to create the link!
-LINK takes two arguments: the _namespace_ you are using and the path on your computer you want to link the workspace to.
+
+
+`]LINK.Create` takes two arguments: the _namespace_ you are using and the path on your computer you want to link the workspace to.
 In most cases, you should just put `#` for the namespace, which just means "everything".
-Namespaces are a way to organise code within one workspace, but we won't worry about them in this course.
-Anyway, all you have to do now is to create a new (empty) folder somewhere on your computer, and pass its path to the link command.
+Namespaces are a way to organise code within one workspace, more on Object-oriented APL later in this chapter.
+
+
+All you have to do now is to create a new (empty) folder somewhere on your computer, and pass its path to the link command.
 For example, I have created a new folder called `apltest` in the `Programs` folder, so I'll run this:
 
 ```apl
       ]Link.Create # Programs/apltest
-Linked: # → ~/Programs/apltest
+Linked: # ←→ ~/Programs/apltest
 ```
+
+The bi-directional arrow means changes to our code in our namespace `#` are written to our folder, and changes to our code in the folder is reflected back to our namespace! On some systems, only a uni-directional arrow is shown. If this is the case, you might need to install the [.NET Framework](https://dotnet.microsoft.com/en-us/download) from Microsoft, but a uni-directional link is sufficient for our purposes.
 
 Let's see what happens when we create the same functions and variables as in the previous example.
 

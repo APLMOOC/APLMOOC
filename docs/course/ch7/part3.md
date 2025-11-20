@@ -3,9 +3,8 @@
 !!! abstract "This part will cover"
     
     - Tradfns
-    - The branch operator
-    - If, else if, else
-    - For, while
+    - If statements
+    - Branch
 
 ---
 
@@ -47,7 +46,7 @@ You'll finally be able to write program logic that spans multiple lines instead 
 
     Prefix method: <kbd>PREFIX</kbd> <kbd>G</kbd>
     
-    You can remember this since G stands for Giza and the symbol looks like the pyramid of Giza (but flipped upside-down for whatever reason lol)
+    You can remember this since G stands for Giza and the symbol looks like the pyramid of Giza (but flipped upside-down for whatever reason)
 
 To create a tradfn, we use the Del operator `∇` followed by the name of the function we want to create.
 RIDE will then go into a function writing mode: it will spit out a line number `[1]` and ask you to write the first line of your function.
@@ -105,7 +104,7 @@ Now, obviously, we don't want to adjust the two variables manually: let's make t
 
 In APL, the 0th line of a function is called the _header line_.
 Here, you can specify your program's paramters and what variable it returns after exiting.
-The syntax is the same as when you run a function: a function `FUNC` that takes in a left argument `LEFT`, right argument `RIGHT`, and returns a result `RESULT` will have the header line `RESULT ← LEFT FUNC RIGHT`.
+The syntax is the same as when you run a function: a function `FUNC` that takes in a left argument `LEFT`, right argument `RIGHT`, and returns a result `RESULT` will have the header line `RESULT ← LEFT FUNC RIGHT`. We can also make the left argument optional by surrounding it with `{LEFT}` curly braces.
 
 Here's what it looks like for our code:
 ![A picture of the full dealing code in action](../assets/7_3_dealing.png)
@@ -127,5 +126,89 @@ This is how it should ideally look like:
     If you don't do this, you risk filling up your workspace with garbage: global variables stay in your workspace even after running your function, and will hang around until you delete them manually.
 
     Unless you are using a tradfn to define some global variables that you need in the editor, you should make them local!
+
+## Conditional expressions
+
+Recall that when using dfns we could execute parts of our code depending on whether a logical operation returns a `1` or a `0`. In tradfns, the usual dfn conditional expressions are not recognized. The equivalent method of specifying a conditional expressions is similar to imperative programming languages, using an ``:If`` statement.
+
+Consider the following example, where we check if our tradfn has a left argument using the [`⎕NC` function](https://help.dyalog.com/17.1/Content/Language/System%20Functions/nc.htm) which returns `0` when a variable name is unused.
+
+```apl
+       ∇ result ← {LEFT} function RIGHT
+         :If 0=⎕NC'LEFT'
+              result ← 'No left argument specified'
+         :Else
+              result ← 'The left argument is ',LEFT
+         :EndIf
+       ∇
+
+       function 'world'
+No left argument specified
+
+       'hello' function 'world'
+The left argument is hello
+```
+
+The `:If` keyword is followed by a conditional expression, here `0=⎕NC'LEFT'`, and executes the code that follows if the conditional expression returns a value of `1` (true). If the value is `0` (false), then it executes the code after an `:Else` statement if it exists.
+
+These types of control structures are discouraged in APL code since they are usually the wrong tool for the job; however, they are common when interfacing with external code or libraries. We will not cover any further control flow structures, such as `:For`, `:While`, or `:Repeat`, one reason for which is that they have the same syntax as in imperative programming languages.
+
+## Branch
+
+In many older APL programs, you may see the branch `→` symbol. Its behavior is similar to `goto` and is similarly discouraged, with some dialects dropping it entirely. When given a right argument in functions, it continues the execution of code from that line onwards. If the line number does not exist (including 0) or when it is not given a right argument at all, the code halts execution.
+
+Instead of hard-coding line numbers which change as our code grows, *labels* may also be used. The syntax is the name of the label followed by a colon `:`. This simply assigns the line number to the name of the label. To verify this, see the following example.
+
+```apl
+       ∇ labeltest
+              → third
+
+              first:
+              'hello'
+
+              second:
+              'world'
+
+              third:
+              ⎕ ← first second third
+       ∇
+
+       labeltest
+2 4 6
+```
+
+
+See the following example that sets the display precision of numbers to either `1` significant figure, `7` significant figures, or `14` significant figures depending on its right argument.
+
+```apl
+       ∇ precision type
+              → (NDP FDP DDP)['SINGLE' 'FLOAT' 'DOUBLE'⍳⊂type]
+
+              NDP:
+              ⎕PP ← 1
+              →
+
+              FDP:
+              ⎕PP ← 7
+              →
+
+              DDP:
+              ⎕PP ← 14
+
+       ∇
+
+       precision 'SINGLE'
+       2÷3
+0.7
+       precision 'FLOAT'
+       2÷3
+0.6666667
+
+       precision 'DOUBLE'
+       2÷3
+0.66666666666667
+```
+
+These kinds of expressions are used very frequently in older APL code, the kind which you might see in APL programming books such as [Mathematical experiments on the computer](https://archive.org/details/mathematicalexpe0000gren/).
 
 

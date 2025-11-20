@@ -95,7 +95,7 @@ You can launch Dyalog RIDE by searching for `RIDE` in your program menu, or by t
 
 There are community packages that install RIDE on the Arch User Repository, for example [ride-bin](https://aur.archlinux.org/packages/ride-bin), these installations are not verified by Dyalog.
 
-Manual instructions were however provided on Stack Exchange <https://stackoverflow.com/questions/66729267/how-to-get-dyalog-apl-on-arch>.
+Manual instructions were also provided on [Stack Overflow](https://stackoverflow.com/questions/66729267/how-to-get-dyalog-apl-on-arch).
 
 ## Windows
 
