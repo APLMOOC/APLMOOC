@@ -2219,6 +2219,24 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#conditional-expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conditional expressions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#branch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Branch
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2501,6 +2519,24 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#conditional-expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conditional expressions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#branch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Branch
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2522,9 +2558,8 @@
 <p class="admonition-title">This part will cover</p>
 <ul>
 <li>Tradfns</li>
-<li>The branch operator</li>
-<li>If, else if, else</li>
-<li>For, while</li>
+<li>If statements</li>
+<li>Branch</li>
 </ul>
 </div>
 <hr />
@@ -2554,7 +2589,7 @@ You'll finally be able to write program logic that spans multiple lines instead 
 <div class="admonition note">
 <p class="admonition-title">Typing the Del operator <code>∇</code></p>
 <p>Prefix method: <kbd>PREFIX</kbd> <kbd>G</kbd></p>
-<p>You can remember this since G stands for Giza and the symbol looks like the pyramid of Giza (but flipped upside-down for whatever reason lol)</p>
+<p>You can remember this since G stands for Giza and the symbol looks like the pyramid of Giza (but flipped upside-down for whatever reason)</p>
 </div>
 <p>To create a tradfn, we use the Del operator <code>∇</code> followed by the name of the function we want to create.
 RIDE will then go into a function writing mode: it will spit out a line number <code>[1]</code> and ask you to write the first line of your function.
@@ -2598,7 +2633,7 @@ and whether it uses uppercase or lowercase letters using the variable <code>UPPE
 <p>Now, obviously, we don't want to adjust the two variables manually: let's make them parameters of our <code>DealHand</code> function.</p>
 <p>In APL, the 0th line of a function is called the <em>header line</em>.
 Here, you can specify your program's paramters and what variable it returns after exiting.
-The syntax is the same as when you run a function: a function <code>FUNC</code> that takes in a left argument <code>LEFT</code>, right argument <code>RIGHT</code>, and returns a result <code>RESULT</code> will have the header line <code>RESULT ← LEFT FUNC RIGHT</code>.</p>
+The syntax is the same as when you run a function: a function <code>FUNC</code> that takes in a left argument <code>LEFT</code>, right argument <code>RIGHT</code>, and returns a result <code>RESULT</code> will have the header line <code>RESULT ← LEFT FUNC RIGHT</code>. We can also make the left argument optional by surrounding it with <code>{LEFT}</code> curly braces.</p>
 <p>Here's what it looks like for our code:
 <img alt="A picture of the full dealing code in action" src="../../assets/7_3_dealing.png" /></p>
 <p>If you have sharp eyes, you'll see that some of the variables in our function are grey and some are black.
@@ -2615,6 +2650,73 @@ This is how it should ideally look like:</p>
 If you don't do this, you risk filling up your workspace with garbage: global variables stay in your workspace even after running your function, and will hang around until you delete them manually.</p>
 <p>Unless you are using a tradfn to define some global variables that you need in the editor, you should make them local!</p>
 </div>
+<h2 id="conditional-expressions">Conditional expressions</h2>
+<p>Recall that when using dfns we could execute parts of our code depending on whether a logical operation returns a <code>1</code> or a <code>0</code>. In tradfns, the usual dfn conditional expressions are not recognized. The equivalent method of specifying a conditional expressions is similar to imperative programming languages, using an <code>:If</code> statement.</p>
+<p>Consider the following example, where we check if our tradfn has a left argument using the <a href="https://help.dyalog.com/17.1/Content/Language/System%20Functions/nc.htm"><code>⎕NC</code> function</a> which returns <code>0</code> when a variable name is unused.</p>
+<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="bp">∇</span><span class="w"> </span><span class="nv">result</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="nv">LEFT</span><span class="kt">}</span><span class="w"> </span><span class="nv">function</span><span class="w"> </span><span class="nv">RIGHT</span>
+<span class="w">         </span><span class="bp">:</span><span class="nv">If</span><span class="w"> </span><span class="m">0</span><span class="o">=</span><span class="nf">⎕NC</span><span class="s1">&#39;LEFT&#39;</span>
+<span class="w">              </span><span class="nv">result</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="s1">&#39;No left argument specified&#39;</span>
+<span class="w">         </span><span class="bp">:</span><span class="nv">Else</span>
+<span class="w">              </span><span class="nv">result</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="s1">&#39;The left argument is &#39;</span><span class="o">,</span><span class="nv">LEFT</span>
+<span class="w">         </span><span class="bp">:</span><span class="nv">EndIf</span>
+<span class="w">       </span><span class="bp">∇</span>
+
+<span class="w">       </span><span class="nv">function</span><span class="w"> </span><span class="s1">&#39;world&#39;</span>
+<span class="nv">No</span><span class="w"> </span><span class="nv">left</span><span class="w"> </span><span class="nv">argument</span><span class="w"> </span><span class="nv">specified</span>
+
+<span class="w">       </span><span class="s1">&#39;hello&#39;</span><span class="w"> </span><span class="nv">function</span><span class="w"> </span><span class="s1">&#39;world&#39;</span>
+<span class="nv">The</span><span class="w"> </span><span class="nv">left</span><span class="w"> </span><span class="nv">argument</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">hello</span>
+</code></pre></div>
+<p>The <code>:If</code> keyword is followed by a conditional expression, here <code>0=⎕NC'LEFT'</code>, and executes the code that follows if the conditional expression returns a value of <code>1</code> (true). If the value is <code>0</code> (false), then it executes the code after an <code>:Else</code> statement if it exists.</p>
+<p>These types of control structures are discouraged in APL code since they are usually the wrong tool for the job; however, they are common when interfacing with external code or libraries. We will not cover any further control flow structures, such as <code>:For</code>, <code>:While</code>, or <code>:Repeat</code>, one reason for which is that they have the same syntax as in imperative programming languages.</p>
+<h2 id="branch">Branch</h2>
+<p>In many older APL programs, you may see the branch <code>→</code> symbol. Its behavior is similar to <code>goto</code> and is similarly discouraged, with some dialects dropping it entirely. When given a right argument in functions, it continues the execution of code from that line onwards. If the line number does not exist (including 0) or when it is not given a right argument at all, the code halts execution.</p>
+<p>Instead of hard-coding line numbers which change as our code grows, <em>labels</em> may also be used. The syntax is the name of the label followed by a colon <code>:</code>. This simply assigns the line number to the name of the label. To verify this, see the following example.</p>
+<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="bp">∇</span><span class="w"> </span><span class="nv">labeltest</span>
+<span class="w">              </span><span class="kd">→</span><span class="w"> </span><span class="nv">third</span>
+
+<span class="w">              </span><span class="nv">first</span><span class="bp">:</span>
+<span class="w">              </span><span class="s1">&#39;hello&#39;</span>
+
+<span class="w">              </span><span class="nv">second</span><span class="bp">:</span>
+<span class="w">              </span><span class="s1">&#39;world&#39;</span>
+
+<span class="w">              </span><span class="nv">third</span><span class="bp">:</span>
+<span class="w">              </span><span class="vg">⎕</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">first</span><span class="w"> </span><span class="nv">second</span><span class="w"> </span><span class="nv">third</span>
+<span class="w">       </span><span class="bp">∇</span>
+
+<span class="w">       </span><span class="nv">labeltest</span>
+<span class="m">2</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">6</span>
+</code></pre></div>
+<p>See the following example that sets the display precision of numbers to either <code>1</code> significant figure, <code>7</code> significant figures, or <code>14</code> significant figures depending on its right argument.</p>
+<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="bp">∇</span><span class="w"> </span><span class="nv">precision</span><span class="w"> </span><span class="nv">type</span>
+<span class="w">              </span><span class="kd">→</span><span class="w"> </span><span class="p">(</span><span class="nv">NDP</span><span class="w"> </span><span class="nv">FDP</span><span class="w"> </span><span class="nv">DDP</span><span class="p">)</span><span class="sr">[</span><span class="s1">&#39;SINGLE&#39;</span><span class="w"> </span><span class="s1">&#39;FLOAT&#39;</span><span class="w"> </span><span class="s1">&#39;DOUBLE&#39;</span><span class="o">⍳⊂</span><span class="nv">type</span><span class="sr">]</span>
+
+<span class="w">              </span><span class="nv">NDP</span><span class="bp">:</span>
+<span class="w">              </span><span class="nf">⎕PP</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">1</span>
+<span class="w">              </span><span class="kd">→</span>
+
+<span class="w">              </span><span class="nv">FDP</span><span class="bp">:</span>
+<span class="w">              </span><span class="nf">⎕PP</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">7</span>
+<span class="w">              </span><span class="kd">→</span>
+
+<span class="w">              </span><span class="nv">DDP</span><span class="bp">:</span>
+<span class="w">              </span><span class="nf">⎕PP</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">14</span>
+
+<span class="w">       </span><span class="bp">∇</span>
+
+<span class="w">       </span><span class="nv">precision</span><span class="w"> </span><span class="s1">&#39;SINGLE&#39;</span>
+<span class="w">       </span><span class="m">2</span><span class="o">÷</span><span class="m">3</span>
+<span class="m">0.7</span>
+<span class="w">       </span><span class="nv">precision</span><span class="w"> </span><span class="s1">&#39;FLOAT&#39;</span>
+<span class="w">       </span><span class="m">2</span><span class="o">÷</span><span class="m">3</span>
+<span class="m">0.6666667</span>
+
+<span class="w">       </span><span class="nv">precision</span><span class="w"> </span><span class="s1">&#39;DOUBLE&#39;</span>
+<span class="w">       </span><span class="m">2</span><span class="o">÷</span><span class="m">3</span>
+<span class="m">0.66666666666667</span>
+</code></pre></div>
+<p>These kinds of expressions are used very frequently in older APL code, the kind which you might see in APL programming books such as <a href="https://archive.org/details/mathematicalexpe0000gren/">Mathematical experiments on the computer</a>.</p>
 
 
 

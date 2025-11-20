@@ -2598,7 +2598,7 @@ This part is going to go through some tips and tricks and get you familiar with 
 <h2 id="typing-glyphs">Typing glyphs</h2>
 <p>The prefix method of typing glpyhs works just as before in RIDE.
 Make sure to go to <code>Edit &gt; Preferences &gt; Keyboard</code> and change your keyboard layout and prefix key to the right settings.</p>
-<p>The tab method doesn't work in RIDE, unless you installed a tab completion script as mentioned in Chapter 1.
+<p>The tab method doesn't work in RIDE, unless you installed a tab completion script as mentioned in <a href="/course/ch1/part3">Chapter 1</a>.
 However, the "bug" where you couldn't type certain prefix combinations is fixed as long as you set the right layout.
 For example, on TryAPL, if you are using a Finnish keyboard, you can't type the <code>←</code> symbol using the prefix method, since <kbd>PREFIX</kbd> <kbd>]</kbd> does not work.
 But in RIDE, the prefix is changed to <kbd>PREFIX</kbd> <kbd>å</kbd>, which works natively on your keyboard!
@@ -2643,8 +2643,8 @@ Don't worry: we'll cover a way to save your code as plaintext later on.</p>
 <span class="nv">test</span><span class="na">.</span><span class="nv">dws</span><span class="w"> </span><span class="c1">⍝ saved Tue Jan 28 20:03:04 2025</span>
 </code></pre></div>
 <div class="admonition warning">
-<p class="admonition-title">REMEMBER TO SAVE BEFORE CLOSING RIDE</p>
-<p>REMEMBER TO SAVE BEFORE CLOSING RIDE</p>
+<p class="admonition-title"><strong><em>Remember to save your workspaces</em></strong></p>
+<p>Sometimes, before exiting your session, RIDE will suggest to save your workspace; however, always <strong><em>remember to save your workspaces</em></strong></p>
 </div>
 <p>Once you close and re-open RIDE, you can load your workspace by using the <code>)load filename</code> command:</p>
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="p">)</span><span class="nv">load</span><span class="w"> </span><span class="nv">test</span>
@@ -2674,10 +2674,10 @@ The solution: no APL expression starts with a closing bracket, so let's use thos
 </code></pre></div>
 <h2 id="saving-your-code-as-text">Saving your code as text</h2>
 <p>For many years, APL programmers relied on workspaces to write their APL code.
-If they needed to send code to a friend or coworker, they would just email the workspace file to them!
-To us zoomers this is completely crazy, but some older APL programmers still swear by workspaces.
-The developers of APL eventually realised that workspaces on their own were a terrible idea: you couldn't save code in Git, you couldn't manage projects with more than one person, and making small changes to any code required you to load the whole binary workspace blob with all of the variables and other history included.
-To fix this, they created a <em>user command</em> called LINK!</p>
+If they needed to send code to a friend or coworker, they would just email the workspace file to them!</p>
+<p>To us modern programmers, this is completely crazy, but some older APL programmers still swear by workspaces.
+The developers of APL eventually realised that workspaces on their own were a terrible idea: you couldn't use version control (for example, git), you couldn't manage projects with more than one person, and making small changes to any code required you to load the whole binary workspace blob with all of the variables and other history included.</p>
+<p>To fix this, they created a <em>user command</em> called LINK!</p>
 <div class="admonition tip">
 <p class="admonition-title">User commands</p>
 <p>System commands are functions that let you interact directly with the system.
@@ -2766,15 +2766,16 @@ Let's see how to use it using the help command again:</p>
 <span class="sr">]</span><span class="nv">LINK</span><span class="na">.</span><span class="nv">Create</span><span class="w"> </span><span class="o">-??</span><span class="w">  </span><span class="c1">⍝ for argument and modifier details                          </span>
 <span class="sr">]</span><span class="nv">FILE</span><span class="na">.</span><span class="nv">Open</span><span class="w"> </span><span class="nv">https</span><span class="bp">:</span><span class="na">//</span><span class="nv">dyalog</span><span class="na">.</span><span class="nv">github</span><span class="na">.</span><span class="nv">io</span><span class="na">/</span><span class="nv">link</span><span class="na">/</span><span class="m">4.0</span><span class="na">/</span><span class="nv">API</span><span class="na">/</span><span class="nv">Link</span><span class="na">.</span><span class="nv">Create</span>
 </code></pre></div>
-<p>Ok, enough documentation. Time to create the link!
-LINK takes two arguments: the <em>namespace</em> you are using and the path on your computer you want to link the workspace to.
+<p>Ok, enough documentation. Time to create the link!</p>
+<p><code>]LINK.Create</code> takes two arguments: the <em>namespace</em> you are using and the path on your computer you want to link the workspace to.
 In most cases, you should just put <code>#</code> for the namespace, which just means "everything".
-Namespaces are a way to organise code within one workspace, but we won't worry about them in this course.
-Anyway, all you have to do now is to create a new (empty) folder somewhere on your computer, and pass its path to the link command.
+Namespaces are a way to organise code within one workspace, more on Object-oriented APL later in this chapter.</p>
+<p>All you have to do now is to create a new (empty) folder somewhere on your computer, and pass its path to the link command.
 For example, I have created a new folder called <code>apltest</code> in the <code>Programs</code> folder, so I'll run this:</p>
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="sr">]</span><span class="nv">Link</span><span class="na">.</span><span class="nv">Create</span><span class="w"> </span><span class="c1"># Programs/apltest</span>
-<span class="nv">Linked</span><span class="bp">:</span><span class="w"> </span><span class="c1"># → ~/Programs/apltest</span>
+<span class="nv">Linked</span><span class="bp">:</span><span class="w"> </span><span class="c1"># ←→ ~/Programs/apltest</span>
 </code></pre></div>
+<p>The bi-directional arrow means changes to our code in our namespace <code>#</code> are written to our folder, and changes to our code in the folder is reflected back to our namespace! On some systems, only a uni-directional arrow is shown. If this is the case, you might need to install the <a href="https://dotnet.microsoft.com/en-us/download">.NET Framework</a> from Microsoft, but a uni-directional link is sufficient for our purposes.</p>
 <p>Let's see what happens when we create the same functions and variables as in the previous example.</p>
 <div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">pyramid</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="bp">⍵</span><span class="o">-</span><span class="na">∘.</span><span class="o">⌈</span><span class="na">⍨</span><span class="o">|</span><span class="bp">⍵</span><span class="o">-⍳</span><span class="m">¯1</span><span class="o">+</span><span class="bp">⍵</span><span class="o">×</span><span class="m">2</span><span class="kt">}</span>
 <span class="w">      </span><span class="nv">pyramid7</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">pyramid</span><span class="w"> </span><span class="m">7</span>
