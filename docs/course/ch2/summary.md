@@ -6,10 +6,12 @@ It might be useful to review this page as you are doing the read and write exerc
 
 ## New functions
 
-| Symbol | Name | Function | Key combination (Prefix) | Key combination (Tab)
+| Symbol | Name | Function (Monadic/Dyadic) | Key combination (Prefix) | Key combination (Tab)
 |:--:|:--:|:--:|:--:|:--:|
 | `←` | Assignment symbol | Assigning variables | <kbd>PREFIX</kbd> <kbd>[</kbd> | <kbd><</kbd> ++minus++ ++tab++ |
 | `⎕` | Quad | Printing | <kbd>PREFIX</kbd> ++l++ | <kbd>[</kbd> <kbd>]</kbd> ++tab++ |
+| `⍴` | Rho | Shape/Reshape | <kbd>PREFIX</kbd> ++r++ | <kbd>r</kbd> <kbd>r</kbd> ++tab++ |
+| `,` | Comma | Ravel/Catenate | ++,++ | ++,++ |
 
 ## Old functions
 
@@ -20,7 +22,7 @@ It might be useful to review this page as you are doing the read and write exerc
 | `×` | Times | Multiplication | <kbd>PREFIX</kbd> ++minus++ | <kbd>x</kbd> <kbd>x</kbd> ++tab++ |
 | `÷` | Divide | Division | <kbd>PREFIX</kbd> ++equal++ | <kbd>:</kbd> <kbd>-</kbd> ++tab++ |
 | `*` | Power | Exponentiation | <kbd>*</kbd> | <kbd>*</kbd> |
-| `¯` | Negative sign | Negation of a number | <kbd>PREFIX</kbd> ++2++ | <kbd>-</kbd> <kbd>-</kbd> ++tab++ |
+| `¯` | Negative sign | Negation | <kbd>PREFIX</kbd> ++2++ | <kbd>-</kbd> <kbd>-</kbd> ++tab++ |
 | `⍝` | Lamp | Comment | <kbd>PREFIX</kbd> ++comma++ | <kbd>o</kbd> <kbd>n</kbd> ++tab++ |
 
 

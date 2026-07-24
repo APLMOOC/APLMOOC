@@ -11,5 +11,5 @@ It might be useful to review this page as you are doing the read and write exerc
 | `×` | Times | Multiplication | <kbd>PREFIX</kbd> ++minus++ | <kbd>x</kbd> <kbd>x</kbd> ++tab++ |
 | `÷` | Divide | Division | <kbd>PREFIX</kbd> ++equal++ | <kbd>:</kbd> <kbd>-</kbd> ++tab++ |
 | `*` | Power | Exponentiation | <kbd>*</kbd> | <kbd>*</kbd> |
-| `¯` | Negative sign | Negation of a number | <kbd>PREFIX</kbd> ++2++ | <kbd>-</kbd> <kbd>-</kbd> ++tab++ |
+| `¯` | Negative sign | Negation | <kbd>PREFIX</kbd> ++2++ | <kbd>-</kbd> <kbd>-</kbd> ++tab++ |
 | `⍝` | Lamp | Comment | <kbd>PREFIX</kbd> ++comma++ | <kbd>o</kbd> <kbd>n</kbd> ++tab++ |
