@@ -36,7 +36,7 @@ extra:
       link: https://github.com/APLMOOC/APLMOOC
       name: GitHub
 extra_css:
-  - styles/main.css
+  - styles/main.css?v=2
   - https://unpkg.com/katex@0/dist/katex.min.css
 extra_javascript:
   - js/mooc.js
