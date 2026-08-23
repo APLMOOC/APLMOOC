@@ -1,7 +1,7 @@
-var client_id = "50c4648f34bb075578c383ec62d6908fa49b6986d992c34a2a029be777e0337e";
-var client_secret = "d15d4d4ba2b80a91aaff7a5c94d30fe65c87b058991a327a5de4dfe71f7c5576";
+// var client_id = "50c4648f34bb075578c383ec62d6908fa49b6986d992c34a2a029be777e0337e";
+// var client_secret = "d15d4d4ba2b80a91aaff7a5c94d30fe65c87b058991a327a5de4dfe71f7c5576";
 
-var backend_url = "https://backend.aplmooc.fi";
+var backend_url = "https://apl.danii.fi/api";
 
 $=s=>document.querySelector(s);
 $$=s=>document.querySelectorAll(s);
@@ -19,49 +19,55 @@ auto_login();
 
 // Authentication
 
-function get_mooc_token() {
-    return localStorage.getItem("mooc_token");
+function user_id() {
+    let id = localStorage.getItem("apl_user");
+    if(!id) localStorage.setItem("apl_user", id = crypto.randomUUID());
+    return id;
 }
 
-function set_mooc_token(token) {
-    localStorage.setItem("mooc_token", token);
-}
+// function get_mooc_token() {
+//     return localStorage.getItem("mooc_token");
+// }
 
-function login() {
-    let user = $("#user").value;
-    let pass = $("#pass").value;
-    let ret = mooc_login(user, pass);
-    console.log(ret);
-    $("#loginResponse").innerText = "Logging in...";
-}
+// function set_mooc_token(token) {
+//     localStorage.setItem("mooc_token", token);
+// }
 
-function logout() {
-    localStorage.removeItem("mooc_token");
-}
+// function login() {
+//     let user = $("#user").value;
+//     let pass = $("#pass").value;
+//     let ret = mooc_login(user, pass);
+//     console.log(ret);
+//     $("#loginResponse").innerText = "Logging in...";
+// }
 
-function mooc_login(username, password) {
-    var xhttp = new XMLHttpRequest();
+// function logout() {
+//     localStorage.removeItem("mooc_token");
+// }
 
-    xhttp.onreadystatechange = function() {
-        if (this.readyState != 4) return;
-
-        if (this.status == 200) {
-            mooc_token = JSON.parse(this.responseText)["access_token"];
-            set_mooc_token(mooc_token);
-            $("#loginResponse").innerText = "Success";
-        } else {
-            $("#loginResponse").innerText = "Login failed";
-        }
-    }
-
-    xhttp.open("POST","https://tmc.mooc.fi/oauth/token",true);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("client_id="+client_id+"&"+
-               "client_secret="+client_secret+"&"+
-               "username="+encodeURIComponent(username)+"&"+
-               "password="+encodeURIComponent(password)+"&"+
-               "grant_type=password");
-}
+// function mooc_login(username, password) {
+//     var xhttp = new XMLHttpRequest();
+//
+//     xhttp.onreadystatechange = function() {
+//         if (this.readyState != 4) return;
+//
+//         if (this.status == 200) {
+//             mooc_token = JSON.parse(this.responseText)["access_token"];
+//             set_mooc_token(mooc_token);
+//             $("#loginResponse").innerText = "Success";
+//         } else {
+//             $("#loginResponse").innerText = "Login failed";
+//         }
+//     }
+//
+//     xhttp.open("POST","https://tmc.mooc.fi/oauth/token",true);
+//     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+//     xhttp.send("client_id="+client_id+"&"+
+//                "client_secret="+client_secret+"&"+
+//                "username="+encodeURIComponent(username)+"&"+
+//                "password="+encodeURIComponent(password)+"&"+
+//                "grant_type=password");
+// }
 
 // Problems
 
@@ -84,10 +90,10 @@ function submit_problem(problem_id, parts=0) {
         submission = $(`#input_${problem_id}`).value;
     }
 
-    user_token = get_mooc_token();
-    if(user_token == null) {
-        set_feedback(problem_id, "Please <a href='/account'>log in</a> first")
-    }
+    // user_token = get_mooc_token();
+    // if(user_token == null) {
+    //     set_feedback(problem_id, "Please <a href='/account'>log in</a> first")
+    // }
 
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -105,13 +111,14 @@ function submit_problem(problem_id, parts=0) {
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(JSON.stringify({
         "id_problem": problem_id,
-        "mooc_token": user_token,
+        // "mooc_token": user_token,
+        "id_user": user_id(),
         "code_encoded": window.btoa(unescape(encodeURIComponent(submission))),
     }));
 }
 
 function problem_status() {
-    console.log(`Getting problem status for user ${get_mooc_token()}`);
+    // console.log(`Getting problem status for user ${get_mooc_token()}`);
     // Return dummy data
     return ["c1_p1", "c1_p3"];
 }

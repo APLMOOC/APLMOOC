@@ -1,5 +1,6 @@
 # Write exercises
 
+<!--
 Submit APL code for the following exercises.
 Your submissions are graded using TMC.
 
@@ -11,6 +12,11 @@ You can submit as many solutions as you like.
 If you submit a correct solution at least once, you will receive points on the TMC server and be able to see the model solution.
 
 If the write problem is red, it is unsolved. If it it green, you have solved it and received points for it on the server.
+-->
+
+Remember, you can test your code out on TryAPL before submitting it here! You can submit as many solutions as you like.
+
+Since this course is still a work-in-progress, solving the write exercises will currently not lead to any credits.
 
 ---
 
