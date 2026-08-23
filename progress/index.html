@@ -2346,50 +2346,17 @@
 
       </a>
       
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#your-progress" class="md-nav__link">
-    <span class="md-ellipsis">
-      Your progress
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#statistics" class="md-nav__link">
-    <span class="md-ellipsis">
-      Statistics
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#request-credits" class="md-nav__link">
-    <span class="md-ellipsis">
-      Request credits
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
+        <nav class="md-nav md-nav--secondary apl-feedback-nav" aria-label="Feedback">
+  <label class="md-nav__title">Feedback</label>
+  <form class="apl-feedback" data-section="Progress">
+    <p class="apl-feedback__where">Progress</p>
+    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+              placeholder="Spotted a mistake? Something unclear?"></textarea>
+    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+           placeholder="Email (optional)">
+    <button class="apl-feedback__send" type="submit">Send</button>
+    <p class="apl-feedback__status" role="status"></p>
+  </form>
 </nav>
       
     </li>
@@ -2407,50 +2374,17 @@
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#your-progress" class="md-nav__link">
-    <span class="md-ellipsis">
-      Your progress
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#statistics" class="md-nav__link">
-    <span class="md-ellipsis">
-      Statistics
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#request-credits" class="md-nav__link">
-    <span class="md-ellipsis">
-      Request credits
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
+                    <nav class="md-nav md-nav--secondary apl-feedback-nav" aria-label="Feedback">
+  <label class="md-nav__title">Feedback</label>
+  <form class="apl-feedback" data-section="Progress">
+    <p class="apl-feedback__where">Progress</p>
+    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+              placeholder="Spotted a mistake? Something unclear?"></textarea>
+    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+           placeholder="Email (optional)">
+    <button class="apl-feedback__send" type="submit">Send</button>
+    <p class="apl-feedback__status" role="status"></p>
+  </form>
 </nav>
                   </div>
                 </div>
@@ -2585,6 +2519,8 @@
         <script src="../js/katex.js"></script>
       
         <script src="../js/metrics.js"></script>
+      
+        <script src="../js/feedback.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       

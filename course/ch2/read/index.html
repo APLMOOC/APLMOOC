@@ -2359,15 +2359,17 @@
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
+                    <nav class="md-nav md-nav--secondary apl-feedback-nav" aria-label="Feedback">
+  <label class="md-nav__title">Feedback</label>
+  <form class="apl-feedback" data-section="2.R - Read exercises">
+    <p class="apl-feedback__where">2.R - Read exercises</p>
+    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+              placeholder="Spotted a mistake? Something unclear?"></textarea>
+    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+           placeholder="Email (optional)">
+    <button class="apl-feedback__send" type="submit">Send</button>
+    <p class="apl-feedback__status" role="status"></p>
+  </form>
 </nav>
                   </div>
                 </div>
@@ -2726,6 +2728,8 @@ Remember, creating a vector takes precedence over any other operations.</p>
         <script src="../../../js/katex.js"></script>
       
         <script src="../../../js/metrics.js"></script>
+      
+        <script src="../../../js/feedback.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       
