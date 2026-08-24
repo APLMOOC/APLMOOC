@@ -49,7 +49,7 @@ The ``:Trap`` control structure takes as argument a numerical error code signify
 
 Multiple errors can be caught by passing a vector of error codes to the ``:Trap`` control structure and using ``:Case`` to differentiate them, with extra diagnostic information (such as the error message) provided by the [``⎕DMX`` system object](https://docs.dyalog.com/20.0/language-reference-guide/system-functions/dmx/). The full list of properties is listed therein.
 
-Consider the following example of a tradfn averaging weather measurements from a given file of comma-separated values, using the ``⎕CSV`` system function which will be covered in the next section.
+Consider the following example of a tradfn averaging weather measurements from a given file of comma-separated values, using the ``⎕CSV`` system function which will be covered in [section 7.6](part6.md).
 
 ```apl
       ∇ r←loadTemps file;data;temps;⎕PP

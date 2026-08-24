@@ -1,4 +1,6 @@
 site_name: APL MOOC
+site_url: https://aplmooc.fi/
+site_description: A free online course in array programming with APL.
 theme:
   name: material
   custom_dir: overrides
@@ -17,17 +19,11 @@ theme:
         name: Switch to light mode
   features:
     - navigation.tabs
-    - nagivation.top
+    - navigation.top
     - navigation.footer
     - content.code.annotate
   font:
     code: APL385
-markdown_extensions:
-  - pymdownx.highlight:
-      use_pygments: false
-  - md_in_html
-  - pymdownx.arithmatex:
-      generic: true
 copyright: Contact us <u><a href="https://docs.google.com/forms/d/e/1FAIpQLSdp_GHoS9uLPCAj-807tW-ZZ8Km8f3n1Gkr5YgCQ9taWPFj2w/viewform">here</a></u>. Anonymous messages welcome.
 extra:
   generator: false
@@ -46,14 +42,16 @@ extra_javascript:
   - js/feedback.js
   - https://unpkg.com/katex@0/dist/katex.min.js
   - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
-  - https://cdn.jsdelivr.net/npm/three@0.166.0/build/three.module.js
-  - https://cdn.jsdelivr.net/npm/three@0.166.0/examples/jsm/
 markdown_extensions:
   - admonition
   - attr_list
+  - md_in_html
   - pymdownx.details
   - pymdownx.superfences
-  - pymdownx.superfences
+  - pymdownx.highlight:
+      use_pygments: false
+  - pymdownx.arithmatex:
+      generic: true
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.critic

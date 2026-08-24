@@ -30,7 +30,7 @@ P3
 
 <img src="../../assets/4_b_matrix.png" style="width:50%; margin-left: auto; margin-right: auto; display: block;" />
 
-The `⎕NGET` command can be used to open the above image, and many different types of files. It takes as right argument a path to a file, and returns an array of the file data, the encoding, and the unicode number for the newline character.
+The `⎕NGET` command can be used to open the above image, and many different types of files. It takes as right argument a path to a file, and returns an array of the file data, the encoding, and the character number for newline.
 
 ```apl
        ⎕NGET 'test.ppm'
