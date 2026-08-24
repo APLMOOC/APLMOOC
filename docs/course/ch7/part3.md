@@ -127,6 +127,8 @@ This is how it should ideally look like:
 
     Unless you are using a tradfn to define some global variables that you need in the editor, you should make them local!
 
+Note that system variables can also be set as local variables, for example setting ``⎕IO`` to a different value inside a certain tradfn, which will be reverted after exiting the function.
+
 ## Conditional expressions
 
 Recall that when using dfns we could execute parts of our code depending on whether a logical operation returns a `1` or a `0`. In tradfns, the usual dfn conditional expressions are not recognized. The equivalent method of specifying a conditional expressions is similar to imperative programming languages, using an ``:If`` statement.
