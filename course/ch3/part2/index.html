@@ -6,7 +6,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="A free online course in array programming with APL.">
       
+      
+      
+        <link rel="canonical" href="https://aplmooc.fi/course/ch3/part2/">
       
       
         <link rel="prev" href="../part1/">
@@ -2398,142 +2402,130 @@
 <p>Feel free to skip this section for now, and come back when you see a mathematical operation you don't recognize! Remember to also check the toolbar in TryAPL and RIDE, they come with very helpful tooltips to remind you what an operator does!</p>
 <p>The notation of ceiling <code>⌈x⌉</code> and <code>⌊x⌋</code>      floor in mathematics matches with the corresponding APL functions, in fact, the notation of ceiling and floor (and the use of those words to describe rounding up and down) comes from APL! Before APL, there was no consistent standard to represent the ceiling and floor functions. Ceiling rounds up to the nearest integer, and floor rounds down to the nearest integer.</p>
 <p>Monadic <code>⌈</code> and <code>⌊</code> : Ceil &amp; Floor
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">⌈</span><span class="w"> </span><span class="m">2.5</span><span class="w"> </span><span class="m">2.6</span><span class="w"> </span><span class="m">¯2.5</span><span class="w"> </span><span class="m">¯2.6</span><span class="w"> </span>
-<span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">¯2</span><span class="w"> </span><span class="m">¯2</span>
+<pre class="highlight"><code class="language-apl">      ⌈ 2.5 2.6 ¯2.5 ¯2.6 
+3 3 ¯2 ¯2
 
-<span class="w">      </span><span class="o">⌊</span><span class="w"> </span><span class="m">2.5</span><span class="w"> </span><span class="m">2.6</span><span class="w"> </span><span class="m">¯2.5</span><span class="w"> </span><span class="m">¯2.6</span><span class="w"> </span>
-<span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">¯3</span><span class="w"> </span><span class="m">¯3</span>
-</code></pre></div></p>
+      ⌊ 2.5 2.6 ¯2.5 ¯2.6 
+2 2 ¯3 ¯3</code></pre></p>
 <p>Dyadic <code>⌈</code> and <code>⌊</code> : Max &amp; Min
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="c1">⍝ This simply returns the larger argument</span>
-<span class="w">      </span><span class="m">4</span><span class="w"> </span><span class="o">⌈</span><span class="w"> </span><span class="m">5</span><span class="w"> </span>
-<span class="m">5</span>
-<span class="w">      </span><span class="c1">⍝ This is for the smaller one</span>
-<span class="w">      </span><span class="m">4</span><span class="w"> </span><span class="o">⌊</span><span class="w"> </span><span class="m">5</span><span class="w"> </span>
-<span class="m">4</span>
-<span class="w">      </span><span class="c1">⍝ &quot;Clips&quot; the value of elements to a minimum</span>
-<span class="w">      </span><span class="m">4</span><span class="w"> </span><span class="o">⌈</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>
-<span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span>
+<pre class="highlight"><code class="language-apl">      ⍝ This simply returns the larger argument
+      4 ⌈ 5 
+5
+      ⍝ This is for the smaller one
+      4 ⌊ 5 
+4
+      ⍝ "Clips" the value of elements to a minimum
+      4 ⌈ 1 3 5 7 9 8 6 4 2 0 
+4 4 5 7 9 8 6 4 4 4
 
-<span class="w">      </span><span class="c1">⍝ Similarly &quot;clips&quot; down</span>
-<span class="w">      </span><span class="m">4</span><span class="w"> </span><span class="o">⌊</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>
-<span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">0</span>
-</code></pre></div></p>
+      ⍝ Similarly "clips" down
+      4 ⌊ 1 3 5 7 9 8 6 4 2 0 
+1 3 4 4 4 4 4 4 2 0</code></pre></p>
 <p>The "modulo" operator in other languages is called the residue in APL, and the order of the arguments is reversed. The residue function calculates the residue of the division of the right argument by the left.</p>
 <p>Dyadic <code>|</code> : Residue
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="c1">⍝ 100 - 13 × 7 = 9</span>
-<span class="w">      </span><span class="c1">⍝ This is in reverse order as `%` operator in C</span>
-<span class="w">      </span><span class="m">13</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="m">100</span><span class="w"> </span>
-<span class="m">9</span>
+<pre class="highlight"><code class="language-apl">      ⍝ 100 - 13 × 7 = 9
+      ⍝ This is in reverse order as `%` operator in C
+      13 | 100 
+9
 
-<span class="w">      </span><span class="c1">⍝ ¯100 - 13 × ¯8 = 4</span>
-<span class="w">      </span><span class="m">13</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="m">¯100</span><span class="w"> </span>
-<span class="m">4</span>
+      ⍝ ¯100 - 13 × ¯8 = 4
+      13 | ¯100 
+4
 
-<span class="w">      </span><span class="c1">⍝ 100 - ¯13 × ¯8 = 4</span>
-<span class="w">      </span><span class="m">¯13</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="m">100</span><span class="w"> </span>
-<span class="m">¯4</span>
+      ⍝ 100 - ¯13 × ¯8 = 4
+      ¯13 | 100 
+¯4
 
-<span class="w">      </span><span class="c1">⍝ ¯100 - ¯13 × 7 = ¯9</span>
-<span class="w">      </span><span class="m">¯13</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="m">¯100</span><span class="w"> </span>
-<span class="m">¯9</span>
+      ⍝ ¯100 - ¯13 × 7 = ¯9
+      ¯13 | ¯100 
+¯9
 
-<span class="w">      </span><span class="c1">⍝ Also works for non-integers!</span>
-<span class="w">      </span><span class="c1">⍝ 10 - 3.3 × 3 = 0.1</span>
-<span class="w">      </span><span class="m">3.3</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="m">10</span><span class="w"> </span>
-<span class="m">0.1</span>
+      ⍝ Also works for non-integers!
+      ⍝ 10 - 3.3 × 3 = 0.1
+      3.3 | 10 
+0.1
 
-<span class="w">      </span><span class="c1">⍝ 3 - 0 = 3</span>
-<span class="w">      </span><span class="m">0</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="m">3</span><span class="w"> </span>
-<span class="m">3</span>
-</code></pre></div></p>
+      ⍝ 3 - 0 = 3
+      0 | 3 
+3</code></pre></p>
 <p>The residue function X|Y in APL can be written in terms of previously discussed functions. In fact, from the definition as the remainder of division, we might think it's defined as <code>Y-X×(⌊Y÷X)</code>; however, <code>Y÷X</code> is not defined when <code>X</code> is zero. We'd want a function that is equal to <code>1</code> when <code>X</code> is <code>0</code>, and <code>X</code> when <code>X</code> is not zero, <code>X+(X=0)</code> is one solution.</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="c1">⍝ X|Y is</span>
-<span class="w">      </span><span class="nv">Y</span><span class="o">-</span><span class="nv">X</span><span class="o">×</span><span class="p">(</span><span class="o">⌊</span><span class="nv">Y</span><span class="o">÷</span><span class="p">(</span><span class="nv">X</span><span class="o">+</span><span class="p">(</span><span class="nv">X</span><span class="o">=</span><span class="m">0</span><span class="p">)))</span>
-<span class="w">      </span><span class="c1">⍝ Without the unnecessary parentheses</span>
-<span class="w">      </span><span class="nv">Y</span><span class="o">-</span><span class="nv">X</span><span class="o">×⌊</span><span class="nv">Y</span><span class="o">÷</span><span class="nv">X</span><span class="o">+</span><span class="nv">X</span><span class="o">=</span><span class="m">0</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      ⍝ X|Y is
+      Y-X×(⌊Y÷(X+(X=0)))
+      ⍝ Without the unnecessary parentheses
+      Y-X×⌊Y÷X+X=0</code></pre>
 <p>The residue operation here (which is the least absolute remainder) is different from the euclidean remainder (the least positive remainder), to obtain it simply subtract divisor back if the result is negative.
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">mod</span><span class="kd">←</span><span class="kt">{</span><span class="p">(</span><span class="bp">⍵</span><span class="o">|</span><span class="bp">⍺</span><span class="p">)</span><span class="o">&lt;</span><span class="m">0</span><span class="bp">:</span><span class="p">(</span><span class="bp">⍵</span><span class="o">|</span><span class="bp">⍺</span><span class="p">)</span><span class="o">-</span><span class="bp">⍵</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span><span class="bp">⍵</span><span class="o">|</span><span class="bp">⍺</span><span class="kt">}</span>
-<span class="w">      </span><span class="m">¯13</span><span class="w"> </span><span class="nv">mod</span><span class="w"> </span><span class="m">¯3</span>
-<span class="m">2</span>
-<span class="w">      </span><span class="m">¯14</span><span class="w"> </span><span class="nv">mod</span><span class="w"> </span><span class="m">¯3</span>
-<span class="m">1</span>
-<span class="w">      </span><span class="m">¯15</span><span class="w"> </span><span class="nv">mod</span><span class="w"> </span><span class="m">¯3</span>
-<span class="m">0</span>
-</code></pre></div></p>
+<pre class="highlight"><code class="language-apl">      mod←{(⍵|⍺)&lt;0:(⍵|⍺)-⍵ ⋄ ⍵|⍺}
+      ¯13 mod ¯3
+2
+      ¯14 mod ¯3
+1
+      ¯15 mod ¯3
+0</code></pre></p>
 <p>APL also natively supports complex numbers, which makes it attractive for uses in, for example, <a href="https://github.com/nunezco2/quAPL">quantum computing</a>. A complex number is represented as XJY, where X is the real part and Y is the imaginary part. In mathematical notation, $ XJY = X + i Y $.</p>
 <p>Monadic <code>|</code> : Absolute value, Magnitude
-<div class="highlight"><pre><span></span><code>      ⍝ Absolute value of ¯1 is ...
+<pre class="highlight"><code>      ⍝ Absolute value of ¯1 is ...
       | ¯1 
 1
       ⍝ Applying to complex numbers
       | 0J1 3J4 
-1 5
-</code></pre></div></p>
+1 5</code></pre></p>
 <p>Dyadic <code>∨</code> &amp; <code>∧</code> : GCD and LCM
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="c1">⍝ Greatest Common Divisor</span>
-<span class="w">      </span><span class="m">12</span><span class="w"> </span><span class="o">∨</span><span class="w"> </span><span class="m">10</span>
-<span class="m">2</span>
-<span class="w">      </span><span class="c1">⍝ Least Common Mutiple</span>
-<span class="w">      </span><span class="m">12</span><span class="w"> </span><span class="o">∧</span><span class="w"> </span><span class="m">10</span>
-<span class="m">60</span>
-<span class="w">      </span><span class="c1">⍝ The result is non-negative for GCD</span>
-<span class="w">      </span><span class="m">¯2</span><span class="w"> </span><span class="o">∨</span><span class="w"> </span><span class="m">¯15</span><span class="w"> </span>
-<span class="m">1</span>
+<pre class="highlight"><code class="language-apl">      ⍝ Greatest Common Divisor
+      12 ∨ 10
+2
+      ⍝ Least Common Mutiple
+      12 ∧ 10
+60
+      ⍝ The result is non-negative for GCD
+      ¯2 ∨ ¯15 
+1
 
-<span class="w">      </span><span class="m">¯4</span><span class="w"> </span><span class="o">∧</span><span class="w"> </span><span class="m">10</span><span class="w"> </span>
-<span class="m">¯20</span>
-</code></pre></div></p>
+      ¯4 ∧ 10 
+¯20</code></pre></p>
 <p>Note that the LCM is defined as product of two numbers divided by their GCD, so it could be negative as in the last example.</p>
 <p>As suggested by the choice of glyphs for these two operations, these two operations are also used for the boolean logic "or" and "and" operations. More on this in the next section.</p>
 <p>Monadic <code>+</code> : Complex Conjugate
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">+</span><span class="w"> </span><span class="m">0j1</span><span class="w"> </span><span class="m">1j¯1</span><span class="w"> </span><span class="m">3j4</span>
-<span class="m">0J¯1</span><span class="w"> </span><span class="m">1J1</span><span class="w"> </span><span class="m">3J¯4</span>
-</code></pre></div></p>
+<pre class="highlight"><code class="language-apl">      + 0j1 1j¯1 3j4
+0J¯1 1J1 3J¯4</code></pre></p>
 <p>Monadic <code>-</code> : Negate
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">-</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">¯5</span><span class="w"> </span><span class="m">6</span>
-<span class="m">¯4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">¯6</span>
+<pre class="highlight"><code class="language-apl">      - 4 ¯5 6
+¯4 5 ¯6
 
-<span class="w">      </span><span class="c1">⍝ Remember this is different from ¯</span>
-<span class="w">      </span><span class="c1">⍝ Here, -4 -5 -6 is -(4-(5-6)) = ¯5</span>
-<span class="w">      </span><span class="o">-</span><span class="m">4</span><span class="w"> </span><span class="o">-</span><span class="m">5</span><span class="w"> </span><span class="o">-</span><span class="m">6</span><span class="w"> </span>
-<span class="m">¯5</span>
-</code></pre></div></p>
+      ⍝ Remember this is different from ¯
+      ⍝ Here, -4 -5 -6 is -(4-(5-6)) = ¯5
+      -4 -5 -6 
+¯5</code></pre></p>
 <p>Monadic <code>×</code> : Sign/Direction
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">×</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">¯3</span>
-<span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">¯1</span>
-<span class="w">      </span><span class="o">×</span><span class="w"> </span><span class="m">3J4</span><span class="w"> </span><span class="m">¯6J8</span><span class="w"> </span><span class="m">7J24</span>
-<span class="m">0.6J0.8</span><span class="w"> </span><span class="m">¯0.6J0.8</span><span class="w"> </span><span class="m">0.28J0.96</span>
-</code></pre></div></p>
+<pre class="highlight"><code class="language-apl">      × 0 3 ¯3
+0 1 ¯1
+      × 3J4 ¯6J8 7J24
+0.6J0.8 ¯0.6J0.8 0.28J0.96</code></pre></p>
 <p>Monadic <code>○</code> : Pi Times
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">○</span><span class="w"> </span><span class="m">1</span>
-<span class="m">3.141592654</span>
-<span class="w">      </span><span class="o">○</span><span class="w"> </span><span class="m">2</span>
-<span class="m">6.283185307</span>
-<span class="w">      </span><span class="o">○</span><span class="w"> </span><span class="m">0.5</span>
-<span class="m">1.570796327</span>
-<span class="w">      </span><span class="o">○</span><span class="w"> </span><span class="m">0J1</span>
-<span class="m">0J3.141592654</span>
-</code></pre></div></p>
+<pre class="highlight"><code class="language-apl">      ○ 1
+3.141592654
+      ○ 2
+6.283185307
+      ○ 0.5
+1.570796327
+      ○ 0J1
+0J3.141592654</code></pre></p>
 <p>Dyadic <code>○</code> : Trigonometric Functions</p>
 <p>The dyadic circle <code>○</code> function applies a trigonometric function to its right argument depending on its left argument.</p>
-<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="c1">⍝ Sine of an approximation to PI</span>
-<span class="w">       </span><span class="m">1</span><span class="w"> </span><span class="o">○</span><span class="w"> </span><span class="o">○</span><span class="w"> </span><span class="m">1</span>
-<span class="m">1.224646799E¯16</span>
+<pre class="highlight"><code class="language-apl">       ⍝ Sine of an approximation to PI
+       1 ○ ○ 1
+1.224646799E¯16
 
-<span class="w">       </span><span class="c1">⍝ Cosine of zero</span>
-<span class="w">       </span><span class="m">2</span><span class="w"> </span><span class="o">○</span><span class="w"> </span><span class="m">0</span>
-<span class="m">1</span>
+       ⍝ Cosine of zero
+       2 ○ 0
+1
 
-<span class="w">       </span><span class="c1">⍝ Tangent of 0.5</span>
-<span class="w">       </span><span class="m">3</span><span class="w"> </span><span class="o">○</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0.5463024898</span>
+       ⍝ Tangent of 0.5
+       3 ○ 0
+0.5463024898
 
-<span class="w">       </span><span class="c1">⍝ Cosine of I</span>
-<span class="w">       </span><span class="m">2</span><span class="w"> </span><span class="o">○</span><span class="w"> </span><span class="m">0J1</span>
-<span class="m">1.543080635</span>
-</code></pre></div>
+       ⍝ Cosine of I
+       2 ○ 0J1
+1.543080635</code></pre>
 
 
 
@@ -2553,6 +2545,12 @@
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
         
       </main>
       
@@ -2634,7 +2632,7 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "nagivation.top", "navigation.footer", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.footer", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.92b07e13.min.js"></script>
@@ -2652,10 +2650,6 @@
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/build/three.module.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/examples/jsm/"></script>
       
     
   </body>

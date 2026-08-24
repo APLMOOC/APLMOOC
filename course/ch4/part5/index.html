@@ -6,7 +6,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="A free online course in array programming with APL.">
       
+      
+      
+        <link rel="canonical" href="https://aplmooc.fi/course/ch4/part5/">
       
       
         <link rel="prev" href="../part4/">
@@ -2435,11 +2439,10 @@
 <p>If you want a simple way to find a value in an array, <code>⍳</code> is your guy.
 On the left, you give it an array to search in; on the right, you give it an array of values to find.
 The function will output the indices where your values are located.</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="m">3</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="o">⍳</span><span class="w"> </span><span class="m">2</span>
-<span class="m">3</span>
-<span class="w">      </span><span class="s1">&#39;asdfghjkl&#39;</span><span class="w"> </span><span class="o">⍳</span><span class="w"> </span><span class="s1">&#39;agl&#39;</span>
-<span class="m">1</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">9</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      3 5 2 1 4 ⍳ 2
+3
+      'asdfghjkl' ⍳ 'agl'
+1 5 9</code></pre>
 <p>What do you think happens when you try to search for a value that doesn't exist?
 Pick your guess:</p>
 <ul>
@@ -2453,96 +2456,88 @@ After all, why punish the programmer when they are just trying to search for a v
 No, there's a way better way of handling this issue.
 If you picked <code>0</code>, you're closer, but still a little off.
 It could work if zero was never a valid index; however, <code>⍳</code> is index-sensitive. Look:</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="s1">&#39;asdfghjkl&#39;</span><span class="w"> </span><span class="o">⍳</span><span class="w"> </span><span class="s1">&#39;agl&#39;</span>
-<span class="m">1</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">9</span>
+<pre class="highlight"><code class="language-apl">      'asdfghjkl' ⍳ 'agl'
+1 5 9
 
-<span class="w">      </span><span class="nf">⎕IO</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">0</span>
+      ⎕IO ← 0
 
-<span class="w">      </span><span class="s1">&#39;asdfghjkl&#39;</span><span class="w"> </span><span class="o">⍳</span><span class="w"> </span><span class="s1">&#39;agl&#39;</span>
-<span class="m">0</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">8</span>
-</code></pre></div>
+      'asdfghjkl' ⍳ 'agl'
+0 4 8
+</code></pre>
 <p>Instead of returning zero (or a negative number), the APL developers decided to be clever and return a number that's one larger than the length of the array.</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="s1">&#39;asdfghjkl&#39;</span><span class="w"> </span><span class="o">⍳</span><span class="w"> </span><span class="s1">&#39;agl&#39;</span>
-<span class="m">1</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">9</span>
-<span class="w">      </span><span class="s1">&#39;asdfghjkl&#39;</span><span class="w"> </span><span class="o">⍳</span><span class="w"> </span><span class="s1">&#39;aglö&#39;</span>
-<span class="m">1</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">10</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      'asdfghjkl' ⍳ 'agl'
+1 5 9
+      'asdfghjkl' ⍳ 'aglö'
+1 5 9 10</code></pre>
 <p>This is actually super useful!
 Let's say we have two vectors: <code>STUDENTS</code> contains student names, and <code>GPAS</code> contains their grades.
 For example,</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">STUDENTS</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="s1">&#39;ALICE&#39;</span><span class="w"> </span><span class="s1">&#39;BOB&#39;</span><span class="w"> </span><span class="s1">&#39;CHARLIE&#39;</span><span class="w"> </span><span class="s1">&#39;DAVID&#39;</span><span class="w"> </span><span class="s1">&#39;EEVA&#39;</span>
-<span class="w">      </span><span class="nv">GPAS</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">5.0</span><span class="w"> </span><span class="m">3.4</span><span class="w"> </span><span class="m">1.0</span><span class="w"> </span><span class="m">4.2</span><span class="w"> </span><span class="m">4.1</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      STUDENTS ← 'ALICE' 'BOB' 'CHARLIE' 'DAVID' 'EEVA'
+      GPAS ← 5.0 3.4 1.0 4.2 4.1</code></pre>
 <p>Say we wanted to get to find David's and Charlie's GPAs from the list, but we didn't know what position they were in.
 To do this, we can use iota to find their indices, and then use them along with the brackets <code>[]</code> to get the GPAs from the list:</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">STUDENTS</span><span class="w"> </span><span class="o">⍳</span><span class="w"> </span><span class="s1">&#39;DAVID&#39;</span><span class="w"> </span><span class="s1">&#39;CHARLIE&#39;</span>
-<span class="m">4</span><span class="w"> </span><span class="m">3</span>
-<span class="w">      </span><span class="nv">GPAS</span><span class="sr">[</span><span class="nv">STUDENTS</span><span class="w"> </span><span class="o">⍳</span><span class="w"> </span><span class="s1">&#39;DAVID&#39;</span><span class="w"> </span><span class="s1">&#39;CHARLIE&#39;</span><span class="sr">]</span>
-<span class="m">4.2</span><span class="w"> </span><span class="m">1</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      STUDENTS ⍳ 'DAVID' 'CHARLIE'
+4 3
+      GPAS[STUDENTS ⍳ 'DAVID' 'CHARLIE']
+4.2 1</code></pre>
 <p>Then, if we try to find a user that doesn't exist, we will get an index that's one larger than the largest item.
 So, we can just add one more "default" item to the GPA list and use that as a "not found" element!</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">GPAS</span><span class="o">,</span><span class="s1">&#39;X&#39;</span>
-<span class="m">5</span><span class="w"> </span><span class="m">3.4</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">4.2</span><span class="w"> </span><span class="m">4.1</span><span class="w"> </span><span class="nv">X</span>
-<span class="w">      </span><span class="o">⍴</span><span class="nv">GPAS</span><span class="o">,</span><span class="s1">&#39;X&#39;</span>
-<span class="m">6</span>
-<span class="w">      </span><span class="p">(</span><span class="nv">GPAS</span><span class="o">,</span><span class="s1">&#39;X&#39;</span><span class="p">)</span><span class="sr">[</span><span class="nv">STUDENTS</span><span class="w"> </span><span class="o">⍳</span><span class="w"> </span><span class="s1">&#39;DAVID&#39;</span><span class="w"> </span><span class="s1">&#39;CHARLIE&#39;</span><span class="sr">]</span>
-<span class="m">4.2</span><span class="w"> </span><span class="m">1</span>
-<span class="w">      </span><span class="p">(</span><span class="nv">GPAS</span><span class="o">,</span><span class="s1">&#39;X&#39;</span><span class="p">)</span><span class="sr">[</span><span class="nv">STUDENTS</span><span class="w"> </span><span class="o">⍳</span><span class="w"> </span><span class="s1">&#39;DAVID&#39;</span><span class="w"> </span><span class="s1">&#39;CHARLIE&#39;</span><span class="w"> </span><span class="s1">&#39;JULIET&#39;</span><span class="sr">]</span>
-<span class="m">4.2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="nv">X</span>
-<span class="w">      </span><span class="p">(</span><span class="nv">GPAS</span><span class="o">,</span><span class="s1">&#39;X&#39;</span><span class="p">)</span><span class="sr">[</span><span class="nv">STUDENTS</span><span class="w"> </span><span class="o">⍳</span><span class="w"> </span><span class="s1">&#39;DAVID&#39;</span><span class="w"> </span><span class="s1">&#39;CHARLIE&#39;</span><span class="w"> </span><span class="s1">&#39;JULIET&#39;</span><span class="w"> </span><span class="s1">&#39;BOB&#39;</span><span class="sr">]</span>
-<span class="m">4.2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="nv">X</span><span class="w"> </span><span class="m">3.4</span>
-<span class="w">      </span><span class="p">(</span><span class="nv">GPAS</span><span class="o">,</span><span class="s1">&#39;X&#39;</span><span class="p">)</span><span class="sr">[</span><span class="nv">STUDENTS</span><span class="w"> </span><span class="o">⍳</span><span class="w"> </span><span class="s1">&#39;DAVID&#39;</span><span class="w"> </span><span class="s1">&#39;CHARLIE&#39;</span><span class="w"> </span><span class="s1">&#39;JULIET&#39;</span><span class="w"> </span><span class="s1">&#39;BOB&#39;</span><span class="w"> </span><span class="s1">&#39;ROMEO&#39;</span><span class="sr">]</span>
-<span class="m">4.2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="nv">X</span><span class="w"> </span><span class="m">3.4</span><span class="w"> </span><span class="nv">X</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      GPAS,'X'
+5 3.4 1 4.2 4.1 X
+      ⍴GPAS,'X'
+6
+      (GPAS,'X')[STUDENTS ⍳ 'DAVID' 'CHARLIE']
+4.2 1
+      (GPAS,'X')[STUDENTS ⍳ 'DAVID' 'CHARLIE' 'JULIET']
+4.2 1 X
+      (GPAS,'X')[STUDENTS ⍳ 'DAVID' 'CHARLIE' 'JULIET' 'BOB']
+4.2 1 X 3.4
+      (GPAS,'X')[STUDENTS ⍳ 'DAVID' 'CHARLIE' 'JULIET' 'BOB' 'ROMEO']
+4.2 1 X 3.4 X</code></pre>
 <p>Handy!</p>
 <p>Here's another APL idiom that you should remember: changing one value to another.</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">NUMS</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">3</span>
-<span class="w">      </span><span class="nv">NUMS</span>
-<span class="m">9</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">3</span>
+<pre class="highlight"><code class="language-apl">      NUMS ← 9 4 1 2 0 3
+      NUMS
+9 4 1 2 0 3
 
-<span class="w">      </span><span class="nv">NUMS</span><span class="sr">[</span><span class="nv">NUMS</span><span class="o">⍳</span><span class="m">4</span><span class="sr">]</span>
-<span class="m">4</span>
-<span class="w">      </span><span class="nv">NUMS</span><span class="sr">[</span><span class="nv">NUMS</span><span class="o">⍳</span><span class="m">4</span><span class="sr">]</span><span class="kd">←</span><span class="m">6</span>
+      NUMS[NUMS⍳4]
+4
+      NUMS[NUMS⍳4]←6
 
-<span class="w">      </span><span class="nv">NUMS</span>
-<span class="m">9</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">3</span>
-</code></pre></div>
+      NUMS
+9 6 1 2 0 3</code></pre>
 <p>So, using <code>NUMS[NUMS⍳4]</code> just gets you the number you were searching for (<code>4</code>), but adding an assignment <code>←</code> lets you reset whatever was in the position.</p>
 <p>Even though iota is handy, it's not perfect.
 Let's say our array had repeats in it, and we wanted to find them all...</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">LETTERS</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="s1">&#39;abcdefgaaahijkl&#39;</span>
-<span class="w">      </span><span class="nv">LETTERS</span>
-<span class="nv">abcdefgaaahijkl</span>
+<pre class="highlight"><code class="language-apl">      LETTERS ← 'abcdefgaaahijkl'
+      LETTERS
+abcdefgaaahijkl
 
-<span class="w">      </span><span class="nv">LETTERS</span><span class="w"> </span><span class="o">⍳</span><span class="w"> </span><span class="s1">&#39;a&#39;</span>
-<span class="m">1</span>
-<span class="w">      </span><span class="nv">LETTERS</span><span class="w"> </span><span class="o">⍳</span><span class="w"> </span><span class="s1">&#39;aa&#39;</span>
-<span class="m">1</span><span class="w"> </span><span class="m">1</span>
-<span class="w">      </span><span class="nv">LETTERS</span><span class="w"> </span><span class="o">⍳</span><span class="w"> </span><span class="s1">&#39;aaa&#39;</span>
-<span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span>
-</code></pre></div>
+      LETTERS ⍳ 'a'
+1
+      LETTERS ⍳ 'aa'
+1 1
+      LETTERS ⍳ 'aaa'
+1 1 1</code></pre>
 <p>Nope. Iota just finds the first occurrence of <code>'a'</code> and stops.
 We'll learn how to find more than just one value later.</p>
 <p>Here's a funny error that can happen with <code>⍳</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="m">10</span><span class="w"> </span><span class="o">⍳</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">12</span>
-<span class="nv">RANK</span><span class="w"> </span><span class="nv">ERROR</span>
-<span class="w">      </span><span class="m">10</span><span class="o">⍳</span><span class="m">10</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">12</span>
-<span class="w">        </span><span class="o">∧</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      10 ⍳ 10 11 12
+RANK ERROR
+      10⍳10 11 12
+        ∧</code></pre>
 <p>You could think that this should return <code>1 2 2</code> (the first element, and two elements not in the list).
 But actually, the number 10 is a scalar and not an array! So you can't search inside it. Rip.</p>
 <h2 id="member-of">Member of</h2>
 <p>Dyadic iota <code>⍳</code> answers the question "where is it?"; dyadic epsilon <code>∊</code> answers the question "is it?"</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="m">4</span><span class="w"> </span><span class="o">∊</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span>
-<span class="m">1</span>
-<span class="w">      </span><span class="m">4</span><span class="w"> </span><span class="o">∊</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span>
-<span class="m">0</span>
-<span class="w">      </span><span class="m">4</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">∊</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span>
-<span class="m">0</span><span class="w"> </span><span class="m">1</span>
-<span class="w">      </span><span class="m">4</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">∊</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span>
-<span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      4 ∊ 1 3 4 5 6
+1
+      4 ∊ 1 3 2 5 6
+0
+      4 3 ∊ 1 3 2 5 6
+0 1
+      4 3 4 3 ∊ 1 3 2 5 6
+0 1 0 1</code></pre>
 <p>It gives a simple yes/no answer, telling you whether the value is in the array or not.</p>
 <div class="admonition note">
 <p class="admonition-title">Typing the member of function <code>∊</code></p>
@@ -2562,10 +2557,9 @@ For this example, we'll use the vector <code>PRICES</code>, which has a bunch of
 First, let's try finding where all the items are which have a price of <code>40</code>.
 Simple <code>⍳</code> won't cut the job, since we saw earlier that it only found the first element.
 Let's be more creative: first, we want to find all the positions that have the number 40...</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">PRICES</span><span class="kd">←</span><span class="m">12</span><span class="w"> </span><span class="m">39</span><span class="w"> </span><span class="m">40</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">55</span><span class="w"> </span><span class="m">40</span><span class="w"> </span><span class="m">73</span>
-<span class="w">      </span><span class="m">40</span><span class="o">=</span><span class="nv">PRICES</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      PRICES←12 39 40 10 55 40 73
+      40=PRICES
+0 0 1 0 0 1 0</code></pre>
 <p>Then, we want to convert these values to indices.
 A good strategy is to:</p>
 <ol>
@@ -2574,46 +2568,43 @@ A good strategy is to:</p>
 <li>Use the bit mask <code>0 0 1 0 0 1 0</code> to select the indices (<code>/</code>)</li>
 </ol>
 <p>Step-by-step:</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="m">40</span><span class="o">=</span><span class="nv">PRICES</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span>
+<pre class="highlight"><code class="language-apl">      40=PRICES
+0 0 1 0 0 1 0
 
-<span class="w">      </span><span class="o">⍴</span><span class="nv">PRICES</span>
-<span class="m">7</span>
-<span class="w">      </span><span class="o">⍳⍴</span><span class="nv">PRICES</span>
-<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span>
-<span class="w">      </span><span class="p">(</span><span class="m">40</span><span class="o">=</span><span class="nv">PRICES</span><span class="p">)</span><span class="na">/</span><span class="o">⍳⍴</span><span class="nv">PRICES</span>
-<span class="m">3</span><span class="w"> </span><span class="m">6</span>
-</code></pre></div>
+      ⍴PRICES
+7
+      ⍳⍴PRICES
+1 2 3 4 5 6 7
+      (40=PRICES)/⍳⍴PRICES
+3 6</code></pre>
 <p>Slashiotarho is also more powerful than the dyadic <code>⍳</code> function we looked at earlier, since we can use it to find any condition we like.
 For example, if we wanted to find all prices that are <em>at most</em> 40, we can just change one symbol:</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">PRICES</span>
-<span class="m">12</span><span class="w"> </span><span class="m">39</span><span class="w"> </span><span class="m">40</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">55</span><span class="w"> </span><span class="m">40</span><span class="w"> </span><span class="m">73</span>
+<pre class="highlight"><code class="language-apl">      PRICES
+12 39 40 10 55 40 73
 
-<span class="w">      </span><span class="p">(</span><span class="m">40</span><span class="o">=</span><span class="nv">PRICES</span><span class="p">)</span><span class="na">/</span><span class="o">⍳⍴</span><span class="nv">PRICES</span>
-<span class="m">3</span><span class="w"> </span><span class="m">6</span>
-<span class="w">      </span><span class="p">(</span><span class="m">40</span><span class="o">≥</span><span class="nv">PRICES</span><span class="p">)</span><span class="na">/</span><span class="o">⍳⍴</span><span class="nv">PRICES</span>
-<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">6</span>
-</code></pre></div>
+      (40=PRICES)/⍳⍴PRICES
+3 6
+      (40≥PRICES)/⍳⍴PRICES
+1 2 3 4 6</code></pre>
 <p>Slashiotarho is such a useful function, that the APL developers decided to add a whole new symbol: the SUPER-IOTA (officially called "iota underbar") that can be used to perform the "where" function.
 This is a monadic function, which takes in a list of ones and zeros on the right and returns the location of all the ones.
 Let's compare slashiotarho with the where function:</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">PRICES</span>
-<span class="m">12</span><span class="w"> </span><span class="m">39</span><span class="w"> </span><span class="m">40</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">55</span><span class="w"> </span><span class="m">40</span><span class="w"> </span><span class="m">73</span>
+<pre class="highlight"><code class="language-apl">      PRICES
+12 39 40 10 55 40 73
 
-<span class="w">      </span><span class="m">40</span><span class="o">=</span><span class="nv">PRICES</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span>
-<span class="w">      </span><span class="p">(</span><span class="m">40</span><span class="o">=</span><span class="nv">PRICES</span><span class="p">)</span><span class="na">/</span><span class="o">⍳⍴</span><span class="nv">PRICES</span>
-<span class="m">3</span><span class="w"> </span><span class="m">6</span>
-<span class="w">      </span><span class="o">⍸</span><span class="m">40</span><span class="o">=</span><span class="nv">PRICES</span>
-<span class="m">3</span><span class="w"> </span><span class="m">6</span>
+      40=PRICES
+0 0 1 0 0 1 0
+      (40=PRICES)/⍳⍴PRICES
+3 6
+      ⍸40=PRICES
+3 6
 
-<span class="w">      </span><span class="m">40</span><span class="o">≥</span><span class="nv">PRICES</span>
-<span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span>
-<span class="w">      </span><span class="p">(</span><span class="m">40</span><span class="o">≥</span><span class="nv">PRICES</span><span class="p">)</span><span class="na">/</span><span class="o">⍳⍴</span><span class="nv">PRICES</span>
-<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">6</span>
-<span class="w">      </span><span class="o">⍸</span><span class="m">40</span><span class="o">≥</span><span class="nv">PRICES</span>
-<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">6</span>
-</code></pre></div>
+      40≥PRICES
+1 1 1 1 0 1 0
+      (40≥PRICES)/⍳⍴PRICES
+1 2 3 4 6
+      ⍸40≥PRICES
+1 2 3 4 6</code></pre>
 <div class="admonition note">
 <p class="admonition-title">Typing the where function <code>⍸</code></p>
 <p>Prefix method: <kbd>PREFIX</kbd> <kbd>I</kbd></p>
@@ -2622,39 +2613,38 @@ Let's compare slashiotarho with the where function:</p>
 <p>It's a little more compact! Feel free to use it when needed.</p>
 <h2 id="interval-index">Interval Index</h2>
 <p>Sometimes, instead of finding exactly where an element is in an array, you'd like to find what elements it's between. Consider the grading function we defined in chapter 3, write problem 12</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">GRADE</span><span class="w"> </span><span class="m">42</span>
-<span class="m">0</span>
+<pre class="highlight"><code class="language-apl">      GRADE 42
+0
 
-<span class="w">      </span><span class="nv">GRADE</span><span class="w"> </span><span class="m">43</span>
-<span class="m">1</span>
+      GRADE 43
+1
 
-<span class="w">      </span><span class="nv">GRADE</span><span class="w"> </span><span class="m">51</span>
-<span class="m">2</span>
+      GRADE 51
+2
 
-<span class="w">      </span><span class="nv">GRADE</span><span class="w"> </span><span class="m">58</span>
-<span class="m">3</span>
+      GRADE 58
+3
 
-<span class="w">      </span><span class="nv">GRADE</span><span class="w"> </span><span class="m">65</span>
-<span class="m">4</span>
+      GRADE 65
+4
 
-<span class="w">      </span><span class="nv">Grade</span><span class="w"> </span><span class="m">72</span>
-<span class="m">5</span>
-</code></pre></div>
+      Grade 72
+5</code></pre>
 <p>What this function does is try to find where the right argument <code>⍵</code> is, between the grade boundaries <code>0 43 51 58 65 72</code> for the grades <code>0 1 2 3 4 5</code>. </p>
 <p>Another example of this kind of problem is looking for a word in a dictionary, where the page with the word <code>⍵</code> is the one where <code>⍵</code> is alphabetically between the first word of the page and the first word of the next page.</p>
 <p>This problem can be solved with the dyadic ⍸ interval index function. The vector left argument <code>⍺</code> specifies the boundaries that the right argument <code>⍵</code> is placed between.  </p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="m">43</span><span class="w"> </span><span class="m">51</span><span class="w"> </span><span class="m">58</span><span class="w"> </span><span class="m">65</span><span class="w"> </span><span class="m">72</span><span class="w"> </span><span class="o">⍸</span><span class="w"> </span><span class="m">10</span>
-<span class="m">0</span>
+<pre class="highlight"><code class="language-apl">
+      43 51 58 65 72 ⍸ 10
+0
 
-<span class="w">      </span><span class="m">43</span><span class="w"> </span><span class="m">51</span><span class="w"> </span><span class="m">58</span><span class="w"> </span><span class="m">65</span><span class="w"> </span><span class="m">72</span><span class="w"> </span><span class="o">⍸</span><span class="w"> </span><span class="m">64</span>
-<span class="m">3</span>
+      43 51 58 65 72 ⍸ 64
+3
 
-<span class="w">      </span><span class="m">43</span><span class="w"> </span><span class="m">51</span><span class="w"> </span><span class="m">58</span><span class="w"> </span><span class="m">65</span><span class="w"> </span><span class="m">72</span><span class="w"> </span><span class="o">⍸</span><span class="w"> </span><span class="m">72</span>
-<span class="m">5</span>
+      43 51 58 65 72 ⍸ 72
+5
 
-<span class="w">      </span><span class="s1">&#39;aardvark&#39;</span><span class="w"> </span><span class="s1">&#39;abrasion&#39;</span><span class="w"> </span><span class="s1">&#39;accessory&#39;</span><span class="w"> </span><span class="s1">&#39;acquittance&#39;</span><span class="w"> </span><span class="s1">&#39;adamantine&#39;</span><span class="w"> </span><span class="o">⍸</span><span class="w"> </span><span class="o">⊂</span><span class="s1">&#39;absolute&#39;</span>
-<span class="m">2</span>
-</code></pre></div>
+      'aardvark' 'abrasion' 'accessory' 'acquittance' 'adamantine' ⍸ ⊂'absolute'
+2</code></pre>
 <h2 id="find">Find</h2>
 <p>All of the finding operations that we looked at so far have been to find <em>one</em> element in an array.
 APL also has a function to find <em>subarrays</em>: the dyadic find function, which is written using the epsilon-underbar symbol <code>⍷</code>.</p>
@@ -2663,80 +2653,73 @@ APL also has a function to find <em>subarrays</em>: the dyadic find function, wh
 <p>Prefix method: <kbd>PREFIX</kbd> <kbd>E</kbd></p>
 <p>Tab method: <kbd>e</kbd> <kbd>_</kbd> <span class="keys"><kbd class="key-tab">Tab</kbd></span></p>
 </div>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">SENTENCE</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="s1">&#39;Hello, this is elsa from melbourne&#39;</span>
-<span class="w">      </span><span class="s1">&#39;el&#39;</span><span class="w"> </span><span class="o">⍷</span><span class="w"> </span><span class="nv">SENTENCE</span>
-<span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      SENTENCE ← 'Hello, this is elsa from melbourne'
+      'el' ⍷ SENTENCE
+0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0</code></pre>
 <p>In this example, the ones are where each <code>'el'</code> starts in the long sentence.
 You can also do this with arrays of strings:</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">ANIMALS</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="s1">&#39;cow&#39;</span><span class="w"> </span><span class="s1">&#39;horse&#39;</span><span class="w"> </span><span class="s1">&#39;dog&#39;</span><span class="w"> </span><span class="s1">&#39;horse&#39;</span><span class="w"> </span><span class="s1">&#39;cow&#39;</span><span class="w"> </span><span class="s1">&#39;cat&#39;</span><span class="w"> </span><span class="s1">&#39;horse&#39;</span><span class="w"> </span><span class="s1">&#39;cow&#39;</span><span class="w"> </span><span class="s1">&#39;bat&#39;</span><span class="w"> </span>
-<span class="w">      </span><span class="s1">&#39;horse&#39;</span><span class="w"> </span><span class="s1">&#39;cow&#39;</span><span class="w"> </span><span class="o">⍷</span><span class="w"> </span><span class="nv">ANIMALS</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      ANIMALS ← 'cow' 'horse' 'dog' 'horse' 'cow' 'cat' 'horse' 'cow' 'bat' 
+      'horse' 'cow' ⍷ ANIMALS
+0 0 0 1 0 0 1 0 0</code></pre>
 <p>These occurences can also overlap:</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="s1">&#39;ooo&#39;</span><span class="w"> </span><span class="o">⍷</span><span class="w"> </span><span class="s1">&#39;meoooooooow meooow&#39;</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      'ooo' ⍷ 'meoooooooow meooow'
+0 0 1 1 1 1 1 1 0 0 0 0 0 0 1 0 0 0</code></pre>
 <h2 id="key">Key</h2>
 <p>Last one for this part! The key ⌸ operator provides a way of grouping together elements of an array, and apply an arbitrary function to each group</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="kt">{</span><span class="bp">⍺</span><span class="w"> </span><span class="bp">⍵</span><span class="kt">}</span><span class="na">⌸</span><span class="s1">&#39;ENTENTE&#39;</span>
-<span class="err">┌─┬─────┐</span>
-<span class="err">│</span><span class="nv">E</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">7</span><span class="err">│</span>
-<span class="err">├─┼─────┤</span>
-<span class="err">│</span><span class="nv">N</span><span class="err">│</span><span class="m">2</span><span class="w"> </span><span class="m">5</span><span class="w">  </span><span class="err">│</span>
-<span class="err">├─┼─────┤</span>
-<span class="err">│</span><span class="nv">T</span><span class="err">│</span><span class="m">3</span><span class="w"> </span><span class="m">6</span><span class="w">  </span><span class="err">│</span>
-<span class="err">└─┴─────┘</span>
-<span class="w">      </span><span class="kt">{</span><span class="vg">⎕</span><span class="kd">←</span><span class="bp">⍺</span><span class="kt">}</span><span class="na">⌸</span><span class="s1">&#39;ENTENTE&#39;</span>
-<span class="nv">ENT</span>
-<span class="w">      </span><span class="kt">{</span><span class="vg">⎕</span><span class="kd">←</span><span class="bp">⍵</span><span class="kt">}</span><span class="na">⌸</span><span class="s1">&#39;ENTENTE&#39;</span>
-<span class="m">1</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">7</span>
-<span class="m">2</span><span class="w"> </span><span class="m">5</span>
-<span class="m">3</span><span class="w"> </span><span class="m">6</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      {⍺ ⍵}⌸'ENTENTE'
+┌─┬─────┐
+│E│1 4 7│
+├─┼─────┤
+│N│2 5  │
+├─┼─────┤
+│T│3 6  │
+└─┴─────┘
+      {⎕←⍺}⌸'ENTENTE'
+ENT
+      {⎕←⍵}⌸'ENTENTE'
+1 4 7
+2 5
+3 6</code></pre>
 <p>The left argument function for the key ⌸ operator takes as left argument the group value (in the above, the unique letters E N and T) and as right argument the indices of the elements of that group.</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">PRIMER</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="s1">&#39;CGCAAATGGGCGGTAGGCGTG&#39;</span>
-<span class="w">      </span><span class="c1">⍝ Number of each nucleotide</span>
-<span class="w">      </span><span class="kt">{</span><span class="bp">⍺</span><span class="o">,⍴</span><span class="bp">⍵</span><span class="kt">}</span><span class="na">⌸</span><span class="nv">PRIMER</span>
-<span class="nv">C</span><span class="w">  </span><span class="m">4</span>
-<span class="nv">G</span><span class="w"> </span><span class="m">10</span>
-<span class="nv">A</span><span class="w">  </span><span class="m">4</span>
-<span class="nv">T</span><span class="w">  </span><span class="m">3</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      PRIMER ← 'CGCAAATGGGCGGTAGGCGTG'
+      ⍝ Number of each nucleotide
+      {⍺,⍴⍵}⌸PRIMER
+C  4
+G 10
+A  4
+T  3</code></pre>
 <p>In the dyadic case, the ⌸ key operator groups by the left argument and uses the right argument to number the elements. Consider the following two dimensional array of fast food orders</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">ORDERS</span>
-<span class="err">┌───────────────┬───────┐</span>
-<span class="err">│</span><span class="nv">STEVE</span><span class="w"> </span><span class="nv">MCALE</span><span class="w">    </span><span class="err">│</span><span class="nv">BURGER</span><span class="w"> </span><span class="err">│</span>
-<span class="err">├───────────────┼───────┤</span>
-<span class="err">│</span><span class="nv">JOHNSON</span><span class="w"> </span><span class="nv">SWEEMEY</span><span class="err">│</span><span class="nv">HOT</span><span class="w"> </span><span class="nv">DOG</span><span class="err">│</span>
-<span class="err">├───────────────┼───────┤</span>
-<span class="err">│</span><span class="nv">DEREK</span><span class="w"> </span><span class="nv">ARCHIBELD</span><span class="err">│</span><span class="nv">BURGER</span><span class="w"> </span><span class="err">│</span>
-<span class="err">├───────────────┼───────┤</span>
-<span class="err">│</span><span class="nv">MIKE</span><span class="w"> </span><span class="nv">NANDES</span><span class="w">    </span><span class="err">│</span><span class="nv">BURGER</span><span class="w"> </span><span class="err">│</span>
-<span class="err">├───────────────┼───────┤</span>
-<span class="err">│</span><span class="nv">SCOTT</span><span class="w"> </span><span class="nv">WESTON</span><span class="w">   </span><span class="err">│</span><span class="nv">HOT</span><span class="w"> </span><span class="nv">DOG</span><span class="err">│</span>
-<span class="err">└───────────────┴───────┘</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      ORDERS
+┌───────────────┬───────┐
+│STEVE MCALE    │BURGER │
+├───────────────┼───────┤
+│JOHNSON SWEEMEY│HOT DOG│
+├───────────────┼───────┤
+│DEREK ARCHIBELD│BURGER │
+├───────────────┼───────┤
+│MIKE NANDES    │BURGER │
+├───────────────┼───────┤
+│SCOTT WESTON   │HOT DOG│
+└───────────────┴───────┘</code></pre>
 <p>Grouping by the second column, creating a list of names for each menu item, </p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">ORDERS</span><span class="sr">[;</span><span class="m">1</span><span class="sr">]</span>
-<span class="err">┌───────────┬───────────────┬───────────────┬───────────┬────────────┐</span>
-<span class="err">│</span><span class="nv">STEVE</span><span class="w"> </span><span class="nv">MCALE</span><span class="err">│</span><span class="nv">JOHNSON</span><span class="w"> </span><span class="nv">SWEEMEY</span><span class="err">│</span><span class="nv">DEREK</span><span class="w"> </span><span class="nv">ARCHIBELD</span><span class="err">│</span><span class="nv">MIKE</span><span class="w"> </span><span class="nv">NANDES</span><span class="err">│</span><span class="nv">SCOTT</span><span class="w"> </span><span class="nv">WESTON</span><span class="err">│</span>
-<span class="err">└───────────┴───────────────┴───────────────┴───────────┴────────────┘</span>
-<span class="w">      </span><span class="nv">ORDERS</span><span class="sr">[;</span><span class="m">2</span><span class="sr">]</span>
-<span class="err">┌──────┬───────┬──────┬──────┬───────┐</span>
-<span class="err">│</span><span class="nv">BURGER</span><span class="err">│</span><span class="nv">HOT</span><span class="w"> </span><span class="nv">DOG</span><span class="err">│</span><span class="nv">BURGER</span><span class="err">│</span><span class="nv">BURGER</span><span class="err">│</span><span class="nv">HOT</span><span class="w"> </span><span class="nv">DOG</span><span class="err">│</span>
-<span class="err">└──────┴───────┴──────┴──────┴───────┘</span>
-<span class="w">      </span><span class="nv">ORDERS</span><span class="sr">[;</span><span class="m">2</span><span class="sr">]</span><span class="kt">{</span><span class="bp">⍺</span><span class="w"> </span><span class="bp">⍵</span><span class="kt">}</span><span class="na">⌸</span><span class="nv">ORDERS</span><span class="sr">[;</span><span class="m">1</span><span class="sr">]</span>
-<span class="err">┌─────────┬─────────────────────────────────────────┐</span>
-<span class="err">│┌──────┐</span><span class="w"> </span><span class="err">│┌───────────┬───────────────┬───────────┐│</span>
-<span class="err">││</span><span class="nv">BURGER</span><span class="err">│</span><span class="w"> </span><span class="err">││</span><span class="nv">STEVE</span><span class="w"> </span><span class="nv">MCALE</span><span class="err">│</span><span class="nv">DEREK</span><span class="w"> </span><span class="nv">ARCHIBELD</span><span class="err">│</span><span class="nv">MIKE</span><span class="w"> </span><span class="nv">NANDES</span><span class="err">││</span>
-<span class="err">│└──────┘</span><span class="w"> </span><span class="err">│└───────────┴───────────────┴───────────┘│</span>
-<span class="err">├─────────┼─────────────────────────────────────────┤</span>
-<span class="err">│┌───────┐│┌───────────────┬────────────┐</span><span class="w">           </span><span class="err">│</span>
-<span class="err">││</span><span class="nv">HOT</span><span class="w"> </span><span class="nv">DOG</span><span class="err">│││</span><span class="nv">JOHNSON</span><span class="w"> </span><span class="nv">SWEEMEY</span><span class="err">│</span><span class="nv">SCOTT</span><span class="w"> </span><span class="nv">WESTON</span><span class="err">│</span><span class="w">           </span><span class="err">│</span>
-<span class="err">│└───────┘│└───────────────┴────────────┘</span><span class="w">           </span><span class="err">│</span>
-<span class="err">└─────────┴─────────────────────────────────────────┘</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      ORDERS[;1]
+┌───────────┬───────────────┬───────────────┬───────────┬────────────┐
+│STEVE MCALE│JOHNSON SWEEMEY│DEREK ARCHIBELD│MIKE NANDES│SCOTT WESTON│
+└───────────┴───────────────┴───────────────┴───────────┴────────────┘
+      ORDERS[;2]
+┌──────┬───────┬──────┬──────┬───────┐
+│BURGER│HOT DOG│BURGER│BURGER│HOT DOG│
+└──────┴───────┴──────┴──────┴───────┘
+      ORDERS[;2]{⍺ ⍵}⌸ORDERS[;1]
+┌─────────┬─────────────────────────────────────────┐
+│┌──────┐ │┌───────────┬───────────────┬───────────┐│
+││BURGER│ ││STEVE MCALE│DEREK ARCHIBELD│MIKE NANDES││
+│└──────┘ │└───────────┴───────────────┴───────────┘│
+├─────────┼─────────────────────────────────────────┤
+│┌───────┐│┌───────────────┬────────────┐           │
+││HOT DOG│││JOHNSON SWEEMEY│SCOTT WESTON│           │
+│└───────┘│└───────────────┴────────────┘           │
+└─────────┴─────────────────────────────────────────┘</code></pre>
 <p>Perfect!</p>
 
 
@@ -2757,6 +2740,12 @@ You can also do this with arrays of strings:</p>
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
         
       </main>
       
@@ -2838,7 +2827,7 @@ You can also do this with arrays of strings:</p>
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "nagivation.top", "navigation.footer", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.footer", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.92b07e13.min.js"></script>
@@ -2856,10 +2845,6 @@ You can also do this with arrays of strings:</p>
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/build/three.module.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/examples/jsm/"></script>
       
     
   </body>

@@ -6,7 +6,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="A free online course in array programming with APL.">
       
+      
+      
+        <link rel="canonical" href="https://aplmooc.fi/course/ch6/part6/">
       
       
         <link rel="prev" href="../part5/">
@@ -2393,52 +2397,50 @@
 </div>
 <hr />
 <p>Just as we defined custom functions using dfn notation, a slightly modified notation allows us to define custom operators. Consider the problem of scalar pervasion mentioned in the last section. In order to allow functions to match the simple scalars from nested left and right arrays, a certain amount of <code>¨</code> Each operators were needed, in this case four</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">⊢</span><span class="nv">A</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="o">⊂</span><span class="na">\</span><span class="o">,</span><span class="na">\</span><span class="w"> </span><span class="m">2</span><span class="na">/</span><span class="m">1</span><span class="w"> </span><span class="m">0</span>
-<span class="err">┌─┬─────┬───────────┬─────────────────┐</span>
-<span class="err">│</span><span class="m">1</span><span class="err">│┌─┬─┐│┌───┬─────┐│┌─────┬─────────┐│</span>
-<span class="err">│</span><span class="w"> </span><span class="err">││</span><span class="m">1</span><span class="err">│</span><span class="m">1</span><span class="err">│││┌─┐│┌───┐│││┌───┐│┌───────┐││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│└─┴─┘│││</span><span class="m">1</span><span class="err">│││</span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="err">│││││┌─┐│││┌─────┐│││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">││└─┘│└───┘│││││</span><span class="m">1</span><span class="err">│││││</span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="err">││││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">│└───┴─────┘│││└─┘│││└─────┘│││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">│</span><span class="w">           </span><span class="err">││└───┘│└───────┘││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">│</span><span class="w">           </span><span class="err">│└─────┴─────────┘│</span>
-<span class="err">└─┴─────┴───────────┴─────────────────┘</span>
-<span class="w">      </span><span class="o">⊢</span><span class="nv">B</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">A</span><span class="sr">[</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="sr">]</span>
-<span class="err">┌─┬─────┬───────────┐</span>
-<span class="err">│</span><span class="m">1</span><span class="err">│┌─┬─┐│┌───┬─────┐│</span>
-<span class="err">│</span><span class="w"> </span><span class="err">││</span><span class="m">1</span><span class="err">│</span><span class="m">1</span><span class="err">│││┌─┐│┌───┐││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│└─┴─┘│││</span><span class="m">1</span><span class="err">│││</span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="err">│││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">││└─┘│└───┘││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">│└───┴─────┘│</span>
-<span class="err">└─┴─────┴───────────┘</span>
-<span class="w">      </span><span class="o">⊢</span><span class="nv">C</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">×</span><span class="w"> </span><span class="o">⊂</span><span class="na">\</span><span class="o">,</span><span class="na">\</span><span class="w"> </span><span class="m">3</span><span class="na">/</span><span class="m">1</span>
-<span class="err">┌─┬─────┬───────────┐</span>
-<span class="err">│</span><span class="m">2</span><span class="err">│┌─┬─┐│┌───┬─────┐│</span>
-<span class="err">│</span><span class="w"> </span><span class="err">││</span><span class="m">2</span><span class="err">│</span><span class="m">2</span><span class="err">│││┌─┐│┌───┐││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│└─┴─┘│││</span><span class="m">2</span><span class="err">│││</span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="err">│││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">││└─┘│└───┘││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">│└───┴─────┘│</span>
-<span class="err">└─┴─────┴───────────┘</span>
-<span class="w">      </span><span class="nv">B</span><span class="w"> </span><span class="o">,</span><span class="na">¨¨¨¨</span><span class="w"> </span><span class="nv">C</span>
-<span class="err">┌─────────┬─────────────────┬─────────────────────┐</span>
-<span class="err">│┌───────┐│┌───────┬───────┐│┌───────┬───────────┐│</span>
-<span class="err">││┌─────┐│││┌─────┐│┌─────┐│││┌─────┐│┌─────────┐││</span>
-<span class="err">│││┌───┐│││││┌───┐│││┌───┐│││││┌───┐│││┌───┬───┐│││</span>
-<span class="err">││││</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│││││││</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│││││</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│││││││</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│││││</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">2</span><span class="err">││││</span>
-<span class="err">│││└───┘│││││└───┘│││└───┘│││││└───┘│││└───┴───┘│││</span>
-<span class="err">││└─────┘│││└─────┘│└─────┘│││└─────┘│└─────────┘││</span>
-<span class="err">│└───────┘│└───────┴───────┘│└───────┴───────────┘│</span>
-<span class="err">└─────────┴─────────────────┴─────────────────────┘</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      ⊢A ← ⊂\,\ 2/1 0
+┌─┬─────┬───────────┬─────────────────┐
+│1│┌─┬─┐│┌───┬─────┐│┌─────┬─────────┐│
+│ ││1│1│││┌─┐│┌───┐│││┌───┐│┌───────┐││
+│ │└─┴─┘│││1│││1 0│││││┌─┐│││┌─────┐│││
+│ │     ││└─┘│└───┘│││││1│││││1 0 0││││
+│ │     │└───┴─────┘│││└─┘│││└─────┘│││
+│ │     │           ││└───┘│└───────┘││
+│ │     │           │└─────┴─────────┘│
+└─┴─────┴───────────┴─────────────────┘
+      ⊢B ← A[1 2 3]
+┌─┬─────┬───────────┐
+│1│┌─┬─┐│┌───┬─────┐│
+│ ││1│1│││┌─┐│┌───┐││
+│ │└─┴─┘│││1│││1 0│││
+│ │     ││└─┘│└───┘││
+│ │     │└───┴─────┘│
+└─┴─────┴───────────┘
+      ⊢C ← 2 × ⊂\,\ 3/1
+┌─┬─────┬───────────┐
+│2│┌─┬─┐│┌───┬─────┐│
+│ ││2│2│││┌─┐│┌───┐││
+│ │└─┴─┘│││2│││2 2│││
+│ │     ││└─┘│└───┘││
+│ │     │└───┴─────┘│
+└─┴─────┴───────────┘
+      B ,¨¨¨¨ C
+┌─────────┬─────────────────┬─────────────────────┐
+│┌───────┐│┌───────┬───────┐│┌───────┬───────────┐│
+││┌─────┐│││┌─────┐│┌─────┐│││┌─────┐│┌─────────┐││
+│││┌───┐│││││┌───┐│││┌───┐│││││┌───┐│││┌───┬───┐│││
+││││1 2│││││││1 2│││││1 2│││││││1 2│││││1 2│0 2││││
+│││└───┘│││││└───┘│││└───┘│││││└───┘│││└───┴───┘│││
+││└─────┘│││└─────┘│└─────┘│││└─────┘│└─────────┘││
+│└───────┘│└───────┴───────┘│└───────┴───────────┘│
+└─────────┴─────────────────┴─────────────────────┘</code></pre>
 <p>In general, we might not a priori know how many <code>¨</code> each operators are needed, and even then, their excessive repeated use can make some code hard to read or understand. It would be useful to define an general operator that repeatedly applies the required number of <code>¨</code> each operators to match the simple scalars of the nested arrays. Luckily, one such operator can be found on the Dyalog <a href="https://dfns.dyalog.com/">General Utility dfns workspace</a> </p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">saw</span><span class="kd">←</span><span class="kt">{</span><span class="w">                 </span>
-<span class="w">        </span><span class="bp">⍺</span><span class="kd">←</span><span class="o">⊢</span><span class="w">                 </span><span class="c1">⍝ default left arg.</span>
-<span class="w">        </span><span class="m">2</span><span class="o">≥|≡</span><span class="bp">⍺</span><span class="w"> </span><span class="bp">⍵</span><span class="w"> </span><span class="bp">⍵:⍺</span><span class="w"> </span><span class="bp">⍺⍺</span><span class="w"> </span><span class="bp">⍵</span><span class="w">    </span><span class="c1">⍝ Both simple: apply operand.</span>
-<span class="w">        </span><span class="m">1</span><span class="o">≥|≡</span><span class="bp">⍵:⍺</span><span class="w"> </span><span class="bp">∇</span><span class="na">¨</span><span class="o">⊂</span><span class="bp">⍵</span><span class="w">        </span><span class="c1">⍝ ⍵ simple: traverse ⍺.</span>
-<span class="w">        </span><span class="m">2</span><span class="o">≥|≡</span><span class="bp">⍺</span><span class="w"> </span><span class="m">1</span><span class="bp">:⍺</span><span class="na">∘</span><span class="bp">∇</span><span class="na">¨</span><span class="bp">⍵</span><span class="w">       </span><span class="c1">⍝ ⍺ simple: traverse ⍵.</span>
-<span class="w">        </span><span class="bp">⍺</span><span class="w"> </span><span class="bp">∇</span><span class="na">¨</span><span class="bp">⍵</span><span class="w">               </span><span class="c1">⍝ Both nested: traverse both.</span>
-<span class="w">      </span><span class="kt">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      saw←{                 
+        ⍺←⊢                 ⍝ default left arg.
+        2≥|≡⍺ ⍵ ⍵:⍺ ⍺⍺ ⍵    ⍝ Both simple: apply operand.
+        1≥|≡⍵:⍺ ∇¨⊂⍵        ⍝ ⍵ simple: traverse ⍺.
+        2≥|≡⍺ 1:⍺∘∇¨⍵       ⍝ ⍺ simple: traverse ⍵.
+        ⍺ ∇¨⍵               ⍝ Both nested: traverse both.
+      }</code></pre>
 <p>The only new syntax in this dop that does not already exist in a dfn is the <code>⍺⍺</code> argument. Recall that all operators (except for the outer product <code>∘.f</code>!) take a function argument on the left, and possibly another function argument on the right, these function arguments are called "operands". These operands are denoted as <code>⍺⍺</code> and <code>⍵⍵</code> in dops, and the function resulting from applying an operator to operands is called a "derived function". Then, the second line of the dop can be read as "If the magnitude of the depth of the vector <code>⍺ ⍵ ⍵</code> is less than two, then apply the left operand <code>⍺⍺</code> to the array left argument <code>⍺</code> and array right argument <code>⍵</code>". </p>
 <p>Dops also has two different types of recursion. Using a single del <code>∇</code> refers to the derived function, and a double del <code>∇∇</code> refers to the dop itself.</p>
 <p>To make the new syntax clearer, let's consider some simple examples. </p>
@@ -2463,6 +2465,12 @@
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
         
       </main>
       
@@ -2544,7 +2552,7 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "nagivation.top", "navigation.footer", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.footer", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.92b07e13.min.js"></script>
@@ -2562,10 +2570,6 @@
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/build/three.module.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/examples/jsm/"></script>
       
     
   </body>

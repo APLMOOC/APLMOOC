@@ -6,7 +6,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="A free online course in array programming with APL.">
       
+      
+      
+        <link rel="canonical" href="https://aplmooc.fi/course/ch3/write/">
       
       
         <link rel="prev" href="../read/">
@@ -2404,7 +2408,7 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 1</p>
-<p>Write a dfn that calculates the harmonic mean of its left and right arguments, mathematically defined as $$H(\alpha,\omega) = \frac{1}{\frac{1}{\alpha}+\frac{1}{\omega}}$$
+<p>Write a dfn that calculates the harmonic mean of its left and right arguments, mathematically defined as <span class="arithmatex">\(<span class="arithmatex">\(H(\alpha,\omega) = \frac{1}{\frac{1}{\alpha}+\frac{1}{\omega}}\)</span>\)</span>
 <div class="problem">
     <span class="problemspan">H←</span>
     <input class="probleminput" type="text" id="input_ch3_p1" placeholder="your solution here">
@@ -2415,7 +2419,7 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 2</p>
-<p>Write a dfn that calculates the Heronian mean of its left and right arguments, mathematically defined as $$H(\alpha,\omega) = \frac{1}{3} \cdot (A+\sqrt{AB}+B)$$
+<p>Write a dfn that calculates the Heronian mean of its left and right arguments, mathematically defined as <span class="arithmatex">\(<span class="arithmatex">\(H(\alpha,\omega) = \frac{1}{3} \cdot (A+\sqrt{AB}+B)\)</span>\)</span>
 <div class="problem">
     <span class="problemspan">H←</span>
     <input class="probleminput" type="text" id="input_ch3_p2" placeholder="your solution here">
@@ -2426,7 +2430,7 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 3</p>
-<p>Write a dfn that calculates the geometric mean of its left and right arguments, mathematically defined as $$H(\alpha,\omega) = \sqrt{AB}$$
+<p>Write a dfn that calculates the geometric mean of its left and right arguments, mathematically defined as <span class="arithmatex">\(<span class="arithmatex">\(H(\alpha,\omega) = \sqrt{AB}\)</span>\)</span>
 <div class="problem">
     <span class="problemspan">H←</span>
     <input class="probleminput" type="text" id="input_ch3_p2" placeholder="your solution here">
@@ -2473,15 +2477,14 @@ $$   H(\alpha, \omega) = \left\{
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 6</p>
 <p>Write a dfn called My that displays personal information. The My function should take a string right argument and return the following
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">My</span><span class="w"> </span><span class="s1">&#39;Name&#39;</span>
-<span class="nv">DASH</span>
-<span class="w">      </span><span class="nv">My</span><span class="w"> </span><span class="s1">&#39;Age&#39;</span>
-<span class="m">20</span>
-<span class="w">      </span><span class="nv">My</span><span class="w"> </span><span class="s1">&#39;Profession&#39;</span>
-<span class="nv">Engineer</span>
-<span class="w">      </span><span class="nv">My</span><span class="w"> </span><span class="s1">&#39;Company&#39;</span>
-<span class="nv">Future</span><span class="w"> </span><span class="nv">Gadget</span><span class="w"> </span><span class="nv">Lab</span><span class="w"> </span><span class="nv">LLC</span>
-</code></pre></div></p>
+<pre class="highlight"><code class="language-apl">      My 'Name'
+DASH
+      My 'Age'
+20
+      My 'Profession'
+Engineer
+      My 'Company'
+Future Gadget Lab LLC</code></pre></p>
 <p>Hint: Use the match ≡ function.</p>
 <p><div class="problem">
     <span class="problemspan">My←</span>
@@ -2494,13 +2497,12 @@ $$   H(\alpha, \omega) = \left\{
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 7</p>
 <p>Recall the tape-based machine given in the Chapter 2 Write problem 12. </p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">INSTRUCTIONS</span>
-<span class="w">  </span><span class="err">┌─────┬─────┬─────┐</span>
-<span class="w">  </span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="nv">R</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="nv">L</span><span class="w"> </span><span class="m">1</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="nv">L</span><span class="w"> </span><span class="m">2</span><span class="err">│</span>
-<span class="w">  </span><span class="err">├─────┼─────┼─────┤</span>
-<span class="w">  </span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="nv">L</span><span class="w"> </span><span class="m">3</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="nv">R</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="nv">N</span><span class="w"> </span><span class="nv">H</span><span class="err">│</span>
-<span class="w">  </span><span class="err">└─────┴─────┴─────┘</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      INSTRUCTIONS
+  ┌─────┬─────┬─────┐
+  │1 R 2│1 L 1│1 L 2│
+  ├─────┼─────┼─────┤
+  │1 L 3│1 R 2│1 N H│
+  └─────┴─────┴─────┘</code></pre>
 <p>The first (second) row of the matrix specifies the possible instructions when the value of the section of tape is a 1 (2). The columns similarly specify the possible instructions depending on the state of the machine.</p>
 <p>Create a dfn FETCH that takes in a two element right argument vector <code>⍵</code>, specifying in the first element the value of the section of tape and the second the state of the machine, and returns the corresponding instruction.</p>
 <p><div class="problem">
@@ -2526,21 +2528,20 @@ $$   H(\alpha, \omega) = \left\{
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 9</p>
 <p>Create a dfn that returns a matrix of zeroes of size <code>⍺</code> by <code>⍺</code>, with a 1 in a position specified by the vector right argument <code>⍵</code>. 
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="m">2</span><span class="w"> </span><span class="nv">SPARSE</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">1</span><span class="w"> </span><span class="m">0</span>
-<span class="w">      </span><span class="m">10</span><span class="w"> </span><span class="nv">SPARSE</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">4</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      2 SPARSE 2 1
+0 0
+1 0
+      10 SPARSE 5 4
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 1 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0</code></pre>
 <div class="problem">
     <span class="problemspan">SPARSE←</span>
     <input class="probleminput" type="text" id="input_ch3_p9" placeholder="your solution here">
@@ -2552,31 +2553,31 @@ $$   H(\alpha, \omega) = \left\{
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 10</p>
 <p>Create a dfn that plots a heatmap of a matrix, that is, a <code>*</code> where the matrix <code>⍵</code> is above a certain value <code>⍺</code> and an underscore <code>_</code> otherwise. For example,</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">M</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="o">⍴⍳</span><span class="m">9</span>
-<span class="w">      </span><span class="nv">M</span>
-<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">1</span>
-<span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span>
-<span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
-<span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span>
-<span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span>
-<span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span>
-<span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span>
-<span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span>
-<span class="m">9</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span>
-<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">1</span>
+<pre class="highlight"><code class="language-apl">      M ← 10 10⍴⍳9
+      M
+1 2 3 4 5 6 7 8 9 1
+2 3 4 5 6 7 8 9 1 2
+3 4 5 6 7 8 9 1 2 3
+4 5 6 7 8 9 1 2 3 4
+5 6 7 8 9 1 2 3 4 5
+6 7 8 9 1 2 3 4 5 6
+7 8 9 1 2 3 4 5 6 7
+8 9 1 2 3 4 5 6 7 8
+9 1 2 3 4 5 6 7 8 9
+1 2 3 4 5 6 7 8 9 1
 
-<span class="w">      </span><span class="m">7</span><span class="w"> </span><span class="nv">PLOT</span><span class="w"> </span><span class="nv">M</span>
-<span class="nv">_______</span><span class="o">**</span><span class="nv">_</span>
-<span class="nv">______</span><span class="o">**</span><span class="nv">__</span>
-<span class="nv">_____</span><span class="o">**</span><span class="nv">___</span>
-<span class="nv">____</span><span class="o">**</span><span class="nv">____</span>
-<span class="nv">___</span><span class="o">**</span><span class="nv">_____</span>
-<span class="nv">__</span><span class="o">**</span><span class="nv">______</span>
-<span class="nv">_</span><span class="o">**</span><span class="nv">_______</span>
-<span class="o">**</span><span class="nv">_______</span><span class="o">*</span>
-<span class="o">*</span><span class="nv">_______</span><span class="o">**</span>
-<span class="nv">_______</span><span class="o">**</span><span class="nv">_</span>
-</code></pre></div>
+      7 PLOT M
+_______**_
+______**__
+_____**___
+____**____
+___**_____
+__**______
+_**_______
+**_______*
+*_______**
+_______**_
+</code></pre>
 <p>Hint: Index the vector <code>'_*'</code> by a matrix</p>
 <p><div class="problem">
     <span class="problemspan">PLOT←</span>
@@ -2589,13 +2590,12 @@ $$   H(\alpha, \omega) = \left\{
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 11</p>
 <p>Create a dfn that returns the singular form of a noun given as a vector right argument <code>⍵</code>, returning 'an' with the noun when the noun begins with a vowel, and 'a' with the noun otherwise. In this case, 'Y' is not considered a vowel. The nouns will be given in UPPERCASE.</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">SINGULAR</span><span class="w"> </span><span class="s2">&quot;DREAM&quot;</span>
-<span class="nv">A</span><span class="w"> </span><span class="nv">DREAM</span>
-<span class="w">      </span><span class="nv">SINGULAR</span><span class="w"> </span><span class="s2">&quot;SNOOZE&quot;</span>
-<span class="nv">A</span><span class="w"> </span><span class="nv">SNOOZE</span>
-<span class="w">      </span><span class="nv">SINGULAR</span><span class="w"> </span><span class="s2">&quot;AERODROME&quot;</span>
-<span class="nv">AN</span><span class="w"> </span><span class="nv">AERODROME</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      SINGULAR "DREAM"
+A DREAM
+      SINGULAR "SNOOZE"
+A SNOOZE
+      SINGULAR "AERODROME"
+AN AERODROME</code></pre>
 <p><div class="problem">
     <span class="problemspan">SINGULAR←</span>
     <input class="probleminput" type="text" id="input_ch3_p11" placeholder="your solution here">
@@ -2607,40 +2607,39 @@ $$   H(\alpha, \omega) = \left\{
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 12</p>
 <p>Create a dfn that determines an APL MOOC student's final grade. The right argument <code>⍵</code> is the number of exercises completed. For the sake of this problem, you can assume that the APL MOOC has 72 exercises. The grade boundaries and expected results are given below</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="c1">⍝ Less than 60%</span>
-<span class="w">      </span><span class="nv">GRADE</span><span class="w"> </span><span class="m">42</span>
-<span class="m">0</span>
-<span class="w">      </span><span class="c1">⍝ Between 60% and 70%</span>
-<span class="w">      </span><span class="nv">GRADE</span><span class="w"> </span><span class="m">43</span>
-<span class="m">1</span>
-<span class="w">      </span><span class="nv">GRADE</span><span class="w"> </span><span class="m">50</span>
-<span class="m">1</span>
+<pre class="highlight"><code class="language-apl">      ⍝ Less than 60%
+      GRADE 42
+0
+      ⍝ Between 60% and 70%
+      GRADE 43
+1
+      GRADE 50
+1
 
-<span class="w">      </span><span class="c1">⍝ Between 70% and 80%</span>
-<span class="w">      </span><span class="nv">GRADE</span><span class="w"> </span><span class="m">51</span>
-<span class="m">2</span>
-<span class="w">      </span><span class="nv">GRADE</span><span class="w"> </span><span class="m">57</span>
-<span class="m">2</span>
+      ⍝ Between 70% and 80%
+      GRADE 51
+2
+      GRADE 57
+2
 
-<span class="w">      </span><span class="c1">⍝ Between 80% and 90%</span>
-<span class="w">      </span><span class="nv">GRADE</span><span class="w"> </span><span class="m">58</span>
-<span class="m">3</span>
-<span class="w">      </span><span class="nv">GRADE</span><span class="w"> </span><span class="m">64</span>
-<span class="m">3</span>
+      ⍝ Between 80% and 90%
+      GRADE 58
+3
+      GRADE 64
+3
 
-<span class="w">      </span><span class="c1">⍝ Between 90% and 99%</span>
-<span class="w">      </span><span class="nv">GRADE</span><span class="w"> </span><span class="m">65</span>
-<span class="m">4</span>
-<span class="w">      </span><span class="nv">GRADE</span><span class="w"> </span><span class="m">71</span>
-<span class="m">4</span>
+      ⍝ Between 90% and 99%
+      GRADE 65
+4
+      GRADE 71
+4
 
-<span class="w">      </span><span class="c1">⍝ Between 99% and 100%</span>
-<span class="w">      </span><span class="nv">Grade</span><span class="w"> </span><span class="m">72</span>
-<span class="m">5</span>
+      ⍝ Between 99% and 100%
+      Grade 72
+5
 
-<span class="w">      </span><span class="c1">⍝ Any higher returns nothing</span>
-<span class="w">      </span><span class="nv">Grade</span><span class="w"> </span><span class="m">73</span>
-</code></pre></div>
+      ⍝ Any higher returns nothing
+      Grade 73</code></pre>
 <p><div class="problem">
     <span class="problemspan">GRADE←</span>
     <input class="probleminput" type="text" id="input_ch3_p12" placeholder="your solution here">
@@ -2668,6 +2667,12 @@ $$   H(\alpha, \omega) = \left\{
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
         
       </main>
       
@@ -2749,7 +2754,7 @@ $$   H(\alpha, \omega) = \left\{
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "nagivation.top", "navigation.footer", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.footer", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.92b07e13.min.js"></script>
@@ -2767,10 +2772,6 @@ $$   H(\alpha, \omega) = \left\{
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/build/three.module.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/examples/jsm/"></script>
       
     
   </body>

@@ -6,7 +6,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="A free online course in array programming with APL.">
       
+      
+      
+        <link rel="canonical" href="https://aplmooc.fi/course/ch4/read/">
       
       
         <link rel="prev" href="../summary/">
@@ -2394,15 +2398,13 @@ Check your answers by opening the "Output" tab.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Input</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="m">5</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="m">52</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      5 ? 52</code></pre>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="m">5</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="m">52</span>
-<span class="m">38</span><span class="w"> </span><span class="m">47</span><span class="w"> </span><span class="m">28</span><span class="w"> </span><span class="m">43</span><span class="w"> </span><span class="m">41</span>
+<pre class="highlight"><code class="language-apl">      5 ? 52
+38 47 28 43 41
 
-<span class="w">      </span><span class="c1">⍝ Dealing 5 random numbers without repetition from 1 and 52</span>
-</code></pre></div>
+      ⍝ Dealing 5 random numbers without repetition from 1 and 52</code></pre>
 </div>
 </div>
 </div>
@@ -2413,26 +2415,24 @@ Check your answers by opening the "Output" tab.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Input</label><label for="__tabbed_2_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">CARDS</span>
-<span class="err">┌──┬──┬──┬──┬──┬──┬──┬──┬───┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬───┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬───┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬───┬──┬──┬──┬──┐</span>
-<span class="err">│♠</span><span class="m">2</span><span class="err">│♠</span><span class="m">3</span><span class="err">│♠</span><span class="m">4</span><span class="err">│♠</span><span class="m">5</span><span class="err">│♠</span><span class="m">6</span><span class="err">│♠</span><span class="m">7</span><span class="err">│♠</span><span class="m">8</span><span class="err">│♠</span><span class="m">9</span><span class="err">│♠</span><span class="m">10</span><span class="err">│♠</span><span class="nv">J</span><span class="err">│♠</span><span class="nv">Q</span><span class="err">│♠</span><span class="nv">K</span><span class="err">│♠</span><span class="nv">A</span><span class="err">│♥</span><span class="m">2</span><span class="err">│♥</span><span class="m">3</span><span class="err">│♥</span><span class="m">4</span><span class="err">│♥</span><span class="m">5</span><span class="err">│♥</span><span class="m">6</span><span class="err">│♥</span><span class="m">7</span><span class="err">│♥</span><span class="m">8</span><span class="err">│♥</span><span class="m">9</span><span class="err">│♥</span><span class="m">10</span><span class="err">│♥</span><span class="nv">J</span><span class="err">│♥</span><span class="nv">Q</span><span class="err">│♥</span><span class="nv">K</span><span class="err">│♥</span><span class="nv">A</span><span class="err">│♦</span><span class="m">2</span><span class="err">│♦</span><span class="m">3</span><span class="err">│♦</span><span class="m">4</span><span class="err">│♦</span><span class="m">5</span><span class="err">│♦</span><span class="m">6</span><span class="err">│♦</span><span class="m">7</span><span class="err">│♦</span><span class="m">8</span><span class="err">│♦</span><span class="m">9</span><span class="err">│♦</span><span class="m">10</span><span class="err">│♦</span><span class="nv">J</span><span class="err">│♦</span><span class="nv">Q</span><span class="err">│♦</span><span class="nv">K</span><span class="err">│♦</span><span class="nv">A</span><span class="err">│♣</span><span class="m">2</span><span class="err">│♣</span><span class="m">3</span><span class="err">│♣</span><span class="m">4</span><span class="err">│♣</span><span class="m">5</span><span class="err">│♣</span><span class="m">6</span><span class="err">│♣</span><span class="m">7</span><span class="err">│♣</span><span class="m">8</span><span class="err">│♣</span><span class="m">9</span><span class="err">│♣</span><span class="m">10</span><span class="err">│♣</span><span class="nv">J</span><span class="err">│♣</span><span class="nv">Q</span><span class="err">│♣</span><span class="nv">K</span><span class="err">│♣</span><span class="nv">A</span><span class="err">│</span>
-<span class="err">└──┴──┴──┴──┴──┴──┴──┴──┴───┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴───┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴───┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴───┴──┴──┴──┴──┘</span>
+<pre class="highlight"><code class="language-apl">      CARDS
+┌──┬──┬──┬──┬──┬──┬──┬──┬───┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬───┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬───┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬───┬──┬──┬──┬──┐
+│♠2│♠3│♠4│♠5│♠6│♠7│♠8│♠9│♠10│♠J│♠Q│♠K│♠A│♥2│♥3│♥4│♥5│♥6│♥7│♥8│♥9│♥10│♥J│♥Q│♥K│♥A│♦2│♦3│♦4│♦5│♦6│♦7│♦8│♦9│♦10│♦J│♦Q│♦K│♦A│♣2│♣3│♣4│♣5│♣6│♣7│♣8│♣9│♣10│♣J│♣Q│♣K│♣A│
+└──┴──┴──┴──┴──┴──┴──┴──┴───┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴───┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴───┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴───┴──┴──┴──┴──┘
 
-<span class="w">      </span><span class="nv">CARDS</span><span class="sr">[</span><span class="m">5</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="m">52</span><span class="sr">]</span>
-</code></pre></div>
+      CARDS[5 ? 52]</code></pre>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">CARDS</span>
-<span class="err">┌──┬──┬──┬──┬──┬──┬──┬──┬───┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬───┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬───┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬───┬──┬──┬──┬──┐</span>
-<span class="err">│♠</span><span class="m">2</span><span class="err">│♠</span><span class="m">3</span><span class="err">│♠</span><span class="m">4</span><span class="err">│♠</span><span class="m">5</span><span class="err">│♠</span><span class="m">6</span><span class="err">│♠</span><span class="m">7</span><span class="err">│♠</span><span class="m">8</span><span class="err">│♠</span><span class="m">9</span><span class="err">│♠</span><span class="m">10</span><span class="err">│♠</span><span class="nv">J</span><span class="err">│♠</span><span class="nv">Q</span><span class="err">│♠</span><span class="nv">K</span><span class="err">│♠</span><span class="nv">A</span><span class="err">│♥</span><span class="m">2</span><span class="err">│♥</span><span class="m">3</span><span class="err">│♥</span><span class="m">4</span><span class="err">│♥</span><span class="m">5</span><span class="err">│♥</span><span class="m">6</span><span class="err">│♥</span><span class="m">7</span><span class="err">│♥</span><span class="m">8</span><span class="err">│♥</span><span class="m">9</span><span class="err">│♥</span><span class="m">10</span><span class="err">│♥</span><span class="nv">J</span><span class="err">│♥</span><span class="nv">Q</span><span class="err">│♥</span><span class="nv">K</span><span class="err">│♥</span><span class="nv">A</span><span class="err">│♦</span><span class="m">2</span><span class="err">│♦</span><span class="m">3</span><span class="err">│♦</span><span class="m">4</span><span class="err">│♦</span><span class="m">5</span><span class="err">│♦</span><span class="m">6</span><span class="err">│♦</span><span class="m">7</span><span class="err">│♦</span><span class="m">8</span><span class="err">│♦</span><span class="m">9</span><span class="err">│♦</span><span class="m">10</span><span class="err">│♦</span><span class="nv">J</span><span class="err">│♦</span><span class="nv">Q</span><span class="err">│♦</span><span class="nv">K</span><span class="err">│♦</span><span class="nv">A</span><span class="err">│♣</span><span class="m">2</span><span class="err">│♣</span><span class="m">3</span><span class="err">│♣</span><span class="m">4</span><span class="err">│♣</span><span class="m">5</span><span class="err">│♣</span><span class="m">6</span><span class="err">│♣</span><span class="m">7</span><span class="err">│♣</span><span class="m">8</span><span class="err">│♣</span><span class="m">9</span><span class="err">│♣</span><span class="m">10</span><span class="err">│♣</span><span class="nv">J</span><span class="err">│♣</span><span class="nv">Q</span><span class="err">│♣</span><span class="nv">K</span><span class="err">│♣</span><span class="nv">A</span><span class="err">│</span>
-<span class="err">└──┴──┴──┴──┴──┴──┴──┴──┴───┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴───┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴───┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴───┴──┴──┴──┴──┘</span>
+<pre class="highlight"><code class="language-apl">      CARDS
+┌──┬──┬──┬──┬──┬──┬──┬──┬───┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬───┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬───┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬───┬──┬──┬──┬──┐
+│♠2│♠3│♠4│♠5│♠6│♠7│♠8│♠9│♠10│♠J│♠Q│♠K│♠A│♥2│♥3│♥4│♥5│♥6│♥7│♥8│♥9│♥10│♥J│♥Q│♥K│♥A│♦2│♦3│♦4│♦5│♦6│♦7│♦8│♦9│♦10│♦J│♦Q│♦K│♦A│♣2│♣3│♣4│♣5│♣6│♣7│♣8│♣9│♣10│♣J│♣Q│♣K│♣A│
+└──┴──┴──┴──┴──┴──┴──┴──┴───┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴───┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴───┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴───┴──┴──┴──┴──┘
 
-<span class="w">      </span><span class="nv">CARDS</span><span class="sr">[</span><span class="m">5</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="m">52</span><span class="sr">]</span>
-<span class="err">┌──┬──┬───┬───┬──┐</span>
-<span class="err">│♥</span><span class="nv">K</span><span class="err">│♦</span><span class="m">3</span><span class="err">│♠</span><span class="m">10</span><span class="err">│♥</span><span class="m">10</span><span class="err">│♠</span><span class="m">7</span><span class="err">│</span>
-<span class="err">└──┴──┴───┴───┴──┘</span>
-<span class="w">      </span><span class="c1">⍝ Dealing a hand of five cards</span>
-</code></pre></div>
+      CARDS[5 ? 52]
+┌──┬──┬───┬───┬──┐
+│♥K│♦3│♠10│♥10│♠7│
+└──┴──┴───┴───┴──┘
+      ⍝ Dealing a hand of five cards</code></pre>
 </div>
 </div>
 </div>
@@ -2443,50 +2443,48 @@ Check your answers by opening the "Output" tab.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Input</label><label for="__tabbed_3_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">APL</span>
-<span class="w">     </span><span class="na">.</span><span class="nv">_________________</span><span class="na">.</span><span class="w">    </span>
-<span class="w">     </span><span class="o">|</span><span class="na">.</span><span class="o">---------------</span><span class="na">.</span><span class="o">|</span><span class="w">    </span>
-<span class="w">     </span><span class="o">||</span><span class="w">  </span><span class="nv">__</span><span class="w">  </span><span class="nv">____</span><span class="w"> </span><span class="nv">__</span><span class="w">  </span><span class="o">||</span><span class="w">    </span>
-<span class="w">     </span><span class="o">||</span><span class="w"> </span><span class="na">/</span><span class="w"> </span><span class="nv">_</span><span class="na">\</span><span class="p">(</span><span class="w">  </span><span class="nv">_</span><span class="w"> </span><span class="p">(</span><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w">    </span>
-<span class="w">     </span><span class="o">||</span><span class="na">/</span><span class="w">    </span><span class="na">\</span><span class="p">)</span><span class="w"> </span><span class="nv">__</span><span class="na">/</span><span class="w"> </span><span class="p">(</span><span class="nv">_</span><span class="na">/</span><span class="o">||</span><span class="w">    </span>
-<span class="w">     </span><span class="o">||</span><span class="na">\</span><span class="nv">_</span><span class="na">/\</span><span class="nv">_</span><span class="p">(</span><span class="nv">__</span><span class="p">)</span><span class="w"> </span><span class="na">\</span><span class="nv">____</span><span class="o">||</span><span class="w">    </span>
-<span class="w">     </span><span class="o">||</span><span class="nv">_______________</span><span class="o">||</span><span class="w">    </span>
-<span class="w">     </span><span class="na">/.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.\</span><span class="w">    </span>
-<span class="w">    </span><span class="na">/.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.\</span><span class="w">   </span>
-<span class="w">   </span><span class="na">/.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.\</span><span class="w">  </span>
-<span class="w">  </span><span class="na">/</span><span class="nv">______</span><span class="na">/</span><span class="nv">__________</span><span class="na">\</span><span class="nv">_____</span><span class="na">\</span><span class="w"> </span>
-<span class="w">  </span><span class="na">\</span><span class="nv">_______________________</span><span class="na">/</span><span class="w"> </span>
-<span class="w">      </span><span class="m">2</span><span class="na">/</span><span class="nv">APL</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      APL
+     ._________________.    
+     |.---------------.|    
+     ||  __  ____ __  ||    
+     || / _\(  _ (  ) ||    
+     ||/    \) __/ (_/||    
+     ||\_/\_(__) \____||    
+     ||_______________||    
+     /.-.-.-.-.-.-.-.-.\    
+    /.-.-.-.-.-.-.-.-.-.\   
+   /.-.-.-.-.-.-.-.-.-.-.\  
+  /______/__________\_____\ 
+  \_______________________/ 
+      2/APL</code></pre>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">APL</span>
-<span class="w">     </span><span class="na">.</span><span class="nv">_________________</span><span class="na">.</span><span class="w">    </span>
-<span class="w">     </span><span class="o">|</span><span class="na">.</span><span class="o">---------------</span><span class="na">.</span><span class="o">|</span><span class="w">    </span>
-<span class="w">     </span><span class="o">||</span><span class="w">  </span><span class="nv">__</span><span class="w">  </span><span class="nv">____</span><span class="w"> </span><span class="nv">__</span><span class="w">  </span><span class="o">||</span><span class="w">    </span>
-<span class="w">     </span><span class="o">||</span><span class="w"> </span><span class="na">/</span><span class="w"> </span><span class="nv">_</span><span class="na">\</span><span class="p">(</span><span class="w">  </span><span class="nv">_</span><span class="w"> </span><span class="p">(</span><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w">    </span>
-<span class="w">     </span><span class="o">||</span><span class="na">/</span><span class="w">    </span><span class="na">\</span><span class="p">)</span><span class="w"> </span><span class="nv">__</span><span class="na">/</span><span class="w"> </span><span class="p">(</span><span class="nv">_</span><span class="na">/</span><span class="o">||</span><span class="w">    </span>
-<span class="w">     </span><span class="o">||</span><span class="na">\</span><span class="nv">_</span><span class="na">/\</span><span class="nv">_</span><span class="p">(</span><span class="nv">__</span><span class="p">)</span><span class="w"> </span><span class="na">\</span><span class="nv">____</span><span class="o">||</span><span class="w">    </span>
-<span class="w">     </span><span class="o">||</span><span class="nv">_______________</span><span class="o">||</span><span class="w">    </span>
-<span class="w">     </span><span class="na">/.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.\</span><span class="w">    </span>
-<span class="w">    </span><span class="na">/.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.\</span><span class="w">   </span>
-<span class="w">   </span><span class="na">/.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.\</span><span class="w">  </span>
-<span class="w">  </span><span class="na">/</span><span class="nv">______</span><span class="na">/</span><span class="nv">__________</span><span class="na">\</span><span class="nv">_____</span><span class="na">\</span><span class="w"> </span>
-<span class="w">  </span><span class="na">\</span><span class="nv">_______________________</span><span class="na">/</span><span class="w"> </span>
-<span class="w">      </span><span class="m">2</span><span class="na">/</span><span class="nv">APL</span>
-<span class="w">      </span><span class="na">..</span><span class="nv">__________________________________</span><span class="na">..</span><span class="w">        </span>
-<span class="w">      </span><span class="o">||</span><span class="na">..</span><span class="o">------------------------------</span><span class="na">..</span><span class="o">||</span><span class="w">        </span>
-<span class="w">      </span><span class="o">||||</span><span class="w">    </span><span class="nv">____</span><span class="w">    </span><span class="nv">________</span><span class="w">  </span><span class="nv">____</span><span class="w">    </span><span class="o">||||</span><span class="w">        </span>
-<span class="w">      </span><span class="o">||||</span><span class="w">  </span><span class="na">//</span><span class="w">  </span><span class="nv">__</span><span class="na">\\</span><span class="p">((</span><span class="w">    </span><span class="nv">__</span><span class="w">  </span><span class="p">((</span><span class="w">    </span><span class="p">))</span><span class="w">  </span><span class="o">||||</span><span class="w">        </span>
-<span class="w">      </span><span class="o">||||</span><span class="na">//</span><span class="w">        </span><span class="na">\\</span><span class="p">))</span><span class="w">  </span><span class="nv">____</span><span class="na">//</span><span class="w">  </span><span class="p">((</span><span class="nv">__</span><span class="na">//</span><span class="o">||||</span><span class="w">        </span>
-<span class="w">      </span><span class="o">||||</span><span class="na">\\</span><span class="nv">__</span><span class="na">//\\</span><span class="nv">__</span><span class="p">((</span><span class="nv">____</span><span class="p">))</span><span class="w">  </span><span class="na">\\</span><span class="nv">________</span><span class="o">||||</span><span class="w">        </span>
-<span class="w">      </span><span class="o">||||</span><span class="nv">______________________________</span><span class="o">||||</span><span class="w">        </span>
-<span class="w">      </span><span class="na">//..</span><span class="o">--</span><span class="na">..</span><span class="o">--</span><span class="na">..</span><span class="o">--</span><span class="na">..</span><span class="o">--</span><span class="na">..</span><span class="o">--</span><span class="na">..</span><span class="o">--</span><span class="na">..</span><span class="o">--</span><span class="na">..</span><span class="o">--</span><span class="na">..\\</span><span class="w">        </span>
-<span class="w">    </span><span class="na">//..</span><span class="o">--</span><span class="na">..</span><span class="o">--</span><span class="na">..</span><span class="o">--</span><span class="na">..</span><span class="o">--</span><span class="na">..</span><span class="o">--</span><span class="na">..</span><span class="o">--</span><span class="na">..</span><span class="o">--</span><span class="na">..</span><span class="o">--</span><span class="na">..</span><span class="o">--</span><span class="na">..\\</span><span class="w">      </span>
-<span class="w">  </span><span class="na">//..</span><span class="o">--</span><span class="na">..</span><span class="o">--</span><span class="na">..</span><span class="o">--</span><span class="na">..</span><span class="o">--</span><span class="na">..</span><span class="o">--</span><span class="na">..</span><span class="o">--</span><span class="na">..</span><span class="o">--</span><span class="na">..</span><span class="o">--</span><span class="na">..</span><span class="o">--</span><span class="na">..</span><span class="o">--</span><span class="na">..\\</span><span class="w">    </span>
-<span class="na">//</span><span class="nv">____________</span><span class="na">//</span><span class="nv">____________________</span><span class="na">\\</span><span class="nv">__________</span><span class="na">\\</span><span class="w">  </span>
-<span class="na">\\</span><span class="nv">______________________________________________</span><span class="na">//</span><span class="w">  </span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      APL
+     ._________________.    
+     |.---------------.|    
+     ||  __  ____ __  ||    
+     || / _\(  _ (  ) ||    
+     ||/    \) __/ (_/||    
+     ||\_/\_(__) \____||    
+     ||_______________||    
+     /.-.-.-.-.-.-.-.-.\    
+    /.-.-.-.-.-.-.-.-.-.\   
+   /.-.-.-.-.-.-.-.-.-.-.\  
+  /______/__________\_____\ 
+  \_______________________/ 
+      2/APL
+      ..__________________________________..        
+      ||..------------------------------..||        
+      ||||    ____    ________  ____    ||||        
+      ||||  //  __\\((    __  ((    ))  ||||        
+      ||||//        \\))  ____//  ((__//||||        
+      ||||\\__//\\__((____))  \\________||||        
+      ||||______________________________||||        
+      //..--..--..--..--..--..--..--..--..\\        
+    //..--..--..--..--..--..--..--..--..--..\\      
+  //..--..--..--..--..--..--..--..--..--..--..\\    
+//____________//____________________\\__________\\  
+\\______________________________________________//  </code></pre>
 </div>
 </div>
 </div>
@@ -2497,55 +2495,53 @@ Check your answers by opening the "Output" tab.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Input</label><label for="__tabbed_4_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">DICTIONARY</span>
-<span class="nv">AA</span><span class="w">  </span>
-<span class="nv">AAHED</span><span class="w">  </span>
-<span class="nv">AAHING</span><span class="w">  </span>
-<span class="nv">AAHS</span><span class="w">  </span>
-<span class="nv">AALII</span><span class="w">  </span>
-<span class="nv">AALIIS</span><span class="w">  </span>
-<span class="nv">AALS</span><span class="w">  </span>
-<span class="nv">AARDVARK</span><span class="w"> </span>
-<span class="na">.</span><span class="w"> </span><span class="na">.</span><span class="w"> </span><span class="na">.</span>
-<span class="w">      </span><span class="nv">DICTIONARY</span><span class="sr">[</span><span class="m">1</span><span class="sr">;]</span>
-<span class="nv">AA</span>
-<span class="w">      </span><span class="nv">DICTIONARY</span><span class="sr">[;</span><span class="m">1</span><span class="sr">]</span>
-<span class="nv">A</span>
-<span class="nv">A</span>
-<span class="nv">A</span>
-<span class="nv">A</span>
-<span class="na">.</span><span class="w"> </span><span class="na">.</span><span class="w"> </span><span class="na">.</span>
-<span class="w">      </span><span class="nv">DICTIONARY</span><span class="sr">[</span><span class="o">⍸</span><span class="nv">DICTIONARY</span><span class="sr">[;</span><span class="m">1</span><span class="sr">]</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="sr">;]</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      DICTIONARY
+AA  
+AAHED  
+AAHING  
+AAHS  
+AALII  
+AALIIS  
+AALS  
+AARDVARK 
+. . .
+      DICTIONARY[1;]
+AA
+      DICTIONARY[;1]
+A
+A
+A
+A
+. . .
+      DICTIONARY[⍸DICTIONARY[;1]='X';]</code></pre>
 </div>
 <div class="tabbed-block">
-<p><div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">DICTIONARY</span>
-<span class="nv">AA</span><span class="w">  </span>
-<span class="nv">AAHED</span><span class="w">  </span>
-<span class="nv">AAHING</span><span class="w">  </span>
-<span class="nv">AAHS</span><span class="w">  </span>
-<span class="nv">AALII</span><span class="w">  </span>
-<span class="nv">AALIIS</span><span class="w">  </span>
-<span class="nv">AALS</span><span class="w">  </span>
-<span class="nv">AARDVARK</span><span class="w"> </span>
-<span class="na">.</span><span class="w"> </span><span class="na">.</span><span class="w"> </span><span class="na">.</span>
-<span class="w">      </span><span class="nv">DICTIONARY</span><span class="sr">[</span><span class="m">1</span><span class="sr">;]</span>
-<span class="nv">AA</span>
-<span class="w">      </span><span class="nv">DICTIONARY</span><span class="sr">[;</span><span class="m">1</span><span class="sr">]</span>
-<span class="nv">A</span>
-<span class="nv">A</span>
-<span class="nv">A</span>
-<span class="nv">A</span>
-<span class="na">.</span><span class="w"> </span><span class="na">.</span><span class="w"> </span><span class="na">.</span>
-<span class="w">      </span><span class="nv">DICTIONARY</span><span class="sr">[</span><span class="o">⍸</span><span class="nv">DICTIONARY</span><span class="sr">[;</span><span class="m">1</span><span class="sr">]</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="sr">;]</span>
-<span class="nv">XANTHAM</span><span class="w">        </span>
-<span class="nv">XANTHAMS</span><span class="w">       </span>
-<span class="nv">XANTHAN</span><span class="w">        </span>
-<span class="nv">XANTHANS</span><span class="w">       </span>
-<span class="nv">XANTHATE</span><span class="w">       </span>
-<span class="nv">XANTHATES</span><span class="w">      </span>
-<span class="na">.</span><span class="w"> </span><span class="na">.</span><span class="w"> </span><span class="na">.</span>
-</code></pre></div>
+<p><pre class="highlight"><code class="language-apl">      DICTIONARY
+AA  
+AAHED  
+AAHING  
+AAHS  
+AALII  
+AALIIS  
+AALS  
+AARDVARK 
+. . .
+      DICTIONARY[1;]
+AA
+      DICTIONARY[;1]
+A
+A
+A
+A
+. . .
+      DICTIONARY[⍸DICTIONARY[;1]='X';]
+XANTHAM        
+XANTHAMS       
+XANTHAN        
+XANTHANS       
+XANTHATE       
+XANTHATES      
+. . .</code></pre>
 All words starting with 'X'</p>
 </div>
 </div>
@@ -2557,45 +2553,43 @@ All words starting with 'X'</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Input</label><label for="__tabbed_5_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="s1">&#39;TELE&#39;</span><span class="w"> </span><span class="o">⍷</span><span class="w"> </span><span class="nv">DICTIONARY</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="na">.</span><span class="w"> </span><span class="na">.</span><span class="w"> </span><span class="na">.</span>
-<span class="w">      </span><span class="o">⍸</span><span class="w"> </span><span class="s1">&#39;TELE&#39;</span><span class="w"> </span><span class="o">⍷</span><span class="w"> </span><span class="nv">DICTIONARY</span>
-<span class="err">┌───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬─</span>
-<span class="err">│</span><span class="m">14061</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">14062</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">14063</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">14064</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">14065</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">18946</span><span class="w"> </span><span class="m">3</span><span class="err">│</span><span class="m">18947</span><span class="w"> </span><span class="m">3</span><span class="err">│</span><span class="m">18948</span><span class="w"> </span><span class="m">3</span><span class="err">│</span><span class="m">19107</span><span class="w"> </span><span class="m">4</span><span class="err">│</span><span class="m">19108</span><span class="w"> </span><span class="m">4</span><span class="err">│</span><span class="m">19109</span><span class="w"> </span><span class="m">4</span><span class="err">│</span><span class="m">23447</span><span class="w"> </span><span class="m">4</span><span class="err">│</span><span class="m">23448</span><span class="w"> </span><span class="m">4</span><span class="err">│</span><span class="m">23449</span><span class="w"> </span><span class="m">4</span><span class="err">│</span><span class="m">35280</span><span class="w"> </span><span class="m">4</span><span class="err">│</span><span class="m">4</span>
-<span class="err">└───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴─</span>
-<span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="o">⊃</span><span class="p">(</span><span class="o">⍸</span><span class="w"> </span><span class="s1">&#39;TELE&#39;</span><span class="w"> </span><span class="o">⍷</span><span class="w"> </span><span class="nv">DICTIONARY</span><span class="p">)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      'TELE' ⍷ DICTIONARY
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+. . .
+      ⍸ 'TELE' ⍷ DICTIONARY
+┌───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬─
+│14061 2│14062 2│14063 2│14064 2│14065 2│18946 3│18947 3│18948 3│19107 4│19108 4│19109 4│23447 4│23448 4│23449 4│35280 4│4
+└───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴─
+      1 1⊃(⍸ 'TELE' ⍷ DICTIONARY)</code></pre>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="s1">&#39;TELE&#39;</span><span class="w"> </span><span class="o">⍷</span><span class="w"> </span><span class="nv">DICTIONARY</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="na">.</span><span class="w"> </span><span class="na">.</span><span class="w"> </span><span class="na">.</span>
-<span class="w">      </span><span class="o">⍸</span><span class="w"> </span><span class="s1">&#39;TELE&#39;</span><span class="w"> </span><span class="o">⍷</span><span class="w"> </span><span class="nv">DICTIONARY</span>
-<span class="err">┌───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬─</span>
-<span class="err">│</span><span class="m">14061</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">14062</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">14063</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">14064</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">14065</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">18946</span><span class="w"> </span><span class="m">3</span><span class="err">│</span><span class="m">18947</span><span class="w"> </span><span class="m">3</span><span class="err">│</span><span class="m">18948</span><span class="w"> </span><span class="m">3</span><span class="err">│</span><span class="m">19107</span><span class="w"> </span><span class="m">4</span><span class="err">│</span><span class="m">19108</span><span class="w"> </span><span class="m">4</span><span class="err">│</span><span class="m">19109</span><span class="w"> </span><span class="m">4</span><span class="err">│</span><span class="m">23447</span><span class="w"> </span><span class="m">4</span><span class="err">│</span><span class="m">23448</span><span class="w"> </span><span class="m">4</span><span class="err">│</span><span class="m">23449</span><span class="w"> </span><span class="m">4</span><span class="err">│</span><span class="m">35280</span><span class="w"> </span><span class="m">4</span><span class="err">│</span><span class="m">4</span>
-<span class="err">└───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴─</span>
-<span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="o">⊃</span><span class="p">(</span><span class="o">⍸</span><span class="w"> </span><span class="s1">&#39;TELE&#39;</span><span class="w"> </span><span class="o">⍷</span><span class="w"> </span><span class="nv">DICTIONARY</span><span class="p">)</span>
-<span class="m">14061</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      'TELE' ⍷ DICTIONARY
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+. . .
+      ⍸ 'TELE' ⍷ DICTIONARY
+┌───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬─
+│14061 2│14062 2│14063 2│14064 2│14065 2│18946 3│18947 3│18948 3│19107 4│19108 4│19109 4│23447 4│23448 4│23449 4│35280 4│4
+└───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴─
+      1 1⊃(⍸ 'TELE' ⍷ DICTIONARY)
+14061</code></pre>
 </div>
 </div>
 </div>
@@ -2606,13 +2600,11 @@ All words starting with 'X'</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Input</label><label for="__tabbed_6_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">DICTIONARY</span><span class="sr">[</span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="o">⊃</span><span class="p">(</span><span class="o">⍸</span><span class="w"> </span><span class="s1">&#39;TELE&#39;</span><span class="w"> </span><span class="o">⍷</span><span class="w"> </span><span class="nv">DICTIONARY</span><span class="p">)</span><span class="sr">;]</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      DICTIONARY[1 1⊃(⍸ 'TELE' ⍷ DICTIONARY);]</code></pre>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">DICTIONARY</span><span class="sr">[</span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="o">⊃</span><span class="p">(</span><span class="o">⍸</span><span class="w"> </span><span class="s1">&#39;TELE&#39;</span><span class="w"> </span><span class="o">⍷</span><span class="w"> </span><span class="nv">DICTIONARY</span><span class="p">)</span><span class="sr">;]</span>
-<span class="nv">ATELECTASES</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      DICTIONARY[1 1⊃(⍸ 'TELE' ⍷ DICTIONARY);]
+ATELECTASES</code></pre>
 <p>First word with 'TELE'</p>
 </div>
 </div>
@@ -2624,18 +2616,17 @@ All words starting with 'X'</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Problem</label><label for="__tabbed_7_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>$$
+<div class="arithmatex">\[
 \sum_{n=1}^{100} \frac{1}{n^2}
-$$</p>
+\]</div>
 <p>can be written in APL using reduce / as...</p>
 </div>
 <div class="tabbed-block">
-<p>$$
+<div class="arithmatex">\[
 \sum_{n=1}^{100} \frac{1}{n^2}
-$$</p>
+\]</div>
 <p>can be written in APL using reduce / as...</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">+</span><span class="na">/</span><span class="w"> </span><span class="m">1</span><span class="o">÷</span><span class="m">2</span><span class="o">*</span><span class="na">⍨</span><span class="o">⍳</span><span class="m">100</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      +/ 1÷2*⍨⍳100</code></pre>
 </div>
 </div>
 </div>
@@ -2646,18 +2637,17 @@ $$</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Problem</label><label for="__tabbed_8_2">Solution</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>$$
+<div class="arithmatex">\[
 \frac{1}{\frac{2}{\frac{3}{\frac{\dots}{10}}}}
-$$</p>
+\]</div>
 <p>can be written in APL using reduce / as</p>
 </div>
 <div class="tabbed-block">
-<p>$$
+<div class="arithmatex">\[
 \frac{1}{\frac{2}{\frac{3}{\frac{\dots}{10}}}}
-$$</p>
+\]</div>
 <p>can be written in APL using reduce / as</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">÷</span><span class="na">/</span><span class="o">⍳</span><span class="m">10</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      ÷/⍳10</code></pre>
 </div>
 </div>
 </div>
@@ -2668,18 +2658,17 @@ $$</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Input</label><label for="__tabbed_9_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>$$
+<div class="arithmatex">\[
 \frac{F_1}{F_2},\frac{F_2}{F_3},\ldots,\frac{F_9}{F_{10}}
-$$</p>
-<p>where $F_n$ is the nth Fibonacci number, can be written in APL (given an array FIBB of the first 10 Fibonacci numbers) as</p>
+\]</div>
+<p>where <span class="arithmatex">\(F_n\)</span> is the nth Fibonacci number, can be written in APL (given an array FIBB of the first 10 Fibonacci numbers) as</p>
 </div>
 <div class="tabbed-block">
-<p>$$
+<div class="arithmatex">\[
 \frac{F_1}{F_2},\frac{F_2}{F_3},\ldots,\frac{F_9}{F_{10}}
-$$</p>
-<p>where $F_n$ is the nth Fibonacci number, can be written in APL (given an array FIBB of the first 10 Fibonacci numbers) as</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="m">2</span><span class="o">÷</span><span class="na">/</span><span class="nv">FIBB</span>
-</code></pre></div>
+\]</div>
+<p>where <span class="arithmatex">\(F_n\)</span> is the nth Fibonacci number, can be written in APL (given an array FIBB of the first 10 Fibonacci numbers) as</p>
+<pre class="highlight"><code class="language-apl">      2÷/FIBB</code></pre>
 <p>This is a sequence of approximations to the golden ratio</p>
 </div>
 </div>
@@ -2691,21 +2680,19 @@ $$</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Input</label><label for="__tabbed_10_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">VOTES</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="s1">&#39;HAUNTED HOUSE&#39;</span><span class="w"> </span><span class="s1">&#39;CAFE&#39;</span><span class="w"> </span><span class="s1">&#39;CAFE&#39;</span><span class="w"> </span><span class="s1">&#39;CAFE&#39;</span><span class="w"> </span><span class="s1">&#39;HAUNTED HOUSE&#39;</span><span class="w"> </span><span class="s1">&#39;HAUNTED HOUSE&#39;</span><span class="w"> </span><span class="s1">&#39;CAFE&#39;</span><span class="w"> </span><span class="s1">&#39;HAUNTED HOUSE&#39;</span><span class="w"> </span><span class="s1">&#39;ANIMAL CAFE&#39;</span><span class="w"> </span><span class="s1">&#39;CAFE&#39;</span><span class="w"> </span><span class="s1">&#39;CAFE&#39;</span>
-<span class="w">      </span><span class="kt">{</span><span class="bp">⍺</span><span class="o">,⍴</span><span class="bp">⍵</span><span class="kt">}</span><span class="na">⌸</span><span class="nv">VOTES</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      VOTES ← 'HAUNTED HOUSE' 'CAFE' 'CAFE' 'CAFE' 'HAUNTED HOUSE' 'HAUNTED HOUSE' 'CAFE' 'HAUNTED HOUSE' 'ANIMAL CAFE' 'CAFE' 'CAFE'
+      {⍺,⍴⍵}⌸VOTES</code></pre>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">VOTES</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="s1">&#39;HAUNTED HOUSE&#39;</span><span class="w"> </span><span class="s1">&#39;CAFE&#39;</span><span class="w"> </span><span class="s1">&#39;CAFE&#39;</span><span class="w"> </span><span class="s1">&#39;CAFE&#39;</span><span class="w"> </span><span class="s1">&#39;HAUNTED HOUSE&#39;</span><span class="w"> </span><span class="s1">&#39;HAUNTED HOUSE&#39;</span><span class="w"> </span><span class="s1">&#39;CAFE&#39;</span><span class="w"> </span><span class="s1">&#39;HAUNTED HOUSE&#39;</span><span class="w"> </span><span class="s1">&#39;ANIMAL CAFE&#39;</span><span class="w"> </span><span class="s1">&#39;CAFE&#39;</span><span class="w"> </span><span class="s1">&#39;CAFE&#39;</span>
-<span class="w">      </span><span class="kt">{</span><span class="bp">⍺</span><span class="o">,⍴</span><span class="bp">⍵</span><span class="kt">}</span><span class="na">⌸</span><span class="nv">VOTES</span>
-<span class="err">┌─────────────┬─┐</span>
-<span class="err">│</span><span class="nv">HAUNTED</span><span class="w"> </span><span class="nv">HOUSE</span><span class="err">│</span><span class="m">4</span><span class="err">│</span>
-<span class="err">├─────────────┼─┤</span>
-<span class="err">│</span><span class="nv">CAFE</span><span class="w">         </span><span class="err">│</span><span class="m">6</span><span class="err">│</span>
-<span class="err">├─────────────┼─┤</span>
-<span class="err">│</span><span class="nv">ANIMAL</span><span class="w"> </span><span class="nv">CAFE</span><span class="w">  </span><span class="err">│</span><span class="m">1</span><span class="err">│</span>
-<span class="err">└─────────────┴─┘</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      VOTES ← 'HAUNTED HOUSE' 'CAFE' 'CAFE' 'CAFE' 'HAUNTED HOUSE' 'HAUNTED HOUSE' 'CAFE' 'HAUNTED HOUSE' 'ANIMAL CAFE' 'CAFE' 'CAFE'
+      {⍺,⍴⍵}⌸VOTES
+┌─────────────┬─┐
+│HAUNTED HOUSE│4│
+├─────────────┼─┤
+│CAFE         │6│
+├─────────────┼─┤
+│ANIMAL CAFE  │1│
+└─────────────┴─┘</code></pre>
 </div>
 </div>
 </div>
@@ -2716,15 +2703,13 @@ $$</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Input</label><label for="__tabbed_11_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="p">(</span><span class="kt">{</span><span class="bp">⍺</span><span class="kt">}</span><span class="na">⌸</span><span class="nv">VOTES</span><span class="p">)</span><span class="sr">[</span><span class="o">⍒</span><span class="kt">{</span><span class="o">⍴</span><span class="bp">⍵</span><span class="kt">}</span><span class="na">⌸</span><span class="nv">VOTES</span><span class="sr">]</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      ({⍺}⌸VOTES)[⍒{⍴⍵}⌸VOTES]</code></pre>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="p">(</span><span class="kt">{</span><span class="bp">⍺</span><span class="kt">}</span><span class="na">⌸</span><span class="nv">VOTES</span><span class="p">)</span><span class="sr">[</span><span class="o">⍒</span><span class="kt">{</span><span class="o">⍴</span><span class="bp">⍵</span><span class="kt">}</span><span class="na">⌸</span><span class="nv">VOTES</span><span class="sr">]</span>
-<span class="err">┌────┬─────────────┬───────────┐</span>
-<span class="err">│</span><span class="nv">CAFE</span><span class="err">│</span><span class="nv">HAUNTED</span><span class="w"> </span><span class="nv">HOUSE</span><span class="err">│</span><span class="nv">ANIMAL</span><span class="w"> </span><span class="nv">CAFE</span><span class="err">│</span>
-<span class="err">└────┴─────────────┴───────────┘</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      ({⍺}⌸VOTES)[⍒{⍴⍵}⌸VOTES]
+┌────┬─────────────┬───────────┐
+│CAFE│HAUNTED HOUSE│ANIMAL CAFE│
+└────┴─────────────┴───────────┘</code></pre>
 </div>
 </div>
 </div>
@@ -2735,37 +2720,36 @@ $$</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Input</label><label for="__tabbed_12_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="c1">⍝ Hours spent on homework per day</span>
-<span class="w">      </span><span class="nv">HOMEWORK</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span>
-<span class="w">      </span><span class="o">+</span><span class="na">/</span><span class="nv">HOMEWORK</span>
+<pre class="highlight"><code class="language-apl">      ⍝ Hours spent on homework per day
+      HOMEWORK ← 1 1 2 2 4 0 1
+      +/HOMEWORK
 
-<span class="w">      </span><span class="o">+</span><span class="na">\</span><span class="nv">HOMEWORK</span>
+      +\HOMEWORK
 
-<span class="w">      </span><span class="m">2</span><span class="o">-</span><span class="na">/</span><span class="nv">HOMEWORK</span>
+      2-/HOMEWORK
 
-<span class="w">      </span><span class="o">-</span><span class="m">2</span><span class="o">-</span><span class="na">/</span><span class="nv">HOMEWORK</span>
+      -2-/HOMEWORK
 
-<span class="w">      </span><span class="o">+</span><span class="na">\</span><span class="o">-</span><span class="m">2</span><span class="o">-</span><span class="na">/</span><span class="nv">HOMEWORK</span>
+      +\-2-/HOMEWORK
 
-<span class="w">      </span><span class="o">+</span><span class="na">\</span><span class="nv">HOMEWORK</span><span class="sr">[</span><span class="m">1</span><span class="sr">]</span><span class="o">,-</span><span class="m">2</span><span class="o">-</span><span class="na">/</span><span class="nv">HOMEWORK</span>
-</code></pre></div>
+      +\HOMEWORK[1],-2-/HOMEWORK
+</code></pre>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="c1">⍝ Hours spent on homework per day</span>
-<span class="w">      </span><span class="nv">HOMEWORK</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span>
-<span class="w">      </span><span class="o">+</span><span class="na">/</span><span class="nv">HOMEWORK</span>
-<span class="m">11</span>
-<span class="w">      </span><span class="o">+</span><span class="na">\</span><span class="nv">HOMEWORK</span>
-<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">11</span>
-<span class="w">      </span><span class="m">2</span><span class="o">-</span><span class="na">/</span><span class="nv">HOMEWORK</span>
-<span class="m">0</span><span class="w"> </span><span class="m">¯1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">¯2</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">¯1</span>
-<span class="w">      </span><span class="o">-</span><span class="m">2</span><span class="o">-</span><span class="na">/</span><span class="nv">HOMEWORK</span>
-<span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">¯4</span><span class="w"> </span><span class="m">1</span>
-<span class="w">      </span><span class="o">+</span><span class="na">\</span><span class="o">-</span><span class="m">2</span><span class="o">-</span><span class="na">/</span><span class="nv">HOMEWORK</span>
-<span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">¯1</span><span class="w"> </span><span class="m">0</span>
-<span class="w">      </span><span class="o">+</span><span class="na">\</span><span class="nv">HOMEWORK</span><span class="sr">[</span><span class="m">1</span><span class="sr">]</span><span class="o">,-</span><span class="m">2</span><span class="o">-</span><span class="na">/</span><span class="nv">HOMEWORK</span>
-<span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      ⍝ Hours spent on homework per day
+      HOMEWORK ← 1 1 2 2 4 0 1
+      +/HOMEWORK
+11
+      +\HOMEWORK
+1 2 4 6 10 10 11
+      2-/HOMEWORK
+0 ¯1 0 ¯2 4 ¯1
+      -2-/HOMEWORK
+0 1 0 2 ¯4 1
+      +\-2-/HOMEWORK
+0 1 1 3 ¯1 0
+      +\HOMEWORK[1],-2-/HOMEWORK
+1 1 2 2 4 0 1</code></pre>
 <p>The first number is the total number of hours spent on homework, the second is the cumulative number of hours, the third the difference in number of hours between the days.</p>
 <p>Notice that the cumulative sum of the first element of HOMEWORK with the first differences of HOMEWORK is the same as HOMEWORK itself. If you know a little calculus, this might look familiar as the integral of the derivative being the same function up to a constant C.</p>
 </div>
@@ -2792,6 +2776,12 @@ $$</p>
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
         
       </main>
       
@@ -2873,7 +2863,7 @@ $$</p>
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "nagivation.top", "navigation.footer", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.footer", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.92b07e13.min.js"></script>
@@ -2891,10 +2881,6 @@ $$</p>
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/build/three.module.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/examples/jsm/"></script>
       
     
   </body>

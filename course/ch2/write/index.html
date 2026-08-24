@@ -6,7 +6,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="A free online course in array programming with APL.">
       
+      
+      
+        <link rel="canonical" href="https://aplmooc.fi/course/ch2/write/">
       
       
         <link rel="prev" href="../read/">
@@ -2450,34 +2454,33 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 5</p>
 <p>The following matrix CIPHER consists of shifted versions of the alphabet for every row.
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">CIPHER</span>
-<span class="w">  </span><span class="nv">ABCDEFGHIJKLMNOPQRSTUVWXYZ</span>
-<span class="w">  </span><span class="nv">BCDEFGHIJKLMNOPQRSTUVWXYZA</span>
-<span class="w">  </span><span class="nv">CDEFGHIJKLMNOPQRSTUVWXYZAB</span>
-<span class="w">  </span><span class="nv">DEFGHIJKLMNOPQRSTUVWXYZABC</span>
-<span class="w">  </span><span class="nv">EFGHIJKLMNOPQRSTUVWXYZABCD</span>
-<span class="w">  </span><span class="nv">FGHIJKLMNOPQRSTUVWXYZABCDE</span>
-<span class="w">  </span><span class="nv">GHIJKLMNOPQRSTUVWXYZABCDEF</span>
-<span class="w">  </span><span class="nv">HIJKLMNOPQRSTUVWXYZABCDEFG</span>
-<span class="w">  </span><span class="nv">IJKLMNOPQRSTUVWXYZABCDEFGH</span>
-<span class="w">  </span><span class="nv">JKLMNOPQRSTUVWXYZABCDEFGHI</span>
-<span class="w">  </span><span class="nv">KLMNOPQRSTUVWXYZABCDEFGHIJ</span>
-<span class="w">  </span><span class="nv">LMNOPQRSTUVWXYZABCDEFGHIJK</span>
-<span class="w">  </span><span class="nv">MNOPQRSTUVWXYZABCDEFGHIJKL</span>
-<span class="w">  </span><span class="nv">NOPQRSTUVWXYZABCDEFGHIJKLM</span>
-<span class="w">  </span><span class="nv">OPQRSTUVWXYZABCDEFGHIJKLMN</span>
-<span class="w">  </span><span class="nv">PQRSTUVWXYZABCDEFGHIJKLMNO</span>
-<span class="w">  </span><span class="nv">QRSTUVWXYZABCDEFGHIJKLMNOP</span>
-<span class="w">  </span><span class="nv">RSTUVWXYZABCDEFGHIJKLMNOPQ</span>
-<span class="w">  </span><span class="nv">STUVWXYZABCDEFGHIJKLMNOPQR</span>
-<span class="w">  </span><span class="nv">TUVWXYZABCDEFGHIJKLMNOPQRS</span>
-<span class="w">  </span><span class="nv">UVWXYZABCDEFGHIJKLMNOPQRST</span>
-<span class="w">  </span><span class="nv">VWXYZABCDEFGHIJKLMNOPQRSTU</span>
-<span class="w">  </span><span class="nv">WXYZABCDEFGHIJKLMNOPQRSTUV</span>
-<span class="w">  </span><span class="nv">XYZABCDEFGHIJKLMNOPQRSTUVW</span>
-<span class="w">  </span><span class="nv">YZABCDEFGHIJKLMNOPQRSTUVWX</span>
-<span class="w">  </span><span class="nv">ZABCDEFGHIJKLMNOPQRSTUVWXY</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      CIPHER
+  ABCDEFGHIJKLMNOPQRSTUVWXYZ
+  BCDEFGHIJKLMNOPQRSTUVWXYZA
+  CDEFGHIJKLMNOPQRSTUVWXYZAB
+  DEFGHIJKLMNOPQRSTUVWXYZABC
+  EFGHIJKLMNOPQRSTUVWXYZABCD
+  FGHIJKLMNOPQRSTUVWXYZABCDE
+  GHIJKLMNOPQRSTUVWXYZABCDEF
+  HIJKLMNOPQRSTUVWXYZABCDEFG
+  IJKLMNOPQRSTUVWXYZABCDEFGH
+  JKLMNOPQRSTUVWXYZABCDEFGHI
+  KLMNOPQRSTUVWXYZABCDEFGHIJ
+  LMNOPQRSTUVWXYZABCDEFGHIJK
+  MNOPQRSTUVWXYZABCDEFGHIJKL
+  NOPQRSTUVWXYZABCDEFGHIJKLM
+  OPQRSTUVWXYZABCDEFGHIJKLMN
+  PQRSTUVWXYZABCDEFGHIJKLMNO
+  QRSTUVWXYZABCDEFGHIJKLMNOP
+  RSTUVWXYZABCDEFGHIJKLMNOPQ
+  STUVWXYZABCDEFGHIJKLMNOPQR
+  TUVWXYZABCDEFGHIJKLMNOPQRS
+  UVWXYZABCDEFGHIJKLMNOPQRST
+  VWXYZABCDEFGHIJKLMNOPQRSTU
+  WXYZABCDEFGHIJKLMNOPQRSTUV
+  XYZABCDEFGHIJKLMNOPQRSTUVW
+  YZABCDEFGHIJKLMNOPQRSTUVWX
+  ZABCDEFGHIJKLMNOPQRSTUVWXY</code></pre>
 The Caesar cipher encrypts a phrase by shifting all its letters by a specific amount along the alphabet. For example, "ARENA" becomes "RIVER" under a shift of 9 places. Use indexing of the above matrix to encipher the word "BUNNY" by shifting its letters 17 places.
 <div class="problem">
     <span class="problemspan">⎕←</span>
@@ -2491,26 +2494,24 @@ The Caesar cipher encrypts a phrase by shifting all its letters by a specific am
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 6</p>
 <p>Consider the following ASCII art stored in a matrix called ART
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">APL</span>
-<span class="w">     </span><span class="na">.</span><span class="nv">_________________</span><span class="na">.</span>
-<span class="w">     </span><span class="o">|</span><span class="na">.</span><span class="o">---------------</span><span class="na">.</span><span class="o">|</span>
-<span class="w">     </span><span class="o">||</span><span class="w">  </span><span class="nv">__</span><span class="w">  </span><span class="nv">____</span><span class="w"> </span><span class="nv">__</span><span class="w">  </span><span class="o">||</span>
-<span class="w">     </span><span class="o">||</span><span class="w"> </span><span class="na">/</span><span class="w"> </span><span class="nv">_</span><span class="na">\</span><span class="p">(</span><span class="w">  </span><span class="nv">_</span><span class="w"> </span><span class="p">(</span><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="o">||</span>
-<span class="w">     </span><span class="o">||</span><span class="na">/</span><span class="w">    </span><span class="na">\</span><span class="p">)</span><span class="w"> </span><span class="nv">__</span><span class="na">/</span><span class="w"> </span><span class="p">(</span><span class="nv">_</span><span class="na">/</span><span class="o">||</span>
-<span class="w">     </span><span class="o">||</span><span class="na">\</span><span class="nv">_</span><span class="na">/\</span><span class="nv">_</span><span class="p">(</span><span class="nv">__</span><span class="p">)</span><span class="w"> </span><span class="na">\</span><span class="nv">____</span><span class="o">||</span>
-<span class="w">     </span><span class="o">||</span><span class="nv">_______________</span><span class="o">||</span>
-<span class="w">     </span><span class="na">/.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.\</span>
-<span class="w">    </span><span class="na">/.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.\</span>
-<span class="w">   </span><span class="na">/.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.\</span>
-<span class="w">  </span><span class="na">/</span><span class="nv">______</span><span class="na">/</span><span class="nv">__________</span><span class="na">\</span><span class="nv">_____</span><span class="na">\</span><span class="w"> </span>
-<span class="w">  </span><span class="na">\</span><span class="nv">_______________________</span><span class="na">/</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      APL
+     ._________________.
+     |.---------------.|
+     ||  __  ____ __  ||
+     || / _\(  _ (  ) ||
+     ||/    \) __/ (_/||
+     ||\_/\_(__) \____||
+     ||_______________||
+     /.-.-.-.-.-.-.-.-.\
+    /.-.-.-.-.-.-.-.-.-.\
+   /.-.-.-.-.-.-.-.-.-.-.\
+  /______/__________\_____\ 
+  \_______________________/</code></pre>
 Create a matrix called APL which consists of the following subarray obtained by indexing ART
-<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nv">__</span><span class="w">  </span><span class="nv">____</span><span class="w"> </span><span class="nv">__</span><span class="w"> </span>
-<span class="w"> </span><span class="na">/</span><span class="w"> </span><span class="nv">_</span><span class="na">\</span><span class="p">(</span><span class="w">  </span><span class="nv">_</span><span class="w"> </span><span class="p">(</span><span class="w">  </span><span class="p">)</span><span class="w">  </span>
-<span class="na">/</span><span class="w">    </span><span class="na">\</span><span class="p">)</span><span class="w"> </span><span class="nv">__</span><span class="na">/</span><span class="w"> </span><span class="p">(</span><span class="nv">_</span><span class="na">/</span><span class="w"> </span>
-<span class="na">\</span><span class="nv">_</span><span class="na">/\</span><span class="nv">_</span><span class="p">(</span><span class="nv">__</span><span class="p">)</span><span class="w"> </span><span class="na">\</span><span class="nv">____</span><span class="w">        </span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">  __  ____ __ 
+ / _\(  _ (  )  
+/    \) __/ (_/ 
+\_/\_(__) \____        </code></pre>
 <div class="problem">
     <span class="problemspan">⎕←</span>
     <span class="problemfilltext">ART[</span>
@@ -2546,7 +2547,7 @@ Create a matrix called APL which consists of the following subarray obtained by 
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 9</p>
-<p>Given the coefficients list C of a quadratic $P(x) = C[1] x^2 + C[2] x + C[3]$, evaluate the polynomial for a value X. For example, for <code>C ← 1 2 3</code>, and <code>X ← 10</code>, this should evaluate to $ 1 \cdot 10^2 + 2 \cdot 10 + 3 = 123 $.
+<p>Given the coefficients list C of a quadratic <span class="arithmatex">\(P(x) = C[1] x^2 + C[2] x + C[3]\)</span>, evaluate the polynomial for a value X. For example, for <code>C ← 1 2 3</code>, and <code>X ← 10</code>, this should evaluate to $ 1 \cdot 10^2 + 2 \cdot 10 + 3 = 123 $.
 <div class="problem">
     <span class="problemspan">⎕←</span>
     <input class="probleminput" type="text" id="input_ch2_p9" placeholder="your solution here">
@@ -2558,13 +2559,12 @@ Create a matrix called APL which consists of the following subarray obtained by 
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 10</p>
 <p>Consider the following list of GAMES
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">GAMES</span>
-<span class="nv">CHESS</span><span class="w">                   </span>
-<span class="nv">CHECKERS</span><span class="w">                </span>
-<span class="nv">BACKGAMMON</span><span class="w">              </span>
-<span class="nv">POKER</span><span class="w">                   </span>
-<span class="nv">GLOBAL</span><span class="w"> </span><span class="nv">THERMONUCLEAR</span><span class="w"> </span><span class="nv">WAR</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      GAMES
+CHESS                   
+CHECKERS                
+BACKGAMMON              
+POKER                   
+GLOBAL THERMONUCLEAR WAR</code></pre>
 Get the first letter of each of the games listed using indexing
 <div class="problem">
     <span class="problemspan">⎕←</span>
@@ -2590,13 +2590,12 @@ Get the first letter of each of the games listed using indexing
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 12</p>
 <p>Consider a tape-controlled computer which operates by reading a certain section of a tape, changing its internal state based on the value of that section, writing a certain value to that section, then possibly moving the tape along to the next or previous section. For this specific machine, the value of the tape sections is either a 1 or a 2, the internal state of the machine is either 1 2 or 3, and the matrix which specifies the actions to be taken is the following
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">INSTRUCTIONS</span>
-<span class="err">┌─────┬─────┬─────┐</span>
-<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="nv">R</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="nv">L</span><span class="w"> </span><span class="m">1</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="nv">L</span><span class="w"> </span><span class="m">2</span><span class="err">│</span>
-<span class="err">├─────┼─────┼─────┤</span>
-<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="nv">L</span><span class="w"> </span><span class="m">3</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="nv">R</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="nv">N</span><span class="w"> </span><span class="nv">H</span><span class="err">│</span>
-<span class="err">└─────┴─────┴─────┘</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      INSTRUCTIONS
+┌─────┬─────┬─────┐
+│1 R 2│1 L 1│1 L 2│
+├─────┼─────┼─────┤
+│1 L 3│1 R 2│1 N H│
+└─────┴─────┴─────┘</code></pre>
 The first value in each element is what to write to the section of tape, the second whether to move right 'R' left 'L' or stay in place 'N', and the last value is the next state of the machine 1, 2, 3, or 'H' for halting the machine.</p>
 <p>The first (second) row of the matrix specifies the possible instructions when the value of the section of tape is a 1 (2). The columns similarly specify the possible instructions depending on the state of the machine.</p>
 <p>Using indexing, find the instruction for the tape section having value 1 when the machine is in state 3.</p>
@@ -2628,6 +2627,12 @@ The first value in each element is what to write to the section of tape, the sec
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
         
       </main>
       
@@ -2709,7 +2714,7 @@ The first value in each element is what to write to the section of tape, the sec
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "nagivation.top", "navigation.footer", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.footer", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.92b07e13.min.js"></script>
@@ -2727,10 +2732,6 @@ The first value in each element is what to write to the section of tape, the sec
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/build/three.module.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/examples/jsm/"></script>
       
     
   </body>

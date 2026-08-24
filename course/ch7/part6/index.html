@@ -6,7 +6,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="A free online course in array programming with APL.">
       
+      
+      
+        <link rel="canonical" href="https://aplmooc.fi/course/ch7/part6/">
       
       
         <link rel="prev" href="../part5/">
@@ -2202,6 +2206,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    7.6 - File I/O
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -2213,6 +2230,19 @@
   
 
       </a>
+      
+        <nav class="md-nav md-nav--secondary apl-feedback-nav" aria-label="Feedback">
+  <label class="md-nav__title">Feedback</label>
+  <form class="apl-feedback" data-section="7.6 - File I/O">
+    <p class="apl-feedback__where">7.6 - File I/O</p>
+    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+              placeholder="Spotted a mistake? Something unclear?"></textarea>
+    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+           placeholder="Email (optional)">
+    <button class="apl-feedback__send" type="submit">Send</button>
+    <p class="apl-feedback__status" role="status"></p>
+  </form>
+</nav>
       
     </li>
   
@@ -2390,9 +2420,217 @@
 <ul>
 <li>File reading and writing</li>
 <li>Quad CSV</li>
+<li>File ties</li>
+<li>Component files</li>
 </ul>
 </div>
 <hr />
+<p>APL programs are typically used to process large amounts of external data; this part shows how to read and write data to and from an external file.</p>
+<p>You are a plasma physicist working on your plasma physics simulation code for plasmas co-rotating with the earth at a speed of 927 m/s. Your simulation writes a summary of each timestep to a file, where the following file holds the ion mass density <code>rhom</code> for six steps.</p>
+<pre class="highlight"><code>diagnostic.csv
+
+step,time,dt,rhom_min,rhom_max,rhom_avg
+0,0.000,0.025,1.67e-21,8.35e-21,3.21e-21
+1,0.025,0.025,1.66e-21,8.41e-21,3.22e-21
+2,0.050,0.025,1.64e-21,8.62e-21,3.25e-21
+3,0.075,0.025,1.61e-21,9.04e-21,3.31e-21
+4,0.100,0.025,1.58e-21,9.77e-21,3.40e-21
+5,0.125,0.020,1.54e-21,1.09e-20,3.52e-21</code></pre>
+<h2 id="the-working-directory">The working directory</h2>
+<p>A file can be specified using either absolute or relative paths; if it is given the name of a file, it will look for that file in its current working directory. The <code>]CD</code> user command can be used to change the current working directory, and will return the previous working directory.</p>
+<pre class="highlight"><code class="language-apl">      ]CD 'C:\Users\you\Documents\simulations'
+C:\Users\you\Documents\Dyalog
+      ]CD
+C:\Users\you\simulations</code></pre>
+<h2 id="reading-a-whole-file">Reading a whole file</h2>
+<p>The <code>⎕NGET</code> system function reads a text file and returns a vector consisting of the content, the encoding, and the unicode number for the newline character.</p>
+<pre class="highlight"><code class="language-apl">      ≢⊃⎕NGET 'diagnostic.csv'
+286</code></pre>
+<p>The argument <code>1</code> as a second argument allows obtaining the content separated by newline.</p>
+<pre class="highlight"><code class="language-apl">      ≢⊃⎕NGET 'diagnostic.csv' 1
+7</code></pre>
+<p>The file holds 286 characters, or 7 lines.</p>
+<p>It is also possible to query whether a file exists with the <code>⎕NEXISTS</code> function and its properties using the <code>⎕NINFO</code> function.</p>
+<pre class="highlight"><code class="language-apl">      ⎕NEXISTS 'diagnostic.csv'
+1
+      ⎕NEXISTS 'missing.csv'
+0
+      ⎕NINFO 'diagnostic.csv'
+ diagnostic.csv 
+      (0 1 2) ⎕NINFO 'diagnostic.csv'
+ diagnostic.csv  2 286</code></pre>
+<p>Given no left argument, <code>⎕NINFO</code> returns only the name of the file. The left argument selects which properties are wanted, where <code>0</code> is the name, <code>1</code> the type, and <code>2</code> the size in bytes. Note that a type of <code>2</code> denotes a regular file, whereas a directory has type <code>1</code>.</p>
+<h2 id="writing-a-whole-file">Writing a whole file</h2>
+<p>The <code>⎕NPUT</code> system function writes to a text file. The left argument is the content, which can be specified line-by-line as a vector of strings. The right argument is the name and, with <code>1</code>, permission to overwrite. <code>⎕NPUT</code> then returns the number of bytes written.</p>
+<pre class="highlight"><code class="language-apl">      out←⊂'step,ratio'
+      out,←⊂'0,5.00'
+      (⊂out)⎕NPUT 'ratio.csv' 1
+17
+      ⊃⎕NGET 'ratio.csv'
+step,ratio
+0,5.00</code></pre>
+<p>A file can also be deleted using the <code>⎕NDELETE</code> function, which returns <code>1</code> when the file was removed.</p>
+<pre class="highlight"><code class="language-apl">      ⎕NDELETE 'ratio.csv'
+1
+      ⎕NEXISTS 'ratio.csv'
+0</code></pre>
+<h2 id="reading-character-separated-values">Reading character separated values</h2>
+<p>Certain commonly used file types have dedicated system functions. The <code>⎕CSV</code> function allows straightforward processing of text files with values separated by a specified character. By default, it processes comma-separated values.</p>
+<p>The right argument to a <code>⎕CSV</code> function is a vector of up to 4 values consisting of the path to the file, the character encoding, the column types, and a flag for whether the file has a header.</p>
+<p>The column types are specified by a numerical vector where each element specifies the behavior of <code>⎕CSV</code> in reading that column.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Type</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>0</code></td>
+<td>Ignore the column</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>1</code></td>
+<td>Character data</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>2</code></td>
+<td>Numeric. A value that is not a number causes an error.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>3</code></td>
+<td>Numeric. A value that is not a number becomes <code>0</code>.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>4</code></td>
+<td>Numeric. A value that is not a number stays as text.</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>5</code></td>
+<td>Numeric. An empty value becomes <code>0</code>, but text causes an error.</td>
+</tr>
+</tbody>
+</table>
+<p>Applying this to our <code>diagnostic.csv</code> file.</p>
+<pre class="highlight"><code class="language-apl">      (data hdr)←⎕CSV 'diagnostic.csv' 'UTF-8' (2 2 2 2 2 2) 1
+      ⍴data
+6 6
+      hdr
+ step  time  dt  rhom_min  rhom_max  rhom_avg </code></pre>
+<p>The six columns are numeric, so the values arrive as numbers. APL writes them in its own exponential notation.</p>
+<pre class="highlight"><code class="language-apl">      data[;5]
+8.35E¯21 8.41E¯21 8.62E¯21 9.04E¯21 9.77E¯21 1.09E¯20</code></pre>
+<p>As an example, we calculate the ratio of the highest density to the lowest.</p>
+<pre class="highlight"><code class="language-apl">      data[;5]÷data[;4]
+5 5.06626506 5.256097561 5.614906832 6.183544304 7.077922078</code></pre>
+<p>Consider the following example illustrating the different column types, where the simulation had written a <code>NaN</code> string into its output in the last column of step 2.</p>
+<pre class="highlight"><code class="language-apl">      ⍝ type 2
+      ⎕CSV 'diagnostic.csv' '' (2 2 2 2 2 2) 1
+DOMAIN ERROR: Non-numeric data in record 4, field 6 (⎕IO=1)
+
+      ⍝ type 3
+      (⊃⎕CSV 'diagnostic.csv' '' (2 2 2 2 2 3) 1)[;6]
+3.21E¯21 3.22E¯21 0 3.31E¯21 3.4E¯21 3.52E¯21
+
+      ⍝ type 4
+      (⊃⎕CSV 'diagnostic.csv' '' (2 2 2 2 2 4) 1)[;6]
+3.21E¯21 3.22E¯21  NaN  3.31E¯21 3.4E¯21 3.52E¯21</code></pre>
+<h2 id="file-ties">File ties</h2>
+<p>For files that are too large to load at once into the APL workspace, such as long-running simulation outputs, <strong>ties</strong> can be used to read chunks of data at a time. </p>
+<p>The <code>⎕NTIE</code> system function creates a tie to a file, with left argument the file path and right argument the desired numerical representative. If <code>0</code> is given as right argument, the next available tie number is allocated. </p>
+<pre class="highlight"><code class="language-apl">      tn←'diagnostic.csv' ⎕NTIE 0
+      tn
+¯1
+      ⎕NSIZE tn
+286</code></pre>
+<p>The <code>⎕NREAD</code> function allows reading from a tied file, with right argument vector tie number, the data type, the number of items, and the position to read from.</p>
+<pre class="highlight"><code class="language-apl">      ⎕NREAD tn 80 9 0
+step,time</code></pre>
+<p><code>⎕CSV</code> also accepts a tie number in place of a name.</p>
+<pre class="highlight"><code class="language-apl">      ⍴⊃⎕CSV tn '' (2 2 2 2 2 2) 1
+6 6</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>A tie keeps track of its position in a file, which advances as the file is read. A read with no starting position given continues reading from that position.</p>
+<pre class="highlight"><code class="language-apl">      ⎕NREAD tn 80 9 0
+step,time
+      ⎕NREAD tn 80 5
+,dt,r
+      ⎕NREAD tn 80 8
+hom_min,</code></pre>
+<p><code>⎕CSV</code> advances the position in the same way, which means reading the same tie twice therefore returns the data and then nothing afterwards, since it has read the whole file.</p>
+<pre class="highlight"><code class="language-apl">      tn←'diagnostic.csv' ⎕NTIE 0
+      ⍴⊃⎕CSV tn '' (2 2 2 2 2 2) 1
+6 6
+      ⍴⊃⎕CSV tn '' (2 2 2 2 2 2) 1
+0 6</code></pre>
+</div>
+<p>The <code>⎕NNUMS</code> constant lists the open tie numbers and <code>⎕NUNTIE</code> closes them.</p>
+<pre class="highlight"><code class="language-apl">      ⎕NNUMS
+¯1
+      ⎕NUNTIE ⎕NNUMS
+      ⎕NNUMS
+</code></pre>
+<h2 id="component-files">Component files</h2>
+<p>For storing APL arrays, Dyalog provides its own file format called component files.</p>
+<p>Consider the following rank 3 array, which represents the phase space density of ions in our simulation at three different times.</p>
+<pre class="highlight"><code class="language-apl">      X←¯3+⍳5
+      V←¯4+⍳7
+      f←{*-((X*2)∘.+(V*2))÷2×⍵*2}
+      F←↑f¨0.8 1.4 2.2
+      ⍴F
+3 5 7</code></pre>
+<p>The three time slices show the distribution spreading.</p>
+<pre class="highlight"><code class="language-apl">      F[1;;]
+0.000039 0.0019 0.02 0.044 0.02 0.0019 0.000039
+0.0004   0.02   0.21 0.46  0.21 0.02   0.0004  
+0.00088  0.044  0.46 1     0.46 0.044  0.00088 
+0.0004   0.02   0.21 0.46  0.21 0.02   0.0004  
+0.000039 0.0019 0.02 0.044 0.02 0.0019 0.000039
+
+      F[2;;]
+0.036 0.13 0.28 0.36 0.28 0.13 0.036
+0.078 0.28 0.6  0.77 0.6  0.28 0.078
+0.1   0.36 0.77 1    0.77 0.36 0.1  
+0.078 0.28 0.6  0.77 0.6  0.28 0.078
+0.036 0.13 0.28 0.36 0.28 0.13 0.036
+
+      F[3;;]
+0.26 0.44 0.6  0.66 0.6  0.44 0.26
+0.36 0.6  0.81 0.9  0.81 0.6  0.36
+0.39 0.66 0.9  1    0.9  0.66 0.39
+0.36 0.6  0.81 0.9  0.81 0.6  0.36
+0.26 0.44 0.6  0.66 0.6  0.44 0.26</code></pre>
+<p>To store this phase space density, use <code>⎕FCREATE</code> to create a component file and tie it, then use <code>⎕FAPPEND</code> to add an array to receive a component number that corresponds to that array. </p>
+<p><code>⎕FREAD</code> reads a component back given this component number.</p>
+<pre class="highlight"><code class="language-apl">      cf←'phasespace' ⎕FCREATE 0
+      F ⎕FAPPEND cf
+1
+      ⍴⎕FREAD cf 1
+3 5 7
+      F≡⎕FREAD cf 1
+1</code></pre>
+<p>An existing component can be replaced with <code>⎕FREPLACE</code>. In the following example, we double the resolution of our phase space and overwrite the old density array, measuring the file size with <code>⎕FSIZE</code>. </p>
+<p>The <code>⎕FSIZE</code> function, given a tie number for a component file, returns a numerical vector consisting of the component number of the first array stored, the number that the next <code>⎕FAPPEND</code> will use, the space occupied in bytes, and the size limit.</p>
+<pre class="highlight"><code class="language-apl">      ⎕FSIZE cf
+1 2 1952 1.844674407E19
+      X←0.5×¯5+⍳9
+      V←0.5×¯7+⍳13
+      F←↑f¨0.8 1.4 2.2
+      ⍴F
+3 9 13
+      F ⎕FREPLACE cf 1
+1
+      ⍴⎕FREAD cf 1
+3 9 13
+      ⎕FSIZE cf
+1 2 4976 1.844674407E19</code></pre>
+<p><code>⎕FUNTIE</code> closes the file, and <code>⎕FTIE</code> opens it again for later processing.</p>
+<pre class="highlight"><code class="language-apl">      ⎕FUNTIE cf
+      g←'phasespace' ⎕FTIE 0
+      ⍴⎕FREAD g 1
+3 9 13</code></pre>
 
 
 
@@ -2412,6 +2650,12 @@
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
         
       </main>
       
@@ -2493,7 +2737,7 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "nagivation.top", "navigation.footer", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.footer", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.92b07e13.min.js"></script>
@@ -2511,10 +2755,6 @@
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/build/three.module.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/examples/jsm/"></script>
       
     
   </body>

@@ -6,7 +6,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="A free online course in array programming with APL.">
       
+      
+      
+        <link rel="canonical" href="https://aplmooc.fi/course/ch4/write/">
       
       
         <link rel="prev" href="../read/">
@@ -2427,12 +2431,11 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 3</p>
 <p>Create a dfn that returns the vector ⍺, ⍺+⍵[1], ⍺+2×⍵[1], ⍺+3×⍵[1], ..., ⍺+⍵[2]×⍵[1]
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="nv">step</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span>
-<span class="m">1</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">31</span><span class="w"> </span><span class="m">41</span><span class="w"> </span><span class="m">51</span><span class="w"> </span><span class="m">61</span><span class="w"> </span><span class="m">71</span><span class="w"> </span><span class="m">81</span><span class="w"> </span><span class="m">91</span><span class="w"> </span><span class="m">101</span>
+<pre class="highlight"><code class="language-apl">      1 step 10 10
+1 11 21 31 41 51 61 71 81 91 101
 
-<span class="w">      </span><span class="m">2</span><span class="w"> </span><span class="nv">step</span><span class="w"> </span><span class="m">0.5</span><span class="w"> </span><span class="m">5</span>
-<span class="m">2</span><span class="w"> </span><span class="m">2.5</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3.5</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4.5</span>
-</code></pre></div>
+      2 step 0.5 5
+2 2.5 3 3.5 4 4.5</code></pre>
 <div class="problem">
     <span class="problemspan">STEP←</span>
     <input class="probleminput" type="text" id="input_ch4_p3" placeholder="your solution here">
@@ -2474,13 +2477,12 @@ $$</p>
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 6</p>
 <p>Create a dfn that returns a 1 if its left argument is totally contained in its right argument, and 0 otherwise.
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="nv">SUBSET</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span>
-<span class="m">1</span>
-<span class="w">      </span><span class="s1">&#39;MEOW&#39;</span><span class="w"> </span><span class="nv">SUBSET</span><span class="w"> </span><span class="s1">&#39;HOMEOWNER&#39;</span>
-<span class="m">1</span>
-<span class="w">      </span><span class="s1">&#39;I&#39;</span><span class="w"> </span><span class="nv">SUBSET</span><span class="w"> </span><span class="s1">&#39;TEAM&#39;</span>
-<span class="m">0</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      1 1 2 3 SUBSET 1 2 3 4 5
+1
+      'MEOW' SUBSET 'HOMEOWNER'
+1
+      'I' SUBSET 'TEAM'
+0</code></pre>
 <div class="problem">
     <span class="problemspan">SUBSET←</span>
     <input class="probleminput" type="text" id="input_ch4_p6" placeholder="your solution here">
@@ -2526,11 +2528,10 @@ $$</p>
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 10</p>
 <p>Create a dfn that generates a random word of length <code>⍵</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">WORD</span><span class="w"> </span><span class="m">10</span>
-<span class="nv">OJCCKXBSVA</span>
-<span class="w">      </span><span class="nv">WORD</span><span class="w"> </span><span class="m">5</span>
-<span class="nv">SBURB</span><span class="w"> </span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      WORD 10
+OJCCKXBSVA
+      WORD 5
+SBURB </code></pre>
 <p><div class="problem">
     <span class="problemspan">WORD←</span>
     <input class="probleminput" type="text" id="input_ch4_p10" placeholder="your solution here">
@@ -2542,11 +2543,10 @@ $$</p>
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 11</p>
 <p>Create a dfn that generates an array with 1s separated by 0s, where the length of each run of 0s is specified by a vector right argument <code>⍵</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">RUN</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span>
-<span class="w">      </span><span class="nv">RUN</span><span class="w"> </span><span class="m">10</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      RUN 2 3 4
+0 0 1 0 0 0 1 0 0 0 0 1
+      RUN 10
+0 0 0 0 0 0 0 0 0 0 1</code></pre>
 <p>Hint: One way is to use ∊ member of and + plus scan</p>
 <p><div class="problem">
     <span class="problemspan">RUN←</span>
@@ -2559,9 +2559,8 @@ $$</p>
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 12</p>
 <p>Create a dfn that generates random words with lengths specified by its right vector argument <code>⍵</code>.
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">PHRASE</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span>
-<span class="nv">OG</span><span class="w"> </span><span class="nv">CPD</span><span class="w"> </span><span class="nv">HXQO</span><span class="w"> </span>
-</code></pre></div></p>
+<pre class="highlight"><code class="language-apl">      PHRASE 3 4 5
+OG CPD HXQO </code></pre></p>
 <p>Hint: One way is to create a random string of the right length including spaces, then use the function of the previous exercise to place the spaces</p>
 <p><div class="problem">
     <span class="problemspan">PHRASE←</span>
@@ -2590,6 +2589,12 @@ $$</p>
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
         
       </main>
       
@@ -2671,7 +2676,7 @@ $$</p>
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "nagivation.top", "navigation.footer", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.footer", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.92b07e13.min.js"></script>
@@ -2689,10 +2694,6 @@ $$</p>
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/build/three.module.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/examples/jsm/"></script>
       
     
   </body>

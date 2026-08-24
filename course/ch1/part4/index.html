@@ -6,7 +6,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="A free online course in array programming with APL.">
       
+      
+      
+        <link rel="canonical" href="https://aplmooc.fi/course/ch1/part4/">
       
       
         <link rel="prev" href="../part3/">
@@ -2396,11 +2400,10 @@
 <hr />
 <p>Okay, we've tried adding and multiplying two numbers together.
 What if we try adding and multiplying three numbers at the same time?</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="m">2</span><span class="o">×</span><span class="m">2</span>
-<span class="m">4</span>
-<span class="w">      </span><span class="m">2</span><span class="o">×</span><span class="m">2</span><span class="o">+</span><span class="m">1</span>
-<span class="m">6</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      2×2
+4
+      2×2+1
+6</code></pre>
 <p>Oops. What happened here?
 Instead of doing the arithmetic operations in the normal order, 2 times 2 and add 1 (PEMDAS, remember?)
 APL seems to have done them in the reverse order, 2 plus 1 and the whole thing times 2.
@@ -2432,27 +2435,25 @@ and executes it, treating the result it just got as a right argument.</p>
 <p class="admonition-title">Example</p>
 <p>Suppose you have the expression <code>3+5÷0.25×6*10-8</code>.</p>
 <p>This will get evaluated right-to-left as:
-<div class="highlight"><pre><span></span><code><span class="m">3</span><span class="o">+</span><span class="m">5</span><span class="o">÷</span><span class="m">0.25</span><span class="o">×</span><span class="m">6</span><span class="o">*</span><span class="m">10</span><span class="o">-</span><span class="m">8</span>
-<span class="m">3</span><span class="o">+</span><span class="m">5</span><span class="o">÷</span><span class="m">0.25</span><span class="o">×</span><span class="m">6</span><span class="o">*</span><span class="m">2</span>
-<span class="m">3</span><span class="o">+</span><span class="m">5</span><span class="o">÷</span><span class="m">0.25</span><span class="o">×</span><span class="m">36</span>
-<span class="m">3</span><span class="o">+</span><span class="m">5</span><span class="o">÷</span><span class="m">9</span>
-<span class="m">3</span><span class="o">+</span><span class="m">0.5555555556</span>
-<span class="m">3.555555556</span>
-</code></pre></div></p>
+<pre class="highlight"><code class="language-apl">3+5÷0.25×6*10-8
+3+5÷0.25×6*2
+3+5÷0.25×36
+3+5÷9
+3+0.5555555556
+3.555555556</code></pre></p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">About spaces</p>
 <p>APL ignores extra spaces when processing statements.
 For example, all of the following statements will produce the same result:</p>
-<div class="highlight"><pre><span></span><code><span class="w">        </span><span class="m">2</span><span class="o">×</span><span class="m">2</span><span class="o">+</span><span class="m">1</span>
-<span class="m">6</span>
-<span class="w">        </span><span class="m">2</span><span class="o">×</span><span class="m">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span>
-<span class="m">6</span>
-<span class="w">        </span><span class="m">2</span><span class="o">×</span><span class="m">2</span><span class="w">       </span><span class="o">+</span><span class="w">           </span><span class="m">1</span>
-<span class="m">6</span>
-<span class="w">        </span><span class="m">2</span><span class="w">         </span><span class="o">×</span><span class="w">           </span><span class="m">2</span><span class="o">+</span><span class="m">1</span>
-<span class="m">6</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">        2×2+1
+6
+        2×2 + 1
+6
+        2×2       +           1
+6
+        2         ×           2+1
+6</code></pre>
 </div>
 <hr />
 <h1 id="altering-the-order-of-execution">Altering the order of execution</h1>
@@ -2460,13 +2461,12 @@ For example, all of the following statements will produce the same result:</p>
 <p>This is the same as in mathematics or any other programming language:
 statements within parentheses are executed before anything else.</p>
 <p>Let's look at our previous example once again:</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="m">2</span><span class="o">×</span><span class="m">2</span><span class="o">+</span><span class="m">1</span>
-<span class="m">6</span>
-<span class="w">      </span><span class="m">2</span><span class="o">×</span><span class="p">(</span><span class="m">2</span><span class="o">+</span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="c1">⍝ (1)!</span>
-<span class="m">6</span>
-<span class="w">      </span><span class="p">(</span><span class="m">2</span><span class="o">×</span><span class="m">2</span><span class="p">)</span><span class="o">+</span><span class="m">1</span><span class="w"> </span><span class="c1">⍝ (2)!</span>
-<span class="m">5</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      2×2+1
+6
+      2×(2+1) ⍝ (1)!
+6
+      (2×2)+1 ⍝ (2)!
+5</code></pre>
 <ol>
 <li>Same result as before; the parentheses changed nothing</li>
 <li>Finally, the result we wanted!</li>
@@ -2475,21 +2475,18 @@ statements within parentheses are executed before anything else.</p>
 Resist the urge. Use parentheses for readability, and when needed to change the order of operations.
 However, your code generally ends up cleaner if you can write it with as few parentheses as possible.</p>
 <p>In the above case, for example, we could have simply restructured the expression to be the following:</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="m">1</span><span class="o">+</span><span class="m">2</span><span class="o">×</span><span class="m">2</span>
-<span class="m">5</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      1+2×2
+5</code></pre>
 <p>No parentheses, and we get the correct answer!</p>
 <p>In general, when you have parentheses on the right, they are redundant.
 This is easier to understand in context. Consider the following expression:</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="p">(</span><span class="m">2</span><span class="o">×</span><span class="p">(</span><span class="m">3</span><span class="o">÷</span><span class="p">(</span><span class="m">4</span><span class="o">-</span><span class="m">5</span><span class="p">))))</span>
-<span class="m">¯5</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      (1+(2×(3÷(4-5))))
+¯5</code></pre>
 <p>In this case, all of the parentheses are unnecessary, since it is telling the APL interpreter
 to execute everything from right to left, which it would do anyway.
 So, in this case, you could achieve the same result with the shorter and more readable code:</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="m">1</span><span class="o">+</span><span class="m">2</span><span class="o">×</span><span class="m">3</span><span class="o">÷</span><span class="m">4</span><span class="o">-</span><span class="m">5</span>
-<span class="m">¯5</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      1+2×3÷4-5
+¯5</code></pre>
 <p>Pretty, isn't it?</p>
 <p>Before we conclude, here are some tips on how to reduce parentheses in your code to avoid a parenthesis jungle:</p>
 <div class="admonition info">
@@ -2514,14 +2511,13 @@ Don't worry, as you progress further, you will forget how <em>else</em> computer
 <h1 id="lamp">Lamp</h1>
 <p>One last handy symbol: <code>⍝</code>.
 Can you figure out what it does from this example?</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="c1">⍝ asdfada</span>
-<span class="w">      </span><span class="c1">⍝ adsfljsakfdjlkdsajflkdsajf</span>
-<span class="w">      </span><span class="c1">⍝ =≠∨¯≥&gt;≠≠=≤&lt;¯äö&#39;j∆⊃⊂⌈∊↑j|⊤⊂⍪AQWED⊆A⍰≤5≥&gt;∨8∧´§Ä&amp;⍤⍨⌿&amp;¤⊆≡⍎^Å</span>
-<span class="w">      </span><span class="m">2</span><span class="o">+</span><span class="m">2</span><span class="w">  </span><span class="c1">⍝ This is addition</span>
-<span class="m">4</span>
-<span class="w">      </span><span class="m">123</span><span class="o">×</span><span class="m">456</span><span class="w">  </span><span class="c1">⍝ yay</span>
-<span class="m">56088</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      ⍝ asdfada
+      ⍝ adsfljsakfdjlkdsajflkdsajf
+      ⍝ =≠∨¯≥&gt;≠≠=≤&lt;¯äö'j∆⊃⊂⌈∊↑j|⊤⊂⍪AQWED⊆A⍰≤5≥&gt;∨8∧´§Ä&amp;⍤⍨⌿&amp;¤⊆≡⍎^Å
+      2+2  ⍝ This is addition
+4
+      123×456  ⍝ yay
+56088</code></pre>
 <p>That's right, it's a comment.
 It makes the APL interpreter ignore whatever symbols come after it on the same line.
 You can use it to temporarily remove code from your programs or to add extra information to whatever code you have written.</p>
@@ -2546,6 +2542,12 @@ You can use it to temporarily remove code from your programs or to add extra inf
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
         
       </main>
       
@@ -2627,7 +2629,7 @@ You can use it to temporarily remove code from your programs or to add extra inf
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "nagivation.top", "navigation.footer", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.footer", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.92b07e13.min.js"></script>
@@ -2645,10 +2647,6 @@ You can use it to temporarily remove code from your programs or to add extra inf
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/build/three.module.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/examples/jsm/"></script>
       
     
   </body>

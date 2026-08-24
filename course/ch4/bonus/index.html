@@ -6,7 +6,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="A free online course in array programming with APL.">
       
+      
+      
+        <link rel="canonical" href="https://aplmooc.fi/course/ch4/bonus/">
       
       
         <link rel="prev" href="../write/">
@@ -2397,74 +2401,67 @@ There are no exercises related to this content.</p>
 <p>Let’s try rotating the image <code>'illusion.ppm'</code> in the PPM P3 image format.</p>
 <p><img src="../../assets/4_b_original.png" style="width:50%; margin-left: auto; margin-right: auto; display: block;" /></p>
 <p>The PPM P3 format consists of three lines of header: the first specifying the format the string <code>'P3'</code>, the second specifying the resolution of the image <code>455 498</code>, and the third specifying the maximum value for each color value, usually <code>255</code>. After these three lines, the color data is provided in plain-text as RGB values. Here is an example PPM file a scaled version of the image it encodes</p>
-<div class="highlight"><pre><span></span><code><span class="nv">P3</span>
-<span class="m">5</span><span class="w"> </span><span class="m">5</span>
-<span class="m">255</span>
-<span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span>
-<span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span>
-<span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span>
-<span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">P3
+5 5
+255
+255 255 255 255 0 255 255 255 255 0 255 0 255 255 255
+255 255 255 255 255 255 255 255 0 0 255 0 255 255 255
+0 255 255 255 255 0 255 255 0 0 255 0 255 255 255
+0 255 255 0 255 255 255 255 255 255 255 255 255 0 0
+0 0 255 255 255 255 0 0 255 255 0 0 255 0 0</code></pre>
 <p><img src="../../assets/4_b_matrix.png" style="width:50%; margin-left: auto; margin-right: auto; display: block;" /></p>
-<p>The <code>⎕NGET</code> command can be used to open the above image, and many different types of files. It takes as right argument a path to a file, and returns an array of the file data, the encoding, and the unicode number for the newline character.</p>
-<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="nf">⎕NGET</span><span class="w"> </span><span class="s1">&#39;test.ppm&#39;</span>
-<span class="err">┌──────────────────────────────────────────────────────┬───────────┬──┐</span>
-<span class="err">│</span><span class="nv">P3</span><span class="w">                                                    </span><span class="err">│</span><span class="nv">UTF</span><span class="o">-</span><span class="m">8</span><span class="o">-</span><span class="nv">NOBOM</span><span class="err">│</span><span class="m">10</span><span class="err">│</span>
-<span class="err">│</span><span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="w">                                                   </span><span class="err">│</span><span class="w">           </span><span class="err">│</span><span class="w">  </span><span class="err">│</span>
-<span class="err">│</span><span class="m">255</span><span class="w">                                                   </span><span class="err">│</span><span class="w">           </span><span class="err">│</span><span class="w">  </span><span class="err">│</span>
-<span class="err">│</span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="err">│</span><span class="w">           </span><span class="err">│</span><span class="w">  </span><span class="err">│</span>
-<span class="err">│</span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="err">│</span><span class="w">           </span><span class="err">│</span><span class="w">  </span><span class="err">│</span>
-<span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w">     </span><span class="err">│</span><span class="w">           </span><span class="err">│</span><span class="w">  </span><span class="err">│</span>
-<span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w">   </span><span class="err">│</span><span class="w">           </span><span class="err">│</span><span class="w">  </span><span class="err">│</span>
-<span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w">           </span><span class="err">│</span><span class="w">           </span><span class="err">│</span><span class="w">  </span><span class="err">│</span>
-<span class="err">│</span><span class="w">                                                      </span><span class="err">│</span><span class="w">           </span><span class="err">│</span><span class="w">  </span><span class="err">│</span>
-<span class="err">└──────────────────────────────────────────────────────┴───────────┴──┘</span>
-</code></pre></div>
+<p>The <code>⎕NGET</code> command can be used to open the above image, and many different types of files. It takes as right argument a path to a file, and returns an array of the file data, the encoding, and the character number for newline.</p>
+<pre class="highlight"><code class="language-apl">       ⎕NGET 'test.ppm'
+┌──────────────────────────────────────────────────────┬───────────┬──┐
+│P3                                                    │UTF-8-NOBOM│10│
+│5 5                                                   │           │  │
+│255                                                   │           │  │
+│255 255 255 255 0 255 255 255 255 0 255 0 255 255 255 │           │  │
+│255 255 255 255 255 255 255 255 0 0 255 0 255 255 255 │           │  │
+│0 255 255 255 255 0 255 255 0 0 255 0 255 255 255     │           │  │
+│0 255 255 0 255 255 255 255 255 255 255 255 255 0 0   │           │  │
+│0 0 255 255 255 255 0 0 255 255 0 0 255 0 0           │           │  │
+│                                                      │           │  │
+└──────────────────────────────────────────────────────┴───────────┴──┘</code></pre>
 <p>The first element of the result is the character array consisting of the image. To get each row of the image separately in an array, the argument <code>1</code> can be used.</p>
-<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="o">⊃</span><span class="nf">⎕NGET</span><span class="w"> </span><span class="s1">&#39;test.ppm&#39;</span><span class="m">1</span>
-<span class="err">┌───┬───┬───┬──────────────────────────────────────────────────────┬───────</span>
-<span class="err">│</span><span class="nv">P3</span><span class="w"> </span><span class="err">│</span><span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="err">│</span><span class="m">255</span><span class="err">│</span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="err">│</span><span class="m">255</span><span class="w"> </span><span class="m">255</span>
-<span class="err">└───┴───┴───┴──────────────────────────────────────────────────────┴───────</span>
-<span class="w">      </span><span class="err">───────────────────────────────────────────────┬──────────────────────────────────────────────────┬─────────────────</span>
-<span class="w">       </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">2</span>
-<span class="w">      </span><span class="err">───────────────────────────────────────────────┴──────────────────────────────────────────────────┴─────────────────</span>
-<span class="w">      </span><span class="err">───────────────────────────────────┬────────────────────────────────────────────┐</span>
-<span class="w">      </span><span class="m">55</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">255</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="err">│</span>
-<span class="w">      </span><span class="err">───────────────────────────────────┴────────────────────────────────────────────┘</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">       ⊃⎕NGET 'test.ppm'1
+┌───┬───┬───┬──────────────────────────────────────────────────────┬───────
+│P3 │5 5│255│255 255 255 255 0 255 255 255 255 0 255 0 255 255 255 │255 255
+└───┴───┴───┴──────────────────────────────────────────────────────┴───────
+      ───────────────────────────────────────────────┬──────────────────────────────────────────────────┬─────────────────
+       255 255 255 255 255 255 0 0 255 0 255 255 255 │0 255 255 255 255 0 255 255 0 0 255 0 255 255 255 │0 255 255 0 255 2
+      ───────────────────────────────────────────────┴──────────────────────────────────────────────────┴─────────────────
+      ───────────────────────────────────┬────────────────────────────────────────────┐
+      55 255 255 255 255 255 255 255 0 0 │0 0 255 255 255 255 0 0 255 255 0 0 255 0 0 │
+      ───────────────────────────────────┴────────────────────────────────────────────┘</code></pre>
 <p>We start by reading the illusion image and its metadata.</p>
-<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="nv">file</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="o">⊃</span><span class="nf">⎕NGET</span><span class="w"> </span><span class="s1">&#39;illusion.ppm&#39;</span><span class="m">1</span>
-<span class="w">       </span><span class="nv">header</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">file</span><span class="sr">[</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="sr">]</span>
-<span class="w">       </span><span class="nv">resolution</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">2</span><span class="o">⊃</span><span class="nv">header</span>
-<span class="w">       </span><span class="nv">image</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">file</span><span class="o">~</span><span class="nv">header</span>
-<span class="w">         </span><span class="nv">resolution</span>
-<span class="m">455</span><span class="w"> </span><span class="m">498</span>
-<span class="w">       </span><span class="nv">resolution</span><span class="sr">[</span><span class="m">1</span><span class="sr">]</span>
-<span class="m">4</span>
-<span class="w">       </span><span class="o">⍴</span><span class="nv">resolution</span>
-<span class="m">7</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">       file ← ⊃⎕NGET 'illusion.ppm'1
+       header ← file[1 2 3]
+       resolution ← 2⊃header
+       image ← file~header
+         resolution
+455 498
+       resolution[1]
+4
+       ⍴resolution
+7</code></pre>
 <p>The resolution vector is not a vector of numbers, which would be useful here, but a vector of characters in the string <code>'455 497'</code>. The execute <code>⍎</code> function evaluates strings as APL expressions, hence can turn the string <code>'455 497'</code> into the vector <code>455 497</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="nv">resolution</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="o">⍎</span><span class="m">2</span><span class="o">⊃</span><span class="nv">header</span>
-<span class="w">         </span><span class="nv">resolution</span>
-<span class="m">455</span><span class="w"> </span><span class="m">497</span>
-<span class="w">       </span><span class="nv">resolution</span><span class="sr">[</span><span class="m">1</span><span class="sr">]</span>
-<span class="m">455</span>
-<span class="w">       </span><span class="o">⍴</span><span class="nv">resolution</span>
-<span class="m">2</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">       resolution ← ⍎2⊃header
+         resolution
+455 497
+       resolution[1]
+455
+       ⍴resolution
+2</code></pre>
 <p>The image data is then rotated by half its width, and written using the <code>⎕NPUT</code> command with the append <code>2</code> argument.</p>
-<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="nv">new_image</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="p">(</span><span class="m">3</span><span class="w"> </span><span class="o">×</span><span class="w"> </span><span class="nv">resolution</span><span class="sr">[</span><span class="m">2</span><span class="sr">]</span><span class="o">÷</span><span class="m">2</span><span class="p">)</span><span class="o">⌽</span><span class="na">¨</span><span class="nv">image</span>
-<span class="w">       </span><span class="s1">&#39;P3&#39;</span><span class="nf">⎕NPUT</span><span class="s1">&#39;illusion_rotated.ppm&#39;</span><span class="m">2</span>
-<span class="w">       </span><span class="nv">resolution</span><span class="nf">⎕NPUT</span><span class="s1">&#39;illusion_rotated.ppm&#39;</span><span class="m">2</span>
-<span class="nv">DOMAIN</span><span class="w"> </span><span class="nv">ERROR</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">       new_image ← (3 × resolution[2]÷2)⌽¨image
+       'P3'⎕NPUT'illusion_rotated.ppm'2
+       resolution⎕NPUT'illusion_rotated.ppm'2
+DOMAIN ERROR</code></pre>
 <p>Since the resolution data is a vector of numbers, it cannot be written directly into a file as text. The format <code>⍕</code> function converts between the two, sometimes acting as an inverse to the <code>⍎</code> execute function. The image data is written element by element, hence row by row (since the elements of <code>image</code> are rows of the original image).</p>
-<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="p">(</span><span class="o">⍕</span><span class="nv">resolution</span><span class="p">)</span><span class="nf">⎕NPUT</span><span class="s1">&#39;illusion_rotated.ppm&#39;</span><span class="m">2</span>
-<span class="w">       </span><span class="s1">&#39;255&#39;</span><span class="nf">⎕NPUT</span><span class="s1">&#39;illusion_rotated.ppm&#39;</span><span class="m">2</span>
-<span class="w">       </span><span class="p">((</span><span class="s1">&#39;illusion_rotated.ppm&#39;</span><span class="m">2</span><span class="p">)</span><span class="na">∘</span><span class="p">(</span><span class="nf">⎕NPUT</span><span class="na">⍨</span><span class="p">))</span><span class="na">¨</span><span class="nv">new_image</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">       (⍕resolution)⎕NPUT'illusion_rotated.ppm'2
+       '255'⎕NPUT'illusion_rotated.ppm'2
+       (('illusion_rotated.ppm'2)∘(⎕NPUT⍨))¨new_image</code></pre>
 <p><img src="../../assets/4_b_rotated.png" style="width:50%; margin-left: auto; margin-right: auto; display: block;" /></p>
 
 
@@ -2485,6 +2482,12 @@ There are no exercises related to this content.</p>
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
         
       </main>
       
@@ -2566,7 +2569,7 @@ There are no exercises related to this content.</p>
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "nagivation.top", "navigation.footer", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.footer", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.92b07e13.min.js"></script>
@@ -2584,10 +2587,6 @@ There are no exercises related to this content.</p>
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/build/three.module.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/examples/jsm/"></script>
       
     
   </body>

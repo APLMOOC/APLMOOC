@@ -6,7 +6,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="A free online course in array programming with APL.">
       
+      
+      
+        <link rel="canonical" href="https://aplmooc.fi/course/ch1/write/">
       
       
         <link rel="prev" href="../read/">
@@ -2495,8 +2499,7 @@ What will be your balance if you take just another quick loan of 100€?
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 7</p>
 <p>Rewrite the following expression with as few parentheses as possible.
-<div class="highlight"><pre><span></span><code><span class="p">(((</span><span class="nv">x</span><span class="o">*</span><span class="m">2</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="nv">y</span><span class="o">*</span><span class="m">2</span><span class="p">))</span><span class="o">*</span><span class="m">.5</span><span class="p">)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">(((x*2)+(y*2))*.5)</code></pre>
 <div class="problem">
     <span class="problemspan">⎕←</span>
     <span class="problemfilltext" id="input_ch1_p7_b1" hidden>A←{</span>
@@ -2576,8 +2579,7 @@ Use as few parentheses as possible.
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 12</p>
 <p>Rewrite the following line of code using less than 7 parentheses.
-<div class="highlight"><pre><span></span><code><span class="p">((((</span><span class="nv">x</span><span class="o">+</span><span class="m">3.5</span><span class="p">)</span><span class="o">×</span><span class="p">(</span><span class="nv">x</span><span class="o">+</span><span class="m">6</span><span class="p">))</span><span class="o">-</span><span class="p">(((</span><span class="m">2</span><span class="o">+</span><span class="nv">y</span><span class="p">)</span><span class="o">×</span><span class="p">(</span><span class="nv">z</span><span class="o">×</span><span class="m">8.5</span><span class="p">))</span><span class="o">÷</span><span class="m">¯20</span><span class="p">)</span><span class="c1">⍝((()())))()()((()()))()()()()))())))()(((</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">((((x+3.5)×(x+6))-(((2+y)×(z×8.5))÷¯20)⍝((()())))()()((()()))()()()()))())))()(((</code></pre>
 <div class="problem">
     <span class="problemspan">⎕←</span>
     <span class="problemfilltext" id="input_ch1_p12_b1" hidden>A←{</span>
@@ -2606,6 +2608,12 @@ Use as few parentheses as possible.
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
         
       </main>
       
@@ -2687,7 +2695,7 @@ Use as few parentheses as possible.
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "nagivation.top", "navigation.footer", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.footer", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.92b07e13.min.js"></script>
@@ -2705,10 +2713,6 @@ Use as few parentheses as possible.
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/build/three.module.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/examples/jsm/"></script>
       
     
   </body>

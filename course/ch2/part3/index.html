@@ -6,7 +6,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="A free online course in array programming with APL.">
       
+      
+      
+        <link rel="canonical" href="https://aplmooc.fi/course/ch2/part3/">
       
       
         <link rel="prev" href="../part2/">
@@ -2397,63 +2401,53 @@
 <p>After a couple days of logging temperatures into your large notebook, you realise you've made a catastrophic mistake! You wonder how you haven't noticed it before, but some of the sensors are in Fahrenheit!</p>
 <p>Terrible news! </p>
 <p>You nag your coworker about it until they eventually give up and tell you that the formula to convert from Fahrenheit to Celcius is </p>
-<p>$$Celsius = (Fahrenheit - 32) \cdot \frac{5}{9}$$</p>
+<div class="arithmatex">\[Celsius = (Fahrenheit - 32) \cdot \frac{5}{9}\]</div>
 <p>To try it out, you convert the current room temperature reading of 72.1</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="p">(</span><span class="m">5</span><span class="w"> </span><span class="o">×</span><span class="w"> </span><span class="m">72.1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">32</span><span class="p">)</span><span class="w"> </span><span class="o">÷</span><span class="w"> </span><span class="m">9</span>
-<span class="m">22.27777778</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      (5 × 72.1 - 32) ÷ 9
+22.27777778</code></pre>
 <p>Great! What’s not so great is that the temperature sensor has been left generating data for the whole week, and there are a bunch of readings to convert to Celsius</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">TEMP_F</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">71.2</span><span class="w"> </span><span class="m">71.4</span><span class="w"> </span><span class="m">73.3</span><span class="w"> </span><span class="m">73.0</span><span class="w"> </span><span class="m">73.1</span><span class="w"> </span><span class="m">72.8</span><span class="w"> </span><span class="m">72.5</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      TEMP_F ← 71.2 71.4 73.3 73.0 73.1 72.8 72.5</code></pre>
 <p>It would take you much longer than your legally mandated lunch break to convert the data from this sensor, and there are 200 of them lying around! Fortunately, APL is designed to process vector data. You can write the following</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="vg">⎕</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">TEMP_CELSIUS</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="p">(</span><span class="m">5</span><span class="w"> </span><span class="o">×</span><span class="w"> </span><span class="nv">TEMP_F</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">32</span><span class="p">)</span><span class="w"> </span><span class="o">÷</span><span class="w"> </span><span class="m">9</span>
-<span class="m">21.77777778</span><span class="w"> </span><span class="m">21.88888889</span><span class="w"> </span><span class="m">22.94444444</span><span class="w"> </span><span class="m">22.77777778</span><span class="w"> </span><span class="m">22.83333333</span><span class="w"> </span><span class="m">22.66666667</span><span class="w"> </span><span class="m">22.5</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      ⎕ ← TEMP_CELSIUS ← (5 × TEMP_F - 32) ÷ 9
+21.77777778 21.88888889 22.94444444 22.77777778 22.83333333 22.66666667 22.5</code></pre>
 <p>That's all in Celsius! What’s going on here?</p>
 <p>In APL, all the basic arithmetic functions apply to all the elements of a vector. If you are familiar with functional programming, you might know the <code>map</code> function, which applies a function to each element of a vector. In APL, this is done automatically for all the basic arithmetic functions, if one of the parameters is a scalar:</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">TEMP_F</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">32</span>
-<span class="m">39.2</span><span class="w"> </span><span class="m">39.4</span><span class="w"> </span><span class="m">41.3</span><span class="w"> </span><span class="m">41</span><span class="w"> </span><span class="m">41.1</span><span class="w"> </span><span class="m">40.8</span><span class="w"> </span><span class="m">40.5</span>
-<span class="w">      </span><span class="nv">TEMP_F</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">32</span>
-<span class="m">103.2</span><span class="w"> </span><span class="m">103.4</span><span class="w"> </span><span class="m">105.3</span><span class="w"> </span><span class="m">105</span><span class="w"> </span><span class="m">105.1</span><span class="w"> </span><span class="m">104.8</span><span class="w"> </span><span class="m">104.5</span>
-<span class="w">      </span><span class="m">32</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">TEMP_F</span>
-<span class="m">¯39.2</span><span class="w"> </span><span class="m">¯39.4</span><span class="w"> </span><span class="m">¯41.3</span><span class="w"> </span><span class="m">¯41</span><span class="w"> </span><span class="m">¯41.1</span><span class="w"> </span><span class="m">¯40.8</span><span class="w"> </span><span class="m">¯40.5</span>
-<span class="w">      </span><span class="m">100</span><span class="o">+</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w">      </span>
-<span class="m">101</span><span class="w"> </span><span class="m">102</span><span class="w"> </span><span class="m">103</span>
-<span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="o">+</span><span class="m">100</span><span class="w">      </span>
-<span class="m">101</span><span class="w"> </span><span class="m">102</span><span class="w"> </span><span class="m">103</span><span class="w">  </span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      TEMP_F - 32
+39.2 39.4 41.3 41 41.1 40.8 40.5
+      TEMP_F + 32
+103.2 103.4 105.3 105 105.1 104.8 104.5
+      32 - TEMP_F
+¯39.2 ¯39.4 ¯41.3 ¯41 ¯41.1 ¯40.8 ¯40.5
+      100+1 2 3      
+101 102 103
+      1 2 3+100      
+101 102 103  </code></pre>
 <p>Pay close attention to the last two examples; constructing a vector using spaces always takes precedence over other operations, otherwise <code>1 2 3+100</code> would be <code>1 2 103</code>. If that is what we want, we can add extra parentheses</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="p">(</span><span class="m">3</span><span class="o">+</span><span class="m">100</span><span class="p">)</span>
-<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">103</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      1 2 (3+100)
+1 2 103</code></pre>
 <p>Now you can do arithmetic to a list of numbers however you like! After figuring this out, you decided to also check the temperature reading of a sensor outside the ISS:</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">TEMP_OUTSIDE</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">118.5</span><span class="w"> </span><span class="m">97.1</span><span class="w"> </span><span class="m">59.5</span><span class="w"> </span><span class="m">30.0</span><span class="w"> </span><span class="m">¯9.7</span><span class="w"> </span><span class="m">¯62.3</span><span class="w"> </span><span class="m">¯113.2</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      TEMP_OUTSIDE ← 118.5 97.1 59.5 30.0 ¯9.7 ¯62.3 ¯113.2</code></pre>
 <p>That’s some extreme temperature right there! And it makes you start to wonder, what temperature difference is the hull bearing? Turns out it’s also very simple in APL:</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">TEMP_OUTSIDE</span>
-<span class="m">118.5</span><span class="w"> </span><span class="m">97.1</span><span class="w"> </span><span class="m">59.5</span><span class="w"> </span><span class="m">30.0</span><span class="w"> </span><span class="m">¯9.7</span><span class="w"> </span><span class="m">¯62.3</span><span class="w"> </span><span class="m">¯113.2</span>
-<span class="w">      </span><span class="nv">TEMP_CELSIUS</span>
-<span class="m">21.77777778</span><span class="w"> </span><span class="m">21.88888889</span><span class="w"> </span><span class="m">22.94444444</span><span class="w"> </span><span class="m">22.77777778</span><span class="w"> </span><span class="m">22.83333333</span><span class="w"> </span><span class="m">22.66666667</span><span class="w"> </span><span class="m">22.5</span>
-<span class="w">      </span><span class="vg">⎕</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">TEMP_DIFF</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">TEMP_OUTSIDE</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">TEMP_CELSIUS</span>
-<span class="m">96.72222222</span><span class="w"> </span><span class="m">75.21111111</span><span class="w"> </span><span class="m">36.55555556</span><span class="w"> </span><span class="m">7.222222222</span><span class="w"> </span><span class="m">¯32.53333333</span><span class="w"> </span><span class="m">¯84.96666667</span><span class="w"> </span><span class="m">¯135.7</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      TEMP_OUTSIDE
+118.5 97.1 59.5 30.0 ¯9.7 ¯62.3 ¯113.2
+      TEMP_CELSIUS
+21.77777778 21.88888889 22.94444444 22.77777778 22.83333333 22.66666667 22.5
+      ⎕ ← TEMP_DIFF ← TEMP_OUTSIDE - TEMP_CELSIUS
+96.72222222 75.21111111 36.55555556 7.222222222 ¯32.53333333 ¯84.96666667 ¯135.7</code></pre>
 <p>Applying a basic arithmetic function to two vectors applies it to their components! It applies this function for the first element on the left with the first element on the right, noting the result, then the second element on the left with the second element on the right, and so on. This is analogous to <code>map</code> with a binary operation and two iterators in Python, and <code>zipWith</code> in Haskell. </p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="c1">⍝ Approximations to pi</span>
-<span class="w">      </span><span class="m">3</span><span class="w"> </span><span class="m">256</span><span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">339</span><span class="w"> </span><span class="m">22</span><span class="w"> </span><span class="m">3927</span><span class="w"> </span><span class="o">÷</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">81</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">108</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">1250</span>
-<span class="w">      </span><span class="m">3</span><span class="w"> </span><span class="m">3.160493827</span><span class="w"> </span><span class="m">3.125</span><span class="w"> </span><span class="m">3.138888889</span><span class="w"> </span><span class="m">3.142857143</span><span class="w"> </span><span class="m">3.1416</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      ⍝ Approximations to pi
+      3 256 25 339 22 3927 ÷ 1 81 8 108 7 1250
+      3 3.160493827 3.125 3.138888889 3.142857143 3.1416</code></pre>
 <p>There is one serious caveat though:</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span>
-<span class="nv">LENGTH</span><span class="w"> </span><span class="nv">ERROR</span><span class="bp">:</span><span class="w"> </span><span class="nv">Mismatched</span><span class="w"> </span><span class="nv">left</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">right</span><span class="w"> </span><span class="nv">argument</span><span class="w"> </span><span class="nv">shapes</span>
-<span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="o">-</span><span class="m">4</span><span class="w"> </span><span class="m">5</span>
-<span class="w">           </span><span class="o">∧</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      1 2 3 - 4 5
+LENGTH ERROR: Mismatched left and right argument shapes
+      1 2 3-4 5
+           ∧</code></pre>
 <p>The length of the vectors must match, APL will not silently truncate the longer one or fill in the difference.</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">÷</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">0</span>
-<span class="nv">DOMAIN</span><span class="w"> </span><span class="nv">ERROR</span><span class="bp">:</span><span class="w"> </span><span class="nv">Divide</span><span class="w"> </span><span class="nv">by</span><span class="w"> </span><span class="nv">zero</span>
-<span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="o">÷</span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">0</span>
-<span class="w">           </span><span class="o">∧</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      1 2 3 ÷ 2 2 0
+DOMAIN ERROR: Divide by zero
+      1 2 3÷2 2 0
+           ∧</code></pre>
 <p>Unfortunately, APL doesn’t point out on which element the error occurred. If you get this kind of error in a complex expression, you can use the intermediate assignment and printout to help debug the situation.</p>
 
 
@@ -2474,6 +2468,12 @@
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
         
       </main>
       
@@ -2555,7 +2555,7 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "nagivation.top", "navigation.footer", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.footer", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.92b07e13.min.js"></script>
@@ -2573,10 +2573,6 @@
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/build/three.module.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/examples/jsm/"></script>
       
     
   </body>

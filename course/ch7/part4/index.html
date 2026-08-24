@@ -6,7 +6,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="A free online course in array programming with APL.">
       
+      
+      
+        <link rel="canonical" href="https://aplmooc.fi/course/ch7/part4/">
       
       
         <link rel="prev" href="../part3/">
@@ -2156,6 +2160,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    7.4 - Error handling
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -2167,6 +2184,19 @@
   
 
       </a>
+      
+        <nav class="md-nav md-nav--secondary apl-feedback-nav" aria-label="Feedback">
+  <label class="md-nav__title">Feedback</label>
+  <form class="apl-feedback" data-section="7.4 - Error handling">
+    <p class="apl-feedback__where">7.4 - Error handling</p>
+    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+              placeholder="Spotted a mistake? Something unclear?"></textarea>
+    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+           placeholder="Email (optional)">
+    <button class="apl-feedback__send" type="submit">Send</button>
+    <p class="apl-feedback__status" role="status"></p>
+  </form>
+</nav>
       
     </li>
   
@@ -2388,10 +2418,227 @@
 <div class="admonition abstract">
 <p class="admonition-title">This part will cover</p>
 <ul>
-<li>Dealing with nasty errors</li>
+<li>Error traps</li>
+<li>Function tracing</li>
 </ul>
 </div>
 <hr />
+<p>Dyalog APL provides many different types of error handling, we present some of them in this section.</p>
+<h2 id="error-traps">Error traps</h2>
+<p>Programs often need to make use of external data, which is predictably unpredictable. Traps can laid which execute when this expected unpredictability leads to an error, allowing it to be gracefully dealt with.</p>
+<p>Users of imperative programming languages will recognize the following <code>:Trap</code> control structure as the familiar <code>try</code> control structure.
+<pre class="highlight"><code class="language-apl">      ∇ result ← a DIVIDE b
+      :Trap 11
+            a÷b
+      :Else
+            'How dare you, division by zero is not allowed!'
+      :EndTrap
+      ∇
+
+      1 DIVIDE 1
+1
+      0 DIVIDE 0
+1
+      1 DIVIDE 0
+ How dare you, division by zero is not allowed!</code></pre></p>
+<p>The <code>:Trap</code> control structure takes as argument a numerical error code signifying the error to guard against. A full list of arguments is available at the <a href="https://help.dyalog.com/20.0/Content/Language/System%20Functions/trap.htm">Dyalog APL documentation site</a> but the most important values are as follows:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Code</th>
+<th>Error</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>0</code></td>
+<td>Any error</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>1</code></td>
+<td><code>WS FULL</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>2</code></td>
+<td><code>SYNTAX ERROR</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>3</code></td>
+<td><code>INDEX ERROR</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>4</code></td>
+<td><code>RANK ERROR</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>5</code></td>
+<td><code>LENGTH ERROR</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>6</code></td>
+<td><code>VALUE ERROR</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>7</code></td>
+<td><code>FORMAT ERROR</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>10</code></td>
+<td><code>LIMIT ERROR</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>11</code></td>
+<td><code>DOMAIN ERROR</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>22</code></td>
+<td><code>FILE NAME ERROR</code></td>
+</tr>
+</tbody>
+</table>
+<p>Multiple errors can be caught by passing a vector of error codes to the <code>:Trap</code> control structure and using <code>:Case</code> to differentiate them, with extra diagnostic information (such as the error message) provided by the <a href="https://docs.dyalog.com/20.0/language-reference-guide/system-functions/dmx/"><code>⎕DMX</code> system object</a>. The full list of properties is listed therein.</p>
+<p>Consider the following example of a tradfn averaging weather measurements from a given file of comma-separated values, using the <code>⎕CSV</code> system function which will be covered in <a href="../part6/">section 7.6</a>.</p>
+<pre class="highlight"><code class="language-apl">      ∇ r←loadTemps file;data;temps;⎕PP
+      ⎕PP ← 3
+      :Trap 0
+            data←⊃⎕CSV file '' (1 2) 1
+            temps←data[;2]
+            r←'Average of ',(⍕≢temps),' readings: ',⍕(+/temps)÷≢temps
+      :Case 22
+            r←'The file cannot be found. ',⎕DMX.Message
+      :Case 11
+            r←'The file is malformed. ',⎕DMX.Message
+      :Else
+            r←'Unexpected error ',(⍕⎕EN),': ',⎕DMX.EM
+      :EndTrap
+      ∇</code></pre>
+<p>The following three files are loaded in the current working directory (which can be obtained by the change directory <code>]cd</code> system command), the first of which should be the ideal case, and the other two are incorrectly formatted.</p>
+<pre class="highlight"><code>good.csv          text.csv          short.csv
+station,temp      station,temp      station,temp
+Kumpula,4.2       Kumpula,4.2       Kumpula,4.2
+Malmi,3.8         Malmi,n/a         Malmi
+Vantaa,5.1        Vantaa,5.1        Vantaa,5.1</code></pre>
+<p>The function gives the following results.</p>
+<pre class="highlight"><code>      loadTemps 'good.csv'
+Average of 3 readings: 4.37
+      loadTemps 'text.csv'
+The file is malformed. Non-numeric data in record 3, field 2 (⎕IO=1)
+      loadTemps 'short.csv'
+The file is malformed. Invalid number of fields in record 3 (⎕IO=1)
+      loadTemps 'weather.csv'
+The file cannot be found. weather.csv: Unable to open file
+      loadTemps '/tmp/'
+Unexpected error 19: FILE ACCESS ERROR</code></pre>
+<h2 id="function-tracing">Function tracing</h2>
+<p>Traps can only capture expected errors, and handle them in pre-determined ways. For unexpected errors, typically found during development or in production, and when the program is too large to hold the entire state mentally, it is more useful to have interactive execution to investigate the state at which an error occured. Tracing through the functions at the error line-by-line is a natural method of doing so.</p>
+<h3 id="the-tracer">The Tracer</h3>
+<p>The tracer can be manually invoked for any expression by hitting <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-enter">Enter</kbd></span> instead of <span class="keys"><kbd class="key-enter">Enter</kbd></span> to evaluate an expression.</p>
+<p>The Tracer shows the source code of the function and marks the line that runs next. In the picture below, the mark is on line <code>[3]</code>, because <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-enter">Enter</kbd></span> was pressed three times.</p>
+<p><img alt="A picture of the Tracer in RIDE" src="../../assets/7_4_tracer.png" /></p>
+<p>The buttons on the toolbar, from left to right, take the following actions.</p>
+<table>
+<thead>
+<tr>
+<th>Button</th>
+<th>What it does</th>
+<th>Key</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Exec</td>
+<td>Runs the marked line</td>
+<td><span class="keys"><kbd class="key-enter">Enter</kbd></span></td>
+</tr>
+<tr>
+<td>Trace</td>
+<td>Runs and traces the function on the marked line</td>
+<td><span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-enter">Enter</kbd></span></td>
+</tr>
+<tr>
+<td>Back</td>
+<td>Moves the mark back one line</td>
+<td></td>
+</tr>
+<tr>
+<td>Skip</td>
+<td>Moves the mark forwards one line without running it</td>
+<td></td>
+</tr>
+<tr>
+<td>Continue</td>
+<td>Runs until the calling function gets control again</td>
+<td></td>
+</tr>
+<tr>
+<td>Restart</td>
+<td>Leaves the Tracer and runs the rest of the function as normal</td>
+<td></td>
+</tr>
+<tr>
+<td>Restart all</td>
+<td>Does the same for every thread</td>
+<td></td>
+</tr>
+<tr>
+<td>Edit</td>
+<td>Opens the marked name in the editor</td>
+<td><span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-enter">Enter</kbd></span></td>
+</tr>
+<tr>
+<td>Exit</td>
+<td>Stops the function and leaves the Tracer</td>
+<td><span class="keys"><kbd class="key-escape">Esc</kbd></span></td>
+</tr>
+<tr>
+<td>Interrupt</td>
+<td>Stops a function that runs for too long</td>
+<td></td>
+</tr>
+<tr>
+<td>Reset</td>
+<td>Removes the trace, stop and monitor marks from this function</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>The last two buttons show the line numbers and search the source.</p>
+<p>Dyalog also opens the Tracer without invocation when a function stops because of an error, the <code>Trace on error</code> option controls this.</p>
+<h3 id="breakpoints">Breakpoints</h3>
+<p>A breakpoint invokes the tracer at a specific line during execution. The easiest way to add a breakpoint is in either the function definition or the tracer. Click the left margin of the tracer or function definition, beside the line number. Click the same place again to remove it. A breakpoint shows as a red circle in that margin.</p>
+<p><img alt="A picture of a breakpoint on line 3 of a function" src="../../assets/7_4_breakpoint.png" /></p>
+<p>Alternatively, you can use the <code>⎕STOP</code> system function to set (and unset) a breakpoint at a particular line.</p>
+<pre class="highlight"><code class="language-apl">      2 ⎕STOP 'loadTemps'
+2
+      ⎕STOP 'loadTemps'
+2
+      ⍬ ⎕STOP 'loadTemps'</code></pre>
+<p>The first line sets a breakpoint on line 2. The third line asks which lines have breakpoints. The fifth line removes all of them.</p>
+<h3 id="automatic-output">Automatic output</h3>
+<p>The <code>⎕TRACE</code> system function prints the result of each chosen line to the session. This is most useful for a line that runs many times, like the following fibonacci function.</p>
+<pre class="highlight"><code class="language-apl">      ∇ r←fib n;a;b;i
+      a←0 ⋄ b←1
+      :For i :In ⍳n
+            (a b)←b(a+b)
+      :EndFor
+      r←a
+      ∇
+
+      fib 8
+21
+      3 ⎕TRACE 'fib'
+      fib 8
+ fib[3]  1 1 
+ fib[3]  1 2 
+ fib[3]  2 3 
+ fib[3]  3 5 
+ fib[3]  5 8 
+ fib[3]  8 13 
+ fib[3]  13 21 
+ fib[3]  21 34 
+21
+      ⍬ ⎕TRACE 'fib'</code></pre>
+<p>Each traced line prints the name of the function, the line number, and the result.</p>
 
 
 
@@ -2411,6 +2658,12 @@
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
         
       </main>
       
@@ -2492,7 +2745,7 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "nagivation.top", "navigation.footer", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.footer", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.92b07e13.min.js"></script>
@@ -2510,10 +2763,6 @@
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/build/three.module.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/examples/jsm/"></script>
       
     
   </body>

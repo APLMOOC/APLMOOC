@@ -6,7 +6,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="A free online course in array programming with APL.">
       
+      
+      
+        <link rel="canonical" href="https://aplmooc.fi/course/ch3/part5/">
       
       
         <link rel="prev" href="../part4/">
@@ -2396,145 +2400,134 @@
 <hr />
 <p>Before starting this section, we briefly introduce the commonly used monadic reduce <code>/</code> operator, which applies its left function argument between every element of a vector. More on this in Chapter 4.</p>
 <p>For example, the sum of all the elements of a vector is given by plus reduce <code>+/</code> as shown below.</p>
-<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="o">+</span><span class="na">/</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">10</span>
-<span class="m">55</span>
-<span class="w">       </span><span class="m">1</span><span class="o">+</span><span class="m">2</span><span class="o">+</span><span class="m">3</span><span class="o">+</span><span class="m">4</span><span class="o">+</span><span class="m">5</span><span class="o">+</span><span class="m">6</span><span class="o">+</span><span class="m">7</span><span class="o">+</span><span class="m">8</span><span class="o">+</span><span class="m">9</span><span class="o">+</span><span class="m">10</span>
-<span class="m">55</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">       +/1 2 3 4 5 6 7 8 9 10
+55
+       1+2+3+4+5+6+7+8+9+10
+55</code></pre>
 <p>Some other important functions are the dyadic right and left identity/“tack” functions which return their right or left arguments. They "point" towards which argument they return.</p>
-<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="s2">&quot;True&quot;</span><span class="o">⊣</span><span class="s2">&quot;False&quot;</span>
-<span class="nv">True</span>
-<span class="w">       </span><span class="s2">&quot;True&quot;</span><span class="o">⊢</span><span class="s2">&quot;False&quot;</span>
-<span class="nv">False</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">       "True"⊣"False"
+True
+       "True"⊢"False"
+False</code></pre>
 <p>At this point, all the functions we've defined have explicitly referred to the left <code>⍺</code> and right <code>⍵</code> arguments, for example in the following function <code>range</code> which takes the difference of the largest and smallest values of a vector. It takes the maximum <code>⌈/</code> minus the minimum <code>⌊/</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">⌈</span><span class="na">/</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span>
-<span class="m">8</span>
+<pre class="highlight"><code class="language-apl">      ⌈/ 5 6 7 8
+8
 
-<span class="w">      </span><span class="nv">range</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="p">(</span><span class="o">⌈</span><span class="na">/</span><span class="bp">⍵</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="o">⌊</span><span class="na">/</span><span class="bp">⍵</span><span class="p">)</span><span class="kt">}</span>
+      range ← {(⌈/⍵)-(⌊/⍵)}
 
-<span class="w">      </span><span class="nv">range</span><span class="w"> </span><span class="m">80</span><span class="w"> </span><span class="m">49</span><span class="w"> </span><span class="m">56</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="m">99</span><span class="w"> </span><span class="m">23</span><span class="w"> </span><span class="m">19</span><span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">50</span><span class="w"> </span><span class="m">7</span>
-<span class="m">50</span>
-</code></pre></div>
+      range 80 49 56 60 100 99 23 19 24 4 50 7
+50</code></pre>
 <p>or in the following function which takes the (weighted) average of a vector. First, the average function can be written as below.</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="c1">⍝ Average</span>
-<span class="w">      </span><span class="p">(</span><span class="o">+</span><span class="na">/</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">100</span><span class="p">)</span><span class="w"> </span><span class="o">÷</span><span class="w"> </span><span class="m">3</span>
-<span class="m">37</span>
+<pre class="highlight"><code class="language-apl">
+      ⍝ Average
+      (+/ 1 10 100) ÷ 3
+37
 
-<span class="w">      </span><span class="nv">avg</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="p">(</span><span class="o">+</span><span class="na">/</span><span class="bp">⍵</span><span class="p">)</span><span class="o">÷⍴</span><span class="bp">⍵</span><span class="kt">}</span>
+      avg ← {(+/⍵)÷⍴⍵}
 
-<span class="w">      </span><span class="nv">avg</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">100</span>
-<span class="m">37</span>
-</code></pre></div>
+      avg 1 10 100
+37</code></pre>
 <p>Then, for a weighted average, before we sum up the elements, we multiply them by weights and divide by the total weight.</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="c1">⍝ Weighing the average by 1 1 1</span>
-<span class="w">      </span><span class="p">(</span><span class="o">+</span><span class="na">/</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="o">×</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">÷</span><span class="w"> </span><span class="p">(</span><span class="o">+</span><span class="na">/</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
-<span class="m">37</span>
+<pre class="highlight"><code class="language-apl">      ⍝ Weighing the average by 1 1 1
+      (+/ 1 10 100 × 1 1 1) ÷ (+/ 1 1 1)
+37
 
-<span class="w">      </span><span class="c1">⍝ Weighing the average by 2 3 4</span>
-<span class="w">      </span><span class="p">(</span><span class="o">+</span><span class="na">/</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="o">×</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="p">)</span><span class="w"> </span><span class="o">÷</span><span class="w"> </span><span class="p">(</span><span class="o">+</span><span class="na">/</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="p">)</span>
-<span class="m">48</span>
+      ⍝ Weighing the average by 2 3 4
+      (+/ 1 10 100 × 2 3 4) ÷ (+/ 2 3 4)
+48
 
-<span class="w">      </span><span class="nv">weighted_avg</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="o">+</span><span class="na">/</span><span class="p">(</span><span class="bp">⍺</span><span class="o">×</span><span class="bp">⍵</span><span class="p">)</span><span class="o">÷</span><span class="p">(</span><span class="o">+</span><span class="na">/</span><span class="bp">⍺</span><span class="p">)</span><span class="kt">}</span>
+      weighted_avg ← {+/(⍺×⍵)÷(+/⍺)}
 
-<span class="w">      </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="nv">weighted_avg</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">100</span>
-<span class="m">48</span>
-</code></pre></div>
+      2 3 4 weighted_avg 1 10 100
+48</code></pre>
 <p>also in the "plus or minus" function and rounded (or floored) division function</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">plusminus</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="p">(</span><span class="bp">⍺</span><span class="o">-</span><span class="bp">⍵</span><span class="p">)</span><span class="o">,</span><span class="bp">⍺</span><span class="o">,</span><span class="bp">⍺</span><span class="o">+</span><span class="bp">⍵</span><span class="kt">}</span>
+<pre class="highlight"><code class="language-apl">      plusminus ← {(⍺-⍵),⍺,⍺+⍵}
 
-<span class="w">       </span><span class="m">5.7</span><span class="w"> </span><span class="nv">plusminus</span><span class="w"> </span><span class="m">0.5</span>
-<span class="m">5.05</span><span class="w"> </span><span class="m">5.7</span><span class="w"> </span><span class="m">6.35</span>
+       5.7 plusminus 0.5
+5.05 5.7 6.35
 
-<span class="w">      </span><span class="nv">round_div</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="o">⌊</span><span class="m">0.5</span><span class="o">+</span><span class="bp">⍺</span><span class="o">÷</span><span class="bp">⍵</span><span class="kt">}</span>
+      round_div ← {⌊0.5+⍺÷⍵}
 
-<span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="nv">round_div</span><span class="w"> </span><span class="m">3</span>
-<span class="m">0</span>
+      1 round_div 3
+0
 
-<span class="w">      </span><span class="m">2</span><span class="w"> </span><span class="nv">round_div</span><span class="w"> </span><span class="m">3</span>
-<span class="m">1</span>
+      2 round_div 3
+1
 
-<span class="w">      </span><span class="nv">floor_div</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="o">⌊</span><span class="bp">⍺</span><span class="o">÷</span><span class="bp">⍵</span><span class="kt">}</span>
+      floor_div ← {⌊⍺÷⍵}
 
-<span class="w">      </span><span class="m">2</span><span class="w"> </span><span class="nv">floor_div</span><span class="w"> </span><span class="m">3</span>
-<span class="m">0</span>
+      2 floor_div 3
+0
 
-<span class="w">      </span><span class="m">4</span><span class="w"> </span><span class="nv">floor_div</span><span class="w"> </span><span class="m">3</span>
-<span class="m">1</span>
-</code></pre></div>
+      4 floor_div 3
+1</code></pre>
 <p>All of these functions can instead be expressed in terms of special combinations of functions, without referring to the arguments ⍺ and ⍵ at all! Just like magic, it takes some time to learn, but once you do it reveals a rich world of programming spells.</p>
 <p>This style of programming is called tacit or "point-free" programming, borrowed from mathematics where it means taking data described using points to be more fundamental than the points themselves, avoiding the need to refer to points explicitly. In this case, taking functions to be more fundamental than their description in terms of explicit arguments. These point-free functions are called trains. </p>
 <p>There are two fundamental types of trains which can be created by stringing functions together. The most basic train is the 2-train <code>(fg)</code>, in operator form <code>f⍤g</code>, called an atop. The atop evaluates the function f on the result of g applied to the arguments of the train.</p>
 <p>In mathematical notation, a 2-train <code>(fg)</code> is expressed as composition,</p>
-<p>$$⍺(fg)⍵=f(g(⍺,⍵)).$$</p>
+<div class="arithmatex">\[⍺(fg)⍵=f(g(⍺,⍵)).\]</div>
 <p>Floored division can be conveniently expressed as an atop.
-<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="m">12</span><span class="o">÷</span><span class="m">5</span>
-<span class="m">2.4</span>
-<span class="w">       </span><span class="o">⌊</span><span class="m">2.4</span>
-<span class="m">2</span>
-<span class="w">       </span><span class="m">12</span><span class="p">(</span><span class="o">⌊÷</span><span class="p">)</span><span class="m">5</span>
-<span class="m">2</span>
-</code></pre></div></p>
+<pre class="highlight"><code class="language-apl">       12÷5
+2.4
+       ⌊2.4
+2
+       12(⌊÷)5
+2</code></pre></p>
 <p>The second fundamental type of train is the 3-train <code>(fgh)</code>, called a fork. When acting on arguments <code>⍺</code> and <code>⍵</code>, it applies <code>g</code> dyadically to <code>⍺f⍵</code> and <code>⍺h⍵</code>. </p>
 <p>In mathematical notation, a fork is described as</p>
-<p>$$⍺(fgh)⍵=g(f(⍺,⍵),h(⍺,⍵)).$$</p>
+<div class="arithmatex">\[⍺(fgh)⍵=g(f(⍺,⍵),h(⍺,⍵)).\]</div>
 <p>The motivation for this specific definition is to match with mathematics, where it is possible to write <code>f+g</code> to get the sum of the values of the functions <code>f</code> and <code>g</code>,</p>
-<p>$$f+g = f(⍺,⍵)+g(⍺,⍵).$$</p>
+<div class="arithmatex">\[f+g = f(⍺,⍵)+g(⍺,⍵).\]</div>
 <div class="admonition info">
 <p class="admonition-title">Train trees</p>
 <p>The ]Box user command controls how trains are displayed, it is beneficial to set -trains=tree to see a tree-like representation of trains.</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">f</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="na">...</span><span class="kt">}</span>
-<span class="w">      </span><span class="nv">g</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="na">...</span><span class="kt">}</span>
+<pre class="highlight"><code class="language-apl">      f ← {...}
+      g ← {...}
 
-<span class="w">      </span><span class="nv">f</span><span class="o">+</span><span class="nv">g</span>
-<span class="nv">f</span><span class="o">+</span><span class="nv">g</span>
+      f+g
+f+g
 
-<span class="w">      </span><span class="sr">]</span><span class="nv">Box</span><span class="w"> </span><span class="nv">ON</span>
-<span class="nv">Was</span><span class="w"> </span><span class="nv">OFF</span>
-<span class="w">      </span><span class="sr">]</span><span class="nv">Box</span><span class="w"> </span><span class="o">-</span><span class="nv">trains</span><span class="o">=</span><span class="nv">tree</span>
-<span class="nv">Was</span><span class="w"> </span><span class="o">-</span><span class="nv">trains</span><span class="o">=</span><span class="nv">box</span>
+      ]Box ON
+Was OFF
+      ]Box -trains=tree
+Was -trains=box
 
-<span class="w">      </span><span class="nv">f</span><span class="o">+</span><span class="nv">g</span>
-<span class="err">┌─┼─┐</span>
-<span class="nv">f</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">g</span>
-</code></pre></div>
+      f+g
+┌─┼─┐
+f + g</code></pre>
 <p>Forks here look like forks! The trees are read from bottom up, if there are only two functions at the end of a branch, the result of the right function is applied to the left function, if there are three functions, the middle function is applied to the result of the right and left functions. The values then go up the tree until it reaches the root, at which point it is returned.</p>
 </div>
 <p>Most of the above functions can be expressed as combinations of forks and atops, let's take a look at a few important cases.</p>
 <p>The range function is the most straightforward example, it can be written as a single fork</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">range</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="o">⌈</span><span class="na">/</span><span class="o">-⌊</span><span class="na">/</span>
-<span class="w">      </span><span class="nv">range</span>
-<span class="w">  </span><span class="err">┌─┼─┐</span>
-<span class="w">  </span><span class="na">/</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="na">/</span>
-<span class="err">┌─┘</span><span class="w"> </span><span class="err">┌─┘</span>
-<span class="o">⌈</span><span class="w">   </span><span class="o">⌊</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      range ← ⌈/-⌊/
+      range
+  ┌─┼─┐
+  / - /
+┌─┘ ┌─┘
+⌈   ⌊</code></pre>
 <p>The functions <code>f</code> and <code>h</code> here are the maximum <code>⌈/</code> and the minimum <code>⌊/</code>, with <code>g</code> being the difference <code>-</code>. When only given a right argument, the above range function evaluates the maximum <code>⌈/⍵</code> and the minimum <code>⌊/⍵</code>, then takes the difference <code>-</code> between them, as is intended.</p>
 <p>An example of a fork over a fork is the <code>plusminus</code> function,</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">plusminus</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="o">-,⊣,+</span>
-<span class="w">      </span><span class="nv">plusminus</span>
-<span class="err">┌─┼───┐</span>
-<span class="o">-</span><span class="w"> </span><span class="o">,</span><span class="w"> </span><span class="err">┌─┼─┐</span>
-<span class="w">    </span><span class="o">⊣</span><span class="w"> </span><span class="o">,</span><span class="w"> </span><span class="o">+</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      plusminus ← -,⊣,+
+      plusminus
+┌─┼───┐
+- , ┌─┼─┐
+    ⊣ , +</code></pre>
 <p>From the tree representation of plusminus, it is first seen that the function evaluates <code>⊣</code> and <code>+</code> to the arguments <code>⍺</code> and <code>⍵</code>, then applies <code>,</code> between them. The result is then applied to the <code>,</code> above with the result of <code>-</code>. The final result is <code>(⍺-⍵),((⍺⊣⍵),(⍺+⍵))</code> which is exactly <code>(⍺-⍵),⍺,⍺+⍵</code>. </p>
 <p>The reason plusminus is interpreted as a fork over a fork is that APL function evaluation is always read from right to left. This extends to longer trains where, for example, <code>(f g h i j k)</code> is interpreted as <code>(f (g h (i j k)))</code>, an atop over a fork over a fork.</p>
 <p>The rounded division function can be written as an atop over an atop,</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">⌊</span><span class="p">((</span><span class="m">0.5</span><span class="o">+</span><span class="p">)</span><span class="o">÷</span><span class="p">)</span>
-<span class="nv">SYNTAX</span><span class="w"> </span><span class="nv">ERROR</span><span class="bp">:</span><span class="w"> </span><span class="nv">Missing</span><span class="w"> </span><span class="nv">right</span><span class="w"> </span><span class="nv">argument</span>
-<span class="w">      </span><span class="o">⌊</span><span class="p">((</span><span class="m">0.5</span><span class="o">+</span><span class="p">)</span><span class="o">÷</span><span class="p">)</span>
-<span class="w">            </span><span class="o">∧</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      ⌊((0.5+)÷)
+SYNTAX ERROR: Missing right argument
+      ⌊((0.5+)÷)
+            ∧</code></pre>
 <p>What's going on here! Well, the reason this doesn't work is that <code>⌊((0.5+)÷)</code> is not purely composed of functions, it contains a value <code>0.5</code> and thus is not interpreted as a train. </p>
 <p>One way around this is to write <code>⌊({0.5+⍵}÷)</code> to turn the addition of <code>0.5</code> into a function without any values, but which defeats the purpose of point-free programming. Instead, the bind <code>∘</code> operator can be used to create a monadic function from a dyadic one. In this case, the dyadic function <code>+</code> is bound to the left argument <code>0.5</code> as <code>0.5∘+</code>, which is now a monadic function equivalent to <code>{0.5+⍵}</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">round_div</span><span class="w"> </span><span class="kd">←</span><span class="w">  </span><span class="o">⌊</span><span class="p">(</span><span class="m">0.5</span><span class="na">∘</span><span class="o">+÷</span><span class="p">)</span>
-<span class="w">      </span><span class="nv">round_div</span>
-<span class="err">┌┴─┐</span>
-<span class="o">⌊</span><span class="w"> </span><span class="err">┌┴┐</span>
-<span class="w">  </span><span class="na">∘</span><span class="w"> </span><span class="o">÷</span>
-<span class="err">┌─┴─┐</span>
-<span class="m">0.5</span><span class="w"> </span><span class="o">+</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      round_div ←  ⌊(0.5∘+÷)
+      round_div
+┌┴─┐
+⌊ ┌┴┐
+  ∘ ÷
+┌─┴─┐
+0.5 +</code></pre>
 
 
 
@@ -2554,6 +2547,12 @@
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
         
       </main>
       
@@ -2635,7 +2634,7 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "nagivation.top", "navigation.footer", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.footer", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.92b07e13.min.js"></script>
@@ -2653,10 +2652,6 @@
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/build/three.module.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/examples/jsm/"></script>
       
     
   </body>

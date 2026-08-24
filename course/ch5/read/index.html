@@ -6,7 +6,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="A free online course in array programming with APL.">
       
+      
+      
+        <link rel="canonical" href="https://aplmooc.fi/course/ch5/read/">
       
       
         <link rel="prev" href="../summary/">
@@ -2394,13 +2398,11 @@ Check your answers by opening the "Output" tab.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Input</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="s1">&#39;softheartedness&#39;</span><span class="o">~</span><span class="s1">&#39;otherness&#39;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      'softheartedness'~'otherness'</code></pre>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="s1">&#39;softheartedness&#39;</span><span class="o">~</span><span class="s1">&#39;otherness&#39;</span>
-<span class="nv">fad</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      'softheartedness'~'otherness'
+fad</code></pre>
 <p>The set difference ~ function removes all occurences of the right-hand array elements from the left-hand array</p>
 </div>
 </div>
@@ -2412,25 +2414,24 @@ Check your answers by opening the "Output" tab.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Input</label><label for="__tabbed_2_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="s1">&#39;platform&#39;</span><span class="o">∪</span><span class="s1">&#39;formatting&#39;</span>
+<pre class="highlight"><code class="language-apl">      'platform'∪'formatting'
 
-<span class="w">      </span><span class="s1">&#39;emergency&#39;</span><span class="o">∪</span><span class="s1">&#39;encyclopedia&#39;</span>
+      'emergency'∪'encyclopedia'
 
-<span class="w">      </span><span class="s1">&#39;networking&#39;</span><span class="o">∪</span><span class="s1">&#39;kingdom&#39;</span>
+      'networking'∪'kingdom'
 
-<span class="w">      </span><span class="s1">&#39;spring&#39;</span><span class="o">∪</span><span class="s1">&#39;ringtone&#39;</span>
-</code></pre></div>
+      'spring'∪'ringtone'
+</code></pre>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="s1">&#39;platform&#39;</span><span class="o">∪</span><span class="s1">&#39;formatting&#39;</span>
-<span class="nv">platforming</span>
-<span class="w">      </span><span class="s1">&#39;emergency&#39;</span><span class="o">∪</span><span class="s1">&#39;encyclopedia</span>
-<span class="s1">emergencylopdia</span>
-<span class="s1">      &#39;</span><span class="nv">network</span><span class="s1">&#39;∪&#39;</span><span class="nv">kingdom</span><span class="s1">&#39;</span>
-<span class="s1">networkingdom</span>
-<span class="s1">      &#39;</span><span class="nv">spring</span><span class="s1">&#39;∪&#39;</span><span class="nv">ringtone</span><span class="err">&#39;</span>
-<span class="nv">springtoe</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      'platform'∪'formatting'
+platforming
+      'emergency'∪'encyclopedia
+emergencylopdia
+      'network'∪'kingdom'
+networkingdom
+      'spring'∪'ringtone'
+springtoe</code></pre>
 <p>The union ∪ function adds to the left array elements of the right array not already in the right array.</p>
 </div>
 </div>
@@ -2443,38 +2444,37 @@ Check your answers by opening the "Output" tab.</p>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>The following three arrays contain arrays of words in different languages, what kind of arrays will the following code output?</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">words</span>
-<span class="nv">the</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">for</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">on</span><span class="w"> </span><span class="nv">that</span><span class="w"> </span><span class="na">...</span>
-<span class="w">      </span><span class="nv">mots</span>
-<span class="nv">de</span><span class="w"> </span><span class="nv">la</span><span class="w"> </span><span class="err">à</span><span class="w"> </span><span class="nv">le</span><span class="w"> </span><span class="nv">et</span><span class="w"> </span><span class="nv">les</span><span class="w"> </span><span class="nv">des</span><span class="w"> </span><span class="nv">une</span><span class="w"> </span><span class="nv">en</span><span class="w"> </span><span class="nv">un</span><span class="w"> </span><span class="na">...</span>
-<span class="w">      </span><span class="nv">sanat</span>
-<span class="nv">on</span><span class="w"> </span><span class="nv">ei</span><span class="w"> </span><span class="nv">ja</span><span class="w"> </span><span class="nv">se</span><span class="w"> </span><span class="nv">h</span><span class="err">ä</span><span class="nv">n</span><span class="w"> </span><span class="nv">en</span><span class="w"> </span><span class="nv">mit</span><span class="err">ä</span><span class="w"> </span><span class="nv">ett</span><span class="err">ä</span><span class="w"> </span><span class="nv">ole</span><span class="w"> </span><span class="nv">olen</span><span class="w"> </span><span class="na">...</span>
+<pre class="highlight"><code class="language-apl">      words
+the of and to a in for is on that ...
+      mots
+de la à le et les des une en un ...
+      sanat
+on ei ja se hän en mitä että ole olen ...
 
-<span class="w">      </span><span class="nv">words</span><span class="w"> </span><span class="o">∩</span><span class="w"> </span><span class="nv">mots</span>
+      words ∩ mots
 
-<span class="w">      </span><span class="nv">words</span><span class="w"> </span><span class="o">∩</span><span class="w"> </span><span class="nv">sanat</span>
+      words ∩ sanat
 
-<span class="w">      </span><span class="nv">mots</span><span class="w"> </span><span class="o">∩</span><span class="w"> </span><span class="nv">sanat</span>
-</code></pre></div>
+      mots ∩ sanat
+</code></pre>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">words</span>
-<span class="nv">the</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">for</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">on</span><span class="w"> </span><span class="nv">that</span><span class="w"> </span><span class="na">...</span>
-<span class="w">      </span><span class="nv">mots</span>
-<span class="nv">de</span><span class="w"> </span><span class="nv">la</span><span class="w"> </span><span class="err">à</span><span class="w"> </span><span class="nv">le</span><span class="w"> </span><span class="nv">et</span><span class="w"> </span><span class="nv">les</span><span class="w"> </span><span class="nv">des</span><span class="w"> </span><span class="nv">une</span><span class="w"> </span><span class="nv">en</span><span class="w"> </span><span class="nv">un</span><span class="w"> </span><span class="na">...</span>
-<span class="w">      </span><span class="nv">sanat</span>
-<span class="nv">on</span><span class="w"> </span><span class="nv">ei</span><span class="w"> </span><span class="nv">ja</span><span class="w"> </span><span class="nv">se</span><span class="w"> </span><span class="nv">h</span><span class="err">ä</span><span class="nv">n</span><span class="w"> </span><span class="nv">en</span><span class="w"> </span><span class="nv">mit</span><span class="err">ä</span><span class="w"> </span><span class="nv">ett</span><span class="err">ä</span><span class="w"> </span><span class="nv">ole</span><span class="w"> </span><span class="nv">olen</span><span class="w"> </span><span class="na">...</span>
+<pre class="highlight"><code class="language-apl">      words
+the of and to a in for is on that ...
+      mots
+de la à le et les des une en un ...
+      sanat
+on ei ja se hän en mitä että ole olen ...
 
-<span class="w">      </span><span class="c1">⍝ Words in both English and French</span>
-<span class="w">      </span><span class="nv">words</span><span class="w"> </span><span class="o">∩</span><span class="w"> </span><span class="nv">mots</span>
-<span class="nv">est</span><span class="w"> </span><span class="nv">par</span><span class="w"> </span><span class="nv">plus</span><span class="w"> </span><span class="nv">son</span><span class="w"> </span><span class="nv">dont</span><span class="w"> </span><span class="nv">sans</span><span class="w"> </span><span class="nv">premier</span><span class="w"> </span><span class="nv">pays</span><span class="w"> </span><span class="nv">fin</span><span class="w"> </span><span class="nv">place</span><span class="w"> </span><span class="nv">millions</span><span class="w"> </span><span class="nv">site</span><span class="w"> </span><span class="nv">chef</span><span class="w"> </span><span class="nv">grand</span><span class="w"> </span><span class="nv">ensemble</span><span class="w"> </span><span class="nv">formation</span><span class="w"> </span><span class="nv">moment</span><span class="w"> </span><span class="nv">match</span><span class="w"> </span><span class="nv">public</span><span class="w"> </span><span class="nv">service</span><span class="w"> </span><span class="nv">question</span><span class="w"> </span><span class="nv">tour</span><span class="w"> </span><span class="nv">services</span><span class="w"> </span><span class="na">...</span><span class="w"> </span>
-<span class="w">      </span><span class="c1">⍝ Words in both English and Finnish</span>
-<span class="w">      </span><span class="nv">words</span><span class="w"> </span><span class="o">∩</span><span class="w"> </span><span class="nv">sanat</span>
-<span class="nv">on</span><span class="w"> </span><span class="nv">he</span><span class="w"> </span><span class="nv">anna</span><span class="w"> </span><span class="nv">kai</span><span class="w"> </span><span class="nv">no</span><span class="w"> </span><span class="nv">asia</span><span class="w"> </span><span class="nv">asian</span><span class="w"> </span><span class="nv">auto</span><span class="w"> </span><span class="nv">oven</span><span class="w"> </span><span class="nv">ok</span><span class="w"> </span><span class="nv">lisa</span><span class="w"> </span><span class="nv">radio</span><span class="w"> </span><span class="nv">join</span><span class="w"> </span><span class="nv">uni</span>
-<span class="w">      </span><span class="c1">⍝ Words in both Finnish and French</span>
-<span class="w">      </span><span class="nv">mots</span><span class="w"> </span><span class="o">∩</span><span class="w"> </span><span class="nv">sanat</span>
-<span class="nv">en</span><span class="w"> </span><span class="nv">plus</span><span class="w"> </span><span class="nv">son</span><span class="w"> </span><span class="nv">se</span><span class="w"> </span><span class="nv">ne</span><span class="w"> </span><span class="nv">fin</span><span class="w"> </span><span class="nv">loi</span><span class="w"> </span><span class="nv">peloton</span><span class="w"> </span><span class="nv">rien</span><span class="w"> </span><span class="nv">aura</span><span class="w"> </span><span class="nv">bon</span><span class="w"> </span><span class="nv">moi</span><span class="w"> </span><span class="nv">voit</span><span class="w"> </span><span class="nv">toi</span><span class="w"> </span><span class="nv">vois</span><span class="w"> </span><span class="nv">saisit</span><span class="w"> </span><span class="nv">union</span>
-</code></pre></div>
+      ⍝ Words in both English and French
+      words ∩ mots
+est par plus son dont sans premier pays fin place millions site chef grand ensemble formation moment match public service question tour services ... 
+      ⍝ Words in both English and Finnish
+      words ∩ sanat
+on he anna kai no asia asian auto oven ok lisa radio join uni
+      ⍝ Words in both Finnish and French
+      mots ∩ sanat
+en plus son se ne fin loi peloton rien aura bon moi voit toi vois saisit union</code></pre>
 </div>
 </div>
 </div>
@@ -2485,15 +2485,14 @@ Check your answers by opening the "Output" tab.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Input</label><label for="__tabbed_4_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="p">(</span><span class="s1">&#39;re&#39;</span><span class="p">)</span><span class="o">,</span><span class="na">¨</span><span class="s1">&#39;play&#39;</span><span class="w"> </span><span class="s1">&#39;cord&#39;</span><span class="w"> </span><span class="s1">&#39;peat&#39;</span><span class="w"> </span><span class="s1">&#39;serve&#39;</span><span class="w"> </span><span class="s1">&#39;quest&#39;</span><span class="w"> </span><span class="s1">&#39;present&#39;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      ('re'),¨'play' 'cord' 'peat' 'serve' 'quest' 'present'
+</code></pre>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="p">(</span><span class="s1">&#39;re&#39;</span><span class="p">)</span><span class="o">,</span><span class="na">¨</span><span class="s1">&#39;play&#39;</span><span class="w"> </span><span class="s1">&#39;cord&#39;</span><span class="w"> </span><span class="s1">&#39;peat&#39;</span><span class="w"> </span><span class="s1">&#39;serve&#39;</span><span class="w"> </span><span class="s1">&#39;quest&#39;</span><span class="w"> </span><span class="s1">&#39;present&#39;</span>
-<span class="nv">LENGTH</span><span class="w"> </span><span class="nv">ERROR</span>
-<span class="w">      </span><span class="p">(</span><span class="s1">&#39;re&#39;</span><span class="p">)</span><span class="o">,</span><span class="na">¨</span><span class="s1">&#39;play&#39;</span><span class="w"> </span><span class="s1">&#39;cord&#39;</span><span class="w"> </span><span class="s1">&#39;peat&#39;</span><span class="w"> </span><span class="s1">&#39;serve&#39;</span><span class="w"> </span><span class="s1">&#39;quest&#39;</span><span class="w"> </span><span class="s1">&#39;present&#39;</span>
-<span class="w">            </span><span class="o">∧</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      ('re'),¨'play' 'cord' 'peat' 'serve' 'quest' 'present'
+LENGTH ERROR
+      ('re'),¨'play' 'cord' 'peat' 'serve' 'quest' 'present'
+            ∧</code></pre>
 <p>What the previous code attempts to do is catenate each element of the left array, 'r' and 'e', with the right array, but the lengths clearly do not match.</p>
 </div>
 </div>
@@ -2505,13 +2504,12 @@ Check your answers by opening the "Output" tab.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Input</label><label for="__tabbed_5_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="p">(</span><span class="o">⊂</span><span class="s1">&#39;re&#39;</span><span class="p">)</span><span class="o">,</span><span class="na">¨</span><span class="s1">&#39;play&#39;</span><span class="w"> </span><span class="s1">&#39;cord&#39;</span><span class="w"> </span><span class="s1">&#39;peat&#39;</span><span class="w"> </span><span class="s1">&#39;serve&#39;</span><span class="w"> </span><span class="s1">&#39;quest&#39;</span><span class="w"> </span><span class="s1">&#39;present&#39;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      (⊂'re'),¨'play' 'cord' 'peat' 'serve' 'quest' 'present'
+</code></pre>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="p">(</span><span class="o">⊂</span><span class="s1">&#39;re&#39;</span><span class="p">)</span><span class="o">,</span><span class="na">¨</span><span class="s1">&#39;play&#39;</span><span class="w"> </span><span class="s1">&#39;cord&#39;</span><span class="w"> </span><span class="s1">&#39;peat&#39;</span><span class="w"> </span><span class="s1">&#39;serve&#39;</span><span class="w"> </span><span class="s1">&#39;quest&#39;</span><span class="w"> </span><span class="s1">&#39;present&#39;</span>
-<span class="nv">replay</span><span class="w">  </span><span class="nv">record</span><span class="w">  </span><span class="nv">repeat</span><span class="w">  </span><span class="nv">reserve</span><span class="w">  </span><span class="nv">request</span><span class="w">  </span><span class="nv">represent</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      (⊂'re'),¨'play' 'cord' 'peat' 'serve' 'quest' 'present'
+replay  record  repeat  reserve  request  represent</code></pre>
 </div>
 </div>
 </div>
@@ -2522,28 +2520,30 @@ Check your answers by opening the "Output" tab.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Input</label><label for="__tabbed_6_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">arrow</span>
-<span class="w"> </span><span class="err">▉▉</span><span class="w">    </span>
-<span class="w"> </span><span class="err">▉▉</span><span class="w">    </span>
-<span class="w"> </span><span class="err">▉▉</span><span class="w">    </span>
-<span class="err">▉▉▉▉</span><span class="w">   </span>
-<span class="w"> </span><span class="err">▉▉</span><span class="w">    </span>
-<span class="w">      </span><span class="o">⍉</span><span class="nv">arrow</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      arrow
+ ▉▉    
+ ▉▉    
+ ▉▉    
+▉▉▉▉   
+ ▉▉    
+      ⍉arrow
+</code></pre>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">arrow</span>
-<span class="w"> </span><span class="err">▉▉</span><span class="w">    </span>
-<span class="w"> </span><span class="err">▉▉</span><span class="w">    </span>
-<span class="w"> </span><span class="err">▉▉</span><span class="w">    </span>
-<span class="err">▉▉▉▉</span><span class="w">   </span>
-<span class="w"> </span><span class="err">▉▉</span><span class="w">    </span>
-<span class="w">      </span><span class="o">⍉</span><span class="nv">arrow</span>
-<span class="w">   </span><span class="err">▉</span><span class="w"> </span>
-<span class="err">▉▉▉▉▉</span>
-<span class="err">▉▉▉▉▉</span>
-<span class="w">   </span><span class="err">▉</span><span class="w"> </span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      arrow
+ ▉▉    
+ ▉▉    
+ ▉▉    
+▉▉▉▉   
+ ▉▉    
+      ⍉arrow
+   ▉ 
+▉▉▉▉▉
+▉▉▉▉▉
+   ▉ 
+
+
+</code></pre>
 </div>
 </div>
 </div>
@@ -2554,23 +2554,24 @@ Check your answers by opening the "Output" tab.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Input</label><label for="__tabbed_7_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="s1">&#39;m&#39;</span><span class="kt">{</span><span class="p">(</span><span class="bp">⍺</span><span class="o">≠</span><span class="bp">⍵</span><span class="p">)</span><span class="o">⊆</span><span class="bp">⍵</span><span class="kt">}</span><span class="s1">&#39;nonemployments&#39;</span>
+<pre class="highlight"><code class="language-apl">      'm'{(⍺≠⍵)⊆⍵}'nonemployments'
 
 
 
-<span class="w">      </span><span class="s1">&#39;i&#39;</span><span class="p">(</span><span class="o">≠⊆⊢</span><span class="p">)</span><span class="s1">&#39;pestilentially&#39;</span>
-</code></pre></div>
+      'i'(≠⊆⊢)'pestilentially'
+
+
+</code></pre>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="s1">&#39;m&#39;</span><span class="kt">{</span><span class="p">(</span><span class="bp">⍺</span><span class="o">≠</span><span class="bp">⍵</span><span class="p">)</span><span class="o">⊆</span><span class="bp">⍵</span><span class="kt">}</span><span class="s1">&#39;nonemployments&#39;</span>
-<span class="err">┌────┬────┬────┐</span>
-<span class="err">│</span><span class="nv">none</span><span class="err">│</span><span class="nv">ploy</span><span class="err">│</span><span class="nv">ents</span><span class="err">│</span>
-<span class="err">└────┴────┴────┘</span>
-<span class="w">      </span><span class="s1">&#39;i&#39;</span><span class="p">(</span><span class="o">≠⊆⊢</span><span class="p">)</span><span class="s1">&#39;pestilentially&#39;</span>
-<span class="err">┌────┬────┬────┐</span>
-<span class="err">│</span><span class="nv">pest</span><span class="err">│</span><span class="nv">lent</span><span class="err">│</span><span class="nv">ally</span><span class="err">│</span>
-<span class="err">└────┴────┴────┘</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      'm'{(⍺≠⍵)⊆⍵}'nonemployments'
+┌────┬────┬────┐
+│none│ploy│ents│
+└────┴────┴────┘
+      'i'(≠⊆⊢)'pestilentially'
+┌────┬────┬────┐
+│pest│lent│ally│
+└────┴────┴────┘</code></pre>
 <p>The second function is a tacit form of the first function.</p>
 </div>
 </div>
@@ -2583,15 +2584,13 @@ Check your answers by opening the "Output" tab.</p>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>The following code makes heavy use of the ⍨ commute operator, try rewriting it using parentheses to figure out what it does.</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">↓↑</span><span class="m">1</span><span class="o">,</span><span class="na">⍨¨</span><span class="m">0</span><span class="na">/⍨¨</span><span class="m">1</span><span class="o">-</span><span class="na">⍨</span><span class="o">⍳</span><span class="m">5</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      ↓↑1,⍨¨0/⍨¨1-⍨⍳5</code></pre>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">↓↑</span><span class="m">1</span><span class="o">,</span><span class="na">⍨¨</span><span class="m">0</span><span class="na">/⍨¨</span><span class="m">1</span><span class="o">-</span><span class="na">⍨</span><span class="o">⍳</span><span class="m">5</span>
-<span class="err">┌─────────┬─────────┬─────────┬─────────┬─────────┐</span>
-<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="err">│</span>
-<span class="err">└─────────┴─────────┴─────────┴─────────┴─────────┘</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      ↓↑1,⍨¨0/⍨¨1-⍨⍳5
+┌─────────┬─────────┬─────────┬─────────┬─────────┐
+│1 0 0 0 0│0 1 0 0 0│0 0 1 0 0│0 0 0 1 0│0 0 0 0 1│
+└─────────┴─────────┴─────────┴─────────┴─────────┘</code></pre>
 <p>Without the commute operator, this would be ↓↑((((⍳5)-1)/¨0),¨1)</p>
 </div>
 </div>
@@ -2603,25 +2602,23 @@ Check your answers by opening the "Output" tab.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Input</label><label for="__tabbed_9_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">|</span><span class="m">5</span><span class="o">-</span><span class="na">⍨</span><span class="o">⍳</span><span class="m">9</span>
+<pre class="highlight"><code class="language-apl">      |5-⍨⍳9
 
-<span class="w">      </span><span class="p">(</span><span class="o">|</span><span class="m">5</span><span class="o">-</span><span class="na">⍨</span><span class="o">⍳</span><span class="m">9</span><span class="p">)(</span><span class="na">/⍤</span><span class="m">0</span><span class="p">)</span><span class="s1">&#39;█&#39;</span>
-</code></pre></div>
+      (|5-⍨⍳9)(/⍤0)'█'</code></pre>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">|</span><span class="m">5</span><span class="o">-</span><span class="na">⍨</span><span class="o">⍳</span><span class="m">9</span>
-<span class="m">4</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span>
-<span class="w">      </span><span class="p">(</span><span class="o">|</span><span class="m">5</span><span class="o">-</span><span class="na">⍨</span><span class="o">⍳</span><span class="m">9</span><span class="p">)(</span><span class="na">/⍤</span><span class="m">0</span><span class="p">)</span><span class="s1">&#39;█&#39;</span>
-<span class="err">████</span>
-<span class="err">███</span><span class="w"> </span>
-<span class="err">██</span><span class="w">  </span>
-<span class="err">█</span><span class="w">   </span>
+<pre class="highlight"><code class="language-apl">      |5-⍨⍳9
+4 3 2 1 0 1 2 3 4
+      (|5-⍨⍳9)(/⍤0)'█'
+████
+███ 
+██  
+█   
 
-<span class="err">█</span><span class="w">   </span>
-<span class="err">██</span><span class="w">  </span>
-<span class="err">███</span><span class="w"> </span>
-<span class="err">████</span>
-</code></pre></div>
+█   
+██  
+███ 
+████</code></pre>
 </div>
 </div>
 </div>
@@ -2632,33 +2629,31 @@ Check your answers by opening the "Output" tab.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Input</label><label for="__tabbed_10_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="kt">{</span><span class="o">⍉↑</span><span class="p">(</span><span class="o">|</span><span class="bp">⍵</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">10</span><span class="o">-|</span><span class="m">2</span><span class="o">×</span><span class="bp">⍵</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">|</span><span class="bp">⍵</span><span class="p">)</span><span class="kt">}</span><span class="m">5</span><span class="o">-</span><span class="na">⍨</span><span class="o">⍳</span><span class="m">9</span>
+<pre class="highlight"><code class="language-apl">      {⍉↑(|⍵) (10-|2×⍵) (|⍵)}5-⍨⍳9
 
-<span class="w">      </span><span class="p">(</span><span class="kt">{</span><span class="o">⍉↑</span><span class="p">(</span><span class="o">|</span><span class="bp">⍵</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">10</span><span class="o">-|</span><span class="m">2</span><span class="o">×</span><span class="bp">⍵</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">|</span><span class="bp">⍵</span><span class="p">)</span><span class="kt">}</span><span class="m">5</span><span class="o">-</span><span class="na">⍨</span><span class="o">⍳</span><span class="m">9</span><span class="p">)(</span><span class="na">/⍤</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="s1">&#39;█ █&#39;</span>
-</code></pre></div>
+      ({⍉↑(|⍵) (10-|2×⍵) (|⍵)}5-⍨⍳9)(/⍤1 2)'█ █'</code></pre>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="kt">{</span><span class="o">⍉↑</span><span class="p">(</span><span class="o">|</span><span class="bp">⍵</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">10</span><span class="o">-|</span><span class="m">2</span><span class="o">×</span><span class="bp">⍵</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">|</span><span class="bp">⍵</span><span class="p">)</span><span class="kt">}</span><span class="m">5</span><span class="o">-</span><span class="na">⍨</span><span class="o">⍳</span><span class="m">9</span>
-<span class="m">4</span><span class="w">  </span><span class="m">2</span><span class="w"> </span><span class="m">4</span>
-<span class="m">3</span><span class="w">  </span><span class="m">4</span><span class="w"> </span><span class="m">3</span>
-<span class="m">2</span><span class="w">  </span><span class="m">6</span><span class="w"> </span><span class="m">2</span>
-<span class="m">1</span><span class="w">  </span><span class="m">8</span><span class="w"> </span><span class="m">1</span>
-<span class="m">0</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">0</span>
-<span class="m">1</span><span class="w">  </span><span class="m">8</span><span class="w"> </span><span class="m">1</span>
-<span class="m">2</span><span class="w">  </span><span class="m">6</span><span class="w"> </span><span class="m">2</span>
-<span class="m">3</span><span class="w">  </span><span class="m">4</span><span class="w"> </span><span class="m">3</span>
-<span class="m">4</span><span class="w">  </span><span class="m">2</span><span class="w"> </span><span class="m">4</span>
-<span class="w">      </span><span class="p">(</span><span class="kt">{</span><span class="o">⍉↑</span><span class="p">(</span><span class="o">|</span><span class="bp">⍵</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">10</span><span class="o">-|</span><span class="m">2</span><span class="o">×</span><span class="bp">⍵</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">|</span><span class="bp">⍵</span><span class="p">)</span><span class="kt">}</span><span class="m">5</span><span class="o">-</span><span class="na">⍨</span><span class="o">⍳</span><span class="m">9</span><span class="p">)(</span><span class="na">/⍤</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="s1">&#39;█ █&#39;</span>
-<span class="err">████</span><span class="w">  </span><span class="err">████</span>
-<span class="err">███</span><span class="w">    </span><span class="err">███</span>
-<span class="err">██</span><span class="w">      </span><span class="err">██</span>
-<span class="err">█</span><span class="w">        </span><span class="err">█</span>
+<pre class="highlight"><code class="language-apl">      {⍉↑(|⍵) (10-|2×⍵) (|⍵)}5-⍨⍳9
+4  2 4
+3  4 3
+2  6 2
+1  8 1
+0 10 0
+1  8 1
+2  6 2
+3  4 3
+4  2 4
+      ({⍉↑(|⍵) (10-|2×⍵) (|⍵)}5-⍨⍳9)(/⍤1 2)'█ █'
+████  ████
+███    ███
+██      ██
+█        █
 
-<span class="err">█</span><span class="w">        </span><span class="err">█</span>
-<span class="err">██</span><span class="w">      </span><span class="err">██</span>
-<span class="err">███</span><span class="w">    </span><span class="err">███</span>
-<span class="err">████</span><span class="w">  </span><span class="err">████</span>
-</code></pre></div>
+█        █
+██      ██
+███    ███
+████  ████</code></pre>
 <p>(/⍤1 2) matches the 1-cells of the left-hand argument with the 2-cells of the right-hand argument. Since the right-hand array is only 1-dimensional, a 2-cell is interpreted as the whole array instead of returning an error. That is, the rows of the left-hand array are matched with the whole of the right-hand array.</p>
 </div>
 </div>
@@ -2670,25 +2665,23 @@ Check your answers by opening the "Output" tab.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Input</label><label for="__tabbed_11_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="vg">⎕</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">v</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">2</span><span class="o">*⍳</span><span class="m">10</span>
+<pre class="highlight"><code class="language-apl">      ⎕ ← v ← 2*⍳10
 
-<span class="w">      </span><span class="o">⍴</span><span class="nv">v</span>
+      ⍴v
 
-<span class="w">      </span><span class="o">⍉⍪</span><span class="nv">v</span>
+      ⍉⍪v
 
-<span class="w">      </span><span class="o">⍴⍉⍪</span><span class="nv">v</span>
-</code></pre></div>
+      ⍴⍉⍪v</code></pre>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="vg">⎕</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">v</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">2</span><span class="o">*⍳</span><span class="m">10</span>
-<span class="m">2</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">32</span><span class="w"> </span><span class="m">64</span><span class="w"> </span><span class="m">128</span><span class="w"> </span><span class="m">256</span><span class="w"> </span><span class="m">512</span><span class="w"> </span><span class="m">1024</span>
-<span class="w">      </span><span class="o">⍴</span><span class="nv">v</span>
-<span class="m">10</span>
-<span class="w">      </span><span class="o">⍉⍪</span><span class="nv">v</span>
-<span class="m">2</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">32</span><span class="w"> </span><span class="m">64</span><span class="w"> </span><span class="m">128</span><span class="w"> </span><span class="m">256</span><span class="w"> </span><span class="m">512</span><span class="w"> </span><span class="m">1024</span>
-<span class="w">      </span><span class="o">⍴⍉⍪</span><span class="nv">v</span>
-<span class="m">1</span><span class="w"> </span><span class="m">10</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      ⎕ ← v ← 2*⍳10
+2 4 8 16 32 64 128 256 512 1024
+      ⍴v
+10
+      ⍉⍪v
+2 4 8 16 32 64 128 256 512 1024
+      ⍴⍉⍪v
+1 10</code></pre>
 <p>The phrase ⍉⍪ can be used to turn a vector into a matrix.</p>
 </div>
 </div>
@@ -2700,23 +2693,21 @@ Check your answers by opening the "Output" tab.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Input</label><label for="__tabbed_12_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="vg">⎕</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">M</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="o">⍉⍪</span><span class="m">2</span><span class="o">*⍳</span><span class="m">10</span>
+<pre class="highlight"><code class="language-apl">      ⎕ ← M ← ⍉⍪2*⍳10
 
-<span class="w">      </span><span class="vg">⎕</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">M</span><span class="w"> </span><span class="o">⍪</span><span class="kd">←</span><span class="w"> </span><span class="m">3</span><span class="o">*⍳</span><span class="m">10</span>
+      ⎕ ← M ⍪← 3*⍳10
 
-<span class="w">      </span><span class="nv">M</span><span class="o">,⍪</span><span class="s1">&#39;XY&#39;</span>
-</code></pre></div>
+      M,⍪'XY'</code></pre>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="vg">⎕</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">M</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="o">⍉⍪</span><span class="m">2</span><span class="o">*⍳</span><span class="m">10</span>
-<span class="m">2</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">32</span><span class="w"> </span><span class="m">64</span><span class="w"> </span><span class="m">128</span><span class="w"> </span><span class="m">256</span><span class="w"> </span><span class="m">512</span><span class="w"> </span><span class="m">1024</span>
-<span class="w">      </span><span class="nv">M</span><span class="o">⍪</span><span class="m">3</span><span class="o">*⍳</span><span class="m">10</span>
-<span class="m">2</span><span class="w"> </span><span class="m">4</span><span class="w">  </span><span class="m">8</span><span class="w"> </span><span class="m">16</span><span class="w">  </span><span class="m">32</span><span class="w">  </span><span class="m">64</span><span class="w">  </span><span class="m">128</span><span class="w">  </span><span class="m">256</span><span class="w">   </span><span class="m">512</span><span class="w">  </span><span class="m">1024</span>
-<span class="m">3</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">27</span><span class="w"> </span><span class="m">81</span><span class="w"> </span><span class="m">243</span><span class="w"> </span><span class="m">729</span><span class="w"> </span><span class="m">2187</span><span class="w"> </span><span class="m">6561</span><span class="w"> </span><span class="m">19683</span><span class="w"> </span><span class="m">59049</span>
-<span class="w">      </span><span class="nv">M</span><span class="o">,⍪</span><span class="s1">&#39;XY&#39;</span>
-<span class="m">2</span><span class="w"> </span><span class="m">4</span><span class="w">  </span><span class="m">8</span><span class="w"> </span><span class="m">16</span><span class="w">  </span><span class="m">32</span><span class="w">  </span><span class="m">64</span><span class="w">  </span><span class="m">128</span><span class="w">  </span><span class="m">256</span><span class="w">   </span><span class="m">512</span><span class="w">  </span><span class="m">1024</span><span class="w"> </span><span class="nv">X</span>
-<span class="m">3</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">27</span><span class="w"> </span><span class="m">81</span><span class="w"> </span><span class="m">243</span><span class="w"> </span><span class="m">729</span><span class="w"> </span><span class="m">2187</span><span class="w"> </span><span class="m">6561</span><span class="w"> </span><span class="m">19683</span><span class="w"> </span><span class="m">59049</span><span class="w"> </span><span class="nv">Y</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      ⎕ ← M ← ⍉⍪2*⍳10
+2 4 8 16 32 64 128 256 512 1024
+      M⍪3*⍳10
+2 4  8 16  32  64  128  256   512  1024
+3 9 27 81 243 729 2187 6561 19683 59049
+      M,⍪'XY'
+2 4  8 16  32  64  128  256   512  1024 X
+3 9 27 81 243 729 2187 6561 19683 59049 Y</code></pre>
 </div>
 </div>
 </div>
@@ -2741,6 +2732,12 @@ Check your answers by opening the "Output" tab.</p>
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
         
       </main>
       
@@ -2822,7 +2819,7 @@ Check your answers by opening the "Output" tab.</p>
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "nagivation.top", "navigation.footer", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.footer", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.92b07e13.min.js"></script>
@@ -2840,10 +2837,6 @@ Check your answers by opening the "Output" tab.</p>
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/build/three.module.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/examples/jsm/"></script>
       
     
   </body>

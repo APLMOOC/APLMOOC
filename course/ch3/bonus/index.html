@@ -6,7 +6,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="A free online course in array programming with APL.">
       
+      
+      
+        <link rel="canonical" href="https://aplmooc.fi/course/ch3/bonus/">
       
       
         <link rel="prev" href="../write/">
@@ -2425,14 +2429,13 @@ There are no exercises related to this content.</p>
 <h2 id="the-theoretical-minimum">The Theoretical Minimum</h2>
 <p>For most people, the sensation of sound is mediated through the ears. The ears achieve this by allowing vibrations in the air to produce waves in the fluids of the inner ear, stimulating the inner ear hair cells whose signals are eventually processed by the brain. </p>
 <p>The pitch of a sound is the frequency of this vibration. "Notes" distinguish sounds by their pitch. In western music, the standard convention is to consider pitches whose ratio is a power of 2 as equivalent notes, this is called "octave equivalence". Equivalent notes with higher or lower pitch are said to be an "octave" above or below the note, for reasons that will be made clear.</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="c1">⍝ For example, between the pitches 440Hz and 880Hz,</span>
-<span class="w">      </span><span class="o">⌊</span><span class="m">440</span><span class="o">×</span><span class="p">(</span><span class="m">2</span><span class="o">*</span><span class="p">(</span><span class="o">⍳</span><span class="m">11</span><span class="p">)</span><span class="o">÷</span><span class="m">12</span><span class="p">)</span>
-<span class="m">466</span><span class="w"> </span><span class="m">493</span><span class="w"> </span><span class="m">523</span><span class="w"> </span><span class="m">554</span><span class="w"> </span><span class="m">587</span><span class="w"> </span><span class="m">622</span><span class="w"> </span><span class="m">659</span><span class="w"> </span><span class="m">698</span><span class="w"> </span><span class="m">739</span><span class="w"> </span><span class="m">783</span><span class="w"> </span><span class="m">830</span>
-<span class="w">      </span><span class="c1">⍝ ⌊        Floor of</span>
-<span class="w">      </span><span class="c1">⍝ 440×     440 times</span>
-<span class="w">      </span><span class="c1">⍝ 2*       2 to the power of</span>
-<span class="w">      </span><span class="c1">⍝ (⍳11)÷12  the numbers 1,2,3,...,11 divided by 12</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      ⍝ For example, between the pitches 440Hz and 880Hz,
+      ⌊440×(2*(⍳11)÷12)
+466 493 523 554 587 622 659 698 739 783 830
+      ⍝ ⌊        Floor of
+      ⍝ 440×     440 times
+      ⍝ 2*       2 to the power of
+      ⍝ (⍳11)÷12  the numbers 1,2,3,...,11 divided by 12</code></pre>
 <p>Notes are labelled using the seven letters A through G,  with sharps (♯) and flats (♭) to signify the notes in-between by raising or lowering pitch, with redundancy. There are eight letters from A through G back to A, justifying the use of the word "octave". Starting from C, the twelve notes are C, C♯ or D♭, D, D♯ or E♭, E, F, F♯ or G♭, G, G♯ or A♭, A, A♯ or B♭, and B.</p>
 <p>A musical scale is a certain selection of these notes, usually spanning an octave. In our case, we will restrict ourselves to using the C major scale, the notes C, D, E, F, G, A, B. The notes of a major scale are usually referred to using an ordinal number from 1st through 7th, or by roman numerals I, II, III, IV, V, VI, VII.</p>
 <h2 id="implementation">Implementation</h2>
@@ -2443,36 +2446,34 @@ There are no exercises related to this content.</p>
 <p>Then, the data is a list of triples, consisting of the starting note, the ending note, and the color (or, priority) of the arrow between those notes. We can lay out this data in the form of a table as follows, where the row represents the starting note and the column represents the ending note. For example, the first row says that, for I as the starting note, we can get to I itself, II, or III with equal preference, 1 1 1.</p>
 <p><img src="../../assets/3_b_note_graph_table.svg" style="width:50%; margin-left: auto; margin-right: auto; display: block;" /></p>
 <p>We use <span style="color:blue;"> 1 </span> for standard movements and <span style="color:red;"> 2 </span> for preferred movements. Let’s write try to create this matrix in APL using the reshape ⍴ operator, remembering that if the right argument is not long enough, it will repeat it to fill the required dimensions.</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">M</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span>
-<span class="w">      </span><span class="nv">M</span>
-<span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span>
-<span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span>
-<span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span>
-<span class="w">      </span><span class="c1">⍝ Almost exactly what we want</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      M ← 7 7 ⍴ 1 1 1 0 0 0 1 1
+      M
+1 1 1 0 0 0 1
+1 1 1 1 0 0 0
+1 1 1 1 1 0 0
+0 1 1 1 1 1 0
+0 0 1 1 1 1 1
+0 0 0 1 1 1 1
+1 0 0 0 1 1 1
+      ⍝ Almost exactly what we want</code></pre>
 <div class="admonition info inline end">
 <p>Our melodies here are restricted to one octave. If we allowed a wider range, we would allow the 7th to go to the 1st of the next octave and vice versa.</p>
 </div>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">M</span><span class="sr">[</span><span class="m">7</span><span class="sr">;</span><span class="m">1</span><span class="sr">]</span><span class="kd">←</span><span class="m">0</span>
-<span class="w">      </span><span class="nv">M</span><span class="sr">[</span><span class="m">1</span><span class="sr">;</span><span class="m">7</span><span class="sr">]</span><span class="kd">←</span><span class="m">0</span>
-<span class="w">      </span><span class="nv">M</span><span class="sr">[</span><span class="m">6</span><span class="sr">;</span><span class="m">5</span><span class="sr">]</span><span class="kd">←</span><span class="m">2</span>
-<span class="w">      </span><span class="nv">M</span><span class="sr">[</span><span class="m">4</span><span class="sr">;</span><span class="m">3</span><span class="sr">]</span><span class="kd">←</span><span class="m">2</span>
-<span class="w">      </span><span class="nv">M</span><span class="sr">[</span><span class="m">2</span><span class="sr">;</span><span class="m">1</span><span class="sr">]</span><span class="kd">←</span><span class="m">2</span>
-<span class="w">      </span><span class="nv">M</span><span class="sr">[</span><span class="m">2</span><span class="sr">;</span><span class="m">3</span><span class="sr">]</span><span class="kd">←</span><span class="m">2</span>
-<span class="w">      </span><span class="nv">M</span>
-<span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span>
-<span class="w">      </span><span class="c1">⍝ Perfect</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      M[7;1]←0
+      M[1;7]←0
+      M[6;5]←2
+      M[4;3]←2
+      M[2;1]←2
+      M[2;3]←2
+      M
+1 1 1 0 0 0 0
+2 1 2 1 0 0 0
+1 1 1 1 1 0 0
+0 1 2 1 1 1 0
+0 0 1 1 1 1 1
+0 0 0 1 2 1 1
+0 0 0 0 1 1 1
+      ⍝ Perfect</code></pre>
 <p>The next step is to figure out, given a note, what the next possible notes are. This is very easily done using the matrix multiplication <code>+.×</code> operator.</p>
 <p>What we want to obtain is the Nth row of the matrix, this tells us where we can walk to, and what the preferred next notes are, for the note N.</p>
 <p>If we represent each note as a vector, with a 1 in the Nth slot, then matrix multiplication does exactly that.</p>
@@ -2481,12 +2482,11 @@ There are no exercises related to this content.</p>
 <br><br><br>
 The subsequence notes are I (Preferred), II, III (Preferred), and IV</p>
 </div>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">II</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">2</span><span class="o">=⍳</span><span class="m">7</span>
-<span class="w">      </span><span class="nv">II</span>
-<span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="w">      </span><span class="nv">II</span><span class="o">+</span><span class="na">.</span><span class="o">×</span><span class="nv">M</span>
-<span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      II ← 2=⍳7
+      II
+0 1 0 0 0 0 0
+      II+.×M
+2 1 2 1 0 0 0</code></pre>
 <p>Using this, we want to decide on a movement to another note, weighed by priority. One easy way to achieve this is using the roll ? function, which simulates the rolling of a dice with faces numbering 1 to the right argument. We will roll one die from 1 to 10, or 20 for preferred movements, for every possible following note, and pick the largest result.</p>
 <div class="admonition info inline end">
 <p>The subsequent notes are I, II, III, and IV
@@ -2503,52 +2503,50 @@ The Grade Down operator ⍒ returns the indices of the elements of the list from
 Getting the index of the largest roll.
 This is III.</p>
 </div>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">N</span><span class="kd">←</span><span class="nv">II</span><span class="o">+</span><span class="na">.</span><span class="o">×</span><span class="nv">M</span>
-<span class="w">      </span><span class="nv">N</span><span class="w">      </span>
-<span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="w">      </span><span class="nv">N</span><span class="o">×</span><span class="kd">←</span><span class="m">10</span>
-<span class="w">      </span><span class="nv">N</span>
-<span class="m">20</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="w">      </span><span class="nv">NR</span><span class="kd">←</span><span class="o">?</span><span class="nv">N</span>
-<span class="w">      </span><span class="nv">NR</span>
-<span class="m">3</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="m">0.9740484038</span><span class="w"> </span><span class="m">0.3581395503</span><span class="w"> </span><span class="m">0.5245918312</span>
-<span class="w">      </span><span class="o">⍒</span><span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="m">200</span><span class="w"> </span><span class="m">0.1</span><span class="w"> </span><span class="m">1</span>
-<span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">3</span>
-<span class="w">      </span><span class="o">⍒</span><span class="w"> </span><span class="nv">NR</span>
-<span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">5</span>
-<span class="w">      </span><span class="m">1</span><span class="o">⌷⍒</span><span class="nv">NR</span>
-<span class="w">      </span><span class="m">3</span>
-<span class="w">      </span><span class="p">(</span><span class="o">⍳</span><span class="m">7</span><span class="p">)</span><span class="o">=</span><span class="m">1</span><span class="o">⌷⍒</span><span class="nv">NR</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      N←II+.×M
+      N      
+2 1 2 1 0 0 0
+      N×←10
+      N
+20 10 20 10 0 0 0
+      NR←?N
+      NR
+3 8 13 0.9740484038 0.3581395503 0.5245918312
+      ⍒ 100 200 0.1 1
+2 1 4 3
+      ⍒ NR
+3 2 1 4 6 5
+      1⌷⍒NR
+      3
+      (⍳7)=1⌷⍒NR
+0 0 1 0 0 0 0</code></pre>
 <p>This is the basic algorithm we will use to generate our melodies. Let’s enclose our note generation algorithm in a direct function to use in a later melody function.</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">NEXT</span><span class="kd">←</span><span class="kt">{</span><span class="p">(</span><span class="o">⍳</span><span class="m">7</span><span class="p">)</span><span class="o">=</span><span class="m">1</span><span class="o">⌷⍒?</span><span class="p">(</span><span class="bp">⍵</span><span class="o">×</span><span class="m">10</span><span class="p">)</span><span class="o">+</span><span class="na">.</span><span class="o">×</span><span class="nv">M</span><span class="kt">}</span><span class="w"> </span>
-<span class="w">      </span><span class="nv">NEXT</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<pre class="highlight"><code class="language-apl">
+      NEXT←{(⍳7)=1⌷⍒?(⍵×10)+.×M} 
+      NEXT 1 0 0 0 0 0 0
+0 1 0 0 0 0 0
 
-<span class="w">      </span><span class="nv">NOTES</span><span class="kd">←</span><span class="s1">&#39;CDEFGAB&#39;</span>
-<span class="w">      </span><span class="p">(</span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="na">/</span><span class="nv">NOTES</span>
-<span class="nv">D</span>
-</code></pre></div>
+      NOTES←'CDEFGAB'
+      (0 1 0 0 0 0 0)/NOTES
+D
+</code></pre>
 <p>The replicate / function generates copies of its right argument elements depending on their left arguments. In the above case, it replicates 0 of everything and one copy of D.</p>
 <p>Using the symbol ⍞ to print the output without adding a newline, we write the function to generate the melodies.</p>
 <div style="font-size: 0.8rem">
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">MELODY</span><span class="kd">←</span><span class="kt">{</span><span class="nv">res</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">NEXT</span><span class="w"> </span><span class="bp">⍵</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span><span class="vg">⍞</span><span class="kd">←</span><span class="nv">res</span><span class="na">/</span><span class="nv">NOTES</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span><span class="nv">MELODY</span><span class="w"> </span><span class="nv">res</span><span class="kt">}</span>
-<span class="w">        </span><span class="nv">MELODY</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="nv">CDCECEGBGAGGGBBAAGBGEDEDFFEDCDCDECCDCECDECECEFEFEEGEGECEFEDEGBBBGBG</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      MELODY←{res ← NEXT ⍵ ⋄ ⍞←res/NOTES ⋄ MELODY res}
+        MELODY 1 0 0 0 0 0 0
+CDCECEGBGAGGGBBAAGBGEDEDFFEDCDCDECCDCECDECECEFEFEEGEGECEFEDEGBBBGBG</code></pre>
 </div>
 
 <p>This function will run forever, generating notes until interrupted. One way of running the defun for a fixed number of steps is to add a variable representing the number of steps. We will use the left argument ⍺ as this variable.</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">MELODY</span><span class="kd">←</span><span class="kt">{</span><span class="w"> </span>
-<span class="w">            </span><span class="bp">⍺</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">0</span>
-<span class="w">            </span><span class="bp">⍺</span><span class="o">&gt;</span><span class="m">20</span><span class="bp">:</span><span class="w"> </span><span class="s1">&#39;♫&#39;</span>
-<span class="w">            </span><span class="nv">res</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">NEXT</span><span class="w"> </span><span class="bp">⍵</span>
-<span class="w">            </span><span class="vg">⍞</span><span class="kd">←</span><span class="nv">res</span><span class="na">/</span><span class="nv">NOTES</span>
-<span class="w">            </span><span class="p">(</span><span class="bp">⍺</span><span class="o">+</span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="nv">MELODY</span><span class="w"> </span><span class="nv">res</span><span class="kt">}</span>
-<span class="w">      </span><span class="nv">MELODY</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="nv">CCDEGAFDCEGFDEDCDCECC</span><span class="err">♫</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      MELODY←{ 
+            ⍺ ← 0
+            ⍺&gt;20: '♫'
+            res ← NEXT ⍵
+            ⍞←res/NOTES
+            (⍺+1) MELODY res}
+      MELODY 1 0 0 0 0 0 0
+CCDEGAFDCEGFDEDCDCECC♫</code></pre>
 <p>The left argument ⍺ starts at 0, which is increased every time the function loops (The "(⍺+1) MELODY res" statement, is executed with an incremented left argument) until it becomes greater than 20 and finally returns a musical symbol <code>♫</code>.</p>
 <p>This is the result we were after! With just a couple lines of APL, we were able to encode general guidelines for melodic composition and write a function generating random melodies according to these principles algorithmically by tracing out a random walk through a graph. These random graph processes are more generally known as Markov Processes and have a much broader range of applicability than our case here. Applications include the Google PageRank algorithm which powered the Google search engine, particle physics simulations of quantum field theory on a lattice, and speech recognition systems. </p>
 <p>There is clearly so much more we could add to our program, from generating rhythm to accompany the melody, to adding chord progressions and harmony, and there will always be more to add. We will however stop here to enjoy the melodies our program has generated, and leave it up to the interested reader to write their own digital musicians.</p>
@@ -2584,6 +2582,12 @@ Your browser does not support the audio element.
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
         
       </main>
       
@@ -2665,7 +2669,7 @@ Your browser does not support the audio element.
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "nagivation.top", "navigation.footer", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.footer", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.92b07e13.min.js"></script>
@@ -2683,10 +2687,6 @@ Your browser does not support the audio element.
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/build/three.module.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/examples/jsm/"></script>
       
     
   </body>

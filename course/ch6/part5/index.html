@@ -6,7 +6,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="A free online course in array programming with APL.">
       
+      
+      
+        <link rel="canonical" href="https://aplmooc.fi/course/ch6/part5/">
       
       
         <link rel="prev" href="../part4/">
@@ -2425,536 +2429,512 @@
 <h2 id="scalar-matching">Scalar matching</h2>
 <h3 id="in-depth">In depth</h3>
 <p>As mentioned previously, arithmetic functions in APL are <em>pervasive</em>; this means that they match scalars from their argument arrays, no matter the rank or depth. Take, for example, the following highly nested array <code>A</code></p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">⊢</span><span class="nv">A</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="o">⊂</span><span class="na">\</span><span class="o">,</span><span class="na">\</span><span class="w"> </span><span class="m">2</span><span class="na">/</span><span class="m">1</span><span class="w"> </span><span class="m">0</span>
-<span class="err">┌─┬─────┬───────────┬─────────────────┐</span>
-<span class="err">│</span><span class="m">1</span><span class="err">│┌─┬─┐│┌───┬─────┐│┌─────┬─────────┐│</span>
-<span class="err">│</span><span class="w"> </span><span class="err">││</span><span class="m">1</span><span class="err">│</span><span class="m">1</span><span class="err">│││┌─┐│┌───┐│││┌───┐│┌───────┐││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│└─┴─┘│││</span><span class="m">1</span><span class="err">│││</span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="err">│││││┌─┐│││┌─────┐│││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">││└─┘│└───┘│││││</span><span class="m">1</span><span class="err">│││││</span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="err">││││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">│└───┴─────┘│││└─┘│││└─────┘│││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">│</span><span class="w">           </span><span class="err">││└───┘│└───────┘││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">│</span><span class="w">           </span><span class="err">│└─────┴─────────┘│</span>
-<span class="err">└─┴─────┴───────────┴─────────────────┘</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      ⊢A ← ⊂\,\ 2/1 0
+┌─┬─────┬───────────┬─────────────────┐
+│1│┌─┬─┐│┌───┬─────┐│┌─────┬─────────┐│
+│ ││1│1│││┌─┐│┌───┐│││┌───┐│┌───────┐││
+│ │└─┴─┘│││1│││1 0│││││┌─┐│││┌─────┐│││
+│ │     ││└─┘│└───┘│││││1│││││1 0 0││││
+│ │     │└───┴─────┘│││└─┘│││└─────┘│││
+│ │     │           ││└───┘│└───────┘││
+│ │     │           │└─────┴─────────┘│
+└─┴─────┴───────────┴─────────────────┘</code></pre>
 <p>When multiplying by a simple scalar array, each element of <code>A</code> is matched to an element of the simple scalar array, and each scalar within the elements of <code>A</code>, no matter how deep, is multiplied by that element</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="o">×</span><span class="w"> </span><span class="nv">A</span>
-<span class="err">┌─┬─────┬───────────┬─────────────────┐</span>
-<span class="err">│</span><span class="m">1</span><span class="err">│┌─┬─┐│┌───┬─────┐│┌─────┬─────────┐│</span>
-<span class="err">│</span><span class="w"> </span><span class="err">││</span><span class="m">2</span><span class="err">│</span><span class="m">2</span><span class="err">│││┌─┐│┌───┐│││┌───┐│┌───────┐││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│└─┴─┘│││</span><span class="m">3</span><span class="err">│││</span><span class="m">3</span><span class="w"> </span><span class="m">0</span><span class="err">│││││┌─┐│││┌─────┐│││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">││└─┘│└───┘│││││</span><span class="m">4</span><span class="err">│││││</span><span class="m">4</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="err">││││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">│└───┴─────┘│││└─┘│││└─────┘│││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">│</span><span class="w">           </span><span class="err">││└───┘│└───────┘││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">│</span><span class="w">           </span><span class="err">│└─────┴─────────┘│</span>
-<span class="err">└─┴─────┴───────────┴─────────────────┘</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      1 2 3 4 × A
+┌─┬─────┬───────────┬─────────────────┐
+│1│┌─┬─┐│┌───┬─────┐│┌─────┬─────────┐│
+│ ││2│2│││┌─┐│┌───┐│││┌───┐│┌───────┐││
+│ │└─┴─┘│││3│││3 0│││││┌─┐│││┌─────┐│││
+│ │     ││└─┘│└───┘│││││4│││││4 0 0││││
+│ │     │└───┴─────┘│││└─┘│││└─────┘│││
+│ │     │           ││└───┘│└───────┘││
+│ │     │           │└─────┴─────────┘│
+└─┴─────┴───────────┴─────────────────┘</code></pre>
 <p>This also applies to arithmetic functions between nested arrays, consider the sum of the following arrays <code>B</code> and <code>C</code> of the same type</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">⊢</span><span class="nv">B</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">A</span><span class="sr">[</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="sr">]</span>
-<span class="err">┌─┬─────┬───────────┐</span>
-<span class="err">│</span><span class="m">1</span><span class="err">│┌─┬─┐│┌───┬─────┐│</span>
-<span class="err">│</span><span class="w"> </span><span class="err">││</span><span class="m">1</span><span class="err">│</span><span class="m">1</span><span class="err">│││┌─┐│┌───┐││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│└─┴─┘│││</span><span class="m">1</span><span class="err">│││</span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="err">│││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">││└─┘│└───┘││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">│└───┴─────┘│</span>
-<span class="err">└─┴─────┴───────────┘</span>
-<span class="w">      </span><span class="o">⊢</span><span class="nv">C</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">×</span><span class="w"> </span><span class="o">⊂</span><span class="na">\</span><span class="o">,</span><span class="na">\</span><span class="w"> </span><span class="m">3</span><span class="na">/</span><span class="m">1</span>
-<span class="err">┌─┬─────┬───────────┐</span>
-<span class="err">│</span><span class="m">2</span><span class="err">│┌─┬─┐│┌───┬─────┐│</span>
-<span class="err">│</span><span class="w"> </span><span class="err">││</span><span class="m">2</span><span class="err">│</span><span class="m">2</span><span class="err">│││┌─┐│┌───┐││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│└─┴─┘│││</span><span class="m">2</span><span class="err">│││</span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="err">│││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">││└─┘│└───┘││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">│└───┴─────┘│</span>
-<span class="err">└─┴─────┴───────────┘</span>
-<span class="w">       </span><span class="nv">B</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">C</span>
-<span class="err">┌─┬─────┬───────────┐</span>
-<span class="err">│</span><span class="m">3</span><span class="err">│┌─┬─┐│┌───┬─────┐│</span>
-<span class="err">│</span><span class="w"> </span><span class="err">││</span><span class="m">3</span><span class="err">│</span><span class="m">3</span><span class="err">│││┌─┐│┌───┐││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│└─┴─┘│││</span><span class="m">3</span><span class="err">│││</span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="err">│││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">││└─┘│└───┘││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">│└───┴─────┘│</span>
-<span class="err">└─┴─────┴───────────┘</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      ⊢B ← A[1 2 3]
+┌─┬─────┬───────────┐
+│1│┌─┬─┐│┌───┬─────┐│
+│ ││1│1│││┌─┐│┌───┐││
+│ │└─┴─┘│││1│││1 0│││
+│ │     ││└─┘│└───┘││
+│ │     │└───┴─────┘│
+└─┴─────┴───────────┘
+      ⊢C ← 2 × ⊂\,\ 3/1
+┌─┬─────┬───────────┐
+│2│┌─┬─┐│┌───┬─────┐│
+│ ││2│2│││┌─┐│┌───┐││
+│ │└─┴─┘│││2│││2 2│││
+│ │     ││└─┘│└───┘││
+│ │     │└───┴─────┘│
+└─┴─────┴───────────┘
+       B + C
+┌─┬─────┬───────────┐
+│3│┌─┬─┐│┌───┬─────┐│
+│ ││3│3│││┌─┐│┌───┐││
+│ │└─┴─┘│││3│││3 2│││
+│ │     ││└─┘│└───┘││
+│ │     │└───┴─────┘│
+└─┴─────┴───────────┘</code></pre>
 <p>However, this is not true for arbitrary functions, consider the function <code>{'NZP'[2+×⍵]}</code> which marks whether a number is negative, zero, or positive</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="kt">{</span><span class="s1">&#39;NZP&#39;</span><span class="sr">[</span><span class="m">2</span><span class="o">+×</span><span class="bp">⍵</span><span class="sr">]</span><span class="kt">}</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">¯5</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">¯3</span><span class="w"> </span><span class="m">3</span>
-<span class="nv">PNZZZNP</span>
+<pre class="highlight"><code class="language-apl">      {'NZP'[2+×⍵]} 4 ¯5 0 0 0 ¯3 3
+PNZZZNP
 
-<span class="w">      </span><span class="kt">{</span><span class="s1">&#39;NZP&#39;</span><span class="sr">[</span><span class="m">2</span><span class="o">+×</span><span class="bp">⍵</span><span class="sr">]</span><span class="kt">}</span><span class="w"> </span><span class="nv">A</span><span class="sr">[</span><span class="m">1</span><span class="sr">]</span>
-<span class="nv">P</span>
+      {'NZP'[2+×⍵]} A[1]
+P
 
-<span class="w">      </span><span class="kt">{</span><span class="s1">&#39;NZP&#39;</span><span class="sr">[</span><span class="m">2</span><span class="o">+×</span><span class="bp">⍵</span><span class="sr">]</span><span class="kt">}</span><span class="w"> </span><span class="nv">A</span><span class="sr">[</span><span class="m">2</span><span class="sr">]</span>
-<span class="nv">RANK</span><span class="w"> </span><span class="nv">ERROR</span>
+      {'NZP'[2+×⍵]} A[2]
+RANK ERROR
 
-<span class="w">      </span><span class="nv">A</span><span class="sr">[</span><span class="m">2</span><span class="sr">]</span>
-<span class="err">┌─────┐</span>
-<span class="err">│┌─┬─┐│</span>
-<span class="err">││</span><span class="m">1</span><span class="err">│</span><span class="m">1</span><span class="err">││</span>
-<span class="err">│└─┴─┘│</span>
-<span class="err">└─────┘</span>
+      A[2]
+┌─────┐
+│┌─┬─┐│
+││1│1││
+│└─┴─┘│
+└─────┘
 
-<span class="w">      </span><span class="kt">{</span><span class="s1">&#39;NZP&#39;</span><span class="sr">[</span><span class="m">2</span><span class="o">+×</span><span class="bp">⍵</span><span class="sr">]</span><span class="kt">}</span><span class="na">¨</span><span class="w"> </span><span class="nv">A</span><span class="sr">[</span><span class="m">2</span><span class="sr">]</span>
-<span class="err">┌──┐</span>
-<span class="err">│</span><span class="nv">PP</span><span class="err">│</span>
-<span class="err">└──┘</span>
-</code></pre></div>
+      {'NZP'[2+×⍵]}¨ A[2]
+┌──┐
+│PP│
+└──┘</code></pre>
 <p>Notice how the function applied to <code>A[1]</code> and also to <code>A[2]</code> as long as we used the <code>¨</code> each operator to "peel off" a layer of the depth. We can continue in this fashion to apply the function to any depth by adding enough <code>¨</code> each operators</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="kt">{</span><span class="s1">&#39;NZP&#39;</span><span class="sr">[</span><span class="m">2</span><span class="o">+×</span><span class="bp">⍵</span><span class="sr">]</span><span class="kt">}</span><span class="na">¨¨¨</span><span class="w"> </span><span class="nv">A</span><span class="sr">[</span><span class="m">3</span><span class="sr">]</span>
-<span class="err">┌──────────┐</span>
-<span class="err">│┌───┬────┐│</span>
-<span class="err">││┌─┐│┌──┐││</span>
-<span class="err">│││</span><span class="nv">P</span><span class="err">│││</span><span class="nv">PZ</span><span class="err">│││</span>
-<span class="err">││└─┘│└──┘││</span>
-<span class="err">│└───┴────┘│</span>
-<span class="err">└──────────┘</span>
-<span class="w">      </span><span class="kt">{</span><span class="s1">&#39;NZP&#39;</span><span class="sr">[</span><span class="m">2</span><span class="o">+×</span><span class="bp">⍵</span><span class="sr">]</span><span class="kt">}</span><span class="na">¨¨¨¨</span><span class="w"> </span><span class="nv">A</span><span class="sr">[</span><span class="m">4</span><span class="sr">]</span>
-<span class="err">┌───────────────┐</span>
-<span class="err">│┌─────┬───────┐│</span>
-<span class="err">││┌───┐│┌─────┐││</span>
-<span class="err">│││┌─┐│││┌───┐│││</span>
-<span class="err">││││</span><span class="nv">P</span><span class="err">│││││</span><span class="nv">PZZ</span><span class="err">││││</span>
-<span class="err">│││└─┘│││└───┘│││</span>
-<span class="err">││└───┘│└─────┘││</span>
-<span class="err">│└─────┴───────┘│</span>
-<span class="err">└───────────────┘</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      {'NZP'[2+×⍵]}¨¨¨ A[3]
+┌──────────┐
+│┌───┬────┐│
+││┌─┐│┌──┐││
+│││P│││PZ│││
+││└─┘│└──┘││
+│└───┴────┘│
+└──────────┘
+      {'NZP'[2+×⍵]}¨¨¨¨ A[4]
+┌───────────────┐
+│┌─────┬───────┐│
+││┌───┐│┌─────┐││
+│││┌─┐│││┌───┐│││
+││││P│││││PZZ││││
+│││└─┘│││└───┘│││
+││└───┘│└─────┘││
+│└─────┴───────┘│
+└───────────────┘</code></pre>
 <p>Then, by noticing that applying redundant <code>¨</code> each operators to functions acting on a simple scalar does not affect the result, we can apply the function on the whole array using five <code>¨</code> each operators</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="kt">{</span><span class="s1">&#39;NZP&#39;</span><span class="sr">[</span><span class="m">2</span><span class="o">+×</span><span class="bp">⍵</span><span class="sr">]</span><span class="kt">}</span><span class="na">¨¨¨¨¨</span><span class="w"> </span><span class="nv">A</span>
-<span class="err">┌─┬─────┬──────────┬───────────────┐</span>
-<span class="err">│</span><span class="nv">P</span><span class="err">│┌─┬─┐│┌───┬────┐│┌─────┬───────┐│</span>
-<span class="err">│</span><span class="w"> </span><span class="err">││</span><span class="nv">P</span><span class="err">│</span><span class="nv">P</span><span class="err">│││┌─┐│┌──┐│││┌───┐│┌─────┐││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│└─┴─┘│││</span><span class="nv">P</span><span class="err">│││</span><span class="nv">PZ</span><span class="err">│││││┌─┐│││┌───┐│││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">││└─┘│└──┘│││││</span><span class="nv">P</span><span class="err">│││││</span><span class="nv">PZZ</span><span class="err">││││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">│└───┴────┘│││└─┘│││└───┘│││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">│</span><span class="w">          </span><span class="err">││└───┘│└─────┘││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">│</span><span class="w">          </span><span class="err">│└─────┴───────┘│</span>
-<span class="err">└─┴─────┴──────────┴───────────────┘</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      {'NZP'[2+×⍵]}¨¨¨¨¨ A
+┌─┬─────┬──────────┬───────────────┐
+│P│┌─┬─┐│┌───┬────┐│┌─────┬───────┐│
+│ ││P│P│││┌─┐│┌──┐│││┌───┐│┌─────┐││
+│ │└─┴─┘│││P│││PZ│││││┌─┐│││┌───┐│││
+│ │     ││└─┘│└──┘│││││P│││││PZZ││││
+│ │     │└───┴────┘│││└─┘│││└───┘│││
+│ │     │          ││└───┘│└─────┘││
+│ │     │          │└─────┴───────┘│
+└─┴─────┴──────────┴───────────────┘</code></pre>
 <p>This also applies to arbitrary functions at any level of depth, consider the <code>,</code> catenate function between the above arrays <code>B</code> and <code>C</code></p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">B</span>
-<span class="err">┌─┬─────┬───────────┐</span>
-<span class="err">│</span><span class="m">1</span><span class="err">│┌─┬─┐│┌───┬─────┐│</span>
-<span class="err">│</span><span class="w"> </span><span class="err">││</span><span class="m">1</span><span class="err">│</span><span class="m">1</span><span class="err">│││┌─┐│┌───┐││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│└─┴─┘│││</span><span class="m">1</span><span class="err">│││</span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="err">│││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">││└─┘│└───┘││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">│└───┴─────┘│</span>
-<span class="err">└─┴─────┴───────────┘</span>
-<span class="w">      </span><span class="nv">C</span>
-<span class="err">┌─┬─────┬───────────┐</span>
-<span class="err">│</span><span class="m">2</span><span class="err">│┌─┬─┐│┌───┬─────┐│</span>
-<span class="err">│</span><span class="w"> </span><span class="err">││</span><span class="m">2</span><span class="err">│</span><span class="m">2</span><span class="err">│││┌─┐│┌───┐││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│└─┴─┘│││</span><span class="m">2</span><span class="err">│││</span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="err">│││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">││└─┘│└───┘││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">│└───┴─────┘│</span>
-<span class="err">└─┴─────┴───────────┘</span>
-<span class="w">      </span><span class="nv">B</span><span class="w"> </span><span class="o">,</span><span class="w"> </span><span class="nv">C</span>
-<span class="err">┌─┬─────┬───────────┬─┬─────┬───────────┐</span>
-<span class="err">│</span><span class="m">1</span><span class="err">│┌─┬─┐│┌───┬─────┐│</span><span class="m">2</span><span class="err">│┌─┬─┐│┌───┬─────┐│</span>
-<span class="err">│</span><span class="w"> </span><span class="err">││</span><span class="m">1</span><span class="err">│</span><span class="m">1</span><span class="err">│││┌─┐│┌───┐││</span><span class="w"> </span><span class="err">││</span><span class="m">2</span><span class="err">│</span><span class="m">2</span><span class="err">│││┌─┐│┌───┐││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│└─┴─┘│││</span><span class="m">1</span><span class="err">│││</span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="err">│││</span><span class="w"> </span><span class="err">│└─┴─┘│││</span><span class="m">2</span><span class="err">│││</span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="err">│││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">││└─┘│└───┘││</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">││└─┘│└───┘││</span>
-<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">│└───┴─────┘│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">│└───┴─────┘│</span>
-<span class="err">└─┴─────┴───────────┴─┴─────┴───────────┘</span>
-<span class="w">      </span><span class="nv">B</span><span class="w"> </span><span class="o">,</span><span class="na">¨</span><span class="w"> </span><span class="nv">C</span>
-<span class="err">┌───┬─────────┬─────────────────────┐</span>
-<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│┌─┬─┬─┬─┐│┌───┬─────┬───┬─────┐│</span>
-<span class="err">│</span><span class="w">   </span><span class="err">││</span><span class="m">1</span><span class="err">│</span><span class="m">1</span><span class="err">│</span><span class="m">2</span><span class="err">│</span><span class="m">2</span><span class="err">│││┌─┐│┌───┐│┌─┐│┌───┐││</span>
-<span class="err">│</span><span class="w">   </span><span class="err">│└─┴─┴─┴─┘│││</span><span class="m">1</span><span class="err">│││</span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="err">│││</span><span class="m">2</span><span class="err">│││</span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="err">│││</span>
-<span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">         </span><span class="err">││└─┘│└───┘│└─┘│└───┘││</span>
-<span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">         </span><span class="err">│└───┴─────┴───┴─────┘│</span>
-<span class="err">└───┴─────────┴─────────────────────┘</span>
-<span class="w">      </span><span class="nv">B</span><span class="w"> </span><span class="o">,</span><span class="na">¨¨</span><span class="w"> </span><span class="nv">C</span>
-<span class="err">┌─────┬─────────┬─────────────────┐</span>
-<span class="err">│┌───┐│┌───┬───┐│┌─────┬─────────┐│</span>
-<span class="err">││</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│││</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│││┌─┬─┐│┌───┬───┐││</span>
-<span class="err">│└───┘│└───┴───┘│││</span><span class="m">1</span><span class="err">│</span><span class="m">2</span><span class="err">│││</span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="err">│</span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="err">│││</span>
-<span class="err">│</span><span class="w">     </span><span class="err">│</span><span class="w">         </span><span class="err">││└─┴─┘│└───┴───┘││</span>
-<span class="err">│</span><span class="w">     </span><span class="err">│</span><span class="w">         </span><span class="err">│└─────┴─────────┘│</span>
-<span class="err">└─────┴─────────┴─────────────────┘</span>
-<span class="w">      </span><span class="nv">B</span><span class="w"> </span><span class="o">,</span><span class="na">¨¨¨</span><span class="w"> </span><span class="nv">C</span>
-<span class="err">┌───────┬─────────────┬─────────────────┐</span>
-<span class="err">│┌─────┐│┌─────┬─────┐│┌─────┬─────────┐│</span>
-<span class="err">││┌───┐│││┌───┐│┌───┐│││┌───┐│┌───────┐││</span>
-<span class="err">│││</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│││││</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│││</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│││││</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│││</span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="err">│││</span>
-<span class="err">││└───┘│││└───┘│└───┘│││└───┘│└───────┘││</span>
-<span class="err">│└─────┘│└─────┴─────┘│└─────┴─────────┘│</span>
-<span class="err">└───────┴─────────────┴─────────────────┘</span>
-<span class="w">      </span><span class="nv">B</span><span class="w"> </span><span class="o">,</span><span class="na">¨¨¨¨</span><span class="w"> </span><span class="nv">C</span>
-<span class="err">┌─────────┬─────────────────┬─────────────────────┐</span>
-<span class="err">│┌───────┐│┌───────┬───────┐│┌───────┬───────────┐│</span>
-<span class="err">││┌─────┐│││┌─────┐│┌─────┐│││┌─────┐│┌─────────┐││</span>
-<span class="err">│││┌───┐│││││┌───┐│││┌───┐│││││┌───┐│││┌───┬───┐│││</span>
-<span class="err">││││</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│││││││</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│││││</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│││││││</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│││││</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">2</span><span class="err">││││</span>
-<span class="err">│││└───┘│││││└───┘│││└───┘│││││└───┘│││└───┴───┘│││</span>
-<span class="err">││└─────┘│││└─────┘│└─────┘│││└─────┘│└─────────┘││</span>
-<span class="err">│└───────┘│└───────┴───────┘│└───────┴───────────┘│</span>
-<span class="err">└─────────┴─────────────────┴─────────────────────┘</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      B
+┌─┬─────┬───────────┐
+│1│┌─┬─┐│┌───┬─────┐│
+│ ││1│1│││┌─┐│┌───┐││
+│ │└─┴─┘│││1│││1 0│││
+│ │     ││└─┘│└───┘││
+│ │     │└───┴─────┘│
+└─┴─────┴───────────┘
+      C
+┌─┬─────┬───────────┐
+│2│┌─┬─┐│┌───┬─────┐│
+│ ││2│2│││┌─┐│┌───┐││
+│ │└─┴─┘│││2│││2 2│││
+│ │     ││└─┘│└───┘││
+│ │     │└───┴─────┘│
+└─┴─────┴───────────┘
+      B , C
+┌─┬─────┬───────────┬─┬─────┬───────────┐
+│1│┌─┬─┐│┌───┬─────┐│2│┌─┬─┐│┌───┬─────┐│
+│ ││1│1│││┌─┐│┌───┐││ ││2│2│││┌─┐│┌───┐││
+│ │└─┴─┘│││1│││1 0│││ │└─┴─┘│││2│││2 2│││
+│ │     ││└─┘│└───┘││ │     ││└─┘│└───┘││
+│ │     │└───┴─────┘│ │     │└───┴─────┘│
+└─┴─────┴───────────┴─┴─────┴───────────┘
+      B ,¨ C
+┌───┬─────────┬─────────────────────┐
+│1 2│┌─┬─┬─┬─┐│┌───┬─────┬───┬─────┐│
+│   ││1│1│2│2│││┌─┐│┌───┐│┌─┐│┌───┐││
+│   │└─┴─┴─┴─┘│││1│││1 0│││2│││2 2│││
+│   │         ││└─┘│└───┘│└─┘│└───┘││
+│   │         │└───┴─────┴───┴─────┘│
+└───┴─────────┴─────────────────────┘
+      B ,¨¨ C
+┌─────┬─────────┬─────────────────┐
+│┌───┐│┌───┬───┐│┌─────┬─────────┐│
+││1 2│││1 2│1 2│││┌─┬─┐│┌───┬───┐││
+│└───┘│└───┴───┘│││1│2│││1 0│2 2│││
+│     │         ││└─┴─┘│└───┴───┘││
+│     │         │└─────┴─────────┘│
+└─────┴─────────┴─────────────────┘
+      B ,¨¨¨ C
+┌───────┬─────────────┬─────────────────┐
+│┌─────┐│┌─────┬─────┐│┌─────┬─────────┐│
+││┌───┐│││┌───┐│┌───┐│││┌───┐│┌───────┐││
+│││1 2│││││1 2│││1 2│││││1 2│││1 0 2 2│││
+││└───┘│││└───┘│└───┘│││└───┘│└───────┘││
+│└─────┘│└─────┴─────┘│└─────┴─────────┘│
+└───────┴─────────────┴─────────────────┘
+      B ,¨¨¨¨ C
+┌─────────┬─────────────────┬─────────────────────┐
+│┌───────┐│┌───────┬───────┐│┌───────┬───────────┐│
+││┌─────┐│││┌─────┐│┌─────┐│││┌─────┐│┌─────────┐││
+│││┌───┐│││││┌───┐│││┌───┐│││││┌───┐│││┌───┬───┐│││
+││││1 2│││││││1 2│││││1 2│││││││1 2│││││1 2│0 2││││
+│││└───┘│││││└───┘│││└───┘│││││└───┘│││└───┴───┘│││
+││└─────┘│││└─────┘│└─────┘│││└─────┘│└─────────┘││
+│└───────┘│└───────┴───────┘│└───────┴───────────┘│
+└─────────┴─────────────────┴─────────────────────┘</code></pre>
 <p>In the next section, we will introduce recursively-defined operators which make this task easier.</p>
 <h3 id="all-pairs">All pairs</h3>
 <p>In order to instead match all pairs of scalars, we can use <code>∘.f</code> the outer product operator. Suppose we wanted to match every scalar in the arrays <code>B</code> and <code>C</code> together, we can first apply the <code>∊</code> enlist function to both arrays, the apply the outer product with the <code>,</code> catenate function</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">∊</span><span class="nv">B</span>
-<span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span>
-<span class="w">      </span><span class="o">∊</span><span class="nv">C</span><span class="w"> </span>
-<span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span>
-<span class="w">      </span><span class="p">(</span><span class="o">∊</span><span class="nv">B</span><span class="p">)</span><span class="na">∘.</span><span class="o">,</span><span class="p">(</span><span class="o">∊</span><span class="nv">C</span><span class="p">)</span>
-<span class="err">┌───┬───┬───┬───┬───┬───┐</span>
-<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span>
-<span class="err">├───┼───┼───┼───┼───┼───┤</span>
-<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span>
-<span class="err">├───┼───┼───┼───┼───┼───┤</span>
-<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span>
-<span class="err">├───┼───┼───┼───┼───┼───┤</span>
-<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span>
-<span class="err">├───┼───┼───┼───┼───┼───┤</span>
-<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span>
-<span class="err">├───┼───┼───┼───┼───┼───┤</span>
-<span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">2</span><span class="err">│</span>
-<span class="err">└───┴───┴───┴───┴───┴───┘</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      ∊B
+1 1 1 1 1 0
+      ∊C 
+2 2 2 2 2 2
+      (∊B)∘.,(∊C)
+┌───┬───┬───┬───┬───┬───┐
+│1 2│1 2│1 2│1 2│1 2│1 2│
+├───┼───┼───┼───┼───┼───┤
+│1 2│1 2│1 2│1 2│1 2│1 2│
+├───┼───┼───┼───┼───┼───┤
+│1 2│1 2│1 2│1 2│1 2│1 2│
+├───┼───┼───┼───┼───┼───┤
+│1 2│1 2│1 2│1 2│1 2│1 2│
+├───┼───┼───┼───┼───┼───┤
+│1 2│1 2│1 2│1 2│1 2│1 2│
+├───┼───┼───┼───┼───┼───┤
+│0 2│0 2│0 2│0 2│0 2│0 2│
+└───┴───┴───┴───┴───┴───┘</code></pre>
 <p>We already know that the outer product can also be expressed using the rank <code>⍤</code> operator as follows</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="p">(</span><span class="o">∊</span><span class="nv">B</span><span class="p">)(</span><span class="o">,</span><span class="na">¨⍤</span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="p">)(</span><span class="o">∊</span><span class="nv">C</span><span class="p">)</span>
-<span class="err">┌───┬───┬───┬───┬───┬───┐</span>
-<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span>
-<span class="err">├───┼───┼───┼───┼───┼───┤</span>
-<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span>
-<span class="err">├───┼───┼───┼───┼───┼───┤</span>
-<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span>
-<span class="err">├───┼───┼───┼───┼───┼───┤</span>
-<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span>
-<span class="err">├───┼───┼───┼───┼───┼───┤</span>
-<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span>
-<span class="err">├───┼───┼───┼───┼───┼───┤</span>
-<span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">2</span><span class="err">│</span>
-<span class="err">└───┴───┴───┴───┴───┴───┘</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      (∊B)(,¨⍤0 1)(∊C)
+┌───┬───┬───┬───┬───┬───┐
+│1 2│1 2│1 2│1 2│1 2│1 2│
+├───┼───┼───┼───┼───┼───┤
+│1 2│1 2│1 2│1 2│1 2│1 2│
+├───┼───┼───┼───┼───┼───┤
+│1 2│1 2│1 2│1 2│1 2│1 2│
+├───┼───┼───┼───┼───┼───┤
+│1 2│1 2│1 2│1 2│1 2│1 2│
+├───┼───┼───┼───┼───┼───┤
+│1 2│1 2│1 2│1 2│1 2│1 2│
+├───┼───┼───┼───┼───┼───┤
+│0 2│0 2│0 2│0 2│0 2│0 2│
+└───┴───┴───┴───┴───┴───┘</code></pre>
 <p>The rank operator <code>⍤</code> here takes in a right argument array <code>(0 1)</code> that matches the 0-cells of the left argument (scalars) with the 1-cells of the right argument (the entire vector), with the left function argument to be applied <code>,¨</code> catenate each, which applies catenate with the scalars of the left argument to each element of the right argument vector. We can also use <code>⍤0 99</code> instead of <code>⍤0 1</code> to signify taking the whole right argument.</p>
 <p>To illustrate this matching, using <code>,</code> catenate instead of <code>,¨</code> catenate each</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="p">(</span><span class="o">∊</span><span class="nv">B</span><span class="p">)</span>
-<span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span>
-<span class="w">      </span><span class="p">(</span><span class="o">∊</span><span class="nv">C</span><span class="p">)</span>
-<span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span>
-<span class="w">      </span><span class="p">(</span><span class="o">∊</span><span class="nv">B</span><span class="p">)(</span><span class="o">,</span><span class="na">⍤</span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="p">)(</span><span class="o">∊</span><span class="nv">C</span><span class="p">)</span>
-<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span>
-<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span>
-<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span>
-<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span>
-<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span>
-<span class="m">0</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      (∊B)
+1 1 1 1 1 0
+      (∊C)
+2 2 2 2 2 2
+      (∊B)(,⍤0 1)(∊C)
+1 2 2 2 2 2 2
+1 2 2 2 2 2 2
+1 2 2 2 2 2 2
+1 2 2 2 2 2 2
+1 2 2 2 2 2 2
+0 2 2 2 2 2 2</code></pre>
 <p>This is one example of a general pattern that we will see in this section, which is that the rank <code>⍤</code> operator is powerful enough to express most of the matchings without using nested arrays.</p>
 <h3 id="scalar-extension">Scalar extension</h3>
 <p>Some functions in APL allow a scalar to act as if it were a higher-dimensional array by implicitly expanding it out to the required shape. The simplest examples are the arithmetic operations, instead of writing</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">⍳</span><span class="m">10</span>
-<span class="m">2</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">32</span><span class="w"> </span><span class="m">64</span><span class="w"> </span><span class="m">128</span><span class="w"> </span><span class="m">256</span><span class="w"> </span><span class="m">512</span><span class="w"> </span><span class="m">1024</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      2 2 2 2 2 2 2 2 2 2 * ⍳10
+2 4 8 16 32 64 128 256 512 1024</code></pre>
 <p>We can simply write</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="m">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">⍳</span><span class="m">10</span>
-<span class="m">2</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">32</span><span class="w"> </span><span class="m">64</span><span class="w"> </span><span class="m">128</span><span class="w"> </span><span class="m">256</span><span class="w"> </span><span class="m">512</span><span class="w"> </span><span class="m">1024</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      2 * ⍳10
+2 4 8 16 32 64 128 256 512 1024</code></pre>
 <p>More importantly, this also applies to non-simple scalars such as enclosed arrays, and in the following, we will see how to exploit this to match higher dimensional data. </p>
 <h2 id="scalar-vector-matching">Scalar-vector matching</h2>
 <h3 id="one-vector">One vector</h3>
 <h4 id="using-depth">Using depth</h4>
 <p>The <code>⊂</code> enclose function can be used, along with <code>¨</code> each, to apply a list of scalars to a vector. The way this works is that the <code>⊂</code> enclose function turns the vector into a scalar, which allows <code>¨</code> each to apply each scalar from the left argument to the single scalar on the right argument using scalar extension. Consider the following construction of the <code>CIPHER</code> array from previous write exercises using the rotate <code>⌽</code> function with <code>¨⊂</code> each and enclose</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nf">⎕A</span>
-<span class="nv">ABCDEFGHIJKLMNOPQRSTUVWXYZ</span>
-<span class="w">      </span><span class="p">(</span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="o">⌽</span><span class="na">¨</span><span class="o">⊂</span><span class="nf">⎕A</span>
-<span class="err">┌──────────────────────────┬──────────────────────────┬──────────────────────────┐</span>
-<span class="err">│</span><span class="nv">ABCDEFGHIJKLMNOPQRSTUVWXYZ</span><span class="err">│</span><span class="nv">BCDEFGHIJKLMNOPQRSTUVWXYZA</span><span class="err">│</span><span class="nv">CDEFGHIJKLMNOPQRSTUVWXYZAB</span><span class="err">│</span>
-<span class="err">└──────────────────────────┴──────────────────────────┴──────────────────────────┘</span>
-<span class="w">      </span><span class="o">↑</span><span class="w"> </span><span class="p">(</span><span class="m">0</span><span class="w"> </span><span class="o">,</span><span class="w"> </span><span class="o">⍳</span><span class="m">25</span><span class="p">)</span><span class="o">⌽</span><span class="na">¨</span><span class="o">⊂</span><span class="nf">⎕A</span>
-<span class="nv">ABCDEFGHIJKLMNOPQRSTUVWXYZ</span>
-<span class="nv">BCDEFGHIJKLMNOPQRSTUVWXYZA</span>
-<span class="nv">CDEFGHIJKLMNOPQRSTUVWXYZAB</span>
-<span class="nv">DEFGHIJKLMNOPQRSTUVWXYZABC</span>
-<span class="nv">EFGHIJKLMNOPQRSTUVWXYZABCD</span>
-<span class="nv">FGHIJKLMNOPQRSTUVWXYZABCDE</span>
-<span class="nv">GHIJKLMNOPQRSTUVWXYZABCDEF</span>
-<span class="nv">HIJKLMNOPQRSTUVWXYZABCDEFG</span>
-<span class="nv">IJKLMNOPQRSTUVWXYZABCDEFGH</span>
-<span class="nv">JKLMNOPQRSTUVWXYZABCDEFGHI</span>
-<span class="nv">KLMNOPQRSTUVWXYZABCDEFGHIJ</span>
-<span class="nv">LMNOPQRSTUVWXYZABCDEFGHIJK</span>
-<span class="nv">MNOPQRSTUVWXYZABCDEFGHIJKL</span>
-<span class="nv">NOPQRSTUVWXYZABCDEFGHIJKLM</span>
-<span class="nv">OPQRSTUVWXYZABCDEFGHIJKLMN</span>
-<span class="nv">PQRSTUVWXYZABCDEFGHIJKLMNO</span>
-<span class="nv">QRSTUVWXYZABCDEFGHIJKLMNOP</span>
-<span class="nv">RSTUVWXYZABCDEFGHIJKLMNOPQ</span>
-<span class="nv">STUVWXYZABCDEFGHIJKLMNOPQR</span>
-<span class="nv">TUVWXYZABCDEFGHIJKLMNOPQRS</span>
-<span class="nv">UVWXYZABCDEFGHIJKLMNOPQRST</span>
-<span class="nv">VWXYZABCDEFGHIJKLMNOPQRSTU</span>
-<span class="nv">WXYZABCDEFGHIJKLMNOPQRSTUV</span>
-<span class="nv">XYZABCDEFGHIJKLMNOPQRSTUVW</span>
-<span class="nv">YZABCDEFGHIJKLMNOPQRSTUVWX</span>
-<span class="nv">ZABCDEFGHIJKLMNOPQRSTUVWXY</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      ⎕A
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+      (0 1 2)⌽¨⊂⎕A
+┌──────────────────────────┬──────────────────────────┬──────────────────────────┐
+│ABCDEFGHIJKLMNOPQRSTUVWXYZ│BCDEFGHIJKLMNOPQRSTUVWXYZA│CDEFGHIJKLMNOPQRSTUVWXYZAB│
+└──────────────────────────┴──────────────────────────┴──────────────────────────┘
+      ↑ (0 , ⍳25)⌽¨⊂⎕A
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+BCDEFGHIJKLMNOPQRSTUVWXYZA
+CDEFGHIJKLMNOPQRSTUVWXYZAB
+DEFGHIJKLMNOPQRSTUVWXYZABC
+EFGHIJKLMNOPQRSTUVWXYZABCD
+FGHIJKLMNOPQRSTUVWXYZABCDE
+GHIJKLMNOPQRSTUVWXYZABCDEF
+HIJKLMNOPQRSTUVWXYZABCDEFG
+IJKLMNOPQRSTUVWXYZABCDEFGH
+JKLMNOPQRSTUVWXYZABCDEFGHI
+KLMNOPQRSTUVWXYZABCDEFGHIJ
+LMNOPQRSTUVWXYZABCDEFGHIJK
+MNOPQRSTUVWXYZABCDEFGHIJKL
+NOPQRSTUVWXYZABCDEFGHIJKLM
+OPQRSTUVWXYZABCDEFGHIJKLMN
+PQRSTUVWXYZABCDEFGHIJKLMNO
+QRSTUVWXYZABCDEFGHIJKLMNOP
+RSTUVWXYZABCDEFGHIJKLMNOPQ
+STUVWXYZABCDEFGHIJKLMNOPQR
+TUVWXYZABCDEFGHIJKLMNOPQRS
+UVWXYZABCDEFGHIJKLMNOPQRST
+VWXYZABCDEFGHIJKLMNOPQRSTU
+WXYZABCDEFGHIJKLMNOPQRSTUV
+XYZABCDEFGHIJKLMNOPQRSTUVW
+YZABCDEFGHIJKLMNOPQRSTUVWX
+ZABCDEFGHIJKLMNOPQRSTUVWXY</code></pre>
 <p>The so-called "chipmunk" operator <code>⊃¨⊂</code> is the use of the <code>⊃</code> pick function with <code>¨⊂</code> each and enclose to index elements of a right array with left indices, which works even with nested arrays</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">⊢</span><span class="nv">X</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="m">100</span><span class="na">/</span><span class="m">6</span>
-<span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">6</span>
-<span class="m">5</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">1</span>
-<span class="m">5</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span>
-<span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span>
-<span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">5</span>
-<span class="m">4</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span>
-<span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span>
-<span class="m">5</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span>
-<span class="m">1</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">3</span>
-<span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">1</span>
+<pre class="highlight"><code class="language-apl">      ⊢X ← 10 10 ⍴ ? 100/6
+2 2 4 3 1 4 5 3 3 6
+5 4 3 3 4 2 1 1 6 1
+5 1 3 2 4 4 4 2 3 4
+2 1 2 5 5 2 5 4 1 1
+1 3 5 3 6 6 6 3 3 5
+4 3 6 1 6 2 4 1 2 1
+1 1 5 3 4 4 4 6 3 2
+5 4 5 3 2 6 6 5 3 3
+1 6 1 2 5 6 5 3 6 3
+2 1 3 1 3 2 3 2 4 1
 
-<span class="w">      </span><span class="nv">X</span><span class="w"> </span><span class="o">⊃</span><span class="na">¨</span><span class="o">⊂</span><span class="w"> </span><span class="s1">&#39;.o○0O⋄&#39;</span>
-<span class="na">.</span><span class="o">○</span><span class="na">.</span><span class="nv">O0</span><span class="o">○</span><span class="na">.</span><span class="o">○</span><span class="nv">O</span><span class="o">○</span>
-<span class="o">○○</span><span class="m">.0</span><span class="na">..</span><span class="nv">oO0O</span>
-<span class="nv">o</span><span class="o">○○</span><span class="p">⋄</span><span class="o">○○</span><span class="na">.</span><span class="nv">o</span><span class="o">○</span><span class="p">⋄</span>
-<span class="p">⋄</span><span class="o">○</span><span class="na">.</span><span class="p">⋄</span><span class="nv">oOO</span><span class="na">.</span><span class="o">○</span><span class="nv">O</span>
-<span class="p">⋄</span><span class="nv">O</span><span class="o">○</span><span class="nv">o</span><span class="p">⋄</span><span class="m">.0</span><span class="o">○</span><span class="na">.</span><span class="nv">O</span>
-<span class="o">○</span><span class="nv">O</span><span class="o">○○</span><span class="p">⋄</span><span class="na">.</span><span class="nv">O</span><span class="na">.</span><span class="p">⋄</span><span class="m">0</span>
-<span class="p">⋄</span><span class="o">○</span><span class="p">⋄⋄⋄</span><span class="nv">OO0</span><span class="o">○○</span>
-<span class="p">⋄⋄</span><span class="o">○</span><span class="nv">O</span><span class="o">○</span><span class="p">⋄</span><span class="m">00</span><span class="o">○</span><span class="na">.</span>
-<span class="m">.0</span><span class="o">○</span><span class="nv">OO</span><span class="p">⋄</span><span class="na">.</span><span class="nv">oO</span><span class="p">⋄</span>
-<span class="p">⋄</span><span class="o">○</span><span class="m">0</span><span class="nv">O</span><span class="o">○</span><span class="nv">O</span><span class="na">.</span><span class="m">.0</span><span class="p">⋄</span>
+      X ⊃¨⊂ '.o○0O⋄'
+.○.O0○.○O○
+○○.0..oO0O
+o○○⋄○○.o○⋄
+⋄○.⋄oOO.○O
+⋄O○o⋄.0○.O
+○O○○⋄.O.⋄0
+⋄○⋄⋄⋄OO0○○
+⋄⋄○O○⋄00○.
+.0○OO⋄.oO⋄
+⋄○0O○O..0⋄
 
-<span class="w">      </span><span class="o">⊢</span><span class="nv">X</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="m">25</span><span class="na">/</span><span class="m">6</span>
+      ⊢X ← 5 5 ⍴ ? 25/6
 
-<span class="w">      </span><span class="nv">X</span><span class="w"> </span><span class="o">⊃</span><span class="na">¨</span><span class="o">⊂</span><span class="w"> </span><span class="s1">&#39;Welcome&#39;</span><span class="w"> </span><span class="s1">&#39;Tervetuloa&#39;</span><span class="w"> </span><span class="s1">&#39;Bienvenue&#39;</span><span class="w"> </span><span class="s1">&#39;Ahlan wa Sahlan&#39;</span><span class="w"> </span><span class="s1">&#39;Kruihcuipae&#39;</span><span class="w"> </span><span class="s1">&#39;Huān Yíng&#39;</span>
-<span class="err">┌───────────┬───────────────┬───────────────┬───────────────┬───────────┐</span>
-<span class="err">│</span><span class="nv">Tervetuloa</span><span class="w"> </span><span class="err">│</span><span class="nv">Bienvenue</span><span class="w">      </span><span class="err">│</span><span class="nv">Hu</span><span class="err">ā</span><span class="nv">n</span><span class="w"> </span><span class="nv">Y</span><span class="err">í</span><span class="nv">ng</span><span class="w">      </span><span class="err">│</span><span class="nv">Hu</span><span class="err">ā</span><span class="nv">n</span><span class="w"> </span><span class="nv">Y</span><span class="err">í</span><span class="nv">ng</span><span class="w">      </span><span class="err">│</span><span class="nv">Kruihcuipae</span><span class="err">│</span>
-<span class="err">├───────────┼───────────────┼───────────────┼───────────────┼───────────┤</span>
-<span class="err">│</span><span class="nv">Hu</span><span class="err">ā</span><span class="nv">n</span><span class="w"> </span><span class="nv">Y</span><span class="err">í</span><span class="nv">ng</span><span class="w">  </span><span class="err">│</span><span class="nv">Ahlan</span><span class="w"> </span><span class="nv">wa</span><span class="w"> </span><span class="nv">Sahlan</span><span class="err">│</span><span class="nv">Hu</span><span class="err">ā</span><span class="nv">n</span><span class="w"> </span><span class="nv">Y</span><span class="err">í</span><span class="nv">ng</span><span class="w">      </span><span class="err">│</span><span class="nv">Tervetuloa</span><span class="w">     </span><span class="err">│</span><span class="nv">Bienvenue</span><span class="w">  </span><span class="err">│</span>
-<span class="err">├───────────┼───────────────┼───────────────┼───────────────┼───────────┤</span>
-<span class="err">│</span><span class="nv">Kruihcuipae</span><span class="err">│</span><span class="nv">Ahlan</span><span class="w"> </span><span class="nv">wa</span><span class="w"> </span><span class="nv">Sahlan</span><span class="err">│</span><span class="nv">Kruihcuipae</span><span class="w">    </span><span class="err">│</span><span class="nv">Hu</span><span class="err">ā</span><span class="nv">n</span><span class="w"> </span><span class="nv">Y</span><span class="err">í</span><span class="nv">ng</span><span class="w">      </span><span class="err">│</span><span class="nv">Kruihcuipae</span><span class="err">│</span>
-<span class="err">├───────────┼───────────────┼───────────────┼───────────────┼───────────┤</span>
-<span class="err">│</span><span class="nv">Welcome</span><span class="w">    </span><span class="err">│</span><span class="nv">Welcome</span><span class="w">        </span><span class="err">│</span><span class="nv">Hu</span><span class="err">ā</span><span class="nv">n</span><span class="w"> </span><span class="nv">Y</span><span class="err">í</span><span class="nv">ng</span><span class="w">      </span><span class="err">│</span><span class="nv">Welcome</span><span class="w">        </span><span class="err">│</span><span class="nv">Welcome</span><span class="w">    </span><span class="err">│</span>
-<span class="err">├───────────┼───────────────┼───────────────┼───────────────┼───────────┤</span>
-<span class="err">│</span><span class="nv">Tervetuloa</span><span class="w"> </span><span class="err">│</span><span class="nv">Ahlan</span><span class="w"> </span><span class="nv">wa</span><span class="w"> </span><span class="nv">Sahlan</span><span class="err">│</span><span class="nv">Ahlan</span><span class="w"> </span><span class="nv">wa</span><span class="w"> </span><span class="nv">Sahlan</span><span class="err">│</span><span class="nv">Ahlan</span><span class="w"> </span><span class="nv">wa</span><span class="w"> </span><span class="nv">Sahlan</span><span class="err">│</span><span class="nv">Bienvenue</span><span class="w">  </span><span class="err">│</span>
-<span class="err">└───────────┴───────────────┴───────────────┴───────────────┴───────────┘</span>
-</code></pre></div>
+      X ⊃¨⊂ 'Welcome' 'Tervetuloa' 'Bienvenue' 'Ahlan wa Sahlan' 'Kruihcuipae' 'Huān Yíng'
+┌───────────┬───────────────┬───────────────┬───────────────┬───────────┐
+│Tervetuloa │Bienvenue      │Huān Yíng      │Huān Yíng      │Kruihcuipae│
+├───────────┼───────────────┼───────────────┼───────────────┼───────────┤
+│Huān Yíng  │Ahlan wa Sahlan│Huān Yíng      │Tervetuloa     │Bienvenue  │
+├───────────┼───────────────┼───────────────┼───────────────┼───────────┤
+│Kruihcuipae│Ahlan wa Sahlan│Kruihcuipae    │Huān Yíng      │Kruihcuipae│
+├───────────┼───────────────┼───────────────┼───────────────┼───────────┤
+│Welcome    │Welcome        │Huān Yíng      │Welcome        │Welcome    │
+├───────────┼───────────────┼───────────────┼───────────────┼───────────┤
+│Tervetuloa │Ahlan wa Sahlan│Ahlan wa Sahlan│Ahlan wa Sahlan│Bienvenue  │
+└───────────┴───────────────┴───────────────┴───────────────┴───────────┘</code></pre>
 <h4 id="using-rank">Using rank</h4>
 <p>The rank operator <code>⍤</code> can be straightforwardly applied here with the right argument <code>(0 1)</code> to apply the scalars of the left argument to the vector right argument, or vice versa. </p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="p">(</span><span class="m">2</span><span class="o">×⍳</span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">⍴</span><span class="na">⍤</span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Ha&#39;</span>
-<span class="nv">Ha</span><span class="w">                  </span>
-<span class="nv">HaHa</span><span class="w">                </span>
-<span class="nv">HaHaHa</span><span class="w">              </span>
-<span class="nv">HaHaHaHa</span><span class="w">            </span>
-<span class="nv">HaHaHaHaHa</span><span class="w">          </span>
-<span class="nv">HaHaHaHaHaHa</span><span class="w">        </span>
-<span class="nv">HaHaHaHaHaHaHa</span><span class="w">      </span>
-<span class="nv">HaHaHaHaHaHaHaHa</span><span class="w">    </span>
-<span class="nv">HaHaHaHaHaHaHaHaHa</span><span class="w">  </span>
-<span class="nv">HaHaHaHaHaHaHaHaHaHa</span>
+<pre class="highlight"><code class="language-apl">      (2×⍳10) (⍴⍤0 1) 'Ha'
+Ha                  
+HaHa                
+HaHaHa              
+HaHaHaHa            
+HaHaHaHaHa          
+HaHaHaHaHaHa        
+HaHaHaHaHaHaHa      
+HaHaHaHaHaHaHaHa    
+HaHaHaHaHaHaHaHaHa  
+HaHaHaHaHaHaHaHaHaHa
 
-<span class="w">      </span><span class="p">(</span><span class="o">⌽⍳</span><span class="m">99</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">∊,</span><span class="na">¨⍤</span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Bottles of beer on the wall&#39;</span><span class="w"> </span><span class="s1">&#39;Bottles of beer. Take one down pass it around,&#39;</span>
-<span class="m">99</span><span class="w"> </span><span class="nv">Bottles</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">beer</span><span class="w"> </span><span class="nv">on</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">wall</span><span class="w"> </span><span class="m">99</span><span class="w"> </span><span class="nv">Bottles</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">beer</span><span class="na">.</span><span class="w"> </span><span class="nv">Take</span><span class="w"> </span><span class="nv">one</span><span class="w"> </span><span class="nv">down</span><span class="w"> </span><span class="nv">pass</span><span class="w"> </span><span class="nv">it</span><span class="w"> </span><span class="nv">around</span><span class="o">,</span><span class="w"> </span><span class="m">98</span><span class="w"> </span><span class="nv">Bottles</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">beer</span><span class="w"> </span><span class="nv">on</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">wall</span><span class="w"> </span><span class="m">98</span><span class="w"> </span><span class="nv">Bottles</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">beer</span><span class="w"> </span><span class="na">...</span>
-</code></pre></div>
+      (⌽⍳99) (∊,¨⍤0 1) 'Bottles of beer on the wall' 'Bottles of beer. Take one down pass it around,'
+99 Bottles of beer on the wall 99 Bottles of beer. Take one down pass it around, 98 Bottles of beer on the wall 98 Bottles of beer ...</code></pre>
 <p>Note that the rank operator does not remove layers of depth, see the following example</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="s1">&#39;Who&#39;</span><span class="w"> </span><span class="s1">&#39;What&#39;</span><span class="w"> </span><span class="s1">&#39;When&#39;</span><span class="w"> </span><span class="s1">&#39;Why&#39;</span><span class="w"> </span><span class="s1">&#39;How&#39;</span><span class="w"> </span><span class="p">(</span><span class="o">,</span><span class="na">⍤</span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39; is it?&#39;</span>
-<span class="err">┌────┬─┬─┬─┬─┬─┬─┬─┐</span>
-<span class="err">│</span><span class="nv">Who</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="nv">i</span><span class="err">│</span><span class="nv">s</span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="nv">i</span><span class="err">│</span><span class="nv">t</span><span class="err">│</span><span class="o">?</span><span class="err">│</span>
-<span class="err">├────┼─┼─┼─┼─┼─┼─┼─┤</span>
-<span class="err">│</span><span class="nv">What</span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="nv">i</span><span class="err">│</span><span class="nv">s</span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="nv">i</span><span class="err">│</span><span class="nv">t</span><span class="err">│</span><span class="o">?</span><span class="err">│</span>
-<span class="err">├────┼─┼─┼─┼─┼─┼─┼─┤</span>
-<span class="err">│</span><span class="nv">When</span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="nv">i</span><span class="err">│</span><span class="nv">s</span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="nv">i</span><span class="err">│</span><span class="nv">t</span><span class="err">│</span><span class="o">?</span><span class="err">│</span>
-<span class="err">├────┼─┼─┼─┼─┼─┼─┼─┤</span>
-<span class="err">│</span><span class="nv">Why</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="nv">i</span><span class="err">│</span><span class="nv">s</span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="nv">i</span><span class="err">│</span><span class="nv">t</span><span class="err">│</span><span class="o">?</span><span class="err">│</span>
-<span class="err">├────┼─┼─┼─┼─┼─┼─┼─┤</span>
-<span class="err">│</span><span class="nv">How</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="nv">i</span><span class="err">│</span><span class="nv">s</span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="nv">i</span><span class="err">│</span><span class="nv">t</span><span class="err">│</span><span class="o">?</span><span class="err">│</span>
-<span class="err">└────┴─┴─┴─┴─┴─┴─┴─┘</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      'Who' 'What' 'When' 'Why' 'How' (,⍤0 1) ' is it?'
+┌────┬─┬─┬─┬─┬─┬─┬─┐
+│Who │ │i│s│ │i│t│?│
+├────┼─┼─┼─┼─┼─┼─┼─┤
+│What│ │i│s│ │i│t│?│
+├────┼─┼─┼─┼─┼─┼─┼─┤
+│When│ │i│s│ │i│t│?│
+├────┼─┼─┼─┼─┼─┼─┼─┤
+│Why │ │i│s│ │i│t│?│
+├────┼─┼─┼─┼─┼─┼─┼─┤
+│How │ │i│s│ │i│t│?│
+└────┴─┴─┴─┴─┴─┴─┴─┘</code></pre>
 <p>Here, the string <code>'Who'</code>, taken as a scalar, is catenated to <code>' is it?'</code>, taken as a vector, hence the result is the same as <code>(⊂'Who') , ' is it?'</code>. To combine these strings properly, we need to match the vector <code>'Who'</code> with the vector <code>' is it?'</code>, which will be covered in the Vector matching subsection.</p>
 <h3 id="many-vectors">Many vectors</h3>
 <h4 id="using-depth_1">Using depth</h4>
 <p>In order to match scalars with vectors in a single operation, the vectors must be compiled in an array, either using a nested array or a matrix. If a nested array is used, the vectors can be treated as scalars, and the same methods mentioned above can be used. Note that using enclose <code>⊂</code> is not necessary if the vectors are already in a nested array.</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">⊢</span><span class="nv">LHS</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="p">(</span><span class="o">⍕</span><span class="na">¨</span><span class="w"> </span><span class="o">⍳</span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="o">,</span><span class="na">¨</span><span class="o">⊂</span><span class="w"> </span><span class="s1">&#39;! = &#39;</span>
-<span class="err">┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬──────┐</span>
-<span class="err">│</span><span class="m">1</span><span class="o">!</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">│</span><span class="m">2</span><span class="o">!</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">│</span><span class="m">3</span><span class="o">!</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">│</span><span class="m">4</span><span class="o">!</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">│</span><span class="m">5</span><span class="o">!</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">│</span><span class="m">6</span><span class="o">!</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">│</span><span class="m">7</span><span class="o">!</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">│</span><span class="m">8</span><span class="o">!</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">│</span><span class="m">9</span><span class="o">!</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">│</span><span class="m">10</span><span class="o">!</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">│</span>
-<span class="err">└─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴──────┘</span>
+<pre class="highlight"><code class="language-apl">      ⊢LHS ← (⍕¨ ⍳10) ,¨⊂ '! = '
+┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬──────┐
+│1! = │2! = │3! = │4! = │5! = │6! = │7! = │8! = │9! = │10! = │
+└─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴──────┘
 
-<span class="w">      </span><span class="o">⊢</span><span class="nv">RHS</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="o">⍕</span><span class="na">¨</span><span class="w"> </span><span class="o">!⍳</span><span class="m">10</span>
-<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">120</span><span class="w"> </span><span class="m">720</span><span class="w"> </span><span class="m">5040</span><span class="w"> </span><span class="m">40320</span><span class="w"> </span><span class="m">362880</span><span class="w"> </span><span class="m">3628800</span>
+      ⊢RHS ← ⍕¨ !⍳10
+1 2 6 24 120 720 5040 40320 362880 3628800
 
-<span class="w">      </span><span class="nv">LHS</span><span class="o">,</span><span class="na">¨</span><span class="nv">RHS</span>
-<span class="err">┌──────┬──────┬──────┬───────┬────────┬────────┬─────────┬──────────┬───────────┬─────────────┐</span>
-<span class="err">│</span><span class="m">1</span><span class="o">!</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="err">│</span><span class="m">2</span><span class="o">!</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">3</span><span class="o">!</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">6</span><span class="err">│</span><span class="m">4</span><span class="o">!</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">24</span><span class="err">│</span><span class="m">5</span><span class="o">!</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">120</span><span class="err">│</span><span class="m">6</span><span class="o">!</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">720</span><span class="err">│</span><span class="m">7</span><span class="o">!</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5040</span><span class="err">│</span><span class="m">8</span><span class="o">!</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">40320</span><span class="err">│</span><span class="m">9</span><span class="o">!</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">362880</span><span class="err">│</span><span class="m">10</span><span class="o">!</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3628800</span><span class="err">│</span>
-<span class="err">└──────┴──────┴──────┴───────┴────────┴────────┴─────────┴──────────┴───────────┴─────────────┘</span>
-</code></pre></div>
+      LHS,¨RHS
+┌──────┬──────┬──────┬───────┬────────┬────────┬─────────┬──────────┬───────────┬─────────────┐
+│1! = 1│2! = 2│3! = 6│4! = 24│5! = 120│6! = 720│7! = 5040│8! = 40320│9! = 362880│10! = 3628800│
+└──────┴──────┴──────┴───────┴────────┴────────┴─────────┴──────────┴───────────┴─────────────┘</code></pre>
 <h4 id="using-rank_1">Using rank</h4>
 <p>The same argument to the rank operator mentioned above <code>⍤0 1</code> can be used to match the scalars (0-cells) of the left array argument to the vectors (1-cells) of the right array argument, thus the vectors have to be assembled in a matrix</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="s1">&#39;Ha&#39;</span><span class="w"> </span><span class="s1">&#39;Hi&#39;</span><span class="w"> </span><span class="s1">&#39;Hu&#39;</span><span class="w"> </span><span class="s1">&#39;He&#39;</span><span class="w"> </span><span class="s1">&#39;Ho&#39;</span>
-<span class="err">┌──┬──┬──┬──┬──┐</span>
-<span class="err">│</span><span class="nv">Ha</span><span class="err">│</span><span class="nv">Hi</span><span class="err">│</span><span class="nv">Hu</span><span class="err">│</span><span class="nv">He</span><span class="err">│</span><span class="nv">Ho</span><span class="err">│</span>
-<span class="err">└──┴──┴──┴──┴──┘</span>
-<span class="w">      </span><span class="o">↑</span><span class="s1">&#39;Ha&#39;</span><span class="w"> </span><span class="s1">&#39;Hi&#39;</span><span class="w"> </span><span class="s1">&#39;Hu&#39;</span><span class="w"> </span><span class="s1">&#39;He&#39;</span><span class="w"> </span><span class="s1">&#39;Ho&#39;</span>
-<span class="nv">Ha</span>
-<span class="nv">Hi</span>
-<span class="nv">Hu</span>
-<span class="nv">He</span>
-<span class="nv">Ho</span>
-<span class="w">      </span><span class="p">(</span><span class="m">2</span><span class="o">×⍳</span><span class="m">5</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">⍴</span><span class="na">⍤</span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">↑</span><span class="s1">&#39;Ha&#39;</span><span class="w"> </span><span class="s1">&#39;Hi&#39;</span><span class="w"> </span><span class="s1">&#39;Hu&#39;</span><span class="w"> </span><span class="s1">&#39;He&#39;</span><span class="w"> </span><span class="s1">&#39;Ho&#39;</span>
-<span class="nv">Ha</span><span class="w">        </span>
-<span class="nv">HiHi</span><span class="w">      </span>
-<span class="nv">HuHuHu</span><span class="w">    </span>
-<span class="nv">HeHeHeHe</span><span class="w">  </span>
-<span class="nv">HoHoHoHoHo</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      'Ha' 'Hi' 'Hu' 'He' 'Ho'
+┌──┬──┬──┬──┬──┐
+│Ha│Hi│Hu│He│Ho│
+└──┴──┴──┴──┴──┘
+      ↑'Ha' 'Hi' 'Hu' 'He' 'Ho'
+Ha
+Hi
+Hu
+He
+Ho
+      (2×⍳5) (⍴⍤0 1) ↑'Ha' 'Hi' 'Hu' 'He' 'Ho'
+Ha        
+HiHi      
+HuHuHu    
+HeHeHeHe  
+HoHoHoHoHo</code></pre>
 <h2 id="higher-dimensional-matching">Higher dimensional matching</h2>
 <h3 id="using-depth_2">Using depth</h3>
 <p>As above, nesting turns arrays into scalars, which allows operators like <code>¨</code> each to match arbitrary rank arrays together as if they were scalars.</p>
 <p>For example, we can create the conjugation table of the finnish verb 'haluta' in the present by matching vectors of strings together</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">⊢</span><span class="nv">pronouns</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="s1">&#39;Minä&#39;</span><span class="w"> </span><span class="s1">&#39;Sinä&#39;</span><span class="w"> </span><span class="s1">&#39;Hän&#39;</span><span class="w"> </span><span class="s1">&#39;Me&#39;</span><span class="w"> </span><span class="s1">&#39;Te&#39;</span><span class="w"> </span><span class="s1">&#39;He&#39;</span>
-<span class="err">┌────┬────┬───┬──┬──┬──┐</span>
-<span class="err">│</span><span class="nv">Min</span><span class="err">ä│</span><span class="nv">Sin</span><span class="err">ä│</span><span class="nv">H</span><span class="err">ä</span><span class="nv">n</span><span class="err">│</span><span class="nv">Me</span><span class="err">│</span><span class="nv">Te</span><span class="err">│</span><span class="nv">He</span><span class="err">│</span>
-<span class="err">└────┴────┴───┴──┴──┴──┘</span>
+<pre class="highlight"><code class="language-apl">      ⊢pronouns ← 'Minä' 'Sinä' 'Hän' 'Me' 'Te' 'He'
+┌────┬────┬───┬──┬──┬──┐
+│Minä│Sinä│Hän│Me│Te│He│
+└────┴────┴───┴──┴──┴──┘
 
-<span class="w">      </span><span class="o">⊢</span><span class="nv">present</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="s1">&#39;n&#39;</span><span class="w"> </span><span class="s1">&#39;t&#39;</span><span class="w"> </span><span class="s1">&#39;a&#39;</span><span class="w"> </span><span class="s1">&#39;mme&#39;</span><span class="w"> </span><span class="s1">&#39;tte&#39;</span><span class="w"> </span><span class="s1">&#39;vat&#39;</span>
-<span class="err">┌─┬─┬─┬───┬───┬───┐</span>
-<span class="err">│</span><span class="nv">n</span><span class="err">│</span><span class="nv">t</span><span class="err">│</span><span class="nv">a</span><span class="err">│</span><span class="nv">mme</span><span class="err">│</span><span class="nv">tte</span><span class="err">│</span><span class="nv">vat</span><span class="err">│</span>
-<span class="err">└─┴─┴─┴───┴───┴───┘</span>
+      ⊢present ← 'n' 't' 'a' 'mme' 'tte' 'vat'
+┌─┬─┬─┬───┬───┬───┐
+│n│t│a│mme│tte│vat│
+└─┴─┴─┴───┴───┴───┘
 
-<span class="w">      </span><span class="o">↑</span><span class="w"> </span><span class="nv">pronouns</span><span class="w"> </span><span class="o">,</span><span class="na">¨</span><span class="w"> </span><span class="p">(</span><span class="o">⊂</span><span class="s1">&#39; halua&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">,</span><span class="na">¨</span><span class="w"> </span><span class="nv">present</span>
-<span class="nv">Min</span><span class="err">ä</span><span class="w"> </span><span class="nv">haluan</span>
-<span class="nv">Sin</span><span class="err">ä</span><span class="w"> </span><span class="nv">haluat</span>
-<span class="nv">H</span><span class="err">ä</span><span class="nv">n</span><span class="w"> </span><span class="nv">haluaa</span><span class="w"> </span>
-<span class="nv">Me</span><span class="w"> </span><span class="nv">haluamme</span>
-<span class="nv">Te</span><span class="w"> </span><span class="nv">haluatte</span>
-<span class="nv">He</span><span class="w"> </span><span class="nv">haluavat</span>
-</code></pre></div>
+      ↑ pronouns ,¨ (⊂' halua') ,¨ present
+Minä haluan
+Sinä haluat
+Hän haluaa 
+Me haluamme
+Te haluatte
+He haluavat</code></pre>
 <p>Matching matrices together is also straightforward</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="p">(</span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="o">⍴</span><span class="nf">⎕A</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="o">⍴⍳</span><span class="m">9</span><span class="p">)</span>
-<span class="err">┌───┬─────┐</span>
-<span class="err">│</span><span class="nv">ABC</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="err">│</span>
-<span class="err">│</span><span class="nv">DEF</span><span class="err">│</span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="err">│</span>
-<span class="err">│</span><span class="nv">GHI</span><span class="err">│</span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="err">│</span>
-<span class="err">└───┴─────┘</span>
-<span class="w">      </span><span class="p">(</span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="o">⍴</span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="o">⍴</span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
-<span class="err">┌─────┬─────┐</span>
-<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="err">│</span>
-<span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="err">│</span>
-<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="err">│</span>
-<span class="err">└─────┴─────┘</span>
-<span class="w">      </span><span class="p">(</span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="o">⍴</span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="o">⍴</span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="na">/¨¨</span><span class="w"> </span><span class="p">(</span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="o">⍴</span><span class="nf">⎕A</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="o">⍴⍳</span><span class="m">9</span><span class="p">)</span>
-<span class="err">┌───────┬───────┐</span>
-<span class="err">│┌─┬─┬─┐│┌─┬─┬─┐│</span>
-<span class="err">││</span><span class="nv">A</span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="nv">C</span><span class="err">│││</span><span class="w"> </span><span class="err">│</span><span class="m">2</span><span class="err">│</span><span class="w"> </span><span class="err">││</span>
-<span class="err">│├─┼─┼─┤│├─┼─┼─┤│</span>
-<span class="err">││</span><span class="w"> </span><span class="err">│</span><span class="nv">E</span><span class="err">│</span><span class="w"> </span><span class="err">│││</span><span class="m">4</span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="m">6</span><span class="err">││</span>
-<span class="err">│├─┼─┼─┤│├─┼─┼─┤│</span>
-<span class="err">││</span><span class="nv">G</span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="nv">I</span><span class="err">│││</span><span class="w"> </span><span class="err">│</span><span class="m">8</span><span class="err">│</span><span class="w"> </span><span class="err">││</span>
-<span class="err">│└─┴─┴─┘│└─┴─┴─┘│</span>
-<span class="err">└───────┴───────┘</span>
-<span class="w">      </span><span class="o">,</span><span class="na">/</span><span class="sr">[</span><span class="m">1</span><span class="sr">]</span><span class="w"> </span><span class="o">↑</span><span class="w"> </span><span class="p">(</span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="o">⍴</span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="o">⍴</span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="na">/¨¨</span><span class="w"> </span><span class="p">(</span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="o">⍴</span><span class="nf">⎕A</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="o">⍴⍳</span><span class="m">9</span><span class="p">)</span>
-<span class="err">┌─┬─┬─┐</span>
-<span class="err">│</span><span class="nv">A</span><span class="err">│</span><span class="m">2</span><span class="err">│</span><span class="nv">C</span><span class="err">│</span>
-<span class="err">├─┼─┼─┤</span>
-<span class="err">│</span><span class="m">4</span><span class="err">│</span><span class="nv">E</span><span class="err">│</span><span class="m">6</span><span class="err">│</span>
-<span class="err">├─┼─┼─┤</span>
-<span class="err">│</span><span class="nv">G</span><span class="err">│</span><span class="m">8</span><span class="err">│</span><span class="nv">I</span><span class="err">│</span>
-<span class="err">└─┴─┴─┘</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      (3 3⍴⎕A) (3 3⍴⍳9)
+┌───┬─────┐
+│ABC│1 2 3│
+│DEF│4 5 6│
+│GHI│7 8 9│
+└───┴─────┘
+      (3 3⍴1 0) (3 3⍴0 1)
+┌─────┬─────┐
+│1 0 1│0 1 0│
+│0 1 0│1 0 1│
+│1 0 1│0 1 0│
+└─────┴─────┘
+      (3 3⍴1 0) (3 3⍴0 1) /¨¨ (3 3⍴⎕A) (3 3⍴⍳9)
+┌───────┬───────┐
+│┌─┬─┬─┐│┌─┬─┬─┐│
+││A│ │C│││ │2│ ││
+│├─┼─┼─┤│├─┼─┼─┤│
+││ │E│ │││4│ │6││
+│├─┼─┼─┤│├─┼─┼─┤│
+││G│ │I│││ │8│ ││
+│└─┴─┴─┘│└─┴─┴─┘│
+└───────┴───────┘
+      ,/[1] ↑ (3 3⍴1 0) (3 3⍴0 1) /¨¨ (3 3⍴⎕A) (3 3⍴⍳9)
+┌─┬─┬─┐
+│A│2│C│
+├─┼─┼─┤
+│4│E│6│
+├─┼─┼─┤
+│G│8│I│
+└─┴─┴─┘</code></pre>
 <h3 id="using-rank_2">Using rank</h3>
 <p>For higher dimensional data, the rank <code>⍤</code> operator is the simplest way to match arbitrary rank cells from its right and left array arguments. The rank <code>⍤</code> operator can also be applied multiple times for more complex matching operations. For example, taking the example from the Scalar-vector subsection</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="s1">&#39;Who&#39;</span><span class="w"> </span><span class="s1">&#39;What&#39;</span><span class="w"> </span><span class="s1">&#39;When&#39;</span><span class="w"> </span><span class="s1">&#39;Why&#39;</span><span class="w"> </span><span class="s1">&#39;How&#39;</span><span class="w"> </span><span class="p">(</span><span class="o">,</span><span class="na">⍤</span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39; is it?&#39;</span>
-<span class="err">┌────┬─┬─┬─┬─┬─┬─┬─┐</span>
-<span class="err">│</span><span class="nv">Who</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="nv">i</span><span class="err">│</span><span class="nv">s</span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="nv">i</span><span class="err">│</span><span class="nv">t</span><span class="err">│</span><span class="o">?</span><span class="err">│</span>
-<span class="err">├────┼─┼─┼─┼─┼─┼─┼─┤</span>
-<span class="err">│</span><span class="nv">What</span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="nv">i</span><span class="err">│</span><span class="nv">s</span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="nv">i</span><span class="err">│</span><span class="nv">t</span><span class="err">│</span><span class="o">?</span><span class="err">│</span>
-<span class="err">├────┼─┼─┼─┼─┼─┼─┼─┤</span>
-<span class="err">│</span><span class="nv">When</span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="nv">i</span><span class="err">│</span><span class="nv">s</span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="nv">i</span><span class="err">│</span><span class="nv">t</span><span class="err">│</span><span class="o">?</span><span class="err">│</span>
-<span class="err">├────┼─┼─┼─┼─┼─┼─┼─┤</span>
-<span class="err">│</span><span class="nv">Why</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="nv">i</span><span class="err">│</span><span class="nv">s</span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="nv">i</span><span class="err">│</span><span class="nv">t</span><span class="err">│</span><span class="o">?</span><span class="err">│</span>
-<span class="err">├────┼─┼─┼─┼─┼─┼─┼─┤</span>
-<span class="err">│</span><span class="nv">How</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="nv">i</span><span class="err">│</span><span class="nv">s</span><span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="nv">i</span><span class="err">│</span><span class="nv">t</span><span class="err">│</span><span class="o">?</span><span class="err">│</span>
-<span class="err">└────┴─┴─┴─┴─┴─┴─┴─┘</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      'Who' 'What' 'When' 'Why' 'How' (,⍤0 1) ' is it?'
+┌────┬─┬─┬─┬─┬─┬─┬─┐
+│Who │ │i│s│ │i│t│?│
+├────┼─┼─┼─┼─┼─┼─┼─┤
+│What│ │i│s│ │i│t│?│
+├────┼─┼─┼─┼─┼─┼─┼─┤
+│When│ │i│s│ │i│t│?│
+├────┼─┼─┼─┼─┼─┼─┼─┤
+│Why │ │i│s│ │i│t│?│
+├────┼─┼─┼─┼─┼─┼─┼─┤
+│How │ │i│s│ │i│t│?│
+└────┴─┴─┴─┴─┴─┴─┴─┘</code></pre>
 <p>Instead, we match the 1-cells of the left array argument with the right array argument
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">↑</span><span class="p">(</span><span class="s1">&#39;Who&#39;</span><span class="w"> </span><span class="s1">&#39;What&#39;</span><span class="w"> </span><span class="s1">&#39;When&#39;</span><span class="w"> </span><span class="s1">&#39;Why&#39;</span><span class="w"> </span><span class="s1">&#39;How&#39;</span><span class="p">)</span>
-<span class="nv">Who</span><span class="w"> </span>
-<span class="nv">What</span>
-<span class="nv">When</span>
-<span class="nv">Why</span><span class="w"> </span>
-<span class="nv">How</span>
-<span class="w">      </span><span class="p">(</span><span class="o">↑</span><span class="s1">&#39;Who&#39;</span><span class="w"> </span><span class="s1">&#39;What&#39;</span><span class="w"> </span><span class="s1">&#39;When&#39;</span><span class="w"> </span><span class="s1">&#39;Why&#39;</span><span class="w"> </span><span class="s1">&#39;How&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">,</span><span class="na">⍤</span><span class="m">1</span><span class="w"> </span><span class="m">99</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39; is it?&#39;</span>
-<span class="nv">Who</span><span class="w">  </span><span class="nv">is</span><span class="w"> </span><span class="nv">it</span><span class="o">?</span>
-<span class="nv">What</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">it</span><span class="o">?</span>
-<span class="nv">When</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">it</span><span class="o">?</span>
-<span class="nv">Why</span><span class="w">  </span><span class="nv">is</span><span class="w"> </span><span class="nv">it</span><span class="o">?</span>
-<span class="nv">How</span><span class="w">  </span><span class="nv">is</span><span class="w"> </span><span class="nv">it</span><span class="o">?</span>
-</code></pre></div></p>
+<pre class="highlight"><code class="language-apl">      ↑('Who' 'What' 'When' 'Why' 'How')
+Who 
+What
+When
+Why 
+How
+      (↑'Who' 'What' 'When' 'Why' 'How') (,⍤1 99) ' is it?'
+Who  is it?
+What is it?
+When is it?
+Why  is it?
+How  is it?</code></pre></p>
 <p>We can also expand this example to more tenses by repeated application of the rank <code>⍤</code> operator. Separating out the perfect tenses into a different dimension </p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="o">↑</span><span class="p">(</span><span class="o">↑</span><span class="s1">&#39; is it?&#39;</span><span class="w"> </span><span class="s1">&#39; was it?&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">↑</span><span class="s1">&#39; has it been?&#39;</span><span class="w"> </span><span class="s1">&#39; had it been?&#39;</span><span class="p">)</span>
-<span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">it</span><span class="o">?</span><span class="w">      </span>
-<span class="w"> </span><span class="nv">was</span><span class="w"> </span><span class="nv">it</span><span class="o">?</span><span class="w">     </span>
+<pre class="highlight"><code class="language-apl">      ↑(↑' is it?' ' was it?') (↑' has it been?' ' had it been?')
+ is it?      
+ was it?     
 
-<span class="w"> </span><span class="nv">has</span><span class="w"> </span><span class="nv">it</span><span class="w"> </span><span class="nv">been</span><span class="o">?</span>
-<span class="w"> </span><span class="nv">had</span><span class="w"> </span><span class="nv">it</span><span class="w"> </span><span class="nv">been</span><span class="o">?</span>
-<span class="w">      </span><span class="p">(</span><span class="o">↑</span><span class="s1">&#39;Who&#39;</span><span class="w"> </span><span class="s1">&#39;What&#39;</span><span class="w"> </span><span class="s1">&#39;When&#39;</span><span class="w"> </span><span class="s1">&#39;Why&#39;</span><span class="w"> </span><span class="s1">&#39;How&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kt">{</span><span class="bp">⍺</span><span class="w"> </span><span class="bp">⍵</span><span class="kt">}</span><span class="na">⍤</span><span class="m">1</span><span class="w"> </span><span class="m">99</span><span class="p">)</span><span class="w"> </span><span class="o">↑</span><span class="p">(</span><span class="o">↑</span><span class="s1">&#39; is it?&#39;</span><span class="w"> </span><span class="s1">&#39; was it?&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">↑</span><span class="s1">&#39; has it been?&#39;</span><span class="w"> </span><span class="s1">&#39; had it been?&#39;</span><span class="p">)</span>
-<span class="err">┌────┬─────────────┐</span>
-<span class="err">│</span><span class="nv">Who</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">it</span><span class="o">?</span><span class="w">      </span><span class="err">│</span>
-<span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w"> </span><span class="nv">was</span><span class="w"> </span><span class="nv">it</span><span class="o">?</span><span class="w">     </span><span class="err">│</span>
-<span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w">             </span><span class="err">│</span>
-<span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w"> </span><span class="nv">has</span><span class="w"> </span><span class="nv">it</span><span class="w"> </span><span class="nv">been</span><span class="o">?</span><span class="err">│</span>
-<span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w"> </span><span class="nv">had</span><span class="w"> </span><span class="nv">it</span><span class="w"> </span><span class="nv">been</span><span class="o">?</span><span class="err">│</span>
-<span class="err">├────┼─────────────┤</span>
-<span class="err">│</span><span class="nv">What</span><span class="err">│</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">it</span><span class="o">?</span><span class="w">      </span><span class="err">│</span>
-<span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w"> </span><span class="nv">was</span><span class="w"> </span><span class="nv">it</span><span class="o">?</span><span class="w">     </span><span class="err">│</span>
-<span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w">             </span><span class="err">│</span>
-<span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w"> </span><span class="nv">has</span><span class="w"> </span><span class="nv">it</span><span class="w"> </span><span class="nv">been</span><span class="o">?</span><span class="err">│</span>
-<span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w"> </span><span class="nv">had</span><span class="w"> </span><span class="nv">it</span><span class="w"> </span><span class="nv">been</span><span class="o">?</span><span class="err">│</span>
-<span class="err">├────┼─────────────┤</span>
-<span class="err">│</span><span class="nv">When</span><span class="err">│</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">it</span><span class="o">?</span><span class="w">      </span><span class="err">│</span>
-<span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w"> </span><span class="nv">was</span><span class="w"> </span><span class="nv">it</span><span class="o">?</span><span class="w">     </span><span class="err">│</span>
-<span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w">             </span><span class="err">│</span>
-<span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w"> </span><span class="nv">has</span><span class="w"> </span><span class="nv">it</span><span class="w"> </span><span class="nv">been</span><span class="o">?</span><span class="err">│</span>
-<span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w"> </span><span class="nv">had</span><span class="w"> </span><span class="nv">it</span><span class="w"> </span><span class="nv">been</span><span class="o">?</span><span class="err">│</span>
-<span class="err">├────┼─────────────┤</span>
-<span class="err">│</span><span class="nv">Why</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">it</span><span class="o">?</span><span class="w">      </span><span class="err">│</span>
-<span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w"> </span><span class="nv">was</span><span class="w"> </span><span class="nv">it</span><span class="o">?</span><span class="w">     </span><span class="err">│</span>
-<span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w">             </span><span class="err">│</span>
-<span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w"> </span><span class="nv">has</span><span class="w"> </span><span class="nv">it</span><span class="w"> </span><span class="nv">been</span><span class="o">?</span><span class="err">│</span>
-<span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w"> </span><span class="nv">had</span><span class="w"> </span><span class="nv">it</span><span class="w"> </span><span class="nv">been</span><span class="o">?</span><span class="err">│</span>
-<span class="err">├────┼─────────────┤</span>
-<span class="err">│</span><span class="nv">How</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">it</span><span class="o">?</span><span class="w">      </span><span class="err">│</span>
-<span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w"> </span><span class="nv">was</span><span class="w"> </span><span class="nv">it</span><span class="o">?</span><span class="w">     </span><span class="err">│</span>
-<span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w">             </span><span class="err">│</span>
-<span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w"> </span><span class="nv">has</span><span class="w"> </span><span class="nv">it</span><span class="w"> </span><span class="nv">been</span><span class="o">?</span><span class="err">│</span>
-<span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w"> </span><span class="nv">had</span><span class="w"> </span><span class="nv">it</span><span class="w"> </span><span class="nv">been</span><span class="o">?</span><span class="err">│</span>
-<span class="err">└────┴─────────────┘</span>
-</code></pre></div>
+ has it been?
+ had it been?
+      (↑'Who' 'What' 'When' 'Why' 'How') ({⍺ ⍵}⍤1 99) ↑(↑' is it?' ' was it?') (↑' has it been?' ' had it been?')
+┌────┬─────────────┐
+│Who │ is it?      │
+│    │ was it?     │
+│    │             │
+│    │ has it been?│
+│    │ had it been?│
+├────┼─────────────┤
+│What│ is it?      │
+│    │ was it?     │
+│    │             │
+│    │ has it been?│
+│    │ had it been?│
+├────┼─────────────┤
+│When│ is it?      │
+│    │ was it?     │
+│    │             │
+│    │ has it been?│
+│    │ had it been?│
+├────┼─────────────┤
+│Why │ is it?      │
+│    │ was it?     │
+│    │             │
+│    │ has it been?│
+│    │ had it been?│
+├────┼─────────────┤
+│How │ is it?      │
+│    │ was it?     │
+│    │             │
+│    │ has it been?│
+│    │ had it been?│
+└────┴─────────────┘</code></pre>
 <p>We can see that each matching has one string from the left array argument and the whole right argument array. Applying <code>,⍤1 1</code> catenate with the rank operator here will match the aforementioned string with the vectors of the right argument array</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="p">(</span><span class="o">↑</span><span class="s1">&#39;Who&#39;</span><span class="w"> </span><span class="s1">&#39;What&#39;</span><span class="w"> </span><span class="s1">&#39;When&#39;</span><span class="w"> </span><span class="s1">&#39;Why&#39;</span><span class="w"> </span><span class="s1">&#39;How&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">,</span><span class="na">⍤</span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="na">⍤</span><span class="m">1</span><span class="w"> </span><span class="m">99</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">↑</span><span class="s1">&#39; is it?&#39;</span><span class="w"> </span><span class="s1">&#39; was it?&#39;</span><span class="w"> </span><span class="s1">&#39; will it be?&#39;</span><span class="w"> </span><span class="s1">&#39; would it be?&#39;</span><span class="p">)</span>
-<span class="nv">Who</span><span class="w">  </span><span class="nv">is</span><span class="w"> </span><span class="nv">it</span><span class="o">?</span><span class="w">      </span>
-<span class="nv">Who</span><span class="w">  </span><span class="nv">was</span><span class="w"> </span><span class="nv">it</span><span class="o">?</span><span class="w">     </span>
+<pre class="highlight"><code class="language-apl">      (↑'Who' 'What' 'When' 'Why' 'How') (,⍤1 1⍤1 99) (↑' is it?' ' was it?' ' will it be?' ' would it be?')
+Who  is it?      
+Who  was it?     
 
-<span class="nv">Who</span><span class="w">  </span><span class="nv">has</span><span class="w"> </span><span class="nv">it</span><span class="w"> </span><span class="nv">been</span><span class="o">?</span>
-<span class="nv">Who</span><span class="w">  </span><span class="nv">had</span><span class="w"> </span><span class="nv">it</span><span class="w"> </span><span class="nv">been</span><span class="o">?</span>
-
-
-<span class="nv">What</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">it</span><span class="o">?</span><span class="w">      </span>
-<span class="nv">What</span><span class="w"> </span><span class="nv">was</span><span class="w"> </span><span class="nv">it</span><span class="o">?</span><span class="w">     </span>
-
-<span class="nv">What</span><span class="w"> </span><span class="nv">has</span><span class="w"> </span><span class="nv">it</span><span class="w"> </span><span class="nv">been</span><span class="o">?</span>
-<span class="nv">What</span><span class="w"> </span><span class="nv">had</span><span class="w"> </span><span class="nv">it</span><span class="w"> </span><span class="nv">been</span><span class="o">?</span>
+Who  has it been?
+Who  had it been?
 
 
-<span class="nv">When</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">it</span><span class="o">?</span><span class="w">      </span>
-<span class="nv">When</span><span class="w"> </span><span class="nv">was</span><span class="w"> </span><span class="nv">it</span><span class="o">?</span><span class="w">     </span>
+What is it?      
+What was it?     
 
-<span class="nv">When</span><span class="w"> </span><span class="nv">has</span><span class="w"> </span><span class="nv">it</span><span class="w"> </span><span class="nv">been</span><span class="o">?</span>
-<span class="nv">When</span><span class="w"> </span><span class="nv">had</span><span class="w"> </span><span class="nv">it</span><span class="w"> </span><span class="nv">been</span><span class="o">?</span>
-
-
-<span class="nv">Why</span><span class="w">  </span><span class="nv">is</span><span class="w"> </span><span class="nv">it</span><span class="o">?</span><span class="w">      </span>
-<span class="nv">Why</span><span class="w">  </span><span class="nv">was</span><span class="w"> </span><span class="nv">it</span><span class="o">?</span><span class="w">     </span>
-
-<span class="nv">Why</span><span class="w">  </span><span class="nv">has</span><span class="w"> </span><span class="nv">it</span><span class="w"> </span><span class="nv">been</span><span class="o">?</span>
-<span class="nv">Why</span><span class="w">  </span><span class="nv">had</span><span class="w"> </span><span class="nv">it</span><span class="w"> </span><span class="nv">been</span><span class="o">?</span>
+What has it been?
+What had it been?
 
 
-<span class="nv">How</span><span class="w">  </span><span class="nv">is</span><span class="w"> </span><span class="nv">it</span><span class="o">?</span><span class="w">      </span>
-<span class="nv">How</span><span class="w">  </span><span class="nv">was</span><span class="w"> </span><span class="nv">it</span><span class="o">?</span><span class="w">     </span>
+When is it?      
+When was it?     
 
-<span class="nv">How</span><span class="w">  </span><span class="nv">has</span><span class="w"> </span><span class="nv">it</span><span class="w"> </span><span class="nv">been</span><span class="o">?</span>
-<span class="nv">How</span><span class="w">  </span><span class="nv">had</span><span class="w"> </span><span class="nv">it</span><span class="w"> </span><span class="nv">been</span><span class="o">?</span>
-</code></pre></div>
+When has it been?
+When had it been?
+
+
+Why  is it?      
+Why  was it?     
+
+Why  has it been?
+Why  had it been?
+
+
+How  is it?      
+How  was it?     
+
+How  has it been?
+How  had it been?</code></pre>
 
 
 
@@ -2974,6 +2954,12 @@
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
         
       </main>
       
@@ -3055,7 +3041,7 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "nagivation.top", "navigation.footer", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.footer", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.92b07e13.min.js"></script>
@@ -3073,10 +3059,6 @@
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/build/three.module.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/examples/jsm/"></script>
       
     
   </body>

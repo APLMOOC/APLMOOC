@@ -6,7 +6,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="A free online course in array programming with APL.">
       
+      
+      
+        <link rel="canonical" href="https://aplmooc.fi/course/ch3/old/">
       
       
       
@@ -2374,69 +2378,65 @@
 </div>
 <hr />
 <p>Another way of defining functions is using traditional functions, abbreviated tradfn. ("trad-fun") These functions look a lot more similar to functions in imperative programming languages.</p>
-<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="bp">∇</span><span class="w"> </span><span class="p">(</span><span class="nv">R1</span><span class="w"> </span><span class="nv">R2</span><span class="p">)</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">solve_quadratic</span><span class="w"> </span><span class="nv">A</span><span class="w"> </span><span class="nv">B</span><span class="w"> </span><span class="nv">C</span><span class="sr">;</span><span class="nv">root</span><span class="sr">;</span><span class="nv">vertex</span><span class="w"> </span>
-<span class="w">          </span><span class="nv">root</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="p">((</span><span class="nv">B</span><span class="o">*</span><span class="m">2</span><span class="p">)</span><span class="o">-</span><span class="m">4</span><span class="o">×</span><span class="nv">A</span><span class="o">×</span><span class="nv">C</span><span class="p">)</span><span class="o">*</span><span class="m">1</span><span class="o">÷</span><span class="m">2</span>
-<span class="w">          </span><span class="nv">vertex</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="o">-</span><span class="nv">B</span><span class="o">÷</span><span class="m">2</span><span class="o">×</span><span class="nv">A</span>
-<span class="w">          </span><span class="nv">R1</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">vertex</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">root</span><span class="o">÷</span><span class="m">2</span><span class="o">×</span><span class="nv">A</span>
-<span class="w">          </span><span class="nv">R2</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">vertex</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">root</span><span class="o">÷</span><span class="m">2</span><span class="o">×</span><span class="nv">A</span>
-<span class="w">       </span><span class="bp">∇</span>
-<span class="w">       </span><span class="nv">solve_quadratic</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">¯1</span><span class="w"> </span><span class="m">¯1</span>
-<span class="m">1.618033989</span><span class="w"> </span><span class="m">¯0.6180339887</span>
+<pre class="highlight"><code class="language-apl">       ∇ (R1 R2) ← solve_quadratic A B C;root;vertex 
+          root ← ((B*2)-4×A×C)*1÷2
+          vertex ← -B÷2×A
+          R1 ← vertex + root÷2×A
+          R2 ← vertex - root÷2×A
+       ∇
+       solve_quadratic 1 ¯1 ¯1
+1.618033989 ¯0.6180339887
 
-<span class="w">       </span><span class="c1">⍝ ∇ results ← name arguments;local_variable1;local_variable2</span>
-<span class="w">       </span><span class="c1">⍝   ...</span>
-<span class="w">       </span><span class="c1">⍝   Instructions</span>
-<span class="w">       </span><span class="c1">⍝   ...</span>
-<span class="w">       </span><span class="c1">⍝   results ← values</span>
-<span class="w">       </span><span class="c1">⍝ ∇</span>
-</code></pre></div>
+       ⍝ ∇ results ← name arguments;local_variable1;local_variable2
+       ⍝   ...
+       ⍝   Instructions
+       ⍝   ...
+       ⍝   results ← values
+       ⍝ ∇</code></pre>
 <p>Tradfns are delimited by dels ∇ and consist of a header and body. The header defines the (left or right) arguments, the variables which are local to that function (variables which do not affect the rest of the workspace), and the values that are returned. Above, the arguments are A B and C, with local variables root and vertex, returning the vector (R1 R2).</p>
 <p>If we try to access any of the local variables of the function outside the function, we will encounter an error. </p>
-<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="nv">R1</span>
-<span class="nv">VALUE</span><span class="w"> </span><span class="nv">ERROR</span><span class="bp">:</span><span class="w"> </span><span class="nv">Undefined</span><span class="w"> </span><span class="nv">name</span><span class="bp">:</span><span class="w"> </span><span class="nv">R1</span>
-<span class="w">       </span><span class="nv">vertex</span>
-<span class="nv">VALUE</span><span class="w"> </span><span class="nv">ERROR</span><span class="bp">:</span><span class="w"> </span><span class="nv">Undefined</span><span class="w"> </span><span class="nv">name</span><span class="bp">:</span><span class="w"> </span><span class="nv">vertex</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">       R1
+VALUE ERROR: Undefined name: R1
+       vertex
+VALUE ERROR: Undefined name: vertex</code></pre>
 <p>Instead of guarded expressions, there are control flow structures like :If and :For. We will see these structures in detail in Chapter 7.</p>
 <div class="admonition warn">
 <p class="admonition-title">Variable Scope</p>
 <p>In tradfns, variables outside the function can be accessed and modified unless specified to be local. In dfns however, while it is possible to access variables outside the function, it is not possible to assign to them.
-<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="nv">i</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">10</span>
-<span class="w">       </span><span class="nv">d_increment</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="nv">i</span><span class="kd">←</span><span class="nv">i</span><span class="o">+</span><span class="m">1</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span><span class="nv">i</span><span class="kt">}</span>
+<pre class="highlight"><code class="language-apl">       i ← 10
+       d_increment ← {i←i+1 ⋄ i}
 
-<span class="w">       </span><span class="nv">i</span>
-<span class="m">10</span>
-<span class="w">       </span><span class="nv">increment</span><span class="w"> </span><span class="no">⍬</span>
-<span class="m">11</span><span class="w">  </span>
-<span class="w">       </span><span class="nv">i</span>
-<span class="m">10</span>
+       i
+10
+       increment ⍬
+11  
+       i
+10
 
-<span class="w">       </span><span class="bp">∇</span><span class="w"> </span><span class="nv">res</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">t_increment</span>
-<span class="w">               </span><span class="nv">i</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">i</span><span class="o">+</span><span class="m">1</span>
-<span class="w">           </span><span class="nv">res</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">i</span>
-<span class="w">       </span><span class="bp">∇</span>
+       ∇ res ← t_increment
+               i ← i+1
+           res ← i
+       ∇
 
-<span class="w">       </span><span class="nv">i</span>
-<span class="w">   </span><span class="m">10</span>
-<span class="w">          </span><span class="nv">t_increment</span>
-<span class="m">11</span>
-<span class="w">       </span><span class="nv">i</span>
-<span class="w">   </span><span class="m">11</span>
-</code></pre></div></p>
+       i
+   10
+          t_increment
+11
+       i
+   11</code></pre></p>
 </div>
 <p>The follwing code gets the final velocities of a one-dimensional perfectly elastic collision of two objects with initial velocities u1 and u2 and masses m1 and m2.</p>
-<div class="highlight"><pre><span></span><code><span class="w">   </span><span class="bp">∇</span><span class="w"> </span><span class="p">(</span><span class="nv">v1</span><span class="w"> </span><span class="nv">v2</span><span class="p">)</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">collision</span><span class="w"> </span><span class="p">(</span><span class="nv">u1</span><span class="w"> </span><span class="nv">u2</span><span class="w"> </span><span class="nv">m1</span><span class="w"> </span><span class="nv">m2</span><span class="p">)</span><span class="sr">;</span><span class="nv">rsumM</span><span class="sr">;</span><span class="nv">diffM</span>
-<span class="w">      </span><span class="nv">rsumM</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="o">÷</span><span class="nv">m1</span><span class="o">+</span><span class="nv">m2</span>
-<span class="w">      </span><span class="nv">diffM</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">m1</span><span class="o">-</span><span class="nv">m2</span>
-<span class="w">      </span><span class="nv">v1</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="p">(</span><span class="nv">diffM</span><span class="w"> </span><span class="o">×</span><span class="w"> </span><span class="nv">rsumM</span><span class="w"> </span><span class="o">×</span><span class="w"> </span><span class="nv">u1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">×</span><span class="w"> </span><span class="nv">m2</span><span class="w"> </span><span class="o">×</span><span class="w"> </span><span class="nv">rsumM</span><span class="w"> </span><span class="o">×</span><span class="w"> </span><span class="nv">u2</span>
-<span class="w">      </span><span class="nv">v2</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="p">(</span><span class="m">2</span><span class="w"> </span><span class="o">×</span><span class="w"> </span><span class="nv">m1</span><span class="w"> </span><span class="o">×</span><span class="w"> </span><span class="nv">rsumM</span><span class="w"> </span><span class="o">×</span><span class="w"> </span><span class="nv">u1</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">diffM</span><span class="w"> </span><span class="o">×</span><span class="w"> </span><span class="nv">rsumM</span><span class="w"> </span><span class="o">×</span><span class="w"> </span><span class="nv">u2</span>
-<span class="w">   </span><span class="bp">∇</span>
-<span class="w">   </span><span class="c1">⍝ Collision of two object moving with opposite velocities towards each other</span>
-<span class="w">   </span><span class="c1">⍝ where one object is twice as massive</span>
-<span class="w">   </span><span class="c1">⍝ ∘→  ←○</span>
-<span class="w">   </span><span class="nv">collision</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">¯1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span>
-<span class="m">¯1.666666667</span><span class="w"> </span><span class="m">0.3333333333</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">   ∇ (v1 v2) ← collision (u1 u2 m1 m2);rsumM;diffM
+      rsumM ← ÷m1+m2
+      diffM ← m1-m2
+      v1 ← (diffM × rsumM × u1) + 2 × m2 × rsumM × u2
+      v2 ← (2 × m1 × rsumM × u1) - diffM × rsumM × u2
+   ∇
+   ⍝ Collision of two object moving with opposite velocities towards each other
+   ⍝ where one object is twice as massive
+   ⍝ ∘→  ←○
+   collision 1 ¯1 1 2
+¯1.666666667 0.3333333333</code></pre>
 
 
 
@@ -2456,6 +2456,12 @@
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
         
       </main>
       
@@ -2499,7 +2505,7 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "nagivation.top", "navigation.footer", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.footer", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.92b07e13.min.js"></script>
@@ -2517,10 +2523,6 @@
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/build/three.module.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/examples/jsm/"></script>
       
     
   </body>

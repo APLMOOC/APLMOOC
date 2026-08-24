@@ -6,7 +6,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="A free online course in array programming with APL.">
       
+      
+      
+        <link rel="canonical" href="https://aplmooc.fi/course/ch5/write/">
       
       
         <link rel="prev" href="../read/">
@@ -2405,33 +2409,32 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 2</p>
 <p>Write a function to add a new entry at the top of the following leaderboard array as right argument ⍵ with a score of 1000000 with a name given by a left argument ⍺.</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">leaderboard</span>
-<span class="err">┌────────────┬──────┐</span>
-<span class="err">│</span><span class="nv">SpaceTornado</span><span class="err">│</span><span class="m">999905</span><span class="err">│</span>
-<span class="err">├────────────┼──────┤</span>
-<span class="err">│</span><span class="nv">StarSpangler</span><span class="err">│</span><span class="m">999875</span><span class="err">│</span>
-<span class="err">├────────────┼──────┤</span>
-<span class="err">│</span><span class="nv">MoonJuice</span><span class="w">   </span><span class="err">│</span><span class="m">999870</span><span class="err">│</span>
-<span class="err">├────────────┼──────┤</span>
-<span class="err">│</span><span class="nv">RocketRanger</span><span class="err">│</span><span class="m">894900</span><span class="err">│</span>
-<span class="err">├────────────┼──────┤</span>
-<span class="err">│</span><span class="nv">AlienNation</span><span class="w"> </span><span class="err">│</span><span class="m">545990</span><span class="err">│</span>
-<span class="err">└────────────┴──────┘</span>
-<span class="w">      </span><span class="s1">&#39;PhotonFury&#39;</span><span class="w"> </span><span class="nv">cheat</span><span class="w"> </span><span class="nv">leaderboard</span>
-<span class="err">┌────────────┬───────┐</span>
-<span class="err">│</span><span class="nv">PhotonFury</span><span class="w">  </span><span class="err">│</span><span class="m">1000000</span><span class="err">│</span>
-<span class="err">├────────────┼───────┤</span>
-<span class="err">│</span><span class="nv">SpaceTornado</span><span class="err">│</span><span class="m">999905</span><span class="w"> </span><span class="err">│</span>
-<span class="err">├────────────┼───────┤</span>
-<span class="err">│</span><span class="nv">StarSpangler</span><span class="err">│</span><span class="m">999875</span><span class="w"> </span><span class="err">│</span>
-<span class="err">├────────────┼───────┤</span>
-<span class="err">│</span><span class="nv">MoonJuice</span><span class="w">   </span><span class="err">│</span><span class="m">999870</span><span class="w"> </span><span class="err">│</span>
-<span class="err">├────────────┼───────┤</span>
-<span class="err">│</span><span class="nv">RocketRanger</span><span class="err">│</span><span class="m">894900</span><span class="w"> </span><span class="err">│</span>
-<span class="err">├────────────┼───────┤</span>
-<span class="err">│</span><span class="nv">AlienNation</span><span class="w"> </span><span class="err">│</span><span class="m">545990</span><span class="w"> </span><span class="err">│</span>
-<span class="err">└────────────┴───────┘</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      leaderboard
+┌────────────┬──────┐
+│SpaceTornado│999905│
+├────────────┼──────┤
+│StarSpangler│999875│
+├────────────┼──────┤
+│MoonJuice   │999870│
+├────────────┼──────┤
+│RocketRanger│894900│
+├────────────┼──────┤
+│AlienNation │545990│
+└────────────┴──────┘
+      'PhotonFury' cheat leaderboard
+┌────────────┬───────┐
+│PhotonFury  │1000000│
+├────────────┼───────┤
+│SpaceTornado│999905 │
+├────────────┼───────┤
+│StarSpangler│999875 │
+├────────────┼───────┤
+│MoonJuice   │999870 │
+├────────────┼───────┤
+│RocketRanger│894900 │
+├────────────┼───────┤
+│AlienNation │545990 │
+└────────────┴───────┘</code></pre>
 <p><div class="problem">
     <span class="problemspan">cheat←</span>
     <input class="probleminput" type="text" id="input_ch5_p2" placeholder="your solution here">
@@ -2443,21 +2446,20 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 3</p>
 <p>Write a function to filter for all flights on the date given as a right function argument ⍵</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">flights</span>
-<span class="err">┌─────────┬─────────┬───────────┬──────────┬─────┐</span>
-<span class="err">│</span><span class="nv">Jari</span><span class="w"> </span><span class="nv">N</span><span class="na">.</span><span class="w">  </span><span class="err">│</span><span class="nv">Helsinki</span><span class="w"> </span><span class="err">│</span><span class="nv">Tallinn</span><span class="w">    </span><span class="err">│</span><span class="m">2024</span><span class="o">-</span><span class="m">12</span><span class="o">-</span><span class="m">01</span><span class="err">│</span><span class="m">08</span><span class="bp">:</span><span class="m">00</span><span class="err">│</span>
-<span class="err">├─────────┼─────────┼───────────┼──────────┼─────┤</span>
-<span class="err">│</span><span class="nv">Erik</span><span class="w"> </span><span class="nv">O</span><span class="na">.</span><span class="w">  </span><span class="err">│</span><span class="nv">Stockholm</span><span class="err">│</span><span class="nv">Gothenburg</span><span class="w"> </span><span class="err">│</span><span class="m">2024</span><span class="o">-</span><span class="m">12</span><span class="o">-</span><span class="m">01</span><span class="err">│</span><span class="m">14</span><span class="bp">:</span><span class="m">00</span><span class="err">│</span>
-<span class="err">├─────────┼─────────┼───────────┼──────────┼─────┤</span>
-<span class="err">│</span><span class="nv">Michel</span><span class="w"> </span><span class="nv">A</span><span class="na">.</span><span class="err">│</span><span class="nv">London</span><span class="w">   </span><span class="err">│</span><span class="nv">Los</span><span class="w"> </span><span class="nv">Angeles</span><span class="err">│</span><span class="m">2024</span><span class="o">-</span><span class="m">12</span><span class="o">-</span><span class="m">03</span><span class="err">│</span><span class="m">11</span><span class="bp">:</span><span class="m">30</span><span class="err">│</span>
-<span class="err">└─────────┴─────────┴───────────┴──────────┴─────┘</span>
-<span class="w">      </span><span class="nv">flights</span><span class="w"> </span><span class="nv">on_date</span><span class="w"> </span><span class="s1">&#39;2024-12-01&#39;</span>
-<span class="err">┌─────────┬─────────┬───────────┬──────────┬─────┐</span>
-<span class="err">│</span><span class="nv">Jari</span><span class="w"> </span><span class="nv">N</span><span class="na">.</span><span class="w">  </span><span class="err">│</span><span class="nv">Helsinki</span><span class="w"> </span><span class="err">│</span><span class="nv">Tallinn</span><span class="w">    </span><span class="err">│</span><span class="m">2024</span><span class="o">-</span><span class="m">12</span><span class="o">-</span><span class="m">01</span><span class="err">│</span><span class="m">08</span><span class="bp">:</span><span class="m">00</span><span class="err">│</span>
-<span class="err">├─────────┼─────────┼───────────┼──────────┼─────┤</span>
-<span class="err">│</span><span class="nv">Erik</span><span class="w"> </span><span class="nv">O</span><span class="na">.</span><span class="w">  </span><span class="err">│</span><span class="nv">Stockholm</span><span class="err">│</span><span class="nv">Gothenburg</span><span class="w"> </span><span class="err">│</span><span class="m">2024</span><span class="o">-</span><span class="m">12</span><span class="o">-</span><span class="m">01</span><span class="err">│</span><span class="m">14</span><span class="bp">:</span><span class="m">00</span><span class="err">│</span>
-<span class="err">└─────────┴─────────┴───────────┴──────────┴─────┘</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      flights
+┌─────────┬─────────┬───────────┬──────────┬─────┐
+│Jari N.  │Helsinki │Tallinn    │2024-12-01│08:00│
+├─────────┼─────────┼───────────┼──────────┼─────┤
+│Erik O.  │Stockholm│Gothenburg │2024-12-01│14:00│
+├─────────┼─────────┼───────────┼──────────┼─────┤
+│Michel A.│London   │Los Angeles│2024-12-03│11:30│
+└─────────┴─────────┴───────────┴──────────┴─────┘
+      flights on_date '2024-12-01'
+┌─────────┬─────────┬───────────┬──────────┬─────┐
+│Jari N.  │Helsinki │Tallinn    │2024-12-01│08:00│
+├─────────┼─────────┼───────────┼──────────┼─────┤
+│Erik O.  │Stockholm│Gothenburg │2024-12-01│14:00│
+└─────────┴─────────┴───────────┴──────────┴─────┘</code></pre>
 <p><div class="problem">
     <span class="problemspan">on_date←</span>
     <input class="probleminput" type="text" id="input_ch5_p3" placeholder="your solution here">
@@ -2469,29 +2471,28 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 4</p>
 <p>Given an array of cities with their latitudes and longitudes as right argument ⍵, create a function to return a matrix of absolute differences in their latitude and longitudes in the following format</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">cities</span>
-<span class="err">┌────────┬───────┬─────────┐</span>
-<span class="err">│</span><span class="nv">Helsinki</span><span class="err">│</span><span class="m">60.1695</span><span class="err">│</span><span class="m">24.9354</span><span class="w">  </span><span class="err">│</span>
-<span class="err">├────────┼───────┼─────────┤</span>
-<span class="err">│</span><span class="nv">Juneau</span><span class="w">  </span><span class="err">│</span><span class="m">58.3019</span><span class="err">│</span><span class="m">¯134.4197</span><span class="err">│</span>
-<span class="err">├────────┼───────┼─────────┤</span>
-<span class="err">│</span><span class="nv">Beirut</span><span class="w">  </span><span class="err">│</span><span class="m">33.8886</span><span class="err">│</span><span class="m">35.4955</span><span class="w">  </span><span class="err">│</span>
-<span class="err">├────────┼───────┼─────────┤</span>
-<span class="err">│</span><span class="nv">Havana</span><span class="w">  </span><span class="err">│</span><span class="m">23.1136</span><span class="err">│</span><span class="m">¯82.3666</span><span class="w"> </span><span class="err">│</span>
-<span class="err">└────────┴───────┴─────────┘</span>
-<span class="w">      </span><span class="nv">distance</span><span class="w"> </span><span class="nv">cities</span>
-<span class="err">┌────────┬───────────────┬────────────────┬────────────────┬───────────────┐</span>
-<span class="err">│</span><span class="nv">X</span><span class="w">       </span><span class="err">│</span><span class="nv">Helsinki</span><span class="w">       </span><span class="err">│</span><span class="nv">Juneau</span><span class="w">          </span><span class="err">│</span><span class="nv">Beirut</span><span class="w">          </span><span class="err">│</span><span class="nv">Havana</span><span class="w">         </span><span class="err">│</span>
-<span class="err">├────────┼───────────────┼────────────────┼────────────────┼───────────────┤</span>
-<span class="err">│</span><span class="nv">Helsinki</span><span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w">            </span><span class="err">│</span><span class="m">1.8676</span><span class="w"> </span><span class="m">159.3551</span><span class="w"> </span><span class="err">│</span><span class="m">26.2809</span><span class="w"> </span><span class="m">10.5601</span><span class="w"> </span><span class="err">│</span><span class="m">37.0559</span><span class="w"> </span><span class="m">107.302</span><span class="err">│</span>
-<span class="err">├────────┼───────────────┼────────────────┼────────────────┼───────────────┤</span>
-<span class="err">│</span><span class="nv">Juneau</span><span class="w">  </span><span class="err">│</span><span class="m">1.8676</span><span class="w"> </span><span class="m">159.3551</span><span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w">             </span><span class="err">│</span><span class="m">24.4133</span><span class="w"> </span><span class="m">169.9152</span><span class="err">│</span><span class="m">35.1883</span><span class="w"> </span><span class="m">52.0531</span><span class="err">│</span>
-<span class="err">├────────┼───────────────┼────────────────┼────────────────┼───────────────┤</span>
-<span class="err">│</span><span class="nv">Beirut</span><span class="w">  </span><span class="err">│</span><span class="m">26.2809</span><span class="w"> </span><span class="m">10.5601</span><span class="err">│</span><span class="m">24.4133</span><span class="w"> </span><span class="m">169.9152</span><span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w">             </span><span class="err">│</span><span class="m">10.775</span><span class="w"> </span><span class="m">117.8621</span><span class="err">│</span>
-<span class="err">├────────┼───────────────┼────────────────┼────────────────┼───────────────┤</span>
-<span class="err">│</span><span class="nv">Havana</span><span class="w">  </span><span class="err">│</span><span class="m">37.0559</span><span class="w"> </span><span class="m">107.302</span><span class="err">│</span><span class="m">35.1883</span><span class="w"> </span><span class="m">52.0531</span><span class="w"> </span><span class="err">│</span><span class="m">10.775</span><span class="w"> </span><span class="m">117.8621</span><span class="w"> </span><span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w">            </span><span class="err">│</span>
-<span class="err">└────────┴───────────────┴────────────────┴────────────────┴───────────────┘</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      cities
+┌────────┬───────┬─────────┐
+│Helsinki│60.1695│24.9354  │
+├────────┼───────┼─────────┤
+│Juneau  │58.3019│¯134.4197│
+├────────┼───────┼─────────┤
+│Beirut  │33.8886│35.4955  │
+├────────┼───────┼─────────┤
+│Havana  │23.1136│¯82.3666 │
+└────────┴───────┴─────────┘
+      distance cities
+┌────────┬───────────────┬────────────────┬────────────────┬───────────────┐
+│X       │Helsinki       │Juneau          │Beirut          │Havana         │
+├────────┼───────────────┼────────────────┼────────────────┼───────────────┤
+│Helsinki│0 0            │1.8676 159.3551 │26.2809 10.5601 │37.0559 107.302│
+├────────┼───────────────┼────────────────┼────────────────┼───────────────┤
+│Juneau  │1.8676 159.3551│0 0             │24.4133 169.9152│35.1883 52.0531│
+├────────┼───────────────┼────────────────┼────────────────┼───────────────┤
+│Beirut  │26.2809 10.5601│24.4133 169.9152│0 0             │10.775 117.8621│
+├────────┼───────────────┼────────────────┼────────────────┼───────────────┤
+│Havana  │37.0559 107.302│35.1883 52.0531 │10.775 117.8621 │0 0            │
+└────────┴───────────────┴────────────────┴────────────────┴───────────────┘</code></pre>
 <p>Hint: Remove the labels from the matrix before computing the distances, then add them afterwards. Use the rank operator ⍤1 2.</p>
 <p><div class="problem">
     <span class="problemspan">distance←</span>
@@ -2504,23 +2505,22 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 5</p>
 <p>Write a function to add an extra floor number column to a hotel reservation array. The floor number is always the first digit of the room number, which is stored as a character vector.</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">bookings</span>
-<span class="err">┌─────────┬──────────┬───┐</span>
-<span class="err">│</span><span class="nv">Jari</span><span class="w"> </span><span class="nv">N</span><span class="na">.</span><span class="w">  </span><span class="err">│</span><span class="m">2024</span><span class="o">-</span><span class="m">12</span><span class="o">-</span><span class="m">01</span><span class="err">│</span><span class="m">427</span><span class="err">│</span>
-<span class="err">├─────────┼──────────┼───┤</span>
-<span class="err">│</span><span class="nv">Erik</span><span class="w"> </span><span class="nv">O</span><span class="na">.</span><span class="w">  </span><span class="err">│</span><span class="m">2024</span><span class="o">-</span><span class="m">12</span><span class="o">-</span><span class="m">01</span><span class="err">│</span><span class="m">506</span><span class="err">│</span>
-<span class="err">├─────────┼──────────┼───┤</span>
-<span class="err">│</span><span class="nv">Michel</span><span class="w"> </span><span class="nv">A</span><span class="na">.</span><span class="err">│</span><span class="m">2024</span><span class="o">-</span><span class="m">12</span><span class="o">-</span><span class="m">03</span><span class="err">│</span><span class="m">315</span><span class="err">│</span>
-<span class="err">└─────────┴──────────┴───┘</span>
-<span class="w">      </span><span class="nv">floor</span><span class="w"> </span><span class="nv">bookings</span>
-<span class="err">┌─────────┬──────────┬───┬─┐</span>
-<span class="err">│</span><span class="nv">Jari</span><span class="w"> </span><span class="nv">N</span><span class="na">.</span><span class="w">  </span><span class="err">│</span><span class="m">2024</span><span class="o">-</span><span class="m">12</span><span class="o">-</span><span class="m">01</span><span class="err">│</span><span class="m">427</span><span class="err">│</span><span class="m">4</span><span class="err">│</span>
-<span class="err">├─────────┼──────────┼───┼─┤</span>
-<span class="err">│</span><span class="nv">Erik</span><span class="w"> </span><span class="nv">O</span><span class="na">.</span><span class="w">  </span><span class="err">│</span><span class="m">2024</span><span class="o">-</span><span class="m">12</span><span class="o">-</span><span class="m">01</span><span class="err">│</span><span class="m">506</span><span class="err">│</span><span class="m">5</span><span class="err">│</span>
-<span class="err">├─────────┼──────────┼───┼─┤</span>
-<span class="err">│</span><span class="nv">Michel</span><span class="w"> </span><span class="nv">A</span><span class="na">.</span><span class="err">│</span><span class="m">2024</span><span class="o">-</span><span class="m">12</span><span class="o">-</span><span class="m">03</span><span class="err">│</span><span class="m">315</span><span class="err">│</span><span class="m">3</span><span class="err">│</span>
-<span class="err">└─────────┴──────────┴───┴─┘</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      bookings
+┌─────────┬──────────┬───┐
+│Jari N.  │2024-12-01│427│
+├─────────┼──────────┼───┤
+│Erik O.  │2024-12-01│506│
+├─────────┼──────────┼───┤
+│Michel A.│2024-12-03│315│
+└─────────┴──────────┴───┘
+      floor bookings
+┌─────────┬──────────┬───┬─┐
+│Jari N.  │2024-12-01│427│4│
+├─────────┼──────────┼───┼─┤
+│Erik O.  │2024-12-01│506│5│
+├─────────┼──────────┼───┼─┤
+│Michel A.│2024-12-03│315│3│
+└─────────┴──────────┴───┴─┘</code></pre>
 <p><div class="problem">
     <span class="problemspan">floor←</span>
     <input class="probleminput" type="text" id="input_ch5_p5" placeholder="your solution here">
@@ -2532,27 +2532,27 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 6</p>
 <p>Write a function to group an array of hotel bookings by floor.</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">bookings</span>
-<span class="err">┌─────────┬──────────┬───┬─┐</span>
-<span class="err">│</span><span class="nv">Jari</span><span class="w"> </span><span class="nv">N</span><span class="na">.</span><span class="w">  </span><span class="err">│</span><span class="m">2024</span><span class="o">-</span><span class="m">12</span><span class="o">-</span><span class="m">01</span><span class="err">│</span><span class="m">427</span><span class="err">│</span><span class="m">4</span><span class="err">│</span>
-<span class="err">├─────────┼──────────┼───┼─┤</span>
-<span class="err">│</span><span class="nv">Erik</span><span class="w"> </span><span class="nv">O</span><span class="na">.</span><span class="w">  </span><span class="err">│</span><span class="m">2024</span><span class="o">-</span><span class="m">12</span><span class="o">-</span><span class="m">01</span><span class="err">│</span><span class="m">506</span><span class="err">│</span><span class="m">5</span><span class="err">│</span>
-<span class="err">├─────────┼──────────┼───┼─┤</span>
-<span class="err">│</span><span class="nv">Michel</span><span class="w"> </span><span class="nv">A</span><span class="na">.</span><span class="err">│</span><span class="m">2024</span><span class="o">-</span><span class="m">12</span><span class="o">-</span><span class="m">03</span><span class="err">│</span><span class="m">415</span><span class="err">│</span><span class="m">4</span><span class="err">│</span>
-<span class="err">└─────────┴──────────┴───┴─┘</span>
-<span class="w">      </span><span class="nv">group</span><span class="w"> </span><span class="nv">bookings</span>
-<span class="err">┌────────────────────────────┐</span>
-<span class="err">│┌─────────┬──────────┬───┬─┐│</span>
-<span class="err">││</span><span class="nv">Jari</span><span class="w"> </span><span class="nv">N</span><span class="na">.</span><span class="w">  </span><span class="err">│</span><span class="m">2024</span><span class="o">-</span><span class="m">12</span><span class="o">-</span><span class="m">01</span><span class="err">│</span><span class="m">427</span><span class="err">│</span><span class="m">4</span><span class="err">││</span>
-<span class="err">│├─────────┼──────────┼───┼─┤│</span>
-<span class="err">││</span><span class="nv">Michel</span><span class="w"> </span><span class="nv">A</span><span class="na">.</span><span class="err">│</span><span class="m">2024</span><span class="o">-</span><span class="m">12</span><span class="o">-</span><span class="m">03</span><span class="err">│</span><span class="m">415</span><span class="err">│</span><span class="m">4</span><span class="err">││</span>
-<span class="err">│└─────────┴──────────┴───┴─┘│</span>
-<span class="err">├────────────────────────────┤</span>
-<span class="err">│┌───────┬──────────┬───┬─┐</span><span class="w">  </span><span class="err">│</span>
-<span class="err">││</span><span class="nv">Erik</span><span class="w"> </span><span class="nv">O</span><span class="na">.</span><span class="err">│</span><span class="m">2024</span><span class="o">-</span><span class="m">12</span><span class="o">-</span><span class="m">01</span><span class="err">│</span><span class="m">506</span><span class="err">│</span><span class="m">5</span><span class="err">│</span><span class="w">  </span><span class="err">│</span>
-<span class="err">│└───────┴──────────┴───┴─┘</span><span class="w">  </span><span class="err">│</span>
-<span class="err">└────────────────────────────┘</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      bookings
+┌─────────┬──────────┬───┬─┐
+│Jari N.  │2024-12-01│427│4│
+├─────────┼──────────┼───┼─┤
+│Erik O.  │2024-12-01│506│5│
+├─────────┼──────────┼───┼─┤
+│Michel A.│2024-12-03│415│4│
+└─────────┴──────────┴───┴─┘
+      group bookings
+┌────────────────────────────┐
+│┌─────────┬──────────┬───┬─┐│
+││Jari N.  │2024-12-01│427│4││
+│├─────────┼──────────┼───┼─┤│
+││Michel A.│2024-12-03│415│4││
+│└─────────┴──────────┴───┴─┘│
+├────────────────────────────┤
+│┌───────┬──────────┬───┬─┐  │
+││Erik O.│2024-12-01│506│5│  │
+│└───────┴──────────┴───┴─┘  │
+└────────────────────────────┘
+</code></pre>
 <p><div class="problem">
     <span class="problemspan">group←</span>
     <input class="probleminput" type="text" id="input_ch5_p6" placeholder="your solution here">
@@ -2564,19 +2564,19 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 7</p>
 <p>Write a function to turn the elements of a matrix into proportions of the sum of their row.</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">matrix</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span>
-<span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">1</span>
-<span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span>
-<span class="w">      </span><span class="nv">proportion</span><span class="w"> </span><span class="nv">matrix</span>
-<span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w">    </span><span class="m">0</span><span class="w">    </span><span class="m">0</span><span class="w">    </span><span class="m">1</span><span class="w">   </span>
-<span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w">    </span><span class="m">0</span><span class="w">    </span><span class="m">0.5</span><span class="w">  </span><span class="m">0.5</span><span class="w"> </span>
-<span class="m">0.2</span><span class="w"> </span><span class="m">0.2</span><span class="w">  </span><span class="m">0.2</span><span class="w">  </span><span class="m">0.2</span><span class="w">  </span><span class="m">0.2</span><span class="w"> </span>
-<span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w">    </span><span class="m">0</span><span class="w">    </span><span class="m">0.75</span><span class="w"> </span><span class="m">0.25</span>
-<span class="m">0</span><span class="w">   </span><span class="m">0.25</span><span class="w"> </span><span class="m">0.25</span><span class="w"> </span><span class="m">0.25</span><span class="w"> </span><span class="m">0.25</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      matrix
+0 0 0 0 1
+0 0 0 1 1
+1 1 1 1 1
+0 0 0 3 1
+0 1 1 1 1
+      proportion matrix
+0   0    0    0    1   
+0   0    0    0.5  0.5 
+0.2 0.2  0.2  0.2  0.2 
+0   0    0    0.75 0.25
+0   0.25 0.25 0.25 0.25
+</code></pre>
 <p><div class="problem">
     <span class="problemspan">proportion←</span>
     <input class="probleminput" type="text" id="input_ch5_p7" placeholder="your solution here">
@@ -2588,11 +2588,10 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 8</p>
 <p>Write a function to group runs of elements which are equal.</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">runs</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span>
-<span class="err">┌───┬─────┬───┬─┬───┐</span>
-<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="err">│</span><span class="m">9</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">9</span><span class="err">│</span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">3</span><span class="err">│</span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="err">│</span>
-<span class="err">└───┴─────┴───┴─┴───┘</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      runs 1 1 9 9 9 2 2 3 4 4
+┌───┬─────┬───┬─┬───┐
+│1 1│9 9 9│2 2│3│4 4│
+└───┴─────┴───┴─┴───┘</code></pre>
 <p><div class="problem">
     <span class="problemspan">runs←</span>
     <input class="probleminput" type="text" id="input_ch5_p8" placeholder="your solution here">
@@ -2604,41 +2603,40 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 9</p>
 <p>Write a function that generates a table of values for sin and cos, with number of values from 0 to 2pi determined by the right argument ⍵.</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">trig_table</span><span class="w"> </span><span class="m">4</span>
-<span class="err">┌───────────┬────────────────┬─────────────┐</span>
-<span class="err">│</span><span class="nv">x</span><span class="w">          </span><span class="err">│</span><span class="nv">sin</span><span class="w"> </span><span class="nv">x</span><span class="w">           </span><span class="err">│</span><span class="nv">cos</span><span class="w"> </span><span class="nv">x</span><span class="w">        </span><span class="err">│</span>
-<span class="err">├───────────┼────────────────┼─────────────┤</span>
-<span class="err">│</span><span class="m">0</span><span class="w">          </span><span class="err">│</span><span class="m">0</span><span class="w">               </span><span class="err">│</span><span class="m">1</span><span class="w">            </span><span class="err">│</span>
-<span class="err">├───────────┼────────────────┼─────────────┤</span>
-<span class="err">│</span><span class="m">1.256637061</span><span class="err">│</span><span class="m">0.9510565163</span><span class="w">    </span><span class="err">│</span><span class="m">0.3090169944</span><span class="w"> </span><span class="err">│</span>
-<span class="err">├───────────┼────────────────┼─────────────┤</span>
-<span class="err">│</span><span class="m">2.513274123</span><span class="err">│</span><span class="m">0.5877852523</span><span class="w">    </span><span class="err">│</span><span class="m">¯0.8090169944</span><span class="err">│</span>
-<span class="err">├───────────┼────────────────┼─────────────┤</span>
-<span class="err">│</span><span class="m">3.769911184</span><span class="err">│</span><span class="m">¯0.5877852523</span><span class="w">   </span><span class="err">│</span><span class="m">¯0.8090169944</span><span class="err">│</span>
-<span class="err">├───────────┼────────────────┼─────────────┤</span>
-<span class="err">│</span><span class="m">5.026548246</span><span class="err">│</span><span class="m">¯0.9510565163</span><span class="w">   </span><span class="err">│</span><span class="m">0.3090169944</span><span class="w"> </span><span class="err">│</span>
-<span class="err">├───────────┼────────────────┼─────────────┤</span>
-<span class="err">│</span><span class="m">6.283185307</span><span class="err">│</span><span class="m">¯2.449293598E¯16</span><span class="err">│</span><span class="m">1</span><span class="w">            </span><span class="err">│</span>
-<span class="err">└───────────┴────────────────┴─────────────┘</span>
-<span class="w">      </span><span class="nv">trig_table</span><span class="w"> </span><span class="m">1</span>
-<span class="err">┌───────────┬────────────────┬─────┐</span>
-<span class="err">│</span><span class="nv">x</span><span class="w">          </span><span class="err">│</span><span class="nv">sin</span><span class="w"> </span><span class="nv">x</span><span class="w">           </span><span class="err">│</span><span class="nv">cos</span><span class="w"> </span><span class="nv">x</span><span class="err">│</span>
-<span class="err">├───────────┼────────────────┼─────┤</span>
-<span class="err">│</span><span class="m">0</span><span class="w">          </span><span class="err">│</span><span class="m">0</span><span class="w">               </span><span class="err">│</span><span class="m">1</span><span class="w">    </span><span class="err">│</span>
-<span class="err">├───────────┼────────────────┼─────┤</span>
-<span class="err">│</span><span class="m">3.141592654</span><span class="err">│</span><span class="m">1.224646799E¯16</span><span class="w"> </span><span class="err">│</span><span class="m">¯1</span><span class="w">   </span><span class="err">│</span>
-<span class="err">├───────────┼────────────────┼─────┤</span>
-<span class="err">│</span><span class="m">6.283185307</span><span class="err">│</span><span class="m">¯2.449293598E¯16</span><span class="err">│</span><span class="m">1</span><span class="w">    </span><span class="err">│</span>
-<span class="err">└───────────┴────────────────┴─────┘</span>
-<span class="w">      </span><span class="nv">trig_table</span><span class="w"> </span><span class="m">0</span>
-<span class="err">┌───────────┬────────────────┬─────┐</span>
-<span class="err">│</span><span class="nv">x</span><span class="w">          </span><span class="err">│</span><span class="nv">sin</span><span class="w"> </span><span class="nv">x</span><span class="w">           </span><span class="err">│</span><span class="nv">cos</span><span class="w"> </span><span class="nv">x</span><span class="err">│</span>
-<span class="err">├───────────┼────────────────┼─────┤</span>
-<span class="err">│</span><span class="m">0</span><span class="w">          </span><span class="err">│</span><span class="m">0</span><span class="w">               </span><span class="err">│</span><span class="m">1</span><span class="w">    </span><span class="err">│</span>
-<span class="err">├───────────┼────────────────┼─────┤</span>
-<span class="err">│</span><span class="m">6.283185307</span><span class="err">│</span><span class="m">¯2.449293598E¯16</span><span class="err">│</span><span class="m">1</span><span class="w">    </span><span class="err">│</span>
-<span class="err">└───────────┴────────────────┴─────┘</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      trig_table 4
+┌───────────┬────────────────┬─────────────┐
+│x          │sin x           │cos x        │
+├───────────┼────────────────┼─────────────┤
+│0          │0               │1            │
+├───────────┼────────────────┼─────────────┤
+│1.256637061│0.9510565163    │0.3090169944 │
+├───────────┼────────────────┼─────────────┤
+│2.513274123│0.5877852523    │¯0.8090169944│
+├───────────┼────────────────┼─────────────┤
+│3.769911184│¯0.5877852523   │¯0.8090169944│
+├───────────┼────────────────┼─────────────┤
+│5.026548246│¯0.9510565163   │0.3090169944 │
+├───────────┼────────────────┼─────────────┤
+│6.283185307│¯2.449293598E¯16│1            │
+└───────────┴────────────────┴─────────────┘
+      trig_table 1
+┌───────────┬────────────────┬─────┐
+│x          │sin x           │cos x│
+├───────────┼────────────────┼─────┤
+│0          │0               │1    │
+├───────────┼────────────────┼─────┤
+│3.141592654│1.224646799E¯16 │¯1   │
+├───────────┼────────────────┼─────┤
+│6.283185307│¯2.449293598E¯16│1    │
+└───────────┴────────────────┴─────┘
+      trig_table 0
+┌───────────┬────────────────┬─────┐
+│x          │sin x           │cos x│
+├───────────┼────────────────┼─────┤
+│0          │0               │1    │
+├───────────┼────────────────┼─────┤
+│6.283185307│¯2.449293598E¯16│1    │
+└───────────┴────────────────┴─────┘</code></pre>
 <p><div class="problem">
     <span class="problemspan">trig_table←</span>
     <input class="probleminput" type="text" id="input_ch5_p9" placeholder="your solution here">
@@ -2661,28 +2659,27 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 11</p>
 <p>Write a function to remove all 2-cells of a matrix with sum less than 10.</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">M</span>
-<span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span>
-<span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span>
-<span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span>
+<pre class="highlight"><code class="language-apl">      M
+1  1  1
+1  1  1
+1  1  1
 
-<span class="m">1</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">3</span>
-<span class="m">4</span><span class="w">  </span><span class="m">5</span><span class="w">  </span><span class="m">6</span>
-<span class="m">7</span><span class="w">  </span><span class="m">8</span><span class="w">  </span><span class="m">9</span>
+1  2  3
+4  5  6
+7  8  9
 
-<span class="m">10</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">12</span>
-<span class="m">13</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">15</span>
-<span class="m">16</span><span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="m">18</span>
+10 11 12
+13 14 15
+16 17 18
 
-<span class="w">      </span><span class="nv">significant</span><span class="w"> </span><span class="nv">M</span>
-<span class="m">1</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">3</span>
-<span class="m">4</span><span class="w">  </span><span class="m">5</span><span class="w">  </span><span class="m">6</span>
-<span class="m">7</span><span class="w">  </span><span class="m">8</span><span class="w">  </span><span class="m">9</span>
+      significant M
+1  2  3
+4  5  6
+7  8  9
 
-<span class="m">10</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">12</span>
-<span class="m">13</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">15</span>
-<span class="m">16</span><span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="m">18</span>
-</code></pre></div>
+10 11 12
+13 14 15
+16 17 18</code></pre>
 <p><div class="problem">
     <span class="problemspan">significant←</span>
     <input class="probleminput" type="text" id="input_ch5_p11" placeholder="your solution here">
@@ -2695,21 +2692,20 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <p class="admonition-title">Write problem 12</p>
 <p>Write a function that takes in a right argument character vector and returns the matrix that the character vector represents.</p>
 <p>The character vector will have elements seprated by commas, 1-cells separated by semicolons, and 2-cells seprated by colons.</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="nv">a</span>
-<span class="nv">a</span><span class="o">,</span><span class="nv">b</span><span class="o">,</span><span class="nv">c</span><span class="o">,</span><span class="nv">d</span><span class="sr">;</span><span class="nv">e</span><span class="o">,</span><span class="nv">f</span><span class="o">,</span><span class="nv">g</span><span class="o">,</span><span class="nv">h</span><span class="bp">:</span><span class="m">1</span><span class="o">,</span><span class="m">2</span><span class="o">,</span><span class="m">3</span><span class="o">,</span><span class="m">4</span><span class="sr">;</span><span class="m">5</span><span class="o">,</span><span class="m">6</span><span class="o">,</span><span class="m">7</span><span class="o">,</span><span class="m">8</span>
+<pre class="highlight"><code class="language-apl">      a
+a,b,c,d;e,f,g,h:1,2,3,4;5,6,7,8
 
-<span class="w">      </span><span class="nv">array</span><span class="w"> </span><span class="nv">a</span>
-<span class="err">┌─┬─┬─┬─┐</span>
-<span class="err">│</span><span class="nv">a</span><span class="err">│</span><span class="nv">b</span><span class="err">│</span><span class="nv">c</span><span class="err">│</span><span class="nv">d</span><span class="err">│</span>
-<span class="err">├─┼─┼─┼─┤</span>
-<span class="err">│</span><span class="nv">e</span><span class="err">│</span><span class="nv">f</span><span class="err">│</span><span class="nv">g</span><span class="err">│</span><span class="nv">h</span><span class="err">│</span>
-<span class="err">└─┴─┴─┴─┘</span>
-<span class="err">┌─┬─┬─┬─┐</span>
-<span class="err">│</span><span class="m">1</span><span class="err">│</span><span class="m">2</span><span class="err">│</span><span class="m">3</span><span class="err">│</span><span class="m">4</span><span class="err">│</span>
-<span class="err">├─┼─┼─┼─┤</span>
-<span class="err">│</span><span class="m">5</span><span class="err">│</span><span class="m">6</span><span class="err">│</span><span class="m">7</span><span class="err">│</span><span class="m">8</span><span class="err">│</span>
-<span class="err">└─┴─┴─┴─┘</span>
-</code></pre></div>
+      array a
+┌─┬─┬─┬─┐
+│a│b│c│d│
+├─┼─┼─┼─┤
+│e│f│g│h│
+└─┴─┴─┴─┘
+┌─┬─┬─┬─┐
+│1│2│3│4│
+├─┼─┼─┼─┤
+│5│6│7│8│
+└─┴─┴─┴─┘</code></pre>
 <p>Hint: Use the partition ⊆ function</p>
 <p><div class="problem">
     <span class="problemspan">array←</span>
@@ -2738,6 +2734,12 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
         
       </main>
       
@@ -2819,7 +2821,7 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "nagivation.top", "navigation.footer", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.footer", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.92b07e13.min.js"></script>
@@ -2837,10 +2839,6 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/build/three.module.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/examples/jsm/"></script>
       
     
   </body>

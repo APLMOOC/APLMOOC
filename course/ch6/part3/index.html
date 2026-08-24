@@ -6,7 +6,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="A free online course in array programming with APL.">
       
+      
+      
+        <link rel="canonical" href="https://aplmooc.fi/course/ch6/part3/">
       
       
         <link rel="prev" href="../part2/">
@@ -2400,48 +2404,42 @@
 <p>The general problem is solved by the <code>⊤</code> encode and <code>⊥</code> decode functions, which convert to and from a different groupings of a number. Mathematically, this is converting between mixed-radix number systems.</p>
 <p>For the problems mentioned above, we implement solutions using encode and decode functions. The encode ⊤ function takes in a left argument vector of groupings and a right argument to be encoded.</p>
 <p>Let's start by converting 1000 seconds, we specify that a day has 24 hours, an hour has 60 minutes, and a minute has 60 seconds</p>
-<p><div class="highlight"><pre><span></span><code><span class="w">      </span><span class="c1">⍝ Converting 10000 seconds</span>
-<span class="w">      </span><span class="m">24</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="o">⊤</span><span class="w"> </span><span class="m">10000</span>
-<span class="m">2</span><span class="w"> </span><span class="m">46</span><span class="w"> </span><span class="m">40</span>
-</code></pre></div>
+<p><pre class="highlight"><code class="language-apl">      ⍝ Converting 10000 seconds
+      24 60 60 ⊤ 10000
+2 46 40</code></pre>
 The result is 2 hours, 46 minutes, and 40 seconds.</p>
 <p>The left argument can include decimal numbers, which is needed when dealing with an average number of years (beacuse of the existence of leap years, there are 365.25 days on average in a year)</p>
 <p>Converting a larger period of time, like one billion seconds</p>
-<div class="highlight"><pre><span></span><code><span class="w">       </span><span class="m">1000</span><span class="w"> </span><span class="m">365.25</span><span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="o">⊤</span><span class="w"> </span><span class="m">1000000000</span>
-<span class="w"> </span><span class="m">31</span><span class="w"> </span><span class="m">251.25</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">46</span><span class="w"> </span><span class="m">40</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">       1000 365.25 24 60 60 ⊤ 1000000000
+ 31 251.25 1 46 40</code></pre>
 <p>The result is 31 average years, 251.25 days, 1 hour, 46 minutes, and 40 seconds. Note that an extra grouping for the leftmost value had to be added.</p>
 <p>The decode function takes in a left argument vector of groupings and a right argument to be encoded. It can also take in one simple scalar left argument in case the groupings are equal.</p>
 <p>Converting the decimal number 10 to its byte representation</p>
-<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="p">(</span><span class="m">8</span><span class="na">/</span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="o">⊤</span><span class="w"> </span><span class="m">10</span>
-<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">    (8/2) ⊤ 10
+0 0 0 0 1 0 1 0</code></pre>
 <p>Converting the binary number <code>101010</code> to decimal</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="m">2</span><span class="w"> </span><span class="o">⊥</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span>
-<span class="m">42</span>
-<span class="w">      </span><span class="c1">⍝ Equivalent to</span>
-<span class="w">      </span><span class="p">(</span><span class="m">1</span><span class="o">×</span><span class="m">2</span><span class="o">*</span><span class="m">5</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="m">1</span><span class="o">×</span><span class="m">2</span><span class="o">*</span><span class="m">3</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="m">1</span><span class="o">×</span><span class="m">2</span><span class="o">*</span><span class="m">1</span><span class="p">)</span>
-<span class="m">42</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-apl">      2 ⊥ 1 0 1 0 1 0
+42
+      ⍝ Equivalent to
+      (1×2*5)+(1×2*3)+(1×2*1)
+42</code></pre>
 <p>In the next section, we will introduce a method to convert between bases without needing to know how many places are needed beforehand. </p>
 <p>As an example of converting between SI units of distance and imperial units, we convert one million millimeters. There are 10 millimeters in a centimeter, 10 centimeters in a decimeter, 10 decimeters in a meter, and so on</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="o">⊤</span><span class="w"> </span><span class="m">1000000</span>
-<span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-<span class="w">      </span><span class="c1">⍝ 1 kilometer</span>
+<pre class="highlight"><code class="language-apl">      10 10 10 10 10 10 10 ⊤ 1000000
+1 0 0 0 0 0 0
+      ⍝ 1 kilometer
 
-<span class="w">      </span><span class="c1">⍝ Convert from millimeters to mils (thousands of an inch)</span>
-<span class="w">      </span><span class="m">1000000</span><span class="w"> </span><span class="o">÷</span><span class="w"> </span><span class="m">0.0254</span>
-<span class="m">39370078.7402</span>
-</code></pre></div>
+      ⍝ Convert from millimeters to mils (thousands of an inch)
+      1000000 ÷ 0.0254
+39370078.7402</code></pre>
 <p>In imperial units, 1000 mils are in an inch, 12 inches are in a foot, 3 feet are in a yard, 1760 yards are in a mile, and 3 miles are in a league</p>
-<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="m">3</span><span class="w"> </span><span class="m">1760</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="m">1000</span><span class="w"> </span><span class="o">⊤</span><span class="w"> </span><span class="m">1000000</span><span class="w"> </span><span class="o">÷</span><span class="w"> </span><span class="m">0.0254</span>
-<span class="m">0</span><span class="w"> </span><span class="m">1093</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">78.7402</span>
-<span class="w">      </span><span class="c1">⍝ 1093 yards, 1 foot, 10 inches, 78.7402 mils</span>
+<pre class="highlight"><code class="language-apl">      3 1760 3 12 1000 ⊤ 1000000 ÷ 0.0254
+0 1093 1 10 78.7402
+      ⍝ 1093 yards, 1 foot, 10 inches, 78.7402 mils
 
-<span class="w">      </span><span class="c1">⍝ Back to millimeters</span>
-<span class="w">      </span><span class="m">0.0254</span><span class="w"> </span><span class="o">×</span><span class="w"> </span><span class="p">(</span><span class="m">1000</span><span class="w"> </span><span class="m">1760</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="m">1000</span><span class="w"> </span><span class="o">⊥</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1093</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">78.7402</span><span class="p">)</span>
-<span class="m">1000000</span>
-</code></pre></div>
+      ⍝ Back to millimeters
+      0.0254 × (1000 1760 3 12 1000 ⊥ 0 1093 1 10 78.7402)
+1000000</code></pre>
 
 
 
@@ -2461,6 +2459,12 @@ The result is 2 hours, 46 minutes, and 40 seconds.</p>
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
         
       </main>
       
@@ -2542,7 +2546,7 @@ The result is 2 hours, 46 minutes, and 40 seconds.</p>
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "nagivation.top", "navigation.footer", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.footer", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.92b07e13.min.js"></script>
@@ -2560,10 +2564,6 @@ The result is 2 hours, 46 minutes, and 40 seconds.</p>
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/build/three.module.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/npm/three@0.166.0/examples/jsm/"></script>
       
     
   </body>
