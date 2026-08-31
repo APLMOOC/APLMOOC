@@ -64,44 +64,35 @@ The exercises are not checked or graded: use them to check your knowledge!
 
     === "Input"
 
-        The following three arrays contain arrays of words in different languages, what kind of arrays will the following code output?
-    
+        The two arrays below list some English and Finnish words.
+
         ```apl
-              words
-        the of and to a in for is on that ...
-              mots
-        de la à le et les des une en un ...
-              sanat
-        on ei ja se hän en mitä että ole olen ...
-        
-              words ∩ mots
-        
-              words ∩ sanat
-              
-              mots ∩ sanat
-              
+              ⎕ ← EN ← 'home' 'cat' 'tie' 'door' 'on' 'me' 'auto'
+
+              ⎕ ← FI ← 'kissa' 'ovi' 'auto' 'on' 'tie' 'home' 'talo'
+
+              EN ∩ FI
+
+              FI ∩ EN
+
         ```
 
     === "Output"
 
         ```apl
-              words
-        the of and to a in for is on that ...
-              mots
-        de la à le et les des une en un ...
-              sanat
-        on ei ja se hän en mitä että ole olen ...
-              
-              ⍝ Words in both English and French
-              words ∩ mots
-        est par plus son dont sans premier pays fin place millions site chef grand ensemble formation moment match public service question tour services ... 
-              ⍝ Words in both English and Finnish
-              words ∩ sanat
-        on he anna kai no asia asian auto oven ok lisa radio join uni
-              ⍝ Words in both Finnish and French
-              mots ∩ sanat
-        en plus son se ne fin loi peloton rien aura bon moi voit toi vois saisit union
+              ⎕ ← EN ← 'home' 'cat' 'tie' 'door' 'on' 'me' 'auto'
+        home  cat  tie  door  on  me  auto
+              ⎕ ← FI ← 'kissa' 'ovi' 'auto' 'on' 'tie' 'home' 'talo'
+        kissa  ovi  auto  on  tie  home  talo
+              ⍝ English words that are also Finnish words
+              EN ∩ FI
+        home  tie  on  auto
+              ⍝ Finnish words that are also English words
+              FI ∩ EN
+        auto  on  tie  home
         ```
+
+        The intersection ``∩`` function keeps the elements of the left array that also occur in the right array, so the result takes its order from the left argument. That is, ``EN ∩ FI`` lists them in the order they appear in ``EN``, and ``FI ∩ EN`` in the order they appear in ``FI``. 
 
 ---
 
