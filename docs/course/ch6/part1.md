@@ -14,12 +14,16 @@ Quotation is an important part of reasoning about language; being able to refer 
 
 Thus, if a programming language allows referring to itself in such a way, it must allow not only the creation of quotations, but also the ability to unquote these quotations. In APL, this functionality is provided by Strings, and the Format ``⍕`` and Execute ``⍎``  functions.
 
+## Strings
+
 Strings were mentioned earlier in the course, as arrays of individual characters denoted using ``'`` quotation marks like ``'the following'``. String also allow quotation marks as characters, using two quotation marks ``''`` one after the other, ``'like ''this''!'``.
 
 ```apl
       'like ''this''!'
 like 'this'!
 ```
+
+## Execute
 
 Then, the Execute ``⍎`` function, as its name suggests, executes expressions stored in a string.
 
@@ -51,6 +55,8 @@ ABCDEFGHIJKLMNOP
 ```
 
 Execute ``⍎`` is a powerful function, and is considered unsafe when used together with arbitrary user input since it allows for arbitrary code execution.
+
+## Format
 
 If the only tools available to deal with quotations were strings and the execute ``⍎`` function, then it would only ever be possible to create quotations specified by the program itself when writing the program. Quoting a numerical array as the result of a computation would not be possible. This naturally leads to the creation of the Format ``⍕`` function. The Format ``⍕`` function allows not only this basic functionality, but also extra styling options for the resulting string
 
@@ -88,6 +94,8 @@ If the only tools available to deal with quotations were strings and the execute
       ⍴⍕Y
 5 25
 ```
+
+## Format specification
 
 Notice that the quote of the array Y is a string of shape ``5 25``, giving ``5`` characters for each column of the array. This can be modified by providing a left argument array
 

@@ -349,14 +349,14 @@ The exercises are not checked or graded: use them to check your knowledge!
         0 0 0 0 0 0 0 0 0 1
               
               (2∘⍴⍴(1∘,⍴∘0))
-        ┌─┼───┐
-        ∘ ⍴ ┌─┴─┐
-       ┌┴┐  ∘   ∘
-       2 ⍴ ┌┴┐ ┌┴┐
-           1 , ⍴ 0
+         ┌─┼───┐
+         ∘ ⍴ ┌─┴─┐
+        ┌┴┐  ∘   ∘
+        2 ⍴ ┌┴┐ ┌┴┐
+            1 , ⍴ 0
+        ```
 
         This is a fork over an atop, the dfn equivalent is {(2⍴⍵)⍴1,⍵⍴0}
-        ```
 
 ---
 

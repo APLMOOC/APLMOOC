@@ -55,6 +55,8 @@ Note that ``X(f⍣g)Y`` is equivalent to binding the left argument as the left a
 40
 ```
 
+## Repeat
+
 The right argument to the power ``⍣`` operator can be a function, ``f⍣g``, where ``f`` is applied until the value of ``⍺g⍵``, with left and right arguments the current and previous value of ``f``, returns ``1``. For example, the following code multiplies ``5`` by ``2`` until the current value is greater than ``100``.
 
 ```apl
@@ -74,6 +76,8 @@ This is equivalent to
       ⍬ {⍺>100: ⍺ ⋄ (2×⍵) ∇ ⍺} 5
 160
 ```
+
+## Fixed points
 
 For a more complicated example, the power operator can also be used to find fixed points of functions.
 
@@ -103,6 +107,8 @@ When the power operator is applied to a negative right argument, it acts as the 
 ```
 
 ---
+
+## Indexed assignment
 
 Recall how we modified elements of arrays in Chapter 2; the elements were specified on the left-hand side of the assignment, and the replacement values were specified on the right.
 
@@ -142,6 +148,8 @@ It was also possible to replace specified arrays with other arrays as long as th
 21 22 23 24 25
 ```
 
+## Selective assignment
+
 The story does not end there, for any expression that selects from an array can be used on the left-hand side of the assignment.
 
 ```apl
@@ -166,6 +174,8 @@ The story does not end there, for any expression that selects from an array can 
 5 5 5 5  5
 5 5 5 5  5
 ```
+
+## Masked assignment
 
 With replicate each, the right-hand side can also be an array of the same shape as the original array to then selectively copy values depending on the left-hand side.
 
@@ -201,6 +211,8 @@ With replicate each, the right-hand side can also be an array of the same shape 
 16 Q 18 19 20
 21 V  W  X  Y
 ```
+
+## At operator
 
 For other types of replacements, the At ``@`` operator comes in handy. For array left and right arguments, the At ``@`` operator returns a function which replaces the elements at the indices specified by the right argument, using the values of the left argument. Note that the arrays have to match shape. Then, replacing each element masked by ``B`` using successive letters of the alphabet,
 

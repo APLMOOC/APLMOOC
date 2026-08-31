@@ -31,6 +31,8 @@ Recall that in previous sections our temperature arrays contained both numbers a
 
 Because the contents of this array are mixed, if boxing is enabled, APL draws boxes to separate the entries visually.
 
+## Accidental nesting
+
 This also means that it's possible to accidentally create a matrix of vectors rather than a matrix of their elements. Suppose we created the full array ``TData`` immediately from T1 and T2 like so
 
 ```apl
@@ -54,6 +56,8 @@ This also means that it's possible to accidentally create a matrix of vectors ra
 We would get a very large array of the vectors T1 and T2! (Try it!) 
 
 In APL, elements of arrays can be of any rank. In the above code, we create an array of vectors rather than an array of their scalars because ``T1 T2`` is a vector whose elements are ``T1`` and ``T2``. 
+
+## Catenate and ravel
 
 The proper way to combine two vectors into a single longer vector is using the catenate `,` function,  generally joining two arrays along a common edge. Monadically, the ravel `,` function can be used to "unravel" a matrix into a vector of its elements in top-down left-right order, called ravel order.
 

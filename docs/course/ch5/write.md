@@ -79,11 +79,11 @@ Since this course is still a work-in-progress, solving the write exercises will 
     │Michel A.│London   │Los Angeles│2024-12-03│11:30│
     └─────────┴─────────┴───────────┴──────────┴─────┘
           flights on_date '2024-12-01'
-    ┌─────────┬─────────┬───────────┬──────────┬─────┐
-    │Jari N.  │Helsinki │Tallinn    │2024-12-01│08:00│
-    ├─────────┼─────────┼───────────┼──────────┼─────┤
-    │Erik O.  │Stockholm│Gothenburg │2024-12-01│14:00│
-    └─────────┴─────────┴───────────┴──────────┴─────┘
+    ┌───────┬─────────┬──────────┬──────────┬─────┐
+    │Jari N.│Helsinki │Tallinn   │2024-12-01│08:00│
+    ├───────┼─────────┼──────────┼──────────┼─────┤
+    │Erik O.│Stockholm│Gothenburg│2024-12-01│14:00│
+    └───────┴─────────┴──────────┴──────────┴─────┘
     ```
     
 
@@ -150,7 +150,7 @@ Since this course is still a work-in-progress, solving the write exercises will 
     ├─────────┼──────────┼───┤
     │Erik O.  │2024-12-01│506│
     ├─────────┼──────────┼───┤
-    │Michel A.│2024-12-03│315│
+    │Michel A.│2024-12-03│415│
     └─────────┴──────────┴───┘
           floor bookings
     ┌─────────┬──────────┬───┬─┐
@@ -158,7 +158,7 @@ Since this course is still a work-in-progress, solving the write exercises will 
     ├─────────┼──────────┼───┼─┤
     │Erik O.  │2024-12-01│506│5│
     ├─────────┼──────────┼───┼─┤
-    │Michel A.│2024-12-03│315│3│
+    │Michel A.│2024-12-03│415│4│
     └─────────┴──────────┴───┴─┘
     ```
     
@@ -186,17 +186,13 @@ Since this course is still a work-in-progress, solving the write exercises will 
     │Michel A.│2024-12-03│415│4│
     └─────────┴──────────┴───┴─┘
           group bookings
-    ┌────────────────────────────┐
-    │┌─────────┬──────────┬───┬─┐│
-    ││Jari N.  │2024-12-01│427│4││
-    │├─────────┼──────────┼───┼─┤│
-    ││Michel A.│2024-12-03│415│4││
-    │└─────────┴──────────┴───┴─┘│
-    ├────────────────────────────┤
-    │┌───────┬──────────┬───┬─┐  │
-    ││Erik O.│2024-12-01│506│5│  │
-    │└───────┴──────────┴───┴─┘  │
-    └────────────────────────────┘
+    ┌────────────────────────────┬──────────────────────────┐
+    │┌─────────┬──────────┬───┬─┐│┌───────┬──────────┬───┬─┐│
+    ││Jari N.  │2024-12-01│427│4│││Erik O.│2024-12-01│506│5││
+    │├─────────┼──────────┼───┼─┤│└───────┴──────────┴───┴─┘│
+    ││Michel A.│2024-12-03│415│4││                          │
+    │└─────────┴──────────┴───┴─┘│                          │
+    └────────────────────────────┴──────────────────────────┘
     
     ```
     
@@ -262,7 +258,7 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
 !!! write-problem "Write problem 9"
     
-    Write a function that generates a table of values for sin and cos, with number of values from 0 to 2pi determined by the right argument ⍵.
+    Write a function that generates a table of values for sin and cos from 0 to 2pi. The right argument ⍵ is the number of interior points, that is, the number of points strictly between 0 and 2pi. The step between consecutive points is 2pi÷⍵+1. The table has ⍵+2 rows of values.
 
     ```apl
           trig_table 4
@@ -313,7 +309,18 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
 !!! write-problem "Write problem 10"
     
-    Write a function to remove all zero columns from a matrix.
+    Write a function to remove all zero columns from a matrix. 
+
+    ```apl
+          M
+    0 1 0 2
+    0 3 0 0
+    0 4 0 5
+          nonzero M
+    1 2
+    3 0
+    4 5
+    ```
 
     <div class="problem">
         <span class="problemspan">nonzero←</span>
@@ -326,26 +333,26 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
 !!! write-problem "Write problem 11"
     
-    Write a function to remove all 2-cells of a matrix with sum less than 10.
+    Write a function to remove all 2-cells of a rank-3 array with sum less than 10.
 
     ```apl
           M
-    1  1  1
-    1  1  1
-    1  1  1
+     1  1  1
+     1  1  1
+     1  1  1
             
-    1  2  3
-    4  5  6
-    7  8  9
+     1  2  3
+     4  5  6
+     7  8  9
             
     10 11 12
     13 14 15
     16 17 18
 
           significant M
-    1  2  3
-    4  5  6
-    7  8  9
+     1  2  3
+     4  5  6
+     7  8  9
             
     10 11 12
     13 14 15
@@ -366,7 +373,7 @@ Since this course is still a work-in-progress, solving the write exercises will 
     
     Write a function that takes in a right argument character vector and returns the matrix that the character vector represents.
 
-    The character vector will have elements seprated by commas, 1-cells separated by semicolons, and 2-cells seprated by colons.
+    The character vector will have elements separated by commas, 1-cells separated by semicolons, and 2-cells separated by colons.
 
     ```apl
           a

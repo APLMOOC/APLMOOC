@@ -21,7 +21,7 @@ Since this course is still a work-in-progress, solving the write exercises will 
 ---
 
 !!! write-problem "Write problem 1"
-    Write a dfn that calculates the harmonic mean of its left and right arguments, mathematically defined as $$H(\alpha,\omega) = \frac{1}{\frac{1}{\alpha}+\frac{1}{\omega}}$$
+    Write a dfn that calculates the harmonic mean of its left and right arguments, mathematically defined as $H(\alpha,\omega) = \frac{1}{\frac{1}{\alpha}+\frac{1}{\omega}}$
     <div class="problem">
         <span class="problemspan">H←</span>
         <input class="probleminput" type="text" id="input_ch3_p1" placeholder="your solution here">
@@ -32,7 +32,7 @@ Since this course is still a work-in-progress, solving the write exercises will 
 ---
 
 !!! write-problem "Write problem 2"
-    Write a dfn that calculates the Heronian mean of its left and right arguments, mathematically defined as $$H(\alpha,\omega) = \frac{1}{3} \cdot (A+\sqrt{AB}+B)$$
+    Write a dfn that calculates the Heronian mean of its left and right arguments, mathematically defined as $H(\alpha,\omega) = \frac{1}{3} \cdot (A+\sqrt{AB}+B)$
     <div class="problem">
         <span class="problemspan">H←</span>
         <input class="probleminput" type="text" id="input_ch3_p2" placeholder="your solution here">
@@ -43,7 +43,7 @@ Since this course is still a work-in-progress, solving the write exercises will 
 ---
 
 !!! write-problem "Write problem 3"
-    Write a dfn that calculates the geometric mean of its left and right arguments, mathematically defined as $$H(\alpha,\omega) = \sqrt{AB}$$
+    Write a dfn that calculates the geometric mean of its left and right arguments, mathematically defined as $H(\alpha,\omega) = \sqrt{AB}$
     <div class="problem">
         <span class="problemspan">H←</span>
         <input class="probleminput" type="text" id="input_ch3_p2" placeholder="your solution here">
@@ -115,23 +115,25 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
 !!! write-problem "Write problem 7"
     
-    Recall the tape-based machine given in the Chapter 2 Write problem 12. 
+    Recall the table of rock, paper, scissors outcomes given in the Chapter 2 Write problem 12.
 
     ```apl
-          INSTRUCTIONS
-      ┌─────┬─────┬─────┐
-      │1 R 2│1 L 1│1 L 2│
-      ├─────┼─────┼─────┤
-      │1 L 3│1 R 2│1 N H│
-      └─────┴─────┴─────┘
+          ROUND
+    ┌─────────┬─────────┬─────────┐
+    │DRAW     │P2 COVERS│P1 BLUNTS│
+    ├─────────┼─────────┼─────────┤
+    │P1 COVERS│DRAW     │P2 CUTS  │
+    ├─────────┼─────────┼─────────┤
+    │P2 BLUNTS│P1 CUTS  │DRAW     │
+    └─────────┴─────────┴─────────┘
     ```
 
-    The first (second) row of the matrix specifies the possible instructions when the value of the section of tape is a 1 (2). The columns similarly specify the possible instructions depending on the state of the machine.
+    The rows specify the move made by player 1, and the columns the move made by player 2, both in the order ROCK, PAPER, SCISSORS.
 
-    Create a dfn FETCH that takes in a two element right argument vector ``⍵``, specifying in the first element the value of the section of tape and the second the state of the machine, and returns the corresponding instruction.
+    Create a dfn PLAY that takes the move made by player 1 as its left argument ``⍺`` and the move made by player 2 as its right argument ``⍵``, each a number from 1 to 3, and returns the outcome of the round.
 
     <div class="problem">
-        <span class="problemspan">FETCH←</span>
+        <span class="problemspan">PLAY←</span>
         <input class="probleminput" type="text" id="input_ch3_p7" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch3_p7', 2)">Submit</button>
     </div>

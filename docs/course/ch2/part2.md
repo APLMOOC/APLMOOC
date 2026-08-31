@@ -34,6 +34,8 @@ Typing as fast as possible without the aid of gravity, you manage to write some 
 
 This is not the most efficient or readable method to input data into your system, and your hand is starting to cramp. Flicking through your APL notes now crowded with temperatures, you realize that you should store the temperatures as vectors!
 
+## Creating vectors
+
 **Vectors** are lines of values. They are defined by writing values separated by one or more spaces. 
 	
 The order of elements in a vector matters! Each element is given a number called an **index** according to the order in which they were written. Indices can be used to access the elements of a vector, they start at ``1`` and increase by one for each new element.
@@ -60,6 +62,8 @@ SERIAL          supplies_needed  T1             T2
 USER            VERSION          yearly_budget
 ```
 
+## Indexed assignment
+
 You feel like you and your best friend deserve a raise, you change the crew salary variable for the lowest two salaries.
 
 To replace a value in a vector, write out the elements as you would access them, then assign a list of new values.
@@ -73,6 +77,8 @@ To replace a value in a vector, write out the elements as you would access them,
       crew_salary
 130200 113200 120000 148700 132400
 ```
+
+## Character vectors
 
 You also feel like a new notebook for your very mission-critical logging hobby would be nice.
 

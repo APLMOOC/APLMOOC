@@ -95,18 +95,18 @@ The exercises are not checked or graded: use them to check your knowledge!
           /______/__________\_____\ 
           \_______________________/ 
               2/APL
-              ..__________________________________..        
-              ||..------------------------------..||        
-              ||||    ____    ________  ____    ||||        
-              ||||  //  __\\((    __  ((    ))  ||||        
-              ||||//        \\))  ____//  ((__//||||        
-              ||||\\__//\\__((____))  \\________||||        
-              ||||______________________________||||        
-              //..--..--..--..--..--..--..--..--..\\        
-            //..--..--..--..--..--..--..--..--..--..\\      
-          //..--..--..--..--..--..--..--..--..--..--..\\    
-        //____________//____________________\\__________\\  
-        \\______________________________________________//  
+                  ..__________________________________..        
+                  ||..------------------------------..||        
+                  ||||    ____    ________  ____    ||||        
+                  ||||  //  __\\((    __  ((    ))  ||||        
+                  ||||//        \\))  ____//  ((__//||||        
+                  ||||\\__//\\__((____))  \\________||||        
+                  ||||______________________________||||        
+                  //..--..--..--..--..--..--..--..--..\\        
+                //..--..--..--..--..--..--..--..--..--..\\      
+              //..--..--..--..--..--..--..--..--..--..--..\\    
+            //____________//____________________\\__________\\  
+            \\______________________________________________//  
         ```
 ---
 
@@ -389,7 +389,7 @@ The exercises are not checked or graded: use them to check your knowledge!
         1 1 2 2 4 0 1
         ```
         
-        The first number is the total number of hours spent on homework, the second is the cumulative number of hours, the third the difference in number of hours between the days.
+        The first number is the total number of hours spent on homework, and the second is the cumulative number of hours. The third is each day's hours minus the next day's, so the fourth, its negation, is the change in hours from one day to the next.
 
         Notice that the cumulative sum of the first element of HOMEWORK with the first differences of HOMEWORK is the same as HOMEWORK itself. If you know a little calculus, this might look familiar as the integral of the derivative being the same function up to a constant C.
 ---

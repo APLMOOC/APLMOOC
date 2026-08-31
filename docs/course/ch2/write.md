@@ -108,28 +108,29 @@ Since this course is still a work-in-progress, solving the write exercises will 
 ---
 
 !!! write-problem "Write problem 6"
-    Consider the following ASCII art stored in a matrix called ART
+    Consider the following ASCII art stored in a matrix called ART, shown here with its row and column numbers.
     ```apl
-          APL
-         ._________________.
-         |.---------------.|
-         ||  __  ____ __  ||
-         || / _\(  _ (  ) ||
-         ||/    \) __/ (_/||
-         ||\_/\_(__) \____||
-         ||_______________||
-         /.-.-.-.-.-.-.-.-.\
-        /.-.-.-.-.-.-.-.-.-.\
-       /.-.-.-.-.-.-.-.-.-.-.\
-      /______/__________\_____\ 
-      \_______________________/
+       123456789111111111122222222
+                012345678901234567
+     1      ._________________.
+     2      |.---------------.|
+     3      ||  __  ____ __  ||
+     4      || / _\(  _ (  ) ||
+     5      ||/    \) __/ (_/||
+     6      ||\_/\_(__) \____||
+     7      ||_______________||
+     8      /.-.-.-.-.-.-.-.-.\
+     9     /.-.-.-.-.-.-.-.-.-.\
+    10    /.-.-.-.-.-.-.-.-.-.-.\
+    11   /______/__________\_____\
+    12   \_______________________/
     ```
     Create a matrix called APL which consists of the following subarray obtained by indexing ART
     ```apl
-      __  ____ __ 
-     / _\(  _ (  )  
-    /    \) __/ (_/ 
-    \_/\_(__) \____        
+      __  ____ __  
+     / _\(  _ (  ) 
+    /    \) __/ (_/
+    \_/\_(__) \____
     ```
     <div class="problem">
         <span class="problemspan">⎕←</span>
@@ -210,24 +211,24 @@ Since this course is still a work-in-progress, solving the write exercises will 
 ---
 
 !!! write-problem "Write problem 12"
-    Consider a tape-controlled computer which operates by reading a certain section of a tape, changing its internal state based on the value of that section, writing a certain value to that section, then possibly moving the tape along to the next or previous section. For this specific machine, the value of the tape sections is either a 1 or a 2, the internal state of the machine is either 1 2 or 3, and the matrix which specifies the actions to be taken is the following
+    Consider the following matrix ROUND of the outcomes of a game of rock, paper, scissors.
     ```apl
-          INSTRUCTIONS
-    ┌─────┬─────┬─────┐
-    │1 R 2│1 L 1│1 L 2│
-    ├─────┼─────┼─────┤
-    │1 L 3│1 R 2│1 N H│
-    └─────┴─────┴─────┘
+          ROUND
+    ┌─────────┬─────────┬─────────┐
+    │DRAW     │P2 COVERS│P1 BLUNTS│
+    ├─────────┼─────────┼─────────┤
+    │P1 COVERS│DRAW     │P2 CUTS  │
+    ├─────────┼─────────┼─────────┤
+    │P2 BLUNTS│P1 CUTS  │DRAW     │
+    └─────────┴─────────┴─────────┘
     ```
-    The first value in each element is what to write to the section of tape, the second whether to move right 'R' left 'L' or stay in place 'N', and the last value is the next state of the machine 1, 2, 3, or 'H' for halting the machine.
-    
-    The first (second) row of the matrix specifies the possible instructions when the value of the section of tape is a 1 (2). The columns similarly specify the possible instructions depending on the state of the machine.
+    The rows specify the move made by player 1, and the columns the move made by player 2, both in the order ROCK, PAPER, SCISSORS.
 
-    Using indexing, find the instruction for the tape section having value 1 when the machine is in state 3.
+    Using indexing, find the outcome of the round in which player 1 plays scissors and player 2 plays paper.
 
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <span class="problemfilltext">INSTRUCTIONS[</span>
+        <span class="problemfilltext">ROUND[</span>
         <input class="problemfillinput" type="text" id="input_ch2_p12_b1" placeholder="fill in the blank" oninput="fillinput_resize(this)">
         <button class="problembutton" onclick="submit_problem('ch2_p12', 2)">Submit</button>
     </div>

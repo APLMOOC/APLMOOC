@@ -21,7 +21,7 @@ Since this course is still a work-in-progress, solving the write exercises will 
 ---
 
 !!! write-problem "Write problem 1"
-    Create a dfn that returns the string 'ABBCCCDDDDEEEEFFFFF...ZZZZZZZZZZZZZZZZZZZZZZZZZZ'
+    Create a dfn that returns the string 'ABBCCCDDDDEEEEEFFFFFF...ZZZZZZZZZZZZZZZZZZZZZZZZZZ'
     <div class="problem">
         <span class="problemspan">ABB←</span>
         <input class="probleminput" type="text" id="input_ch4_p1" placeholder="your solution here">
@@ -45,10 +45,10 @@ Since this course is still a work-in-progress, solving the write exercises will 
 !!! write-problem "Write problem 3"
     Create a dfn that returns the vector ⍺, ⍺+⍵[1], ⍺+2×⍵[1], ⍺+3×⍵[1], ..., ⍺+⍵[2]×⍵[1]
     ```apl
-          1 step 10 10
+          1 STEP 10 10
     1 11 21 31 41 51 61 71 81 91 101
     
-          2 step 0.5 5
+          2 STEP 0.5 5
     2 2.5 3 3.5 4 4.5
     ```
     <div class="problem">
@@ -79,7 +79,7 @@ Since this course is still a work-in-progress, solving the write exercises will 
 !!! write-problem "Write problem 5"
     Create a dfn that evaluates the following sum
     $$
-          \sum_{n=0}^{100} \frac{1}{n^2}
+          \sum_{n=1}^{100} \frac{1}{n^2}
     $$
 
     Hint: Use the reduce / operator
@@ -114,7 +114,7 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
 !!! write-problem "Write problem 7"
     
-    Create a dfn that returns 1 if ``⍵`` is prime, and 0 otherwise. A prime number is one that does not divide any number other than itself and 1, that is, the remainder of division is 0 only for 1 and ``⍵``.
+    Create a dfn that returns 1 if ``⍵`` is prime, and 0 otherwise. A prime number is one that is not divisible by any number other than itself and 1, that is, the remainder of division is 0 only for 1 and ``⍵``.
 
     <div class="problem">
         <span class="problemspan">PRIME←</span>
@@ -127,7 +127,7 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
 !!! write-problem "Write problem 8"
     
-    Create a dfn that takes in a string right argument and returns the most common letter.
+    Create a dfn that takes in a string right argument and returns the most common letter. If several letters occur equally often, return the one that occurs first.
 
     <div class="problem">
         <span class="problemspan">MODE←</span>
@@ -201,7 +201,7 @@ Since this course is still a work-in-progress, solving the write exercises will 
     
     Create a dfn that generates random words with lengths specified by its right vector argument ``⍵``.
     ```apl
-          PHRASE 3 4 5
+          PHRASE 2 3 4
     OG CPD HXQO 
     ```
     

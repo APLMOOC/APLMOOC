@@ -48,6 +48,8 @@ Just as we defined custom functions using dfn notation, a slightly modified nota
 └─────────┴─────────────────┴─────────────────────┘
 ```
 
+## Recursive each
+
 In general, we might not a priori know how many ``¨`` each operators are needed, and even then, their excessive repeated use can make some code hard to read or understand. It would be useful to define an general operator that repeatedly applies the required number of ``¨`` each operators to match the simple scalars of the nested arrays. Luckily, one such operator can be found on the Dyalog [General Utility dfns workspace](https://dfns.dyalog.com/) 
 
 ```apl
@@ -60,9 +62,13 @@ In general, we might not a priori know how many ``¨`` each operators are needed
       }
 ```
 
+## Operands
+
 The only new syntax in this dop that does not already exist in a dfn is the ``⍺⍺`` argument. Recall that all operators (except for the outer product ``∘.f``!) take a function argument on the left, and possibly another function argument on the right, these function arguments are called "operands". These operands are denoted as ``⍺⍺`` and ``⍵⍵`` in dops, and the function resulting from applying an operator to operands is called a "derived function". Then, the second line of the dop can be read as "If the magnitude of the depth of the vector ``⍺ ⍵ ⍵`` is less than two, then apply the left operand ``⍺⍺`` to the array left argument ``⍺`` and array right argument ``⍵``". 
 
 Dops also has two different types of recursion. Using a single del `∇` refers to the derived function, and a double del `∇∇` refers to the dop itself.
+
+## Swap and tack operators
 
 To make the new syntax clearer, let's consider some simple examples. 
 

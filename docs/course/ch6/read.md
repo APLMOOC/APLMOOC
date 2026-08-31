@@ -79,7 +79,7 @@ The exercises are not checked or graded: use them to check your knowledge!
           1 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97
         ```
 
-        The integers up to 100 excluding multiples of 2 to 49, which are the prime numbers up to 100
+        The integers up to 100 excluding multiples of 2 to 49. Apart from 1, these are the prime numbers up to 100.
 
 ---
 
@@ -141,7 +141,7 @@ The exercises are not checked or graded: use them to check your knowledge!
 !!! question "Read problem 6"
 
     
-    Recall that ``⍺!⍵`` is the binomial coefficient ``⍺ Choose ⍵``. What will the following outer product look like?
+    Recall that ``⍺!⍵`` is the binomial coefficient, the number of ways of choosing ``⍺`` items out of ``⍵``. What will the following outer product look like?
 
     === "Input"
 
@@ -234,7 +234,7 @@ The exercises are not checked or graded: use them to check your knowledge!
 !!! question "Read problem 9"
 
     
-    Recall the ``○`` circle function from Chapter 2
+    Recall the ``○`` circle function from Chapter 3
 
     === "Input"
 
@@ -342,14 +342,14 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Input"
 
         ```apl
-              {⎕A[26|13+⎕A⍳⍵]}@(∊∘⎕A) 'the #1 top secret PNG SYNC project'
+              {⎕A[26|13+⎕A⍳⍵]}@(∊∘⎕A) 'this is SHA for PNGs'
         ```
 
     === "Output"
 
         ```apl
-              {⎕A[26|13+⎕A⍳⍵]}@(∊∘⎕A) 'the #1 top secret PNG SYNC project'
-        the #1 top secret CAT FLAP project
+              {⎕A[26|13+⎕A⍳⍵]}@(∊∘⎕A) 'this is SHA for PNGs'
+        this is FUN for CATs
         ```
 
         This is the rot13 cipher applied to uppercase letters in the right array

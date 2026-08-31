@@ -13,6 +13,8 @@ Thankfully, APL comes with a lot of math functions! Here we go through a bunch o
 
 Feel free to skip this section for now, and come back when you see a mathematical operation you don't recognize! Remember to also check the toolbar in TryAPL and RIDE, they come with very helpful tooltips to remind you what an operator does!
 
+## Ceiling and floor
+
 The notation of ceiling ``⌈x⌉`` and ``⌊x⌋``      floor in mathematics matches with the corresponding APL functions, in fact, the notation of ceiling and floor (and the use of those words to describe rounding up and down) comes from APL! Before APL, there was no consistent standard to represent the ceiling and floor functions. Ceiling rounds up to the nearest integer, and floor rounds down to the nearest integer.
 
 Monadic `⌈` and `⌊` : Ceil & Floor
@@ -24,6 +26,8 @@ Monadic `⌈` and `⌊` : Ceil & Floor
 2 2 ¯3 ¯3
 ```
 
+
+## Maximum and minimum
 
 Dyadic `⌈` and `⌊` : Max & Min
 ```apl
@@ -41,6 +45,8 @@ Dyadic `⌈` and `⌊` : Max & Min
       4 ⌊ 1 3 5 7 9 8 6 4 2 0 
 1 3 4 4 4 4 4 4 2 0
 ```
+
+## Residue
 
 The "modulo" operator in other languages is called the residue in APL, and the order of the arguments is reversed. The residue function calculates the residue of the division of the right argument by the left.
 
@@ -93,6 +99,8 @@ The residue operation here (which is the least absolute remainder) is different 
 0
 ```
 
+## Complex numbers
+
 APL also natively supports complex numbers, which makes it attractive for uses in, for example, [quantum computing](https://github.com/nunezco2/quAPL). A complex number is represented as XJY, where X is the real part and Y is the imaginary part. In mathematical notation, $ XJY = X + i Y $.
 
 Monadic `|` : Absolute value, Magnitude
@@ -105,6 +113,8 @@ Monadic `|` : Absolute value, Magnitude
 1 5
 ```
 
+
+## GCD and LCM
 
 Dyadic `∨` & `∧` : GCD and LCM
 ```apl
@@ -126,6 +136,8 @@ Note that the LCM is defined as product of two numbers divided by their GCD, so 
 
 As suggested by the choice of glyphs for these two operations, these two operations are also used for the boolean logic "or" and "and" operations. More on this in the next section.
 
+
+## Conjugate, negate and sign
 
 Monadic `+` : Complex Conjugate
 ```apl
@@ -151,6 +163,8 @@ Monadic `×` : Sign/Direction
       × 3J4 ¯6J8 7J24
 0.6J0.8 ¯0.6J0.8 0.28J0.96
 ```
+
+## Circle functions
 
 Monadic `○` : Pi Times
 ```apl
@@ -185,3 +199,31 @@ The dyadic circle `○` function applies a trigonometric function to its right a
        2 ○ 0J1
 1.543080635
 ```
+
+## Factorial and binomial
+
+Monadic `!` : Factorial
+
+The factorial ``!`` function multiplies together the whole numbers from 1 up to its argument. By convention ``!0`` is 1. For arguments that are not whole numbers it returns the gamma function, so it is defined for any number.
+
+```apl
+      !0 1 5 10
+1 1 120 3628800
+      !0.5
+0.8862269255
+```
+
+Dyadic `!` : Binomial coefficient
+
+The dyadic form counts the ways of choosing ``⍺`` items out of ``⍵`` of them, without regard to order. Note which argument is which: ``2!5`` chooses 2 items out of 5, not 5 out of 2.
+
+```apl
+      2!5
+10
+      3!5
+10
+      5!2
+0
+```
+
+Choosing 2 out of 5 and choosing 3 out of 5 come to the same number, since choosing the 2 you keep is the same as choosing the 3 you discard. There is no way to choose 5 items out of 2, so that count is 0.

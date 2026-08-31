@@ -50,6 +50,8 @@ Note that you need to remove the first element of the arrays to get rid of the c
 324 89 218 384
 ```
 
+## Reduce
+
 To get the total, you need to sum up all the elements of this array, reducing it to a single number. This is where the reduce ``/`` operator comes in!
 
 The reduce operator ``/`` takes a left function argument and a right array argument. On vectors, ``f/v`` applies the function ``f`` between the elements of the vector ``v``, reducing its rank by one.
@@ -99,6 +101,8 @@ Next, you're planning on hosting a movie marathon for a couple friends who've ne
 │108 197 306 402│
 └───────────────┘
 ```
+
+## Scan
 
 More conveniently, there is a built-in operator that calculates cumulative functions even for higher dimensional arrays, without reducing the rank of its argument array. The scan ``\`` operator cumulatively applies its left argument function on its right argument array and returns a result array of the same rank.
 

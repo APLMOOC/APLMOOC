@@ -49,11 +49,15 @@ Day 1 08:47
 
 We can see that the temperature is 21.8 degrees on the first day of the journey at 08:47.
 
+## Matrices
+
 However, this lack of structure is exactly what introducing vectors was supposed to solve! Two closely related pieces of information, the time of a measurement and the value of the measurement, are kept separate when they should logically be part of the same collection of data. Measurement data of this form are usually stored in tables, and it is only natural to try to store them in the same manner in a computer system.
 
 You decide to start over yet again, and store data in a matrix instead.
 
 **Matrices** are rectangles of data, they take two indices for each element as opposed to vectors' one index per element. They are said to lay data out along two **axes**, as opposed the single **axis** vectors use; the number of axes can be thought of as the number of indices each element uses. Matrices and vectors are examples of **arrays**, which are any collection of data in APL.
+
+## Array notation
 
 Matrices can be created by wrapping the rows as vectors in ``[square brackets]``, separated by ``⋄`` diamonds; or using the ``⍴`` reshape function on a vector.
 
@@ -91,6 +95,8 @@ Matrices can be created by wrapping the rows as vectors in ``[square brackets]``
 !!! info "Typing the diamond glyph `⋄`"
      Prefix method: <kbd>PREFIX</kbd> <kbd>`</kbd>
      Tab method: <kbd><</kbd> <kbd>></kbd> ++tab++
+
+## Reshape
 
 The reshape function takes a vector of elements as its right argument, and reshapes them to fit the dimensions specified by the left argument. Concretely, turning the temperature data from a vector to a 6 by 2 matrix
 
@@ -311,6 +317,8 @@ Again, this can also be achieved using the reshape ``⍴`` function with three a
       The arrays we’ve constructed so far are of rank 0 (scalars), rank 1 (vectors), rank 2 (matrices), and rank 3. The maximum rank of an array in Dyalog APL is 15. 
       
       A useful idiom for getting the rank of an array is the shape of the shape of an array, `⍴⍴X`.
+
+## Indexed assignment
 
 Now with your temperature table safely stored in your APL workspace, you can only imagine how many more values you can log and maintain. You excitedly gesture at one of your unimpressed coworkers before you notice you’ve accidentally logged the temperature of the cabin as 218 degrees. Before they have a chance to look at your mistake, you quickly and shamefully change the value.
 

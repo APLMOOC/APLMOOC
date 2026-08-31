@@ -17,6 +17,8 @@ The same calculation even appears when dealing with measurements and converting 
 
 The general problem is solved by the ``⊤`` encode and ``⊥`` decode functions, which convert to and from a different groupings of a number. Mathematically, this is converting between mixed-radix number systems.
 
+## Encode
+
 For the problems mentioned above, we implement solutions using encode and decode functions. The encode ⊤ function takes in a left argument vector of groupings and a right argument to be encoded.
 
 Let's start by converting 1000 seconds, we specify that a day has 24 hours, an hour has 60 minutes, and a minute has 60 seconds
@@ -39,6 +41,8 @@ Converting a larger period of time, like one billion seconds
 
 The result is 31 average years, 251.25 days, 1 hour, 46 minutes, and 40 seconds. Note that an extra grouping for the leftmost value had to be added.
 
+## Decode
+
 The decode function takes in a left argument vector of groupings and a right argument to be encoded. It can also take in one simple scalar left argument in case the groupings are equal.
 
 Converting the decimal number 10 to its byte representation
@@ -59,6 +63,8 @@ Converting the binary number ``101010`` to decimal
 ```
 
 In the next section, we will introduce a method to convert between bases without needing to know how many places are needed beforehand. 
+
+## Mixed radix units
 
 As an example of converting between SI units of distance and imperial units, we convert one million millimeters. There are 10 millimeters in a centimeter, 10 centimeters in a decimeter, 10 decimeters in a meter, and so on
 

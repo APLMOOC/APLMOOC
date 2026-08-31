@@ -30,6 +30,8 @@ A coworker suggested using a function, and provided some code to evaluate the se
 9.561792499
 ```
 
+## Recursion
+
 Now reaching the 50th term, the series is no closer to being evaluated. If only there were a way to define a function that repeatedly applies itself. The engineer thinks for a bit, and writes the following.
 
 ```apl
@@ -92,6 +94,8 @@ They quickly halt the program using ``Action > Interrupt`` in RIDE, realising a 
 
 Write out the first few evaluation steps of the function to verify it for yourself!
 
+## Guarded expressions
+
 However, infinite computations on their own will never be terminate on finite machines, and hence not useful for real computations. Thankfully, there is a way to stop these infinite computations when a certain condition is reached, using guarded expressions.
 
 Guarded expressions are conditional expressions; they only execute a statement if some condition holds. The engineer rewrites the function, this time stopping the computation if the terms get smaller than ``10*¯10``,
@@ -126,7 +130,9 @@ Staring excitedly at your computer, you email your coworker and tell them about 
 
 That was embarrasing. You did learn a new programming technique to control infinite amounts of computation, so you try to make the most of it by writing a couple more useful programs.
 
-The factorial function is typically defined as $$f(n) = n \cdot f(n-1)$$ such that $$f(0)=1$$ Thinking in terms of guarded expressions, if the argument of the function is 0 the result should be 1 (in symbols, `⍵=0: 1`), otherwise multiply the right argument (`⍵`) by the result of the function itself (`∇`) evaluated for the right argument minus 1 (`⍵ - 1`).  
+## Examples
+
+The factorial function is typically defined as $f(n) = n \cdot f(n-1)$ such that $f(0)=1$ Thinking in terms of guarded expressions, if the argument of the function is 0 the result should be 1 (in symbols, `⍵=0: 1`), otherwise multiply the right argument (`⍵`) by the result of the function itself (`∇`) evaluated for the right argument minus 1 (`⍵ - 1`).  
 
 Putting it together, we obtain a recursive function that evaluates the factorial function.
 

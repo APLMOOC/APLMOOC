@@ -215,7 +215,7 @@ You just get an error: the `INDEX ERROR`.
       ¯7 0
             ⍴THINGS[2 5]
       2
-       ```
+      ```
 
       If you pass it a scalar (whose shape is the empty vector), then it returns a scalar (whose shape is also the empty vector).
 

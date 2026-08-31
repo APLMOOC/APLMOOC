@@ -121,6 +121,8 @@ Notice that ``⍤2`` will not be immediately correct, since the day and week axe
 └──────┴──────┴──────┴──────┴───────────┴────────────────┴───────────┴──────────────┴──┴──┴──┴─┴──┴─┴──┴─┴──┴──┴──┴─┴──┴─┴──┴─┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴─┘
 ```
 
+## Transpose
+
 The way to solve this is to swap the week and user axes to get an array where the last axes are week and day, this problem is easily solved by the ``⍉`` transpose function. 
 
 The left argument to the transpose function is a list of integers starting from 1, which represents where each axes is in the resulting array. For example, ``1 2 3 ⍉ activity`` is the same as ``activity``, but ``3 2 1⍉activity`` swaps the first and third axis.
@@ -311,6 +313,8 @@ Removing the labels and summing the last two axes, we obtain the result we're lo
       (+/+/⍤2) 2 (↓⍤2) (3 2 1 ⍉ activity)
 166 128 197 105
 ```
+
+## Rotate and reverse
 
 Another way to rotate elements around an array is by rotating along an axis, as opposed to the axes themselves. The dyadic `⌽` `⊖` rotate functions rotate an array by an amount specific by the left argument, around a specific axis.
 

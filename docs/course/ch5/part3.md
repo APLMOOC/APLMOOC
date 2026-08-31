@@ -28,6 +28,8 @@ Take the following example matrix
 ```
 
 
+## Leading and last axis
+
 The leading axis of the matrix is the first axis along which indexing is done. In this case, 
 
 
@@ -72,6 +74,8 @@ Notice that elements fill an array from the last axis first
 10 11 12
 ```
 
+## Reduce first and reduce last
+
 To specify the axis along which to reduce, we can use one of the two reduce operators `⌿` and `/`, corresponding to reducing along the leading axis and last axis respectively; equivalently, along columns or rows.
 
 
@@ -83,6 +87,34 @@ To specify the axis along which to reduce, we can use one of the two reduce oper
 ```
 
 Since the leading axis is the vertical axis, the plus reduce first `+⌿` function returned the sums of the vertical columns of the matrix; similarly, the plus reduce last `+/` function returned the sums of the horizontal rows of the matrix. For higher dimensional arrays, only reducing along either the leading axis or the last axis is not sufficient, as there are intermediate axes that need to be considered.
+
+
+## Catenate first
+
+The same pairing of a leading axis and a last axis appears in other functions. The catenate ``,`` function joins two arrays along their last axis, and the catenate first ``⍪`` function joins them along the leading axis, so that for matrices ``,`` places them side by side and ``⍪`` stacks one on top of the other.
+
+```apl
+      A←2 3⍴⍳6
+      A,A
+1 2 3 1 2 3
+4 5 6 4 5 6
+      A⍪A
+1 2 3
+4 5 6
+1 2 3
+4 5 6
+```
+
+Monadically, the table ``⍪`` function turns its argument into a matrix, giving each element of a vector its own row. A vector therefore becomes a single column matrix, which the transpose ``⍉`` function (introduced in the next section) turns into a single row matrix.
+
+```apl
+      ⍴⍪2*⍳5
+5 1
+      ⍴⍉⍪2*⍳5
+1 5
+```
+
+## Bracket-axis notation
 
 There is special syntax that allows for such general axis specification for certain built-in functions. It consists of adding a set of square brackets `[ ]` after the function containing an increasing integer axis number starting from 1, corresponding to the leading axis.
 
@@ -188,6 +220,8 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
+## Rank operator
+
 Note that there is also a different method of specifying axes for functions which is more general than bracket-axis notation, since it behaves consistently and can be applied to any arbitrary function. The rank ``⍤`` operator allows for such general axis specification of a function left argument, via an integer right argument which specifies what rank cells to act on. 
 
 An ``n``-cell of a rank ``r`` array is a rank n array formed from picking ``r-n`` indices from that array, equivalently, they're formed from the last ``n`` axes of the array. Try to use your knowledge of the order of the axes to guess what the cells of the Cake array would be, press the buttons below to verify your understanding.
@@ -260,6 +294,8 @@ For ``n=2``, ``+⌿⍤2`` acts on the 2-cells of the array. The 2-cells of the a
 
 Similarly, for n=1, the action of ``+⌿⍤1`` on the array is adding up its 1-cells, which is equivalent to adding along its last axis.
 
+## Squad indexing
+
 An operator form of (partially) indexing a matrix, such as ``M[1;3;]``, is given by the squad (”squish quad”) indexing ``⌷`` operator. It is equivalent to bracket indexing, but can be used like any other operator.
 
 ```apl
@@ -301,6 +337,8 @@ An operator form of (partially) indexing a matrix, such as ``M[1;3;]``, is given
 10 13 16
 19 22 25
 ```
+
+## Dyadic rank
 
 It is also possible to pair up cells of different rank using the rank operator by specifying an integer array right argument.
 

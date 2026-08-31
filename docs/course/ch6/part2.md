@@ -53,6 +53,8 @@ As can be seen above, a rank-n cell of a rank-r array obtained by specifying the
 3
 ```
 
+## Dyadic rank
+
 This specifies the cells to act on monadically; for dyadic functions, two ranks must be specified, to be interpreted as matching up cells of a certain rank from the left argument with certain cells of the right argument.
 
 ```apl
@@ -99,6 +101,8 @@ This specifies the cells to act on monadically; for dyadic functions, two ranks 
 136 153 171 190 210 - 16 17 18 19 20
 231 253 276 300 325 - 21 22 23 24 25
 ```
+
+## Outer product
 
 One commonly used operation is matching every pair of elements from two vectors, one way to write this is using each and rank ⍤
 
@@ -196,6 +200,8 @@ For higher rank arrays, the outer product works similarly, matching each element
 └──────┴──────┘
 ```
 
+## Inner product
+
 In many applications, it is useful to reduce over the diagonal of the outer product. The inner product of vectors ``+.×`` is an example of this, which APL generalizes using the inner product ``f.g`` operator.
 
 
@@ -234,6 +240,8 @@ In many applications, it is useful to reduce over the diagonal of the outer prod
 ```
 
 For arbitrary arrays, the inner product ``X(f.g)Y`` is the same as taking the outer product ``∘.(f/ (g¨))`` of the rows of the left argument (trailing vectors) ``(⊂[⍴⍴x]X)`` and the columns of the right argument (leading vectors) ``⊂[1]Y``, then removing a layer of depth ``⊃⍤1``. For example, the elements of ``X(+.×)Y`` are the sum of the product ``∘.(+/ (×¨))`` of a row of ``X`` and a column of ``Y``, which is exactly matrix multiplication.
+
+## Matrix inverse
 
 We can use the matrix inverse ⌹ function to verify the multiplication
 

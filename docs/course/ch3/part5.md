@@ -28,6 +28,16 @@ True
 False
 ```
 
+Used monadically, ``⊢`` simply returns its argument. This is handy because an assignment does not display its result, so writing ``⊢`` in front of one shows the value that was just assigned.
+
+```apl
+      G ← 7
+      ⊢G ← 7
+7
+```
+
+## Explicit programming
+
 At this point, all the functions we've defined have explicitly referred to the left ``⍺`` and right ``⍵`` arguments, for example in the following function ``range`` which takes the difference of the largest and smallest values of a vector. It takes the maximum ``⌈/`` minus the minimum ``⌊/``.
 
 ```apl
@@ -96,9 +106,13 @@ also in the "plus or minus" function and rounded (or floored) division function
 1
 ```
 
+## Tacit programming
+
 All of these functions can instead be expressed in terms of special combinations of functions, without referring to the arguments ⍺ and ⍵ at all! Just like magic, it takes some time to learn, but once you do it reveals a rich world of programming spells.
 
 This style of programming is called tacit or "point-free" programming, borrowed from mathematics where it means taking data described using points to be more fundamental than the points themselves, avoiding the need to refer to points explicitly. In this case, taking functions to be more fundamental than their description in terms of explicit arguments. These point-free functions are called trains. 
+
+## Atops
 
 There are two fundamental types of trains which can be created by stringing functions together. The most basic train is the 2-train ``(fg)``, in operator form ``f⍤g``, called an atop. The atop evaluates the function f on the result of g applied to the arguments of the train.
 
@@ -115,6 +129,8 @@ Floored division can be conveniently expressed as an atop.
        12(⌊÷)5
 2
 ```
+
+## Forks
 
 The second fundamental type of train is the 3-train ``(fgh)``, called a fork. When acting on arguments ``⍺`` and ``⍵``, it applies ``g`` dyadically to ``⍺f⍵`` and ``⍺h⍵``. 
 
@@ -149,6 +165,8 @@ $$f+g = f(⍺,⍵)+g(⍺,⍵).$$
        Forks here look like forks! The trees are read from bottom up, if there are only two functions at the end of a branch, the result of the right function is applied to the left function, if there are three functions, the middle function is applied to the result of the right and left functions. The values then go up the tree until it reaches the root, at which point it is returned.
 
 
+## Combining trains
+
 Most of the above functions can be expressed as combinations of forks and atops, let's take a look at a few important cases.
 
 The range function is the most straightforward example, it can be written as a single fork
@@ -178,6 +196,8 @@ From the tree representation of plusminus, it is first seen that the function ev
 
 The reason plusminus is interpreted as a fork over a fork is that APL function evaluation is always read from right to left. This extends to longer trains where, for example, ``(f g h i j k)`` is interpreted as ``(f (g h (i j k)))``, an atop over a fork over a fork.
 
+## Bind
+
 The rounded division function can be written as an atop over an atop,
 
 ```apl
@@ -199,4 +219,22 @@ One way around this is to write ``⌊({0.5+⍵}÷)`` to turn the addition of ``0
   ∘ ÷
 ┌─┴─┐
 0.5 +
+```
+
+## Commute
+
+A related operator is the commute ``⍨``, which swaps the arguments of the function it modifies, so that ``⍺ f⍨ ⍵`` is ``⍵ f ⍺``. It is useful when the argument to be bound sits on the wrong side; ``2÷⍨10`` divides 10 by 2 rather than 2 by 10, and ``2*⍨3`` is 3 squared rather than 2 cubed.
+
+```apl
+      2÷⍨10
+5
+      2*⍨3
+9
+```
+
+Applied to a single argument the same operator copies it to both sides, so that ``f⍨⍵`` is ``⍵ f ⍵``.
+
+```apl
+      ×⍨4
+16
 ```

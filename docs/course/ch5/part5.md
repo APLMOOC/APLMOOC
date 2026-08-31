@@ -54,6 +54,8 @@ Creating the array of posts
 └──────────────────────────────────────────────┴────────────────┘
 ```
 
+## Partition enclose
+
 In order to split the above array apart into a new dimension, where each layer is a different day of posts, we can use the partition enclose `⊂` function. The left argument to this function is the number of splits to put at each position in the array
 ```apl
       'otherworldlier'
@@ -160,6 +162,8 @@ lier
 └──────────────────────────────────────────────┴───────────────────┘
 ```
 
+## Partition
+
 A similar function is the partition ``⊆`` function, which acts a little differently based on its left argument array than the partitioned enclose ``⊂`` function. Zeroes indicate dropped elements, and partitions begin when the elements increase in value.
 
 ```apl
@@ -168,6 +172,8 @@ A similar function is the partition ``⊆`` function, which acts a little differ
 │me│o│w│
 └──┴─┴─┘
 ```
+
+## Searching a nested array
 
 The array of posts is three dimensional, where the last axis consists of the post title and username as can be seen above.
 

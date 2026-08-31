@@ -15,6 +15,8 @@ You are an engineer sitting at your [cubicle](https://en.wikipedia.org/wiki/Cubi
 
 In brief intervals of time spent waiting between tasks, you have to organise project data in your data management system. Unfortunately for you, your clients all use different units of measurement, and none of your colleagues seem to share your enthusiasm for avoiding misunderstanding. Fortunately for your company, you’ve decided to use your APL skills to avoid a [Mars Climate Orbiter](https://en.wikipedia.org/wiki/Mars_Climate_Orbiter)-like disaster.
 
+## Direct functions
+
 One of the ways of defining a function, taking in array arguments and outputting an array result, is using direct functions abbreviated dfn. ("dee-fun") A dfn is a series of statements in curly braces ``{}``, where the special characters `⍺` and `⍵` represent the left and right arguments to the function. Functions always require a right argument. You start with the basic conversions your current project requires, and a couple fun ones just for yourself.
 
 ```apl

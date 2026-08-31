@@ -11,6 +11,8 @@
 
 APL also comes with the standard comparison functions, with the expected representative symbols.
 
+## Comparison functions
+
 Dyadic `=`, `≠`, `≤`, `<`, `>`, `≥` : Comparison Functions
 ```apl
       0 = 0
@@ -25,6 +27,8 @@ Dyadic `=`, `≠`, `≤`, `<`, `>`, `≥` : Comparison Functions
       0 = 2 | 1 2 3 4 5 6 7 8 9 10
 0 1 0 1 0 1 0 1 0 1
 ```
+
+## Match
 
 Note that when you use these functions over two vectors, the result is a vector, denoting the function *element wise*. To compare arrays, use the dyadic ≡ match function.
 
@@ -43,6 +47,8 @@ Note that when you use these functions over two vectors, the result is a vector,
       'hello' ≡ 'hello'
 1
 ```
+
+## Comparison tolerance
 
 One useful feature of APL in real-world applications is the ability to change the tolerance of comparison when it comes to floating point values (except for comparison against zero!), and the displayed precision of numbers. The tolerance can be read (and set) via the `⎕CT` system variable, and the precision shown is read (and set) via `⎕PP`. The tolerance can be anything from `0` (exact comparisons) to `10*¯10`.
 
@@ -76,6 +82,8 @@ An amusing quote from the [APL Wiki](https://aplwiki.com/wiki/Comparison_toleran
 > —Paul Berry
 
 
+## Boolean operations
+
 As suggested by the choice of glyphs for the Greatest Common Divisor `∧` and the Least Common Multiple `∨`, these two operations are also used for the boolean logic "or" and "and" operations. This is because 0 is divisible by everything, as the remainder is always 0. So the Greatest Common Divisor of 0 and x is just x, since x divides both 0 and x. Dually, 0 is also a multiple of everything, so the Least Common Multiple of 0 and x is just 0, since 0 is a multiple of both x and 0 (and it’s the smallest!).
 
 ```apl
@@ -101,6 +109,8 @@ As suggested by the choice of glyphs for the Greatest Common Divisor `∧` and t
       triples ∨ quintuples
 0 0 1 0 1 1 0 0 1 1 0 1 0 0 1
 ```
+
+## Not, nand and nor
 
 Monadic `~` : Logical Not
 Dyadic `⍲` & `⍱` : Logical Nand and Logical Nor

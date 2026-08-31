@@ -23,7 +23,7 @@ The exercises are not checked or graded: use them to check your knowledge!
         fad
         ```
 
-        The set difference ~ function removes all occurences of the right-hand array elements from the left-hand array
+        The set difference ~ function removes all occurrences of the right-hand array elements from the left-hand array
 
 ---
 
@@ -47,15 +47,15 @@ The exercises are not checked or graded: use them to check your knowledge!
         ```apl
               'platform'∪'formatting'
         platforming
-              'emergency'∪'encyclopedia
+              'emergency'∪'encyclopedia'
         emergencylopdia
-              'network'∪'kingdom'
-        networkingdom
+              'networking'∪'kingdom'
+        networkingdm
               'spring'∪'ringtone'
         springtoe
         ```
 
-        The union ∪ function adds to the left array elements of the right array not already in the right array.
+        The union ∪ function adds to the left array elements of the right array not already in the left array.
 
 ---
 
@@ -360,8 +360,7 @@ The exercises are not checked or graded: use them to check your knowledge!
         ```apl
               ⎕ ← M ← ⍉⍪2*⍳10
         2 4 8 16 32 64 128 256 512 1024
-              M⍪3*⍳10
-        2 4  8 16  32  64  128  256   512  1024
+              ⎕ ← M ⍪← 3*⍳10
         3 9 27 81 243 729 2187 6561 19683 59049
               M,⍪'XY'
         2 4  8 16  32  64  128  256   512  1024 X

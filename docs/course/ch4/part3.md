@@ -11,6 +11,8 @@
 
 As a moviegoer, you love to share the movies you've watched with friends and family. It would be ideal if they could watch all of them, but since your friends have busy schedules you'd like to prioritize your most favorite ones. In order to do this, you need to first sort your movies by rating.
 
+## Grade up and grade down
+
 Luckily, APL implements functions that help sort a list, but they're a little different from other languages. Instead of returning a sorted list, grade up ``⍋`` and grade down ``⍒`` return the indices of the elements of the final sorted array in the initial unsorted array.
 
 Given your array of movies, you get the array of ratings and use the grade down function.
@@ -47,6 +49,8 @@ This result tells us that the first element of the sorted array is the ``4``th e
 5 4.5 4 3.5
 ```
 
+## Sorting by another array
+
 The result is as expected. Since the array obtained from grade down is in terms of indices, then we can also use it to access the movie title and movie runtime arrays.
 
 ```apl
@@ -81,6 +85,8 @@ First, you sort by genre.
 │12 Angry Men│Eraserhead│Real Genius│The Devil Wears Prada│
 └────────────┴──────────┴───────────┴─────────────────────┘
 ```
+
+## Windowed reduction
 
 Then, you'd like to compare the genre of each successive pair of movies, this is where a special kind of reduction called windowed reduction can be used. In addition to reducing a whole vector, you can also reduce successive chunks of a vector by specifying an integer left argument.
 
