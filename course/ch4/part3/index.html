@@ -1346,6 +1346,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    4.3 - Order from chaos
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1357,6 +1370,19 @@
   
 
       </a>
+      
+        <nav class="md-nav md-nav--secondary apl-feedback-nav" aria-label="Feedback">
+  <label class="md-nav__title">Feedback</label>
+  <form class="apl-feedback" data-section="4.3 - Order from chaos">
+    <p class="apl-feedback__where">4.3 - Order from chaos</p>
+    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+              placeholder="Spotted a mistake? Something unclear?"></textarea>
+    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+           placeholder="Email (optional)">
+    <button class="apl-feedback__send" type="submit">Send</button>
+    <p class="apl-feedback__status" role="status"></p>
+  </form>
+</nav>
       
     </li>
   
@@ -2376,6 +2402,7 @@
 <hr />
 <p><link rel="stylesheet" href="/styles/ch5part2.css"></p>
 <p>As a moviegoer, you love to share the movies you've watched with friends and family. It would be ideal if they could watch all of them, but since your friends have busy schedules you'd like to prioritize your most favorite ones. In order to do this, you need to first sort your movies by rating.</p>
+<h2 id="grade-up-and-grade-down">Grade up and grade down</h2>
 <p>Luckily, APL implements functions that help sort a list, but they're a little different from other languages. Instead of returning a sorted list, grade up <code>⍋</code> and grade down <code>⍒</code> return the indices of the elements of the final sorted array in the initial unsorted array.</p>
 <p>Given your array of movies, you get the array of ratings and use the grade down function.</p>
 <pre class="highlight"><code class="language-apl">MovieDB ← [ 'Title' 'Year' 'Rating' 'Runtime' 'Watches' 'Genre' ⋄
@@ -2403,6 +2430,7 @@
 <p>This result tells us that the first element of the sorted array is the <code>4</code>th element of the ratings array, the second is the <code>3</code>rd, and so on. We can obtain the sorted array by accessing these indices.</p>
 <pre class="highlight"><code class="language-apl">       (1↓MovieDB[;3])[⍒1↓MovieDB[;3]]
 5 4.5 4 3.5</code></pre>
+<h2 id="sorting-by-another-array">Sorting by another array</h2>
 <p>The result is as expected. Since the array obtained from grade down is in terms of indices, then we can also use it to access the movie title and movie runtime arrays.</p>
 <pre class="highlight"><code class="language-apl">       (1↓MovieDB[;1])
 ┌───────────┬──────────┬─────────────────────┬────────────┐
@@ -2425,6 +2453,7 @@
 ┌────────────┬──────────┬───────────┬─────────────────────┐
 │12 Angry Men│Eraserhead│Real Genius│The Devil Wears Prada│
 └────────────┴──────────┴───────────┴─────────────────────┘</code></pre>
+<h2 id="windowed-reduction">Windowed reduction</h2>
 <p>Then, you'd like to compare the genre of each successive pair of movies, this is where a special kind of reduction called windowed reduction can be used. In addition to reducing a whole vector, you can also reduce successive chunks of a vector by specifying an integer left argument.</p>
 <p>For a simple array <code>⎕A</code> of the alphabet, the result of reducing along catenate with chunks of length 2, <code>2,/</code>, is pairs of successive letters.</p>
 <pre class="highlight"><code class="language-apl">       2,/⎕A

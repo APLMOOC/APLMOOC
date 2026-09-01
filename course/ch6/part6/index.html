@@ -1927,6 +1927,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    6.5 - Dops (dee-ops)
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1938,6 +1951,19 @@
   
 
       </a>
+      
+        <nav class="md-nav md-nav--secondary apl-feedback-nav" aria-label="Feedback">
+  <label class="md-nav__title">Feedback</label>
+  <form class="apl-feedback" data-section="6.5 - Dops (dee-ops)">
+    <p class="apl-feedback__where">6.5 - Dops (dee-ops)</p>
+    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+              placeholder="Spotted a mistake? Something unclear?"></textarea>
+    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+           placeholder="Email (optional)">
+    <button class="apl-feedback__send" type="submit">Send</button>
+    <p class="apl-feedback__status" role="status"></p>
+  </form>
+</nav>
       
     </li>
   
@@ -2410,6 +2436,7 @@
 ││└─────┘│││└─────┘│└─────┘│││└─────┘│└─────────┘││
 │└───────┘│└───────┴───────┘│└───────┴───────────┘│
 └─────────┴─────────────────┴─────────────────────┘</code></pre>
+<h2 id="recursive-each">Recursive each</h2>
 <p>In general, we might not a priori know how many <code>¨</code> each operators are needed, and even then, their excessive repeated use can make some code hard to read or understand. It would be useful to define an general operator that repeatedly applies the required number of <code>¨</code> each operators to match the simple scalars of the nested arrays. Luckily, one such operator can be found on the Dyalog <a href="https://dfns.dyalog.com/">General Utility dfns workspace</a> </p>
 <pre class="highlight"><code class="language-apl">      saw←{                 
         ⍺←⊢                 ⍝ default left arg.
@@ -2418,8 +2445,10 @@
         2≥|≡⍺ 1:⍺∘∇¨⍵       ⍝ ⍺ simple: traverse ⍵.
         ⍺ ∇¨⍵               ⍝ Both nested: traverse both.
       }</code></pre>
+<h2 id="operands">Operands</h2>
 <p>The only new syntax in this dop that does not already exist in a dfn is the <code>⍺⍺</code> argument. Recall that all operators (except for the outer product <code>∘.f</code>!) take a function argument on the left, and possibly another function argument on the right, these function arguments are called "operands". These operands are denoted as <code>⍺⍺</code> and <code>⍵⍵</code> in dops, and the function resulting from applying an operator to operands is called a "derived function". Then, the second line of the dop can be read as "If the magnitude of the depth of the vector <code>⍺ ⍵ ⍵</code> is less than two, then apply the left operand <code>⍺⍺</code> to the array left argument <code>⍺</code> and array right argument <code>⍵</code>". </p>
 <p>Dops also has two different types of recursion. Using a single del <code>∇</code> refers to the derived function, and a double del <code>∇∇</code> refers to the dop itself.</p>
+<h2 id="swap-and-tack-operators">Swap and tack operators</h2>
 <p>To make the new syntax clearer, let's consider some simple examples. </p>
 <p>The <code>⍨</code> swap or self operator can be written as <code>{⍺←⍵⋄⍵ ⍺⍺ ⍺}</code> since both <code>A f{⍺←⍵⋄⍵ ⍺⍺ ⍺} B</code>evaluates to <code>B f A</code> and <code>f{⍺←⍵⋄⍵ ⍺⍺ ⍺} B</code> evaluates to <code>B f B</code>.</p>
 <p>We can write <code>⊢</code> right and <code>⊣</code> left tack operators that apply not to array arguments as the usual functions do, but rather to function arguments. A right tack operator could look like <code>{⍺ ⍵⍵ ⍵}</code>, as <code>A f{⍺ ⍵⍵ ⍵}g B</code> evaluates to <code>A g B</code>. The left tack similarly could be written as <code>A f{⍺ ⍺⍺ ⍵}g B</code>, since <code>A f{⍺ ⍺⍺ ⍵}g B</code> evaluates to <code>A f B</code>. However, note that the right tack operator only evaluates correctly when given two operands; it cannot be evaluated monadically since all dops require a left operand.</p>

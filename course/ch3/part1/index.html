@@ -1044,6 +1044,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    3.1 - Fun for everyone
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1055,6 +1068,19 @@
   
 
       </a>
+      
+        <nav class="md-nav md-nav--secondary apl-feedback-nav" aria-label="Feedback">
+  <label class="md-nav__title">Feedback</label>
+  <form class="apl-feedback" data-section="3.1 - Fun for everyone">
+    <p class="apl-feedback__where">3.1 - Fun for everyone</p>
+    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+              placeholder="Spotted a mistake? Something unclear?"></textarea>
+    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+           placeholder="Email (optional)">
+    <button class="apl-feedback__send" type="submit">Send</button>
+    <p class="apl-feedback__status" role="status"></p>
+  </form>
+</nav>
       
     </li>
   
@@ -2378,6 +2404,7 @@
 <p>Now that we know how data is structured in APL, it’s time to look at how to use this data, more specifically, how to make your own functions from already existing ones.</p>
 <p>You are an engineer sitting at your <a href="https://en.wikipedia.org/wiki/Cubicle">cubicle</a>. You are currently orbiting the Earth at an altitude of 160m at a speed of 1,600km/h.</p>
 <p>In brief intervals of time spent waiting between tasks, you have to organise project data in your data management system. Unfortunately for you, your clients all use different units of measurement, and none of your colleagues seem to share your enthusiasm for avoiding misunderstanding. Fortunately for your company, you’ve decided to use your APL skills to avoid a <a href="https://en.wikipedia.org/wiki/Mars_Climate_Orbiter">Mars Climate Orbiter</a>-like disaster.</p>
+<h2 id="direct-functions">Direct functions</h2>
 <p>One of the ways of defining a function, taking in array arguments and outputting an array result, is using direct functions abbreviated dfn. ("dee-fun") A dfn is a series of statements in curly braces <code>{}</code>, where the special characters <code>⍺</code> and <code>⍵</code> represent the left and right arguments to the function. Functions always require a right argument. You start with the basic conversions your current project requires, and a couple fun ones just for yourself.</p>
 <pre class="highlight"><code class="language-apl">      FtoC ← {(5 × ⍵ - 32)÷9}
       FtoC 451

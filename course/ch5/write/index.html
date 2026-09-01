@@ -2432,11 +2432,11 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 │Michel A.│London   │Los Angeles│2024-12-03│11:30│
 └─────────┴─────────┴───────────┴──────────┴─────┘
       flights on_date '2024-12-01'
-┌─────────┬─────────┬───────────┬──────────┬─────┐
-│Jari N.  │Helsinki │Tallinn    │2024-12-01│08:00│
-├─────────┼─────────┼───────────┼──────────┼─────┤
-│Erik O.  │Stockholm│Gothenburg │2024-12-01│14:00│
-└─────────┴─────────┴───────────┴──────────┴─────┘</code></pre>
+┌───────┬─────────┬──────────┬──────────┬─────┐
+│Jari N.│Helsinki │Tallinn   │2024-12-01│08:00│
+├───────┼─────────┼──────────┼──────────┼─────┤
+│Erik O.│Stockholm│Gothenburg│2024-12-01│14:00│
+└───────┴─────────┴──────────┴──────────┴─────┘</code></pre>
 <p><div class="problem">
     <span class="problemspan">on_date←</span>
     <input class="probleminput" type="text" id="input_ch5_p3" placeholder="your solution here">
@@ -2488,7 +2488,7 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 ├─────────┼──────────┼───┤
 │Erik O.  │2024-12-01│506│
 ├─────────┼──────────┼───┤
-│Michel A.│2024-12-03│315│
+│Michel A.│2024-12-03│415│
 └─────────┴──────────┴───┘
       floor bookings
 ┌─────────┬──────────┬───┬─┐
@@ -2496,7 +2496,7 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 ├─────────┼──────────┼───┼─┤
 │Erik O.  │2024-12-01│506│5│
 ├─────────┼──────────┼───┼─┤
-│Michel A.│2024-12-03│315│3│
+│Michel A.│2024-12-03│415│4│
 └─────────┴──────────┴───┴─┘</code></pre>
 <p><div class="problem">
     <span class="problemspan">floor←</span>
@@ -2518,17 +2518,13 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 │Michel A.│2024-12-03│415│4│
 └─────────┴──────────┴───┴─┘
       group bookings
-┌────────────────────────────┐
-│┌─────────┬──────────┬───┬─┐│
-││Jari N.  │2024-12-01│427│4││
-│├─────────┼──────────┼───┼─┤│
-││Michel A.│2024-12-03│415│4││
-│└─────────┴──────────┴───┴─┘│
-├────────────────────────────┤
-│┌───────┬──────────┬───┬─┐  │
-││Erik O.│2024-12-01│506│5│  │
-│└───────┴──────────┴───┴─┘  │
-└────────────────────────────┘
+┌────────────────────────────┬──────────────────────────┐
+│┌─────────┬──────────┬───┬─┐│┌───────┬──────────┬───┬─┐│
+││Jari N.  │2024-12-01│427│4│││Erik O.│2024-12-01│506│5││
+│├─────────┼──────────┼───┼─┤│└───────┴──────────┴───┴─┘│
+││Michel A.│2024-12-03│415│4││                          │
+│└─────────┴──────────┴───┴─┘│                          │
+└────────────────────────────┴──────────────────────────┘
 </code></pre>
 <p><div class="problem">
     <span class="problemspan">group←</span>
@@ -2579,7 +2575,7 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 9</p>
-<p>Write a function that generates a table of values for sin and cos, with number of values from 0 to 2pi determined by the right argument ⍵.</p>
+<p>Write a function that generates a table of values for sin and cos from 0 to 2pi. The right argument ⍵ is the number of interior points, that is, the number of points strictly between 0 and 2pi. The step between consecutive points is 2pi÷⍵+1. The table has ⍵+2 rows of values.</p>
 <pre class="highlight"><code class="language-apl">      trig_table 4
 ┌───────────┬────────────────┬─────────────┐
 │x          │sin x           │cos x        │
@@ -2624,7 +2620,15 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 10</p>
-<p>Write a function to remove all zero columns from a matrix.</p>
+<p>Write a function to remove all zero columns from a matrix. </p>
+<pre class="highlight"><code class="language-apl">      M
+0 1 0 2
+0 3 0 0
+0 4 0 5
+      nonzero M
+1 2
+3 0
+4 5</code></pre>
 <p><div class="problem">
     <span class="problemspan">nonzero←</span>
     <input class="probleminput" type="text" id="input_ch5_p10" placeholder="your solution here">
@@ -2635,24 +2639,24 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 11</p>
-<p>Write a function to remove all 2-cells of a matrix with sum less than 10.</p>
+<p>Write a function to remove all 2-cells of a rank-3 array with sum less than 10.</p>
 <pre class="highlight"><code class="language-apl">      M
-1  1  1
-1  1  1
-1  1  1
+ 1  1  1
+ 1  1  1
+ 1  1  1
 
-1  2  3
-4  5  6
-7  8  9
+ 1  2  3
+ 4  5  6
+ 7  8  9
 
 10 11 12
 13 14 15
 16 17 18
 
       significant M
-1  2  3
-4  5  6
-7  8  9
+ 1  2  3
+ 4  5  6
+ 7  8  9
 
 10 11 12
 13 14 15
@@ -2668,7 +2672,7 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 12</p>
 <p>Write a function that takes in a right argument character vector and returns the matrix that the character vector represents.</p>
-<p>The character vector will have elements seprated by commas, 1-cells separated by semicolons, and 2-cells seprated by colons.</p>
+<p>The character vector will have elements separated by commas, 1-cells separated by semicolons, and 2-cells separated by colons.</p>
 <pre class="highlight"><code class="language-apl">      a
 a,b,c,d;e,f,g,h:1,2,3,4;5,6,7,8
 

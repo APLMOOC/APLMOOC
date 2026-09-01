@@ -1136,6 +1136,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    3.5 - All aboard!
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1147,6 +1160,19 @@
   
 
       </a>
+      
+        <nav class="md-nav md-nav--secondary apl-feedback-nav" aria-label="Feedback">
+  <label class="md-nav__title">Feedback</label>
+  <form class="apl-feedback" data-section="3.5 - All aboard!">
+    <p class="apl-feedback__where">3.5 - All aboard!</p>
+    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+              placeholder="Spotted a mistake? Something unclear?"></textarea>
+    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+           placeholder="Email (optional)">
+    <button class="apl-feedback__send" type="submit">Send</button>
+    <p class="apl-feedback__status" role="status"></p>
+  </form>
+</nav>
       
     </li>
   
@@ -2386,6 +2412,11 @@
 True
        "True"⊢"False"
 False</code></pre>
+<p>Used monadically, <code>⊢</code> simply returns its argument. This is handy because an assignment does not display its result, so writing <code>⊢</code> in front of one shows the value that was just assigned.</p>
+<pre class="highlight"><code class="language-apl">      G ← 7
+      ⊢G ← 7
+7</code></pre>
+<h2 id="explicit-programming">Explicit programming</h2>
 <p>At this point, all the functions we've defined have explicitly referred to the left <code>⍺</code> and right <code>⍵</code> arguments, for example in the following function <code>range</code> which takes the difference of the largest and smallest values of a vector. It takes the maximum <code>⌈/</code> minus the minimum <code>⌊/</code>.</p>
 <pre class="highlight"><code class="language-apl">      ⌈/ 5 6 7 8
 8
@@ -2438,8 +2469,10 @@ False</code></pre>
 
       4 floor_div 3
 1</code></pre>
+<h2 id="tacit-programming">Tacit programming</h2>
 <p>All of these functions can instead be expressed in terms of special combinations of functions, without referring to the arguments ⍺ and ⍵ at all! Just like magic, it takes some time to learn, but once you do it reveals a rich world of programming spells.</p>
 <p>This style of programming is called tacit or "point-free" programming, borrowed from mathematics where it means taking data described using points to be more fundamental than the points themselves, avoiding the need to refer to points explicitly. In this case, taking functions to be more fundamental than their description in terms of explicit arguments. These point-free functions are called trains. </p>
+<h2 id="atops">Atops</h2>
 <p>There are two fundamental types of trains which can be created by stringing functions together. The most basic train is the 2-train <code>(fg)</code>, in operator form <code>f⍤g</code>, called an atop. The atop evaluates the function f on the result of g applied to the arguments of the train.</p>
 <p>In mathematical notation, a 2-train <code>(fg)</code> is expressed as composition,</p>
 <div class="arithmatex">\[⍺(fg)⍵=f(g(⍺,⍵)).\]</div>
@@ -2450,6 +2483,7 @@ False</code></pre>
 2
        12(⌊÷)5
 2</code></pre></p>
+<h2 id="forks">Forks</h2>
 <p>The second fundamental type of train is the 3-train <code>(fgh)</code>, called a fork. When acting on arguments <code>⍺</code> and <code>⍵</code>, it applies <code>g</code> dyadically to <code>⍺f⍵</code> and <code>⍺h⍵</code>. </p>
 <p>In mathematical notation, a fork is described as</p>
 <div class="arithmatex">\[⍺(fgh)⍵=g(f(⍺,⍵),h(⍺,⍵)).\]</div>
@@ -2474,6 +2508,7 @@ Was -trains=box
 f + g</code></pre>
 <p>Forks here look like forks! The trees are read from bottom up, if there are only two functions at the end of a branch, the result of the right function is applied to the left function, if there are three functions, the middle function is applied to the result of the right and left functions. The values then go up the tree until it reaches the root, at which point it is returned.</p>
 </div>
+<h2 id="combining-trains">Combining trains</h2>
 <p>Most of the above functions can be expressed as combinations of forks and atops, let's take a look at a few important cases.</p>
 <p>The range function is the most straightforward example, it can be written as a single fork</p>
 <pre class="highlight"><code class="language-apl">      range ← ⌈/-⌊/
@@ -2491,6 +2526,7 @@ f + g</code></pre>
     ⊣ , +</code></pre>
 <p>From the tree representation of plusminus, it is first seen that the function evaluates <code>⊣</code> and <code>+</code> to the arguments <code>⍺</code> and <code>⍵</code>, then applies <code>,</code> between them. The result is then applied to the <code>,</code> above with the result of <code>-</code>. The final result is <code>(⍺-⍵),((⍺⊣⍵),(⍺+⍵))</code> which is exactly <code>(⍺-⍵),⍺,⍺+⍵</code>. </p>
 <p>The reason plusminus is interpreted as a fork over a fork is that APL function evaluation is always read from right to left. This extends to longer trains where, for example, <code>(f g h i j k)</code> is interpreted as <code>(f (g h (i j k)))</code>, an atop over a fork over a fork.</p>
+<h2 id="bind">Bind</h2>
 <p>The rounded division function can be written as an atop over an atop,</p>
 <pre class="highlight"><code class="language-apl">      ⌊((0.5+)÷)
 SYNTAX ERROR: Missing right argument
@@ -2505,6 +2541,15 @@ SYNTAX ERROR: Missing right argument
   ∘ ÷
 ┌─┴─┐
 0.5 +</code></pre>
+<h2 id="commute">Commute</h2>
+<p>A related operator is the commute <code>⍨</code>, which swaps the arguments of the function it modifies, so that <code>⍺ f⍨ ⍵</code> is <code>⍵ f ⍺</code>. It is useful when the argument to be bound sits on the wrong side; <code>2÷⍨10</code> divides 10 by 2 rather than 2 by 10, and <code>2*⍨3</code> is 3 squared rather than 2 cubed.</p>
+<pre class="highlight"><code class="language-apl">      2÷⍨10
+5
+      2*⍨3
+9</code></pre>
+<p>Applied to a single argument the same operator copies it to both sides, so that <code>f⍨⍵</code> is <code>⍵ f ⍵</code>.</p>
+<pre class="highlight"><code class="language-apl">      ×⍨4
+16</code></pre>
 
 
 

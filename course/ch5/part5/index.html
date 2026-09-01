@@ -1648,6 +1648,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    5.5 - More searching and selecting
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1659,6 +1672,19 @@
   
 
       </a>
+      
+        <nav class="md-nav md-nav--secondary apl-feedback-nav" aria-label="Feedback">
+  <label class="md-nav__title">Feedback</label>
+  <form class="apl-feedback" data-section="5.5 - More searching and selecting">
+    <p class="apl-feedback__where">5.5 - More searching and selecting</p>
+    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+              placeholder="Spotted a mistake? Something unclear?"></textarea>
+    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+           placeholder="Email (optional)">
+    <button class="apl-feedback__send" type="submit">Send</button>
+    <p class="apl-feedback__status" role="status"></p>
+  </form>
+</nav>
       
     </li>
   
@@ -2416,6 +2442,7 @@
 ├──────────────────────────────────────────────┼────────────────┤
 │Looking for flyback                           │YouKnowWho      │
 └──────────────────────────────────────────────┴────────────────┘</code></pre>
+<h2 id="partition-enclose">Partition enclose</h2>
 <p>In order to split the above array apart into a new dimension, where each layer is a different day of posts, we can use the partition enclose <code>⊂</code> function. The left argument to this function is the number of splits to put at each position in the array
 <pre class="highlight"><code class="language-apl">      'otherworldlier'
 otherworldlier
@@ -2519,11 +2546,13 @@ lier
 ├──────────────────────────────────────────────┼───────────────────┤
 │455 kHz and 10.7 MHz as intermediate freqs    |Decibels_per_Kg    │
 └──────────────────────────────────────────────┴───────────────────┘</code></pre></p>
+<h2 id="partition">Partition</h2>
 <p>A similar function is the partition <code>⊆</code> function, which acts a little differently based on its left argument array than the partitioned enclose <code>⊂</code> function. Zeroes indicate dropped elements, and partitions begin when the elements increase in value.</p>
 <pre class="highlight"><code class="language-apl">      0 0 0 1 1 0 0 0 1 2 0 0⊆'flamethrower'
 ┌──┬─┬─┐
 │me│o│w│
 └──┴─┴─┘</code></pre>
+<h2 id="searching-a-nested-array">Searching a nested array</h2>
 <p>The array of posts is three dimensional, where the last axis consists of the post title and username as can be seen above.</p>
 <p>Obtaining the indices of 'YouKnowWho' using <code>⍷</code> where on the username subarray</p>
 <pre class="highlight"><code class="language-apl">      POSTS[;;2]

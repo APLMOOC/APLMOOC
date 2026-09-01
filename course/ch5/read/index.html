@@ -2380,7 +2380,7 @@ Check your answers by opening the "Output" tab.</p>
 <div class="tabbed-block">
 <pre class="highlight"><code class="language-apl">      'softheartedness'~'otherness'
 fad</code></pre>
-<p>The set difference ~ function removes all occurences of the right-hand array elements from the left-hand array</p>
+<p>The set difference ~ function removes all occurrences of the right-hand array elements from the left-hand array</p>
 </div>
 </div>
 </div>
@@ -2403,13 +2403,13 @@ fad</code></pre>
 <div class="tabbed-block">
 <pre class="highlight"><code class="language-apl">      'platform'∪'formatting'
 platforming
-      'emergency'∪'encyclopedia
+      'emergency'∪'encyclopedia'
 emergencylopdia
-      'network'∪'kingdom'
-networkingdom
+      'networking'∪'kingdom'
+networkingdm
       'spring'∪'ringtone'
 springtoe</code></pre>
-<p>The union ∪ function adds to the left array elements of the right array not already in the right array.</p>
+<p>The union ∪ function adds to the left array elements of the right array not already in the left array.</p>
 </div>
 </div>
 </div>
@@ -2420,38 +2420,28 @@ springtoe</code></pre>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Input</label><label for="__tabbed_3_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>The following three arrays contain arrays of words in different languages, what kind of arrays will the following code output?</p>
-<pre class="highlight"><code class="language-apl">      words
-the of and to a in for is on that ...
-      mots
-de la à le et les des une en un ...
-      sanat
-on ei ja se hän en mitä että ole olen ...
+<p>The two arrays below list some English and Finnish words.</p>
+<pre class="highlight"><code class="language-apl">      ⎕ ← EN ← 'home' 'cat' 'tie' 'door' 'on' 'me' 'auto'
 
-      words ∩ mots
+      ⎕ ← FI ← 'kissa' 'ovi' 'auto' 'on' 'tie' 'home' 'talo'
 
-      words ∩ sanat
+      EN ∩ FI
 
-      mots ∩ sanat
+      FI ∩ EN
 </code></pre>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      words
-the of and to a in for is on that ...
-      mots
-de la à le et les des une en un ...
-      sanat
-on ei ja se hän en mitä että ole olen ...
-
-      ⍝ Words in both English and French
-      words ∩ mots
-est par plus son dont sans premier pays fin place millions site chef grand ensemble formation moment match public service question tour services ... 
-      ⍝ Words in both English and Finnish
-      words ∩ sanat
-on he anna kai no asia asian auto oven ok lisa radio join uni
-      ⍝ Words in both Finnish and French
-      mots ∩ sanat
-en plus son se ne fin loi peloton rien aura bon moi voit toi vois saisit union</code></pre>
+<pre class="highlight"><code class="language-apl">      ⎕ ← EN ← 'home' 'cat' 'tie' 'door' 'on' 'me' 'auto'
+home  cat  tie  door  on  me  auto
+      ⎕ ← FI ← 'kissa' 'ovi' 'auto' 'on' 'tie' 'home' 'talo'
+kissa  ovi  auto  on  tie  home  talo
+      ⍝ English words that are also Finnish words
+      EN ∩ FI
+home  tie  on  auto
+      ⍝ Finnish words that are also English words
+      FI ∩ EN
+auto  on  tie  home</code></pre>
+<p>The intersection <code>∩</code> function keeps the elements of the left array that also occur in the right array, so the result takes its order from the left argument. That is, <code>EN ∩ FI</code> lists them in the order they appear in <code>EN</code>, and <code>FI ∩ EN</code> in the order they appear in <code>FI</code>. </p>
 </div>
 </div>
 </div>
@@ -2679,8 +2669,7 @@ replay  record  repeat  reserve  request  represent</code></pre>
 <div class="tabbed-block">
 <pre class="highlight"><code class="language-apl">      ⎕ ← M ← ⍉⍪2*⍳10
 2 4 8 16 32 64 128 256 512 1024
-      M⍪3*⍳10
-2 4  8 16  32  64  128  256   512  1024
+      ⎕ ← M ⍪← 3*⍳10
 3 9 27 81 243 729 2187 6561 19683 59049
       M,⍪'XY'
 2 4  8 16  32  64  128  256   512  1024 X

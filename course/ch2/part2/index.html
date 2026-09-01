@@ -834,6 +834,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    2.2 - Vectors
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -845,6 +858,19 @@
   
 
       </a>
+      
+        <nav class="md-nav md-nav--secondary apl-feedback-nav" aria-label="Feedback">
+  <label class="md-nav__title">Feedback</label>
+  <form class="apl-feedback" data-section="2.2 - Vectors">
+    <p class="apl-feedback__where">2.2 - Vectors</p>
+    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+              placeholder="Spotted a mistake? Something unclear?"></textarea>
+    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+           placeholder="Email (optional)">
+    <button class="apl-feedback__send" type="submit">Send</button>
+    <p class="apl-feedback__status" role="status"></p>
+  </form>
+</nav>
       
     </li>
   
@@ -2392,6 +2418,7 @@
       T11 ← 21.9
       T12 ← 22.4</code></pre>
 <p>This is not the most efficient or readable method to input data into your system, and your hand is starting to cramp. Flicking through your APL notes now crowded with temperatures, you realize that you should store the temperatures as vectors!</p>
+<h2 id="creating-vectors">Creating vectors</h2>
 <p><strong>Vectors</strong> are lines of values. They are defined by writing values separated by one or more spaces. </p>
 <p>The order of elements in a vector matters! Each element is given a number called an <strong>index</strong> according to the order in which they were written. Indices can be used to access the elements of a vector, they start at <code>1</code> and increase by one for each new element.</p>
 <p>You write out the temperatures as vectors, seperating them by page number. Note that the decimal separator in APL is a period!</p>
@@ -2407,6 +2434,7 @@ budget_left     CAPACITY        crew_count     crew_salary
 INSPECTION_DATE INSTALLATION_DATE MAINTENANCE   MANUFACTURER
 SERIAL          supplies_needed  T1             T2
 USER            VERSION          yearly_budget</code></pre>
+<h2 id="indexed-assignment">Indexed assignment</h2>
 <p>You feel like you and your best friend deserve a raise, you change the crew salary variable for the lowest two salaries.</p>
 <p>To replace a value in a vector, write out the elements as you would access them, then assign a list of new values.</p>
 <pre class="highlight"><code class="language-apl">      crew_salary
@@ -2416,6 +2444,7 @@ USER            VERSION          yearly_budget</code></pre>
       crew_salary[1 3] ← 130200 120000
       crew_salary
 130200 113200 120000 148700 132400</code></pre>
+<h2 id="character-vectors">Character vectors</h2>
 <p>You also feel like a new notebook for your very mission-critical logging hobby would be nice.</p>
 <pre class="highlight"><code class="language-apl">      supplies_needed
 4 O2TANK (IMMEDIATELY)</code></pre>

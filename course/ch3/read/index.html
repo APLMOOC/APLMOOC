@@ -2661,8 +2661,7 @@ GHI</code></pre>
 <pre class="highlight"><code class="language-apl">      (2∘⍴⍴(1∘,⍴∘0)) 10</code></pre>
 </div>
 <div class="tabbed-block">
-<p>```apl
-      (2∘⍴⍴(1∘,⍴∘0)) 10
+<pre class="highlight"><code class="language-apl">      (2∘⍴⍴(1∘,⍴∘0)) 10
 1 0 0 0 0 0 0 0 0 0
 0 1 0 0 0 0 0 0 0 0
 0 0 1 0 0 0 0 0 0 0
@@ -2672,18 +2671,18 @@ GHI</code></pre>
 0 0 0 0 0 0 1 0 0 0
 0 0 0 0 0 0 0 1 0 0
 0 0 0 0 0 0 0 0 1 0
-0 0 0 0 0 0 0 0 0 1</p>
-<pre class="highlight"><code>  (2∘⍴⍴(1∘,⍴∘0))</code></pre>
-<p>┌─┼───┐
-∘ ⍴ ┌─┴─┐</p>
+0 0 0 0 0 0 0 0 0 1
+
+      (2∘⍴⍴(1∘,⍴∘0))
+ ┌─┼───┐
+ ∘ ⍴ ┌─┴─┐
+┌┴┐  ∘   ∘
+2 ⍴ ┌┴┐ ┌┴┐
+    1 , ⍴ 0</code></pre>
+<p>This is a fork over an atop, the dfn equivalent is {(2⍴⍵)⍴1,⍵⍴0}</p>
 </div>
 </div>
 </div>
-<p>┌┴┐  ∘   ∘
-   2 ⍴ ┌┴┐ ┌┴┐
-       1 , ⍴ 0</p>
-<pre class="highlight"><code>This is a fork over an atop, the dfn equivalent is {(2⍴⍵)⍴1,⍵⍴0}
-```</code></pre>
 </div>
 <hr />
 <div class="admonition question">

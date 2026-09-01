@@ -1881,6 +1881,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    6.4 - Repeat and masking
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1892,6 +1905,19 @@
   
 
       </a>
+      
+        <nav class="md-nav md-nav--secondary apl-feedback-nav" aria-label="Feedback">
+  <label class="md-nav__title">Feedback</label>
+  <form class="apl-feedback" data-section="6.4 - Repeat and masking">
+    <p class="apl-feedback__where">6.4 - Repeat and masking</p>
+    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+              placeholder="Spotted a mistake? Something unclear?"></textarea>
+    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+           placeholder="Email (optional)">
+    <button class="apl-feedback__send" type="submit">Send</button>
+    <p class="apl-feedback__status" role="status"></p>
+  </form>
+</nav>
       
     </li>
   
@@ -2414,6 +2440,7 @@
 40
       (2∘×⍣3)5
 40</code></pre>
+<h2 id="repeat">Repeat</h2>
 <p>The right argument to the power <code>⍣</code> operator can be a function, <code>f⍣g</code>, where <code>f</code> is applied until the value of <code>⍺g⍵</code>, with left and right arguments the current and previous value of <code>f</code>, returns <code>1</code>. For example, the following code multiplies <code>5</code> by <code>2</code> until the current value is greater than <code>100</code>.</p>
 <pre class="highlight"><code class="language-apl">      2 (×⍣{⍺&gt;100})5
 160
@@ -2427,6 +2454,7 @@
 <p>This is equivalent to 
 <pre class="highlight"><code class="language-apl">      ⍬ {⍺&gt;100: ⍺ ⋄ (2×⍵) ∇ ⍺} 5
 160</code></pre></p>
+<h2 id="fixed-points">Fixed points</h2>
 <p>For a more complicated example, the power operator can also be used to find fixed points of functions.</p>
 <pre class="highlight"><code class="language-apl">      ⍝ Fixed point of 0.5∘*
       0.5 (*⍣=) 0.5
@@ -2446,6 +2474,7 @@
       2 (⊥⍣¯1) 42
 1 0 1 0 1 0</code></pre>
 <hr />
+<h2 id="indexed-assignment">Indexed assignment</h2>
 <p>Recall how we modified elements of arrays in Chapter 2; the elements were specified on the left-hand side of the assignment, and the replacement values were specified on the right.</p>
 <pre class="highlight"><code class="language-apl">      M ← 5 5⍴⍳25
       M
@@ -2476,6 +2505,7 @@
 11 12 13 14 15
 16 17 18 19 20
 21 22 23 24 25</code></pre>
+<h2 id="selective-assignment">Selective assignment</h2>
 <p>The story does not end there, for any expression that selects from an array can be used on the left-hand side of the assignment.</p>
 <pre class="highlight"><code class="language-apl">      M ← 5 5 ⍴ ⍳25
       2↑M
@@ -2497,6 +2527,7 @@
 5 5 5 5  5
 5 5 5 5  5
 5 5 5 5  5</code></pre>
+<h2 id="masked-assignment">Masked assignment</h2>
 <p>With replicate each, the right-hand side can also be an array of the same shape as the original array to then selectively copy values depending on the left-hand side.</p>
 <pre class="highlight"><code class="language-apl">      M ← 5 5⍴⍳25
       ⍝ Random logical array
@@ -2528,6 +2559,7 @@
  K L 13 14 15
 16 Q 18 19 20
 21 V  W  X  Y</code></pre>
+<h2 id="at-operator">At operator</h2>
 <p>For other types of replacements, the At <code>@</code> operator comes in handy. For array left and right arguments, the At <code>@</code> operator returns a function which replaces the elements at the indices specified by the right argument, using the values of the left argument. Note that the arrays have to match shape. Then, replacing each element masked by <code>B</code> using successive letters of the alphabet,</p>
 <pre class="highlight"><code class="language-apl">      M ← 5 5 ⍴ ⍳25
       ⍸B

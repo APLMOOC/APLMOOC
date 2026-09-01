@@ -1090,6 +1090,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    3.3 - Relational and Logical functions
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1101,6 +1114,19 @@
   
 
       </a>
+      
+        <nav class="md-nav md-nav--secondary apl-feedback-nav" aria-label="Feedback">
+  <label class="md-nav__title">Feedback</label>
+  <form class="apl-feedback" data-section="3.3 - Relational and Logical functions">
+    <p class="apl-feedback__where">3.3 - Relational and Logical functions</p>
+    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+              placeholder="Spotted a mistake? Something unclear?"></textarea>
+    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+           placeholder="Email (optional)">
+    <button class="apl-feedback__send" type="submit">Send</button>
+    <p class="apl-feedback__status" role="status"></p>
+  </form>
+</nav>
       
     </li>
   
@@ -2377,6 +2403,7 @@
 </div>
 <hr />
 <p>APL also comes with the standard comparison functions, with the expected representative symbols.</p>
+<h2 id="comparison-functions">Comparison functions</h2>
 <p>Dyadic <code>=</code>, <code>≠</code>, <code>≤</code>, <code>&lt;</code>, <code>&gt;</code>, <code>≥</code> : Comparison Functions
 <pre class="highlight"><code class="language-apl">      0 = 0
 1
@@ -2389,6 +2416,7 @@
       ⍝ Getting a mask for numbers which divide 2
       0 = 2 | 1 2 3 4 5 6 7 8 9 10
 0 1 0 1 0 1 0 1 0 1</code></pre></p>
+<h2 id="match">Match</h2>
 <p>Note that when you use these functions over two vectors, the result is a vector, denoting the function <em>element wise</em>. To compare arrays, use the dyadic ≡ match function.</p>
 <pre class="highlight"><code class="language-apl">      1 2 1 4 5 2 5 2 3 2 = 1 2 3 4 5 2 3 2 4 2
 1 1 0 1 1 1 0 1 0 1
@@ -2403,6 +2431,7 @@
 0
       'hello' ≡ 'hello'
 1</code></pre>
+<h2 id="comparison-tolerance">Comparison tolerance</h2>
 <p>One useful feature of APL in real-world applications is the ability to change the tolerance of comparison when it comes to floating point values (except for comparison against zero!), and the displayed precision of numbers. The tolerance can be read (and set) via the <code>⎕CT</code> system variable, and the precision shown is read (and set) via <code>⎕PP</code>. The tolerance can be anything from <code>0</code> (exact comparisons) to <code>10*¯10</code>.</p>
 <pre class="highlight"><code class="language-apl">      ⍝ 1 + Sine of Pi
       X ← 1 + 1 ○ ○ 1
@@ -2430,6 +2459,7 @@ skipping a beat, Ken replied, "Any carpenter knows that!" and went on
 to the next question. </p>
 <p>—Paul Berry</p>
 </blockquote>
+<h2 id="boolean-operations">Boolean operations</h2>
 <p>As suggested by the choice of glyphs for the Greatest Common Divisor <code>∧</code> and the Least Common Multiple <code>∨</code>, these two operations are also used for the boolean logic "or" and "and" operations. This is because 0 is divisible by everything, as the remainder is always 0. So the Greatest Common Divisor of 0 and x is just x, since x divides both 0 and x. Dually, 0 is also a multiple of everything, so the Least Common Multiple of 0 and x is just 0, since 0 is a multiple of both x and 0 (and it’s the smallest!).</p>
 <pre class="highlight"><code class="language-apl">      3 ∧ 0
 0
@@ -2452,6 +2482,7 @@ to the next question. </p>
       ⍝ Checking for numbers which divide 3 or 5
       triples ∨ quintuples
 0 0 1 0 1 1 0 0 1 1 0 1 0 0 1</code></pre>
+<h2 id="not-nand-and-nor">Not, nand and nor</h2>
 <p>Monadic <code>~</code> : Logical Not
 Dyadic <code>⍲</code> &amp; <code>⍱</code> : Logical Nand and Logical Nor
 <pre class="highlight"><code class="language-apl">      ~ 1 1 0 1 1

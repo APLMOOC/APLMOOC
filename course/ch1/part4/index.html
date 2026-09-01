@@ -2385,7 +2385,7 @@ What if we try adding and multiplying three numbers at the same time?</p>
 Instead of doing the arithmetic operations in the normal order, 2 times 2 and add 1 (PEMDAS, remember?)
 APL seems to have done them in the reverse order, 2 plus 1 and the whole thing times 2.
 Let's see why that is.</p>
-<p>The creators of APL were faced with a dillemma.
+<p>The creators of APL were faced with a dilemma.
 Every new symbol they added to the language was to be considered a function.
 In other languages, like Python, functions take in arguments inside parentheses.
 However, in APL, functions only take in arguments from the <strong>left</strong> and <strong>right</strong>.
@@ -2397,10 +2397,7 @@ And this doesn't even take into account functions that programmers can create th
 <div class="admonition info">
 <p class="admonition-title">Order of execution</p>
 <p>In APL, all operations are executed <em>right-to-left</em>.</p>
-<p>When APL runs a line of code, it first looks at the rightmost function symbol
-and executes it with the arguments to its left and right.
-It then looks at the function symbol to the left of the one just processed,
-and executes it, treating the result it just got as a right argument.</p>
+<p>When APL runs a line of code, it first evaluates the rightmost function and works its way left. For example, <code>a×b-c</code> would evaluate <code>b-c</code> first, then mutliply it by <code>a</code>.</p>
 </div>
 <p>An equivalent formulation of this would be</p>
 <div class="admonition info">
@@ -2421,7 +2418,7 @@ and executes it, treating the result it just got as a right argument.</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">About spaces</p>
-<p>APL ignores extra spaces when processing statements.
+<p>Spaces are not necessary between functions and their arguments.
 For example, all of the following statements will produce the same result:</p>
 <pre class="highlight"><code class="language-apl">        2×2+1
 6
@@ -2440,9 +2437,9 @@ statements within parentheses are executed before anything else.</p>
 <p>Let's look at our previous example once again:</p>
 <pre class="highlight"><code class="language-apl">      2×2+1
 6
-      2×(2+1) ⍝ (1)!
+      2×(2+1) (1)!
 6
-      (2×2)+1 ⍝ (2)!
+      (2×2)+1 (2)!
 5</code></pre>
 <ol>
 <li>Same result as before; the parentheses changed nothing</li>
@@ -2469,12 +2466,12 @@ So, in this case, you could achieve the same result with the shorter and more re
 <div class="admonition info">
 <p class="admonition-title">Reducing parentheses</p>
 <ol>
-<li>No APL expression needs to end with a closing parenthesis. It's redundant.</li>
+<li>No APL expression needs to end with a closing parenthesis. This can be simplified.</li>
 <li>For example, the expression <code>(2×3)+(4×5)</code> can be rewritten as <code>(2×3)+4×5</code></li>
-<li>You never need two consecutive closing parentheses. It's redundant.</li>
+<li>You never need two consecutive closing parentheses. This can also be simplified.</li>
 <li>For example, the expression <code>(2×(3+4))÷5</code> is equivalent to <code>(2×3+4)÷5</code></li>
 <li>If you can easily rewrite the expression to avoid parentheses, do so.</li>
-<li>For example, the expression <code>((2÷3)+4)×5</code> can be reversed to give <code>5×4+2÷3</code></li>
+<li>For example, the expression <code>((2÷3)+4)×5</code> can be written as <code>5×4+2÷3</code></li>
 <li>Do not shovel in extra parentheses in a panicked, desperate attempt to fix your code.
 Do shovel in parentheses if it genuinely helps the readability of your code.</li>
 </ol>

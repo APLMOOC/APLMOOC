@@ -1625,6 +1625,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    5.4 - I knew he swapped those numbers!
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1636,6 +1649,19 @@
   
 
       </a>
+      
+        <nav class="md-nav md-nav--secondary apl-feedback-nav" aria-label="Feedback">
+  <label class="md-nav__title">Feedback</label>
+  <form class="apl-feedback" data-section="5.4 - I knew he swapped those numbers!">
+    <p class="apl-feedback__where">5.4 - I knew he swapped those numbers!</p>
+    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+              placeholder="Spotted a mistake? Something unclear?"></textarea>
+    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+           placeholder="Email (optional)">
+    <button class="apl-feedback__send" type="submit">Send</button>
+    <p class="apl-feedback__status" role="status"></p>
+  </form>
+</nav>
       
     </li>
   
@@ -2473,6 +2499,7 @@
 ├──────┼──────┼──────┼──────┼───────────┼────────────────┼───────────┼──────────────┼──┼──┼──┼─┼──┼─┼──┼─┼──┼──┼──┼─┼──┼─┼──┼─┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼──┼─┤
 │Week 2│      │      │      │RedScanLine│frequencySniffer│dataMoshpit│Radiovangelist│15│11│17│8│12│9│14│7│11│10│13│5│14│8│12│9│10│7 │16│11│13│12│15│6 │12│11│14│8│
 └──────┴──────┴──────┴──────┴───────────┴────────────────┴───────────┴──────────────┴──┴──┴──┴─┴──┴─┴──┴─┴──┴──┴──┴─┴──┴─┴──┴─┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴─┘</code></pre>
+<h2 id="transpose">Transpose</h2>
 <p>The way to solve this is to swap the week and user axes to get an array where the last axes are week and day, this problem is easily solved by the <code>⍉</code> transpose function. </p>
 <p>The left argument to the transpose function is a list of integers starting from 1, which represents where each axes is in the resulting array. For example, <code>1 2 3 ⍉ activity</code> is the same as <code>activity</code>, but <code>3 2 1⍉activity</code> swaps the first and third axis.</p>
 <pre class="highlight"><code class="language-apl">      ⍝ Week × Day × User
@@ -2655,6 +2682,7 @@
       ⍝ Taking the sum
       (+/+/⍤2) 2 (↓⍤2) (3 2 1 ⍉ activity)
 166 128 197 105</code></pre>
+<h2 id="rotate-and-reverse">Rotate and reverse</h2>
 <p>Another way to rotate elements around an array is by rotating along an axis, as opposed to the axes themselves. The dyadic <code>⌽</code> <code>⊖</code> rotate functions rotate an array by an amount specific by the left argument, around a specific axis.</p>
 <pre class="highlight"><code class="language-apl">       3⌽¨'hotbloods' 'mentally' 'outbreak' 'clean' 'kyoto'
 bloodshot  tallymen  breakout  ancle  tokyo</code></pre>

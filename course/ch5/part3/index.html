@@ -1602,6 +1602,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    5.3 - Choose your axis
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1613,6 +1626,19 @@
   
 
       </a>
+      
+        <nav class="md-nav md-nav--secondary apl-feedback-nav" aria-label="Feedback">
+  <label class="md-nav__title">Feedback</label>
+  <form class="apl-feedback" data-section="5.3 - Choose your axis">
+    <p class="apl-feedback__where">5.3 - Choose your axis</p>
+    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+              placeholder="Spotted a mistake? Something unclear?"></textarea>
+    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+           placeholder="Email (optional)">
+    <button class="apl-feedback__send" type="submit">Send</button>
+    <p class="apl-feedback__status" role="status"></p>
+  </form>
+</nav>
       
     </li>
   
@@ -2388,6 +2414,7 @@
  8  8  8  8  8  8  8  8  8  8
  9  9  9  9  9  9  9  9  9  9
 10 10 10 10 10 10 10 10 10 10</code></pre>
+<h2 id="leading-and-last-axis">Leading and last axis</h2>
 <p>The leading axis of the matrix is the first axis along which indexing is done. In this case, </p>
 <pre class="highlight"><code class="language-apl">       M[1;]
  1  1  1  1  1  1  1  1  1  1
@@ -2421,12 +2448,30 @@
 7 8 9
       (3 3 3⍴⍳27)[2;1;]
 10 11 12</code></pre>
+<h2 id="reduce-first-and-reduce-last">Reduce first and reduce last</h2>
 <p>To specify the axis along which to reduce, we can use one of the two reduce operators <code>⌿</code> and <code>/</code>, corresponding to reducing along the leading axis and last axis respectively; equivalently, along columns or rows.</p>
 <pre class="highlight"><code class="language-apl">       +⌿M
 55 55 55 55 55 55 55 55 55 55
        +/M
 10 20 30 40 50 60 70 80 90 100</code></pre>
 <p>Since the leading axis is the vertical axis, the plus reduce first <code>+⌿</code> function returned the sums of the vertical columns of the matrix; similarly, the plus reduce last <code>+/</code> function returned the sums of the horizontal rows of the matrix. For higher dimensional arrays, only reducing along either the leading axis or the last axis is not sufficient, as there are intermediate axes that need to be considered.</p>
+<h2 id="catenate-first">Catenate first</h2>
+<p>The same pairing of a leading axis and a last axis appears in other functions. The catenate <code>,</code> function joins two arrays along their last axis, and the catenate first <code>⍪</code> function joins them along the leading axis, so that for matrices <code>,</code> places them side by side and <code>⍪</code> stacks one on top of the other.</p>
+<pre class="highlight"><code class="language-apl">      A←2 3⍴⍳6
+      A,A
+1 2 3 1 2 3
+4 5 6 4 5 6
+      A⍪A
+1 2 3
+4 5 6
+1 2 3
+4 5 6</code></pre>
+<p>Monadically, the table <code>⍪</code> function turns its argument into a matrix, giving each element of a vector its own row. A vector therefore becomes a single column matrix, which the transpose <code>⍉</code> function (introduced in the next section) turns into a single row matrix.</p>
+<pre class="highlight"><code class="language-apl">      ⍴⍪2*⍳5
+5 1
+      ⍴⍉⍪2*⍳5
+1 5</code></pre>
+<h2 id="bracket-axis-notation">Bracket-axis notation</h2>
 <p>There is special syntax that allows for such general axis specification for certain built-in functions. It consists of adding a set of square brackets <code>[ ]</code> after the function containing an increasing integer axis number starting from 1, corresponding to the leading axis.</p>
 <p>Instead of an explanation using a mystifying array of random numbers that makes the calculations difficult to fully grasp, consider instead the following delicious rendered piece of cheesecake, represented as an APL array.</p>
 <p>This cake is arranged along three axis, as is the case with most physical objects, and will serve as a suitable example for our axis-selective operations. Click and drag on the 3D view to orbit the array, use the scroll wheel to zoom in and out. Move your mouse over a section to see it highlighted.</p>
@@ -2526,6 +2571,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
+<h2 id="rank-operator">Rank operator</h2>
 <p>Note that there is also a different method of specifying axes for functions which is more general than bracket-axis notation, since it behaves consistently and can be applied to any arbitrary function. The rank <code>⍤</code> operator allows for such general axis specification of a function left argument, via an integer right argument which specifies what rank cells to act on. </p>
 <p>An <code>n</code>-cell of a rank <code>r</code> array is a rank n array formed from picking <code>r-n</code> indices from that array, equivalently, they're formed from the last <code>n</code> axes of the array. Try to use your knowledge of the order of the axes to guess what the cells of the Cake array would be, press the buttons below to verify your understanding.</p>
 <div style="display: flex; justify-content: center; gap: 15px; margin: 20px 0;">
@@ -2590,6 +2636,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <p>For <code>n=3</code>, the modified plus reduce function <code>+⌿⍤3</code> acts on the 3-cells of the array. Since the whole array is of rank 3, there is only one 3-cell which is the array itself. Then, <code>+⌿⍤3</code> is equivalent to the action of the plus reduce <code>+⌿</code> function on the whole array, adding up terms along its leading axis. </p>
 <p>For <code>n=2</code>, <code>+⌿⍤2</code> acts on the 2-cells of the array. The 2-cells of the array are the cells <code>M[1;;]</code>, <code>M[2;;]</code>, and <code>M[3;;]</code>. The leading axis of these 2-cells is vertical, hence the plus reduce first <code>+⌿</code> function will return the sum of the columns of these arrays.</p>
 <p>Similarly, for n=1, the action of <code>+⌿⍤1</code> on the array is adding up its 1-cells, which is equivalent to adding along its last axis.</p>
+<h2 id="squad-indexing">Squad indexing</h2>
 <p>An operator form of (partially) indexing a matrix, such as <code>M[1;3;]</code>, is given by the squad (”squish quad”) indexing <code>⌷</code> operator. It is equivalent to bracket indexing, but can be used like any other operator.</p>
 <pre class="highlight"><code class="language-apl">      N ← 3 3 3 ⍴ ⍳27
       N
@@ -2628,6 +2675,7 @@ document.addEventListener('DOMContentLoaded', function() {
  1  4  7
 10 13 16
 19 22 25</code></pre>
+<h2 id="dyadic-rank">Dyadic rank</h2>
 <p>It is also possible to pair up cells of different rank using the rank operator by specifying an integer array right argument.</p>
 <pre class="highlight"><code class="language-apl">      3 3 ⍴ ⎕A
 ABC

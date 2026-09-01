@@ -880,6 +880,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    2.4 - Higher dimensional space
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -891,6 +904,19 @@
   
 
       </a>
+      
+        <nav class="md-nav md-nav--secondary apl-feedback-nav" aria-label="Feedback">
+  <label class="md-nav__title">Feedback</label>
+  <form class="apl-feedback" data-section="2.4 - Higher dimensional space">
+    <p class="apl-feedback__where">2.4 - Higher dimensional space</p>
+    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+              placeholder="Spotted a mistake? Something unclear?"></textarea>
+    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+           placeholder="Email (optional)">
+    <button class="apl-feedback__send" type="submit">Send</button>
+    <p class="apl-feedback__status" role="status"></p>
+  </form>
+</nav>
       
     </li>
   
@@ -2401,9 +2427,11 @@ Day 1 10:00</code></pre>
       T1D[2]
 Day 1 08:47</code></pre>
 <p>We can see that the temperature is 21.8 degrees on the first day of the journey at 08:47.</p>
+<h2 id="matrices">Matrices</h2>
 <p>However, this lack of structure is exactly what introducing vectors was supposed to solve! Two closely related pieces of information, the time of a measurement and the value of the measurement, are kept separate when they should logically be part of the same collection of data. Measurement data of this form are usually stored in tables, and it is only natural to try to store them in the same manner in a computer system.</p>
 <p>You decide to start over yet again, and store data in a matrix instead.</p>
 <p><strong>Matrices</strong> are rectangles of data, they take two indices for each element as opposed to vectors' one index per element. They are said to lay data out along two <strong>axes</strong>, as opposed the single <strong>axis</strong> vectors use; the number of axes can be thought of as the number of indices each element uses. Matrices and vectors are examples of <strong>arrays</strong>, which are any collection of data in APL.</p>
+<h2 id="array-notation">Array notation</h2>
 <p>Matrices can be created by wrapping the rows as vectors in <code>[square brackets]</code>, separated by <code>⋄</code> diamonds; or using the <code>⍴</code> reshape function on a vector.</p>
 <pre class="highlight"><code class="language-apl">      T1 ← [ 21.4 'Day 1 07:42' ⋄ 
              21.8 'Day 1 08:47' ⋄
@@ -2438,6 +2466,7 @@ Day 1 08:47</code></pre>
 <p>Prefix method: <kbd>PREFIX</kbd> <kbd>`</kbd>
  Tab method: <kbd>&lt;</kbd> <kbd>&gt;</kbd> <span class="keys"><kbd class="key-tab">Tab</kbd></span></p>
 </div>
+<h2 id="reshape">Reshape</h2>
 <p>The reshape function takes a vector of elements as its right argument, and reshapes them to fit the dimensions specified by the left argument. Concretely, turning the temperature data from a vector to a 6 by 2 matrix</p>
 <pre class="highlight"><code class="language-apl">      T ← 21.4 'Day 1 07:42' 21.8 'Day 1 08:47' 22.0 'Day 1 10:10' 21.5 'Day 1 12:01' 21.3 'Day 1 14:36' 22.3 'Day 1 16:50'
       6 2 ⍴ T
@@ -2619,6 +2648,7 @@ KLM</code></pre>
 <p>The arrays we’ve constructed so far are of rank 0 (scalars), rank 1 (vectors), rank 2 (matrices), and rank 3. The maximum rank of an array in Dyalog APL is 15. </p>
 <p>A useful idiom for getting the rank of an array is the shape of the shape of an array, <code>⍴⍴X</code>.</p>
 </div>
+<h2 id="indexed-assignment">Indexed assignment</h2>
 <p>Now with your temperature table safely stored in your APL workspace, you can only imagine how many more values you can log and maintain. You excitedly gesture at one of your unimpressed coworkers before you notice you’ve accidentally logged the temperature of the cabin as 218 degrees. Before they have a chance to look at your mistake, you quickly and shamefully change the value.</p>
 <pre class="highlight"><code class="language-apl">      TData
 ┌────┬───────────┐

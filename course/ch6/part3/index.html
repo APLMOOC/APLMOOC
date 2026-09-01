@@ -1858,6 +1858,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    6.3 - Encoding and decoding
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1869,6 +1882,19 @@
   
 
       </a>
+      
+        <nav class="md-nav md-nav--secondary apl-feedback-nav" aria-label="Feedback">
+  <label class="md-nav__title">Feedback</label>
+  <form class="apl-feedback" data-section="6.3 - Encoding and decoding">
+    <p class="apl-feedback__where">6.3 - Encoding and decoding</p>
+    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+              placeholder="Spotted a mistake? Something unclear?"></textarea>
+    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+           placeholder="Email (optional)">
+    <button class="apl-feedback__send" type="submit">Send</button>
+    <p class="apl-feedback__status" role="status"></p>
+  </form>
+</nav>
       
     </li>
   
@@ -2379,6 +2405,7 @@
 <p>A similar problem of grouping numbers is converting between decimal and binary, a very common operation when dealing with encoding or decoding numbers numbers between human-readable data and machine data.</p>
 <p>The same calculation even appears when dealing with measurements and converting between measurement systems, such length or weight in SI or imperial units.</p>
 <p>The general problem is solved by the <code>⊤</code> encode and <code>⊥</code> decode functions, which convert to and from a different groupings of a number. Mathematically, this is converting between mixed-radix number systems.</p>
+<h2 id="encode">Encode</h2>
 <p>For the problems mentioned above, we implement solutions using encode and decode functions. The encode ⊤ function takes in a left argument vector of groupings and a right argument to be encoded.</p>
 <p>Let's start by converting 1000 seconds, we specify that a day has 24 hours, an hour has 60 minutes, and a minute has 60 seconds</p>
 <p><pre class="highlight"><code class="language-apl">      ⍝ Converting 10000 seconds
@@ -2390,6 +2417,7 @@ The result is 2 hours, 46 minutes, and 40 seconds.</p>
 <pre class="highlight"><code class="language-apl">       1000 365.25 24 60 60 ⊤ 1000000000
  31 251.25 1 46 40</code></pre>
 <p>The result is 31 average years, 251.25 days, 1 hour, 46 minutes, and 40 seconds. Note that an extra grouping for the leftmost value had to be added.</p>
+<h2 id="decode">Decode</h2>
 <p>The decode function takes in a left argument vector of groupings and a right argument to be encoded. It can also take in one simple scalar left argument in case the groupings are equal.</p>
 <p>Converting the decimal number 10 to its byte representation</p>
 <pre class="highlight"><code class="language-apl">    (8/2) ⊤ 10
@@ -2401,6 +2429,7 @@ The result is 2 hours, 46 minutes, and 40 seconds.</p>
       (1×2*5)+(1×2*3)+(1×2*1)
 42</code></pre>
 <p>In the next section, we will introduce a method to convert between bases without needing to know how many places are needed beforehand. </p>
+<h2 id="mixed-radix-units">Mixed radix units</h2>
 <p>As an example of converting between SI units of distance and imperial units, we convert one million millimeters. There are 10 millimeters in a centimeter, 10 centimeters in a decimeter, 10 decimeters in a meter, and so on</p>
 <pre class="highlight"><code class="language-apl">      10 10 10 10 10 10 10 ⊤ 1000000
 1 0 0 0 0 0 0

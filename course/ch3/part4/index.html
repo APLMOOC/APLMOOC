@@ -1113,6 +1113,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    3.4 - Infinite fun
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1124,6 +1137,19 @@
   
 
       </a>
+      
+        <nav class="md-nav md-nav--secondary apl-feedback-nav" aria-label="Feedback">
+  <label class="md-nav__title">Feedback</label>
+  <form class="apl-feedback" data-section="3.4 - Infinite fun">
+    <p class="apl-feedback__where">3.4 - Infinite fun</p>
+    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+              placeholder="Spotted a mistake? Something unclear?"></textarea>
+    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+           placeholder="Email (optional)">
+    <button class="apl-feedback__send" type="submit">Send</button>
+    <p class="apl-feedback__status" role="status"></p>
+  </form>
+</nav>
       
     </li>
   
@@ -2388,6 +2414,7 @@
 <pre class="highlight"><code class="language-apl">      a ← {0.99*⍵}
       (a 0)+(a 1)+(a 2)+(a 3)+(a 4)+(a 5)+(a 6)+(a 7)+(a 8)+(a 9)+(a 10)
 9.561792499</code></pre>
+<h2 id="recursion">Recursion</h2>
 <p>Now reaching the 50th term, the series is no closer to being evaluated. If only there were a way to define a function that repeatedly applies itself. The engineer thinks for a bit, and writes the following.</p>
 <pre class="highlight"><code class="language-apl">      test ← {test ⍵+1}
       test 1
@@ -2437,6 +2464,7 @@
 9.561792499
 ...</code></pre>
 <p>Write out the first few evaluation steps of the function to verify it for yourself!</p>
+<h2 id="guarded-expressions">Guarded expressions</h2>
 <p>However, infinite computations on their own will never be terminate on finite machines, and hence not useful for real computations. Thankfully, there is a way to stop these infinite computations when a certain condition is reached, using guarded expressions.</p>
 <p>Guarded expressions are conditional expressions; they only execute a statement if some condition holds. The engineer rewrites the function, this time stopping the computation if the terms get smaller than <code>10*¯10</code>,</p>
 <pre class="highlight"><code class="language-apl">      sum ← {
@@ -2458,7 +2486,8 @@
       sum_geometric 0.99
 100</code></pre>
 <p>That was embarrasing. You did learn a new programming technique to control infinite amounts of computation, so you try to make the most of it by writing a couple more useful programs.</p>
-<p>The factorial function is typically defined as <span class="arithmatex">\(<span class="arithmatex">\(f(n) = n \cdot f(n-1)\)</span>\)</span> such that <span class="arithmatex">\(<span class="arithmatex">\(f(0)=1\)</span>\)</span> Thinking in terms of guarded expressions, if the argument of the function is 0 the result should be 1 (in symbols, <code>⍵=0: 1</code>), otherwise multiply the right argument (<code>⍵</code>) by the result of the function itself (<code>∇</code>) evaluated for the right argument minus 1 (<code>⍵ - 1</code>).  </p>
+<h2 id="examples">Examples</h2>
+<p>The factorial function is typically defined as <span class="arithmatex">\(f(n) = n \cdot f(n-1)\)</span> such that <span class="arithmatex">\(f(0)=1\)</span> Thinking in terms of guarded expressions, if the argument of the function is 0 the result should be 1 (in symbols, <code>⍵=0: 1</code>), otherwise multiply the right argument (<code>⍵</code>) by the result of the function itself (<code>∇</code>) evaluated for the right argument minus 1 (<code>⍵ - 1</code>).  </p>
 <p>Putting it together, we obtain a recursive function that evaluates the factorial function.</p>
 <pre class="highlight"><code class="language-apl">      factorial ← {⍵=0: 1 ⋄ ⍵ × ∇ ⍵ - 1} </code></pre>
 <p>This function consists of two statements, separated by the separator <code>⋄</code>.
