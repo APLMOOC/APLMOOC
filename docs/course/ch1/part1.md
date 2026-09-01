@@ -23,9 +23,7 @@ This will repeat for as long as your heart desires.
 The mode you land in by default is called ==Immediate Execution mode== (because it immediately executes whatever you give it).
 
 Surprisingly enough, this style of prompt is how APL code has been written for the longest time!
-By using the different modes outlined above, alongside APL workspaces and an APL IDE, you can write any programs you like.
-Thankfully, since we live in the 21st century, some APL developers have realised that it might be smart to finally get with the times
-and let programmers write their code in text files that are executed by an APL interpreter.
+Thankfully, some APL developers have deemed it beneficial to get with the times and let programmers write their code in text files.
 This is fairly straightforward to do but requires some configuration, so we will get back to this in a later chapter.
 For now, the TryAPL interpreter will be enough.
 

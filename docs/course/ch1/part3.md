@@ -9,7 +9,7 @@ In the modern day and age, there are way better options:
 
 ---
 
-### Simplest: Press the buttons in the IDE
+### Simplest: Press the buttons in the IDE (or Website)
 
 At the top of the TryAPL page (and this course page) there are symbols you can click.
 You can also hover over them to get a quick overview of what each symbol does in APL.
@@ -36,7 +36,7 @@ and division `÷` is inserted with <kbd>PREFIX</kbd> <kbd>=</kbd>.
 
 While these might seem unintuitive at first, you'll get used to them fairly quickly.
 You can see the completion shortcut if you hover over the symbol in the top language bar.
-For example, hovering over `×` shows tells you the following: `Prefix: <prefix> -`.
+For example, hovering over `×` shows you the following: `Prefix: <prefix> -`.
 These are just instructions telling you to do what we did above.
 
 ---

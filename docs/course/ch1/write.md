@@ -58,9 +58,9 @@ Since this course is still a work-in-progress, solving the write exercises will 
     <div class="problem">
         <span class="problemspan">⎕←</span>
         <span class="problemfilltext" id="input_ch1_p3_b1" hidden>A←{</span>
-        <span class="problemfilltext" id="input_ch1_p3_b2">12</span>
+        <span class="problemfilltext" id="input_ch1_p3_b2">200000</span>
         <input class="problemfillinput" type="text" id="input_ch1_p3_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
-        <span class="problemfilltext" id="input_ch1_p3_b4">200000</span>
+        <span class="problemfilltext" id="input_ch1_p3_b4">12</span>
         <span class="problemfilltext" id="input_ch1_p3_b5" hidden>}</span>
         <button class="problembutton" onclick="submit_problem('ch1_p3', 5)">Submit</button>
     </div>
@@ -195,7 +195,7 @@ Since this course is still a work-in-progress, solving the write exercises will 
 !!! write-problem "Write problem 12"
     Rewrite the following line of code using less than 7 parentheses.
     ```apl
-    ((((x+3.5)×(x+6))-(((2+y)×(z×8.5))÷¯20)⍝((()())))()()((()()))()()()()))())))()(((
+    (((x+3.5)×(x+6))-((2+y)×(z×8.5))÷¯20)⍝((()())))()()((()()))()()()()))())))()(((
     ```
     <div class="problem">
         <span class="problemspan">⎕←</span>

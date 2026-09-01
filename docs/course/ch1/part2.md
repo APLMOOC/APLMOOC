@@ -67,7 +67,6 @@ the negative sign (`¯`) decorates a number (`¯1337`) to show that it's negativ
     **Results** are what a function "spits out".
     You can imagine the result of the function replacing the function after its execution is done,
     just like in any other programming language.
-    There are also functions that do not return any results.
 
 ---
 

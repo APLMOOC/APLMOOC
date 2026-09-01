@@ -23,7 +23,7 @@ Instead of doing the arithmetic operations in the normal order, 2 times 2 and ad
 APL seems to have done them in the reverse order, 2 plus 1 and the whole thing times 2.
 Let's see why that is.
 
-The creators of APL were faced with a dillemma.
+The creators of APL were faced with a dilemma.
 Every new symbol they added to the language was to be considered a function.
 In other languages, like Python, functions take in arguments inside parentheses.
 However, in APL, functions only take in arguments from the **left** and **right**.
@@ -38,10 +38,7 @@ And this doesn't even take into account functions that programmers can create th
 
     In APL, all operations are executed _right-to-left_.
 
-    When APL runs a line of code, it first looks at the rightmost function symbol
-    and executes it with the arguments to its left and right.
-    It then looks at the function symbol to the left of the one just processed,
-    and executes it, treating the result it just got as a right argument.
+    When APL runs a line of code, it first evaluates the rightmost function and works its way left. For example, ``a×b-c`` would evaluate ``b-c`` first, then mutliply it by ``a``.
 
 An equivalent formulation of this would be
 
@@ -67,7 +64,7 @@ Can you see why these two formulations are equivalent?
 
 !!! warning "About spaces"
 
-    APL ignores extra spaces when processing statements.
+    Spaces are not necessary between functions and their arguments.
     For example, all of the following statements will produce the same result:
 
     ```apl
@@ -95,9 +92,9 @@ Let's look at our previous example once again:
 ```apl
       2×2+1
 6
-      2×(2+1) ⍝ (1)!
+      2×(2+1) (1)!
 6
-      (2×2)+1 ⍝ (2)!
+      (2×2)+1 (2)!
 5
 ```
 
@@ -140,12 +137,12 @@ Before we conclude, here are some tips on how to reduce parentheses in your code
 
 !!! info "Reducing parentheses"
 
-    1. No APL expression needs to end with a closing parenthesis. It's redundant.
+    1. No APL expression needs to end with a closing parenthesis. This can be simplified.
     - For example, the expression `(2×3)+(4×5)` can be rewritten as `(2×3)+4×5`
-    2. You never need two consecutive closing parentheses. It's redundant.
+    2. You never need two consecutive closing parentheses. This can also be simplified.
     - For example, the expression `(2×(3+4))÷5` is equivalent to `(2×3+4)÷5`
     3. If you can easily rewrite the expression to avoid parentheses, do so.
-    - For example, the expression `((2÷3)+4)×5` can be reversed to give `5×4+2÷3`
+    - For example, the expression `((2÷3)+4)×5` can be written as `5×4+2÷3`
     4. Do not shovel in extra parentheses in a panicked, desperate attempt to fix your code.
     Do shovel in parentheses if it genuinely helps the readability of your code.
 
