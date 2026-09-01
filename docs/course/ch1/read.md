@@ -14,12 +14,13 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Input"
 
         ```apl
-        2 + 3
+              2 + 3
         ```
 
     === "Output"
 
         ```apl
+              2 + 3
         5
         ```
 
@@ -29,12 +30,13 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Input"
 
         ```apl
-        2-3
+              2-3
         ```    
 
     === "Output"
 
         ```apl
+              2-3
         ¯1
         ```
 
@@ -46,12 +48,13 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Input"
 
         ```apl
-        3*3
+              3*3
         ```    
 
     === "Output"
 
         ```apl
+              3*3
         27
         ```
 
@@ -63,12 +66,13 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Input"
 
         ```apl
-        3×3
+              3×3
         ```    
 
     === "Output"
 
         ```apl
+              3×3
         9
         ```
 
@@ -78,12 +82,13 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Input"
 
         ```apl
-        3÷2
+              3÷2
         ```    
 
     === "Output"
 
         ```apl
+              3÷2
         1.5
         ```
 
@@ -93,12 +98,13 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Input"
 
         ```apl
-        2¯7
+              2¯7
         ```    
 
     === "Output"
 
         ```apl
+              2¯7
         SYNTAX ERROR
               2¯7
               ∧
@@ -112,12 +118,13 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Input"
 
         ```apl
-        1+2÷
+              1+2÷
         ```    
 
     === "Output"
 
         ```apl
+              1+2÷
         SYNTAX ERROR
               1+2÷
                  ∧
@@ -131,12 +138,13 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Input"
 
         ```apl
-        100÷0
+              100÷0
         ```    
 
     === "Output"
 
         ```apl
+              100÷0
         DOMAIN ERROR: Divide by zero
               100÷0
                  ∧
@@ -150,12 +158,13 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Input"
 
         ```apl
-        0÷100
+              0÷100
         ```    
 
     === "Output"
 
         ```apl
+              0÷100
         0
         ```
 
@@ -165,12 +174,13 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Input"
 
         ```apl
-        0÷0
+              0÷0
         ```    
 
     === "Output"
 
         ```apl
+              0÷0
         1
         ```
 
@@ -185,12 +195,13 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Input"
 
         ```apl
-        ¯2×¯3
+              ¯2×¯3
         ```    
 
     === "Output"
 
         ```apl
+              ¯2×¯3
         6
         ```
 
@@ -202,12 +213,13 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Input"
 
         ```apl
-        4×2+3
+              4×2+3
         ```    
 
     === "Output"
 
         ```apl
+              4×2+3
         20
         ```
 
@@ -219,12 +231,13 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Input"
 
         ```apl
-        5×2   +   3×2
+              5×2   +   3×2
         ```    
 
     === "Output"
 
         ```apl
+              5×2   +   3×2
         40
         ```
         
@@ -236,12 +249,13 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Input"
 
         ```apl
-        24÷8÷2
+              24÷8÷2
         ```    
 
     === "Output"
 
         ```apl
+              24÷8÷2
         6
         ```
 
@@ -251,12 +265,13 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Input"
 
         ```apl
-        3÷12 + 4×¯3
+              3÷12 + 4×¯3
         ```    
 
     === "Output"
 
         ```apl
+              3÷12 + 4×¯3
         DOMAIN ERROR: Divide by zero
               3÷12 + 4×¯3
                ∧
@@ -270,12 +285,13 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Input"
 
         ```apl
-        (((2+3)))
+              (((2+3)))
         ```    
 
     === "Output"
 
         ```apl
+              (((2+3)))
         5
         ```
 
@@ -287,12 +303,13 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Input"
 
         ```apl
-        (((5))+((((3)))×(2)))
+              (((5))+((((3)))×(2)))
         ```    
 
     === "Output"
 
         ```apl
+              (((5))+((((3)))×(2)))
         11
         ```
 
@@ -304,12 +321,13 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Input"
 
         ```apl
-        4×24÷3
+              4×24÷3
         ```    
 
     === "Output"
 
         ```apl
+              4×24÷3
         32
         ```
 
@@ -319,12 +337,13 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Input"
 
         ```apl
-        24÷4×3
+              24÷4×3
         ```    
 
     === "Output"
 
         ```apl
+              24÷4×3
         2
         ```
 
@@ -334,12 +353,13 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Input"
 
         ```apl
-        6×3-
+              6×3-
         ```    
 
     === "Output"
 
         ```apl
+              6×3-
         SYNTAX ERROR
               6×3-
                  ∧

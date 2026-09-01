@@ -77,7 +77,7 @@ Since this course is still a work-in-progress, solving the write exercises will 
         <span class="problemfilltext" id="input_ch1_p4_b2">¯420</span>
         <input class="problemfillinput" type="text" id="input_ch1_p4_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
         <span class="problemfilltext" id="input_ch1_p4_b4">100</span>
-        <span class="problemfilltext" id="input_ch1_p1_b5" hidden>}</span>
+        <span class="problemfilltext" id="input_ch1_p4_b5" hidden>}</span>
         <button class="problembutton" onclick="submit_problem('ch1_p4', 5)">Submit</button>
     </div>
     <p id="feedback_ch1_p4" style="color: red"></p>
@@ -88,9 +88,9 @@ Since this course is still a work-in-progress, solving the write exercises will 
     Cause a `SYNTAX ERROR` using as few symbols as possible.
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <span class="problemfilltext" id="input_ch1_p5_b1" hidden>A←{</span>
+        <span class="problemfilltext" id="input_ch1_p5_b1" hidden>A←{0::⎕EN ⋄ </span>
         <input class="probleminput" type="text" id="input_ch1_p5_b2" placeholder="your solution here">
-        <span class="problemfilltext" id="input_ch1_p1_b3" hidden>}</span>
+        <span class="problemfilltext" id="input_ch1_p5_b3" hidden> ⋄ 0}</span>
         <button class="problembutton" onclick="submit_problem('ch1_p5', 3)">Submit</button>
     </div>
     <p id="feedback_ch1_p5" style="color: red"></p>
@@ -101,9 +101,9 @@ Since this course is still a work-in-progress, solving the write exercises will 
     Cause a `DOMAIN ERROR`.
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <span class="problemfilltext" id="input_ch1_p6_b1" hidden>A←{</span>
+        <span class="problemfilltext" id="input_ch1_p6_b1" hidden>A←{0::⎕EN ⋄ </span>
         <input class="probleminput" type="text" id="input_ch1_p6_b2" placeholder="your solution here">
-        <span class="problemfilltext" id="input_ch1_p6_b3" hidden>}</span>
+        <span class="problemfilltext" id="input_ch1_p6_b3" hidden> ⋄ 0}</span>
         <button class="problembutton" onclick="submit_problem('ch1_p6', 3)">Submit</button>
     </div>
     <p id="feedback_ch1_p6" style="color: red"></p>
@@ -117,7 +117,7 @@ Since this course is still a work-in-progress, solving the write exercises will 
     ```
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <span class="problemfilltext" id="input_ch1_p7_b1" hidden>A←{</span>
+        <span class="problemfilltext" id="input_ch1_p7_b1" hidden>A←{x←⍵ ⋄ y←1+⍵ ⋄ </span>
         <input class="probleminput" type="text" id="input_ch1_p7_b2" placeholder="your solution here">
         <span class="problemfilltext" id="input_ch1_p7_b3" hidden>}</span>
         <button class="problembutton" onclick="submit_problem('ch1_p7', 3)">Submit</button>
@@ -158,7 +158,7 @@ Since this course is still a work-in-progress, solving the write exercises will 
         <span class="problemfilltext" id="input_ch1_p9_b3">5</span>
         <input class="problemfillinput" type="text" id="input_ch1_p9_b4" placeholder="fill in the blank" oninput="fillinput_resize(this)">
         <span class="problemfilltext" id="input_ch1_p9_b5">15</span>
-        <span class="problemfilltext" id="input_ch1_p1_b6" hidden>}</span>
+        <span class="problemfilltext" id="input_ch1_p9_b6" hidden>}</span>
         <button class="problembutton" onclick="submit_problem('ch1_p9', 6)">Submit</button>
     </div>
     <p id="feedback_ch1_p9" style="color: red"></p>
@@ -185,7 +185,7 @@ Since this course is still a work-in-progress, solving the write exercises will 
         <span class="problemspan">⎕←</span>
         <span class="problemfilltext" id="input_ch1_p11_b1" hidden>A←{</span>
         <input class="probleminput" type="text" id="input_ch1_p11_b2" placeholder="your solution here">
-        <span class="problemfilltext" id="input_ch1_p11_b3" hidden>}</span>
+        <span class="problemfilltext" id="input_ch1_p11_b3" hidden>&#10;0}</span>
         <button class="problembutton" onclick="submit_problem('ch1_p11', 3)">Submit</button>
     </div>
     <p id="feedback_ch1_p11" style="color: red"></p>
@@ -199,7 +199,7 @@ Since this course is still a work-in-progress, solving the write exercises will 
     ```
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <span class="problemfilltext" id="input_ch1_p12_b1" hidden>A←{</span>
+        <span class="problemfilltext" id="input_ch1_p12_b1" hidden>A←{x←⍵ ⋄ y←1+⍵ ⋄ z←2+⍵ ⋄ </span>
         <input class="probleminput" type="text" id="input_ch1_p12_b2" placeholder="your solution here">
         <span class="problemfilltext" id="input_ch1_p12_b3" hidden>}</span>
         <button class="problembutton" onclick="submit_problem('ch1_p12', 3)">Submit</button>
