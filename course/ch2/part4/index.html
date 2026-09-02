@@ -2482,7 +2482,7 @@ Day 1 08:47</code></pre>
  Tab method: <kbd>p</kbd> <kbd>p</kbd> <span class="keys"><kbd class="key-tab">Tab</kbd></span></p>
 </div>
 <p>Another example is the following 5 by 5 pyramid</p>
-<pre class="highlight"><code class="language-apl">      PYRAMID_ENTRIES ← 1 1 1 1 1 1 2 2 2 1 1 2 3 2 1 1 2 2 2 1 1 1 1 1 1 1
+<pre class="highlight"><code class="language-apl">      PYRAMID_ENTRIES ← 1 1 1 1 1 1 2 2 2 1 1 2 3 2 1 1 2 2 2 1 1 1 1 1 1
       5 5 ⍴ PYRAMID_ENTRIES
 1 1 1 1 1
 1 2 2 2 1
@@ -2520,21 +2520,20 @@ TONE</code></pre>
 26</code></pre>
 <p>The number <code>100</code> above is called a <strong>scalar</strong> array, it does not have any axes (it has rank 0/is "zero-dimensional") and has only a single value, and so the result of <code>⍴100</code> is an empty vector.</p>
 <p>Since elements in matrices are ordered along two axes, an element of a matrix can be specified by two positions, the row and column. If only a row position (or column position) is specified, the whole row (respectively, column) is returned. The indices are always separated by a semicolon <code>;</code>.</p>
-<pre class="highlight"><code class="language-apl">     WORD_SQUARE ← 5 5 ⍴ 'HEARTEMBERABUSERESINTREND'
-     WORD_SQUARE
-HEART
-EMBER
-ABUSE
-RESIN
-TREND
-     WORD_SQUARE[1;]
-HEART
-     WORD_SQUARE[;1]
-HEART
-     WORD_SQUARE[5;]
-TREND
-     WORD_SQUARE[;5]
-TREND
+<pre class="highlight"><code class="language-apl">      ⎕ ← ALPHABET ← 5 5⍴⎕A
+ABCDE
+FGHIJ
+KLMNO
+PQRST
+UVWXY
+      ALPHABET[1;]
+ABCDE
+      ALPHABET[;1]
+AFKPU
+      ALPHABET[5;]
+UVWXY
+      ALPHABET[;5]
+EJOTY
       T1
 ┌────┬───────────┐
 │21.4│Day 1 07:42│
@@ -2554,22 +2553,23 @@ TREND
 │21.8│Day 1 08:47│
 └────┴───────────┘</code></pre>
 <p>Multiple numbers can be specified for both row and column indices.</p>
-<pre class="highlight"><code class="language-apl">      ⎕ ← ALPHABET ← 5 5⍴⎕A
-ABCDE
-FGHIJ
-KLMNO
-PQRST
-UVWXY
-      ALPHABET[1;]
-ABCDE
-      ALPHABET[1 2 3;]
-ABCDE
-FGHIJ
-KLMNO
-      ALPHABET[1 2 3; 1 2 3]
-ABC
-FGH
-KLM</code></pre>
+<pre class="highlight"><code class="language-apl">      WORD_SQUARE ← 5 5 ⍴ 'HEARTEMBERABUSERESINTREND'
+      WORD_SQUARE
+HEART
+EMBER
+ABUSE
+RESIN
+TREND
+      WORD_SQUARE[1;]
+HEART
+      WORD_SQUARE[1 2 3;]
+HEART
+EMBER
+ABUSE
+      WORD_SQUARE[1 2 3; 1 2 3]
+HEA
+EMB
+ABU</code></pre>
 <p>At this point you may ask yourself, if we have multiple temperature matrices now, instead of accessing the individual variables <code>T1</code> and <code>T2</code>, could we arrange them into an array with 3 indices, one for each variable and the other two for row and column index?</p>
 <p>If you did, you are thinking like a true array language user!</p>
 <p>Arrays of higher dimension are just as easy to create as matrices, again using array notation or the reshape <code>⍴</code> function.</p>

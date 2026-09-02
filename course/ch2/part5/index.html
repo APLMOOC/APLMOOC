@@ -2434,7 +2434,7 @@
              21.9 'Day 3, 08:30' ⋄
              22.4 'Day 3, 09:45' ]
 
-      TData ← 2 2 6 ⍴ T1 T2</code></pre>
+      TData ← 2 6 2 ⍴ T1 T2</code></pre>
 <p>We would get a very large array of the vectors T1 and T2! (Try it!) </p>
 <p>In APL, elements of arrays can be of any rank. In the above code, we create an array of vectors rather than an array of their scalars because <code>T1 T2</code> is a vector whose elements are <code>T1</code> and <code>T2</code>. </p>
 <h2 id="catenate-and-ravel">Catenate and ravel</h2>
@@ -2487,7 +2487,7 @@ TETE
              21.9 'Day 3, 08:30' ⋄
              22.4 'Day 3, 09:45' ]
 
-      TData ← 2 2 6 ⍴ T1,T2
+      TData ← 2 6 2 ⍴ T1,T2
       TData
 ┌────┬───────────┐
 │21.4│Day 1 07:42│
@@ -2518,7 +2518,7 @@ TETE
 <div class="admonition info">
 <p class="admonition-title">Boxing</p>
 <p>In TryAPL, boxing is enabled by default; however, to manually control boxing, the <code>]Box</code> user command can be used.</p>
-<pre class="highlight"><code class="language-apl">      nested ← 2 2 ⍴ (⍳3) ('  ') ('   ') (2 2 ⍴ ('  ') (⍳3) (2 2 ⍴ (⍳3) ('  ') ('   ') (⍳2)) ('   '))
+<pre class="highlight"><code class="language-apl">      nested ← 2 2 ⍴ (1 2 3) ('  ') ('   ') (2 2 ⍴ ('  ') (1 2 3) (2 2 ⍴ (1 2 3) ('  ') ('   ') (1 2)) ('   '))
       nested
 1 2 3                        
                 1 2 3  
