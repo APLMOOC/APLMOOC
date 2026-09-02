@@ -23,9 +23,11 @@ Since this course is still a work-in-progress, solving the write exercises will 
 !!! write-problem "Write problem 1"
     Create a vector consisting of the first ten prime numbers called PRIMES
     <div class="problem">
-        <span class="problemspan">⎕←</span>
-        <input class="probleminput" type="text" id="input_ch2_p1" placeholder="your solution here">
-        <button class="problembutton" onclick="submit_problem('ch2_p1', 2)">Submit</button>
+        <span class="problemspan">PRIMES←</span>
+        <span class="problemfilltext" id="input_ch2_p1_b1" hidden>A←{PRIMES←</span>
+        <input class="probleminput" type="text" id="input_ch2_p1_b2" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch2_p1_b3" hidden>⋄ PRIMES}</span>
+        <button class="problembutton" onclick="submit_problem('ch2_p1', 3)">Submit</button>
     </div>
     <p id="feedback_ch2_p1" style="color: red"></p>
 
@@ -34,9 +36,11 @@ Since this course is still a work-in-progress, solving the write exercises will 
 !!! write-problem "Write problem 2"
     Create a vector called POWER of value 2 to the power of PRIMES, minus two
     <div class="problem">
-        <span class="problemspan">⎕←</span>
-        <input class="probleminput" type="text" id="input_ch2_p2" placeholder="your solution here">
-        <button class="problembutton" onclick="submit_problem('ch2_p2', 2)">Submit</button>
+        <span class="problemspan">POWER←</span>
+        <span class="problemfilltext" id="input_ch2_p2_b1" hidden>A←{PRIMES←2 3 5 7 11 13 17 19 23 29 ⋄ POWER←</span>
+        <input class="probleminput" type="text" id="input_ch2_p2_b2" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch2_p2_b3" hidden>⋄ POWER}</span>
+        <button class="problembutton" onclick="submit_problem('ch2_p2', 3)">Submit</button>
     </div>
     <p id="feedback_ch2_p2" style="color: red"></p>
 
@@ -46,8 +50,10 @@ Since this course is still a work-in-progress, solving the write exercises will 
     Divide the vector POWER by PRIMES
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <input class="probleminput" type="text" id="input_ch2_p3" placeholder="your solution here">
-        <button class="problembutton" onclick="submit_problem('ch2_p3', 2)">Submit</button>
+        <span class="problemfilltext" id="input_ch2_p3_b1" hidden>A←{PRIMES←2 3 5 7 11 13 17 19 23 29 ⋄ POWER←(2*PRIMES)-2 ⋄ </span>
+        <input class="probleminput" type="text" id="input_ch2_p3_b2" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch2_p3_b3" hidden>}</span>
+        <button class="problembutton" onclick="submit_problem('ch2_p3', 3)">Submit</button>
     </div>
     <p id="feedback_ch2_p3" style="color: red"></p>
 
@@ -57,9 +63,11 @@ Since this course is still a work-in-progress, solving the write exercises will 
     Create the word "BUNNY" by indexing the alphabet vector ⎕A
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <span class="problemfilltext">⎕A[</span>
-        <input class="problemfillinput" type="text" id="input_ch2_p4_b1" placeholder="fill in the blank" oninput="fillinput_resize(this)">
-        <button class="problembutton" onclick="submit_problem('ch2_p4', 2)">Submit</button>
+        <span class="problemfilltext" id="input_ch2_p4_b1" hidden>A←{</span>
+        <span class="problemfilltext" id="input_ch2_p4_b2">⎕A[</span>
+        <input class="problemfillinput" type="text" id="input_ch2_p4_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
+        <span class="problemfilltext" id="input_ch2_p4_b4" hidden>}</span>
+        <button class="problembutton" onclick="submit_problem('ch2_p4', 4)">Submit</button>
     </div>
     <p id="feedback_ch2_p4" style="color: red"></p>
 
@@ -100,9 +108,11 @@ Since this course is still a work-in-progress, solving the write exercises will 
     The Caesar cipher encrypts a phrase by shifting all its letters by a specific amount along the alphabet. For example, "ARENA" becomes "RIVER" under a shift of 17 places. Use indexing of the above matrix to encipher the word "BUNNY" by shifting its letters 17 places.
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <span class="problemfilltext">CIPHER[</span>
-        <input class="problemfillinput" type="text" id="input_ch2_p5_b1" placeholder="fill in the blank" oninput="fillinput_resize(this)">
-        <button class="problembutton" onclick="submit_problem('ch2_p5', 2)">Submit</button>
+        <span class="problemfilltext" id="input_ch2_p5_b1" hidden>A←{CIPHER←(26 27⍴⎕A)[;⍳26] ⋄ </span>
+        <span class="problemfilltext" id="input_ch2_p5_b2">CIPHER[</span>
+        <input class="problemfillinput" type="text" id="input_ch2_p5_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
+        <span class="problemfilltext" id="input_ch2_p5_b4" hidden>}</span>
+        <button class="problembutton" onclick="submit_problem('ch2_p5', 4)">Submit</button>
     </div>
     <p id="feedback_ch2_p5" style="color: red"></p>
 
@@ -135,9 +145,11 @@ Since this course is still a work-in-progress, solving the write exercises will 
     ```
     <div class="problem">
         <span class="problemspan">APL←</span>
-        <span class="problemfilltext">ART[</span>
-        <input class="problemfillinput" type="text" id="input_ch2_p6_b1" placeholder="fill in the blank" oninput="fillinput_resize(this)">
-        <button class="problembutton" onclick="submit_problem('ch2_p6', 2)">Submit</button>
+        <span class="problemfilltext" id="input_ch2_p6_b1" hidden>A←{ART←12 27⍴'     .&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;.        |.---------------.|        ||  &#95;&#95;  &#95;&#95;&#95;&#95; &#95;&#95;  ||        || / &#95;&#92;(  &#95; (  ) ||        ||/    &#92;) &#95;&#95;/ (&#95;/||        ||&#92;&#95;/&#92;&#95;(&#95;&#95;) &#92;&#95;&#95;&#95;&#95;||        ||&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;||        /.-.-.-.-.-.-.-.-.&#92;       /.-.-.-.-.-.-.-.-.-.&#92;     /.-.-.-.-.-.-.-.-.-.-.&#92;   /&#95;&#95;&#95;&#95;&#95;&#95;/&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#92;&#95;&#95;&#95;&#95;&#95;&#92;  &#92;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;/' ⋄ </span>
+        <span class="problemfilltext" id="input_ch2_p6_b2">ART[</span>
+        <input class="problemfillinput" type="text" id="input_ch2_p6_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
+        <span class="problemfilltext" id="input_ch2_p6_b4" hidden>}</span>
+        <button class="problembutton" onclick="submit_problem('ch2_p6', 4)">Submit</button>
     </div>
     <p id="feedback_ch2_p6" style="color: red"></p>
 
@@ -146,10 +158,12 @@ Since this course is still a work-in-progress, solving the write exercises will 
 !!! write-problem "Write problem 7"
     Create a 3 by 3 grid of 'X's and 'O's called BOARD 
     <div class="problem">
-        <span class="problemspan">⎕←</span>
-        <input class="problemfillinput" type="text" id="input_ch2_p7_b1" placeholder="fill in the blank" oninput="fillinput_resize(this)">
-        <span class="problemfilltext">'XO'</span>
-        <button class="problembutton" onclick="submit_problem('ch2_p7', 2)">Submit</button>
+        <span class="problemspan">BOARD←</span>
+        <span class="problemfilltext" id="input_ch2_p7_b1" hidden>A←{BOARD←</span>
+        <input class="problemfillinput" type="text" id="input_ch2_p7_b2" placeholder="fill in the blank" oninput="fillinput_resize(this)">
+        <span class="problemfilltext" id="input_ch2_p7_b3">'XO'</span>
+        <span class="problemfilltext" id="input_ch2_p7_b4" hidden>⋄ BOARD}</span>
+        <button class="problembutton" onclick="submit_problem('ch2_p7', 4)">Submit</button>
     </div>
     <p id="feedback_ch2_p7" style="color: red"></p>
 
@@ -159,9 +173,11 @@ Since this course is still a work-in-progress, solving the write exercises will 
     Considering the above array as a game of noughts and crosses, change a single element to make the O player win.
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <span class="problemfilltext">BOARD[</span>
-        <input class="problemfillinput" type="text" id="input_ch2_p8_b1" placeholder="fill in the blank" oninput="fillinput_resize(this)">
-        <button class="problembutton" onclick="submit_problem('ch2_p8', 2)">Submit</button>
+        <span class="problemfilltext" id="input_ch2_p8_b1" hidden>A←{BOARD←3 3⍴'XO' ⋄ </span>
+        <span class="problemfilltext" id="input_ch2_p8_b2">BOARD[</span>
+        <input class="problemfillinput" type="text" id="input_ch2_p8_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
+        <span class="problemfilltext" id="input_ch2_p8_b4" hidden>⋄ BOARD}</span>
+        <button class="problembutton" onclick="submit_problem('ch2_p8', 4)">Submit</button>
     </div>
     <p id="feedback_ch2_p8" style="color: red"></p>
 
@@ -171,8 +187,10 @@ Since this course is still a work-in-progress, solving the write exercises will 
     Given the coefficients list C of a quadratic $P(x) = C[1] x^2 + C[2] x + C[3]$, evaluate the polynomial for a value X. For example, for ``C ← 1 2 3``, and ``X ← 10``, this should evaluate to $ 1 \cdot 10^2 + 2 \cdot 10 + 3 = 123 $.
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <input class="probleminput" type="text" id="input_ch2_p9" placeholder="your solution here">
-        <button class="problembutton" onclick="submit_problem('ch2_p9', 2)">Submit</button>
+        <span class="problemfilltext" id="input_ch2_p9_b1" hidden>A←{C←3↑⍵ ⋄ X←4⊃⍵ ⋄ </span>
+        <input class="probleminput" type="text" id="input_ch2_p9_b2" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch2_p9_b3" hidden>}</span>
+        <button class="problembutton" onclick="submit_problem('ch2_p9', 3)">Submit</button>
     </div>
     <p id="feedback_ch2_p9" style="color: red"></p>
 
@@ -192,9 +210,11 @@ Since this course is still a work-in-progress, solving the write exercises will 
     Get the first letter of each of the games listed using indexing
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <span class="problemfilltext">GAMES[</span>
-        <input class="problemfillinput" type="text" id="input_ch2_p10_b1" placeholder="fill in the blank" oninput="fillinput_resize(this)">
-        <button class="problembutton" onclick="submit_problem('ch2_p10', 2)">Submit</button>
+        <span class="problemfilltext" id="input_ch2_p10_b1" hidden>A←{GAMES←5 24⍴'CHESS                   CHECKERS                BACKGAMMON              POKER                   GLOBAL THERMONUCLEAR WAR' ⋄ </span>
+        <span class="problemfilltext" id="input_ch2_p10_b2">GAMES[</span>
+        <input class="problemfillinput" type="text" id="input_ch2_p10_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
+        <span class="problemfilltext" id="input_ch2_p10_b4" hidden>}</span>
+        <button class="problembutton" onclick="submit_problem('ch2_p10', 4)">Submit</button>
     </div>
     <p id="feedback_ch2_p10" style="color: red"></p>
 
@@ -204,9 +224,11 @@ Since this course is still a work-in-progress, solving the write exercises will 
     Get the first three letters of the second and fifth game listed above using indexing
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <span class="problemfilltext">GAMES[</span>
-        <input class="problemfillinput" type="text" id="input_ch2_p11_b1" placeholder="fill in the blank" oninput="fillinput_resize(this)">
-        <button class="problembutton" onclick="submit_problem('ch2_p11', 2)">Submit</button>
+        <span class="problemfilltext" id="input_ch2_p11_b1" hidden>A←{GAMES←5 24⍴'CHESS                   CHECKERS                BACKGAMMON              POKER                   GLOBAL THERMONUCLEAR WAR' ⋄ </span>
+        <span class="problemfilltext" id="input_ch2_p11_b2">GAMES[</span>
+        <input class="problemfillinput" type="text" id="input_ch2_p11_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
+        <span class="problemfilltext" id="input_ch2_p11_b4" hidden>}</span>
+        <button class="problembutton" onclick="submit_problem('ch2_p11', 4)">Submit</button>
     </div>
     <p id="feedback_ch2_p11" style="color: red"></p>
 
@@ -231,9 +253,11 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
     <div class="problem">
         <span class="problemspan">⎕←</span>
-        <span class="problemfilltext">ROUND[</span>
-        <input class="problemfillinput" type="text" id="input_ch2_p12_b1" placeholder="fill in the blank" oninput="fillinput_resize(this)">
-        <button class="problembutton" onclick="submit_problem('ch2_p12', 2)">Submit</button>
+        <span class="problemfilltext" id="input_ch2_p12_b1" hidden>A←{ROUND←3 3⍴'DRAW' 'P2 COVERS' 'P1 BLUNTS' 'P1 COVERS' 'DRAW' 'P2 CUTS' 'P2 BLUNTS' 'P1 CUTS' 'DRAW' ⋄ </span>
+        <span class="problemfilltext" id="input_ch2_p12_b2">ROUND[</span>
+        <input class="problemfillinput" type="text" id="input_ch2_p12_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
+        <span class="problemfilltext" id="input_ch2_p12_b4" hidden>}</span>
+        <button class="problembutton" onclick="submit_problem('ch2_p12', 4)">Submit</button>
     </div>
     <p id="feedback_ch2_p12" style="color: red"></p>
 
