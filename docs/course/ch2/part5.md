@@ -50,7 +50,7 @@ This also means that it's possible to accidentally create a matrix of vectors ra
              21.9 'Day 3, 08:30' ⋄
              22.4 'Day 3, 09:45' ]
 
-      TData ← 2 2 6 ⍴ T1 T2
+      TData ← 2 6 2 ⍴ T1 T2
 ```
 
 We would get a very large array of the vectors T1 and T2! (Try it!) 
@@ -110,7 +110,7 @@ TETE
              21.9 'Day 3, 08:30' ⋄
              22.4 'Day 3, 09:45' ]
 
-      TData ← 2 2 6 ⍴ T1,T2
+      TData ← 2 6 2 ⍴ T1,T2
       TData
 ┌────┬───────────┐
 │21.4│Day 1 07:42│
@@ -146,7 +146,7 @@ TETE
        In TryAPL, boxing is enabled by default; however, to manually control boxing, the `]Box` user command can be used.
        
        ```apl
-             nested ← 2 2 ⍴ (⍳3) ('  ') ('   ') (2 2 ⍴ ('  ') (⍳3) (2 2 ⍴ (⍳3) ('  ') ('   ') (⍳2)) ('   '))
+             nested ← 2 2 ⍴ (1 2 3) ('  ') ('   ') (2 2 ⍴ ('  ') (1 2 3) (2 2 ⍴ (1 2 3) ('  ') ('   ') (1 2)) ('   '))
              nested
        1 2 3                        
                        1 2 3  

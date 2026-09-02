@@ -118,7 +118,7 @@ The reshape function takes a vector of elements as its right argument, and resha
 Another example is the following 5 by 5 pyramid
 
 ```apl
-      PYRAMID_ENTRIES ← 1 1 1 1 1 1 2 2 2 1 1 2 3 2 1 1 2 2 2 1 1 1 1 1 1 1
+      PYRAMID_ENTRIES ← 1 1 1 1 1 1 2 2 2 1 1 2 3 2 1 1 2 2 2 1 1 1 1 1 1
       5 5 ⍴ PYRAMID_ENTRIES
 1 1 1 1 1
 1 2 2 2 1
@@ -173,21 +173,20 @@ The number ``100`` above is called a **scalar** array, it does not have any axes
 Since elements in matrices are ordered along two axes, an element of a matrix can be specified by two positions, the row and column. If only a row position (or column position) is specified, the whole row (respectively, column) is returned. The indices are always separated by a semicolon ``;``.
 
 ```apl
-     WORD_SQUARE ← 5 5 ⍴ 'HEARTEMBERABUSERESINTREND'
-     WORD_SQUARE
-HEART
-EMBER
-ABUSE
-RESIN
-TREND
-     WORD_SQUARE[1;]
-HEART
-     WORD_SQUARE[;1]
-HEART
-     WORD_SQUARE[5;]
-TREND
-     WORD_SQUARE[;5]
-TREND
+      ⎕ ← ALPHABET ← 5 5⍴⎕A
+ABCDE
+FGHIJ
+KLMNO
+PQRST
+UVWXY
+      ALPHABET[1;]
+ABCDE
+      ALPHABET[;1]
+AFKPU
+      ALPHABET[5;]
+UVWXY
+      ALPHABET[;5]
+EJOTY
       T1
 ┌────┬───────────┐
 │21.4│Day 1 07:42│
@@ -211,22 +210,23 @@ TREND
 Multiple numbers can be specified for both row and column indices.
 
 ```apl
-      ⎕ ← ALPHABET ← 5 5⍴⎕A
-ABCDE
-FGHIJ
-KLMNO
-PQRST
-UVWXY
-      ALPHABET[1;]
-ABCDE
-      ALPHABET[1 2 3;]
-ABCDE
-FGHIJ
-KLMNO
-      ALPHABET[1 2 3; 1 2 3]
-ABC
-FGH
-KLM
+      WORD_SQUARE ← 5 5 ⍴ 'HEARTEMBERABUSERESINTREND'
+      WORD_SQUARE
+HEART
+EMBER
+ABUSE
+RESIN
+TREND
+      WORD_SQUARE[1;]
+HEART
+      WORD_SQUARE[1 2 3;]
+HEART
+EMBER
+ABUSE
+      WORD_SQUARE[1 2 3; 1 2 3]
+HEA
+EMB
+ABU
 ```
 
 At this point you may ask yourself, if we have multiple temperature matrices now, instead of accessing the individual variables ``T1`` and ``T2``, could we arrange them into an array with 3 indices, one for each variable and the other two for row and column index?

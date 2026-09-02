@@ -27,11 +27,11 @@ DOMAIN ERROR: Divide by zero
 ```
 
 Like most mathematicians, APL is deathly afraid of dividing by zero.
-As such, APL doesn't allow zero as a right argument to the division function.
+As such, APL doesn't allow dividing by zero. (Except for a special case covered in the [Read Exercises](read.md)!)
 In other words, zero is outside the **domain** of the right argument of `÷`.
 
 When something like this happens, APL displays that there has been an error of a certain type (in this case, a DOMAIN ERROR),
-as well as a short description and an arrow pointing to the **function** that produced the error.
+as well as a short description and an arrow pointing to the part (typically the function) that produced the error.
 So much better than errors in other languages! (looking at Java and Python right now)
 
 Here are some examples of error types you will come across in the future.

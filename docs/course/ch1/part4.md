@@ -114,7 +114,7 @@ In the above case, for example, we could have simply restructured the expression
 
 No parentheses, and we get the correct answer!
 
-In general, when you have parentheses on the right, they are redundant.
+In general, when you have parentheses on the right end of an expression, they are redundant.
 This is easier to understand in context. Consider the following expression:
 
 ```apl

@@ -4,11 +4,11 @@ APL is quirky, different, and not like the other programming languages.
 
 ---
 
-One December, I was doing the [Advent of Code](https://adventofcode.com/) (AoC) challenges.
-These are fun, small programming projects that are given to you in the form of a Christmas advent calendar.
-There are 2 challenges per day, for a grand total of 50 throughout December.
+One December, I participated in the [Advent of Code](https://adventofcode.com/). Like a traditional advent calendar, every day had something new, but instead of a small treat they were small programming projects. Fun! 
 
-Throughout the month, text like this was posted on forums:
+There were two Christmas-themed challenges per day, leading to a grand total of fifty by the end of December.
+
+Throughout the month, so-called solutions like these were posted.
 
 ```apl
 east  ← ⊢{(⍺+¯1⌽⍵)-⍵}     0∘<∧0=1∘⌽   ⍝ (1)!
@@ -16,18 +16,11 @@ east  ← ⊢{(⍺+¯1⌽⍵)-⍵}     0∘<∧0=1∘⌽   ⍝ (1)!
 
 1. Example taken from <https://github.com/pitr/aoc/blob/main/2021/25.apl>
 
-I was very confused.
+I was baffled.
 These were meant to be _solutions_ to the AoC problems.
-However, I couldn't see how in the world these could represent any sort of algorithm, much less a solution.
-Were these...
+However, I couldn't see how they could possibly represent any kind of algorithm, much less a solution.
 
-- Encrypted solutions?
-- Solutions encoded in some weird format?
-- Trolls meant to confuse me?
-- My computer bugging out?
-
-Turns out, it was none of these.
-After a bit more research, I found out that it was something called **APL**.
+Turns out, they were written in a language called **APL**.
 
 !!! tip "APL"
 
@@ -41,21 +34,21 @@ After a bit more research, I found out that it was something called **APL**.
 
     ---
 
-    Great naming, right?
+    No false advertising here!
 
 
 ---
 
-Out of curiosity, I tried finding APL solutions to the AoC challenges after Christmas passed.
+Out of curiosity, I tried finding APL solutions to the AoC challenges after Christmas had passed.
 At one point, I found a solution that spanned just 50 lines.
-As a note, a Python solution for _one_ challenge (towards the end of the month) is usually about 150-200 lines long.
-In its 50 lines, the APL solution apparently solved _all_ the problems.
+Python solutions to the more difficult challenges are usually around 150 lines long.
+In its 50 lines, the APL solution apparently solved _all_ the problems!
 
-That was cool.
+It was astounding.
 
 ---
 
-APL looks different, feels different, and it challenges your normal way of thinking about programming.
+APL looks different, feels different, and challenges the way you think about programming.
 
 I hope that this course will expand your mind and let you approach programming from a whole new perspective.
 

@@ -58,7 +58,7 @@ Since this course is still a work-in-progress, solving the write exercises will 
     <div class="problem">
         <span class="problemspan">⎕←</span>
         <span class="problemfilltext">⎕A[</span>
-        <input class="problemfillinput" type="text" id="input_ch2_p1_b1" placeholder="fill in the blank" oninput="fillinput_resize(this)">
+        <input class="problemfillinput" type="text" id="input_ch2_p4_b1" placeholder="fill in the blank" oninput="fillinput_resize(this)">
         <button class="problembutton" onclick="submit_problem('ch2_p4', 2)">Submit</button>
     </div>
     <p id="feedback_ch2_p4" style="color: red"></p>
@@ -68,6 +68,7 @@ Since this course is still a work-in-progress, solving the write exercises will 
 !!! write-problem "Write problem 5"
     The following matrix CIPHER consists of shifted versions of the alphabet for every row.
     ```apl
+          CIPHER ← (26 27 ⍴ ⎕A)[;1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26]
           CIPHER
       ABCDEFGHIJKLMNOPQRSTUVWXYZ
       BCDEFGHIJKLMNOPQRSTUVWXYZA
@@ -96,7 +97,7 @@ Since this course is still a work-in-progress, solving the write exercises will 
       YZABCDEFGHIJKLMNOPQRSTUVWX
       ZABCDEFGHIJKLMNOPQRSTUVWXY
     ```
-    The Caesar cipher encrypts a phrase by shifting all its letters by a specific amount along the alphabet. For example, "ARENA" becomes "RIVER" under a shift of 9 places. Use indexing of the above matrix to encipher the word "BUNNY" by shifting its letters 17 places.
+    The Caesar cipher encrypts a phrase by shifting all its letters by a specific amount along the alphabet. For example, "ARENA" becomes "RIVER" under a shift of 17 places. Use indexing of the above matrix to encipher the word "BUNNY" by shifting its letters 17 places.
     <div class="problem">
         <span class="problemspan">⎕←</span>
         <span class="problemfilltext">CIPHER[</span>
@@ -133,7 +134,7 @@ Since this course is still a work-in-progress, solving the write exercises will 
     \_/\_(__) \____
     ```
     <div class="problem">
-        <span class="problemspan">⎕←</span>
+        <span class="problemspan">APL←</span>
         <span class="problemfilltext">ART[</span>
         <input class="problemfillinput" type="text" id="input_ch2_p6_b1" placeholder="fill in the blank" oninput="fillinput_resize(this)">
         <button class="problembutton" onclick="submit_problem('ch2_p6', 2)">Submit</button>
@@ -180,6 +181,7 @@ Since this course is still a work-in-progress, solving the write exercises will 
 !!! write-problem "Write problem 10"
     Consider the following list of GAMES
     ```apl
+          GAMES ← 5 24 ⍴ 'CHESS                   CHECKERS                BACKGAMMON              POKER                   GLOBAL THERMONUCLEAR WAR'
           GAMES
     CHESS                   
     CHECKERS                
@@ -213,6 +215,7 @@ Since this course is still a work-in-progress, solving the write exercises will 
 !!! write-problem "Write problem 12"
     Consider the following matrix ROUND of the outcomes of a game of rock, paper, scissors.
     ```apl
+          ROUND ← 3 3 ⍴ 'DRAW' 'P2 COVERS' 'P1 BLUNTS' 'P1 COVERS' 'DRAW' 'P2 CUTS' 'P2 BLUNTS' 'P1 CUTS' 'DRAW'
           ROUND
     ┌─────────┬─────────┬─────────┐
     │DRAW     │P2 COVERS│P1 BLUNTS│

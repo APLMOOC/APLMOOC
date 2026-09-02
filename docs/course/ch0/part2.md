@@ -7,11 +7,11 @@
 ### ...is an array language.
 
 Another (unofficial) name for APL is "Array Programming Language".
-All operations in the language work on lists, matrices, and higher dimensional arrays.
+All operations in APL work on lists, matrices, and higher dimensional arrays.
 
 Many tasks that require data processing and operations on large amounts of structured data work really well in APL.
 
-You might have heard that programming languages can be classified into a few different types:
+You might have heard that programming languages can be classified into a few different paradigms:
 
 - Imperative languages (Python, Java, C, etc.)
 - Functional languages (Haskell, Clojure, etc.)
@@ -20,9 +20,8 @@ A new addition to this list, which you might not have heard of, is
 
 - Array languages (APL and its derivatives, etc.)
 
-Array languages are considered separate from the previous two categories, as they operate differently.
 Instead of having variables and operations (imperative) or functions (functional) as primitive objects,
-array languages use arrays and array algorithms as primitives.
+array languages take arrays and array functions as primitives.
 This requires a separate form of thinking from how you would program in other languages,
 which makes it interesting to learn even if you already know an imperative language like Python.
 
@@ -48,16 +47,16 @@ The underlying interpreter abstracts it all away from you to stay close to its r
 
 In fact, APL abstracts a lot of normal operations from you.
 
-There are no concepts of memory, pointers, loops (in their traditional sense), or other primitives
+There is no such thing as memory, pointers, or other primitives
 that, as a traditional (imperative) programmer, one needs to think about and understand when writing algorithms and code.
 
 ---
 
 ## The power of APL
 
-Some people say that APL is "confusing" and "difficult to read" due to its special characters.
+Some people say that APL is confusing and difficult to read due to its special characters.
 
-However, I disagree.
+I disagree.
 APL is just as readable as any language.
 An English person can't read Finnish either without a little practice!
 

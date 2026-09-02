@@ -193,7 +193,7 @@ Since this course is still a work-in-progress, solving the write exercises will 
 ---
 
 !!! write-problem "Write problem 12"
-    Rewrite the following line of code using less than 7 parentheses.
+    Rewrite the following line of code using less than 7 parentheses, where `x`, `y`, and `z` are variables.
     ```apl
     (((x+3.5)×(x+6))-((2+y)×(z×8.5))÷¯20)⍝((()())))()()((()()))()()()()))())))()(((
     ```

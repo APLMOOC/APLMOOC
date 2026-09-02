@@ -141,8 +141,8 @@ The exercises are not checked or graded: use them to check your knowledge!
         ```apl
               1 2 ÷ 2 3 4 5
         LENGTH ERROR: Mismatched left and right argument shapes
-        1 2÷3 4 5
-           ∧
+              1 2÷2 3 4 5
+                 ∧
         ```
 
 ---

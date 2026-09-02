@@ -186,8 +186,7 @@ The exercises are not checked or graded: use them to check your knowledge!
 
         Ah, the age-old dilemma!
         Were you expecting a `DOMAIN ERROR`?
-        The APL developers decided to add this feature since it is useful in some contexts.
-        There is the option to change this if it really upsets you.
+        All standard implementations of APL allow the division of `0` by itself for convenience, though there has been [some argument](https://www.jsoftware.com/papers/zero.htm) on why this should be `0` instead. 
 
 ---
 
