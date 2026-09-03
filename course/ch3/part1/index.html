@@ -1959,7 +1959,7 @@
   
   
   <span class="md-ellipsis">
-    6.5 - Dops (dee-ops)
+    6.6 - Dops (dee-ops)
     
   </span>
   
@@ -2400,6 +2400,40 @@
 </ul>
 </div>
 <hr />
+<div class="admonition note">
+<p class="admonition-title">Typing the symbols in this part</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Symbol</th>
+<th style="text-align: center;">Prefix method</th>
+<th style="text-align: center;">Tab method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>⍺</code></td>
+<td style="text-align: center;"><kbd>PREFIX</kbd> <kbd>a</kbd></td>
+<td style="text-align: center;"><kbd>a</kbd> <kbd>a</kbd> <span class="keys"><kbd class="key-tab">Tab</kbd></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>⍵</code></td>
+<td style="text-align: center;"><kbd>PREFIX</kbd> <kbd>w</kbd></td>
+<td style="text-align: center;"><kbd>w</kbd> <kbd>w</kbd> <span class="keys"><kbd class="key-tab">Tab</kbd></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>⋄</code></td>
+<td style="text-align: center;"><kbd>PREFIX</kbd> <kbd>`</kbd></td>
+<td style="text-align: center;"><kbd>&lt;</kbd> <kbd>&gt;</kbd> <span class="keys"><kbd class="key-tab">Tab</kbd></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>⍬</code></td>
+<td style="text-align: center;"><kbd>PREFIX</kbd> <kbd>}</kbd></td>
+<td style="text-align: center;"><kbd>0</kbd> <kbd>~</kbd> <span class="keys"><kbd class="key-tab">Tab</kbd></span></td>
+</tr>
+</tbody>
+</table>
+</div>
 <p><link rel="stylesheet" href="/styles/ch5part2.css"></p>
 <p>Now that we know how data is structured in APL, it’s time to look at how to use this data, more specifically, how to make your own functions from already existing ones.</p>
 <p>You are an engineer sitting at your <a href="https://en.wikipedia.org/wiki/Cubicle">cubicle</a>. You are currently orbiting the Earth at an altitude of 160m at a speed of 1,600km/h.</p>
@@ -2431,8 +2465,8 @@
       ⍝ From decibels to bels 
       dBtoB ← {⍵÷10} 
       ⍝ From decibels back to a power ratio
-      dBtoratio ← {10*dBtoB ⍵} 
-    dBtoRatio 60
+      dBtoRatio ← {10*dBtoB ⍵} 
+      dBtoRatio 60
 1000000
       dBtoRatio 3
 1.995262315
@@ -2448,6 +2482,11 @@
 13
       1 hypotenuse 3*.5
 2
+      ⍝ A dfn that uses ⍺ needs a left argument
+      hypotenuse 4
+VALUE ERROR
+hypotenuse[0] hypotenuse←{((⍺*2)+⍵*2)*0.5}
+                            ∧
 
       ⍝ golden ratio
       PHI ← 0.5× 1 + 5*.5 
@@ -2457,8 +2496,8 @@
       fibonacci 10
 55
 </code></pre>
-<p>Note that for the Fibonacci function, a constant value phi for the golden ratio was used. If the value of phi is changed, the Fibonacci function will use the updated value. </p>
-<p>In order to let the Fibonacci function define its own phi, we have to define it inside the function itself. APL allows any number of assignment statements inside a function before the statement which evaluates the result, using the diamond-shaped statement separator <code>⋄</code>, or placing the statements on new lines. The following two functions are equivalent.</p>
+<p>Note that for the Fibonacci function, a constant value PHI for the golden ratio was used. If the value of PHI is changed, the Fibonacci function will use the updated value. </p>
+<p>In order to let the Fibonacci function define its own PHI, we have to define it inside the function itself. APL allows any number of assignment statements inside a function before the statement which evaluates the result, using the diamond-shaped statement separator <code>⋄</code>, or placing the statements on new lines. The following two functions are equivalent.</p>
 <pre class="highlight"><code class="language-apl">      fibonacci ← {
             PHI ← 0.5× 1 + 5*.5
             ((PHI*⍵) - (-PHI)*-⍵) ÷ (¯1 + 2×PHI)
@@ -2467,27 +2506,27 @@
       fibonacci ← {
             PHI ← 0.5× 1 + 5*.5 ⋄ ((PHI*⍵) - (-PHI)*-⍵) ÷ (¯1 + 2×PHI)
       }</code></pre>
-<p>Note that the first statement which outputs a value stops the execution of the function.</p>
+<p>Note that the first statement whose result is not assigned to a name ends the function and returns that result.</p>
 <pre class="highlight"><code class="language-apl">      separator_test ← {a ← 1 ⋄ a + a ⋄ a - a}
       separator_test ⍬
 2</code></pre>
 <p>The empty vector symbol <code>⍬</code> is added here as filler since functions always require a right argument.</p>
-<div class="admonition warn">
+<div class="admonition warning">
 <p class="admonition-title">Variable Scope</p>
 <p>In dfns, while it is possible to access variables outside the function, it is not possible to assign to them. All quantities assigned in dfns are said to be local to the function itself.
-        <pre class="highlight"><code class="language-apl">      i ← 10
+<pre class="highlight"><code class="language-apl">      i ← 10
       d_increment ← {i←i+1 ⋄ i}
 
       i
 10
-      increment ⍬
-11  
+      d_increment ⍬
+11
       i
 10</code></pre></p>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Multiline support in RIDE</p>
-<p>In order to write multiline functions in the Dyalog RIDE, "Extended Multiline Input" needs to be enabled. It can be found in the Session tab under Options&gt;Configure.</p>
+<p>In order to write multiline functions in the Dyalog RIDE (installed in Chapter 7), "Extended Multiline Input" needs to be enabled. It can be found in the Session tab under Options&gt;Configure.</p>
 </div>
 
 

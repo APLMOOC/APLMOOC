@@ -1959,7 +1959,7 @@
   
   
   <span class="md-ellipsis">
-    6.5 - Dops (dee-ops)
+    6.6 - Dops (dee-ops)
     
   </span>
   
@@ -2400,7 +2400,26 @@
 </ul>
 </div>
 <hr />
-<p>The engineer sits hunched over their cubicle, focused as they diligently type out</p>
+<div class="admonition note">
+<p class="admonition-title">Typing the symbols in this part</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Symbol</th>
+<th style="text-align: center;">Prefix method</th>
+<th style="text-align: center;">Tab method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>∇</code></td>
+<td style="text-align: center;"><kbd>PREFIX</kbd> <kbd>g</kbd></td>
+<td style="text-align: center;"><kbd>V</kbd> <kbd>V</kbd> <span class="keys"><kbd class="key-tab">Tab</kbd></span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The engineer sits hunched over their cubicle, focused as they diligently type out the sum of powers of <code>0.99</code>.</p>
 <pre class="highlight"><code class="language-apl">   1+(0.99)+(0.99*2)
 2.9701
 
@@ -2409,10 +2428,10 @@
 
    1+(0.99)+(0.99*2)+(0.99*3)+(0.99*4)+(0.99*5)+(0.99*6)+(0.99*7)+(0.99*8)+(0.99*9)
 9.561792499</code></pre>
-<p>In the back of their mind, they know the task they are trying to achieve is impossible, approximating the sum of powers of <code>0.99</code> to a reasonable precision would take thousands of terms.</p>
-<p>A coworker suggested using a function, and provided some code to evaluate the sequence. Not wanting their skills to be overshadowed, the engineer refused the help and started creating their own function </p>
+<p>They know the task they are trying to achieve is impossible, approximating the sum of powers of <code>0.99</code> to a reasonable precision would take thousands of terms.</p>
+<p>A coworker suggested a function, but the engineer refused the help and started creating their own function </p>
 <pre class="highlight"><code class="language-apl">      a ← {0.99*⍵}
-      (a 0)+(a 1)+(a 2)+(a 3)+(a 4)+(a 5)+(a 6)+(a 7)+(a 8)+(a 9)+(a 10)
+      (a 0)+(a 1)+(a 2)+(a 3)+(a 4)+(a 5)+(a 6)+(a 7)+(a 8)+(a 9)
 9.561792499</code></pre>
 <h2 id="recursion">Recursion</h2>
 <p>Now reaching the 50th term, the series is no closer to being evaluated. If only there were a way to define a function that repeatedly applies itself. The engineer thinks for a bit, and writes the following.</p>
@@ -2445,7 +2464,8 @@
 17
 18
 ...</code></pre>
-<p>They quickly halt the program using <code>Action &gt; Interrupt</code> in RIDE, realising a never-ending series of computations have been specified, by calling the function within itself. The special symbol <code>∇</code> can also be used in place of the function name. Trying to do this for the infinite sum, where the right argument is set to be the accumulated result, and the left argument is the index of the term to sum up, the computation succeeds.</p>
+<p>They quickly halt the program using <code>Action &gt; Interrupt</code> in RIDE, realising a never-ending series of computations have been specified, by calling the function within itself. Calling a function within itself itself is allowed in APL, and is regularly used to implement recursion! The special symbol <code>∇</code> can also be used in place of the function name. </p>
+<p>Trying to do this for the infinite sum, they set the right argument to be the accumulated sum, and the left argument to be the index.</p>
 <pre class="highlight"><code class="language-apl">      sum ← {
             ⎕ ← ⍵
             (⍺+1) sum ⍵+0.99*⍺
@@ -2465,7 +2485,7 @@
 ...</code></pre>
 <p>Write out the first few evaluation steps of the function to verify it for yourself!</p>
 <h2 id="guarded-expressions">Guarded expressions</h2>
-<p>However, infinite computations on their own will never be terminate on finite machines, and hence not useful for real computations. Thankfully, there is a way to stop these infinite computations when a certain condition is reached, using guarded expressions.</p>
+<p>However, infinite computations on their own will never terminate, and hence not useful for real computations. Thankfully, there is a way to stop these infinite computations when a certain condition is reached, using guarded expressions.</p>
 <p>Guarded expressions are conditional expressions; they only execute a statement if some condition holds. The engineer rewrites the function, this time stopping the computation if the terms get smaller than <code>10*¯10</code>,</p>
 <pre class="highlight"><code class="language-apl">      sum ← {
           (10*¯10)&gt;0.99*⍺: ⎕ ← ⍵
@@ -2473,23 +2493,26 @@
       }
       0 sum 0
 99.99999999</code></pre>
-<p>The guarded expression in the above function is <code>(10*¯10)&gt;0.99*⍺: ⎕ ← ⍵</code>. The guarded expression consists of a logical expression <code>(10*¯10)&gt;0.99*⍺</code> followed by a colon <code>:</code>, and another expression <code>⎕ ← ⍵</code>, meaning <code>⎕ ← ⍵</code> will be executed only if <code>0.99*⍺</code> is less than <code>(10*¯10)</code>.</p>
-<p>This is similar to the mathematical specification of piecewise functions, in fact, the above function would be written as follows.</p>
+<p>The guarded expression in the above function is <code>(10*¯10)&gt;0.99*⍺: ⎕ ← ⍵</code>. </p>
+<p>The guarded expression consists of a logical expression <code>(10*¯10)&gt;0.99*⍺</code> followed by a colon <code>:</code>, and another expression <code>⎕ ← ⍵</code>. This means <code>⎕ ← ⍵</code> will be executed only if <code>0.99*⍺</code> is less than <code>(10*¯10)</code> (if the next power of <code>0.99</code> is less than <span class="arithmatex">\(10^{-10}\)</span>).</p>
+<p>This is similar to the mathematical specification of piecewise functions. In fact, the above function would be written as follows.</p>
 <p>\[
 \text{Sum}(\alpha,\omega)=\begin{cases}
 \square\leftarrow\omega &amp; 10^{-10}&gt;0.99^{\alpha}\\
 \text{Sum}(\alpha+1,\omega+0.99^{\alpha}) &amp; \text{otherwise}
 \end{cases}
 \]</p>
-<p>Staring excitedly at your computer, you email your coworker and tell them about your solution. However, your coworker had a solution that was exact, and required only one computation.</p>
+<p>Staring excitedly at their computer, the engineer emails their coworker and tells them about the solution. However, the coworker had a solution that was exact, and required only one computation.</p>
 <pre class="highlight"><code class="language-apl">      sum_geometric ← {1÷1-⍵}
       sum_geometric 0.99
 100</code></pre>
-<p>That was embarrasing. You did learn a new programming technique to control infinite amounts of computation, so you try to make the most of it by writing a couple more useful programs.</p>
+<p>That was embarrassing. The engineer did learn a new programming technique to control infinite amounts of computation, and tries to make the most of it by writing a couple more useful programs.</p>
 <h2 id="examples">Examples</h2>
 <p>The factorial function is typically defined as <span class="arithmatex">\(f(n) = n \cdot f(n-1)\)</span> such that <span class="arithmatex">\(f(0)=1\)</span> Thinking in terms of guarded expressions, if the argument of the function is 0 the result should be 1 (in symbols, <code>⍵=0: 1</code>), otherwise multiply the right argument (<code>⍵</code>) by the result of the function itself (<code>∇</code>) evaluated for the right argument minus 1 (<code>⍵ - 1</code>).  </p>
 <p>Putting it together, we obtain a recursive function that evaluates the factorial function.</p>
-<pre class="highlight"><code class="language-apl">      factorial ← {⍵=0: 1 ⋄ ⍵ × ∇ ⍵ - 1} </code></pre>
+<pre class="highlight"><code class="language-apl">      factorial ← {⍵=0: 1 ⋄ ⍵ × ∇ ⍵ - 1} 
+      ⍝ ∇ stands for the function itself; the same, written with its name:
+      factorial ← {⍵=0: 1 ⋄ ⍵ × factorial ⍵ - 1}</code></pre>
 <p>This function consists of two statements, separated by the separator <code>⋄</code>.
 The first statement in this function is an example of a guarded expression, if <code>⍵=0</code> is true, that is, when <code>⍵</code> is equal to 0, the expression 1 is evaluated. Otherwise, the expression <code>⍵ × ∇ ⍵ - 1</code> is evaluated. </p>
 <p>For example, the evaluation of factorial 2 can be visualised as:</p>

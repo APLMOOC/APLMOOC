@@ -1959,7 +1959,7 @@
   
   
   <span class="md-ellipsis">
-    6.5 - Dops (dee-ops)
+    6.6 - Dops (dee-ops)
     
   </span>
   
@@ -2400,6 +2400,7 @@
 </ul>
 </div>
 <hr />
+<p><link rel="stylesheet" href="/styles/ch5part2.css"></p>
 <p>Just as the reduce <code>/</code> operator destructs a list by iterating through it from the right, the power <code>⍣</code> operator can be thought of as destructing a number <code>n</code> by repeating <code>n</code> times. The power operator repeats its left function argument the amount of times specified by its right argument.</p>
 <pre class="highlight"><code class="language-apl">      2(+⍣3)5
 11
@@ -2414,7 +2415,7 @@
       0.5(*⍣3)0.5
 0.65404086
 
-            0.5(0.5*(0.5*0.5))
+      0.5*(0.5*(0.5*0.5))
 0.65404086
 
       1(,⍣10)2
@@ -2439,6 +2440,9 @@
 <pre class="highlight"><code class="language-apl">      2(×⍣3)5
 40
       (2∘×⍣3)5
+40
+      ⍝ Binding on the right gives the same for a commutative function
+      (×∘2⍣3)5
 40</code></pre>
 <h2 id="repeat">Repeat</h2>
 <p>The right argument to the power <code>⍣</code> operator can be a function, <code>f⍣g</code>, where <code>f</code> is applied until the value of <code>⍺g⍵</code>, with left and right arguments the current and previous value of <code>f</code>, returns <code>1</code>. For example, the following code multiplies <code>5</code> by <code>2</code> until the current value is greater than <code>100</code>.</p>
@@ -2452,7 +2456,7 @@
 160 80
 160</code></pre>
 <p>This is equivalent to 
-<pre class="highlight"><code class="language-apl">      ⍬ {⍺&gt;100: ⍺ ⋄ (2×⍵) ∇ ⍺} 5
+<pre class="highlight"><code class="language-apl">      {⍵&gt;100: ⍵ ⋄ ∇ 2×⍵} 5
 160</code></pre></p>
 <h2 id="fixed-points">Fixed points</h2>
 <p>For a more complicated example, the power operator can also be used to find fixed points of functions.</p>
@@ -2463,13 +2467,13 @@
       0.5 * 0.6411857445
 0.6411857445</code></pre>
 <p>The code applies <code>0.5∘*</code> until the current and previous values are equal.</p>
-<p>When the power operator is applied to a negative right argument, it acts as the repeated inverse operator for its function left argument, for certain functions.</p>
+<p>When the power operator is applied to a negative right argument, it acts as the repeated inverse operator for its function left argument, for functions APL knows how to invert, such as <code>⊥</code>, <code>⊤</code> and <code>⍉</code>.</p>
 <pre class="highlight"><code class="language-apl">      3(+⍣2)5
 11
       3(+⍣¯2)5
 ¯1
 
-            2 ⊥ 1 0 1 0 1 0
+      2 ⊥ 1 0 1 0 1 0
 42
       2 (⊥⍣¯1) 42
 1 0 1 0 1 0</code></pre>
@@ -2496,17 +2500,17 @@
 21 22 23 24 25</code></pre>
 <p>It was also possible to replace specified arrays with other arrays as long as their shape matched.</p>
 <pre class="highlight"><code class="language-apl">      M[1 2;1 2]
-1 2
+0 0
 6 7
       M[1 2;1 2] ← 2 2⍴0 1 1 0
       M
- 0  1  1  4  5
- 1  0  0  9 10
+ 0  1  0  0  0
+ 1  0  8  9 10
 11 12 13 14 15
 16 17 18 19 20
 21 22 23 24 25</code></pre>
 <h2 id="selective-assignment">Selective assignment</h2>
-<p>The story does not end there, for any expression that selects from an array can be used on the left-hand side of the assignment.</p>
+<p>The story does not end there, for many expressions that select from an array can also be used on the left-hand side of the assignment.</p>
 <pre class="highlight"><code class="language-apl">      M ← 5 5 ⍴ ⍳25
       2↑M
 1 2 3 4  5 
@@ -2576,7 +2580,7 @@ ABCDEFGHIJKLM
  G H 13 14 15
 16 I 18 19 20
 21 J  K  L  M</code></pre>
-<p>The arguments to <code>@</code> can be functions instead, where the left argument function is the function to apply to the selected elements, and the right argument is a logical function that selects the elements out of the right argument array.</p>
+<p>The arguments to <code>@</code> can be functions instead, where the left operand is the function to apply to the selected elements, and the right operand is a logical function that selects the elements out of the right argument array.</p>
 <pre class="highlight"><code class="language-apl">      M ← 5 5 ⍴ ⍳25
       ⍝ Negate elements which are multiples of 3
       (-@{0=3|⍵})M
@@ -2587,7 +2591,7 @@ ABCDEFGHIJKLM
 ¯21  22  23 ¯24  25
 
       M ← 5 5 ⍴ ⍳25
-    ⍝ Reverse list of elements which are multiples of 3
+      ⍝ Reverse list of elements which are multiples of 3
       (⊖@{0=3|⍵})M
  1  2 24  4  5
 21  7  8 18 10

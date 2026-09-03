@@ -1959,7 +1959,7 @@
   
   
   <span class="md-ellipsis">
-    6.5 - Dops (dee-ops)
+    6.6 - Dops (dee-ops)
     
   </span>
   
@@ -2396,7 +2396,7 @@
 <p class="admonition-title">This part will cover</p>
 <ul>
 <li>The 5 ways to select from an array</li>
-<li>Modifying elements</li>
+<li>Take, drop, index, compress and pick</li>
 </ul>
 </div>
 <hr />
@@ -2441,25 +2441,27 @@ What if you give it a number that's longer than the length of the list? Make a g
 0 0 0 0 23 4.3 ¯23 ¯3.3 7.5 ¯8</code></pre>
 <p>It's not a <code>LENGTH ERROR</code>!
 APL just pads the remaining length with zeros. Very handy.
-This is actually the only function that works like this: use it wisely.</p>
+Few functions work like this: use it wisely.</p>
 <p>The same works with character vectors:</p>
 <pre class="highlight"><code class="language-apl">      10↑'Hello!'
 Hello!    </code></pre>
 <p>Oops, looks like there's nothing there. Let's try adding some characters on the side:</p>
-<pre class="highlight"><code>      '*', (10↑'Hello!'), '*'
+<pre class="highlight"><code class="language-apl">      '*', (10↑'Hello!'), '*'
 *Hello!    *</code></pre>
 <p>So character vectors get padded with spaces instead of zeros. Nice.</p>
 <div class="admonition note">
 <p class="admonition-title">Using take</p>
-<p>The take function is perfect for
-- Truncating
-- Padding</p>
+<p>The take function is perfect for</p>
+<ul>
+<li>Truncating</li>
+<li>Padding</li>
+</ul>
 </div>
 <h2 id="drop">Drop</h2>
 <p>The dyadic drop function <code>↓</code> works very similarly to take.
 Except now, instead of taking the first N elements, it takes everything <em>but</em> the first N elements.</p>
 <div class="admonition note">
-<p class="admonition-title">Typing the take function <code>↑</code></p>
+<p class="admonition-title">Typing the drop function <code>↓</code></p>
 <p>Prefix method: <kbd>PREFIX</kbd> <kbd>u</kbd></p>
 <p>Tab method: <kbd>v</kbd> <kbd>|</kbd> <span class="keys"><kbd class="key-tab">Tab</kbd></span></p>
 </div>
@@ -2497,7 +2499,7 @@ print(things[2])
 6</code></pre>
 <p>The syntax is almost exactly the same!
 Except, of course, APL starts counting from 1 and not 0.
-If you want to change this, you can use the <code>⎕IO</code> variable again: the brackets are context-sensitive.</p>
+If you want to change this, you can use the <code>⎕IO</code> variable again: the brackets are origin-sensitive.</p>
 <pre class="highlight"><code class="language-apl">      ⎕IO ← 0
 
       THINGS[2]
@@ -2556,7 +2558,7 @@ INDEX ERROR
       ⍴2 3⍴1 3 5 2 4 4
 2 3
       THINGS[2 3⍴1 3 5 2 4 4]
-5 6 0
+  5 6 0
 ¯7 3 3
       ⍴THINGS[2 3⍴1 3 5 2 4 4]
 2 3</code></pre>
@@ -2564,7 +2566,7 @@ INDEX ERROR
   The square brackets will always return something that has the <strong>same shape as what you give them</strong>.</p>
 </div>
 <h2 id="compress">Compress</h2>
-<p>The dyadic compress function <code>/</code> will let you use a mask to pick elements from an array.
+<p>The dyadic compress function <code>/</code> (the same <code>/</code> you met as replicate in Part 1, given a mask of 0s and 1s) will let you use a mask to pick elements from an array.
 This function is perfect for when you need to pick out items <strong>based on a certain condition</strong>.</p>
 <pre class="highlight"><code class="language-apl">      SUBS ← 0 0 0 4 5 0 2 1 4
       1 1 1 1 1 0 0 0 0 / SUBS
@@ -2575,13 +2577,11 @@ Say we wanted to remove all the zeros from the array.
 We can use the boolean function <code>=</code> to see where all the zeros are and then use <code>/</code> to get rid of them.</p>
 <pre class="highlight"><code class="language-apl">      0=SUBS
 1 1 1 0 0 1 0 0 0
+      ⍝ Hint: whoops, wrong way around
       (0=SUBS)/SUBS
-0 0 0 0 (1)
+0 0 0 0
       (0≠SUBS)/SUBS
 4 5 2 1 4</code></pre>
-<ol>
-<li>Hint: whoops, wrong way around</li>
-</ol>
 <p>Same thing, if you wanted all the small numbers, you can use the <code>&lt;</code> function:</p>
 <pre class="highlight"><code class="language-apl">      3&gt;SUBS
 1 1 1 0 0 1 1 1 0
@@ -2635,7 +2635,7 @@ And when we try to use <code>⍴</code> to find its shape, we see that its shape
 We'll get back to exactly why this is in the next chapter.
 For now, you can think of your vector as being <strong>trapped in a box and unable to escape</strong>.
 To set it free, we use pick!</p>
-<p>We can use it monadically to unbox the vector
+<p>Used monadically, <code>⊃</code> returns the <em>first</em> element of its argument. <code>A[2]</code> has exactly one element, the boxed vector, so this unboxes it:
 <pre class="highlight"><code class="language-apl">      ⊃A[2]
 3 4 5</code></pre></p>
 <p>or use it dyadically to index and unbox at the same time</p>

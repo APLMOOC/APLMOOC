@@ -1959,7 +1959,7 @@
   
   
   <span class="md-ellipsis">
-    6.5 - Dops (dee-ops)
+    6.6 - Dops (dee-ops)
     
   </span>
   
@@ -2448,7 +2448,7 @@
 │12         │11              │14         │8             │
 └───────────┴────────────────┴───────────┴──────────────┘
 
-      activity ← ↑↑w1 w2
+      ⎕ ← activity ← ↑↑w1 w2
 ┌───────────┬────────────────┬───────────┬──────────────┐
 │Week 1     │                │           │              │
 ├───────────┼────────────────┼───────────┼──────────────┤
@@ -2500,7 +2500,12 @@
 │Week 2│      │      │      │RedScanLine│frequencySniffer│dataMoshpit│Radiovangelist│15│11│17│8│12│9│14│7│11│10│13│5│14│8│12│9│10│7 │16│11│13│12│15│6 │12│11│14│8│
 └──────┴──────┴──────┴──────┴───────────┴────────────────┴───────────┴──────────────┴──┴──┴──┴─┴──┴─┴──┴─┴──┴──┴──┴─┴──┴─┴──┴─┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴─┘</code></pre>
 <h2 id="transpose">Transpose</h2>
-<p>The way to solve this is to swap the week and user axes to get an array where the last axes are week and day, this problem is easily solved by the <code>⍉</code> transpose function. </p>
+<p>The way to solve this is to swap the week and user axes to get an array where the last two axes are day and week. This is easily done with the <code>⍉</code> transpose function. </p>
+<p>Used with one argument, <code>⍉</code> reverses the order of the axes, so a matrix is flipped over its diagonal:</p>
+<pre class="highlight"><code class="language-apl">      ⍉2 3⍴⍳6
+1 4
+2 5
+3 6</code></pre>
 <p>The left argument to the transpose function is a list of integers starting from 1, which represents where each axes is in the resulting array. For example, <code>1 2 3 ⍉ activity</code> is the same as <code>activity</code>, but <code>3 2 1⍉activity</code> swaps the first and third axis.</p>
 <pre class="highlight"><code class="language-apl">      ⍝ Week × Day × User
       1 2 3 ⍉ activity
@@ -2542,7 +2547,7 @@
 ├───────────┼────────────────┼───────────┼──────────────┤
 │12         │11              │14         │8             │
 └───────────┴────────────────┴───────────┴──────────────┘
-      ⍝ User × Week × Day
+      ⍝ User × Day × Week
       3 2 1 ⍉ activity
 ┌────────────────┬────────────────┐
 │Week 1          │Week 2          │
@@ -2692,7 +2697,7 @@ bloodshot  tallymen  breakout  ancle  tokyo</code></pre>
 <pre class="highlight"><code class="language-apl">       ⌽ '):'
 :)
        ⌽ SAD_EMOTICONS
-): :c ]: )-: D: &gt;:( :/ :x :| 
+:| :x :/ &gt;:( D: )-: ]: :c ):
 
        ⌽¨SAD_EMOTICONS
 :) c: :] :-) :D (:&gt; /: x: |:

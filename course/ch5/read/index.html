@@ -1933,7 +1933,7 @@
   
   
   <span class="md-ellipsis">
-    6.5 - Dops (dee-ops)
+    6.6 - Dops (dee-ops)
     
   </span>
   
@@ -2424,9 +2424,9 @@ springtoe</code></pre>
 <pre class="highlight"><code class="language-apl">      ⎕ ← EN ← 'home' 'cat' 'tie' 'door' 'on' 'me' 'auto'
 
       ⎕ ← FI ← 'kissa' 'ovi' 'auto' 'on' 'tie' 'home' 'talo'
-
+      ⍝ English words that are also Finnish words
       EN ∩ FI
-
+      ⍝ Finnish words that are also English words
       FI ∩ EN
 </code></pre>
 </div>
@@ -2460,7 +2460,7 @@ auto  on  tie  home</code></pre>
 LENGTH ERROR
       ('re'),¨'play' 'cord' 'peat' 'serve' 'quest' 'present'
             ∧</code></pre>
-<p>What the previous code attempts to do is catenate each element of the left array, 'r' and 'e', with the right array, but the lengths clearly do not match.</p>
+<p>What the previous code attempts to do is catenate each element of the left array, 'r' and 'e', with each element of the right array, but the lengths clearly do not match.</p>
 </div>
 </div>
 </div>
@@ -2487,7 +2487,8 @@ replay  record  repeat  reserve  request  represent</code></pre>
 <div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Input</label><label for="__tabbed_6_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      arrow
+<pre class="highlight"><code class="language-apl">      arrow ← 5 7⍴' ▉▉     ▉▉     ▉▉    ▉▉▉▉    ▉▉    '
+      arrow
  ▉▉    
  ▉▉    
  ▉▉    
@@ -2497,7 +2498,8 @@ replay  record  repeat  reserve  request  represent</code></pre>
 </code></pre>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      arrow
+<pre class="highlight"><code class="language-apl">      arrow ← 5 7⍴' ▉▉     ▉▉     ▉▉    ▉▉▉▉    ▉▉    '
+      arrow
  ▉▉    
  ▉▉    
  ▉▉    
@@ -2649,7 +2651,7 @@ replay  record  repeat  reserve  request  represent</code></pre>
 2 4 8 16 32 64 128 256 512 1024
       ⍴⍉⍪v
 1 10</code></pre>
-<p>The phrase ⍉⍪ can be used to turn a vector into a matrix.</p>
+<p>The phrase ⍉⍪ can be used to turn a vector into a one-row matrix.</p>
 </div>
 </div>
 </div>

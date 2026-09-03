@@ -1923,7 +1923,7 @@
   
   
   <span class="md-ellipsis">
-    6.5 - Dops (dee-ops)
+    6.6 - Dops (dee-ops)
     
   </span>
   
@@ -2396,7 +2396,7 @@
 <p class="admonition-title">This part is optional</p>
 <p>This part is considered to be bonus content.
 It contains some more advanced topics that are not covered in the main course.
-It can also give some examples of functions and topics that are introuced later in the course.
+It can also give some examples of functions and topics that are introduced later in the course.
 There are no exercises related to this content.</p>
 <p>Feel free to skim or skip this section for now, and return to it later!</p>
 </div>
@@ -2428,7 +2428,7 @@ apl = APL.APL()
 average = apl.fn("+/÷≢")
 print(average([1,2,3,4,5]))</code></pre>
 <p>The result is <code>3</code>.</p>
-<p>To define functions in APL, <code>fix</code> is used rather than than the <code>eval</code>.</p>
+<p>To define functions in APL, <code>fix</code> is used rather than the <code>eval</code>.</p>
 <pre class="highlight"><code class="language-python">from pynapl import APL
 apl = APL.APL()
 
@@ -2459,7 +2459,8 @@ If the user right-clicks on a tile, that tile is flagged, representing where the
 <pre class="highlight"><code class="language-apl">      board ← ,board
       board
 0 0 0 0 0 0 0 0 0 0 0 0 ...
-      (1 @ pos) board
+      board ← (1 @ pos) board
+      board
 0 0 0 0 0 1 0 0 0 0 0 1 ...
       board ← 16 30 ⍴ board</code></pre>
 <p>Putting this operation in a single Python function</p>
@@ -2603,7 +2604,7 @@ calculate_adjacency();</code></pre>
 1 0 1 0 0
       is_mine ⊂(3 2)
 1</code></pre>
-<p>The tile uncovering algorithm is a simple combination of the stencil operator <code>⌺</code> and the repeat <code>⍣</code> operator. </p>
+<p>The tile uncovering algorithm is a simple combination of the stencil operator <code>⌺</code> and the power <code>⍣</code> operator. </p>
 <p>Intuitively, the algorithm should calculate the neighbours of every tile <code>⌺3 3</code>, uncovering the tile by setting it to <code>¯1</code> if one of its neighbours is uncovered <code>¯1∊⍵</code> and <code>∧</code> if it isn't a mine <code>⍵[2;2]≠1</code>, otherwise return the original tile <code>⍵[2;2]</code>, in code <code>{(¯1∊⍵)∧⍵[2;2]≠1: ¯1 ⋄ ⍵[2;2]}⌺3 3</code>. It should repeat this process until the board does not change <code>⍣≡</code>.</p>
 <pre class="highlight"><code class="language-apl">      board[1;1]←¯1
       board
@@ -2641,16 +2642,16 @@ def uncover(x, y):
       return
   apl.eval("board ← (¯1@(uncover ∆))board", x, y)
 
-create_board()
+new_board()
 calculate_adjacency()</code></pre>
 <h2 id="flagging-winning-and-losing">Flagging, Winning, and Losing</h2>
 <p>The last piece of logic needed is flagging, and win/loss states. We will create a separate board to keep track of tile icons, '⚑' for flags, '⛯' for mines, and numbers for adjacency numbers of uncovered tiles. We write a function that takes in a tile index to be flagged, and flags it if it is not already uncovered.</p>
 <pre class="highlight"><code class="language-python">apl.eval("labels ← (⍴ board) ⍴ ' '")
 def flag(x, y):
     if(apl.eval("∆⌷board", x, y)!=-1): #Not uncovered
-      apl.eval("∆⌷labels ← \'⚑\'", x, y)</code></pre>
+      apl.eval("(∆⌷labels) ← \'⚑\'", x, y)</code></pre>
 <p>We also need to update the adjacency numbers shown to the player when more tiles are uncovered. The labels matrix should have the values in the adjacency matrix where the board matrix has a <code>¯1</code> value (where a tile is uncovered). First find where board is <code>¯1</code>, then selectively assign the adjacency values to the labels.</p>
-<pre class="highlight"><code class="language-python">      labels ← (⍴ board) ⍴ ' '
+<pre class="highlight"><code class="language-apl">      labels ← (⍴ board) ⍴ ' '
       board ← 1 -⍨ ? 5 5 ⍴ 2
       adjacency ← ({+/,⍵}⌺3 3)board
       board
@@ -2723,7 +2724,7 @@ apl.eval("labels ← (⍴ board) ⍴ ' '")
 
 def flag(x, y):
     if(apl.eval("∆⌷board", x, y)!=-1): #Not uncovered
-      apl.eval("∆⌷labels ← \'⚑\'", x, y)
+      apl.eval("(∆⌷labels) ← \'⚑\'", x, y)
 
 def uncover(x, y):
   if(is_mine([x,y])):

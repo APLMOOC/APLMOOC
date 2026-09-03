@@ -1921,7 +1921,7 @@
   
   
   <span class="md-ellipsis">
-    6.5 - Dops (dee-ops)
+    6.6 - Dops (dee-ops)
     
   </span>
   
@@ -2392,7 +2392,7 @@
 
 
 <h1 id="function-index">Function index</h1>
-<p>Here is a table of symbols we have used and how to type them in TryAPL.</p>
+<p>Here is a table of symbols we have used and how to type them in RIDE.</p>
 <p>It might be useful to review this page as you are doing the read and write exercises in the next sections.</p>
 <h2 id="new-functions">New functions</h2>
 <h3 id="traditional-functions">Traditional functions</h3>
@@ -2410,7 +2410,7 @@
 <tr>
 <td style="text-align: center;"><code>∇</code></td>
 <td style="text-align: center;">Del</td>
-<td style="text-align: center;"><a href="../part3/#tradfns:~:text=To%20create%20a%20tradfn%2C%20we%20use%20the%20Del%20operator%20%E2%88%87%20followed%20by%20the%20name%20of%20the%20function%20we%20want%20to%20create.">Tradfn</a></td>
+<td style="text-align: center;"><a href="../part3/#tradfns:~:text=To%20create%20a%20tradfn%2C%20we%20use%20the%20Del%20symbol%20%E2%88%87%20followed%20by%20the%20name%20of%20the%20function%20we%20want%20to%20create.">Tradfn</a></td>
 <td style="text-align: center;"><kbd>PREFIX</kbd> <span class="keys"><kbd class="key-g">G</kbd></span></td>
 <td style="text-align: center;"><kbd>V</kbd> <kbd>V</kbd> <span class="keys"><kbd class="key-tab">Tab</kbd></span></td>
 </tr>
@@ -2420,6 +2420,13 @@
 <td style="text-align: center;"><a href="../part3/#branch:~:text=In%20many%20older%20APL%20programs%2C%20you%20may%20see%20the%20branch%20%E2%86%92%20symbol.">Branch</a></td>
 <td style="text-align: center;"><kbd>PREFIX</kbd> <kbd>]</kbd></td>
 <td style="text-align: center;"><kbd>-</kbd> <kbd>&gt;</kbd> <span class="keys"><kbd class="key-tab">Tab</kbd></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>≢</code></td>
+<td style="text-align: center;">Not match</td>
+<td style="text-align: center;"><a href="../part4/#error-traps:~:text=The%20example%20also%20uses%20the%20tally%20%E2%89%A2%20function">Tally</a></td>
+<td style="text-align: center;"><kbd>PREFIX</kbd> <kbd>"</kbd></td>
+<td style="text-align: center;"><kbd>7</kbd> <kbd>=</kbd> <span class="keys"><kbd class="key-tab">Tab</kbd></span></td>
 </tr>
 </tbody>
 </table>
@@ -2448,10 +2455,6 @@
 <td style="text-align: center;"><a href="../../ch4/part1/#index-origin:~:text=A%20handy%20tool%20to%20get%20around%20this%20is%20to%20use%20the%20index%20origin%20variable%2C%20%E2%8E%95IO."><code>⎕IO</code></a></td>
 <td style="text-align: center;">Index origin, either <code>1</code> (the default) or <code>0</code></td>
 </tr>
-<tr>
-<td style="text-align: center;"><a href="../part3/#conditional-expressions:~:text=Consider%20the%20following%20example%2C%20where%20we%20check%20if%20our%20tradfn%20has%20a%20left%20argument%20using%20the%20%E2%8E%95NC%20function%20which%20returns%200%20when%20a%20variable%20name%20is%20unused."><code>⎕NC</code></a></td>
-<td style="text-align: center;">Name classification, returns <code>0</code> when a variable name is unused</td>
-</tr>
 </tbody>
 </table>
 <h3 id="system-functions">System functions</h3>
@@ -2463,6 +2466,10 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align: center;"><a href="../part3/#conditional-expressions:~:text=Consider%20the%20following%20example%2C%20where%20we%20check%20if%20our%20tradfn%20has%20a%20left%20argument%20using%20the%20%E2%8E%95NC%20function%20which%20returns%200%20when%20a%20variable%20name%20is%20unused."><code>⎕NC</code></a></td>
+<td style="text-align: center;">Name classification, returns <code>0</code> when a variable name is unused</td>
+</tr>
 <tr>
 <td style="text-align: center;"><a href="../part4/#error-traps:~:text=Multiple%20errors%20can%20be%20caught%20by%20passing%20a%20vector%20of%20error%20codes%20to%20the%20%3ATrap%20control%20structure%20and%20using%20%3ACase%20to%20differentiate%20them%2C%20with%20extra%20diagnostic%20information%20%28such%20as%20the%20error%20message%29%20provided%20by%20the%20%E2%8E%95DMX%20system%20object."><code>⎕DMX</code></a></td>
 <td style="text-align: center;">Diagnostic message object; <code>⎕DMX.Message</code> holds the reason for the last error</td>

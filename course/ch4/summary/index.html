@@ -1959,7 +1959,7 @@
   
   
   <span class="md-ellipsis">
-    6.5 - Dops (dee-ops)
+    6.6 - Dops (dee-ops)
     
   </span>
   
@@ -2417,7 +2417,7 @@
 <tr>
 <td style="text-align: center;"><code>?</code></td>
 <td style="text-align: center;">Question mark</td>
-<td style="text-align: center;"><a href="../part1/#roll-and-deal:~:text=Take%20a%20gamble%3A%20what%20does%20the%20dyadic%20%3F%20function%20do%3F">Roll</a> / <a href="../part1/#roll-and-deal:~:text=Take%20a%20gamble%3A%20what%20does%20the%20dyadic%20%3F%20function%20do%3F">Deal</a></td>
+<td style="text-align: center;"><a href="../part1/#roll-and-deal:~:text=There%20is%20actually%20another%20way%20to%20use%20deal">Roll</a> / <a href="../part1/#roll-and-deal:~:text=Take%20a%20gamble%3A%20what%20does%20the%20dyadic%20%3F%20function%20do%3F">Deal</a></td>
 <td style="text-align: center;"><kbd>PREFIX</kbd> <span class="keys"><kbd class="key-q">Q</kbd></span></td>
 <td style="text-align: center;"><kbd>?</kbd></td>
 </tr>
@@ -2448,6 +2448,20 @@
 <td style="text-align: center;"><a href="../part2/#scan:~:text=The%20scan%20%5C%20operator%20cumulatively%20applies%20its%20left%20argument%20function%20on%20its%20right%20argument%20array%20and%20returns%20a%20result%20array%20of%20the%20same%20rank.">Scan</a></td>
 <td style="text-align: center;"><kbd>\</kbd></td>
 <td style="text-align: center;"><kbd>\</kbd></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>n f/</code></td>
+<td style="text-align: center;">Windowed reduce</td>
+<td style="text-align: center;"><a href="../part3/#windowed-reduction">Windowed reduction</a></td>
+<td style="text-align: center;"><kbd>/</kbd></td>
+<td style="text-align: center;"><kbd>/</kbd></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>n f/</code></td>
+<td style="text-align: center;">Windowed reduce</td>
+<td style="text-align: center;"><a href="../part3/#windowed-reduction">Windowed reduction</a></td>
+<td style="text-align: center;"><kbd>/</kbd></td>
+<td style="text-align: center;"><kbd>/</kbd></td>
 </tr>
 </tbody>
 </table>
@@ -2522,7 +2536,7 @@
 <tr>
 <td style="text-align: center;"><code>⊃</code></td>
 <td style="text-align: center;">Right shoe</td>
-<td style="text-align: center;"><a href="../part4/#pick:~:text=You%20can%20use%20the%20dyadic%20pick%20%E2%8A%83%20function%20to%20pick%20just%20one%20element%20from%20a%20vector%3A">Pick</a></td>
+<td style="text-align: center;"><a href="../part4/#pick:~:text=We%20can%20use%20it%20monadically%20to%20unbox%20the%20vector">First</a> / <a href="../part4/#pick:~:text=You%20can%20use%20the%20dyadic%20pick%20%E2%8A%83%20function%20to%20pick%20just%20one%20element%20from%20a%20vector%3A">Pick</a></td>
 <td style="text-align: center;"><kbd>PREFIX</kbd> <span class="keys"><kbd class="key-x">X</kbd></span></td>
 <td style="text-align: center;"><kbd>)</kbd> <kbd>)</kbd> <span class="keys"><kbd class="key-tab">Tab</kbd></span></td>
 </tr>
@@ -2592,7 +2606,7 @@
 </tr>
 <tr>
 <td style="text-align: center;"><a href="../../ch3/part3/#comparison-tolerance:~:text=The%20tolerance%20can%20be%20read%20%28and%20set%29%20via%20the%20%E2%8E%95CT%20system%20variable%2C%20and%20the%20precision%20shown%20is%20read%20%28and%20set%29%20via%20%E2%8E%95PP."><code>⎕CT</code></a></td>
-<td style="text-align: center;">Comparison tolerance, from <code>0</code> (exact comparison) up to <code>10*¯10</code></td>
+<td style="text-align: center;">Comparison tolerance, from <code>0</code> (exact comparison) up to <code>2*¯32</code></td>
 </tr>
 <tr>
 <td style="text-align: center;"><a href="../../ch3/part3/#comparison-tolerance:~:text=The%20tolerance%20can%20be%20read%20%28and%20set%29%20via%20the%20%E2%8E%95CT%20system%20variable%2C%20and%20the%20precision%20shown%20is%20read%20%28and%20set%29%20via%20%E2%8E%95PP."><code>⎕PP</code></a></td>
@@ -2899,7 +2913,7 @@
 <tr>
 <td style="text-align: center;"><code>/</code></td>
 <td style="text-align: center;">Slash</td>
-<td style="text-align: center;"><a href="../../ch3/part5/#:~:text=Before%20starting%20this%20section%2C%20we%20briefly%20introduce%20the%20commonly%20used%20monadic%20reduce%20%2F%20operator%2C%20which%20applies%20its%20left%20function%20argument%20between%20every%20element%20of%20a%20vector.">Reduce</a></td>
+<td style="text-align: center;"><a href="../part2/#reduce">Reduce</a></td>
 <td style="text-align: center;"><kbd>/</kbd></td>
 <td style="text-align: center;"><kbd>/</kbd></td>
 </tr>

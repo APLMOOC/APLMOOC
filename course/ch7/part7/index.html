@@ -1921,7 +1921,7 @@
   
   
   <span class="md-ellipsis">
-    6.5 - Dops (dee-ops)
+    6.6 - Dops (dee-ops)
     
   </span>
   
@@ -2402,7 +2402,7 @@
 <hr />
 <h2 id="namespaces">Namespaces</h2>
 <p>Object-oriented programming is one of the most popular programming paradigms of all time, and while we will not cover the whole of what Dyalog APL has to offer in terms of objects, an understanding of namespaces is important for understanding how to manage projects.</p>
-<p>The previous section placed <code>HttpCommand</code> "into <code>#</code>;" <code>#</code> is called the root namespace, the namespace where functions and variables will reside in by default. A namespace is a container for names; every workspace has the root namespace <code>#</code>, and further namespaces can be created inside it and inside each other, forming a tree.</p>
+<p>The previous section placed <code>HttpCommand</code> into <code>#</code>. <code>#</code> is called the root namespace, the namespace where functions and variables will reside in by default. A namespace is a container for names; every workspace has the root namespace <code>#</code>, and further namespaces can be created inside it and inside each other, forming a tree.</p>
 <p>A namespace is created with the <code>⎕NS</code> system function, and names inside it are accessed with dot notation. The right argument of <code>⎕NS</code> is a vector of names of functions and variables to be added to this namespace, and the left argument is the name of the namespace (if it doesn't already exist, it is created).</p>
 <pre class="highlight"><code class="language-apl">      step ← 1E¯3
       'config'⎕NS 'step'
@@ -2423,7 +2423,7 @@ cmddir set to: C:/Users/username/Documents//MyUCMDs;...</code></pre>
 0.42.2+671</code></pre>
 <h2 id="opening-a-project">Opening a project</h2>
 <p><a href="https://github.com/nunezco2/quAPL">quAPL</a> is a quantum computing simulator written in APL, <a href="https://www.dyalog.com/uploads/conference/dyalog23/materials/U08_quAPLAQuantumComputingLibraryInAPL.pdf">presented at the Dyalog '23 conference</a>, and it is developed as a Cider project. </p>
-<p>Since quantum mechanics was also historically called matrix mechanics, it would seem natural that APL, that treats arrays as first-class objects, would be a natural programming language for running these computations. After cloning the repository with <code>git clone https://github.com/nunezco2/quAPL</code>, the project can be opened by pointing <code>]CIDER.OpenProject</code> at the folder.</p>
+<p>Since quantum mechanics was also historically called matrix mechanics, it would seem natural that APL, that treats arrays as first-class objects, would be a natural programming language for running these computations. First clone the repository with <code>git clone https://github.com/nunezco2/quAPL</code>. Then open the project by pointing <code>]CIDER.OpenProject</code> at the folder.</p>
 <pre class="highlight"><code class="language-apl">      ]CIDER.OpenProject C:/Users/username/quAPL -alias=quapl
 forceFilenames= 1
 Link parameter "watch" is &lt;ns&gt;
@@ -2515,7 +2515,7 @@ config
   }
 }</code></pre>
 <p><code>source</code> names the folder of APL source files, and <code>projectSpace</code> and <code>parent</code> name the namespace they are loaded into; in quAPL the folder <code>APLSource</code> became <code>#.quapl</code>, and in Cider the same folder becomes <code>#.Cider</code>.</p>
-<p><code>dependencies.tatin</code> names a folder, which is <code>tatin-packages</code> by default. The Cider project directory looks as follows.</p>
+<p><code>dependencies.tatin</code> names a folder, which is <code>tatin-dependencies</code> by default. The Cider project directory looks as follows.</p>
 <pre class="highlight"><code>Cider/
 ├── APLSource/
 │   ├── Admin/
@@ -2555,7 +2555,7 @@ aplteam-FilesAndDirs-7.1.1</code></pre>
 <p><code>make</code> names an expression that builds a new version of the project, and the <code>]CIDER.Make</code> user command executes it; Cider's own is <code>Admin.Make 1</code>, a function that runs the test suite, packages the project with Tatin, and writes the resulting compressed ZIP file into the folder named by <code>distributionFolder</code>, here <code>Dist</code>.</p>
 <p><code>SYSVARS</code> sets the system variables, so that the project gets the index origin it was written for regardless of the session it is opened in. Both projects set <code>⎕IO</code> to 1, and the Cider documentation recommends always setting it explicitly.</p>
 <h2 id="creating-a-project">Creating a project</h2>
-<p>To create your own project, the <code>]CIDER.CreateProject</code> system command can be used, which turns an empty folder into a project. The namespace that the project will live in must already exist, since Cider only links the folder.</p>
+<p>To create your own project, the <code>]CIDER.CreateProject</code> user command can be used, which turns an empty folder into a project. The namespace that the project will live in must already exist, since Cider only links the folder.</p>
 <pre class="highlight"><code class="language-apl">      'solarwind'⎕NS''
       ]CIDER.CreateProject C:/Users/username/solarwind solarwind -noEdit
 Project successfully created; open as well? (Y/n) y
@@ -2630,7 +2630,7 @@ Would you like to (re-)load all Tatin dependencies? (Y/n) y
 
     Peak←{⌈/⍵}
 :EndNamespace</code></pre>
-<p>Note that the tradfn in <code>Fetch.aplf</code> did not use the <code>∇</code> function delimiters, these are not necessary when storing functions in <code>.aplf</code> files, since there is no ambiguity where the function begins and ends.</p>
+<p>A function stored in an <code>.aplf</code> file needs no <code>∇</code> delimiters, since the file boundary shows where the function begins and ends.</p>
 <p>The directory structure is now as follows.</p>
 <pre class="highlight"><code>solarwind/
 ├── APLSource/

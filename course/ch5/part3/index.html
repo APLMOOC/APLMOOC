@@ -1959,7 +1959,7 @@
   
   
   <span class="md-ellipsis">
-    6.5 - Dops (dee-ops)
+    6.6 - Dops (dee-ops)
     
   </span>
   
@@ -2396,14 +2396,16 @@
 <p class="admonition-title">This part will cover</p>
 <ul>
 <li>Bracket-axis notation</li>
-<li>The axis operator</li>
+<li>Reduce first, catenate first and table</li>
+<li>The rank operator</li>
 <li>Squad indexing</li>
 </ul>
 </div>
 <hr />
+<p><link rel="stylesheet" href="/styles/ch5part2.css"></p>
 <p>So far, we’ve only covered reducing along a vector. Vectors, being one-dimensional arrays, have a clear unambiguous axis along which reduction can be done. Higher dimensional arrays do not have this same privilege, the axis along which to reduce must be specified.</p>
 <p>Take the following example matrix</p>
-<pre class="highlight"><code class="language-apl">      ⍉10 10⍴⍳10
+<pre class="highlight"><code class="language-apl">      ⎕ ← M ← ⍉10 10⍴⍳10
  1  1  1  1  1  1  1  1  1  1
  2  2  2  2  2  2  2  2  2  2
  3  3  3  3  3  3  3  3  3  3
@@ -2417,11 +2419,11 @@
 <h2 id="leading-and-last-axis">Leading and last axis</h2>
 <p>The leading axis of the matrix is the first axis along which indexing is done. In this case, </p>
 <pre class="highlight"><code class="language-apl">       M[1;]
- 1  1  1  1  1  1  1  1  1  1
+1 1 1 1 1 1 1 1 1 1
        M[1 2 3;]
- 1  1  1  1  1  1  1  1  1  1
- 2  2  2  2  2  2  2  2  2  2
- 3  3  3  3  3  3  3  3  3  3</code></pre>
+1 1 1 1 1 1 1 1 1 1
+2 2 2 2 2 2 2 2 2 2
+3 3 3 3 3 3 3 3 3 3</code></pre>
 <p>the leading axis is the vertical axis of this matrix. The last axis then is the horizontal axis of this matrix. </p>
 <p>Notice that elements fill an array from the last axis first</p>
 <pre class="highlight"><code class="language-apl">      3 3 3⍴⍳27
@@ -2466,7 +2468,7 @@
 4 5 6
 1 2 3
 4 5 6</code></pre>
-<p>Monadically, the table <code>⍪</code> function turns its argument into a matrix, giving each element of a vector its own row. A vector therefore becomes a single column matrix, which the transpose <code>⍉</code> function (introduced in the next section) turns into a single row matrix.</p>
+<p>Monadically, the table <code>⍪</code> function turns its argument into a matrix, giving each element of a vector its own row. A vector therefore becomes a single column matrix, which the transpose <code>⍉</code> function turns into a single row matrix.</p>
 <pre class="highlight"><code class="language-apl">      ⍴⍪2*⍳5
 5 1
       ⍴⍉⍪2*⍳5
@@ -2634,10 +2636,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <p>As an example, we study the action of the rank operator <code>⍤</code> on the plus reduce <code>+⌿</code> function, <code>+⌿⍤n</code>. </p>
 <p>For <code>n=3</code>, the modified plus reduce function <code>+⌿⍤3</code> acts on the 3-cells of the array. Since the whole array is of rank 3, there is only one 3-cell which is the array itself. Then, <code>+⌿⍤3</code> is equivalent to the action of the plus reduce <code>+⌿</code> function on the whole array, adding up terms along its leading axis. </p>
-<p>For <code>n=2</code>, <code>+⌿⍤2</code> acts on the 2-cells of the array. The 2-cells of the array are the cells <code>M[1;;]</code>, <code>M[2;;]</code>, and <code>M[3;;]</code>. The leading axis of these 2-cells is vertical, hence the plus reduce first <code>+⌿</code> function will return the sum of the columns of these arrays.</p>
+<p>For <code>n=2</code>, <code>+⌿⍤2</code> acts on the 2-cells of the array. The 2-cells of the array are the cells <code>N[1;;]</code>, <code>N[2;;]</code>, and <code>N[3;;]</code>. The leading axis of these 2-cells is vertical, hence the plus reduce first <code>+⌿</code> function will return the sum of the columns of these arrays.</p>
 <p>Similarly, for n=1, the action of <code>+⌿⍤1</code> on the array is adding up its 1-cells, which is equivalent to adding along its last axis.</p>
 <h2 id="squad-indexing">Squad indexing</h2>
-<p>An operator form of (partially) indexing a matrix, such as <code>M[1;3;]</code>, is given by the squad (”squish quad”) indexing <code>⌷</code> operator. It is equivalent to bracket indexing, but can be used like any other operator.</p>
+<p>An operator form of (partially) indexing a matrix, such as <code>N[1;3;]</code>, is given by the squad (“squish quad”) indexing <code>⌷</code> function. It is equivalent to bracket indexing, but can be used like any other function.</p>
 <pre class="highlight"><code class="language-apl">      N ← 3 3 3 ⍴ ⍳27
       N
  1  2  3
@@ -2658,6 +2660,11 @@ document.addEventListener('DOMContentLoaded', function() {
 │4 5 6│13 14 15│22 23 24│
 │7 8 9│16 17 18│25 26 27│
 └─────┴────────┴────────┘
+      1⌷N
+1 2 3
+4 5 6
+7 8 9
+
       1(⌷⍤2)N
  1  2  3
 10 11 12

@@ -1959,7 +1959,7 @@
   
   
   <span class="md-ellipsis">
-    6.5 - Dops (dee-ops)
+    6.6 - Dops (dee-ops)
     
   </span>
   
@@ -2396,15 +2396,64 @@
 <p class="admonition-title">This part will cover</p>
 <ul>
 <li>Basic mathematical operations</li>
-<li>Calculating things</li>
+<li>Complex numbers and circle functions</li>
 </ul>
 </div>
 <hr />
+<div class="admonition note">
+<p class="admonition-title">Typing the symbols in this part</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Symbol</th>
+<th style="text-align: center;">Prefix method</th>
+<th style="text-align: center;">Tab method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>⌈</code></td>
+<td style="text-align: center;"><kbd>PREFIX</kbd> <kbd>s</kbd></td>
+<td style="text-align: center;"><kbd>7</kbd> <kbd>7</kbd> <span class="keys"><kbd class="key-tab">Tab</kbd></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>⌊</code></td>
+<td style="text-align: center;"><kbd>PREFIX</kbd> <kbd>d</kbd></td>
+<td style="text-align: center;"><kbd>l</kbd> <kbd>l</kbd> <span class="keys"><kbd class="key-tab">Tab</kbd></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>&#124;</code></td>
+<td style="text-align: center;"><kbd>PREFIX</kbd> <kbd>m</kbd></td>
+<td style="text-align: center;"><kbd>&#124;</kbd></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>∨</code></td>
+<td style="text-align: center;"><kbd>PREFIX</kbd> <kbd>9</kbd></td>
+<td style="text-align: center;"><kbd>v</kbd> <kbd>v</kbd> <span class="keys"><kbd class="key-tab">Tab</kbd></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>∧</code></td>
+<td style="text-align: center;"><kbd>PREFIX</kbd> <kbd>0</kbd></td>
+<td style="text-align: center;"><kbd>^</kbd> <kbd>^</kbd> <span class="keys"><kbd class="key-tab">Tab</kbd></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>○</code></td>
+<td style="text-align: center;"><kbd>PREFIX</kbd> <kbd>o</kbd></td>
+<td style="text-align: center;"><kbd>O</kbd> <kbd>O</kbd> <span class="keys"><kbd class="key-tab">Tab</kbd></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>!</code></td>
+<td style="text-align: center;"><kbd>PREFIX</kbd> <kbd>_</kbd></td>
+<td style="text-align: center;"><kbd>!</kbd></td>
+</tr>
+</tbody>
+</table>
+</div>
 <p>Being an engineer, you have a lot of varied computational needs which require a large range of mathematical functions. </p>
 <p>Thankfully, APL comes with a lot of math functions! Here we go through a bunch of them, so you can always come back to check. </p>
-<p>Feel free to skip this section for now, and come back when you see a mathematical operation you don't recognize! Remember to also check the toolbar in TryAPL and RIDE, they come with very helpful tooltips to remind you what an operator does!</p>
+<p>Feel free to skip this section for now, and come back when you see a mathematical operation you don't recognize! Remember to also check the toolbar in TryAPL and RIDE, they come with very helpful tooltips to remind you what a function does!</p>
 <h2 id="ceiling-and-floor">Ceiling and floor</h2>
-<p>The notation of ceiling <code>⌈x⌉</code> and <code>⌊x⌋</code>      floor in mathematics matches with the corresponding APL functions, in fact, the notation of ceiling and floor (and the use of those words to describe rounding up and down) comes from APL! Before APL, there was no consistent standard to represent the ceiling and floor functions. Ceiling rounds up to the nearest integer, and floor rounds down to the nearest integer.</p>
+<p>The notation of ceiling <code>⌈x⌉</code> and <code>⌊x⌋</code> floor in mathematics matches with the corresponding APL functions, in fact, the notation of ceiling and floor (and the use of those words to describe rounding up and down) comes from APL! Before APL, there was no consistent standard to represent the ceiling and floor functions. Ceiling rounds up to the nearest integer, and floor rounds down to the nearest integer.</p>
 <p>Monadic <code>⌈</code> and <code>⌊</code> : Ceil &amp; Floor
 <pre class="highlight"><code class="language-apl">      ⌈ 2.5 2.6 ¯2.5 ¯2.6 
 3 3 ¯2 ¯2
@@ -2438,7 +2487,7 @@
       13 | ¯100 
 4
 
-      ⍝ 100 - ¯13 × ¯8 = 4
+      ⍝ 100 - ¯13 × ¯8 = ¯4
       ¯13 | 100 
 ¯4
 
@@ -2459,7 +2508,7 @@
       Y-X×(⌊Y÷(X+(X=0)))
       ⍝ Without the unnecessary parentheses
       Y-X×⌊Y÷X+X=0</code></pre>
-<p>The residue operation here (which is the least absolute remainder) is different from the euclidean remainder (the least positive remainder), to obtain it simply subtract divisor back if the result is negative.
+<p>The residue takes the sign of its left argument, the divisor, so for a negative divisor it differs from the euclidean remainder (the least non-negative remainder). To obtain that instead, subtract the divisor back if the result is negative; the <code>mod</code> function below does this, taking the dividend on the left, the opposite order to <code>|</code>.
 <pre class="highlight"><code class="language-apl">      mod←{(⍵|⍺)&lt;0:(⍵|⍺)-⍵ ⋄ ⍵|⍺}
       ¯13 mod ¯3
 2
@@ -2470,7 +2519,7 @@
 <h2 id="complex-numbers">Complex numbers</h2>
 <p>APL also natively supports complex numbers, which makes it attractive for uses in, for example, <a href="https://github.com/nunezco2/quAPL">quantum computing</a>. A complex number is represented as XJY, where X is the real part and Y is the imaginary part. In mathematical notation, $ XJY = X + i Y $.</p>
 <p>Monadic <code>|</code> : Absolute value, Magnitude
-<pre class="highlight"><code>      ⍝ Absolute value of ¯1 is ...
+<pre class="highlight"><code class="language-apl">      ⍝ Absolute value of ¯1 is ...
       | ¯1 
 1
       ⍝ Applying to complex numbers
@@ -2530,7 +2579,7 @@
 1
 
        ⍝ Tangent of 0.5
-       3 ○ 0
+       3 ○ 0.5
 0.5463024898
 
        ⍝ Cosine of I
@@ -2538,7 +2587,7 @@
 1.543080635</code></pre>
 <h2 id="factorial-and-binomial">Factorial and binomial</h2>
 <p>Monadic <code>!</code> : Factorial</p>
-<p>The factorial <code>!</code> function multiplies together the whole numbers from 1 up to its argument. By convention <code>!0</code> is 1. For arguments that are not whole numbers it returns the gamma function, so it is defined for any number.</p>
+<p>The factorial <code>!</code> function multiplies together the whole numbers from 1 up to its argument. By convention <code>!0</code> is 1. For arguments that are not whole numbers it returns the gamma function, so it is defined for any number except the negative whole numbers.</p>
 <pre class="highlight"><code class="language-apl">      !0 1 5 10
 1 1 120 3628800
       !0.5

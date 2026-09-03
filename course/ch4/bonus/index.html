@@ -1933,7 +1933,7 @@
   
   
   <span class="md-ellipsis">
-    6.5 - Dops (dee-ops)
+    6.6 - Dops (dee-ops)
     
   </span>
   
@@ -2370,7 +2370,7 @@
 <p class="admonition-title">This part is optional</p>
 <p>This part is considered to be bonus content.
 It contains some more advanced topics that are not covered in the main course.
-It can also give some examples of functions and topics that are introuced later in the course.
+It can also give some examples of functions and topics that are introduced later in the course.
 There are no exercises related to this content.</p>
 <p>Feel free to skim or skip this section for now, and return to it later!</p>
 </div>
@@ -2416,16 +2416,16 @@ There are no exercises related to this content.</p>
        header ← file[1 2 3]
        resolution ← 2⊃header
        image ← file~header
-         resolution
+       resolution
 455 498
        resolution[1]
 4
        ⍴resolution
 7</code></pre>
-<p>The resolution vector is not a vector of numbers, which would be useful here, but a vector of characters in the string <code>'455 497'</code>. The execute <code>⍎</code> function evaluates strings as APL expressions, hence can turn the string <code>'455 497'</code> into the vector <code>455 497</code>.</p>
+<p>The resolution vector is not a vector of numbers, which would be useful here, but a vector of characters in the string <code>'455 498'</code>. The execute <code>⍎</code> function evaluates strings as APL expressions, hence can turn the string <code>'455 498'</code> into the vector <code>455 497</code>.</p>
 <pre class="highlight"><code class="language-apl">       resolution ← ⍎2⊃header
-         resolution
-455 497
+       resolution
+455 498
        resolution[1]
 455
        ⍴resolution

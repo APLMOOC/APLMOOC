@@ -1933,7 +1933,7 @@
   
   
   <span class="md-ellipsis">
-    6.5 - Dops (dee-ops)
+    6.6 - Dops (dee-ops)
     
   </span>
   
@@ -2486,7 +2486,7 @@ Fizz
       D 15
 FizzBuzz</code></pre>
 <p>The famous FizzBuzz interview question. Note that a more concise version can be written as</p>
-<pre class="highlight"><code class="language-apl">      D ← {((0=3|⍵)⍴'Fizz'),(0=5|⍵)⍴'Buzz'}</code></pre>
+<pre class="highlight"><code class="language-apl">      D ← {((4×0=3|⍵)⍴'Fizz'),(4×0=5|⍵)⍴'Buzz'}</code></pre>
 </div>
 </div>
 </div>
@@ -2596,7 +2596,8 @@ FizzBuzz</code></pre>
 <div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Input</label><label for="__tabbed_10_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      A
+<pre class="highlight"><code class="language-apl">      A ← 3 3⍴1 2 3 4 5 6 7 8 9
+      A
 1 2 3
 4 5 6
 7 8 9
@@ -2636,7 +2637,9 @@ GHI</code></pre>
 <div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Input</label><label for="__tabbed_12_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      (1∘,⍴∘0) 10</code></pre>
+<pre class="highlight"><code class="language-apl">      ]Box -trains=tree
+      (1∘,⍴∘0) 10
+      (1∘,⍴∘0)</code></pre>
 </div>
 <div class="tabbed-block">
 <pre class="highlight"><code class="language-apl">      (1∘,⍴∘0) 10
@@ -2658,7 +2661,9 @@ GHI</code></pre>
 <div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Input</label><label for="__tabbed_13_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      (2∘⍴⍴(1∘,⍴∘0)) 10</code></pre>
+<pre class="highlight"><code class="language-apl">      ]Box -trains=tree
+      (2∘⍴⍴(1∘,⍴∘0)) 10
+      (2∘⍴⍴(1∘,⍴∘0))</code></pre>
 </div>
 <div class="tabbed-block">
 <pre class="highlight"><code class="language-apl">      (2∘⍴⍴(1∘,⍴∘0)) 10
@@ -2694,9 +2699,8 @@ GHI</code></pre>
 </div>
 <div class="tabbed-block">
 <pre class="highlight"><code class="language-apl">      (+/÷⍴) 1 10 100
-37
-
-This is a fork for the average function, the dfn equivalent is {(+/⍵)÷⍴⍵}</code></pre>
+37</code></pre>
+<p>This is a fork for the average function, the dfn equivalent is <code>{(+/⍵)÷⍴⍵}</code></p>
 </div>
 </div>
 </div>

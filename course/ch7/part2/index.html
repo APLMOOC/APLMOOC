@@ -1921,7 +1921,7 @@
   
   
   <span class="md-ellipsis">
-    6.5 - Dops (dee-ops)
+    6.6 - Dops (dee-ops)
     
   </span>
   
@@ -2404,11 +2404,11 @@
 <p>If everything has gone to plan, you should be able to write APL in the editor just like you did on TryAPL before this.
 This part is going to go through some tips and tricks and get you familiar with how <strong>real</strong> APL programmers do their thing.</p>
 <h2 id="typing-glyphs">Typing glyphs</h2>
-<p>The prefix method of typing glpyhs works just as before in RIDE.
+<p>The prefix method of typing glyphs works just as before in RIDE.
 Make sure to go to <code>Edit &gt; Preferences &gt; Keyboard</code> and change your keyboard layout and prefix key to the right settings.</p>
-<p>The tab method doesn't work in RIDE, unless you installed a tab completion script as mentioned in <a href="/course/ch1/part3">Chapter 1</a>.
+<p>The tab method doesn't work in RIDE, unless you installed a tab completion script as mentioned in <a href="../../ch1/part3/">Chapter 1</a>.
 However, the "bug" where you couldn't type certain prefix combinations is fixed as long as you set the right layout.
-For example, on TryAPL, if you are using a Finnish keyboard, you can't type the <code>←</code> symbol using the prefix method, since <kbd>PREFIX</kbd> <kbd>]</kbd> does not work.
+For example, on TryAPL, if you are using a Finnish keyboard, you can't type the <code>←</code> symbol using the prefix method, since <kbd>PREFIX</kbd> <kbd>[</kbd> does not work.
 But in RIDE, the prefix is changed to <kbd>PREFIX</kbd> <kbd>å</kbd>, which works natively on your keyboard!
 As before, you can hover over the buttons at the top to see the right key combination (and you can just click to insert the symbol).</p>
 <h2 id="workspaces">Workspaces</h2>
@@ -2420,7 +2420,8 @@ Don't worry: we'll cover a way to save your code as plaintext later on.</p>
 <p>Let's say you're just done with an intense APL coding session:</p>
 <pre class="highlight"><code class="language-apl">      pyramid ← {⍵-∘.⌈⍨|⍵-⍳¯1+⍵×2}
       pyramid
- ∇pyramid 
+     ∇pyramid←{⍵-∘.⌈⍨|⍵-⍳¯1+⍵×2}
+     ∇
       pyramid 5
 1 1 1 1 1 1 1 1 1
 1 2 2 2 2 2 2 2 1
@@ -2489,7 +2490,7 @@ They are actually written in C under the hood.
 On the other hand, <em>user commands</em> are written in APL and let you do more involved actions.
 You can also overwrite or modify them if you're crazy enough.</p>
 <p>All user commands start with a <code>]</code>, for the same reason that system commands start with a <code>)</code>.</p>
-<p>To see a full list of system commands, run the <em>help</em> command <code>]?</code>:</p>
+<p>To see a full list of user commands, run the <em>help</em> command <code>]?</code>:</p>
 <pre class="highlight"><code class="language-apl">      ]?
 ───────────────────────────────────────────────────────────────────────────────
 
@@ -2569,13 +2570,13 @@ Link a namespace with a directory (create one but not both if non-existent)
 ]FILE.Open https://dyalog.github.io/link/4.0/API/Link.Create</code></pre>
 <p>Ok, enough documentation. Time to create the link!</p>
 <p><code>]LINK.Create</code> takes two arguments: the <em>namespace</em> you are using and the path on your computer you want to link the workspace to.
-In most cases, you should just put <code>#</code> for the namespace, which just means "everything".
-Namespaces are a way to organise code within one workspace, more on Object-oriented APL later in this chapter.</p>
+In most cases, you should just put <code>#</code> for the namespace, which just means "everything". <code>#</code> is the root namespace, the workspace itself.
+Namespaces are a way to organise code within one workspace, more on namespaces in section 7.7.</p>
 <p>All you have to do now is to create a new (empty) folder somewhere on your computer, and pass its path to the link command.
 For example, I have created a new folder called <code>apltest</code> in the <code>Programs</code> folder, so I'll run this:</p>
-<pre class="highlight"><code class="language-apl">      ]Link.Create # Programs/apltest
+<pre class="highlight"><code class="language-apl">      ]LINK.Create # Programs/apltest
 Linked: # ←→ ~/Programs/apltest</code></pre>
-<p>The bi-directional arrow means changes to our code in our namespace <code>#</code> are written to our folder, and changes to our code in the folder is reflected back to our namespace! On some systems, only a uni-directional arrow is shown. If this is the case, you might need to install the <a href="https://dotnet.microsoft.com/en-us/download">.NET Framework</a> from Microsoft, but a uni-directional link is sufficient for our purposes.</p>
+<p>The bi-directional arrow means changes to our code in our namespace <code>#</code> are written to our folder, and changes to our code in the folder are reflected back to our namespace! On some systems, only a uni-directional arrow is shown. If this is the case, you might need to install the <a href="https://dotnet.microsoft.com/en-us/download">.NET Framework</a> from Microsoft, but a uni-directional link is sufficient for our purposes.</p>
 <p>Let's see what happens when we create the same functions and variables as in the previous example.</p>
 <pre class="highlight"><code class="language-apl">      pyramid ← {⍵-∘.⌈⍨|⍵-⍳¯1+⍵×2}
       pyramid7 ← pyramid 7
@@ -2584,13 +2585,13 @@ Linked: # ←→ ~/Programs/apltest</code></pre>
 <p>Nothing special happens for now.
 This is because LINK only cares about automatically saving "real" functions, which we'll get to in the next part.
 For now, though, we can manually add our dfns and variables to the link:</p>
-<pre class="highlight"><code class="language-apl">      ]Link.add myfunc
+<pre class="highlight"><code class="language-apl">      ]LINK.Add myfunc
 Added: #.myfunc
-      ]Link.add pyramid
+      ]LINK.Add pyramid
 Added: #.pyramid
-      ]Link.add pyramid7
+      ]LINK.Add pyramid7
 Added: #.pyramid7
-      ]Link.add first
+      ]LINK.Add first
 Added: #.first</code></pre>
 <p>Open the folder you created, and voilà: your code has been saved!</p>
 <p><img alt="A picture of the files created by LINK" src="../../assets/7_2_files.png" /></p>
@@ -2604,7 +2605,7 @@ Added: #.first</code></pre>
 </ul>
 </div>
 <p>Now, you no longer have to use the <code>)save</code> or <code>)load</code> command to store workspaces: all you have to do is use LINK!
-Actually, if you're using LINK, don't use the <code>)save</code> and <code>)load</code> commands. Strage things will happen if you do...</p>
+Actually, if you're using LINK, don't use the <code>)save</code> and <code>)load</code> commands. Strange things will happen if you do...</p>
 <h2 id="loading-your-code-from-a-linked-folder">Loading your code from a linked folder</h2>
 <p>Let's say you've closed and re-opened RIDE again.
 How do you get back your saved code?
@@ -2614,7 +2615,7 @@ There are two options: the first is clunky and manual, and the second is smooth 
 <pre class="highlight"><code class="language-apl">      )fns
       )vars
 
-      ]Link.Create # Programs/apltest
+      ]LINK.Create # Programs/apltest
 Linked: # → ~/Programs/apltest
 
       )fns

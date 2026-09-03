@@ -1933,7 +1933,7 @@
   
   
   <span class="md-ellipsis">
-    6.5 - Dops (dee-ops)
+    6.6 - Dops (dee-ops)
     
   </span>
   
@@ -2444,7 +2444,7 @@ The company created several animated sequences for the movie, including animatin
 │0.4 ¯0.4 │0.4 ¯0.2 │0.4 0 │0.4 0.2 │0.4 0.4 │
 └─────────┴─────────┴──────┴────────┴────────
        pxl_directions ← (pxl_coords÷≢pxl_coords)-⊂0.6 0.6</code></pre>
-<p>If we picture the image as being in front of the camera, with the camera facing the center of the image, we divide the values by the width/height, and shift them so that the vector 0 0 is at the center.</p>
+<p>To turn each pixel into a direction leaving the camera, we append a third coordinate of 1, placing the image plane one unit in front of the camera.</p>
 <pre class="highlight"><code class="language-apl">
        ,∘1¨(((⍳5 5)÷5)-⊂0.6 0.6)
 ┌───────────┬───────────┬────────┬──────────┬──────────┐
@@ -2474,7 +2474,7 @@ The company created several animated sequences for the movie, including animatin
 5</code></pre>
 <p>The signed distance function for a sphere is immediate from the definition of a sphere as the set of points a distance R away from some center point C.</p>
 <p><img src="../../assets/5_b_spheredistancefunction.png" style="margin-left: auto; margin-right: auto; display: block;" /></p>
-<pre class="highlight"><code class="language-apl">      sphere ← {⍵[3] -⍨ ⍵[1] dist ⍵[2]}
+<pre class="highlight"><code class="language-apl">      sphere ← {(3⊃⍵) -⍨ (1⊃⍵) dist 2⊃⍵}
        R ← 2
        C ← 0 0 0
        P ← 0 0 4
@@ -2506,7 +2506,7 @@ The company created several animated sequences for the movie, including animatin
     Δenv_x ← (env (P+small)) - env (P-small)
     Δenv_x
 0.0002</code></pre>
-<p>We can use the rotate ⌽ operator to make the small vector in the y and z direction too.</p>
+<p>We can use the rotate ⌽ function to make the small vector in the y and z direction too.</p>
 <pre class="highlight"><code class="language-apl">       1 ⌽ small
 0 0 0.0001
 
@@ -2515,10 +2515,10 @@ The company created several animated sequences for the movie, including animatin
 │0.0001 0 0│0 0.0001 0│0 0 0.0001│
 └──────────┴──────────┴──────────┘
 
-       P ((env+)-(env-))¨ small_xyz
+       (⊂P) ((env+)-(env-))¨ small_xyz
 0.0002 0 0
 
-       norm ← {normalize ⍵ ((env+)-(env-))⍨ small_xyz}
+       norm ← {normalize small_xyz ((env+)-(env-))¨ ⍵}
        norm P
 1 0 0</code></pre>
 <p>Finally, we are now ready to write the ray marching function. The marching function should take the camera’s initial position, and move it along a ray according to the distance function for either a maximum number of marches or a point is hit, and for the latter return the dot product of the normal at that point with the vector from that point to the light source.</p>
@@ -2559,7 +2559,7 @@ The company created several animated sequences for the movie, including animatin
 
        image ← color¨pxl_directions</code></pre>
 <p>This calculation might take a couple seconds.</p>
-<p>To actually see our rendered image, we need to export our array as an image file. We will be using the very simple PPM file format, in which images are plain text files. The header of a PPM file consists of a format indicator "P3", the size of the image (5 5), the maximum value for each color (255), and the colors in RGB format. Using the ⎕NPUT function with the append (2) argument, we write to a file called "image.ppm". We use the encode <code>⍕</code> operator to convert between numerical arrays to character arrays.</p>
+<p>To actually see our rendered image, we need to export our array as an image file. We will be using the very simple PPM file format, in which images are plain text files. The header of a PPM file consists of a format indicator "P3", the size of the image (5 5), the maximum value for each color (255), and the colors in RGB format. Using the ⎕NPUT function with the append (2) argument, we write to a file called "image.ppm". We use the format <code>⍕</code> function to convert between numerical arrays to character arrays.</p>
 <pre class="highlight"><code class="language-apl">       'P3'⎕NPUT'image.ppm'2
        (⍕⍴image)⎕NPUT'image.ppm'2
        '255'⎕NPUT'image.ppm'2

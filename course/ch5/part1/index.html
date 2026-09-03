@@ -1933,7 +1933,7 @@
   
   
   <span class="md-ellipsis">
-    6.5 - Dops (dee-ops)
+    6.6 - Dops (dee-ops)
     
   </span>
   
@@ -2418,7 +2418,7 @@
 │29-08-2024│21:38│Nordtel OC3 Express                                                 │corporateRaider │
 └──────────┴─────┴────────────────────────────────────────────────────────────────────┴────────────────┘</code></pre>
 <p>Not this again, you need to get rid of all the spam before the situation gets out of hand. You first remove all duplicate posts using the monadic unique <code>∪</code> function.</p>
-<pre class="highlight"><code class="language-apl">      ∪ POSTS
+<pre class="highlight"><code class="language-apl">      ⎕ ← POSTS ← ∪ POSTS
 ┌──────────┬─────┬────────────────────────────────────────────────────────────────────┬────────────────┐
 │30-08-2024│18:52│Why does DVB-C use QAM instead of OFDM?                             │frequencySniffer│
 ├──────────┼─────┼────────────────────────────────────────────────────────────────────┼────────────────┤
@@ -2449,7 +2449,7 @@
 1 2 3 4 5 6 7 8 9 10 11
       (⍳11) ~ 3 4 5 6 7 8 9 10
 1 2 11
-      POSTS ← POSTS[(⍳13) ~ 3 4 5 6 7 8 9 10]
+      POSTS ← POSTS[(⍳11) ~ 3 4 5 6 7 8 9 10;]
       POSTS
 ┌──────────┬─────┬───────────────────────────────────────┬────────────────┐
 │30-08-2024│18:52│Why does DVB-C use QAM instead of OFDM?│frequencySniffer│
@@ -2466,7 +2466,7 @@ SAD_EMOTICONS ← '):' ':c' ']:' ')-:' 'D:' '&gt;:(' ':/' ':x' ':|'</code></pre>
 <p>The symbol <code>∪</code> acts <em>dyadically</em> as Set Union.</p>
 <pre class="highlight"><code class="language-apl">       HAPPY_EMOTICONS ∪ SAD_EMOTICONS
 :) :-) :D :] :o) 8) :3 c: :x ): :c ]: )-: D: &gt;:( :/ :|</code></pre>
-<p>Notice how the element <code>:x</code> only appears once, where it would appear twice if we were to use the dyadic catenate <code>,</code> operator introduced in Chapter 2.</p>
+<p>Notice how the element <code>:x</code> only appears once, where it would appear twice if we were to use the dyadic catenate <code>,</code> function introduced in Chapter 2.</p>
 <pre class="highlight"><code class="language-apl">       HAPPY_EMOTICONS , SAD_EMOTICONS
 :) :-) :D :] :o) 8) :3 c: :x ): :c ]: )-: D: :x &gt;:( :/ :|</code></pre>
 <p>Similarly, the symbol <code>∩</code> acts dyadically as the Set Intersection operation.</p>
@@ -2476,7 +2476,7 @@ SAD_EMOTICONS ← '):' ':c' ']:' ')-:' 'D:' '&gt;:(' ':/' ':x' ':|'</code></pre>
 <pre class="highlight"><code class="language-apl">       HAPPY_EMOTICONS ~ SAD_EMOTICONS
 :) :-) :D :] :o) 8) :3 c:
        ⍝ Notice the ':x' emoticon is gone</code></pre>
-<p>Monadically, the symbol <code>∪</code> acts as the Unique operator, removing duplicate entries in a vector.</p>
+<p>Monadically, the symbol <code>∪</code> acts as the Unique function, removing duplicate elements of a vector, or duplicate rows of a matrix, as it did for POSTS above.</p>
 <pre class="highlight"><code class="language-apl">       ∪ HAPPY_EMOTICONS , SAD_EMOTICONS
 :) :-) :D :] :o) 8) :3 c: :x ): :c ]: )-: D: &gt;:( :/ :|
        ⍝ Notice the ':x' emoticon only appears once</code></pre>

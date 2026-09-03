@@ -1921,7 +1921,7 @@
   
   
   <span class="md-ellipsis">
-    6.5 - Dops (dee-ops)
+    6.6 - Dops (dee-ops)
     
   </span>
   
@@ -2410,7 +2410,7 @@
 <p>Certain use-cases require more direct communication with the operating system, such as for networking, which would be much easier to treat as a black-box. Certain external packages might also have useful functions that don't have a concise idiomatic form, typically dealing with external data.</p>
 <p>Other languages solve this with a package manager, like <code>pip</code> for Python or <code>npm</code> for JavaScript. APL has <a href="https://tatin.dev">Tatin</a>, and it's built into Dyalog since version 19.0.</p>
 <h2 id="activating-tatin">Activating Tatin</h2>
-<p>Tatin comes with Dyalog APL, and can be activated using the <code>]Activate</code> system command. </p>
+<p>Tatin comes with Dyalog APL, and can be activated using the <code>]Activate</code> user command. </p>
 <pre class="highlight"><code class="language-apl">      ]Activate tatin
 Rebuilding user command cache... done
 Restart APL to complete activation.
@@ -2436,9 +2436,9 @@ cmddir set to: C:/Users/username/Documents//MyUCMDs;...</code></pre>
  ----------  ------------------------  ------------------------------------  ----  --------
  tatin       https://tatin.dev/        3a252259-1554-4d09-8381-8ac9aded64cf     0       100
  tatin-test  https://test.tatin.dev/   ba053b97-a68a-4f90-abc4-e98cff187472     0         0</code></pre>
-<p>At the time of writing there are 72 packages on the official <code>tatin.dev</code> repository.</p>
+<p>At the time of writing there are 72 packages on the official <code>tatin.dev</code> registry.</p>
 <pre class="highlight"><code class="language-apl">      ]TATIN.ListPackages -group=dyalog
-Registry: https://tatin.dev                ≢ 7
+Registry: https://tatin.dev                ≢ 5
  Group &amp; Name                   # major versions
  ------------                   ----------------
  dyalog-APLProcess                             1
@@ -2470,7 +2470,7 @@ Registry: https://tatin.dev                ≢ 7
       +/~ok
 1
       speeds←ok/speeds</code></pre>
-<p>The format <code>⍕</code> flattens the vector into a single character vector for <code>⎕VFI</code> to parse, and compressing by <code>ok</code> keeps the valid readings; exactly one measurement in this fetch was a <code>null</code>.</p>
+<p>The format <code>⍕</code> turns the numeric vector into a single character vector for <code>⎕VFI</code> to parse, and compressing by <code>ok</code> keeps the valid readings; exactly one measurement in this fetch was a <code>null</code>.</p>
 <pre class="highlight"><code class="language-apl">      ⌊(+/speeds)÷≢speeds
 352
       ⌈/speeds

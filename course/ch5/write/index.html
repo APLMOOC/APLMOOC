@@ -1933,7 +1933,7 @@
   
   
   <span class="md-ellipsis">
-    6.5 - Dops (dee-ops)
+    6.6 - Dops (dee-ops)
     
   </span>
   
@@ -2384,8 +2384,24 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <p>Since this course is still a work-in-progress, solving the write exercises will currently not lead to any credits.</p>
 <hr />
 <div class="admonition write-problem">
+<p class="admonition-title">Write problem 1</p>
+<p>Write a dfn <code>only</code> that returns the elements of its left argument ⍺ that do not occur in its right argument ⍵, without duplicates.
+<pre class="highlight"><code class="language-apl">      'MISSISSIPPI' only 'SIP'
+M
+      2 4 4 6 8 only 4 5
+2 6 8</code></pre>
+<div class="problem">
+    <span class="problemspan">only←</span>
+    <span class="problemfilltext" id="input_ch5_p1_b1" hidden>A←</span>
+    <input class="probleminput" type="text" id="input_ch5_p1_b2" placeholder="your solution here">
+    <button class="problembutton" onclick="submit_problem('ch5_p1', 2)">Submit</button>
+</div>
+<p id="feedback_ch5_p1" style="color: red"></p></p>
+</div>
+<hr />
+<div class="admonition write-problem">
 <p class="admonition-title">Write problem 2</p>
-<p>Write a function to add a new entry at the top of the following leaderboard array as right argument ⍵ with a score of 1000000 with a name given by a left argument ⍺.</p>
+<p>Write a dfn <code>cheat</code> that takes a name as left argument ⍺ and the leaderboard below as right argument ⍵, and adds a new entry at the top with that name and a score of 1000000.</p>
 <pre class="highlight"><code class="language-apl">      leaderboard
 ┌────────────┬──────┐
 │SpaceTornado│999905│
@@ -2414,7 +2430,8 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 └────────────┴───────┘</code></pre>
 <p><div class="problem">
     <span class="problemspan">cheat←</span>
-    <input class="probleminput" type="text" id="input_ch5_p2" placeholder="your solution here">
+    <span class="problemfilltext" id="input_ch5_p2_b1" hidden>A←</span>
+    <input class="probleminput" type="text" id="input_ch5_p2_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch5_p2', 2)">Submit</button>
 </div>
 <p id="feedback_ch5_p2" style="color: red"></p></p>
@@ -2422,7 +2439,7 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 3</p>
-<p>Write a function to filter for all flights on the date given as a right function argument ⍵</p>
+<p>Write a dfn that takes the flight table below as left argument ⍺ and a date as right argument ⍵, and returns the rows of the flights on that date</p>
 <pre class="highlight"><code class="language-apl">      flights
 ┌─────────┬─────────┬───────────┬──────────┬─────┐
 │Jari N.  │Helsinki │Tallinn    │2024-12-01│08:00│
@@ -2439,7 +2456,8 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 └───────┴─────────┴──────────┴──────────┴─────┘</code></pre>
 <p><div class="problem">
     <span class="problemspan">on_date←</span>
-    <input class="probleminput" type="text" id="input_ch5_p3" placeholder="your solution here">
+    <span class="problemfilltext" id="input_ch5_p3_b1" hidden>A←</span>
+    <input class="probleminput" type="text" id="input_ch5_p3_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch5_p3', 2)">Submit</button>
 </div>
 <p id="feedback_ch5_p3" style="color: red"></p></p>
@@ -2447,7 +2465,7 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 4</p>
-<p>Given an array of cities with their latitudes and longitudes as right argument ⍵, create a function to return a matrix of absolute differences in their latitude and longitudes in the following format</p>
+<p>Given an array of cities with their latitudes and longitudes as right argument ⍵, create a function to return a matrix of the absolute differences in latitude and longitude between each pair of cities (not great-circle distances), in the following format</p>
 <pre class="highlight"><code class="language-apl">      cities
 ┌────────┬───────┬─────────┐
 │Helsinki│60.1695│24.9354  │
@@ -2473,7 +2491,8 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <p>Hint: Remove the labels from the matrix before computing the distances, then add them afterwards. Use the rank operator ⍤1 2.</p>
 <p><div class="problem">
     <span class="problemspan">distance←</span>
-    <input class="probleminput" type="text" id="input_ch5_p4" placeholder="your solution here">
+    <span class="problemfilltext" id="input_ch5_p4_b1" hidden>A←</span>
+    <input class="probleminput" type="text" id="input_ch5_p4_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch5_p4', 2)">Submit</button>
 </div>
 <p id="feedback_ch5_p4" style="color: red"></p></p>
@@ -2500,7 +2519,8 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 └─────────┴──────────┴───┴─┘</code></pre>
 <p><div class="problem">
     <span class="problemspan">floor←</span>
-    <input class="probleminput" type="text" id="input_ch5_p5" placeholder="your solution here">
+    <span class="problemfilltext" id="input_ch5_p5_b1" hidden>A←</span>
+    <input class="probleminput" type="text" id="input_ch5_p5_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch5_p5', 2)">Submit</button>
 </div>
 <p id="feedback_ch5_p5" style="color: red"></p></p>
@@ -2508,8 +2528,8 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 6</p>
-<p>Write a function to group an array of hotel bookings by floor.</p>
-<pre class="highlight"><code class="language-apl">      bookings
+<p>Write a function to group an array of hotel bookings by floor (the fourth column), returning one matrix per floor, in order of first appearance.</p>
+<pre class="highlight"><code class="language-apl">      bookings2
 ┌─────────┬──────────┬───┬─┐
 │Jari N.  │2024-12-01│427│4│
 ├─────────┼──────────┼───┼─┤
@@ -2517,7 +2537,7 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 ├─────────┼──────────┼───┼─┤
 │Michel A.│2024-12-03│415│4│
 └─────────┴──────────┴───┴─┘
-      group bookings
+      group bookings2
 ┌────────────────────────────┬──────────────────────────┐
 │┌─────────┬──────────┬───┬─┐│┌───────┬──────────┬───┬─┐│
 ││Jari N.  │2024-12-01│427│4│││Erik O.│2024-12-01│506│5││
@@ -2528,7 +2548,8 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 </code></pre>
 <p><div class="problem">
     <span class="problemspan">group←</span>
-    <input class="probleminput" type="text" id="input_ch5_p6" placeholder="your solution here">
+    <span class="problemfilltext" id="input_ch5_p6_b1" hidden>A←</span>
+    <input class="probleminput" type="text" id="input_ch5_p6_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch5_p6', 2)">Submit</button>
 </div>
 <p id="feedback_ch5_p6" style="color: red"></p></p>
@@ -2552,7 +2573,8 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 </code></pre>
 <p><div class="problem">
     <span class="problemspan">proportion←</span>
-    <input class="probleminput" type="text" id="input_ch5_p7" placeholder="your solution here">
+    <span class="problemfilltext" id="input_ch5_p7_b1" hidden>A←</span>
+    <input class="probleminput" type="text" id="input_ch5_p7_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch5_p7', 2)">Submit</button>
 </div>
 <p id="feedback_ch5_p7" style="color: red"></p></p>
@@ -2567,7 +2589,8 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 └───┴─────┴───┴─┴───┘</code></pre>
 <p><div class="problem">
     <span class="problemspan">runs←</span>
-    <input class="probleminput" type="text" id="input_ch5_p8" placeholder="your solution here">
+    <span class="problemfilltext" id="input_ch5_p8_b1" hidden>A←</span>
+    <input class="probleminput" type="text" id="input_ch5_p8_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch5_p8', 2)">Submit</button>
 </div>
 <p id="feedback_ch5_p8" style="color: red"></p></p>
@@ -2575,7 +2598,7 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 9</p>
-<p>Write a function that generates a table of values for sin and cos from 0 to 2pi. The right argument ⍵ is the number of interior points, that is, the number of points strictly between 0 and 2pi. The step between consecutive points is 2pi÷⍵+1. The table has ⍵+2 rows of values.</p>
+<p>Write a function that generates a table of values for sin and cos from 0 to 2pi. The right argument ⍵ is the number of interior points, that is, the number of points strictly between 0 and 2pi. The step between consecutive points is 2pi÷⍵+1. The table has ⍵+2 rows of values, under a first row of the labels 'x', 'sin x' and 'cos x'.</p>
 <pre class="highlight"><code class="language-apl">      trig_table 4
 ┌───────────┬────────────────┬─────────────┐
 │x          │sin x           │cos x        │
@@ -2612,7 +2635,8 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 └───────────┴────────────────┴─────┘</code></pre>
 <p><div class="problem">
     <span class="problemspan">trig_table←</span>
-    <input class="probleminput" type="text" id="input_ch5_p9" placeholder="your solution here">
+    <span class="problemfilltext" id="input_ch5_p9_b1" hidden>A←</span>
+    <input class="probleminput" type="text" id="input_ch5_p9_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch5_p9', 2)">Submit</button>
 </div>
 <p id="feedback_ch5_p9" style="color: red"></p></p>
@@ -2631,7 +2655,8 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 4 5</code></pre>
 <p><div class="problem">
     <span class="problemspan">nonzero←</span>
-    <input class="probleminput" type="text" id="input_ch5_p10" placeholder="your solution here">
+    <span class="problemfilltext" id="input_ch5_p10_b1" hidden>A←</span>
+    <input class="probleminput" type="text" id="input_ch5_p10_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch5_p10', 2)">Submit</button>
 </div>
 <p id="feedback_ch5_p10" style="color: red"></p></p>
@@ -2663,7 +2688,8 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 16 17 18</code></pre>
 <p><div class="problem">
     <span class="problemspan">significant←</span>
-    <input class="probleminput" type="text" id="input_ch5_p11" placeholder="your solution here">
+    <span class="problemfilltext" id="input_ch5_p11_b1" hidden>A←</span>
+    <input class="probleminput" type="text" id="input_ch5_p11_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch5_p11', 2)">Submit</button>
 </div>
 <p id="feedback_ch5_p11" style="color: red"></p></p>
@@ -2671,8 +2697,8 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 12</p>
-<p>Write a function that takes in a right argument character vector and returns the matrix that the character vector represents.</p>
-<p>The character vector will have elements separated by commas, 1-cells separated by semicolons, and 2-cells separated by colons.</p>
+<p>Write a function that takes in a right argument character vector and returns the array that the character vector represents.</p>
+<p>In the character vector, commas separate the elements of a 1-cell, semicolons separate 1-cells, and colons separate 2-cells.</p>
 <pre class="highlight"><code class="language-apl">      a
 a,b,c,d;e,f,g,h:1,2,3,4;5,6,7,8
 
@@ -2690,7 +2716,8 @@ a,b,c,d;e,f,g,h:1,2,3,4;5,6,7,8
 <p>Hint: Use the partition ⊆ function</p>
 <p><div class="problem">
     <span class="problemspan">array←</span>
-    <input class="probleminput" type="text" id="input_ch5_p12" placeholder="your solution here">
+    <span class="problemfilltext" id="input_ch5_p12_b1" hidden>A←</span>
+    <input class="probleminput" type="text" id="input_ch5_p12_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch5_p12', 2)">Submit</button>
 </div>
 <p id="feedback_ch5_p12" style="color: red"></p></p>

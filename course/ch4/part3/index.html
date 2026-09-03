@@ -1959,7 +1959,7 @@
   
   
   <span class="md-ellipsis">
-    6.5 - Dops (dee-ops)
+    6.6 - Dops (dee-ops)
     
   </span>
   
@@ -2405,6 +2405,11 @@
 <h2 id="grade-up-and-grade-down">Grade up and grade down</h2>
 <p>Luckily, APL implements functions that help sort a list, but they're a little different from other languages. Instead of returning a sorted list, grade up <code>⍋</code> and grade down <code>⍒</code> return the indices of the elements of the final sorted array in the initial unsorted array.</p>
 <p>Given your array of movies, you get the array of ratings and use the grade down function.</p>
+<div class="admonition note">
+<p class="admonition-title">Typing the grade functions <code>⍋</code> and <code>⍒</code></p>
+<p>Prefix method: <kbd>PREFIX</kbd> <kbd>$</kbd> for <code>⍋</code>, <kbd>PREFIX</kbd> <kbd>#</kbd> for <code>⍒</code></p>
+<p>Tab method: <kbd>A</kbd> <kbd>|</kbd> <span class="keys"><kbd class="key-tab">Tab</kbd></span> for <code>⍋</code>, <kbd>V</kbd> <kbd>|</kbd> <span class="keys"><kbd class="key-tab">Tab</kbd></span> for <code>⍒</code></p>
+</div>
 <pre class="highlight"><code class="language-apl">MovieDB ← [ 'Title' 'Year' 'Rating' 'Runtime' 'Watches' 'Genre' ⋄
             'Real Genius' 1985 4 108 3 'Comedy' ⋄ 
             'Eraserhead' 1977 3.5 89 1 'Fantasy' ⋄
@@ -2460,8 +2465,8 @@
 ┌──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┐
 │AB│BC│CD│DE│EF│FG│GH│HI│IJ│JK│KL│LM│MN│NO│OP│PQ│QR│RS│ST│TU│UV│VW│WX│XY│YZ│
 └──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┘</code></pre>
-<p>For our list of genres, we'd like to check for equality, then access the first index with a matching genre. We will use the indices of <code>⍸</code> function, which returns the indices of <code>1</code>s, more on searching in Part 5.</p>
-<pre class="highlight"><code class="language-apl">       sorted_genres←(1↓MovieDB[;6])[⍒1↓MovieDB[;6]]
+<p>For our list of genres, we'd like to check for equality, then access the first index with a matching genre. We will use the where <code>⍸</code> function, which returns the indices of <code>1</code>s, more on searching in Part 5.</p>
+<pre class="highlight"><code class="language-apl">       ⎕←sorted_genres←(1↓MovieDB[;6])[⍒1↓MovieDB[;6]]
 ┌────────┬───────┬──────┬──────┐
 │Thriller│Fantasy│Comedy│Comedy│
 └────────┴───────┴──────┴──────┘

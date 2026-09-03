@@ -1959,7 +1959,7 @@
   
   
   <span class="md-ellipsis">
-    6.5 - Dops (dee-ops)
+    6.6 - Dops (dee-ops)
     
   </span>
   
@@ -2532,11 +2532,11 @@ Let's see what happens when we change the index origin:</p>
 <h2 id="reshape">Reshape</h2>
 <p>You've already seen this one, but let's see how it works in more detail.</p>
 <div class="admonition note">
-<p class="admonition-title">Typing the reshape operator <code>⍴</code></p>
+<p class="admonition-title">Typing the reshape function <code>⍴</code></p>
 <p>Prefix method: <kbd>PREFIX</kbd> <kbd>r</kbd></p>
 <p>Tab method: <kbd>r</kbd> <kbd>r</kbd> <span class="keys"><kbd class="key-tab">Tab</kbd></span></p>
 </div>
-<p>The dyadic reshape operator, <code>⍴</code>, takes in a shape on the left and a value to use as a filler on the right.
+<p>The dyadic reshape function, <code>⍴</code>, takes in a shape on the left and a value to use as a filler on the right.
 Let's see it in action:</p>
 <pre class="highlight"><code class="language-apl">      5 ⍴ 3
 3 3 3 3 3
@@ -2655,9 +2655,10 @@ Just trying to force APL to generate these doesn't end well...</p>
 DOMAIN ERROR: Deal right argument must be greater than or equal to the left argument
       10?2
         ∧</code></pre>
-<p>There is actually another way to use deal that gives you numbers without replacement: it's called roll (like rolling a die)!
+<p>There is actually another way to use deal that gives you numbers with replacement: it's called roll (like rolling a die)!
 And we don't even need another symbol: it's just the monadic version of <code>?</code>.</p>
-<pre class="highlight"><code class="language-apl">      ?5
+<pre class="highlight"><code class="language-apl">      ⎕IO←1
+      ?5
 2
       ?5
 5

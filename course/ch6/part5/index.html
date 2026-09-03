@@ -1959,7 +1959,7 @@
   
   
   <span class="md-ellipsis">
-    6.5 - Dops (dee-ops)
+    6.6 - Dops (dee-ops)
     
   </span>
   
@@ -2401,7 +2401,8 @@
 </ul>
 </div>
 <hr />
-<p>In chapters 5 and 6, we've encountered many different ways to match arbitrary rank cells of arrays along different functions. We've seen that the arithmetic operators always match scalars of the arrays it is applied to, which can be done generally using the <code>¨</code> each operator; that the <code>⊂</code> enclose function can be used in combination with <code>¨</code> each to match arrays with scalars and, in combination with the <code>↓</code> split function, matching arbitrary rank cells together. We've also discussed the <code>∘.f</code> outer product operator which matches every pair of scalars from its array arguments, and the <code>f.g</code> inner product which reduces along the matching of the rows of its left argument and columns of its right argument, <code>f[N]</code> bracket axis notation which specified what axis functions are to act and, of course, the <code>⍤</code> rank operator which generalises many of the rank operations discussed.</p>
+<p><link rel="stylesheet" href="/styles/ch5part2.css"></p>
+<p>In chapters 5 and 6, we've encountered many different ways to match arbitrary rank cells of arrays along different functions. We've seen that the arithmetic functions always match scalars of the arrays they are applied to, which can be done generally using the <code>¨</code> each operator; that the <code>⊂</code> enclose function can be used in combination with <code>¨</code> each to match arrays with scalars and, in combination with the <code>↓</code> split function, matching arbitrary rank cells together. We've also discussed the <code>∘.f</code> outer product operator which matches every pair of scalars from its array arguments, and the <code>f.g</code> inner product which reduces along the matching of the rows of its left argument and columns of its right argument, <code>f[N]</code> bracket axis notation, which specifies the axis a function acts on, and, of course, the <code>⍤</code> rank operator which generalises many of the rank operations discussed.</p>
 <p>In this section, we review all these different methods and provide some more practical details which have been omitted for brevity in previous sections.</p>
 <h2 id="scalar-matching">Scalar matching</h2>
 <h3 id="in-depth">In depth</h3>
@@ -2564,7 +2565,7 @@ RANK ERROR
 └─────────┴─────────────────┴─────────────────────┘</code></pre>
 <p>In the next section, we will introduce recursively-defined operators which make this task easier.</p>
 <h3 id="all-pairs">All pairs</h3>
-<p>In order to instead match all pairs of scalars, we can use <code>∘.f</code> the outer product operator. Suppose we wanted to match every scalar in the arrays <code>B</code> and <code>C</code> together, we can first apply the <code>∊</code> enlist function to both arrays, the apply the outer product with the <code>,</code> catenate function</p>
+<p>In order to instead match all pairs of scalars, we can use <code>∘.f</code> the outer product operator. Suppose we wanted to match every scalar in the arrays <code>B</code> and <code>C</code> together, we can first apply the <code>∊</code> enlist function to both arrays, then apply the outer product with the <code>,</code> catenate function</p>
 <pre class="highlight"><code class="language-apl">      ∊B
 1 1 1 1 1 0
       ∊C 
@@ -2599,6 +2600,20 @@ RANK ERROR
 │0 2│0 2│0 2│0 2│0 2│0 2│
 └───┴───┴───┴───┴───┴───┘</code></pre>
 <p>The rank operator <code>⍤</code> here takes in a right argument array <code>(0 1)</code> that matches the 0-cells of the left argument (scalars) with the 1-cells of the right argument (the entire vector), with the left function argument to be applied <code>,¨</code> catenate each, which applies catenate with the scalars of the left argument to each element of the right argument vector. We can also use <code>⍤0 99</code> instead of <code>⍤0 1</code> to signify taking the whole right argument.</p>
+<pre class="highlight"><code class="language-apl">      (∊B)(,¨⍤0 99)(∊C)
+┌───┬───┬───┬───┬───┬───┐
+│1 2│1 2│1 2│1 2│1 2│1 2│
+├───┼───┼───┼───┼───┼───┤
+│1 2│1 2│1 2│1 2│1 2│1 2│
+├───┼───┼───┼───┼───┼───┤
+│1 2│1 2│1 2│1 2│1 2│1 2│
+├───┼───┼───┼───┼───┼───┤
+│1 2│1 2│1 2│1 2│1 2│1 2│
+├───┼───┼───┼───┼───┼───┤
+│1 2│1 2│1 2│1 2│1 2│1 2│
+├───┼───┼───┼───┼───┼───┤
+│0 2│0 2│0 2│0 2│0 2│0 2│
+└───┴───┴───┴───┴───┴───┘</code></pre>
 <p>To illustrate this matching, using <code>,</code> catenate instead of <code>,¨</code> catenate each</p>
 <pre class="highlight"><code class="language-apl">      (∊B)
 1 1 1 1 1 0
@@ -2657,7 +2672,7 @@ WXYZABCDEFGHIJKLMNOPQRSTUV
 XYZABCDEFGHIJKLMNOPQRSTUVW
 YZABCDEFGHIJKLMNOPQRSTUVWX
 ZABCDEFGHIJKLMNOPQRSTUVWXY</code></pre>
-<p>The so-called "chipmunk" operator <code>⊃¨⊂</code> is the use of the <code>⊃</code> pick function with <code>¨⊂</code> each and enclose to index elements of a right array with left indices, which works even with nested arrays</p>
+<p>The so-called "chipmunk" idiom <code>⊃¨⊂</code> is the use of the <code>⊃</code> pick function with <code>¨⊂</code> each and enclose to index elements of a right array with left indices, which works even with nested arrays</p>
 <pre class="highlight"><code class="language-apl">      ⊢X ← 10 10 ⍴ ? 100/6
 2 2 4 3 1 4 5 3 3 6
 5 4 3 3 4 2 1 1 6 1
@@ -2671,16 +2686,16 @@ ZABCDEFGHIJKLMNOPQRSTUVWXY</code></pre>
 2 1 3 1 3 2 3 2 4 1
 
       X ⊃¨⊂ '.o○0O⋄'
-.○.O0○.○O○
-○○.0..oO0O
-o○○⋄○○.o○⋄
-⋄○.⋄oOO.○O
-⋄O○o⋄.0○.O
-○O○○⋄.O.⋄0
-⋄○⋄⋄⋄OO0○○
-⋄⋄○O○⋄00○.
-.0○OO⋄.oO⋄
-⋄○0O○O..0⋄
+oo0○.0O○○⋄
+O0○○0o..⋄.
+O.○o000o○0
+o.oOOoO0..
+.○O○⋄⋄⋄○○O
+0○⋄.⋄o0.o.
+..O○000⋄○o
+O0O○o⋄⋄O○○
+.⋄.oO⋄O○⋄○
+o.○.○o○o0.
 
       ⊢X ← 5 5 ⍴ ? 25/6
 
@@ -2725,7 +2740,7 @@ HaHaHaHaHaHaHaHaHaHa
 ├────┼─┼─┼─┼─┼─┼─┼─┤
 │How │ │i│s│ │i│t│?│
 └────┴─┴─┴─┴─┴─┴─┴─┘</code></pre>
-<p>Here, the string <code>'Who'</code>, taken as a scalar, is catenated to <code>' is it?'</code>, taken as a vector, hence the result is the same as <code>(⊂'Who') , ' is it?'</code>. To combine these strings properly, we need to match the vector <code>'Who'</code> with the vector <code>' is it?'</code>, which will be covered in the Vector matching subsection.</p>
+<p>Here, the string <code>'Who'</code>, taken as a scalar, is catenated to <code>' is it?'</code>, taken as a vector, hence the result is the same as <code>(⊂'Who') , ' is it?'</code>. To combine these strings properly, we need to match the vector <code>'Who'</code> with the vector <code>' is it?'</code>, which will be covered in the Higher dimensional matching subsection.</p>
 <h3 id="many-vectors">Many vectors</h3>
 <h4 id="using-depth_1">Using depth</h4>
 <p>In order to match scalars with vectors in a single operation, the vectors must be compiled in an array, either using a nested array or a matrix. If a nested array is used, the vectors can be treated as scalars, and the same methods mentioned above can be used. Note that using enclose <code>⊂</code> is not necessary if the vectors are already in a nested array.</p>
@@ -2762,7 +2777,7 @@ HoHoHoHoHo</code></pre>
 <h2 id="higher-dimensional-matching">Higher dimensional matching</h2>
 <h3 id="using-depth_2">Using depth</h3>
 <p>As above, nesting turns arrays into scalars, which allows operators like <code>¨</code> each to match arbitrary rank arrays together as if they were scalars.</p>
-<p>For example, we can create the conjugation table of the finnish verb 'haluta' in the present by matching vectors of strings together</p>
+<p>For example, we can create the conjugation table of the Finnish verb 'haluta' in the present by matching vectors of strings together</p>
 <pre class="highlight"><code class="language-apl">      ⊢pronouns ← 'Minä' 'Sinä' 'Hän' 'Me' 'Te' 'He'
 ┌────┬────┬───┬──┬──┬──┐
 │Minä│Sinä│Hän│Me│Te│He│
@@ -2878,7 +2893,7 @@ How  is it?</code></pre></p>
 │    │ had it been?│
 └────┴─────────────┘</code></pre>
 <p>We can see that each matching has one string from the left array argument and the whole right argument array. Applying <code>,⍤1 1</code> catenate with the rank operator here will match the aforementioned string with the vectors of the right argument array</p>
-<pre class="highlight"><code class="language-apl">      (↑'Who' 'What' 'When' 'Why' 'How') (,⍤1 1⍤1 99) (↑' is it?' ' was it?' ' will it be?' ' would it be?')
+<pre class="highlight"><code class="language-apl">      (↑'Who' 'What' 'When' 'Why' 'How') (,⍤1 1⍤1 99) ↑(↑' is it?' ' was it?') (↑' has it been?' ' had it been?')
 Who  is it?      
 Who  was it?     
 
@@ -2964,13 +2979,13 @@ How  had it been?</code></pre>
         
         
           
-          <a href="../part6/" class="md-footer__link md-footer__link--next" aria-label="Next: 6.5 - Dops (dee-ops)">
+          <a href="../part6/" class="md-footer__link md-footer__link--next" aria-label="Next: 6.6 - Dops (dee-ops)">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                6.5 - Dops (dee-ops)
+                6.6 - Dops (dee-ops)
               </div>
             </div>
             <div class="md-footer__button md-icon">

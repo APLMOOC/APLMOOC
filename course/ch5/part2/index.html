@@ -1959,7 +1959,7 @@
   
   
   <span class="md-ellipsis">
-    6.5 - Dops (dee-ops)
+    6.6 - Dops (dee-ops)
     
   </span>
   
@@ -2397,10 +2397,11 @@
 <ul>
 <li>Nested arrays</li>
 <li>Enclose</li>
-<li>Disclose</li>
-<li>Nest</li>
+<li>Depth</li>
+<li>Pick</li>
+<li>Mix and split</li>
+<li>Enlist</li>
 <li>Each</li>
-<li>Tally</li>
 </ul>
 </div>
 <hr />
@@ -2449,7 +2450,7 @@ How good was broadcast NTSC/PAL in practice?
 ├──────────────────────────────────────────────┼───────────────────┤
 │                                              │                   │
 ├──────────────────────────────────────────────┼───────────────────┤
-│                                              |                   │
+│                                              │                   │
 └──────────────────────────────────────────────┴───────────────────┘
 ┌──────────────────────────────────────────────┬───────────────────┐
 │29-08-2024                                    │                   │
@@ -2482,7 +2483,7 @@ How good was broadcast NTSC/PAL in practice?
 ├──────────────────────────────────────────────┼───────────────────┤
 │CTCSS in NBFM                                 │Radiovangelist     │
 ├──────────────────────────────────────────────┼───────────────────┤
-│455 kHz and 10.7 MHz as intermediate freqs    |Decibels_per_Kg    │
+│455 kHz and 10.7 MHz as intermediate freqs    │Decibels_per_Kg    │
 └──────────────────────────────────────────────┴───────────────────┘</code></pre>
 <p>The depth of this array is the same as the depth of the above vector, since all values are boxed once.</p>
 <pre class="highlight"><code class="language-apl">      ≡POSTS
@@ -2570,40 +2571,41 @@ W</code></pre>
 │          │     │                                              │                │└──────────┴─────┴───────────────────────┴───────────┘                                                              │
 └──────────┴─────┴──────────────────────────────────────────────┴────────────────┴────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘</code></pre>
 <p>Another example of mix <code>↑</code></p>
-<pre class="highlight"><code class="language-apl">      school ← ('MATH' ('101' 30 ('COMPETED')) ('102' 37 ('CANCELLED')))  ('CS' ('101' 53 ('COMPETED')) ('102' 28 ('COMPLETED')) ('103' 20 ('IN PROGRESS')))
+<pre class="highlight"><code class="language-apl">      school ← ((⊂'MATH') ('101' 30 ('COMPLETED')) ('102' 37 ('CANCELLED')))  ((⊂'CS') ('101' 53 ('COMPLETED')) ('102' 28 ('COMPLETED')) ('103' 20 ('IN PROGRESS')))
       school
-┌─────────────────────────────────────────────┬────────────────────────────────────────────────────────────────┐
-│┌──────┬─────────────────┬──────────────────┐│┌────┬─────────────────┬──────────────────┬────────────────────┐│
-││┌────┐│┌───┬──┬────────┐│┌───┬──┬─────────┐│││┌──┐│┌───┬──┬────────┐│┌───┬──┬─────────┐│┌───┬──┬───────────┐││
-│││MATH│││101│30│COMPETED│││102│37│CANCELLED│││││CS│││101│53│COMPETED│││102│28│COMPLETED│││103│20│IN PROGRESS│││
-││└────┘│└───┴──┴────────┘│└───┴──┴─────────┘│││└──┘│└───┴──┴────────┘│└───┴──┴─────────┘│└───┴──┴───────────┘││
-│└──────┴─────────────────┴──────────────────┘│└────┴─────────────────┴──────────────────┴────────────────────┘│
-└─────────────────────────────────────────────┴────────────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────┬─────────────────────────────────────────────────────────────────┐
+│┌──────┬──────────────────┬──────────────────┐│┌────┬──────────────────┬──────────────────┬────────────────────┐│
+││┌────┐│┌───┬──┬─────────┐│┌───┬──┬─────────┐│││┌──┐│┌───┬──┬─────────┐│┌───┬──┬─────────┐│┌───┬──┬───────────┐││
+│││MATH│││101│30│COMPLETED│││102│37│CANCELLED│││││CS│││101│53│COMPLETED│││102│28│COMPLETED│││103│20│IN PROGRESS│││
+││└────┘│└───┴──┴─────────┘│└───┴──┴─────────┘│││└──┘│└───┴──┴─────────┘│└───┴──┴─────────┘│└───┴──┴───────────┘││
+│└──────┴──────────────────┴──────────────────┘│└────┴──────────────────┴──────────────────┴────────────────────┘│
+└──────────────────────────────────────────────┴─────────────────────────────────────────────────────────────────┘
       ↑school
-┌──────┬─────────────────┬──────────────────┬────────────────────┐
-│┌────┐│┌───┬──┬────────┐│┌───┬──┬─────────┐│┌────┐              │
-││MATH│││101│30│COMPETED│││102│37│CANCELLED│││    │              │
-│└────┘│└───┴──┴────────┘│└───┴──┴─────────┘│└────┘              │
-├──────┼─────────────────┼──────────────────┼────────────────────┤
-│┌──┐  │┌───┬──┬────────┐│┌───┬──┬─────────┐│┌───┬──┬───────────┐│
-││CS│  ││101│53│COMPETED│││102│28│COMPLETED│││103│20│IN PROGRESS││
-│└──┘  │└───┴──┴────────┘│└───┴──┴─────────┘│└───┴──┴───────────┘│
-└──────┴─────────────────┴──────────────────┴────────────────────┘</code></pre>
+┌──────┬──────────────────┬──────────────────┬────────────────────┐
+│┌────┐│┌───┬──┬─────────┐│┌───┬──┬─────────┐│┌────┐              │
+││MATH│││101│30│COMPLETED│││102│37│CANCELLED│││    │              │
+│└────┘│└───┴──┴─────────┘│└───┴──┴─────────┘│└────┘              │
+├──────┼──────────────────┼──────────────────┼────────────────────┤
+│┌──┐  │┌───┬──┬─────────┐│┌───┬──┬─────────┐│┌───┬──┬───────────┐│
+││CS│  ││101│53│COMPLETED│││102│28│COMPLETED│││103│20│IN PROGRESS││
+│└──┘  │└───┴──┴─────────┘│└───┴──┴─────────┘│└───┴──┴───────────┘│
+└──────┴──────────────────┴──────────────────┴────────────────────┘</code></pre>
 <p>Notice that the Math row was given an extra element with an empty nested array by the Mix function in order to match with the shape of CS row</p>
-<pre class="highlight"><code>      ↑↑school
+<pre class="highlight"><code class="language-apl">      ↑↑school
 ┌────┬────┬───────────┐
 │MATH│    │           │
 ├────┼────┼───────────┤
-│101 │30  │COMPETED   │
+│101 │30  │COMPLETED  │
 ├────┼────┼───────────┤
 │102 │37  │CANCELLED  │
 ├────┼────┼───────────┤
 │    │    │           │
 └────┴────┴───────────┘
+
 ┌────┬────┬───────────┐
 │CS  │    │           │
 ├────┼────┼───────────┤
-│101 │53  │COMPETED   │
+│101 │53  │COMPLETED  │
 ├────┼────┼───────────┤
 │102 │28  │COMPLETED  │
 ├────┼────┼───────────┤
@@ -2611,7 +2613,7 @@ W</code></pre>
 └────┴────┴───────────┘</code></pre>
 <h2 id="accessing-elements-of-deeper-arrays">Accessing elements of deeper arrays</h2>
 <p>To access elements in the <code>POSTS</code> array,</p>
-<pre class="highlight"><code class="language-apl">     POSTS ← ↑ post1 post2
+<pre class="highlight"><code class="language-apl">     ⎕ ← POSTS ← ↑ post1 post2
 ┌──────────┬─────┬──────────────────────────────────────────────┬────────────────┬────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
 │30-08-2024│18:52│Why does DVB-C use QAM instead of OFDM?       │frequencySniffer│┌──────────┬─────┬─────────────────────────────────────────────────────────────────────────────────────┬───────────┐│
 │          │     │                                              │                ││30-08-2024│19:22│OFDM is more reliable and easily equalized over difficult channels like a radio link.│RedScanLine││
@@ -2632,9 +2634,9 @@ W</code></pre>
 OFDM is more reliable and easily equalized over difficult channels like a radio link.
       ((1 5)3 1)⊃POSTS
 O</code></pre>
-<p>There is also a nested variant of the , ravel function called the <code>∊</code> enlist function.</p>
+<p>There is also a nested variant of the <code>,</code> ravel function called the <code>∊</code> enlist function.</p>
 <pre class="highlight"><code class="language-apl">      ∊POSTS
-30-08-202418:52Why does DVB-C use QAM instead of OFDM?frequencySniffer30-08-202419:22OFDM is more reliable and easily equalized over difficult channels like a radio link.RedSyncLine29-08-202411:28Trying to obtain a clear QAM signal from cablehadamardMardy29-08-202415:38You need a better tunerdataMoshpit</code></pre>
+30-08-202418:52Why does DVB-C use QAM instead of OFDM?frequencySniffer30-08-202419:22OFDM is more reliable and easily equalized over difficult channels like a radio link.RedScanLine29-08-202411:28Trying to obtain a clear QAM signal from cablehadamardMardy29-08-202415:38You need a better tunerdataMoshpit</code></pre>
 <p>The power of nested arrays lies in the way in which they allow applying operations on many arrays at once. Recall how arithmetic operations act each element of an array</p>
 <pre class="highlight"><code class="language-apl">      5 5⍴⍳25
  1  2  3  4  5

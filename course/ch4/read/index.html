@@ -1933,7 +1933,7 @@
   
   
   <span class="md-ellipsis">
-    6.5 - Dops (dee-ops)
+    6.6 - Dops (dee-ops)
     
   </span>
   
@@ -2381,7 +2381,7 @@ Check your answers by opening the "Output" tab.</p>
 <pre class="highlight"><code class="language-apl">      5 ? 52
 38 47 28 43 41
 
-      ⍝ Dealing 5 random numbers without repetition from 1 and 52</code></pre>
+      ⍝ Dealing 5 random numbers without repetition from 1 to 52</code></pre>
 </div>
 </div>
 </div>
@@ -2485,11 +2485,7 @@ AARDVARK
       DICTIONARY[1;]
 AA
       DICTIONARY[;1]
-A
-A
-A
-A
-. . .
+AAAA. . .
       DICTIONARY[⍸DICTIONARY[;1]='X';]</code></pre>
 </div>
 <div class="tabbed-block">
@@ -2506,11 +2502,7 @@ AARDVARK
       DICTIONARY[1;]
 AA
       DICTIONARY[;1]
-A
-A
-A
-A
-. . .
+AAAA. . .
       DICTIONARY[⍸DICTIONARY[;1]='X';]
 XANTHAM        
 XANTHAMS       
@@ -2590,7 +2582,7 @@ ATELECTASES</code></pre>
 <hr />
 <div class="admonition question">
 <p class="admonition-title">Read problem 7</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Problem</label><label for="__tabbed_7_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Input</label><label for="__tabbed_7_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="arithmatex">\[
@@ -2611,7 +2603,7 @@ ATELECTASES</code></pre>
 <hr />
 <div class="admonition question">
 <p class="admonition-title">Read problem 8</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Problem</label><label for="__tabbed_8_2">Solution</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Input</label><label for="__tabbed_8_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="arithmatex">\[
@@ -2645,7 +2637,8 @@ ATELECTASES</code></pre>
 \frac{F_1}{F_2},\frac{F_2}{F_3},\ldots,\frac{F_9}{F_{10}}
 \]</div>
 <p>where <span class="arithmatex">\(F_n\)</span> is the nth Fibonacci number, can be written in APL (given an array FIBB of the first 10 Fibonacci numbers) as</p>
-<pre class="highlight"><code class="language-apl">      2÷/FIBB</code></pre>
+<pre class="highlight"><code class="language-apl">      FIBB ← 1 1 2 3 5 8 13 21 34 55
+      2÷⍨/FIBB</code></pre>
 <p>This is a sequence of approximations to the golden ratio</p>
 </div>
 </div>
