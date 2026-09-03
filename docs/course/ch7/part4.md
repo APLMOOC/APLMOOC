@@ -11,15 +11,15 @@ Dyalog APL provides many different types of error handling, we present some of t
 
 ## Error traps
 
-Programs often need to make use of external data, which is predictably unpredictable. Traps can laid which execute when this expected unpredictability leads to an error, allowing it to be gracefully dealt with.
+Programs often need to make use of external data, which is predictably unpredictable. Traps can be laid which execute when this expected unpredictability leads to an error, allowing it to be gracefully dealt with.
 
 Users of imperative programming languages will recognize the following ``:Trap`` control structure as the familiar ``try`` control structure.
 ```apl
       ∇ result ← a DIVIDE b
       :Trap 11
-            a÷b
+            result←a÷b
       :Else
-            'How dare you, division by zero is not allowed!'
+            result←'How dare you, division by zero is not allowed!'
       :EndTrap
       ∇
 
@@ -31,7 +31,7 @@ Users of imperative programming languages will recognize the following ``:Trap``
  How dare you, division by zero is not allowed!
 ```
 
-The ``:Trap`` control structure takes as argument a numerical error code signifying the error to guard against. A full list of arguments is available at the [Dyalog APL documentation site](https://help.dyalog.com/20.0/Content/Language/System%20Functions/trap.htm) but the most important values are as follows:
+The ``:Trap`` control structure takes as argument a numerical error code signifying the error to guard against. A full list of arguments is available at the [Dyalog APL documentation site](https://docs.dyalog.com/20.0/language-reference-guide/system-functions/trap/) but the most important values are as follows:
 
 | Code | Error |
 |:----:|-------|
@@ -47,9 +47,9 @@ The ``:Trap`` control structure takes as argument a numerical error code signify
 | `11` | `DOMAIN ERROR` |
 | `22` | `FILE NAME ERROR` |
 
-Multiple errors can be caught by passing a vector of error codes to the ``:Trap`` control structure and using ``:Case`` to differentiate them, with extra diagnostic information (such as the error message) provided by the [``⎕DMX`` system object](https://docs.dyalog.com/20.0/language-reference-guide/system-functions/dmx/). The full list of properties is listed therein.
+Multiple errors can be caught by passing a vector of error codes to the ``:Trap`` control structure and using ``:Case`` to differentiate them, with extra diagnostic information (such as the error message) provided by the [``⎕DMX`` system object](https://docs.dyalog.com/20.0/language-reference-guide/system-functions/dmx/). The full list of properties is listed therein. `⎕DMX.EM` is the error name, `⎕DMX.Message` the detail, and `⎕EN` the error number.
 
-Consider the following example of a tradfn averaging weather measurements from a given file of comma-separated values, using the ``⎕CSV`` system function which will be covered in [section 7.6](part6.md).
+Consider the following example of a tradfn averaging weather measurements from a given file of comma-separated values, using the ``⎕CSV`` system function which will be covered in [section 7.5](part5.md).
 
 ```apl
       ∇ r←loadTemps file;data;temps;⎕PP
@@ -68,7 +68,7 @@ Consider the following example of a tradfn averaging weather measurements from a
       ∇
 ```
 
-The following three files are loaded in the current working directory (which can be obtained by the change directory ``]cd`` system command), the first of which should be the ideal case, and the other two are incorrectly formatted.
+The following three files are loaded in the current working directory (which can be obtained by the change directory ``]CD`` user command), the first of which should be the ideal case, and the other two are incorrectly formatted.
 
 ```
 good.csv          text.csv          short.csv
@@ -80,7 +80,7 @@ Vantaa,5.1        Vantaa,5.1        Vantaa,5.1
 
 The function gives the following results.
 
-```
+```apl
       loadTemps 'good.csv'
 Average of 3 readings: 4.37
       loadTemps 'text.csv'
@@ -95,11 +95,11 @@ Unexpected error 19: FILE ACCESS ERROR
 
 ## Function tracing
 
-Traps can only capture expected errors, and handle them in pre-determined ways. For unexpected errors, typically found during development or in production, and when the program is too large to hold the entire state mentally, it is more useful to have interactive execution to investigate the state at which an error occured. Tracing through the functions at the error line-by-line is a natural method of doing so.
+Traps can only capture expected errors, and handle them in pre-determined ways. For unexpected errors, typically found during development or in production, and when the program is too large to hold the entire state mentally, it is more useful to have interactive execution to investigate the state at which an error occurred. Tracing through the functions at the error line-by-line is a natural method of doing so.
 
 ### The Tracer
 
-The tracer can be manually invoked for any expression by hitting ++ctrl+enter++ instead of ++enter++ to evaluate an expression.
+The Tracer can be manually invoked for any expression by hitting ++ctrl+enter++ instead of ++enter++ to evaluate an expression.
 
 The Tracer shows the source code of the function and marks the line that runs next. In the picture below, the mark is on line ``[3]``, because ++ctrl+enter++ was pressed three times.
 
@@ -127,7 +127,7 @@ Dyalog also opens the Tracer without invocation when a function stops because of
 
 ### Breakpoints
 
-A breakpoint invokes the tracer at a specific line during execution. The easiest way to add a breakpoint is in either the function definition or the tracer. Click the left margin of the tracer or function definition, beside the line number. Click the same place again to remove it. A breakpoint shows as a red circle in that margin.
+A breakpoint invokes the Tracer at a specific line during execution. The easiest way to add a breakpoint is in either the function definition or the Tracer. Click the left margin of the Tracer or function definition, beside the line number. Click the same place again to remove it. A breakpoint shows as a red circle in that margin.
 
 ![A picture of a breakpoint on line 3 of a function](../assets/7_4_breakpoint.png)
 
@@ -135,13 +135,12 @@ Alternatively, you can use the ``⎕STOP`` system function to set (and unset) a 
 
 ```apl
       2 ⎕STOP 'loadTemps'
-2
       ⎕STOP 'loadTemps'
 2
       ⍬ ⎕STOP 'loadTemps'
 ```
 
-The first line sets a breakpoint on line 2. The third line asks which lines have breakpoints. The fifth line removes all of them.
+The first line sets a breakpoint on line 2. The second line asks which lines have breakpoints. The fourth line removes all of them.
 
 ### Automatic output
 

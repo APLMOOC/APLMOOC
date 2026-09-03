@@ -4,9 +4,20 @@
 
     - Forks and Atops
     - The tack functions
-    - Reduce function
+    - The reduce operator
+    - Bind and Commute
 
 ---
+
+!!! note "Typing the symbols in this part"
+
+    | Symbol | Prefix method | Tab method |
+    |:--:|:--:|:--:|
+    | `⊣` | <kbd>PREFIX</kbd> <kbd>&#124;</kbd> | <kbd>-</kbd> <kbd>&#124;</kbd> ++tab++ |
+    | `⊢` | <kbd>PREFIX</kbd> <kbd>\</kbd> | <kbd>&#124;</kbd> <kbd>-</kbd> ++tab++ |
+    | `⍤` | <kbd>PREFIX</kbd> <kbd>shift+j</kbd> | <kbd>o</kbd> <kbd>:</kbd> ++tab++ |
+    | `∘` | <kbd>PREFIX</kbd> <kbd>j</kbd> | <kbd>o</kbd> <kbd>o</kbd> ++tab++ |
+    | `⍨` | <kbd>PREFIX</kbd> <kbd>shift+t</kbd> | <kbd>~</kbd> <kbd>:</kbd> ++tab++ |
 
 Before starting this section, we briefly introduce the commonly used monadic reduce ``/`` operator, which applies its left function argument between every element of a vector. More on this in Chapter 4.
 
@@ -22,9 +33,9 @@ For example, the sum of all the elements of a vector is given by plus reduce ``+
 Some other important functions are the dyadic right and left identity/“tack” functions which return their right or left arguments. They "point" towards which argument they return.
 
 ```apl
-       "True"⊣"False"
+       'True'⊣'False'
 True
-       "True"⊢"False"
+       'True'⊢'False'
 False
 ```
 
@@ -47,7 +58,7 @@ At this point, all the functions we've defined have explicitly referred to the l
       range ← {(⌈/⍵)-(⌊/⍵)}
       
       range 80 49 56 60 100 99 23 19 24 4 50 7
-50
+96
 ```
 
 or in the following function which takes the (weighted) average of a vector. First, the average function can be written as below.
@@ -87,7 +98,7 @@ also in the "plus or minus" function and rounded (or floored) division function
       plusminus ← {(⍺-⍵),⍺,⍺+⍵}
 
        5.7 plusminus 0.5
-5.05 5.7 6.35
+5.2 5.7 6.2
 
       round_div ← {⌊0.5+⍺÷⍵}
 
@@ -108,7 +119,7 @@ also in the "plus or minus" function and rounded (or floored) division function
 
 ## Tacit programming
 
-All of these functions can instead be expressed in terms of special combinations of functions, without referring to the arguments ⍺ and ⍵ at all! Just like magic, it takes some time to learn, but once you do it reveals a rich world of programming spells.
+Most of these functions can instead be expressed in terms of special combinations of functions, without referring to the arguments ⍺ and ⍵ at all! 
 
 This style of programming is called tacit or "point-free" programming, borrowed from mathematics where it means taking data described using points to be more fundamental than the points themselves, avoiding the need to refer to points explicitly. In this case, taking functions to be more fundamental than their description in terms of explicit arguments. These point-free functions are called trains. 
 
@@ -132,7 +143,7 @@ Floored division can be conveniently expressed as an atop.
 
 ## Forks
 
-The second fundamental type of train is the 3-train ``(fgh)``, called a fork. When acting on arguments ``⍺`` and ``⍵``, it applies ``g`` dyadically to ``⍺f⍵`` and ``⍺h⍵``. 
+The second fundamental type of train is the 3-train ``(fgh)``, called a fork. When acting on arguments ``⍺`` and ``⍵``, it applies ``g`` dyadically to ``⍺f⍵`` and ``⍺h⍵``; with only a right argument, it applies ``g`` to ``f⍵`` and ``h⍵``. 
 
 In mathematical notation, a fork is described as
 
@@ -162,7 +173,7 @@ $$f+g = f(⍺,⍵)+g(⍺,⍵).$$
        f + g
        ```
 
-       Forks here look like forks! The trees are read from bottom up, if there are only two functions at the end of a branch, the result of the right function is applied to the left function, if there are three functions, the middle function is applied to the result of the right and left functions. The values then go up the tree until it reaches the root, at which point it is returned.
+       Forks here look like forks! The trees are read from bottom up, if there are only two functions at the end of a branch, the left function is applied to the result of the right function, if there are three functions, the middle function is applied to the result of the right and left functions. The values then go up the tree until it reaches the root, at which point it is returned.
 
 
 ## Combining trains
@@ -209,7 +220,7 @@ SYNTAX ERROR: Missing right argument
 
 What's going on here! Well, the reason this doesn't work is that ``⌊((0.5+)÷)`` is not purely composed of functions, it contains a value ``0.5`` and thus is not interpreted as a train. 
 
-One way around this is to write ``⌊({0.5+⍵}÷)`` to turn the addition of ``0.5`` into a function without any values, but which defeats the purpose of point-free programming. Instead, the bind ``∘`` operator can be used to create a monadic function from a dyadic one. In this case, the dyadic function ``+`` is bound to the left argument ``0.5`` as ``0.5∘+``, which is now a monadic function equivalent to ``{0.5+⍵}``.
+One way around this is to write ``⌊({0.5+⍵}÷)`` to turn the addition of ``0.5`` into a function without any values, but which defeats the purpose of point-free programming. Instead, the bind ``∘`` operator can be used to create a monadic function from a dyadic one. In this case, the dyadic function ``+`` is bound to the left argument ``0.5`` as ``0.5∘+``, which is now a monadic function equivalent to ``{0.5+⍵}``. Binding on the other side, ``÷∘2``, halves its argument, equivalent to ``{⍵÷2}``.
 
 ```apl
       round_div ←  ⌊(0.5∘+÷)

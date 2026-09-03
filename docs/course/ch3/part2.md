@@ -3,19 +3,31 @@
 !!! abstract "This part will cover"
 
     - Basic mathematical operations
-    - Calculating things
+    - Complex numbers and circle functions
 
 ---
+
+!!! note "Typing the symbols in this part"
+
+    | Symbol | Prefix method | Tab method |
+    |:--:|:--:|:--:|
+    | `⌈` | <kbd>PREFIX</kbd> <kbd>s</kbd> | <kbd>7</kbd> <kbd>7</kbd> ++tab++ |
+    | `⌊` | <kbd>PREFIX</kbd> <kbd>d</kbd> | <kbd>l</kbd> <kbd>l</kbd> ++tab++ |
+    | <code>&#124;</code> | <kbd>PREFIX</kbd> <kbd>m</kbd> | <kbd>&#124;</kbd> |
+    | `∨` | <kbd>PREFIX</kbd> <kbd>9</kbd> | <kbd>v</kbd> <kbd>v</kbd> ++tab++ |
+    | `∧` | <kbd>PREFIX</kbd> <kbd>0</kbd> | <kbd>^</kbd> <kbd>^</kbd> ++tab++ |
+    | `○` | <kbd>PREFIX</kbd> <kbd>o</kbd> | <kbd>O</kbd> <kbd>O</kbd> ++tab++ |
+    | `!` | <kbd>PREFIX</kbd> <kbd>_</kbd> | <kbd>!</kbd> |
 
 Being an engineer, you have a lot of varied computational needs which require a large range of mathematical functions. 
 
 Thankfully, APL comes with a lot of math functions! Here we go through a bunch of them, so you can always come back to check. 
 
-Feel free to skip this section for now, and come back when you see a mathematical operation you don't recognize! Remember to also check the toolbar in TryAPL and RIDE, they come with very helpful tooltips to remind you what an operator does!
+Feel free to skip this section for now, and come back when you see a mathematical operation you don't recognize! Remember to also check the toolbar in TryAPL and RIDE, they come with very helpful tooltips to remind you what a function does!
 
 ## Ceiling and floor
 
-The notation of ceiling ``⌈x⌉`` and ``⌊x⌋``      floor in mathematics matches with the corresponding APL functions, in fact, the notation of ceiling and floor (and the use of those words to describe rounding up and down) comes from APL! Before APL, there was no consistent standard to represent the ceiling and floor functions. Ceiling rounds up to the nearest integer, and floor rounds down to the nearest integer.
+The notation of ceiling ``⌈x⌉`` and ``⌊x⌋`` floor in mathematics matches with the corresponding APL functions, in fact, the notation of ceiling and floor (and the use of those words to describe rounding up and down) comes from APL! Before APL, there was no consistent standard to represent the ceiling and floor functions. Ceiling rounds up to the nearest integer, and floor rounds down to the nearest integer.
 
 Monadic `⌈` and `⌊` : Ceil & Floor
 ```apl
@@ -61,7 +73,7 @@ Dyadic `|` : Residue
       13 | ¯100 
 4
 
-      ⍝ 100 - ¯13 × ¯8 = 4
+      ⍝ 100 - ¯13 × ¯8 = ¯4
       ¯13 | 100 
 ¯4
 
@@ -88,7 +100,7 @@ The residue function X|Y in APL can be written in terms of previously discussed 
       Y-X×⌊Y÷X+X=0
 ```
 
-The residue operation here (which is the least absolute remainder) is different from the euclidean remainder (the least positive remainder), to obtain it simply subtract divisor back if the result is negative.
+The residue takes the sign of its left argument, the divisor, so for a negative divisor it differs from the euclidean remainder (the least non-negative remainder). To obtain that instead, subtract the divisor back if the result is negative; the ``mod`` function below does this, taking the dividend on the left, the opposite order to ``|``.
 ```apl
       mod←{(⍵|⍺)<0:(⍵|⍺)-⍵ ⋄ ⍵|⍺}
       ¯13 mod ¯3
@@ -104,7 +116,7 @@ The residue operation here (which is the least absolute remainder) is different 
 APL also natively supports complex numbers, which makes it attractive for uses in, for example, [quantum computing](https://github.com/nunezco2/quAPL). A complex number is represented as XJY, where X is the real part and Y is the imaginary part. In mathematical notation, $ XJY = X + i Y $.
 
 Monadic `|` : Absolute value, Magnitude
-```
+```apl
       ⍝ Absolute value of ¯1 is ...
       | ¯1 
 1
@@ -192,7 +204,7 @@ The dyadic circle `○` function applies a trigonometric function to its right a
 1
        
        ⍝ Tangent of 0.5
-       3 ○ 0
+       3 ○ 0.5
 0.5463024898
 
        ⍝ Cosine of I
@@ -204,7 +216,7 @@ The dyadic circle `○` function applies a trigonometric function to its right a
 
 Monadic `!` : Factorial
 
-The factorial ``!`` function multiplies together the whole numbers from 1 up to its argument. By convention ``!0`` is 1. For arguments that are not whole numbers it returns the gamma function, so it is defined for any number.
+The factorial ``!`` function multiplies together the whole numbers from 1 up to its argument. By convention ``!0`` is 1. For arguments that are not whole numbers it returns the gamma function, so it is defined for any number except the negative whole numbers.
 
 ```apl
       !0 1 5 10

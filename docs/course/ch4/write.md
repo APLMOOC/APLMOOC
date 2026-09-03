@@ -21,10 +21,11 @@ Since this course is still a work-in-progress, solving the write exercises will 
 ---
 
 !!! write-problem "Write problem 1"
-    Create a dfn that returns the string 'ABBCCCDDDDEEEEEFFFFFF...ZZZZZZZZZZZZZZZZZZZZZZZZZZ'
+    Create a dfn that returns the string 'ABBCCCDDDDEEEEEFFFFFF...ZZZZZZZZZZZZZZZZZZZZZZZZZZ' (call it with any right argument, e.g. ``ABB ⍬``)
     <div class="problem">
         <span class="problemspan">ABB←</span>
-        <input class="probleminput" type="text" id="input_ch4_p1" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch4_p1_b1" hidden>A←</span>
+        <input class="probleminput" type="text" id="input_ch4_p1_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch4_p1', 2)">Submit</button>
     </div>
     <p id="feedback_ch4_p1" style="color: red"></p>
@@ -35,7 +36,8 @@ Since this course is still a work-in-progress, solving the write exercises will 
     Create a dfn that returns the vector ⍺, ⍺+1, ⍺+2, ⍺+3, ..., ⍵
     <div class="problem">
         <span class="problemspan">INT←</span>
-        <input class="probleminput" type="text" id="input_ch4_p2" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch4_p2_b1" hidden>A←</span>
+        <input class="probleminput" type="text" id="input_ch4_p2_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch4_p2', 2)">Submit</button>
     </div>
     <p id="feedback_ch4_p2" style="color: red"></p>
@@ -53,7 +55,8 @@ Since this course is still a work-in-progress, solving the write exercises will 
     ```
     <div class="problem">
         <span class="problemspan">STEP←</span>
-        <input class="probleminput" type="text" id="input_ch4_p3" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch4_p3_b1" hidden>A←</span>
+        <input class="probleminput" type="text" id="input_ch4_p3_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch4_p3', 2)">Submit</button>
     </div>
     <p id="feedback_ch4_p3" style="color: red"></p>
@@ -61,15 +64,17 @@ Since this course is still a work-in-progress, solving the write exercises will 
 ---
 
 !!! write-problem "Write problem 4"
-    Create a dfn that evaluates the following continued fraction to 100 1s
+    Create a dfn that evaluates the following continued fraction to 100 1s (call it with any right argument, e.g. ``RATIO ⍬``)
+
     $$
           1+\frac{1}{1+\frac{1}{1+\frac{1}{\ldots}}}
     $$
 
-    Hint: Use the reduce / operator with the right function left argument
+    Hint: Use the reduce / operator with the correct function as its left operand
     <div class="problem">
         <span class="problemspan">RATIO←</span>
-        <input class="probleminput" type="text" id="input_ch4_p4" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch4_p4_b1" hidden>A←</span>
+        <input class="probleminput" type="text" id="input_ch4_p4_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch4_p4', 2)">Submit</button>
     </div>
     <p id="feedback_ch4_p4" style="color: red"></p>
@@ -77,15 +82,17 @@ Since this course is still a work-in-progress, solving the write exercises will 
 ---
 
 !!! write-problem "Write problem 5"
-    Create a dfn that evaluates the following sum
+    Create a dfn that evaluates the following sum for a right argument ``⍵``
+
     $$
-          \sum_{n=1}^{100} \frac{1}{n^2}
+          \sum_{n=1}^{\omega} \frac{1}{n^2}
     $$
 
     Hint: Use the reduce / operator
     <div class="problem">
         <span class="problemspan">SUM←</span>
-        <input class="probleminput" type="text" id="input_ch4_p5" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch4_p5_b1" hidden>A←</span>
+        <input class="probleminput" type="text" id="input_ch4_p5_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch4_p5', 2)">Submit</button>
     </div>
     <p id="feedback_ch4_p5" style="color: red"></p>
@@ -94,7 +101,7 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
 !!! write-problem "Write problem 6"
     
-    Create a dfn that returns a 1 if its left argument is totally contained in its right argument, and 0 otherwise.
+    Create a dfn that returns a 1 if every element of its left argument appears somewhere in its right argument, and 0 otherwise.
     ```apl
           1 1 2 3 SUBSET 1 2 3 4 5
     1
@@ -105,7 +112,8 @@ Since this course is still a work-in-progress, solving the write exercises will 
     ```
     <div class="problem">
         <span class="problemspan">SUBSET←</span>
-        <input class="probleminput" type="text" id="input_ch4_p6" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch4_p6_b1" hidden>A←</span>
+        <input class="probleminput" type="text" id="input_ch4_p6_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch4_p6', 2)">Submit</button>
     </div>
     <p id="feedback_ch4_p6" style="color: red"></p>
@@ -114,11 +122,12 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
 !!! write-problem "Write problem 7"
     
-    Create a dfn that returns 1 if ``⍵`` is prime, and 0 otherwise. A prime number is one that is not divisible by any number other than itself and 1, that is, the remainder of division is 0 only for 1 and ``⍵``.
+    Create a dfn that returns 1 if ``⍵`` is prime, and 0 otherwise. A prime number is one greater than 1 that is not divisible by any number other than itself and 1, that is, the remainder of division is 0 only for 1 and ``⍵``.
 
     <div class="problem">
         <span class="problemspan">PRIME←</span>
-        <input class="probleminput" type="text" id="input_ch4_p7" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch4_p7_b1" hidden>A←</span>
+        <input class="probleminput" type="text" id="input_ch4_p7_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch4_p7', 2)">Submit</button>
     </div>
     <p id="feedback_ch4_p7" style="color: red"></p>
@@ -131,7 +140,8 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
     <div class="problem">
         <span class="problemspan">MODE←</span>
-        <input class="probleminput" type="text" id="input_ch4_p8" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch4_p8_b1" hidden>A←</span>
+        <input class="probleminput" type="text" id="input_ch4_p8_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch4_p8', 2)">Submit</button>
     </div>
     <p id="feedback_ch4_p8" style="color: red"></p>
@@ -146,8 +156,10 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
     <div class="problem">
         <span class="problemspan">DECIPHER←</span>
-        <input class="probleminput" type="text" id="input_ch4_p9" placeholder="your solution here">
-        <button class="problembutton" onclick="submit_problem('ch4_p9', 2)">Submit</button>
+        <span class="problemfilltext" id="input_ch4_p9_b1" hidden>A←{MODE←{({⍺}⌸⍵)[⊃⍒{⍴⍵}⌸⍵]} ⋄ </span>
+        <input class="probleminput" type="text" id="input_ch4_p9_b2" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch4_p9_b3" hidden>⍵}</span>
+        <button class="problembutton" onclick="submit_problem('ch4_p9', 3)">Submit</button>
     </div>
     <p id="feedback_ch4_p9" style="color: red"></p>
 
@@ -167,7 +179,8 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
     <div class="problem">
         <span class="problemspan">WORD←</span>
-        <input class="probleminput" type="text" id="input_ch4_p10" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch4_p10_b1" hidden>A←</span>
+        <input class="probleminput" type="text" id="input_ch4_p10_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch4_p10', 2)">Submit</button>
     </div>
     <p id="feedback_ch4_p10" style="color: red"></p>
@@ -176,7 +189,7 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
 !!! write-problem "Write problem 11"
     
-    Create a dfn that generates an array with 1s separated by 0s, where the length of each run of 0s is specified by a vector right argument ``⍵``.
+    Create a dfn that generates an array of 0s and 1s: for each element of the vector right argument ``⍵``, that many 0s followed by a single 1.
 
     ```apl
           RUN 2 3 4
@@ -189,7 +202,8 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
     <div class="problem">
         <span class="problemspan">RUN←</span>
-        <input class="probleminput" type="text" id="input_ch4_p11" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch4_p11_b1" hidden>A←</span>
+        <input class="probleminput" type="text" id="input_ch4_p11_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch4_p11', 2)">Submit</button>
     </div>
     <p id="feedback_ch4_p11" style="color: red"></p>
@@ -209,8 +223,10 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
     <div class="problem">
         <span class="problemspan">PHRASE←</span>
-        <input class="probleminput" type="text" id="input_ch4_p12" placeholder="your solution here">
-        <button class="problembutton" onclick="submit_problem('ch4_p12', 2)">Submit</button>
+        <span class="problemfilltext" id="input_ch4_p12_b1" hidden>A←{RUN←{(⍳+/1+⍵)∊+&#92;1+⍵} ⋄ </span>
+        <input class="probleminput" type="text" id="input_ch4_p12_b2" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch4_p12_b3" hidden>⍵}</span>
+        <button class="problembutton" onclick="submit_problem('ch4_p12', 3)">Submit</button>
     </div>
     <p id="feedback_ch4_p12" style="color: red"></p>
 

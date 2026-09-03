@@ -42,13 +42,15 @@ Now, this is cool, but running this again is annoying (I don't really want to co
 Tradfns - pronounced exactly like you'd expect - are a way to write longer and more involved functions in APL.
 You'll finally be able to write program logic that spans multiple lines instead of having to cram everything into one line!
 
-!!! note "Typing the Del operator `∇`"
+!!! note "Typing the Del symbol `∇`"
 
-    Prefix method: <kbd>PREFIX</kbd> <kbd>G</kbd>
+    Prefix method: <kbd>PREFIX</kbd> <kbd>g</kbd>
+
+    Tab method: <kbd>V</kbd> <kbd>V</kbd> ++tab++
     
     You can remember this since G stands for Giza and the symbol looks like the pyramid of Giza (but flipped upside-down for whatever reason)
 
-To create a tradfn, we use the Del operator `∇` followed by the name of the function we want to create.
+To create a tradfn, we use the Del symbol `∇` followed by the name of the function we want to create.
 RIDE will then go into a function writing mode: it will spit out a line number `[1]` and ask you to write the first line of your function.
 If you press enter, it will move on to line number `[2]` etc.
 Now, we could write all of our functions this way, but we'll do something a little more clever.
@@ -75,7 +77,7 @@ Then, we can run the function by typing its name in the left-hand pane.
 
     This way, all of your code will be stored in the workspace and work nicely with LINK.
     If you have LINK set up, all tradfns will be stored automatically.
-    Remember that dfns and variables are not stored automatically in LINK: if they are outside a tradfn, they are considered to be for "testing purposes" and not a part of your actual code.
+    Remember that dfns and variables typed at the session line are not added to the link automatically; dfns written inside a `:Namespace` script are.
 
 ## Parameters and return values
 
@@ -83,9 +85,9 @@ Okay, that's great, but now our functions are just names for chunks of code.
 This is good for our main function but not so ideal if we actually wanna calculate and compute stuff.
 We can make them more useful by letting them take parameters and return values!
 
-We can convert our card dealing function to take in how many cards we want to deal
-Here's the code that lets you change the number of cards based on the variable `COUNT`
-and whether it uses uppercase or lowercase letters using the variable `UPPERCASE` (bonus points if you can see how it works):
+We can convert our card dealing function to take in how many cards we want to deal.
+Here's the code that lets you change the number of cards based on the variable `COUNT`.
+And whether it uses uppercase or lowercase letters using the variable `UPPERCASE` (bonus points if you can see how it works):
 
 ```apl
 COUNT←5
@@ -103,7 +105,7 @@ HAND[¯1+3×⍳COUNT]←SUITS
 Now, obviously, we don't want to adjust the two variables manually: let's make them parameters of our `DealHand` function.
 
 In APL, the 0th line of a function is called the _header line_.
-Here, you can specify your program's paramters and what variable it returns after exiting.
+Here, you can specify your program's parameters and what variable it returns after exiting.
 The syntax is the same as when you run a function: a function `FUNC` that takes in a left argument `LEFT`, right argument `RIGHT`, and returns a result `RESULT` will have the header line `RESULT ← LEFT FUNC RIGHT`. We can also make the left argument optional by surrounding it with `{LEFT}` curly braces.
 
 Here's what it looks like for our code:
@@ -116,7 +118,11 @@ When writing a tradfn, any variables you include in the header line will be loca
 What does this mean? Local variables are erased when the function exits, while global variables get stored in your workspace.
 When writing code, you **almost always want your variables to be local**.
 To do this, we can put them in the header line using semicolons after our function definition.
-This is how it should ideally look like:
+This is what it should ideally look like:
+
+```apl
+      ∇ HAND ← UPPERCASE DealHand COUNT;CARDS;SUITS
+```
 
 ![A picture of the corrected dealing function with local variables](../assets/7_3_correctdealing.png)
 
@@ -131,9 +137,9 @@ Note that system variables can also be set as local variables, for example setti
 
 ## Conditional expressions
 
-Recall that when using dfns we could execute parts of our code depending on whether a logical operation returns a `1` or a `0`. In tradfns, the usual dfn conditional expressions are not recognized. The equivalent method of specifying a conditional expressions is similar to imperative programming languages, using an ``:If`` statement.
+Recall that when using dfns we could execute parts of our code depending on whether a logical operation returns a `1` or a `0`. In tradfns, the usual dfn conditional expressions are not recognized. The equivalent method of specifying a conditional expression is similar to imperative programming languages, using an ``:If`` statement.
 
-Consider the following example, where we check if our tradfn has a left argument using the [`⎕NC` function](https://help.dyalog.com/17.1/Content/Language/System%20Functions/nc.htm) which returns `0` when a variable name is unused.
+Consider the following example, where we check if our tradfn has a left argument using the [`⎕NC` function](https://docs.dyalog.com/20.0/language-reference-guide/system-functions/nc/) which returns `0` when a variable name is unused.
 
 ```apl
        ∇ result ← {LEFT} function RIGHT
@@ -164,13 +170,10 @@ Instead of hard-coding line numbers which change as our code grows, *labels* may
 ```apl
        ∇ labeltest
               → third
-
               first:
               'hello'
-
               second:
               'world'
-
               third:
               ⎕ ← first second third
        ∇

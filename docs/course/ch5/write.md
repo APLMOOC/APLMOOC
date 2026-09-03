@@ -21,9 +21,27 @@ Since this course is still a work-in-progress, solving the write exercises will 
 ---
 
 
+!!! write-problem "Write problem 1"
+    Write a dfn ``only`` that returns the elements of its left argument ⍺ that do not occur in its right argument ⍵, without duplicates.
+    ```apl
+          'MISSISSIPPI' only 'SIP'
+    M
+          2 4 4 6 8 only 4 5
+    2 6 8
+    ```
+    <div class="problem">
+        <span class="problemspan">only←</span>
+        <span class="problemfilltext" id="input_ch5_p1_b1" hidden>A←</span>
+        <input class="probleminput" type="text" id="input_ch5_p1_b2" placeholder="your solution here">
+        <button class="problembutton" onclick="submit_problem('ch5_p1', 2)">Submit</button>
+    </div>
+    <p id="feedback_ch5_p1" style="color: red"></p>
+
+---
+
 !!! write-problem "Write problem 2"
     
-    Write a function to add a new entry at the top of the following leaderboard array as right argument ⍵ with a score of 1000000 with a name given by a left argument ⍺.
+    Write a dfn ``cheat`` that takes a name as left argument ⍺ and the leaderboard below as right argument ⍵, and adds a new entry at the top with that name and a score of 1000000.
 
     ```apl
           leaderboard
@@ -57,7 +75,8 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
     <div class="problem">
         <span class="problemspan">cheat←</span>
-        <input class="probleminput" type="text" id="input_ch5_p2" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch5_p2_b1" hidden>A←</span>
+        <input class="probleminput" type="text" id="input_ch5_p2_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch5_p2', 2)">Submit</button>
     </div>
     <p id="feedback_ch5_p2" style="color: red"></p>
@@ -67,7 +86,7 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
 !!! write-problem "Write problem 3"
     
-    Write a function to filter for all flights on the date given as a right function argument ⍵
+    Write a dfn that takes the flight table below as left argument ⍺ and a date as right argument ⍵, and returns the rows of the flights on that date
 
     ```apl
           flights
@@ -89,7 +108,8 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
     <div class="problem">
         <span class="problemspan">on_date←</span>
-        <input class="probleminput" type="text" id="input_ch5_p3" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch5_p3_b1" hidden>A←</span>
+        <input class="probleminput" type="text" id="input_ch5_p3_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch5_p3', 2)">Submit</button>
     </div>
     <p id="feedback_ch5_p3" style="color: red"></p>
@@ -98,7 +118,7 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
 !!! write-problem "Write problem 4"
     
-    Given an array of cities with their latitudes and longitudes as right argument ⍵, create a function to return a matrix of absolute differences in their latitude and longitudes in the following format
+    Given an array of cities with their latitudes and longitudes as right argument ⍵, create a function to return a matrix of the absolute differences in latitude and longitude between each pair of cities (not great-circle distances), in the following format
 
     ```apl
           cities
@@ -130,7 +150,8 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
     <div class="problem">
         <span class="problemspan">distance←</span>
-        <input class="probleminput" type="text" id="input_ch5_p4" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch5_p4_b1" hidden>A←</span>
+        <input class="probleminput" type="text" id="input_ch5_p4_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch5_p4', 2)">Submit</button>
     </div>
     <p id="feedback_ch5_p4" style="color: red"></p>
@@ -165,7 +186,8 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
     <div class="problem">
         <span class="problemspan">floor←</span>
-        <input class="probleminput" type="text" id="input_ch5_p5" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch5_p5_b1" hidden>A←</span>
+        <input class="probleminput" type="text" id="input_ch5_p5_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch5_p5', 2)">Submit</button>
     </div>
     <p id="feedback_ch5_p5" style="color: red"></p>
@@ -174,10 +196,10 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
 !!! write-problem "Write problem 6"
     
-    Write a function to group an array of hotel bookings by floor.
+    Write a function to group an array of hotel bookings by floor (the fourth column), returning one matrix per floor, in order of first appearance.
 
     ```apl
-          bookings
+          bookings2
     ┌─────────┬──────────┬───┬─┐
     │Jari N.  │2024-12-01│427│4│
     ├─────────┼──────────┼───┼─┤
@@ -185,7 +207,7 @@ Since this course is still a work-in-progress, solving the write exercises will 
     ├─────────┼──────────┼───┼─┤
     │Michel A.│2024-12-03│415│4│
     └─────────┴──────────┴───┴─┘
-          group bookings
+          group bookings2
     ┌────────────────────────────┬──────────────────────────┐
     │┌─────────┬──────────┬───┬─┐│┌───────┬──────────┬───┬─┐│
     ││Jari N.  │2024-12-01│427│4│││Erik O.│2024-12-01│506│5││
@@ -199,7 +221,8 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
     <div class="problem">
         <span class="problemspan">group←</span>
-        <input class="probleminput" type="text" id="input_ch5_p6" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch5_p6_b1" hidden>A←</span>
+        <input class="probleminput" type="text" id="input_ch5_p6_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch5_p6', 2)">Submit</button>
     </div>
     <p id="feedback_ch5_p6" style="color: red"></p>
@@ -229,7 +252,8 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
     <div class="problem">
         <span class="problemspan">proportion←</span>
-        <input class="probleminput" type="text" id="input_ch5_p7" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch5_p7_b1" hidden>A←</span>
+        <input class="probleminput" type="text" id="input_ch5_p7_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch5_p7', 2)">Submit</button>
     </div>
     <p id="feedback_ch5_p7" style="color: red"></p>
@@ -249,7 +273,8 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
     <div class="problem">
         <span class="problemspan">runs←</span>
-        <input class="probleminput" type="text" id="input_ch5_p8" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch5_p8_b1" hidden>A←</span>
+        <input class="probleminput" type="text" id="input_ch5_p8_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch5_p8', 2)">Submit</button>
     </div>
     <p id="feedback_ch5_p8" style="color: red"></p>
@@ -258,7 +283,7 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
 !!! write-problem "Write problem 9"
     
-    Write a function that generates a table of values for sin and cos from 0 to 2pi. The right argument ⍵ is the number of interior points, that is, the number of points strictly between 0 and 2pi. The step between consecutive points is 2pi÷⍵+1. The table has ⍵+2 rows of values.
+    Write a function that generates a table of values for sin and cos from 0 to 2pi. The right argument ⍵ is the number of interior points, that is, the number of points strictly between 0 and 2pi. The step between consecutive points is 2pi÷⍵+1. The table has ⍵+2 rows of values, under a first row of the labels 'x', 'sin x' and 'cos x'.
 
     ```apl
           trig_table 4
@@ -299,7 +324,8 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
     <div class="problem">
         <span class="problemspan">trig_table←</span>
-        <input class="probleminput" type="text" id="input_ch5_p9" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch5_p9_b1" hidden>A←</span>
+        <input class="probleminput" type="text" id="input_ch5_p9_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch5_p9', 2)">Submit</button>
     </div>
     <p id="feedback_ch5_p9" style="color: red"></p>
@@ -324,7 +350,8 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
     <div class="problem">
         <span class="problemspan">nonzero←</span>
-        <input class="probleminput" type="text" id="input_ch5_p10" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch5_p10_b1" hidden>A←</span>
+        <input class="probleminput" type="text" id="input_ch5_p10_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch5_p10', 2)">Submit</button>
     </div>
     <p id="feedback_ch5_p10" style="color: red"></p>
@@ -361,7 +388,8 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
     <div class="problem">
         <span class="problemspan">significant←</span>
-        <input class="probleminput" type="text" id="input_ch5_p11" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch5_p11_b1" hidden>A←</span>
+        <input class="probleminput" type="text" id="input_ch5_p11_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch5_p11', 2)">Submit</button>
     </div>
     <p id="feedback_ch5_p11" style="color: red"></p>
@@ -371,9 +399,9 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
 !!! write-problem "Write problem 12"
     
-    Write a function that takes in a right argument character vector and returns the matrix that the character vector represents.
+    Write a function that takes in a right argument character vector and returns the array that the character vector represents.
 
-    The character vector will have elements separated by commas, 1-cells separated by semicolons, and 2-cells separated by colons.
+    In the character vector, commas separate the elements of a 1-cell, semicolons separate 1-cells, and colons separate 2-cells.
 
     ```apl
           a
@@ -396,7 +424,8 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
     <div class="problem">
         <span class="problemspan">array←</span>
-        <input class="probleminput" type="text" id="input_ch5_p12" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch5_p12_b1" hidden>A←</span>
+        <input class="probleminput" type="text" id="input_ch5_p12_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch5_p12', 2)">Submit</button>
     </div>
     <p id="feedback_ch5_p12" style="color: red"></p>

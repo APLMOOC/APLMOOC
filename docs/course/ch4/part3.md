@@ -17,6 +17,12 @@ Luckily, APL implements functions that help sort a list, but they're a little di
 
 Given your array of movies, you get the array of ratings and use the grade down function.
 
+!!! note "Typing the grade functions `⍋` and `⍒`"
+
+    Prefix method: <kbd>PREFIX</kbd> <kbd>$</kbd> for `⍋`, <kbd>PREFIX</kbd> <kbd>#</kbd> for `⍒`
+
+    Tab method: <kbd>A</kbd> <kbd>|</kbd> ++tab++ for `⍋`, <kbd>V</kbd> <kbd>|</kbd> ++tab++ for `⍒`
+
 ```apl
 MovieDB ← [ 'Title' 'Year' 'Rating' 'Runtime' 'Watches' 'Genre' ⋄
             'Real Genius' 1985 4 108 3 'Comedy' ⋄ 
@@ -99,10 +105,10 @@ For a simple array ``⎕A`` of the alphabet, the result of reducing along catena
 └──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┘
 ```
 
-For our list of genres, we'd like to check for equality, then access the first index with a matching genre. We will use the indices of ``⍸`` function, which returns the indices of ``1``s, more on searching in Part 5.
+For our list of genres, we'd like to check for equality, then access the first index with a matching genre. We will use the where ``⍸`` function, which returns the indices of ``1``s, more on searching in Part 5.
 
 ```apl
-       sorted_genres←(1↓MovieDB[;6])[⍒1↓MovieDB[;6]]
+       ⎕←sorted_genres←(1↓MovieDB[;6])[⍒1↓MovieDB[;6]]
 ┌────────┬───────┬──────┬──────┐
 │Thriller│Fantasy│Comedy│Comedy│
 └────────┴───────┴──────┴──────┘

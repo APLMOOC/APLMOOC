@@ -59,7 +59,7 @@ In brief intervals of time spent waiting between helping your sales staff with E
 Not this again, you need to get rid of all the spam before the situation gets out of hand. You first remove all duplicate posts using the monadic unique ``∪`` function.
 
 ```apl
-      ∪ POSTS
+      ⎕ ← POSTS ← ∪ POSTS
 ┌──────────┬─────┬────────────────────────────────────────────────────────────────────┬────────────────┐
 │30-08-2024│18:52│Why does DVB-C use QAM instead of OFDM?                             │frequencySniffer│
 ├──────────┼─────┼────────────────────────────────────────────────────────────────────┼────────────────┤
@@ -94,7 +94,7 @@ The duplicate ``XXXXXXXXXX`` spam posts have been removed. Next is removing spec
 1 2 3 4 5 6 7 8 9 10 11
       (⍳11) ~ 3 4 5 6 7 8 9 10
 1 2 11
-      POSTS ← POSTS[(⍳13) ~ 3 4 5 6 7 8 9 10]
+      POSTS ← POSTS[(⍳11) ~ 3 4 5 6 7 8 9 10;]
       POSTS
 ┌──────────┬─────┬───────────────────────────────────────┬────────────────┐
 │30-08-2024│18:52│Why does DVB-C use QAM instead of OFDM?│frequencySniffer│
@@ -122,7 +122,7 @@ The symbol ``∪`` acts *dyadically* as Set Union.
 :) :-) :D :] :o) 8) :3 c: :x ): :c ]: )-: D: >:( :/ :|
 ```
 
-Notice how the element ``:x`` only appears once, where it would appear twice if we were to use the dyadic catenate ``,`` operator introduced in Chapter 2.
+Notice how the element ``:x`` only appears once, where it would appear twice if we were to use the dyadic catenate ``,`` function introduced in Chapter 2.
 
 ```apl
        HAPPY_EMOTICONS , SAD_EMOTICONS
@@ -144,7 +144,7 @@ The symbol ``~``, which monadically refers to boolean NOT, is dyadically the Set
        ⍝ Notice the ':x' emoticon is gone
 ```
 
-Monadically, the symbol ``∪`` acts as the Unique operator, removing duplicate entries in a vector.
+Monadically, the symbol ``∪`` acts as the Unique function, removing duplicate elements of a vector, or duplicate rows of a matrix, as it did for POSTS above.
 
 ```apl
        ∪ HAPPY_EMOTICONS , SAD_EMOTICONS

@@ -136,12 +136,12 @@ That's it!
 
 First, determine whether your device uses an ARM or Intel processor.
 
-1. Click on the Apple logo in the top right of your screen
+1. Click on the Apple logo in the top left of your screen
 1. Click on `About This Mac`
     - If there is a `Chip` label, then your device uses an ARM processor
-    - If there is a `Processor`label, then your device uses an Intel processor
+    - If there is a `Processor` label, then your device uses an Intel processor
 
-Then, let's install RIDE.
+Then, let's install Dyalog.
 
 1. Visit the Dyalog downloads page <https://www.dyalog.com/download-zone.htm>
 1. Accept the conditions for a free license to use Dyalog

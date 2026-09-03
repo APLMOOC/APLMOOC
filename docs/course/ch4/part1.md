@@ -191,13 +191,13 @@ It's recommended not to change the index origin repeatedly in the same program, 
 
 You've already seen this one, but let's see how it works in more detail.
 
-!!! note "Typing the reshape operator `⍴`"
+!!! note "Typing the reshape function `⍴`"
 
     Prefix method: <kbd>PREFIX</kbd> <kbd>r</kbd>
 
     Tab method: <kbd>r</kbd> <kbd>r</kbd> ++tab++
 
-The dyadic reshape operator, `⍴`, takes in a shape on the left and a value to use as a filler on the right.
+The dyadic reshape function, `⍴`, takes in a shape on the left and a value to use as a filler on the right.
 Let's see it in action:
 
 ```apl
@@ -367,10 +367,11 @@ DOMAIN ERROR: Deal right argument must be greater than or equal to the left argu
         ∧
 ```
 
-There is actually another way to use deal that gives you numbers without replacement: it's called roll (like rolling a die)!
+There is actually another way to use deal that gives you numbers with replacement: it's called roll (like rolling a die)!
 And we don't even need another symbol: it's just the monadic version of `?`.
 
 ```apl
+      ⎕IO←1
       ?5
 2
       ?5

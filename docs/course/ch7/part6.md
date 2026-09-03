@@ -22,7 +22,7 @@ Other languages solve this with a package manager, like `pip` for Python or `npm
 
 ## Activating Tatin
 
-Tatin comes with Dyalog APL, and can be activated using the ``]Activate`` system command. 
+Tatin comes with Dyalog APL, and can be activated using the ``]Activate`` user command. 
 
 ```apl
       ]Activate tatin
@@ -69,11 +69,11 @@ Tatin gets its packages from online registries, and the default `tatin.dev` regi
  tatin-test  https://test.tatin.dev/   ba053b97-a68a-4f90-abc4-e98cff187472     0         0
 ```
 
-At the time of writing there are 72 packages on the official `tatin.dev` repository.
+At the time of writing there are 72 packages on the official `tatin.dev` registry.
 
 ```apl
       ]TATIN.ListPackages -group=dyalog
-Registry: https://tatin.dev                ≢ 7
+Registry: https://tatin.dev                ≢ 5
  Group & Name                   # major versions
  ------------                   ----------------
  dyalog-APLProcess                             1
@@ -126,7 +126,7 @@ The `Get` function fetches a page and returns its raw text, and the `GetJSON` fu
       speeds←ok/speeds
 ```
 
-The format `⍕` flattens the vector into a single character vector for `⎕VFI` to parse, and compressing by `ok` keeps the valid readings; exactly one measurement in this fetch was a `null`.
+The format `⍕` turns the numeric vector into a single character vector for `⎕VFI` to parse, and compressing by `ok` keeps the valid readings; exactly one measurement in this fetch was a `null`.
 
 ```apl
       ⌊(+/speeds)÷≢speeds

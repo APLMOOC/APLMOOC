@@ -119,7 +119,7 @@ Using this, we want to decide on a movement to another note, weighed by priority
 	<br>
 	Notice that ? 0 returns a random real number between 0 and 1
 	<br><br>
-	The Grade Down operator ⍒ returns the indices of the elements of the list from largest to smallest
+	The Grade Down function ⍒ returns the indices of the elements of the list from largest to smallest
 	<br><br>
 	<br><br>
 	Getting the index of the largest roll.

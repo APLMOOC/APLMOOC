@@ -4,7 +4,7 @@
 
     This part is considered to be bonus content.
     It contains some more advanced topics that are not covered in the main course.
-    It can also give some examples of functions and topics that are introuced later in the course.
+    It can also give some examples of functions and topics that are introduced later in the course.
     There are no exercises related to this content.
 
     Feel free to skim or skip this section for now, and return to it later!
@@ -57,7 +57,7 @@ print(average([1,2,3,4,5]))
 
 The result is ``3``.
 
-To define functions in APL, `fix` is used rather than than the `eval`.
+To define functions in APL, `fix` is used rather than the `eval`.
 
 ```python
 from pynapl import APL
@@ -113,7 +113,8 @@ Assigning these positions to 1 on the board by (un)raveling the board into a vec
       board ← ,board
       board
 0 0 0 0 0 0 0 0 0 0 0 0 ...
-      (1 @ pos) board
+      board ← (1 @ pos) board
+      board
 0 0 0 0 0 1 0 0 0 0 0 1 ...
       board ← 16 30 ⍴ board
 ```
@@ -305,7 +306,7 @@ The last thing that is needed is a function to decide what happens when a tile i
 1
 ```
 
-The tile uncovering algorithm is a simple combination of the stencil operator ``⌺`` and the repeat ``⍣`` operator. 
+The tile uncovering algorithm is a simple combination of the stencil operator ``⌺`` and the power ``⍣`` operator. 
 
 Intuitively, the algorithm should calculate the neighbours of every tile ``⌺3 3``, uncovering the tile by setting it to ``¯1`` if one of its neighbours is uncovered ``¯1∊⍵`` and ``∧`` if it isn't a mine ``⍵[2;2]≠1``, otherwise return the original tile ``⍵[2;2]``, in code ``{(¯1∊⍵)∧⍵[2;2]≠1: ¯1 ⋄ ⍵[2;2]}⌺3 3``. It should repeat this process until the board does not change ``⍣≡``.
 
@@ -350,7 +351,7 @@ def uncover(x, y):
       return
   apl.eval("board ← (¯1@(uncover ∆))board", x, y)
   
-create_board()
+new_board()
 calculate_adjacency()
 ```
 
@@ -363,12 +364,12 @@ The last piece of logic needed is flagging, and win/loss states. We will create 
 apl.eval("labels ← (⍴ board) ⍴ ' '")
 def flag(x, y):
 	if(apl.eval("∆⌷board", x, y)!=-1): #Not uncovered
-	  apl.eval("∆⌷labels ← \'⚑\'", x, y)
+	  apl.eval("(∆⌷labels) ← \'⚑\'", x, y)
 ```
 
 We also need to update the adjacency numbers shown to the player when more tiles are uncovered. The labels matrix should have the values in the adjacency matrix where the board matrix has a `¯1` value (where a tile is uncovered). First find where board is `¯1`, then selectively assign the adjacency values to the labels.
 
-```python
+```apl
       labels ← (⍴ board) ⍴ ' '
       board ← 1 -⍨ ? 5 5 ⍴ 2
       adjacency ← ({+/,⍵}⌺3 3)board
@@ -454,7 +455,7 @@ apl.eval("labels ← (⍴ board) ⍴ ' '")
 
 def flag(x, y):
 	if(apl.eval("∆⌷board", x, y)!=-1): #Not uncovered
-	  apl.eval("∆⌷labels ← \'⚑\'", x, y)
+	  apl.eval("(∆⌷labels) ← \'⚑\'", x, y)
 
 def uncover(x, y):
   if(is_mine([x,y])):

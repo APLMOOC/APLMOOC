@@ -3,7 +3,7 @@
 !!! abstract "This part will cover"
 
     - The 5 ways to select from an array
-    - Modifying elements
+    - Take, drop, index, compress and pick
 
 ---
 
@@ -63,7 +63,7 @@ What if you give it a number that's longer than the length of the list? Make a g
 
 It's not a `LENGTH ERROR`!
 APL just pads the remaining length with zeros. Very handy.
-This is actually the only function that works like this: use it wisely.
+Few functions work like this: use it wisely.
 
 The same works with character vectors:
 
@@ -74,7 +74,7 @@ Hello!
 
 Oops, looks like there's nothing there. Let's try adding some characters on the side:
 
-```
+```apl
       '*', (10↑'Hello!'), '*'
 *Hello!    *
 ```
@@ -84,6 +84,7 @@ So character vectors get padded with spaces instead of zeros. Nice.
 !!! note "Using take"
 
     The take function is perfect for
+
     - Truncating
     - Padding
 
@@ -92,7 +93,7 @@ So character vectors get padded with spaces instead of zeros. Nice.
 The dyadic drop function `↓` works very similarly to take.
 Except now, instead of taking the first N elements, it takes everything *but* the first N elements.
 
-!!! note "Typing the take function `↑`"
+!!! note "Typing the drop function `↓`"
 
     Prefix method: <kbd>PREFIX</kbd> <kbd>u</kbd>
 
@@ -153,7 +154,7 @@ print(things[2])
 
 The syntax is almost exactly the same!
 Except, of course, APL starts counting from 1 and not 0.
-If you want to change this, you can use the `⎕IO` variable again: the brackets are context-sensitive.
+If you want to change this, you can use the `⎕IO` variable again: the brackets are origin-sensitive.
 
 ```apl
       ⎕IO ← 0
@@ -238,7 +239,7 @@ You just get an error: the `INDEX ERROR`.
             ⍴2 3⍴1 3 5 2 4 4
       2 3
             THINGS[2 3⍴1 3 5 2 4 4]
-      5 6 0
+        5 6 0
       ¯7 3 3
             ⍴THINGS[2 3⍴1 3 5 2 4 4]
       2 3
@@ -249,7 +250,7 @@ You just get an error: the `INDEX ERROR`.
 
 ## Compress
 
-The dyadic compress function `/` will let you use a mask to pick elements from an array.
+The dyadic compress function `/` (the same `/` you met as replicate in Part 1, given a mask of 0s and 1s) will let you use a mask to pick elements from an array.
 This function is perfect for when you need to pick out items **based on a certain condition**.
 
 ```apl
@@ -266,13 +267,13 @@ We can use the boolean function `=` to see where all the zeros are and then use 
 ```apl
       0=SUBS
 1 1 1 0 0 1 0 0 0
+      ⍝ Hint: whoops, wrong way around
       (0=SUBS)/SUBS
-0 0 0 0 (1)
+0 0 0 0
       (0≠SUBS)/SUBS
 4 5 2 1 4
 ```
 
-1. Hint: whoops, wrong way around
 
 Same thing, if you wanted all the small numbers, you can use the `<` function:
 
@@ -349,7 +350,7 @@ We'll get back to exactly why this is in the next chapter.
 For now, you can think of your vector as being **trapped in a box and unable to escape**.
 To set it free, we use pick!
 
-We can use it monadically to unbox the vector
+Used monadically, ``⊃`` returns the *first* element of its argument. ``A[2]`` has exactly one element, the boxed vector, so this unboxes it:
 ```apl
       ⊃A[2]
 3 4 5

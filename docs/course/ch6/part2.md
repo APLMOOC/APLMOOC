@@ -131,7 +131,7 @@ HTOKY
 └───┴───┴───┴───┴───┘
 ```
 
-There is a specific operator for this operation called the outer product (∘.f), this operator is special in that it takes a right function argument.
+There is a specific operator for this operation called the outer product (∘.f), this operator is special in that its left operand is the fixed jot ``∘``.
 
 ```apl
       v1(∘.,)v2
@@ -239,7 +239,7 @@ In many applications, it is useful to reduce over the diagonal of the outer prod
 └───────────────┘
 ```
 
-For arbitrary arrays, the inner product ``X(f.g)Y`` is the same as taking the outer product ``∘.(f/ (g¨))`` of the rows of the left argument (trailing vectors) ``(⊂[⍴⍴x]X)`` and the columns of the right argument (leading vectors) ``⊂[1]Y``, then removing a layer of depth ``⊃⍤1``. For example, the elements of ``X(+.×)Y`` are the sum of the product ``∘.(+/ (×¨))`` of a row of ``X`` and a column of ``Y``, which is exactly matrix multiplication.
+For arbitrary arrays, the inner product ``X(f.g)Y`` is the same as taking the outer product ``∘.(f/ (g¨))`` of the rows of the left argument (trailing vectors) ``(⊂[⍴⍴X]X)`` and the columns of the right argument (leading vectors) ``⊂[1]Y``. For example, the elements of ``X(+.×)Y`` are the sum of the product ``∘.(+/ (×¨))`` of a row of ``X`` and a column of ``Y``, which is exactly matrix multiplication.
 
 ## Matrix inverse
 
@@ -277,7 +277,7 @@ We can use the matrix inverse ⌹ function to verify the multiplication
 2  5  9 14 20
 7  8 10 13 17
 
-      ⌹M+.×L
+      (⌹M)+.×L
 1  3  6 10 15
 6  7  9 12 16
 5 11 12 14 17
@@ -288,25 +288,25 @@ We can use the matrix inverse ⌹ function to verify the multiplication
 The matrix inverse ⌹ also takes the pseudoinverse of a matrix, if the inverse does not exist, which can be used to get least squares solutions of systems of linear equations when a unique solution is not possible. Take the example of a bakery, wanting to make the most out of their ingredients
 
 ```apl
-⍝ Recipes
-⍝		    Flour	Milk	Sugar	Butter	Eggs
-Cake 	←   450	    0	    700	    500	    6
-Pancake ←	200	    300	    50	    50	    1
-Cupcake ←	150	    125	    150	    50	    0
-Cookies ←	280	    0	    250	    200	    2
+      ⍝ Recipes
+      ⍝ Flour Milk Sugar Butter Eggs
+      Cake ← 450 0 700 500 6
+      Pancake ← 200 300 50 50 1
+      Cupcake ← 150 125 150 50 0
+      Cookies ← 280 0 250 200 2
 
-Available ←	2200 1000 2200 1600 19
+      Available ← 2200 1000 2200 1600 19
 ```
 
 Since there are more ingredients than recipes, there will not be a unique solution to this problem. The system of equations here is
 
 
-\\[
+$$
 \text{Cakes}\cdot\begin{bmatrix}450\\\\
 0\\\\
 700\\\\
 500\\\\
-2
+6
 \end{bmatrix}+\text{Pancake}\cdot\begin{bmatrix}200\\\\
 300\\\\
 50\\\\
@@ -329,17 +329,17 @@ Since there are more ingredients than recipes, there will not be a unique soluti
 1600\\\\
 19
 \end{bmatrix}
-\\]
+$$
 
 which can be written in matrix form as
 
-\\[
+$$
 \begin{bmatrix}
 450 & 200 & 150 & 280 \\\\
 0 & 300 & 125 & 0 \\\\
 700 & 50 & 150 & 250 \\\\
 500 & 50 & 50 & 200 \\\\
-2 & 1 & 0 & 2
+6 & 1 & 0 & 2
 \end{bmatrix}
 \begin{bmatrix}
 \text{Cakes} \\\\
@@ -355,11 +355,11 @@ which can be written in matrix form as
 1600 \\\\
 19
 \end{bmatrix}
-\\]
+$$
 
 which can be solved by obtaining the pseudoinverse of the matrix (represented below using the + symbol), and multiplying it by the target vector.
 
-\\[
+$$
 \begin{bmatrix}
 \text{Cakes} \\\\
 \text{Pancake} \\\\
@@ -372,7 +372,7 @@ which can be solved by obtaining the pseudoinverse of the matrix (represented be
 0 & 300 & 125 & 0 \\\\
 700 & 50 & 150 & 250 \\\\
 500 & 50 & 50 & 200 \\\\
-2 & 1 & 0 & 2
+6 & 1 & 0 & 2
 \end{bmatrix}^+
 \begin{bmatrix}
 2200 \\\\
@@ -381,10 +381,10 @@ which can be solved by obtaining the pseudoinverse of the matrix (represented be
 1600 \\\\
 19
 \end{bmatrix}
-\\]
+$$
 
 ```apl
-	   Goods ← ⍉ ↑ Cake Pancake Cupcake Cookies
+      Goods ← ⍉ ↑ Cake Pancake Cupcake Cookies
        Goods
 450 200 150 280
   0 300 125   0
@@ -398,3 +398,5 @@ which can be solved by obtaining the pseudoinverse of the matrix (represented be
 ```
 
 Then, the closest solution is baking roughly 2 cakes, 3 batches of pancakes, 1 batch of cupcakes, and 2 batches of cookies.
+
+The dyadic form of ``⌹``, matrix divide, combines both steps: ``B⌹A`` is ``(⌹A)+.×B``. 

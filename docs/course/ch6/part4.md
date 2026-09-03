@@ -7,6 +7,8 @@
 
 ---
 
+<link rel="stylesheet" href="/styles/ch5part2.css">
+
 Just as the reduce ``/`` operator destructs a list by iterating through it from the right, the power ``⍣`` operator can be thought of as destructing a number ``n`` by repeating ``n`` times. The power operator repeats its left function argument the amount of times specified by its right argument.
 
 ```apl
@@ -23,7 +25,7 @@ Just as the reduce ``/`` operator destructs a list by iterating through it from 
       0.5(*⍣3)0.5
 0.65404086
 
-			0.5(0.5*(0.5*0.5))
+      0.5*(0.5*(0.5*0.5))
 0.65404086
 
       1(,⍣10)2
@@ -53,6 +55,9 @@ Note that ``X(f⍣g)Y`` is equivalent to binding the left argument as the left a
 40
       (2∘×⍣3)5
 40
+      ⍝ Binding on the right gives the same for a commutative function
+      (×∘2⍣3)5
+40
 ```
 
 ## Repeat
@@ -73,7 +78,7 @@ The right argument to the power ``⍣`` operator can be a function, ``f⍣g``, w
 
 This is equivalent to 
 ```apl
-      ⍬ {⍺>100: ⍺ ⋄ (2×⍵) ∇ ⍺} 5
+      {⍵>100: ⍵ ⋄ ∇ 2×⍵} 5
 160
 ```
 
@@ -92,7 +97,7 @@ For a more complicated example, the power operator can also be used to find fixe
 
 The code applies ``0.5∘*`` until the current and previous values are equal.
 
-When the power operator is applied to a negative right argument, it acts as the repeated inverse operator for its function left argument, for certain functions.
+When the power operator is applied to a negative right argument, it acts as the repeated inverse operator for its function left argument, for functions APL knows how to invert, such as ``⊥``, ``⊤`` and ``⍉``.
 
 ```apl
       3(+⍣2)5
@@ -100,7 +105,7 @@ When the power operator is applied to a negative right argument, it acts as the 
       3(+⍣¯2)5
 ¯1
 
-			2 ⊥ 1 0 1 0 1 0
+      2 ⊥ 1 0 1 0 1 0
 42
       2 (⊥⍣¯1) 42
 1 0 1 0 1 0
@@ -137,12 +142,12 @@ It was also possible to replace specified arrays with other arrays as long as th
 
 ```apl
       M[1 2;1 2]
-1 2
+0 0
 6 7
       M[1 2;1 2] ← 2 2⍴0 1 1 0
       M
- 0  1  1  4  5
- 1  0  0  9 10
+ 0  1  0  0  0
+ 1  0  8  9 10
 11 12 13 14 15
 16 17 18 19 20
 21 22 23 24 25
@@ -150,7 +155,7 @@ It was also possible to replace specified arrays with other arrays as long as th
 
 ## Selective assignment
 
-The story does not end there, for any expression that selects from an array can be used on the left-hand side of the assignment.
+The story does not end there, for many expressions that select from an array can also be used on the left-hand side of the assignment.
 
 ```apl
       M ← 5 5 ⍴ ⍳25
@@ -234,7 +239,7 @@ ABCDEFGHIJKLM
 21 J  K  L  M
 ```
 
-The arguments to ``@`` can be functions instead, where the left argument function is the function to apply to the selected elements, and the right argument is a logical function that selects the elements out of the right argument array.
+The arguments to ``@`` can be functions instead, where the left operand is the function to apply to the selected elements, and the right operand is a logical function that selects the elements out of the right argument array.
 
 ```apl
       M ← 5 5 ⍴ ⍳25
@@ -247,7 +252,7 @@ The arguments to ``@`` can be functions instead, where the left argument functio
 ¯21  22  23 ¯24  25
       
       M ← 5 5 ⍴ ⍳25
-	⍝ Reverse list of elements which are multiples of 3
+      ⍝ Reverse list of elements which are multiples of 3
       (⊖@{0=3|⍵})M
  1  2 24  4  5
 21  7  8 18 10

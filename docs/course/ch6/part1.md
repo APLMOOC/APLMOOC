@@ -3,7 +3,6 @@
 !!! abstract "This part will cover"
     
     - Execute
-    - User Input
     - Format
 
 ---
@@ -117,3 +116,10 @@ Notice that the quote of the array Y is a string of shape ``5 25``, giving ``5``
 ```
 
 The first element of the left argument array specifies the characters per column, and the second element the number of decimal places each number should be formatted to.
+
+If a number does not fit in its field, the field is filled with ``*``.
+
+```apl
+      4 2⍕1000
+****
+```

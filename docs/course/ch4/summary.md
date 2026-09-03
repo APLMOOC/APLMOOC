@@ -11,7 +11,7 @@ It might be useful to review this page as you are doing the read and write exerc
 | Symbol | Name | Function (Monadic/Dyadic) | Key combination (Prefix) | Key combination (Tab)
 |:--:|:--:|:--:|:--:|:--:|
 | `⍳` | Iota | [Index generator](part1.md#index-generator:~:text=The%20monadic%20index%20generator%20%E2%8D%B3%20%28iota%29%20is%20probably%20one%20of%20the%20most%20common%20and%20simple%20vector%20functions%20in%20APL.) | <kbd>PREFIX</kbd> ++i++ | <kbd>i</kbd> <kbd>i</kbd> ++tab++ |
-| `?` | Question mark | [Roll](part1.md#roll-and-deal:~:text=Take%20a%20gamble%3A%20what%20does%20the%20dyadic%20%3F%20function%20do%3F) / [Deal](part1.md#roll-and-deal:~:text=Take%20a%20gamble%3A%20what%20does%20the%20dyadic%20%3F%20function%20do%3F) | <kbd>PREFIX</kbd> ++q++ | <kbd>?</kbd> |
+| `?` | Question mark | [Roll](part1.md#roll-and-deal:~:text=There%20is%20actually%20another%20way%20to%20use%20deal) / [Deal](part1.md#roll-and-deal:~:text=Take%20a%20gamble%3A%20what%20does%20the%20dyadic%20%3F%20function%20do%3F) | <kbd>PREFIX</kbd> ++q++ | <kbd>?</kbd> |
 | `/` | Slash | [Replicate](part1.md#replicate:~:text=This%20is%20the%20dyadic%20replicate%20function%2C%20%2F.) | <kbd>/</kbd> | <kbd>/</kbd> |
 
 ### Reductions and scans
@@ -19,6 +19,8 @@ It might be useful to review this page as you are doing the read and write exerc
 | Symbol | Name | Function (Monadic/Dyadic) | Key combination (Prefix) | Key combination (Tab)
 |:--:|:--:|:--:|:--:|:--:|
 | `\` | Backslash | [Scan](part2.md#scan:~:text=The%20scan%20%5C%20operator%20cumulatively%20applies%20its%20left%20argument%20function%20on%20its%20right%20argument%20array%20and%20returns%20a%20result%20array%20of%20the%20same%20rank.) | <kbd>\</kbd> | <kbd>\</kbd> |
+| `n f/` | Windowed reduce | [Windowed reduction](part3.md#windowed-reduction) | <kbd>/</kbd> | <kbd>/</kbd> |
+| `n f/` | Windowed reduce | [Windowed reduction](part3.md#windowed-reduction) | <kbd>/</kbd> | <kbd>/</kbd> |
 
 ### Sorting
 
@@ -35,7 +37,7 @@ It might be useful to review this page as you are doing the read and write exerc
 | `↓` | Down arrow | [Drop](part4.md#drop:~:text=The%20dyadic%20drop%20function%20%E2%86%93%20works%20very%20similarly%20to%20take.) | <kbd>PREFIX</kbd> ++u++ | <kbd>v</kbd> <kbd>&#124;</kbd> ++tab++ |
 | `[]` | Brackets | [Index](part4.md#index:~:text=Indexing%20is%20used%20to%20pick%20out%20values%20based%20on%20an%20index%20from%20an%20array.) | <kbd>[</kbd> <kbd>]</kbd> | <kbd>[</kbd> <kbd>]</kbd> |
 | `/` | Slash | [Compress](part4.md#compress:~:text=The%20dyadic%20compress%20function%20%2F%20will%20let%20you%20use%20a%20mask%20to%20pick%20elements%20from%20an%20array.) | <kbd>/</kbd> | <kbd>/</kbd> |
-| `⊃` | Right shoe | [Pick](part4.md#pick:~:text=You%20can%20use%20the%20dyadic%20pick%20%E2%8A%83%20function%20to%20pick%20just%20one%20element%20from%20a%20vector%3A) | <kbd>PREFIX</kbd> ++x++ | <kbd>)</kbd> <kbd>)</kbd> ++tab++ |
+| `⊃` | Right shoe | [First](part4.md#pick:~:text=We%20can%20use%20it%20monadically%20to%20unbox%20the%20vector) / [Pick](part4.md#pick:~:text=You%20can%20use%20the%20dyadic%20pick%20%E2%8A%83%20function%20to%20pick%20just%20one%20element%20from%20a%20vector%3A) | <kbd>PREFIX</kbd> ++x++ | <kbd>)</kbd> <kbd>)</kbd> ++tab++ |
 
 ### Searching
 
@@ -52,7 +54,7 @@ It might be useful to review this page as you are doing the read and write exerc
 | Name | Meaning |
 |:--:|:--:|
 | [`⎕A`](../ch2/part4.md#:~:text=The%20useful%20%E2%8E%95A%20constant%20stores%20the%20upper%2Dcase%20english%20alphabet%20%27ABCDEFGHIJKLMNOPQRSTUVWXYZ%27.) | The upper-case English alphabet, `'ABCDEFGHIJKLMNOPQRSTUVWXYZ'` |
-| [`⎕CT`](../ch3/part3.md#comparison-tolerance:~:text=The%20tolerance%20can%20be%20read%20%28and%20set%29%20via%20the%20%E2%8E%95CT%20system%20variable%2C%20and%20the%20precision%20shown%20is%20read%20%28and%20set%29%20via%20%E2%8E%95PP.) | Comparison tolerance, from `0` (exact comparison) up to `10*¯10` |
+| [`⎕CT`](../ch3/part3.md#comparison-tolerance:~:text=The%20tolerance%20can%20be%20read%20%28and%20set%29%20via%20the%20%E2%8E%95CT%20system%20variable%2C%20and%20the%20precision%20shown%20is%20read%20%28and%20set%29%20via%20%E2%8E%95PP.) | Comparison tolerance, from `0` (exact comparison) up to `2*¯32` |
 | [`⎕PP`](../ch3/part3.md#comparison-tolerance:~:text=The%20tolerance%20can%20be%20read%20%28and%20set%29%20via%20the%20%E2%8E%95CT%20system%20variable%2C%20and%20the%20precision%20shown%20is%20read%20%28and%20set%29%20via%20%E2%8E%95PP.) | Print precision, the number of digits displayed |
 | [`⎕IO`](part1.md#index-origin:~:text=A%20handy%20tool%20to%20get%20around%20this%20is%20to%20use%20the%20index%20origin%20variable%2C%20%E2%8E%95IO.) | Index origin, either `1` (the default) or `0` |
 
@@ -100,4 +102,4 @@ It might be useful to review this page as you are doing the read and write exerc
 | `⍤` | Jot diaeresis | [Atop](../ch3/part5.md#atops:~:text=The%20most%20basic%20train%20is%20the%202%2Dtrain%20%28fg%29%2C%20in%20operator%20form%20f%E2%8D%A4g%2C%20called%20an%20atop.) | <kbd>PREFIX</kbd> ++shift+j++ | <kbd>o</kbd> <kbd>:</kbd> ++tab++ |
 | `∘` | Jot | [Bind](../ch3/part5.md#bind:~:text=Instead%2C%20the%20bind%20%E2%88%98%20operator%20can%20be%20used%20to%20create%20a%20monadic%20function%20from%20a%20dyadic%20one.) | <kbd>PREFIX</kbd> ++j++ | <kbd>o</kbd> <kbd>o</kbd> ++tab++ |
 | `⍨` | Tilde diaeresis | [Swap](../ch3/part5.md#commute:~:text=A%20related%20operator%20is%20the%20commute%20%E2%8D%A8%2C%20which%20swaps%20the%20arguments%20of%20the%20function%20it%20modifies%2C%20so%20that%20%E2%8D%BA%20f%E2%8D%A8%20%E2%8D%B5%20is%20%E2%8D%B5%20f%20%E2%8D%BA.), [Self](../ch3/part5.md#commute:~:text=Applied%20to%20a%20single%20argument%20the%20same%20operator%20copies%20it%20to%20both%20sides%2C%20so%20that%20f%E2%8D%A8%E2%8D%B5%20is%20%E2%8D%B5%20f%20%E2%8D%B5.) | <kbd>PREFIX</kbd> ++shift+t++ | <kbd>~</kbd> <kbd>:</kbd> ++tab++ |
-| `/` | Slash | [Reduce](../ch3/part5.md#:~:text=Before%20starting%20this%20section%2C%20we%20briefly%20introduce%20the%20commonly%20used%20monadic%20reduce%20%2F%20operator%2C%20which%20applies%20its%20left%20function%20argument%20between%20every%20element%20of%20a%20vector.) | <kbd>/</kbd> | <kbd>/</kbd> |
+| `/` | Slash | [Reduce](part2.md#reduce) | <kbd>/</kbd> | <kbd>/</kbd> |

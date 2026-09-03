@@ -101,7 +101,7 @@ If we picture the image as being in front of the camera, with the camera facing 
        pxl_directions ← (pxl_coords÷≢pxl_coords)-⊂0.6 0.6
 ```
 
-If we picture the image as being in front of the camera, with the camera facing the center of the image, we divide the values by the width/height, and shift them so that the vector 0 0 is at the center.
+To turn each pixel into a direction leaving the camera, we append a third coordinate of 1, placing the image plane one unit in front of the camera.
 
 ```apl
 
@@ -146,7 +146,7 @@ The signed distance function for a sphere is immediate from the definition of a 
 <img src="../../assets/5_b_spheredistancefunction.png" style="margin-left: auto; margin-right: auto; display: block;" />
 
 ```apl
-      sphere ← {⍵[3] -⍨ ⍵[1] dist ⍵[2]}
+      sphere ← {(3⊃⍵) -⍨ (1⊃⍵) dist 2⊃⍵}
        R ← 2
        C ← 0 0 0
        P ← 0 0 4
@@ -199,7 +199,7 @@ We can construct this vector by calculating how much the distance function chang
 0.0002
 ```
 
-We can use the rotate ⌽ operator to make the small vector in the y and z direction too.
+We can use the rotate ⌽ function to make the small vector in the y and z direction too.
 
 ```apl
        1 ⌽ small
@@ -210,10 +210,10 @@ We can use the rotate ⌽ operator to make the small vector in the y and z direc
 │0.0001 0 0│0 0.0001 0│0 0 0.0001│
 └──────────┴──────────┴──────────┘
 
-       P ((env+)-(env-))¨ small_xyz
+       (⊂P) ((env+)-(env-))¨ small_xyz
 0.0002 0 0
 
-       norm ← {normalize ⍵ ((env+)-(env-))⍨ small_xyz}
+       norm ← {normalize small_xyz ((env+)-(env-))¨ ⍵}
        norm P
 1 0 0
 ```
@@ -271,7 +271,7 @@ Wrapping the march function in a function that returns zero if the result is not
 
 This calculation might take a couple seconds.
 
-To actually see our rendered image, we need to export our array as an image file. We will be using the very simple PPM file format, in which images are plain text files. The header of a PPM file consists of a format indicator "P3", the size of the image (5 5), the maximum value for each color (255), and the colors in RGB format. Using the ⎕NPUT function with the append (2) argument, we write to a file called "image.ppm". We use the encode `⍕` operator to convert between numerical arrays to character arrays.
+To actually see our rendered image, we need to export our array as an image file. We will be using the very simple PPM file format, in which images are plain text files. The header of a PPM file consists of a format indicator "P3", the size of the image (5 5), the maximum value for each color (255), and the colors in RGB format. Using the ⎕NPUT function with the append (2) argument, we write to a file called "image.ppm". We use the format `⍕` function to convert between numerical arrays to character arrays.
 
 ```apl
        'P3'⎕NPUT'image.ppm'2

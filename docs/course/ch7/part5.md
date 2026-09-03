@@ -33,7 +33,7 @@ A file can be specified using either absolute or relative paths; if it is given 
       ]CD 'C:\Users\you\Documents\simulations'
 C:\Users\you\Documents\Dyalog
       ]CD
-C:\Users\you\simulations
+C:\Users\you\Documents\simulations
 ```
 
 ## Reading a whole file
@@ -77,7 +77,7 @@ The ``⎕NPUT`` system function writes to a text file. The left argument is the 
       out←⊂'step,ratio'
       out,←⊂'0,5.00'
       (⊂out)⎕NPUT 'ratio.csv' 1
-17
+20
       ⊃⎕NGET 'ratio.csv'
 step,ratio
 0,5.00
@@ -133,19 +133,25 @@ As an example, we calculate the ratio of the highest density to the lowest.
 5 5.06626506 5.256097561 5.614906832 6.183544304 7.077922078
 ```
 
-Consider the following example illustrating the different column types, where the simulation had written a ``NaN`` string into its output in the last column of step 2.
+Consider the following example illustrating the different column types, where the simulation had written a ``NaN`` string into its output in the last column of step 2, stored as ``diagnostic_nan.csv``.
+
+```
+diagnostic_nan.csv (row for step 2)
+
+2,0.050,0.025,1.64e-21,8.62e-21,NaN
+```
 
 ```apl
       ⍝ type 2
-      ⎕CSV 'diagnostic.csv' '' (2 2 2 2 2 2) 1
+      ⎕CSV 'diagnostic_nan.csv' '' (2 2 2 2 2 2) 1
 DOMAIN ERROR: Non-numeric data in record 4, field 6 (⎕IO=1)
 
       ⍝ type 3
-      (⊃⎕CSV 'diagnostic.csv' '' (2 2 2 2 2 3) 1)[;6]
+      (⊃⎕CSV 'diagnostic_nan.csv' '' (2 2 2 2 2 3) 1)[;6]
 3.21E¯21 3.22E¯21 0 3.31E¯21 3.4E¯21 3.52E¯21
 
       ⍝ type 4
-      (⊃⎕CSV 'diagnostic.csv' '' (2 2 2 2 2 4) 1)[;6]
+      (⊃⎕CSV 'diagnostic_nan.csv' '' (2 2 2 2 2 4) 1)[;6]
 3.21E¯21 3.22E¯21  NaN  3.31E¯21 3.4E¯21 3.52E¯21
 ```
 
@@ -163,7 +169,7 @@ The ``⎕NTIE`` system function creates a tie to a file, with left argument the 
 286
 ```
 
-The ``⎕NREAD`` function allows reading from a tied file, with right argument vector tie number, the data type, the number of items, and the position to read from.
+The ``⎕NREAD`` function allows reading from a tied file, with right argument vector tie number, the data type, the number of items, and the position to read from (``80`` is 8-bit character data).
 
 ```apl
       ⎕NREAD tn 80 9 0
@@ -173,6 +179,7 @@ step,time
 ``⎕CSV`` also accepts a tie number in place of a name.
 
 ```apl
+      tn←'diagnostic.csv' ⎕NTIE 0
       ⍴⊃⎕CSV tn '' (2 2 2 2 2 2) 1
 6 6
 ```
@@ -216,6 +223,7 @@ For storing APL arrays, Dyalog provides its own file format called component fil
 Consider the following rank 3 array, which represents the phase space density of ions in our simulation at three different times.
 
 ```apl
+      ⎕PP←2
       X←¯3+⍳5
       V←¯4+⍳7
       f←{*-((X*2)∘.+(V*2))÷2×⍵*2}

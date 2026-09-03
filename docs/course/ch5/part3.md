@@ -3,10 +3,13 @@
 !!! abstract "This part will cover"
     
     - Bracket-axis notation
-    - The axis operator
+    - Reduce first, catenate first and table
+    - The rank operator
     - Squad indexing
 
 ---
+
+<link rel="stylesheet" href="/styles/ch5part2.css">
 
 So far, we’ve only covered reducing along a vector. Vectors, being one-dimensional arrays, have a clear unambiguous axis along which reduction can be done. Higher dimensional arrays do not have this same privilege, the axis along which to reduce must be specified.
 
@@ -14,7 +17,7 @@ Take the following example matrix
 
 
 ```apl
-      ⍉10 10⍴⍳10
+      ⎕ ← M ← ⍉10 10⍴⍳10
  1  1  1  1  1  1  1  1  1  1
  2  2  2  2  2  2  2  2  2  2
  3  3  3  3  3  3  3  3  3  3
@@ -35,11 +38,11 @@ The leading axis of the matrix is the first axis along which indexing is done. I
 
 ```apl
        M[1;]
- 1  1  1  1  1  1  1  1  1  1
+1 1 1 1 1 1 1 1 1 1
        M[1 2 3;]
- 1  1  1  1  1  1  1  1  1  1
- 2  2  2  2  2  2  2  2  2  2
- 3  3  3  3  3  3  3  3  3  3
+1 1 1 1 1 1 1 1 1 1
+2 2 2 2 2 2 2 2 2 2
+3 3 3 3 3 3 3 3 3 3
 ```
 
 
@@ -105,7 +108,7 @@ The same pairing of a leading axis and a last axis appears in other functions. T
 4 5 6
 ```
 
-Monadically, the table ``⍪`` function turns its argument into a matrix, giving each element of a vector its own row. A vector therefore becomes a single column matrix, which the transpose ``⍉`` function (introduced in the next section) turns into a single row matrix.
+Monadically, the table ``⍪`` function turns its argument into a matrix, giving each element of a vector its own row. A vector therefore becomes a single column matrix, which the transpose ``⍉`` function turns into a single row matrix.
 
 ```apl
       ⍴⍪2*⍳5
@@ -290,13 +293,13 @@ As an example, we study the action of the rank operator ``⍤`` on the plus redu
 
 For ``n=3``, the modified plus reduce function ``+⌿⍤3`` acts on the 3-cells of the array. Since the whole array is of rank 3, there is only one 3-cell which is the array itself. Then, ``+⌿⍤3`` is equivalent to the action of the plus reduce ``+⌿`` function on the whole array, adding up terms along its leading axis. 
 
-For ``n=2``, ``+⌿⍤2`` acts on the 2-cells of the array. The 2-cells of the array are the cells ``M[1;;]``, ``M[2;;]``, and ``M[3;;]``. The leading axis of these 2-cells is vertical, hence the plus reduce first ``+⌿`` function will return the sum of the columns of these arrays.
+For ``n=2``, ``+⌿⍤2`` acts on the 2-cells of the array. The 2-cells of the array are the cells ``N[1;;]``, ``N[2;;]``, and ``N[3;;]``. The leading axis of these 2-cells is vertical, hence the plus reduce first ``+⌿`` function will return the sum of the columns of these arrays.
 
 Similarly, for n=1, the action of ``+⌿⍤1`` on the array is adding up its 1-cells, which is equivalent to adding along its last axis.
 
 ## Squad indexing
 
-An operator form of (partially) indexing a matrix, such as ``M[1;3;]``, is given by the squad (”squish quad”) indexing ``⌷`` operator. It is equivalent to bracket indexing, but can be used like any other operator.
+An operator form of (partially) indexing a matrix, such as ``N[1;3;]``, is given by the squad (“squish quad”) indexing ``⌷`` function. It is equivalent to bracket indexing, but can be used like any other function.
 
 ```apl
       N ← 3 3 3 ⍴ ⍳27
@@ -319,6 +322,11 @@ An operator form of (partially) indexing a matrix, such as ``M[1;3;]``, is given
 │4 5 6│13 14 15│22 23 24│
 │7 8 9│16 17 18│25 26 27│
 └─────┴────────┴────────┘
+      1⌷N
+1 2 3
+4 5 6
+7 8 9
+
       1(⌷⍤2)N
  1  2  3
 10 11 12

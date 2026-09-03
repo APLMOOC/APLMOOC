@@ -59,7 +59,7 @@ Let's look at an array tracking the number of replies a user has posted per day,
 │12         │11              │14         │8             │
 └───────────┴────────────────┴───────────┴──────────────┘
 
-      activity ← ↑↑w1 w2
+      ⎕ ← activity ← ↑↑w1 w2
 ┌───────────┬────────────────┬───────────┬──────────────┐
 │Week 1     │                │           │              │
 ├───────────┼────────────────┼───────────┼──────────────┤
@@ -123,7 +123,16 @@ Notice that ``⍤2`` will not be immediately correct, since the day and week axe
 
 ## Transpose
 
-The way to solve this is to swap the week and user axes to get an array where the last axes are week and day, this problem is easily solved by the ``⍉`` transpose function. 
+The way to solve this is to swap the week and user axes to get an array where the last two axes are day and week. This is easily done with the ``⍉`` transpose function. 
+
+Used with one argument, ``⍉`` reverses the order of the axes, so a matrix is flipped over its diagonal:
+
+```apl
+      ⍉2 3⍴⍳6
+1 4
+2 5
+3 6
+```
 
 The left argument to the transpose function is a list of integers starting from 1, which represents where each axes is in the resulting array. For example, ``1 2 3 ⍉ activity`` is the same as ``activity``, but ``3 2 1⍉activity`` swaps the first and third axis.
 
@@ -168,7 +177,7 @@ The left argument to the transpose function is a list of integers starting from 
 ├───────────┼────────────────┼───────────┼──────────────┤
 │12         │11              │14         │8             │
 └───────────┴────────────────┴───────────┴──────────────┘
-      ⍝ User × Week × Day
+      ⍝ User × Day × Week
       3 2 1 ⍉ activity
 ┌────────────────┬────────────────┐
 │Week 1          │Week 2          │
@@ -335,7 +344,7 @@ Notice that some of the sad emoticons can be turned into happy emoticons by refl
        ⌽ '):'
 :)
        ⌽ SAD_EMOTICONS
-): :c ]: )-: D: >:( :/ :x :| 
+:| :x :/ >:( D: )-: ]: :c ):
 
        ⌽¨SAD_EMOTICONS
 :) c: :] :-) :D (:> /: x: |:

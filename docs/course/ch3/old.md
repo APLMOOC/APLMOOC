@@ -46,7 +46,7 @@ VALUE ERROR: Undefined name: vertex
 
 Instead of guarded expressions, there are control flow structures like :If and :For. We will see these structures in detail in Chapter 7.
 
-!!! warn "Variable Scope"
+!!! warning "Variable Scope"
 	In tradfns, variables outside the function can be accessed and modified unless specified to be local. In dfns however, while it is possible to access variables outside the function, it is not possible to assign to them.
 	```apl
 	       i ← 10
@@ -54,7 +54,7 @@ Instead of guarded expressions, there are control flow structures like :If and :
 	
 	       i
 	10
-	       increment ⍬
+	       d_increment ⍬
 	11	
 	       i
 	10

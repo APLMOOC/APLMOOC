@@ -7,6 +7,15 @@
 
 ---
 
+!!! note "Typing the symbols in this part"
+
+    | Symbol | Prefix method | Tab method |
+    |:--:|:--:|:--:|
+    | `⍺` | <kbd>PREFIX</kbd> <kbd>a</kbd> | <kbd>a</kbd> <kbd>a</kbd> ++tab++ |
+    | `⍵` | <kbd>PREFIX</kbd> <kbd>w</kbd> | <kbd>w</kbd> <kbd>w</kbd> ++tab++ |
+    | `⋄` | <kbd>PREFIX</kbd> <kbd>`</kbd> | <kbd>&lt;</kbd> <kbd>&gt;</kbd> ++tab++ |
+    | `⍬` | <kbd>PREFIX</kbd> <kbd>}</kbd> | <kbd>0</kbd> <kbd>~</kbd> ++tab++ |
+
 <link rel="stylesheet" href="/styles/ch5part2.css">
 
 Now that we know how data is structured in APL, it’s time to look at how to use this data, more specifically, how to make your own functions from already existing ones.
@@ -45,8 +54,8 @@ One of the ways of defining a function, taking in array arguments and outputting
       ⍝ From decibels to bels 
       dBtoB ← {⍵÷10} 
       ⍝ From decibels back to a power ratio
-      dBtoratio ← {10*dBtoB ⍵} 
-	dBtoRatio 60
+      dBtoRatio ← {10*dBtoB ⍵} 
+      dBtoRatio 60
 1000000
       dBtoRatio 3
 1.995262315
@@ -62,6 +71,11 @@ One of the ways of defining a function, taking in array arguments and outputting
 13
       1 hypotenuse 3*.5
 2
+      ⍝ A dfn that uses ⍺ needs a left argument
+      hypotenuse 4
+VALUE ERROR
+hypotenuse[0] hypotenuse←{((⍺*2)+⍵*2)*0.5}
+                            ∧
       
       ⍝ golden ratio
       PHI ← 0.5× 1 + 5*.5 
@@ -73,9 +87,9 @@ One of the ways of defining a function, taking in array arguments and outputting
 
 ```
 
-Note that for the Fibonacci function, a constant value phi for the golden ratio was used. If the value of phi is changed, the Fibonacci function will use the updated value. 
+Note that for the Fibonacci function, a constant value PHI for the golden ratio was used. If the value of PHI is changed, the Fibonacci function will use the updated value. 
 
-In order to let the Fibonacci function define its own phi, we have to define it inside the function itself. APL allows any number of assignment statements inside a function before the statement which evaluates the result, using the diamond-shaped statement separator ``⋄``, or placing the statements on new lines. The following two functions are equivalent.
+In order to let the Fibonacci function define its own PHI, we have to define it inside the function itself. APL allows any number of assignment statements inside a function before the statement which evaluates the result, using the diamond-shaped statement separator ``⋄``, or placing the statements on new lines. The following two functions are equivalent.
 
 ```apl
       fibonacci ← {
@@ -88,7 +102,7 @@ In order to let the Fibonacci function define its own phi, we have to define it 
       }
 ```
 
-Note that the first statement which outputs a value stops the execution of the function.
+Note that the first statement whose result is not assigned to a name ends the function and returns that result.
 
 ```apl
       separator_test ← {a ← 1 ⋄ a + a ⋄ a - a}
@@ -99,20 +113,20 @@ Note that the first statement which outputs a value stops the execution of the f
 The empty vector symbol ``⍬`` is added here as filler since functions always require a right argument.
 
 
-!!! warn "Variable Scope"
-	In dfns, while it is possible to access variables outside the function, it is not possible to assign to them. All quantities assigned in dfns are said to be local to the function itself.
-            ```apl
-                  i ← 10
-                  d_increment ← {i←i+1 ⋄ i}
-            
-                  i
-            10
-                  increment ⍬
-            11	
-                  i
-            10
-            ```
+!!! warning "Variable Scope"
+    In dfns, while it is possible to access variables outside the function, it is not possible to assign to them. All quantities assigned in dfns are said to be local to the function itself.
+    ```apl
+          i ← 10
+          d_increment ← {i←i+1 ⋄ i}
+
+          i
+    10
+          d_increment ⍬
+    11
+          i
+    10
+    ```
 
 !!! info "Multiline support in RIDE"
-	In order to write multiline functions in the Dyalog RIDE, "Extended Multiline Input" needs to be enabled. It can be found in the Session tab under Options>Configure.
+	In order to write multiline functions in the Dyalog RIDE (installed in Chapter 7), "Extended Multiline Input" needs to be enabled. It can be found in the Session tab under Options>Configure.
 

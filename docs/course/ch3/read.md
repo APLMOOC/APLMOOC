@@ -140,7 +140,7 @@ The exercises are not checked or graded: use them to check your knowledge!
         The famous FizzBuzz interview question. Note that a more concise version can be written as
 
         ```apl
-              D ← {((0=3|⍵)⍴'Fizz'),(0=5|⍵)⍴'Buzz'}
+              D ← {((4×0=3|⍵)⍴'Fizz'),(4×0=5|⍵)⍴'Buzz'}
         ```
 
 ---
@@ -261,6 +261,7 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Input"
 
         ```apl
+              A ← 3 3⍴1 2 3 4 5 6 7 8 9
               A
         1 2 3
         4 5 6
@@ -305,7 +306,9 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Input"
 
         ```apl
+              ]Box -trains=tree
               (1∘,⍴∘0) 10
+              (1∘,⍴∘0)
         ```
 
     === "Output"
@@ -330,7 +333,9 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Input"
 
         ```apl
+              ]Box -trains=tree
               (2∘⍴⍴(1∘,⍴∘0)) 10
+              (2∘⍴⍴(1∘,⍴∘0))
         ```
 
     === "Output"
@@ -373,8 +378,8 @@ The exercises are not checked or graded: use them to check your knowledge!
         ```apl
               (+/÷⍴) 1 10 100
         37
-              
-        This is a fork for the average function, the dfn equivalent is {(+/⍵)÷⍴⍵}
         ```
+
+        This is a fork for the average function, the dfn equivalent is `{(+/⍵)÷⍴⍵}`
 
 ---

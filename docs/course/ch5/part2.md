@@ -4,10 +4,11 @@
     
     - Nested arrays
     - Enclose
-    - Disclose
-    - Nest
+    - Depth
+    - Pick
+    - Mix and split
+    - Enlist
     - Each
-    - Tally
 
 ---
 
@@ -78,7 +79,7 @@ The left argument to the dyadic pick function is a special nested index vector t
 ├──────────────────────────────────────────────┼───────────────────┤
 │                                              │                   │
 ├──────────────────────────────────────────────┼───────────────────┤
-│                                              |                   │
+│                                              │                   │
 └──────────────────────────────────────────────┴───────────────────┘
 ┌──────────────────────────────────────────────┬───────────────────┐
 │29-08-2024                                    │                   │
@@ -111,7 +112,7 @@ The left argument to the dyadic pick function is a special nested index vector t
 ├──────────────────────────────────────────────┼───────────────────┤
 │CTCSS in NBFM                                 │Radiovangelist     │
 ├──────────────────────────────────────────────┼───────────────────┤
-│455 kHz and 10.7 MHz as intermediate freqs    |Decibels_per_Kg    │
+│455 kHz and 10.7 MHz as intermediate freqs    │Decibels_per_Kg    │
 └──────────────────────────────────────────────┴───────────────────┘
 ```
 
@@ -232,44 +233,45 @@ This method requires us to know what the size is, and resize correctly. For more
 Another example of mix `↑`
 
 ```apl
-      school ← ('MATH' ('101' 30 ('COMPETED')) ('102' 37 ('CANCELLED')))  ('CS' ('101' 53 ('COMPETED')) ('102' 28 ('COMPLETED')) ('103' 20 ('IN PROGRESS')))
+      school ← ((⊂'MATH') ('101' 30 ('COMPLETED')) ('102' 37 ('CANCELLED')))  ((⊂'CS') ('101' 53 ('COMPLETED')) ('102' 28 ('COMPLETED')) ('103' 20 ('IN PROGRESS')))
       school
-┌─────────────────────────────────────────────┬────────────────────────────────────────────────────────────────┐
-│┌──────┬─────────────────┬──────────────────┐│┌────┬─────────────────┬──────────────────┬────────────────────┐│
-││┌────┐│┌───┬──┬────────┐│┌───┬──┬─────────┐│││┌──┐│┌───┬──┬────────┐│┌───┬──┬─────────┐│┌───┬──┬───────────┐││
-│││MATH│││101│30│COMPETED│││102│37│CANCELLED│││││CS│││101│53│COMPETED│││102│28│COMPLETED│││103│20│IN PROGRESS│││
-││└────┘│└───┴──┴────────┘│└───┴──┴─────────┘│││└──┘│└───┴──┴────────┘│└───┴──┴─────────┘│└───┴──┴───────────┘││
-│└──────┴─────────────────┴──────────────────┘│└────┴─────────────────┴──────────────────┴────────────────────┘│
-└─────────────────────────────────────────────┴────────────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────┬─────────────────────────────────────────────────────────────────┐
+│┌──────┬──────────────────┬──────────────────┐│┌────┬──────────────────┬──────────────────┬────────────────────┐│
+││┌────┐│┌───┬──┬─────────┐│┌───┬──┬─────────┐│││┌──┐│┌───┬──┬─────────┐│┌───┬──┬─────────┐│┌───┬──┬───────────┐││
+│││MATH│││101│30│COMPLETED│││102│37│CANCELLED│││││CS│││101│53│COMPLETED│││102│28│COMPLETED│││103│20│IN PROGRESS│││
+││└────┘│└───┴──┴─────────┘│└───┴──┴─────────┘│││└──┘│└───┴──┴─────────┘│└───┴──┴─────────┘│└───┴──┴───────────┘││
+│└──────┴──────────────────┴──────────────────┘│└────┴──────────────────┴──────────────────┴────────────────────┘│
+└──────────────────────────────────────────────┴─────────────────────────────────────────────────────────────────┘
       ↑school
-┌──────┬─────────────────┬──────────────────┬────────────────────┐
-│┌────┐│┌───┬──┬────────┐│┌───┬──┬─────────┐│┌────┐              │
-││MATH│││101│30│COMPETED│││102│37│CANCELLED│││    │              │
-│└────┘│└───┴──┴────────┘│└───┴──┴─────────┘│└────┘              │
-├──────┼─────────────────┼──────────────────┼────────────────────┤
-│┌──┐  │┌───┬──┬────────┐│┌───┬──┬─────────┐│┌───┬──┬───────────┐│
-││CS│  ││101│53│COMPETED│││102│28│COMPLETED│││103│20│IN PROGRESS││
-│└──┘  │└───┴──┴────────┘│└───┴──┴─────────┘│└───┴──┴───────────┘│
-└──────┴─────────────────┴──────────────────┴────────────────────┘
+┌──────┬──────────────────┬──────────────────┬────────────────────┐
+│┌────┐│┌───┬──┬─────────┐│┌───┬──┬─────────┐│┌────┐              │
+││MATH│││101│30│COMPLETED│││102│37│CANCELLED│││    │              │
+│└────┘│└───┴──┴─────────┘│└───┴──┴─────────┘│└────┘              │
+├──────┼──────────────────┼──────────────────┼────────────────────┤
+│┌──┐  │┌───┬──┬─────────┐│┌───┬──┬─────────┐│┌───┬──┬───────────┐│
+││CS│  ││101│53│COMPLETED│││102│28│COMPLETED│││103│20│IN PROGRESS││
+│└──┘  │└───┴──┴─────────┘│└───┴──┴─────────┘│└───┴──┴───────────┘│
+└──────┴──────────────────┴──────────────────┴────────────────────┘
 ```
 
 Notice that the Math row was given an extra element with an empty nested array by the Mix function in order to match with the shape of CS row
 
-```
+```apl
       ↑↑school
 ┌────┬────┬───────────┐
 │MATH│    │           │
 ├────┼────┼───────────┤
-│101 │30  │COMPETED   │
+│101 │30  │COMPLETED  │
 ├────┼────┼───────────┤
 │102 │37  │CANCELLED  │
 ├────┼────┼───────────┤
 │    │    │           │
 └────┴────┴───────────┘
+
 ┌────┬────┬───────────┐
 │CS  │    │           │
 ├────┼────┼───────────┤
-│101 │53  │COMPETED   │
+│101 │53  │COMPLETED  │
 ├────┼────┼───────────┤
 │102 │28  │COMPLETED  │
 ├────┼────┼───────────┤
@@ -282,7 +284,7 @@ Notice that the Math row was given an extra element with an empty nested array b
 To access elements in the `POSTS` array,
 
 ```apl
-     POSTS ← ↑ post1 post2
+     ⎕ ← POSTS ← ↑ post1 post2
 ┌──────────┬─────┬──────────────────────────────────────────────┬────────────────┬────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
 │30-08-2024│18:52│Why does DVB-C use QAM instead of OFDM?       │frequencySniffer│┌──────────┬─────┬─────────────────────────────────────────────────────────────────────────────────────┬───────────┐│
 │          │     │                                              │                ││30-08-2024│19:22│OFDM is more reliable and easily equalized over difficult channels like a radio link.│RedScanLine││
@@ -309,11 +311,11 @@ OFDM is more reliable and easily equalized over difficult channels like a radio 
 O
 ```
 
-There is also a nested variant of the , ravel function called the `∊` enlist function.
+There is also a nested variant of the `,` ravel function called the `∊` enlist function.
 
 ```apl
       ∊POSTS
-30-08-202418:52Why does DVB-C use QAM instead of OFDM?frequencySniffer30-08-202419:22OFDM is more reliable and easily equalized over difficult channels like a radio link.RedSyncLine29-08-202411:28Trying to obtain a clear QAM signal from cablehadamardMardy29-08-202415:38You need a better tunerdataMoshpit
+30-08-202418:52Why does DVB-C use QAM instead of OFDM?frequencySniffer30-08-202419:22OFDM is more reliable and easily equalized over difficult channels like a radio link.RedScanLine29-08-202411:28Trying to obtain a clear QAM signal from cablehadamardMardy29-08-202415:38You need a better tunerdataMoshpit
 ```
 
 The power of nested arrays lies in the way in which they allow applying operations on many arrays at once. Recall how arithmetic operations act each element of an array

@@ -5,6 +5,7 @@
     - Different search methods on 1D arrays:
         - Iota
         - Iota underbar
+        - Interval index
         - Epsilon
         - Epsilon underbar
         - Key
@@ -44,7 +45,7 @@ If you picked any of the errors, then you think APL is too mean.
 After all, why punish the programmer when they are just trying to search for a value?
 No, there's a way better way of handling this issue.
 If you picked `0`, you're closer, but still a little off.
-It could work if zero was never a valid index; however, `⍳` is index-sensitive. Look:
+It could work if zero was never a valid index; however, `⍳` is origin-sensitive. Look:
 
 ```apl
       'asdfghjkl' ⍳ 'agl'
@@ -55,9 +56,10 @@ It could work if zero was never a valid index; however, `⍳` is index-sensitive
       'asdfghjkl' ⍳ 'agl'
 0 4 8
 
+      ⎕IO ← 1
 ```
 
-Instead of returning zero (or a negative number), the APL developers decided to be clever and return a number that's one larger than the length of the array.
+Instead of returning zero (or a negative number), the APL developers decided to be clever and return the index just past the end of the array (the length plus one when ``⎕IO`` is 1).
 
 ```apl
       'asdfghjkl' ⍳ 'agl'
@@ -85,7 +87,7 @@ To do this, we can use iota to find their indices, and then use them along with 
 4.2 1
 ```
 
-Then, if we try to find a user that doesn't exist, we will get an index that's one larger than the largest item.
+Then, if we try to find a user that doesn't exist, we will get the index just past the end of the list.
 So, we can just add one more "default" item to the GPA list and use that as a "not found" element!
 
 ```apl
@@ -151,7 +153,7 @@ RANK ERROR
 ```
 
 You could think that this should return `1 2 2` (the first element, and two elements not in the list).
-But actually, the number 10 is a scalar and not an array! So you can't search inside it. Rip.
+But actually, the number 10 is a scalar, so it has no elements to search in. Rip.
 
 ## Member of
 
@@ -184,7 +186,7 @@ It gives a simple yes/no answer, telling you whether the value is in the array o
 
     Be careful!
 
-This one's farily straightforward.
+This one's fairly straightforward.
 
 ## Where
 
@@ -259,13 +261,13 @@ Let's compare slashiotarho with the where function:
 
 !!! note "Typing the where function `⍸`"
 
-    Prefix method: <kbd>PREFIX</kbd> <kbd>I</kbd>
+    Prefix method: <kbd>PREFIX</kbd> <kbd>shift+i</kbd>
 
     Tab method: <kbd>i</kbd> <kbd>_</kbd> ++tab++
 
 It's a little more compact! Feel free to use it when needed.
 
-## Interval Index
+## Interval index
 
 Sometimes, instead of finding exactly where an element is in an array, you'd like to find what elements it's between. Consider the grading function we defined in chapter 3, write problem 12
 
@@ -285,11 +287,11 @@ Sometimes, instead of finding exactly where an element is in an array, you'd lik
       GRADE 65
 4
 
-      Grade 72
+      GRADE 72
 5
 ```
 
-What this function does is try to find where the right argument ``⍵`` is, between the grade boundaries ``0 43 51 58 65 72`` for the grades ``0 1 2 3 4 5``. 
+What this function does is try to find where the right argument ``⍵`` is, between the grade boundaries ``43 51 58 65 72`` for the grades ``0 1 2 3 4 5``. 
 
 Another example of this kind of problem is looking for a word in a dictionary, where the page with the word ``⍵`` is the one where ``⍵`` is alphabetically between the first word of the page and the first word of the next page.
 
@@ -310,6 +312,8 @@ This problem can be solved with the dyadic ⍸ interval index function. The vect
 2
 ```
 
+The ``⊂`` makes the word a single item, so it is compared as one word rather than letter by letter; you will meet it properly in Chapter 5.
+
 ## Find
 
 All of the finding operations that we looked at so far have been to find _one_ element in an array.
@@ -317,7 +321,7 @@ APL also has a function to find _subarrays_: the dyadic find function, which is 
 
 !!! note "Typing the find function `⍷`"
 
-    Prefix method: <kbd>PREFIX</kbd> <kbd>E</kbd>
+    Prefix method: <kbd>PREFIX</kbd> <kbd>shift+e</kbd>
 
     Tab method: <kbd>e</kbd> <kbd>_</kbd> ++tab++
 
@@ -336,7 +340,7 @@ You can also do this with arrays of strings:
 0 0 0 1 0 0 1 0 0
 ```
 
-These occurences can also overlap:
+These occurrences can also overlap:
 
 ```apl
       'ooo' ⍷ 'meoooooooow meooow'
@@ -346,6 +350,13 @@ These occurences can also overlap:
 ## Key
 
 Last one for this part! The key ⌸ operator provides a way of grouping together elements of an array, and apply an arbitrary function to each group
+
+!!! note "Typing the key operator `⌸`"
+
+    Prefix method: <kbd>PREFIX</kbd> <kbd>shift+k</kbd>
+
+    Tab method: <kbd>[</kbd> <kbd>=</kbd> ++tab++
+
 
 ```apl
       {⍺ ⍵}⌸'ENTENTE'
@@ -357,7 +368,9 @@ Last one for this part! The key ⌸ operator provides a way of grouping together
 │T│3 6  │
 └─┴─────┘
       {⎕←⍺}⌸'ENTENTE'
-ENT
+E
+N
+T
       {⎕←⍵}⌸'ENTENTE'
 1 4 7
 2 5
@@ -376,9 +389,10 @@ A  4
 T  3
 ```
 
-In the dyadic case, the ⌸ key operator groups by the left argument and uses the right argument to number the elements. Consider the following two dimensional array of fast food orders
+In the dyadic case, the ⌸ key operator groups by the left argument and collects the corresponding elements of the right argument into each group. Consider the following two dimensional array of fast food orders
 
 ```apl
+      ORDERS ← 5 2⍴'STEVE MCALE' 'BURGER' 'JOHNSON SWEEMEY' 'HOT DOG' 'DEREK ARCHIBELD' 'BURGER' 'MIKE NANDES' 'BURGER' 'SCOTT WESTON' 'HOT DOG'
       ORDERS
 ┌───────────────┬───────┐
 │STEVE MCALE    │BURGER │

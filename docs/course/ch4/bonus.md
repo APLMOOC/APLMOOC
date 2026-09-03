@@ -4,7 +4,7 @@
 
     This part is considered to be bonus content.
     It contains some more advanced topics that are not covered in the main course.
-    It can also give some examples of functions and topics that are introuced later in the course.
+    It can also give some examples of functions and topics that are introduced later in the course.
     There are no exercises related to this content.
 
     Feel free to skim or skip this section for now, and return to it later!
@@ -69,7 +69,7 @@ We start by reading the illusion image and its metadata.
        header ← file[1 2 3]
        resolution ← 2⊃header
        image ← file~header
-	     resolution
+       resolution
 455 498
        resolution[1]
 4
@@ -77,12 +77,12 @@ We start by reading the illusion image and its metadata.
 7
 ```
 
-The resolution vector is not a vector of numbers, which would be useful here, but a vector of characters in the string `'455 497'`. The execute `⍎` function evaluates strings as APL expressions, hence can turn the string `'455 497'` into the vector `455 497`.
+The resolution vector is not a vector of numbers, which would be useful here, but a vector of characters in the string `'455 498'`. The execute `⍎` function evaluates strings as APL expressions, hence can turn the string `'455 498'` into the vector `455 497`.
 
 ```apl
        resolution ← ⍎2⊃header
-	     resolution
-455 497
+       resolution
+455 498
        resolution[1]
 455
        ⍴resolution

@@ -8,7 +8,9 @@
 
 ---
 
-In chapters 5 and 6, we've encountered many different ways to match arbitrary rank cells of arrays along different functions. We've seen that the arithmetic operators always match scalars of the arrays it is applied to, which can be done generally using the ``¨`` each operator; that the ``⊂`` enclose function can be used in combination with ``¨`` each to match arrays with scalars and, in combination with the ``↓`` split function, matching arbitrary rank cells together. We've also discussed the ``∘.f`` outer product operator which matches every pair of scalars from its array arguments, and the ``f.g`` inner product which reduces along the matching of the rows of its left argument and columns of its right argument, ``f[N]`` bracket axis notation which specified what axis functions are to act and, of course, the ``⍤`` rank operator which generalises many of the rank operations discussed.
+<link rel="stylesheet" href="/styles/ch5part2.css">
+
+In chapters 5 and 6, we've encountered many different ways to match arbitrary rank cells of arrays along different functions. We've seen that the arithmetic functions always match scalars of the arrays they are applied to, which can be done generally using the ``¨`` each operator; that the ``⊂`` enclose function can be used in combination with ``¨`` each to match arrays with scalars and, in combination with the ``↓`` split function, matching arbitrary rank cells together. We've also discussed the ``∘.f`` outer product operator which matches every pair of scalars from its array arguments, and the ``f.g`` inner product which reduces along the matching of the rows of its left argument and columns of its right argument, ``f[N]`` bracket axis notation, which specifies the axis a function acts on, and, of course, the ``⍤`` rank operator which generalises many of the rank operations discussed.
 
 In this section, we review all these different methods and provide some more practical details which have been omitted for brevity in previous sections.
 
@@ -205,7 +207,7 @@ In the next section, we will introduce recursively-defined operators which make 
 
 ### All pairs
 
-In order to instead match all pairs of scalars, we can use ``∘.f`` the outer product operator. Suppose we wanted to match every scalar in the arrays ``B`` and ``C`` together, we can first apply the ``∊`` enlist function to both arrays, the apply the outer product with the ``,`` catenate function
+In order to instead match all pairs of scalars, we can use ``∘.f`` the outer product operator. Suppose we wanted to match every scalar in the arrays ``B`` and ``C`` together, we can first apply the ``∊`` enlist function to both arrays, then apply the outer product with the ``,`` catenate function
 
 ```apl
       ∊B
@@ -248,6 +250,23 @@ We already know that the outer product can also be expressed using the rank ``�
 ```
 
 The rank operator ``⍤`` here takes in a right argument array ``(0 1)`` that matches the 0-cells of the left argument (scalars) with the 1-cells of the right argument (the entire vector), with the left function argument to be applied ``,¨`` catenate each, which applies catenate with the scalars of the left argument to each element of the right argument vector. We can also use ``⍤0 99`` instead of ``⍤0 1`` to signify taking the whole right argument.
+
+```apl
+      (∊B)(,¨⍤0 99)(∊C)
+┌───┬───┬───┬───┬───┬───┐
+│1 2│1 2│1 2│1 2│1 2│1 2│
+├───┼───┼───┼───┼───┼───┤
+│1 2│1 2│1 2│1 2│1 2│1 2│
+├───┼───┼───┼───┼───┼───┤
+│1 2│1 2│1 2│1 2│1 2│1 2│
+├───┼───┼───┼───┼───┼───┤
+│1 2│1 2│1 2│1 2│1 2│1 2│
+├───┼───┼───┼───┼───┼───┤
+│1 2│1 2│1 2│1 2│1 2│1 2│
+├───┼───┼───┼───┼───┼───┤
+│0 2│0 2│0 2│0 2│0 2│0 2│
+└───┴───┴───┴───┴───┴───┘
+```
 
 To illustrate this matching, using ``,`` catenate instead of ``,¨`` catenate each
 
@@ -329,7 +348,7 @@ YZABCDEFGHIJKLMNOPQRSTUVWX
 ZABCDEFGHIJKLMNOPQRSTUVWXY
 ```
 
-The so-called "chipmunk" operator ``⊃¨⊂`` is the use of the ``⊃`` pick function with ``¨⊂`` each and enclose to index elements of a right array with left indices, which works even with nested arrays
+The so-called "chipmunk" idiom ``⊃¨⊂`` is the use of the ``⊃`` pick function with ``¨⊂`` each and enclose to index elements of a right array with left indices, which works even with nested arrays
 
 ```apl 
       ⊢X ← 10 10 ⍴ ? 100/6
@@ -345,16 +364,16 @@ The so-called "chipmunk" operator ``⊃¨⊂`` is the use of the ``⊃`` pick fu
 2 1 3 1 3 2 3 2 4 1
 
       X ⊃¨⊂ '.o○0O⋄'
-.○.O0○.○O○
-○○.0..oO0O
-o○○⋄○○.o○⋄
-⋄○.⋄oOO.○O
-⋄O○o⋄.0○.O
-○O○○⋄.O.⋄0
-⋄○⋄⋄⋄OO0○○
-⋄⋄○O○⋄00○.
-.0○OO⋄.oO⋄
-⋄○0O○O..0⋄
+oo0○.0O○○⋄
+O0○○0o..⋄.
+O.○o000o○0
+o.oOOoO0..
+.○O○⋄⋄⋄○○O
+0○⋄.⋄o0.o.
+..O○000⋄○o
+O0O○o⋄⋄O○○
+.⋄.oO⋄O○⋄○
+o.○.○o○o0.
 
       ⊢X ← 5 5 ⍴ ? 25/6
 
@@ -411,7 +430,7 @@ Note that the rank operator does not remove layers of depth, see the following e
 └────┴─┴─┴─┴─┴─┴─┴─┘
 ```
 
-Here, the string ``'Who'``, taken as a scalar, is catenated to ``' is it?'``, taken as a vector, hence the result is the same as ``(⊂'Who') , ' is it?'``. To combine these strings properly, we need to match the vector ``'Who'`` with the vector ``' is it?'``, which will be covered in the Vector matching subsection.
+Here, the string ``'Who'``, taken as a scalar, is catenated to ``' is it?'``, taken as a vector, hence the result is the same as ``(⊂'Who') , ' is it?'``. To combine these strings properly, we need to match the vector ``'Who'`` with the vector ``' is it?'``, which will be covered in the Higher dimensional matching subsection.
 
 ### Many vectors
 
@@ -463,7 +482,7 @@ HoHoHoHoHo
 
 As above, nesting turns arrays into scalars, which allows operators like ``¨`` each to match arbitrary rank arrays together as if they were scalars.
 
-For example, we can create the conjugation table of the finnish verb 'haluta' in the present by matching vectors of strings together
+For example, we can create the conjugation table of the Finnish verb 'haluta' in the present by matching vectors of strings together
 
 ```apl
       ⊢pronouns ← 'Minä' 'Sinä' 'Hän' 'Me' 'Te' 'He'
@@ -601,7 +620,7 @@ We can also expand this example to more tenses by repeated application of the ra
 We can see that each matching has one string from the left array argument and the whole right argument array. Applying ``,⍤1 1`` catenate with the rank operator here will match the aforementioned string with the vectors of the right argument array
 
 ```apl
-      (↑'Who' 'What' 'When' 'Why' 'How') (,⍤1 1⍤1 99) (↑' is it?' ' was it?' ' will it be?' ' would it be?')
+      (↑'Who' 'What' 'When' 'Why' 'How') (,⍤1 1⍤1 99) ↑(↑' is it?' ' was it?') (↑' has it been?' ' had it been?')
 Who  is it?      
 Who  was it?     
                  

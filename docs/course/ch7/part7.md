@@ -11,7 +11,7 @@
 
 Object-oriented programming is one of the most popular programming paradigms of all time, and while we will not cover the whole of what Dyalog APL has to offer in terms of objects, an understanding of namespaces is important for understanding how to manage projects.
 
-The previous section placed `HttpCommand` "into `#`;" `#` is called the root namespace, the namespace where functions and variables will reside in by default. A namespace is a container for names; every workspace has the root namespace `#`, and further namespaces can be created inside it and inside each other, forming a tree.
+The previous section placed `HttpCommand` into `#`. `#` is called the root namespace, the namespace where functions and variables will reside in by default. A namespace is a container for names; every workspace has the root namespace `#`, and further namespaces can be created inside it and inside each other, forming a tree.
 
 A namespace is created with the `⎕NS` system function, and names inside it are accessed with dot notation. The right argument of `⎕NS` is a vector of names of functions and variables to be added to this namespace, and the left argument is the name of the namespace (if it doesn't already exist, it is created).
 
@@ -50,7 +50,7 @@ As with Tatin, the user command cache may need a ``]UReset`` after restarting.
 
 [quAPL](https://github.com/nunezco2/quAPL) is a quantum computing simulator written in APL, [presented at the Dyalog '23 conference](https://www.dyalog.com/uploads/conference/dyalog23/materials/U08_quAPLAQuantumComputingLibraryInAPL.pdf), and it is developed as a Cider project. 
 
-Since quantum mechanics was also historically called matrix mechanics, it would seem natural that APL, that treats arrays as first-class objects, would be a natural programming language for running these computations. After cloning the repository with `git clone https://github.com/nunezco2/quAPL`, the project can be opened by pointing ``]CIDER.OpenProject`` at the folder.
+Since quantum mechanics was also historically called matrix mechanics, it would seem natural that APL, that treats arrays as first-class objects, would be a natural programming language for running these computations. First clone the repository with `git clone https://github.com/nunezco2/quAPL`. Then open the project by pointing ``]CIDER.OpenProject`` at the folder.
 
 ```apl
       ]CIDER.OpenProject C:/Users/username/quAPL -alias=quapl
@@ -175,7 +175,7 @@ For the sake of demonstrating a more complex configuration file, we look at Cide
 
 `source` names the folder of APL source files, and `projectSpace` and `parent` name the namespace they are loaded into; in quAPL the folder `APLSource` became `#.quapl`, and in Cider the same folder becomes `#.Cider`.
 
-`dependencies.tatin` names a folder, which is `tatin-packages` by default. The Cider project directory looks as follows.
+`dependencies.tatin` names a folder, which is `tatin-dependencies` by default. The Cider project directory looks as follows.
 
 ```
 Cider/
@@ -231,7 +231,7 @@ The remaining three entries each name something for Cider to run on the project'
 
 ## Creating a project
 
-To create your own project, the ``]CIDER.CreateProject`` system command can be used, which turns an empty folder into a project. The namespace that the project will live in must already exist, since Cider only links the folder.
+To create your own project, the ``]CIDER.CreateProject`` user command can be used, which turns an empty folder into a project. The namespace that the project will live in must already exist, since Cider only links the folder.
 
 ```apl
       'solarwind'⎕NS''
@@ -337,7 +337,7 @@ We will use the example of the previous section of obtaining and processing sola
 :EndNamespace
 ```
 
-Note that the tradfn in `Fetch.aplf` did not use the `∇` function delimiters, these are not necessary when storing functions in `.aplf` files, since there is no ambiguity where the function begins and ends.
+A function stored in an `.aplf` file needs no `∇` delimiters, since the file boundary shows where the function begins and ends.
 
 The directory structure is now as follows.
 

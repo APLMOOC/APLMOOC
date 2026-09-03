@@ -70,9 +70,9 @@ The exercises are not checked or graded: use them to check your knowledge!
               ⎕ ← EN ← 'home' 'cat' 'tie' 'door' 'on' 'me' 'auto'
 
               ⎕ ← FI ← 'kissa' 'ovi' 'auto' 'on' 'tie' 'home' 'talo'
-
+              ⍝ English words that are also Finnish words
               EN ∩ FI
-
+              ⍝ Finnish words that are also English words
               FI ∩ EN
 
         ```
@@ -114,7 +114,7 @@ The exercises are not checked or graded: use them to check your knowledge!
                     ∧
         ```
 
-        What the previous code attempts to do is catenate each element of the left array, 'r' and 'e', with the right array, but the lengths clearly do not match.
+        What the previous code attempts to do is catenate each element of the left array, 'r' and 'e', with each element of the right array, but the lengths clearly do not match.
 
 ---
 
@@ -141,6 +141,7 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Input"
     
         ```apl
+              arrow ← 5 7⍴' ▉▉     ▉▉     ▉▉    ▉▉▉▉    ▉▉    '
               arrow
          ▉▉    
          ▉▉    
@@ -154,6 +155,7 @@ The exercises are not checked or graded: use them to check your knowledge!
     === "Output"
 
         ```apl
+              arrow ← 5 7⍴' ▉▉     ▉▉     ▉▉    ▉▉▉▉    ▉▉    '
               arrow
          ▉▉    
          ▉▉    
@@ -329,7 +331,7 @@ The exercises are not checked or graded: use them to check your knowledge!
         1 10
         ```
 
-        The phrase ⍉⍪ can be used to turn a vector into a matrix.
+        The phrase ⍉⍪ can be used to turn a vector into a one-row matrix.
 
 ---
 

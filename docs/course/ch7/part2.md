@@ -13,12 +13,12 @@ This part is going to go through some tips and tricks and get you familiar with 
 
 ## Typing glyphs
 
-The prefix method of typing glpyhs works just as before in RIDE.
+The prefix method of typing glyphs works just as before in RIDE.
 Make sure to go to `Edit > Preferences > Keyboard` and change your keyboard layout and prefix key to the right settings.
 
-The tab method doesn't work in RIDE, unless you installed a tab completion script as mentioned in [Chapter 1](/course/ch1/part3).
+The tab method doesn't work in RIDE, unless you installed a tab completion script as mentioned in [Chapter 1](../ch1/part3.md).
 However, the "bug" where you couldn't type certain prefix combinations is fixed as long as you set the right layout.
-For example, on TryAPL, if you are using a Finnish keyboard, you can't type the `←` symbol using the prefix method, since <kbd>PREFIX</kbd> <kbd>]</kbd> does not work.
+For example, on TryAPL, if you are using a Finnish keyboard, you can't type the `←` symbol using the prefix method, since <kbd>PREFIX</kbd> <kbd>[</kbd> does not work.
 But in RIDE, the prefix is changed to <kbd>PREFIX</kbd> <kbd>å</kbd>, which works natively on your keyboard!
 As before, you can hover over the buttons at the top to see the right key combination (and you can just click to insert the symbol).
 
@@ -36,7 +36,8 @@ Let's say you're just done with an intense APL coding session:
 ```apl
       pyramid ← {⍵-∘.⌈⍨|⍵-⍳¯1+⍵×2}
       pyramid
- ∇pyramid 
+     ∇pyramid←{⍵-∘.⌈⍨|⍵-⍳¯1+⍵×2}
+     ∇
       pyramid 5
 1 1 1 1 1 1 1 1 1
 1 2 2 2 2 2 2 2 1
@@ -128,7 +129,7 @@ To fix this, they created a _user command_ called LINK!
 
     All user commands start with a `]`, for the same reason that system commands start with a `)`.
 
-    To see a full list of system commands, run the _help_ command `]?`:
+    To see a full list of user commands, run the _help_ command `]?`:
 
     ```apl
           ]?
@@ -221,19 +222,19 @@ Ok, enough documentation. Time to create the link!
 
 
 `]LINK.Create` takes two arguments: the _namespace_ you are using and the path on your computer you want to link the workspace to.
-In most cases, you should just put `#` for the namespace, which just means "everything".
-Namespaces are a way to organise code within one workspace, more on Object-oriented APL later in this chapter.
+In most cases, you should just put `#` for the namespace, which just means "everything". `#` is the root namespace, the workspace itself.
+Namespaces are a way to organise code within one workspace, more on namespaces in section 7.7.
 
 
 All you have to do now is to create a new (empty) folder somewhere on your computer, and pass its path to the link command.
 For example, I have created a new folder called `apltest` in the `Programs` folder, so I'll run this:
 
 ```apl
-      ]Link.Create # Programs/apltest
+      ]LINK.Create # Programs/apltest
 Linked: # ←→ ~/Programs/apltest
 ```
 
-The bi-directional arrow means changes to our code in our namespace `#` are written to our folder, and changes to our code in the folder is reflected back to our namespace! On some systems, only a uni-directional arrow is shown. If this is the case, you might need to install the [.NET Framework](https://dotnet.microsoft.com/en-us/download) from Microsoft, but a uni-directional link is sufficient for our purposes.
+The bi-directional arrow means changes to our code in our namespace `#` are written to our folder, and changes to our code in the folder are reflected back to our namespace! On some systems, only a uni-directional arrow is shown. If this is the case, you might need to install the [.NET Framework](https://dotnet.microsoft.com/en-us/download) from Microsoft, but a uni-directional link is sufficient for our purposes.
 
 Let's see what happens when we create the same functions and variables as in the previous example.
 
@@ -249,13 +250,13 @@ This is because LINK only cares about automatically saving "real" functions, whi
 For now, though, we can manually add our dfns and variables to the link:
 
 ```apl
-      ]Link.add myfunc
+      ]LINK.Add myfunc
 Added: #.myfunc
-      ]Link.add pyramid
+      ]LINK.Add pyramid
 Added: #.pyramid
-      ]Link.add pyramid7
+      ]LINK.Add pyramid7
 Added: #.pyramid7
-      ]Link.add first
+      ]LINK.Add first
 Added: #.first
 ```
 
@@ -272,7 +273,7 @@ Open the folder you created, and voilà: your code has been saved!
     - `.apln` for namespaces
 
 Now, you no longer have to use the `)save` or `)load` command to store workspaces: all you have to do is use LINK!
-Actually, if you're using LINK, don't use the `)save` and `)load` commands. Strage things will happen if you do...
+Actually, if you're using LINK, don't use the `)save` and `)load` commands. Strange things will happen if you do...
 
 ## Loading your code from a linked folder
 
@@ -288,7 +289,7 @@ This is pretty straightforward: just run the `]LINK` command again.
       )fns
       )vars
 
-      ]Link.Create # Programs/apltest
+      ]LINK.Create # Programs/apltest
 Linked: # → ~/Programs/apltest
 
       )fns

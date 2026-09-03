@@ -22,7 +22,7 @@ The exercises are not checked or graded: use them to check your knowledge!
               5 ? 52
         38 47 28 43 41
 
-              ⍝ Dealing 5 random numbers without repetition from 1 and 52
+              ⍝ Dealing 5 random numbers without repetition from 1 to 52
         ```
 
 ---
@@ -128,11 +128,7 @@ The exercises are not checked or graded: use them to check your knowledge!
               DICTIONARY[1;]
         AA
               DICTIONARY[;1]
-        A
-        A
-        A
-        A
-        . . .
+        AAAA. . .
               DICTIONARY[⍸DICTIONARY[;1]='X';]
         ```
 
@@ -152,11 +148,7 @@ The exercises are not checked or graded: use them to check your knowledge!
               DICTIONARY[1;]
         AA
               DICTIONARY[;1]
-        A
-        A
-        A
-        A
-        . . .
+        AAAA. . .
               DICTIONARY[⍸DICTIONARY[;1]='X';]
         XANTHAM        
         XANTHAMS       
@@ -239,7 +231,7 @@ The exercises are not checked or graded: use them to check your knowledge!
 
 !!! question "Read problem 7"
 
-    === "Problem"
+    === "Input"
 
         $$
         \sum_{n=1}^{100} \frac{1}{n^2}
@@ -247,7 +239,7 @@ The exercises are not checked or graded: use them to check your knowledge!
 
         can be written in APL using reduce / as...
 
-    === "Solution"
+    === "Output"
 
         $$
         \sum_{n=1}^{100} \frac{1}{n^2}
@@ -262,7 +254,7 @@ The exercises are not checked or graded: use them to check your knowledge!
 
 !!! question "Read problem 8"
 
-    === "Problem"
+    === "Input"
 
         $$
         \frac{1}{\frac{2}{\frac{3}{\frac{\dots}{10}}}}
@@ -270,7 +262,7 @@ The exercises are not checked or graded: use them to check your knowledge!
 
         can be written in APL using reduce / as
 
-    === "Solution"
+    === "Output"
 
         $$
         \frac{1}{\frac{2}{\frac{3}{\frac{\dots}{10}}}}
@@ -301,7 +293,8 @@ The exercises are not checked or graded: use them to check your knowledge!
         where $F_n$ is the nth Fibonacci number, can be written in APL (given an array FIBB of the first 10 Fibonacci numbers) as
 
         ```apl
-              2÷/FIBB
+              FIBB ← 1 1 2 3 5 8 13 21 34 55
+              2÷⍨/FIBB
         ```
 
         This is a sequence of approximations to the golden ratio

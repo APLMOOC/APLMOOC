@@ -38,7 +38,8 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
     <div class="problem">
         <span class="problemspan">logbook←</span>
-        <input class="probleminput" type="text" id="input_ch6_p1" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch6_p1_b1" hidden>A←</span>
+        <input class="probleminput" type="text" id="input_ch6_p1_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch6_p1', 2)">Submit</button>
     </div>
     <p id="feedback_ch6_p1" style="color: red"></p>
@@ -65,7 +66,8 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
     <div class="problem">
         <span class="problemspan">angle_names←</span>
-        <input class="probleminput" type="text" id="input_ch6_p2" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch6_p2_b1" hidden>A←</span>
+        <input class="probleminput" type="text" id="input_ch6_p2_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch6_p2', 2)">Submit</button>
     </div>
     <p id="feedback_ch6_p2" style="color: red"></p>
@@ -102,7 +104,8 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
     <div class="problem">
         <span class="problemspan">shift←</span>
-        <input class="probleminput" type="text" id="input_ch6_p3" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch6_p3_b1" hidden>A←</span>
+        <input class="probleminput" type="text" id="input_ch6_p3_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch6_p3', 2)">Submit</button>
     </div>
     <p id="feedback_ch6_p3" style="color: red"></p>
@@ -113,10 +116,11 @@ Since this course is still a work-in-progress, solving the write exercises will 
     
     A maze has four rooms joined by one-way corridors. The matrix ``maze`` holds a 1 in row i column j when a corridor leads from room i to room j.
 
-    Write a function to count routes through the maze. The left argument ⍺ is such a matrix, the right argument ⍵ is a number of moves. Element i j of the result is the number of routes of exactly ⍵ moves from room i to room j. A route may enter the same room more than once.
+    Write a function to count routes through the maze. The left argument ⍺ is such a matrix, the right argument ⍵ is a number of moves, at least 1. Element i j of the result is the number of routes of exactly ⍵ moves from room i to room j. A route may enter the same room more than once.
 
     ```apl
           ⍝ Corridors: 1→2 1→3 2→3 2→4 3→1 3→4 4→1
+          maze ← 4 4⍴0 1 1 0 0 0 1 1 1 0 0 1 1 0 0 0
           maze
     0 1 1 0
     0 0 1 1
@@ -143,7 +147,8 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
     <div class="problem">
         <span class="problemspan">routes←</span>
-        <input class="probleminput" type="text" id="input_ch6_p4" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch6_p4_b1" hidden>A←</span>
+        <input class="probleminput" type="text" id="input_ch6_p4_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch6_p4', 2)">Submit</button>
     </div>
     <p id="feedback_ch6_p4" style="color: red"></p>
@@ -155,8 +160,10 @@ Since this course is still a work-in-progress, solving the write exercises will 
     Write a function to fit a straight line to a set of measurements by least squares. The left argument ⍺ is a vector of times in minutes. The right argument ⍵ is the vector of temperatures measured at those times. Return first the temperature at time zero, then the rise in temperature per minute. (The Y-intercept and the slope)
 
     ```apl
+          times ← 2 4 6 8 10
           times
     2 4 6 8 10
+          temps ← 21 30 42 49 61
           temps
     21 30 42 49 61
           times line temps
@@ -169,7 +176,8 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
     <div class="problem">
         <span class="problemspan">line←</span>
-        <input class="probleminput" type="text" id="input_ch6_p5" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch6_p5_b1" hidden>A←</span>
+        <input class="probleminput" type="text" id="input_ch6_p5_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch6_p5', 2)">Submit</button>
     </div>
     <p id="feedback_ch6_p5" style="color: red"></p>
@@ -193,7 +201,8 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
     <div class="problem">
         <span class="problemspan">tick←</span>
-        <input class="probleminput" type="text" id="input_ch6_p6" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch6_p6_b1" hidden>A←</span>
+        <input class="probleminput" type="text" id="input_ch6_p6_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch6_p6', 2)">Submit</button>
     </div>
     <p id="feedback_ch6_p6" style="color: red"></p>
@@ -221,7 +230,8 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
     <div class="problem">
         <span class="problemspan">digit_root←</span>
-        <input class="probleminput" type="text" id="input_ch6_p7" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch6_p7_b1" hidden>A←</span>
+        <input class="probleminput" type="text" id="input_ch6_p7_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch6_p7', 2)">Submit</button>
     </div>
     <p id="feedback_ch6_p7" style="color: red"></p>
@@ -233,6 +243,7 @@ Since this course is still a work-in-progress, solving the write exercises will 
     A quiz is scored in a matrix. Each row is a round and each column is a player. The first round is a practice round, so its scores are set to 0. The last round counts double. Write a function to apply both rules. You can assume there are at least two rounds.
 
     ```apl
+          rounds ← 4 3⍴7 4 5 2 8 6 9 3 3 5 5 1
           rounds
     7 4 5
     2 8 6
@@ -245,9 +256,12 @@ Since this course is still a work-in-progress, solving the write exercises will 
     10 10 2
     ```
 
+    Hint: Copy ⍵ to a local name before assigning into it.
+
     <div class="problem">
         <span class="problemspan">bonus←</span>
-        <input class="probleminput" type="text" id="input_ch6_p8" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch6_p8_b1" hidden>A←</span>
+        <input class="probleminput" type="text" id="input_ch6_p8_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch6_p8', 2)">Submit</button>
     </div>
     <p id="feedback_ch6_p8" style="color: red"></p>
@@ -256,9 +270,10 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
 !!! write-problem "Write problem 9"
     
-    Write a function to delay all flights on the first of december by 5 minutes. You can assume that all the times listed end with '30' or '00'.
+    Write a function to delay all flights on 2024-12-01 by 5 minutes. You can assume that all the times listed end with '30' or '00'.
 
     ```apl
+              flights ← 3 5⍴'Jari N.' 'Helsinki' 'Tallinn' '2024-12-01' '08:00' 'Erik O.' 'Stockholm' 'Gothenburg' '2024-12-01' '14:00' 'Michel A.' 'London' 'Los Angeles' '2024-12-03' '11:30'
               flights
         ┌─────────┬─────────┬───────────┬──────────┬─────┐
         │Jari N.  │Helsinki │Tallinn    │2024-12-01│08:00│
@@ -280,7 +295,8 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
     <div class="problem">
         <span class="problemspan">delay←</span>
-        <input class="probleminput" type="text" id="input_ch6_p9" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch6_p9_b1" hidden>A←</span>
+        <input class="probleminput" type="text" id="input_ch6_p9_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch6_p9', 2)">Submit</button>
     </div>
     <p id="feedback_ch6_p9" style="color: red"></p>
@@ -292,6 +308,7 @@ Since this course is still a work-in-progress, solving the write exercises will 
     Each line of a message has been rotated to the right by its line number minus one. The first line is unchanged, the second line is rotated by one place, and so on. Write a function to undo the rotation. The right argument ⍵ is a vector of character vectors of equal length. The result is a character matrix.
 
     ```apl
+          lines ← 'SHALL' 'P WE ' ' ALAY' 'AME G' '    ?'
           lines
     ┌─────┬─────┬─────┬─────┬─────┐
     │SHALL│P WE │ ALAY│AME G│    ?│
@@ -304,9 +321,12 @@ Since this course is still a work-in-progress, solving the write exercises will 
     ?    
     ```
 
+    Hint: Copy ⍵ to a local name before assigning into it.
+
     <div class="problem">
         <span class="problemspan">unskew←</span>
-        <input class="probleminput" type="text" id="input_ch6_p10" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch6_p10_b1" hidden>A←</span>
+        <input class="probleminput" type="text" id="input_ch6_p10_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch6_p10', 2)">Submit</button>
     </div>
     <p id="feedback_ch6_p10" style="color: red"></p>
@@ -334,8 +354,10 @@ Since this course is still a work-in-progress, solving the write exercises will 
 
     <div class="problem">
         <span class="problemspan">commutes←</span>
-        <input class="probleminput" type="text" id="input_ch6_p11" placeholder="your solution here">
-        <button class="problembutton" onclick="submit_problem('ch6_p11', 2)">Submit</button>
+        <span class="problemfilltext" id="input_ch6_p11_b1" hidden>A←{f←⍎⍺ ⋄ OP←</span>
+        <input class="probleminput" type="text" id="input_ch6_p11_b2" placeholder="your solution here">
+        <span class="problemfilltext" id="input_ch6_p11_b3" hidden>⋄ (f OP)⍵}</span>
+        <button class="problembutton" onclick="submit_problem('ch6_p11', 3)">Submit</button>
     </div>
     <p id="feedback_ch6_p11" style="color: red"></p>
 

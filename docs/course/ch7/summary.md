@@ -1,6 +1,6 @@
 # Function index
 
-Here is a table of symbols we have used and how to type them in TryAPL.
+Here is a table of symbols we have used and how to type them in RIDE.
 
 It might be useful to review this page as you are doing the read and write exercises in the next sections.
 
@@ -10,8 +10,9 @@ It might be useful to review this page as you are doing the read and write exerc
 
 | Symbol | Name | Function (Monadic/Dyadic) | Key combination (Prefix) | Key combination (Tab)
 |:--:|:--:|:--:|:--:|:--:|
-| `∇` | Del | [Tradfn](part3.md#tradfns:~:text=To%20create%20a%20tradfn%2C%20we%20use%20the%20Del%20operator%20%E2%88%87%20followed%20by%20the%20name%20of%20the%20function%20we%20want%20to%20create.) | <kbd>PREFIX</kbd> ++g++ | <kbd>V</kbd> <kbd>V</kbd> ++tab++ |
+| `∇` | Del | [Tradfn](part3.md#tradfns:~:text=To%20create%20a%20tradfn%2C%20we%20use%20the%20Del%20symbol%20%E2%88%87%20followed%20by%20the%20name%20of%20the%20function%20we%20want%20to%20create.) | <kbd>PREFIX</kbd> ++g++ | <kbd>V</kbd> <kbd>V</kbd> ++tab++ |
 | `→` | Right arrow | [Branch](part3.md#branch:~:text=In%20many%20older%20APL%20programs%2C%20you%20may%20see%20the%20branch%20%E2%86%92%20symbol.) | <kbd>PREFIX</kbd> <kbd>]</kbd> | <kbd>-</kbd> <kbd>&gt;</kbd> ++tab++ |
+| `≢` | Not match | [Tally](part4.md#error-traps:~:text=The%20example%20also%20uses%20the%20tally%20%E2%89%A2%20function) | <kbd>PREFIX</kbd> <kbd>"</kbd> | <kbd>7</kbd> <kbd>=</kbd> ++tab++ |
 
 ### System variables and constants
 
@@ -21,12 +22,12 @@ It might be useful to review this page as you are doing the read and write exerc
 | [`⎕CT`](../ch3/part3.md#comparison-tolerance:~:text=The%20tolerance%20can%20be%20read%20%28and%20set%29%20via%20the%20%E2%8E%95CT%20system%20variable%2C%20and%20the%20precision%20shown%20is%20read%20%28and%20set%29%20via%20%E2%8E%95PP.) | Comparison tolerance, from `0` (exact comparison) up to `10*¯10` |
 | [`⎕PP`](../ch3/part3.md#comparison-tolerance:~:text=The%20tolerance%20can%20be%20read%20%28and%20set%29%20via%20the%20%E2%8E%95CT%20system%20variable%2C%20and%20the%20precision%20shown%20is%20read%20%28and%20set%29%20via%20%E2%8E%95PP.) | Print precision, the number of digits displayed |
 | [`⎕IO`](../ch4/part1.md#index-origin:~:text=A%20handy%20tool%20to%20get%20around%20this%20is%20to%20use%20the%20index%20origin%20variable%2C%20%E2%8E%95IO.) | Index origin, either `1` (the default) or `0` |
-| [`⎕NC`](part3.md#conditional-expressions:~:text=Consider%20the%20following%20example%2C%20where%20we%20check%20if%20our%20tradfn%20has%20a%20left%20argument%20using%20the%20%E2%8E%95NC%20function%20which%20returns%200%20when%20a%20variable%20name%20is%20unused.) | Name classification, returns `0` when a variable name is unused |
 
 ### System functions
 
 | Name | Meaning |
 |:--:|:--:|
+| [`⎕NC`](part3.md#conditional-expressions:~:text=Consider%20the%20following%20example%2C%20where%20we%20check%20if%20our%20tradfn%20has%20a%20left%20argument%20using%20the%20%E2%8E%95NC%20function%20which%20returns%200%20when%20a%20variable%20name%20is%20unused.) | Name classification, returns `0` when a variable name is unused |
 | [`⎕DMX`](part4.md#error-traps:~:text=Multiple%20errors%20can%20be%20caught%20by%20passing%20a%20vector%20of%20error%20codes%20to%20the%20%3ATrap%20control%20structure%20and%20using%20%3ACase%20to%20differentiate%20them%2C%20with%20extra%20diagnostic%20information%20%28such%20as%20the%20error%20message%29%20provided%20by%20the%20%E2%8E%95DMX%20system%20object.) | Diagnostic message object; `⎕DMX.Message` holds the reason for the last error |
 | [`⎕EN`](part4.md#error-traps:~:text=Multiple%20errors%20can%20be%20caught%20by%20passing%20a%20vector%20of%20error%20codes%20to%20the%20%3ATrap%20control%20structure%20and%20using%20%3ACase%20to%20differentiate%20them%2C%20with%20extra%20diagnostic%20information%20%28such%20as%20the%20error%20message%29%20provided%20by%20the%20%E2%8E%95DMX%20system%20object.) | Error number of the last error |
 | [`⎕STOP`](part4.md#breakpoints:~:text=Alternatively%2C%20you%20can%20use%20the%20%E2%8E%95STOP%20system%20function%20to%20set%20%28and%20unset%29%20a%20breakpoint%20at%20a%20particular%20line.) | Sets or lists the breakpoints of a function |
