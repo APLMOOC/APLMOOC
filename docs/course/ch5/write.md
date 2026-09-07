@@ -32,10 +32,10 @@ Since this course is still a work-in-progress, solving the write exercises will 
     <div class="problem">
         <span class="problemspan">only←</span>
         <span class="problemfilltext" id="input_ch5_p1_b1" hidden>A←</span>
-        <input class="probleminput" type="text" id="input_ch5_p1_b2" placeholder="your solution here">
+        <input aria-label="Chapter 5, write problem 1, answer field 2" class="probleminput" type="text" id="input_ch5_p1_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch5_p1', 2)">Submit</button>
     </div>
-    <p id="feedback_ch5_p1" style="color: red"></p>
+    <p role="status" aria-atomic="true" id="feedback_ch5_p1" style="color: red"></p>
 
 ---
 
@@ -76,10 +76,10 @@ Since this course is still a work-in-progress, solving the write exercises will 
     <div class="problem">
         <span class="problemspan">cheat←</span>
         <span class="problemfilltext" id="input_ch5_p2_b1" hidden>A←</span>
-        <input class="probleminput" type="text" id="input_ch5_p2_b2" placeholder="your solution here">
+        <input aria-label="Chapter 5, write problem 2, answer field 2" class="probleminput" type="text" id="input_ch5_p2_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch5_p2', 2)">Submit</button>
     </div>
-    <p id="feedback_ch5_p2" style="color: red"></p>
+    <p role="status" aria-atomic="true" id="feedback_ch5_p2" style="color: red"></p>
 
 ---
 
@@ -109,10 +109,10 @@ Since this course is still a work-in-progress, solving the write exercises will 
     <div class="problem">
         <span class="problemspan">on_date←</span>
         <span class="problemfilltext" id="input_ch5_p3_b1" hidden>A←</span>
-        <input class="probleminput" type="text" id="input_ch5_p3_b2" placeholder="your solution here">
+        <input aria-label="Chapter 5, write problem 3, answer field 2" class="probleminput" type="text" id="input_ch5_p3_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch5_p3', 2)">Submit</button>
     </div>
-    <p id="feedback_ch5_p3" style="color: red"></p>
+    <p role="status" aria-atomic="true" id="feedback_ch5_p3" style="color: red"></p>
 
 ---
 
@@ -151,10 +151,10 @@ Since this course is still a work-in-progress, solving the write exercises will 
     <div class="problem">
         <span class="problemspan">distance←</span>
         <span class="problemfilltext" id="input_ch5_p4_b1" hidden>A←</span>
-        <input class="probleminput" type="text" id="input_ch5_p4_b2" placeholder="your solution here">
+        <input aria-label="Chapter 5, write problem 4, answer field 2" class="probleminput" type="text" id="input_ch5_p4_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch5_p4', 2)">Submit</button>
     </div>
-    <p id="feedback_ch5_p4" style="color: red"></p>
+    <p role="status" aria-atomic="true" id="feedback_ch5_p4" style="color: red"></p>
 
 ---
 
@@ -187,10 +187,10 @@ Since this course is still a work-in-progress, solving the write exercises will 
     <div class="problem">
         <span class="problemspan">floor←</span>
         <span class="problemfilltext" id="input_ch5_p5_b1" hidden>A←</span>
-        <input class="probleminput" type="text" id="input_ch5_p5_b2" placeholder="your solution here">
+        <input aria-label="Chapter 5, write problem 5, answer field 2" class="probleminput" type="text" id="input_ch5_p5_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch5_p5', 2)">Submit</button>
     </div>
-    <p id="feedback_ch5_p5" style="color: red"></p>
+    <p role="status" aria-atomic="true" id="feedback_ch5_p5" style="color: red"></p>
 
 ---
 
@@ -222,10 +222,10 @@ Since this course is still a work-in-progress, solving the write exercises will 
     <div class="problem">
         <span class="problemspan">group←</span>
         <span class="problemfilltext" id="input_ch5_p6_b1" hidden>A←</span>
-        <input class="probleminput" type="text" id="input_ch5_p6_b2" placeholder="your solution here">
+        <input aria-label="Chapter 5, write problem 6, answer field 2" class="probleminput" type="text" id="input_ch5_p6_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch5_p6', 2)">Submit</button>
     </div>
-    <p id="feedback_ch5_p6" style="color: red"></p>
+    <p role="status" aria-atomic="true" id="feedback_ch5_p6" style="color: red"></p>
 
 ---
 
@@ -253,10 +253,10 @@ Since this course is still a work-in-progress, solving the write exercises will 
     <div class="problem">
         <span class="problemspan">proportion←</span>
         <span class="problemfilltext" id="input_ch5_p7_b1" hidden>A←</span>
-        <input class="probleminput" type="text" id="input_ch5_p7_b2" placeholder="your solution here">
+        <input aria-label="Chapter 5, write problem 7, answer field 2" class="probleminput" type="text" id="input_ch5_p7_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch5_p7', 2)">Submit</button>
     </div>
-    <p id="feedback_ch5_p7" style="color: red"></p>
+    <p role="status" aria-atomic="true" id="feedback_ch5_p7" style="color: red"></p>
 
 ---
 
@@ -274,10 +274,10 @@ Since this course is still a work-in-progress, solving the write exercises will 
     <div class="problem">
         <span class="problemspan">runs←</span>
         <span class="problemfilltext" id="input_ch5_p8_b1" hidden>A←</span>
-        <input class="probleminput" type="text" id="input_ch5_p8_b2" placeholder="your solution here">
+        <input aria-label="Chapter 5, write problem 8, answer field 2" class="probleminput" type="text" id="input_ch5_p8_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch5_p8', 2)">Submit</button>
     </div>
-    <p id="feedback_ch5_p8" style="color: red"></p>
+    <p role="status" aria-atomic="true" id="feedback_ch5_p8" style="color: red"></p>
 
 ---
 
@@ -325,10 +325,10 @@ Since this course is still a work-in-progress, solving the write exercises will 
     <div class="problem">
         <span class="problemspan">trig_table←</span>
         <span class="problemfilltext" id="input_ch5_p9_b1" hidden>A←</span>
-        <input class="probleminput" type="text" id="input_ch5_p9_b2" placeholder="your solution here">
+        <input aria-label="Chapter 5, write problem 9, answer field 2" class="probleminput" type="text" id="input_ch5_p9_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch5_p9', 2)">Submit</button>
     </div>
-    <p id="feedback_ch5_p9" style="color: red"></p>
+    <p role="status" aria-atomic="true" id="feedback_ch5_p9" style="color: red"></p>
 
 ---
 
@@ -351,10 +351,10 @@ Since this course is still a work-in-progress, solving the write exercises will 
     <div class="problem">
         <span class="problemspan">nonzero←</span>
         <span class="problemfilltext" id="input_ch5_p10_b1" hidden>A←</span>
-        <input class="probleminput" type="text" id="input_ch5_p10_b2" placeholder="your solution here">
+        <input aria-label="Chapter 5, write problem 10, answer field 2" class="probleminput" type="text" id="input_ch5_p10_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch5_p10', 2)">Submit</button>
     </div>
-    <p id="feedback_ch5_p10" style="color: red"></p>
+    <p role="status" aria-atomic="true" id="feedback_ch5_p10" style="color: red"></p>
 
 ---
 
@@ -389,10 +389,10 @@ Since this course is still a work-in-progress, solving the write exercises will 
     <div class="problem">
         <span class="problemspan">significant←</span>
         <span class="problemfilltext" id="input_ch5_p11_b1" hidden>A←</span>
-        <input class="probleminput" type="text" id="input_ch5_p11_b2" placeholder="your solution here">
+        <input aria-label="Chapter 5, write problem 11, answer field 2" class="probleminput" type="text" id="input_ch5_p11_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch5_p11', 2)">Submit</button>
     </div>
-    <p id="feedback_ch5_p11" style="color: red"></p>
+    <p role="status" aria-atomic="true" id="feedback_ch5_p11" style="color: red"></p>
 
 ---
 
@@ -425,9 +425,9 @@ Since this course is still a work-in-progress, solving the write exercises will 
     <div class="problem">
         <span class="problemspan">array←</span>
         <span class="problemfilltext" id="input_ch5_p12_b1" hidden>A←</span>
-        <input class="probleminput" type="text" id="input_ch5_p12_b2" placeholder="your solution here">
+        <input aria-label="Chapter 5, write problem 12, answer field 2" class="probleminput" type="text" id="input_ch5_p12_b2" placeholder="your solution here">
         <button class="problembutton" onclick="submit_problem('ch5_p12', 2)">Submit</button>
     </div>
-    <p id="feedback_ch5_p12" style="color: red"></p>
+    <p role="status" aria-atomic="true" id="feedback_ch5_p12" style="color: red"></p>
 
 ---

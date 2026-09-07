@@ -38,7 +38,7 @@ And this doesn't even take into account functions that programmers can create th
 
     In APL, all operations are executed _right-to-left_.
 
-    When APL runs a line of code, it first evaluates the rightmost function and works its way left. For example, ``a×b-c`` would evaluate ``b-c`` first, then mutliply it by ``a``.
+    When APL runs a line of code, it first evaluates the rightmost function and works its way left. For example, ``a×b-c`` would evaluate ``b-c`` first, then multiply it by ``a``.
 
 An equivalent formulation of this would be
 
@@ -92,9 +92,9 @@ Let's look at our previous example once again:
 ```apl
       2×2+1
 6
-      2×(2+1) (1)!
+      2×(2+1) ⍝ (1)!
 6
-      (2×2)+1 (2)!
+      (2×2)+1 ⍝ (2)!
 5
 ```
 
@@ -137,14 +137,21 @@ Before we conclude, here are some tips on how to reduce parentheses in your code
 
 !!! info "Reducing parentheses"
 
-    1. No APL expression needs to end with a closing parenthesis. This can be simplified.
-    - For example, the expression `(2×3)+(4×5)` can be rewritten as `(2×3)+4×5`
-    2. You never need two consecutive closing parentheses. This can also be simplified.
-    - For example, the expression `(2×(3+4))÷5` is equivalent to `(2×3+4)÷5`
+    1. No calculation in APL needs to end with a closing parenthesis. This can be simplified.
+
+        For example, the expression `(2×3)+(4×5)` can be rewritten as `(2×3)+4×5`
+
+    2. In nested scalar arithmetic like the example below, the inner pair of parentheses can be omitted.
+
+        For example, the expression `(2×(3+4))÷5` is equivalent to `(2×3+4)÷5`
+
     3. If you can easily rewrite the expression to avoid parentheses, do so.
-    - For example, the expression `((2÷3)+4)×5` can be written as `5×4+2÷3`
+
+        For example, the expression `((2÷3)+4)×5` can be written as `5×4+2÷3`
+
     4. Do not shovel in extra parentheses in a panicked, desperate attempt to fix your code.
-    Do shovel in parentheses if it genuinely helps the readability of your code.
+
+        Do shovel in parentheses if it genuinely helps the readability of your code.
 
 
 This isn't to say that you should avoid using parentheses.

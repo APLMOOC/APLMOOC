@@ -85,7 +85,7 @@ Once you close and re-open RIDE, you can load your workspace by using the `)load
 !!! tip "System commands"
 
     The APL developers had to find a way to include useful commands in a way that they can't be confused for APL functions.
-    The solution: no APL expression starts with a closing bracket, so let's use those for commands!
+    The solution: no APL expression starts with a closing parenthesis, so let's use those for commands!
 
     To see a full list of system commands, go to <https://aplwiki.com/wiki/System_command>.
 
@@ -122,7 +122,7 @@ To fix this, they created a _user command_ called LINK!
 
 !!! tip "User commands"
 
-    System commands are functions that let you interact directly with the system.
+    System commands are commands handled by the APL session that let you interact directly with the system.
     They are actually written in C under the hood.
     On the other hand, _user commands_ are written in APL and let you do more involved actions.
     You can also overwrite or modify them if you're crazy enough.

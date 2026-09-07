@@ -77,7 +77,7 @@ We start by reading the illusion image and its metadata.
 7
 ```
 
-The resolution vector is not a vector of numbers, which would be useful here, but a vector of characters in the string `'455 498'`. The execute `⍎` function evaluates strings as APL expressions, hence can turn the string `'455 498'` into the vector `455 497`.
+The resolution vector is not a vector of numbers, which would be useful here, but a vector of characters in the string `'455 498'`. The execute `⍎` function evaluates strings as APL expressions, hence can turn the string `'455 498'` into the vector `455 498`.
 
 ```apl
        resolution ← ⍎2⊃header

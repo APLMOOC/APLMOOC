@@ -216,7 +216,7 @@ The dyadic circle `○` function applies a trigonometric function to its right a
 
 Monadic `!` : Factorial
 
-The factorial ``!`` function multiplies together the whole numbers from 1 up to its argument. By convention ``!0`` is 1. For arguments that are not whole numbers it returns the gamma function, so it is defined for any number except the negative whole numbers.
+The factorial ``!`` function multiplies together the whole numbers from 1 up to its argument. By convention ``!0`` is 1. For arguments that are not whole numbers it returns the gamma function of one plus the argument, Γ(1+⍵), so it is defined for any number except the negative whole numbers.
 
 ```apl
       !0 1 5 10

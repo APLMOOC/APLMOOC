@@ -35,7 +35,7 @@ Then, we will need a way to store the datetime data. One solution is to use two 
       T1 ← 21.4 21.8 22.0 21.5 21.3 22.3
       T1D ← 'Day 1 07:42' 'Day 1 08:47' 'Day 1 10:10' 'Day 1 12:01' 'Day 1 14:36' 'Day 1 16:50'
       T2 ← 22.8 21.5 22.1 22.0 21.9 22.4
-      T2D ← 'Day 1 18:23' 'Day 1 19:30' 'Day 1 21:12' 'Day 2, 07:15' 'Day 2, 08:30' 'Day 2, 09:45'
+      T2D ← 'Day 1 18:23' 'Day 1 19:30' 'Day 1 21:12' 'Day 2 07:15' 'Day 2 08:30' 'Day 2 09:45'
 ```
 
 Then we can access the information for the second measurement on the first page using the index ``2``.
@@ -69,12 +69,12 @@ Matrices can be created by wrapping the rows as vectors in ``[square brackets]``
              21.3 'Day 1 14:36' ⋄
              22.3 'Day 1 16:50' ]
 
-      T2 ← [ 22.8 'Day 1 18:23'  ⋄ 
-             21.5 'Day 1 19:30'  ⋄
-             22.1 'Day 2, 21:12' ⋄
-             22.0 'Day 3, 07:15' ⋄
-             21.9 'Day 3, 08:30' ⋄
-             22.4 'Day 3, 09:45' ]
+      T2 ← [ 22.8 'Day 1 18:23' ⋄ 
+             21.5 'Day 1 19:30' ⋄
+             22.1 'Day 1 21:12' ⋄
+             22.0 'Day 2 07:15' ⋄
+             21.9 'Day 2 08:30' ⋄
+             22.4 'Day 2 09:45' ]
 
       T1
 ┌────┬───────────┐
@@ -245,10 +245,10 @@ Arrays of higher dimension are just as easy to create as matrices, again using a
 
                 [22.8 'Day 1 18:23' ⋄
                 21.5 'Day 1 19:30' ⋄
-                22.1 'Day 2 21:12' ⋄
-                22.0 'Day 3 07:15' ⋄
-                21.9 'Day 3 08:30' ⋄
-                22.4 'Day 3 09:45']]
+                22.1 'Day 1 21:12' ⋄
+                22.0 'Day 2 07:15' ⋄
+                21.9 'Day 2 08:30' ⋄
+                22.4 'Day 2 09:45']]
       TData
 ┌────┬───────────┐
 │21.4│Day 1 07:42│
@@ -268,20 +268,20 @@ Arrays of higher dimension are just as easy to create as matrices, again using a
 ├────┼───────────┤
 │21.5│Day 1 19:30│
 ├────┼───────────┤
-│22.1│Day 2 21:12│
+│22.1│Day 1 21:12│
 ├────┼───────────┤
-│22  │Day 3 07:15│
+│22  │Day 2 07:15│
 ├────┼───────────┤
-│21.9│Day 3 08:30│
+│21.9│Day 2 08:30│
 ├────┼───────────┤
-│22.4│Day 3 09:45│
+│22.4│Day 2 09:45│
 └────┴───────────┘
 ```
 
 Again, this can also be achieved using the reshape ``⍴`` function with three axis lengths instead of two.
 
 ```apl
-      TData ← 2 6 2 ⍴ 21.4 'Day 1 07:42' 21.8 'Day 1 08:47' 22.0 'Day 1 10:10' 21.5 'Day 1 12:01' 21.3 'Day 1 14:36' 22.3 'Day 1 16:50' 22.8 'Day 1 18:23' 21.5 'Day 1 19:30' 22.1 'Day 2 21:12' 22.0 'Day 3 07:15' 21.9 'Day 3 08:30' 22.4 'Day 3 09:45'
+      TData ← 2 6 2 ⍴ 21.4 'Day 1 07:42' 21.8 'Day 1 08:47' 22.0 'Day 1 10:10' 21.5 'Day 1 12:01' 21.3 'Day 1 14:36' 22.3 'Day 1 16:50' 22.8 'Day 1 18:23' 21.5 'Day 1 19:30' 22.1 'Day 1 21:12' 22.0 'Day 2 07:15' 21.9 'Day 2 08:30' 22.4 'Day 2 09:45'
       TData
 ┌────┬───────────┐
 │21.4│Day 1 07:42│
@@ -301,13 +301,13 @@ Again, this can also be achieved using the reshape ``⍴`` function with three a
 ├────┼───────────┤
 │21.5│Day 1 19:30│
 ├────┼───────────┤
-│22.1│Day 2 21:12│
+│22.1│Day 1 21:12│
 ├────┼───────────┤
-│22  │Day 3 07:15│
+│22  │Day 2 07:15│
 ├────┼───────────┤
-│21.9│Day 3 08:30│
+│21.9│Day 2 08:30│
 ├────┼───────────┤
-│22.4│Day 3 09:45│
+│22.4│Day 2 09:45│
 └────┴───────────┘
 ```
 
@@ -342,13 +342,13 @@ Now with your temperature table safely stored in your APL workspace, you can onl
 ├────┼───────────┤
 │21.5│Day 1 19:30│
 ├────┼───────────┤
-│22.1│Day 2 21:12│
+│22.1│Day 1 21:12│
 ├────┼───────────┤
-│22  │Day 3 07:15│
+│22  │Day 2 07:15│
 ├────┼───────────┤
-│21.9│Day 3 08:30│
+│21.9│Day 2 08:30│
 ├────┼───────────┤
-│22.4│Day 3 09:45│
+│22.4│Day 2 09:45│
 └────┴───────────┘
       TData[1;2;1] ← 21.8
       TData
@@ -370,13 +370,13 @@ Now with your temperature table safely stored in your APL workspace, you can onl
 ├────┼───────────┤
 │21.5│Day 1 19:30│
 ├────┼───────────┤
-│22.1│Day 2 21:12│
+│22.1│Day 1 21:12│
 ├────┼───────────┤
-│22  │Day 3 07:15│
+│22  │Day 2 07:15│
 ├────┼───────────┤
-│21.9│Day 3 08:30│
+│21.9│Day 2 08:30│
 ├────┼───────────┤
-│22.4│Day 3 09:45│
+│22.4│Day 2 09:45│
 └────┴───────────┘
 ```
 

@@ -26,18 +26,30 @@ In brief intervals of time spent waiting between tasks, you have to organise pro
 
 ## Direct functions
 
-One of the ways of defining a function, taking in array arguments and outputting an array result, is using direct functions abbreviated dfn. ("dee-fun") A dfn is a series of statements in curly braces ``{}``, where the special characters `⍺` and `⍵` represent the left and right arguments to the function. Functions always require a right argument. You start with the basic conversions your current project requires, and a couple fun ones just for yourself.
+One of the ways of defining a function, taking in array arguments and outputting an array result, is using direct functions abbreviated dfn. ("dee-fun") A dfn is a series of statements in curly braces ``{}``, where the special characters `⍺` and `⍵` represent the left and right arguments to the function. Functions always require a right argument. 
+
+You start with the basic conversions your current project requires, and a couple fun ones just for yourself.
+
+First, you write functions to convert from Fahrenheit to Celsius and back again.
 
 ```apl
+      ⍝ Fahrenheit to Celsius
       FtoC ← {(5 × ⍵ - 32)÷9}
       FtoC 451
 232.7777778
+
+      ⍝ Celsius to Fahrenheit
       CtoF ← {32 + (9 × ⍵) ÷ 5}
       CtoF ¯273.15
 ¯459.67
+
       CtoF FtoC 100
 100
+```
 
+Similarly, you write functions to convert between centimeters and feet and inches.
+
+```
       ⍝ Centimeters to feet and inches
       CmtoIn ← {⌊⍵÷2.54}
       CmtoFtIn ← {
@@ -50,17 +62,11 @@ One of the ways of defining a function, taking in array arguments and outputting
 5 10
       CmtoFtIn 300
 9 10
+```
 
-      ⍝ From decibels to bels 
-      dBtoB ← {⍵÷10} 
-      ⍝ From decibels back to a power ratio
-      dBtoRatio ← {10*dBtoB ⍵} 
-      dBtoRatio 60
-1000000
-      dBtoRatio 3
-1.995262315
+Then, a function that calculates the hypotenuse of a triangle with sides given by the left and right arguments.
 
-
+```
       ⍝ Pythagorean theorem
       hypotenuse ← {((⍺*2)+⍵*2)*0.5} 
       3 hypotenuse 4
@@ -71,16 +77,25 @@ One of the ways of defining a function, taking in array arguments and outputting
 13
       1 hypotenuse 3*.5
 2
+```
+
+Note that this means the function requires a left argument too!
+
+```
       ⍝ A dfn that uses ⍺ needs a left argument
       hypotenuse 4
 VALUE ERROR
 hypotenuse[0] hypotenuse←{((⍺*2)+⍵*2)*0.5}
                             ∧
-      
+```
+
+Finally, a function that calculates terms of the Fibonacci sequence.
+
+```
       ⍝ golden ratio
       PHI ← 0.5× 1 + 5*.5 
       fibonacci ← {((PHI*⍵) - (-PHI)*-⍵) ÷ (¯1 + 2×PHI)}
-      fibonacci ⍳7
+      fibonacci 1 2 3 4 5 6 7
 1 1 2 3 5 8 13
       fibonacci 10
 55
@@ -109,6 +124,8 @@ Note that the first statement whose result is not assigned to a name ends the fu
       separator_test ⍬
 2
 ```
+
+Here, the second statement ``a + a`` is executed and returns the result, and ``a - a`` is never executed.
 
 The empty vector symbol ``⍬`` is added here as filler since functions always require a right argument.
 

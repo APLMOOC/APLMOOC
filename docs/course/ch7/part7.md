@@ -25,7 +25,7 @@ A namespace is created with the `⎕NS` system function, and names inside it are
 0.001
 ```
 
-`#.HttpCommand.Get` is the function `Get` inside the namespace `HttpCommand` inside the root, and `r.Data` was a namespace produced by `GetJSON`. A namespace can also be written as an APL `.apln` source file, using `:Namespace` and `:EndNamespace`, and stored as a text file; this is the form that packages and projects use for their source.
+`#.HttpCommand.Get` is the function `Get` inside the namespace `HttpCommand` inside the root, and `r.Data` was a vector of namespaces produced by `GetJSON`. A namespace can also be written as an APL `.apln` source file, using `:Namespace` and `:EndNamespace`, and stored as a text file; this is the form that packages and projects use for their source.
 
 ## From workspaces to projects
 
@@ -61,13 +61,14 @@ The current directory is now C:\Users\username\quAPL
 Project successfully opened and established in "#.quapl"
 ```
 
-Cider read the configuration file, linked the source folder into a new namespace `#.quapl`, changed the working directory, and also installs any Tatin packages the project depends on. The `-alias=quapl` names the project, so that it can be reopened later with ``]CIDER.OpenProject [quapl]`` without typing the path again. Cider also inspects the project's git repository when one is present, and opens an edit window containing a status report.
+Cider read the configuration file, linked the source folder into a new namespace `#.quapl`, changed the working directory, and also installed any Tatin packages the project depends on. The `-alias=quapl` names the project, so that it can be reopened later with ``]CIDER.OpenProject [quapl]`` without typing the path again. Cider also inspects the project's git repository when one is present, and opens an edit window containing a status report.
 
 The project is now a namespace, and its contents can be listed with the name list `⎕NL` system function. Its right argument is a so-called name class, where `2` selects variables, `3` functions, `4` operators and `9` namespaces, and several classes can be given at once. A positive class returns the names as a character matrix, one per row, and a negative class returns them as a vector of character vectors, which is easier to work with. Prefixing `⎕NL` with a namespace lists the contents of that namespace rather than the current one.
 
 ```apl
       config.⎕NL 2
 retries
+step
       ⎕NL 9
 config
       quapl.⎕NL ¯9

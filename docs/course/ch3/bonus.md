@@ -4,7 +4,7 @@
 
     This part is considered to be bonus content.
     It contains some more advanced topics that are not covered in the main course.
-    It can also give some examples of functions and topics that are introuced later in the course.
+    It can also give some examples of functions and topics that are introduced later in the course.
     There are no exercises related to this content.
 
     Feel free to skim or skip this section for now, and return to it later!

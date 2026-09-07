@@ -13,7 +13,7 @@ After a couple days of logging temperatures into your large notebook, you realis
 
 Terrible news! 
 
-You nag your coworker about it until they eventually give up and tell you that the formula to convert from Fahrenheit to Celcius is 
+You nag your coworker about it until they eventually give up and tell you that the formula to convert from Fahrenheit to Celsius is 
 
 $$Celsius = (Fahrenheit - 32) \cdot \frac{5}{9}$$
 
@@ -71,7 +71,7 @@ That’s some extreme temperature right there! And it makes you start to wonder,
 
 ```apl
       TEMP_OUTSIDE
-118.5 97.1 59.5 30.0 ¯9.7 ¯62.3 ¯113.2
+118.5 97.1 59.5 30 ¯9.7 ¯62.3 ¯113.2
       TEMP_CELSIUS
 21.77777778 21.88888889 22.94444444 22.77777778 22.83333333 22.66666667 22.5
       ⎕ ← TEMP_DIFF ← TEMP_OUTSIDE - TEMP_CELSIUS
@@ -83,7 +83,7 @@ Applying a basic arithmetic function to two vectors applies it to their componen
 ```apl
       ⍝ Approximations to pi
       3 256 25 339 22 3927 ÷ 1 81 8 108 7 1250
-      3 3.160493827 3.125 3.138888889 3.142857143 3.1416
+3 3.160493827 3.125 3.138888889 3.142857143 3.1416
 ```
 
 There is one serious caveat though:

@@ -275,7 +275,7 @@ Sometimes, instead of finding exactly where an element is in an array, you'd lik
       GRADE 42
 0
 
-      GRADE 43
+      GRADE 44
 1
 
       GRADE 51
@@ -291,7 +291,7 @@ Sometimes, instead of finding exactly where an element is in an array, you'd lik
 5
 ```
 
-What this function does is try to find where the right argument ``⍵`` is, between the grade boundaries ``43 51 58 65 72`` for the grades ``0 1 2 3 4 5``. 
+What this function does is try to find where the right argument ``⍵`` is, between the grade boundaries ``44 51 58 65 72`` for the grades ``0 1 2 3 4 5``. 
 
 Another example of this kind of problem is looking for a word in a dictionary, where the page with the word ``⍵`` is the one where ``⍵`` is alphabetically between the first word of the page and the first word of the next page.
 
@@ -299,13 +299,13 @@ This problem can be solved with the dyadic ⍸ interval index function. The vect
 
 ```apl
 
-      43 51 58 65 72 ⍸ 10
+      44 51 58 65 72 ⍸ 10
 0
 
-      43 51 58 65 72 ⍸ 64
+      44 51 58 65 72 ⍸ 64
 3
 
-      43 51 58 65 72 ⍸ 72
+      44 51 58 65 72 ⍸ 72
 5
 
       'aardvark' 'abrasion' 'accessory' 'acquittance' 'adamantine' ⍸ ⊂'absolute'

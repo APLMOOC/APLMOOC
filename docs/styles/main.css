@@ -115,7 +115,7 @@ div.problem button.problembutton {
 /* Language bar */
 
 .ngn_lb {
-    background-color: --md-primary-fg-color;
+    background-color: var(--md-primary-fg-color);
     cursor: default;
     font-family: "APL385";
     padding: 2px;

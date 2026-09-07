@@ -114,7 +114,7 @@ Let's try them out:
 ¯56088
 ```
 
-As we say in Swedish, funkar som den ska.
+As they say in Swedish, funkar som den ska.
 
 !!! info "Significant figures"
 

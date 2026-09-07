@@ -16,7 +16,7 @@ Allow me to introduce you to a new symbol; the assignment symbol:
 
 !!! note "Typing the assignment symbol `←`"
 
-    Prefix method: <kbd>PREFIX</kbd> <kbd>]</kbd>
+    Prefix method: <kbd>PREFIX</kbd> <kbd>[</kbd>
 
     Tab method: <kbd><</kbd> <kbd>-</kbd> ++tab++
 
@@ -27,7 +27,7 @@ Here is an example of assignment:
       BANANA ← 3
 ```
 
-As you can see, there is no output, because assignment does not return anything.
+As you can see, there is no displayed output.
 This is what's called a *shy operation* in APL.
 
 You can use capital letters, lowercase letters, underscores, and numbers (but a variable name cannot start with a number).
@@ -73,7 +73,7 @@ The only way to change a variable's value is to use assignment again:
 1
       BANANA ← BANANA + 3
       BANANA
-4
+3
 ```
 
 Notice, at the end there we did a common operation: increasing the value of a variable by some amount.
@@ -117,7 +117,7 @@ The developers of APL picked this because it looks kinda like a (arguably, verti
 
 !!! note "Typing the quad symbol `⎕`"
 
-    Prefix method: <kbd>PREFIX</kbd> <kbd>L</kbd>
+    Prefix method: <kbd>PREFIX</kbd> <kbd>l</kbd>
 
     Tab method: <kbd>[</kbd> <kbd>]</kbd> ++tab++
 

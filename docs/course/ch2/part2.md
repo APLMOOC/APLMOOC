@@ -40,19 +40,19 @@ This is not the most efficient or readable method to input data into your system
 	
 The order of elements in a vector matters! Each element is given a number called an **index** according to the order in which they were written. Indices can be used to access the elements of a vector, they start at ``1`` and increase by one for each new element.
 
-You write out the temperatures as vectors, seperating them by page number. Note that the decimal separator in APL is a period!
+You write out the temperatures as vectors, separating them by page number. Note that the decimal separator in APL is a period!
 
 ```apl
       T1 ← 21.4 21.8 22.0 21.5 21.3 22.3
       T2 ← 22.8 21.5 22.1 22.0 21.9 22.4
       
       T1[1 2 3]
-      21.4 21.8 22.0
+21.4 21.8 22
 ```
 
 Much better. 
 
-Since you're already at the new machines, you may as well snoop around to see what everyone else has been up to. You use the ``)VARS`` [system command](https://dyalog.github.io/documentation/20.0/language-reference-guide/system-commands/introduction/) to list all variables in the current workspace.
+Since you're already at the new machines, you may as well snoop around to see what everyone else has been up to. You use the ``)VARS`` [system command](https://docs.dyalog.com/20.0/language-reference-guide/system-commands/vars/) to list all variables in the current workspace.
 
 ```apl
       )VARS

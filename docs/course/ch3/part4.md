@@ -7,6 +7,9 @@
 
 ---
 
+
+<link rel="stylesheet" href="/styles/ch5part2.css">
+
 !!! note "Typing the symbols in this part"
 
     | Symbol | Prefix method | Tab method |
@@ -26,9 +29,9 @@ The engineer sits hunched over their cubicle, focused as they diligently type ou
 9.561792499
 ```
 
-They know the task they are trying to achieve is impossible, approximating the sum of powers of ``0.99`` to a reasonable precision would take thousands of terms.
+They know the task they are trying to achieve is impossible, approximating the sum of powers of ``0.99`` to a reasonable precision would take thousands of terms to do manually!
 
-A coworker suggested a function, but the engineer refused the help and started creating their own function 
+A coworker suggested using a function, so the engineer creates the function ``a`` to speed things up. 
 
 ```apl
       a ← {0.99*⍵}
@@ -38,13 +41,16 @@ A coworker suggested a function, but the engineer refused the help and started c
 
 ## Recursion
 
-Now reaching the 50th term, the series is no closer to being evaluated. If only there were a way to define a function that repeatedly applies itself. The engineer thinks for a bit, and writes the following.
+Now reaching the 50th term, the series is no closer to being evaluated. 
+
+If only there were a way to define a function that repeatedly applies itself! The engineer thinks for a bit, and writes the following.
 
 ```apl
       test ← {test ⍵+1}
       test 1
 
 ```
+
 
 Nothing seems to be happening, adding a `⎕` quad to look at intermediate values,
 
@@ -76,7 +82,7 @@ Nothing seems to be happening, adding a `⎕` quad to look at intermediate value
 ...
 ```
 
-They quickly halt the program using ``Action > Interrupt`` in RIDE, realising a never-ending series of computations have been specified, by calling the function within itself. Calling a function within itself itself is allowed in APL, and is regularly used to implement recursion! The special symbol `∇` can also be used in place of the function name. 
+They quickly halt the program using ``Action > Interrupt`` in RIDE, realising a never-ending series of computations have been specified, by calling the function within itself. Calling a function within itself itself is allowed in APL, and is generally called **recursion** in programming. The special symbol `∇` can also be used in place of the function name. 
 
 Trying to do this for the infinite sum, they set the right argument to be the accumulated sum, and the left argument to be the index.
 
@@ -120,7 +126,6 @@ Guarded expressions are conditional expressions; they only execute a statement i
 The guarded expression in the above function is ``(10*¯10)>0.99*⍺: ⎕ ← ⍵``. 
 
 The guarded expression consists of a logical expression ``(10*¯10)>0.99*⍺`` followed by a colon `:`, and another expression ``⎕ ← ⍵``. This means ``⎕ ← ⍵`` will be executed only if ``0.99*⍺`` is less than ``(10*¯10)`` (if the next power of ``0.99`` is less than $10^{-10}$).
-
 
 This is similar to the mathematical specification of piecewise functions. In fact, the above function would be written as follows.
 

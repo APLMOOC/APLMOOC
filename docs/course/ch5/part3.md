@@ -128,7 +128,7 @@ This cake is arranged along three axis, as is the case with most physical object
 Try to get familiar with the order of the axes.
 
 <div style="aspect-ratio: 5 / 3; width: 100%;">
-<iframe class="lazy-iframe" data-src="\js\demos\cake_intro.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%;width:100%;height:100%;"></iframe>
+<iframe title="Interactive demonstration of array axes" class="lazy-iframe" data-src="\js\demos\cake_intro.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%;width:100%;height:100%;"></iframe>
 </div>
 
 Using bracket-axis notation, we can now play with our food and reduce along all three axes! Click one of the buttons below to visualize each reduction. Use your knowledge of the axis order to guess the direction of each reduction!
@@ -175,7 +175,7 @@ Using bracket-axis notation, we can now play with our food and reduce along all 
 </div>
 
 <div style="aspect-ratio: 5/3; width:100%">
-<iframe id="cake_rank" class="lazy-iframe" data-src="\js\demos\cake_rank.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%"></iframe>
+<iframe title="Interactive demonstration of array rank" id="cake_rank" class="lazy-iframe" data-src="\js\demos\cake_rank.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%"></iframe>
 </div>
 
 <script>
@@ -284,7 +284,7 @@ An ``n``-cell of a rank ``r`` array is a rank n array formed from picking ``r-n`
 </div>
 
 <div style="aspect-ratio: 5/3; width:100%">
-<iframe id="cake_cell" class="lazy-iframe" data-src="\js\demos\cake_cell.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%"></iframe>
+<iframe title="Interactive demonstration of array cells" id="cake_cell" class="lazy-iframe" data-src="\js\demos\cake_cell.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%"></iframe>
 </div>
 
 

@@ -4,7 +4,7 @@
 
     This part is considered to be bonus content.
     It contains some more advanced topics that are not covered in the main course.
-    It can also give some examples of functions and topics that are introuced later in the course.
+    It can also give some examples of functions and topics that are introduced later in the course.
     There are no exercises related to this content.
 
     Feel free to skim or skip this section for now, and return to it later!
@@ -249,7 +249,7 @@ It starts from the camera position and adds to it the distance to the environmen
 
 If the distance to the environment is less than a small value, then it returns the dot product of the vector to the light source with the normal to the environment at that point, or zero, depending on which is greater. If not, then it returns the current position, ray, and counter incremented by one.
 
-The power operator f⍣g allows us to evaluate the function f until the function g returns a value of 1. The function g takes in the previous return value of f, and the current return value of f, as left and right arguments. 
+The power operator f⍣g allows us to evaluate the function f until the function g returns a value of 1. The function g takes the current return value of f as its left argument and the previous return value as its right argument. 
 
 Here, the march function keeps moving the current position along the ray until either the result is a single value, that is, if the if statement in the march function returns either 0 or the dot product, by checking the number of elements (1=≢⍺), or if the number of iterations exceeds 32, ⍺[3]>32.
 

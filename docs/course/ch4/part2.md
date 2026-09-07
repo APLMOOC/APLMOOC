@@ -39,7 +39,7 @@ MovieDB ← [ 'Title' 'Year' 'Rating' 'Runtime' 'Watches' 'Genre' ⋄
 
 The first thing you want to do is calculate the total amount of time you've spent watching these movies. You first get the array of runtimes, then the array of times watched, and multiply them together. 
 
-Note that you need to remove the first element of the arrays to get rid of the column labels, more on the drop  function ``↓`` in part 4.
+Note that you need to remove the first element of the arrays to get rid of the column labels, more on the drop function ``↓`` in part 4.
 
 ```apl
       1↓MovieDB[;4]

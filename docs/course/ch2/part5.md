@@ -43,19 +43,19 @@ This also means that it's possible to accidentally create a matrix of vectors ra
             21.3 'Day 1 14:36' ⋄
             22.3 'Day 1 16:50' ]
 
-      T2 ← [ 22.8 'Day 1 18:23'  ⋄ 
-             21.5 'Day 1 19:30'  ⋄
-             22.1 'Day 2, 21:12' ⋄
-             22.0 'Day 3, 07:15' ⋄
-             21.9 'Day 3, 08:30' ⋄
-             22.4 'Day 3, 09:45' ]
+      T2 ← [ 22.8 'Day 1 18:23' ⋄ 
+             21.5 'Day 1 19:30' ⋄
+             22.1 'Day 1 21:12' ⋄
+             22.0 'Day 2 07:15' ⋄
+             21.9 'Day 2 08:30' ⋄
+             22.4 'Day 2 09:45' ]
 
       TData ← 2 6 2 ⍴ T1 T2
 ```
 
-We would get a very large array of the vectors T1 and T2! (Try it!) 
+We would get a very large array of the matrices T1 and T2! (Try it!) 
 
-In APL, elements of arrays can be of any rank. In the above code, we create an array of vectors rather than an array of their scalars because ``T1 T2`` is a vector whose elements are ``T1`` and ``T2``. 
+In APL, elements of arrays can be of any rank. In the above code, we create a nested array of matrices rather than an array of their scalars because ``T1 T2`` is a vector whose elements are ``T1`` and ``T2``. 
 
 ## Catenate and ravel
 
@@ -103,14 +103,14 @@ TETE
             21.3 'Day 1 14:36' ⋄
             22.3 'Day 1 16:50' ]
 
-      T2 ← [ 22.8 'Day 1 18:23'  ⋄ 
-             21.5 'Day 1 19:30'  ⋄
-             22.1 'Day 2, 21:12' ⋄
-             22.0 'Day 3, 07:15' ⋄
-             21.9 'Day 3, 08:30' ⋄
-             22.4 'Day 3, 09:45' ]
+      T2 ← [ 22.8 'Day 1 18:23' ⋄ 
+             21.5 'Day 1 19:30' ⋄
+             22.1 'Day 1 21:12' ⋄
+             22.0 'Day 2 07:15' ⋄
+             21.9 'Day 2 08:30' ⋄
+             22.4 'Day 2 09:45' ]
 
-      TData ← 2 6 2 ⍴ T1,T2
+      TData ← 2 6 2 ⍴ (,T1),,T2
       TData
 ┌────┬───────────┐
 │21.4│Day 1 07:42│
@@ -130,20 +130,20 @@ TETE
 ├────┼───────────┤
 │21.5│Day 1 19:30│
 ├────┼───────────┤
-│22.1│Day 2 21:12│
+│22.1│Day 1 21:12│
 ├────┼───────────┤
-│22  │Day 3 07:15│
+│22  │Day 2 07:15│
 ├────┼───────────┤
-│21.9│Day 3 08:30│
+│21.9│Day 2 08:30│
 ├────┼───────────┤
-│22.4│Day 3 09:45│
+│22.4│Day 2 09:45│
 └────┴───────────┘
 ```
 
 
 !!! info "Boxing"
        
-       In TryAPL, boxing is enabled by default; however, to manually control boxing, the `]Box` user command can be used.
+       In TryAPL, drawing boxes around distinct elements for readability is enabled by default; however, to manually control boxing, the `]Box` user command can be used.
        
        ```apl
              nested ← 2 2 ⍴ (1 2 3) ('  ') ('   ') (2 2 ⍴ ('  ') (1 2 3) (2 2 ⍴ (1 2 3) ('  ') ('   ') (1 2)) ('   '))

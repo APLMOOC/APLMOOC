@@ -114,7 +114,7 @@ Sure, this solution could definitely be optimised and shortened.
 However, this is also how beginner Python programmers are often taught to approach problems such as this.
 
 You'll notice that there is a lot of overhead in this solution:
-the programmer manually go through the list using a loop,
+the programmer manually goes through the list using a loop,
 handle all of the different cases (making sure they are exhaustive),
 and print the result to the screen themselves.
 New students have to understand that functions are called using parentheses, while square brackets and commas are used for lists.

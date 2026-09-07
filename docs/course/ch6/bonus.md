@@ -351,7 +351,6 @@ def uncover(x, y):
       return
   apl.eval("board ← (¯1@(uncover ∆))board", x, y)
   
-new_board()
 calculate_adjacency()
 ```
 
@@ -451,6 +450,7 @@ apl.fix("uncover ← ({(¯1∊⍵)∧⍵[2;2]≠1: ¯1 ⋄ ⍵[2;2]}⌺3 3⍣≡
 
 is_mine = apl.fn("{(⍵⌷board)=1}")
 
+new_board()
 apl.eval("labels ← (⍴ board) ⍴ ' '")
 
 def flag(x, y):

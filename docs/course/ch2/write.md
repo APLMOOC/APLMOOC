@@ -25,11 +25,11 @@ Since this course is still a work-in-progress, solving the write exercises will 
     <div class="problem">
         <span class="problemspan">PRIMES←</span>
         <span class="problemfilltext" id="input_ch2_p1_b1" hidden>A←{PRIMES←</span>
-        <input class="probleminput" type="text" id="input_ch2_p1_b2" placeholder="your solution here">
+        <input aria-label="Chapter 2, write problem 1, answer field 2" class="probleminput" type="text" id="input_ch2_p1_b2" placeholder="your solution here">
         <span class="problemfilltext" id="input_ch2_p1_b3" hidden>⋄ PRIMES}</span>
         <button class="problembutton" onclick="submit_problem('ch2_p1', 3)">Submit</button>
     </div>
-    <p id="feedback_ch2_p1" style="color: red"></p>
+    <p role="status" aria-atomic="true" id="feedback_ch2_p1" style="color: red"></p>
 
 ---
 
@@ -38,11 +38,11 @@ Since this course is still a work-in-progress, solving the write exercises will 
     <div class="problem">
         <span class="problemspan">POWER←</span>
         <span class="problemfilltext" id="input_ch2_p2_b1" hidden>A←{PRIMES←2 3 5 7 11 13 17 19 23 29 ⋄ POWER←</span>
-        <input class="probleminput" type="text" id="input_ch2_p2_b2" placeholder="your solution here">
+        <input aria-label="Chapter 2, write problem 2, answer field 2" class="probleminput" type="text" id="input_ch2_p2_b2" placeholder="your solution here">
         <span class="problemfilltext" id="input_ch2_p2_b3" hidden>⋄ POWER}</span>
         <button class="problembutton" onclick="submit_problem('ch2_p2', 3)">Submit</button>
     </div>
-    <p id="feedback_ch2_p2" style="color: red"></p>
+    <p role="status" aria-atomic="true" id="feedback_ch2_p2" style="color: red"></p>
 
 ---
 
@@ -51,11 +51,11 @@ Since this course is still a work-in-progress, solving the write exercises will 
     <div class="problem">
         <span class="problemspan">⎕←</span>
         <span class="problemfilltext" id="input_ch2_p3_b1" hidden>A←{PRIMES←2 3 5 7 11 13 17 19 23 29 ⋄ POWER←(2*PRIMES)-2 ⋄ </span>
-        <input class="probleminput" type="text" id="input_ch2_p3_b2" placeholder="your solution here">
+        <input aria-label="Chapter 2, write problem 3, answer field 2" class="probleminput" type="text" id="input_ch2_p3_b2" placeholder="your solution here">
         <span class="problemfilltext" id="input_ch2_p3_b3" hidden>}</span>
         <button class="problembutton" onclick="submit_problem('ch2_p3', 3)">Submit</button>
     </div>
-    <p id="feedback_ch2_p3" style="color: red"></p>
+    <p role="status" aria-atomic="true" id="feedback_ch2_p3" style="color: red"></p>
 
 ---
 
@@ -65,11 +65,11 @@ Since this course is still a work-in-progress, solving the write exercises will 
         <span class="problemspan">⎕←</span>
         <span class="problemfilltext" id="input_ch2_p4_b1" hidden>A←{</span>
         <span class="problemfilltext" id="input_ch2_p4_b2">⎕A[</span>
-        <input class="problemfillinput" type="text" id="input_ch2_p4_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
+        <input aria-label="Chapter 2, write problem 4, answer field 3" class="problemfillinput" type="text" id="input_ch2_p4_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
         <span class="problemfilltext" id="input_ch2_p4_b4" hidden>}</span>
         <button class="problembutton" onclick="submit_problem('ch2_p4', 4)">Submit</button>
     </div>
-    <p id="feedback_ch2_p4" style="color: red"></p>
+    <p role="status" aria-atomic="true" id="feedback_ch2_p4" style="color: red"></p>
 
 ---
 
@@ -110,11 +110,11 @@ Since this course is still a work-in-progress, solving the write exercises will 
         <span class="problemspan">⎕←</span>
         <span class="problemfilltext" id="input_ch2_p5_b1" hidden>A←{CIPHER←(26 27⍴⎕A)[;⍳26] ⋄ </span>
         <span class="problemfilltext" id="input_ch2_p5_b2">CIPHER[</span>
-        <input class="problemfillinput" type="text" id="input_ch2_p5_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
+        <input aria-label="Chapter 2, write problem 5, answer field 3" class="problemfillinput" type="text" id="input_ch2_p5_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
         <span class="problemfilltext" id="input_ch2_p5_b4" hidden>}</span>
         <button class="problembutton" onclick="submit_problem('ch2_p5', 4)">Submit</button>
     </div>
-    <p id="feedback_ch2_p5" style="color: red"></p>
+    <p role="status" aria-atomic="true" id="feedback_ch2_p5" style="color: red"></p>
 
 ---
 
@@ -147,25 +147,25 @@ Since this course is still a work-in-progress, solving the write exercises will 
         <span class="problemspan">APL←</span>
         <span class="problemfilltext" id="input_ch2_p6_b1" hidden>A←{ART←12 27⍴'     .&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;.        |.---------------.|        ||  &#95;&#95;  &#95;&#95;&#95;&#95; &#95;&#95;  ||        || / &#95;&#92;(  &#95; (  ) ||        ||/    &#92;) &#95;&#95;/ (&#95;/||        ||&#92;&#95;/&#92;&#95;(&#95;&#95;) &#92;&#95;&#95;&#95;&#95;||        ||&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;||        /.-.-.-.-.-.-.-.-.&#92;       /.-.-.-.-.-.-.-.-.-.&#92;     /.-.-.-.-.-.-.-.-.-.-.&#92;   /&#95;&#95;&#95;&#95;&#95;&#95;/&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#92;&#95;&#95;&#95;&#95;&#95;&#92;  &#92;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;/' ⋄ </span>
         <span class="problemfilltext" id="input_ch2_p6_b2">ART[</span>
-        <input class="problemfillinput" type="text" id="input_ch2_p6_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
+        <input aria-label="Chapter 2, write problem 6, answer field 3" class="problemfillinput" type="text" id="input_ch2_p6_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
         <span class="problemfilltext" id="input_ch2_p6_b4" hidden>}</span>
         <button class="problembutton" onclick="submit_problem('ch2_p6', 4)">Submit</button>
     </div>
-    <p id="feedback_ch2_p6" style="color: red"></p>
+    <p role="status" aria-atomic="true" id="feedback_ch2_p6" style="color: red"></p>
 
 ---
 
 !!! write-problem "Write problem 7"
-    Create a 3 by 3 grid of 'X's and 'O's called BOARD 
+    Create a 3 by 3 grid called BOARD by reshaping the vector 'XO', so that 'X' and 'O' alternate
     <div class="problem">
         <span class="problemspan">BOARD←</span>
         <span class="problemfilltext" id="input_ch2_p7_b1" hidden>A←{BOARD←</span>
-        <input class="problemfillinput" type="text" id="input_ch2_p7_b2" placeholder="fill in the blank" oninput="fillinput_resize(this)">
+        <input aria-label="Chapter 2, write problem 7, answer field 2" class="problemfillinput" type="text" id="input_ch2_p7_b2" placeholder="fill in the blank" oninput="fillinput_resize(this)">
         <span class="problemfilltext" id="input_ch2_p7_b3">'XO'</span>
         <span class="problemfilltext" id="input_ch2_p7_b4" hidden>⋄ BOARD}</span>
         <button class="problembutton" onclick="submit_problem('ch2_p7', 4)">Submit</button>
     </div>
-    <p id="feedback_ch2_p7" style="color: red"></p>
+    <p role="status" aria-atomic="true" id="feedback_ch2_p7" style="color: red"></p>
 
 ---
 
@@ -175,11 +175,11 @@ Since this course is still a work-in-progress, solving the write exercises will 
         <span class="problemspan">⎕←</span>
         <span class="problemfilltext" id="input_ch2_p8_b1" hidden>A←{BOARD←3 3⍴'XO' ⋄ </span>
         <span class="problemfilltext" id="input_ch2_p8_b2">BOARD[</span>
-        <input class="problemfillinput" type="text" id="input_ch2_p8_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
+        <input aria-label="Chapter 2, write problem 8, answer field 3" class="problemfillinput" type="text" id="input_ch2_p8_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
         <span class="problemfilltext" id="input_ch2_p8_b4" hidden>⋄ BOARD}</span>
         <button class="problembutton" onclick="submit_problem('ch2_p8', 4)">Submit</button>
     </div>
-    <p id="feedback_ch2_p8" style="color: red"></p>
+    <p role="status" aria-atomic="true" id="feedback_ch2_p8" style="color: red"></p>
 
 ---
 
@@ -188,11 +188,11 @@ Since this course is still a work-in-progress, solving the write exercises will 
     <div class="problem">
         <span class="problemspan">⎕←</span>
         <span class="problemfilltext" id="input_ch2_p9_b1" hidden>A←{C←3↑⍵ ⋄ X←4⊃⍵ ⋄ </span>
-        <input class="probleminput" type="text" id="input_ch2_p9_b2" placeholder="your solution here">
+        <input aria-label="Chapter 2, write problem 9, answer field 2" class="probleminput" type="text" id="input_ch2_p9_b2" placeholder="your solution here">
         <span class="problemfilltext" id="input_ch2_p9_b3" hidden>}</span>
         <button class="problembutton" onclick="submit_problem('ch2_p9', 3)">Submit</button>
     </div>
-    <p id="feedback_ch2_p9" style="color: red"></p>
+    <p role="status" aria-atomic="true" id="feedback_ch2_p9" style="color: red"></p>
 
 ---
 
@@ -212,11 +212,11 @@ Since this course is still a work-in-progress, solving the write exercises will 
         <span class="problemspan">⎕←</span>
         <span class="problemfilltext" id="input_ch2_p10_b1" hidden>A←{GAMES←5 24⍴'CHESS                   CHECKERS                BACKGAMMON              POKER                   GLOBAL THERMONUCLEAR WAR' ⋄ </span>
         <span class="problemfilltext" id="input_ch2_p10_b2">GAMES[</span>
-        <input class="problemfillinput" type="text" id="input_ch2_p10_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
+        <input aria-label="Chapter 2, write problem 10, answer field 3" class="problemfillinput" type="text" id="input_ch2_p10_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
         <span class="problemfilltext" id="input_ch2_p10_b4" hidden>}</span>
         <button class="problembutton" onclick="submit_problem('ch2_p10', 4)">Submit</button>
     </div>
-    <p id="feedback_ch2_p10" style="color: red"></p>
+    <p role="status" aria-atomic="true" id="feedback_ch2_p10" style="color: red"></p>
 
 ---
 
@@ -226,11 +226,11 @@ Since this course is still a work-in-progress, solving the write exercises will 
         <span class="problemspan">⎕←</span>
         <span class="problemfilltext" id="input_ch2_p11_b1" hidden>A←{GAMES←5 24⍴'CHESS                   CHECKERS                BACKGAMMON              POKER                   GLOBAL THERMONUCLEAR WAR' ⋄ </span>
         <span class="problemfilltext" id="input_ch2_p11_b2">GAMES[</span>
-        <input class="problemfillinput" type="text" id="input_ch2_p11_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
+        <input aria-label="Chapter 2, write problem 11, answer field 3" class="problemfillinput" type="text" id="input_ch2_p11_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
         <span class="problemfilltext" id="input_ch2_p11_b4" hidden>}</span>
         <button class="problembutton" onclick="submit_problem('ch2_p11', 4)">Submit</button>
     </div>
-    <p id="feedback_ch2_p11" style="color: red"></p>
+    <p role="status" aria-atomic="true" id="feedback_ch2_p11" style="color: red"></p>
 
 ---
 
@@ -255,11 +255,11 @@ Since this course is still a work-in-progress, solving the write exercises will 
         <span class="problemspan">⎕←</span>
         <span class="problemfilltext" id="input_ch2_p12_b1" hidden>A←{ROUND←3 3⍴'DRAW' 'P2 COVERS' 'P1 BLUNTS' 'P1 COVERS' 'DRAW' 'P2 CUTS' 'P2 BLUNTS' 'P1 CUTS' 'DRAW' ⋄ </span>
         <span class="problemfilltext" id="input_ch2_p12_b2">ROUND[</span>
-        <input class="problemfillinput" type="text" id="input_ch2_p12_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
+        <input aria-label="Chapter 2, write problem 12, answer field 3" class="problemfillinput" type="text" id="input_ch2_p12_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
         <span class="problemfilltext" id="input_ch2_p12_b4" hidden>}</span>
         <button class="problembutton" onclick="submit_problem('ch2_p12', 4)">Submit</button>
     </div>
-    <p id="feedback_ch2_p12" style="color: red"></p>
+    <p role="status" aria-atomic="true" id="feedback_ch2_p12" style="color: red"></p>
 
 
 

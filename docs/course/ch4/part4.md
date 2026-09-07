@@ -139,7 +139,7 @@ We get nothing: just the empty vector! Makes sense.
 Indexing is used to pick out values based on an index from an array.
 Let's compare two different programs: the first one is written in Python, and the second one is written in APL.
 
-```py
+```python
 things = [5, -7, 6, 3, 0, 1]
 print(things[2])
 

@@ -44,7 +44,7 @@ At one point, I found a solution that spanned just 50 lines.
 Python solutions to the more difficult challenges are usually around 150 lines long.
 In its 50 lines, the APL solution apparently solved _all_ the problems!
 
-It was astounding.
+It was awe-inspiring.
 
 ---
 

@@ -181,6 +181,7 @@ Let's see what happens when we change the index origin:
 0
       ⍳5
 0 1 2 3 4
+      ⎕IO ← 1
 ```
 
 Note that now `⍳` still generates a vector of the *length* you give it, and not *up to the value* you give it.
