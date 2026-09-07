@@ -745,9 +745,9 @@
   <label class="md-nav__title">Feedback</label>
   <form class="apl-feedback" data-section="1.R - Read exercises">
     <p class="apl-feedback__where">1.R - Read exercises</p>
-    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+    <textarea aria-label="Course feedback" class="apl-feedback__message" rows="4" maxlength="2000" required
               placeholder="Spotted a mistake? Something unclear?"></textarea>
-    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+    <input aria-label="Email address (optional)" class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
            placeholder="Email (optional)">
     <button class="apl-feedback__send" type="submit">Send</button>
     <p class="apl-feedback__status" role="status"></p>
@@ -2370,9 +2370,9 @@
   <label class="md-nav__title">Feedback</label>
   <form class="apl-feedback" data-section="1.R - Read exercises">
     <p class="apl-feedback__where">1.R - Read exercises</p>
-    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+    <textarea aria-label="Course feedback" class="apl-feedback__message" rows="4" maxlength="2000" required
               placeholder="Spotted a mistake? Something unclear?"></textarea>
-    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+    <input aria-label="Email address (optional)" class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
            placeholder="Email (optional)">
     <button class="apl-feedback__send" type="submit">Send</button>
     <p class="apl-feedback__status" role="status"></p>
@@ -2402,11 +2402,13 @@ Check your answers by opening the "Output" tab.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Input</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      2 + 3</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">3</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      2 + 3
-5</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">3</span>
+<span class="m">5</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2417,11 +2419,13 @@ Check your answers by opening the "Output" tab.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Input</label><label for="__tabbed_2_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      2-3</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">2</span><span class="o">-</span><span class="m">3</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      2-3
-¯1</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">2</span><span class="o">-</span><span class="m">3</span>
+<span class="m">¯1</span>
+</code></pre></div>
 <p>The negative sign (<code>¯</code>) is different from the minus function (<code>-</code>)</p>
 </div>
 </div>
@@ -2433,11 +2437,13 @@ Check your answers by opening the "Output" tab.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Input</label><label for="__tabbed_3_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      3*3</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">3</span><span class="o">*</span><span class="m">3</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      3*3
-27</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">3</span><span class="o">*</span><span class="m">3</span>
+<span class="m">27</span>
+</code></pre></div>
 <p><code>*</code> is used for exponentiation, not multiplication</p>
 </div>
 </div>
@@ -2449,11 +2455,13 @@ Check your answers by opening the "Output" tab.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Input</label><label for="__tabbed_4_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      3×3</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">3</span><span class="o">×</span><span class="m">3</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      3×3
-9</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">3</span><span class="o">×</span><span class="m">3</span>
+<span class="m">9</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2464,11 +2472,13 @@ Check your answers by opening the "Output" tab.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Input</label><label for="__tabbed_5_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      3÷2</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">3</span><span class="o">÷</span><span class="m">2</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      3÷2
-1.5</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">3</span><span class="o">÷</span><span class="m">2</span>
+<span class="m">1.5</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2479,13 +2489,15 @@ Check your answers by opening the "Output" tab.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Input</label><label for="__tabbed_6_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      2¯7</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">2¯7</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      2¯7
-SYNTAX ERROR
-      2¯7
-      ∧</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">2¯7</span>
+<span class="nv">SYNTAX</span><span class="w"> </span><span class="nv">ERROR</span>
+<span class="w">      </span><span class="m">2¯7</span>
+<span class="w">      </span><span class="o">∧</span>
+</code></pre></div>
 <p>The negative sign (<code>¯</code>) is not a function. Use the <code>-</code> function instead.</p>
 </div>
 </div>
@@ -2497,13 +2509,15 @@ SYNTAX ERROR
 <div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Input</label><label for="__tabbed_7_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      1+2÷</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">1</span><span class="o">+</span><span class="m">2</span><span class="o">÷</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      1+2÷
-SYNTAX ERROR
-      1+2÷
-         ∧</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">1</span><span class="o">+</span><span class="m">2</span><span class="o">÷</span>
+<span class="nv">SYNTAX</span><span class="w"> </span><span class="nv">ERROR</span>
+<span class="w">      </span><span class="m">1</span><span class="o">+</span><span class="m">2</span><span class="o">÷</span>
+<span class="w">         </span><span class="o">∧</span>
+</code></pre></div>
 <p>The divide function is missing its right argument.</p>
 </div>
 </div>
@@ -2515,13 +2529,15 @@ SYNTAX ERROR
 <div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Input</label><label for="__tabbed_8_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      100÷0</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">100</span><span class="o">÷</span><span class="m">0</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      100÷0
-DOMAIN ERROR: Divide by zero
-      100÷0
-         ∧</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">100</span><span class="o">÷</span><span class="m">0</span>
+<span class="nv">DOMAIN</span><span class="w"> </span><span class="nv">ERROR</span><span class="bp">:</span><span class="w"> </span><span class="nv">Divide</span><span class="w"> </span><span class="nv">by</span><span class="w"> </span><span class="nv">zero</span>
+<span class="w">      </span><span class="m">100</span><span class="o">÷</span><span class="m">0</span>
+<span class="w">         </span><span class="o">∧</span>
+</code></pre></div>
 <p>Can't divide by zero!</p>
 </div>
 </div>
@@ -2533,11 +2549,13 @@ DOMAIN ERROR: Divide by zero
 <div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Input</label><label for="__tabbed_9_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      0÷100</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">0</span><span class="o">÷</span><span class="m">100</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      0÷100
-0</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">0</span><span class="o">÷</span><span class="m">100</span>
+<span class="m">0</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2548,11 +2566,13 @@ DOMAIN ERROR: Divide by zero
 <div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Input</label><label for="__tabbed_10_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      0÷0</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">0</span><span class="o">÷</span><span class="m">0</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      0÷0
-1</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">0</span><span class="o">÷</span><span class="m">0</span>
+<span class="m">1</span>
+</code></pre></div>
 <p>Ah, the age-old dilemma!
 Were you expecting a <code>DOMAIN ERROR</code>?
 All standard implementations of APL allow the division of <code>0</code> by itself for convenience, though there has been <a href="https://www.jsoftware.com/papers/zero.htm">some argument</a> on why this should be <code>0</code> instead. </p>
@@ -2566,11 +2586,13 @@ All standard implementations of APL allow the division of <code>0</code> by itse
 <div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Input</label><label for="__tabbed_11_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      ¯2×¯3</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">¯2</span><span class="o">×</span><span class="m">¯3</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      ¯2×¯3
-6</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">¯2</span><span class="o">×</span><span class="m">¯3</span>
+<span class="m">6</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2582,11 +2604,13 @@ All standard implementations of APL allow the division of <code>0</code> by itse
 <div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Input</label><label for="__tabbed_12_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      4×2+3</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">4</span><span class="o">×</span><span class="m">2</span><span class="o">+</span><span class="m">3</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      4×2+3
-20</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">4</span><span class="o">×</span><span class="m">2</span><span class="o">+</span><span class="m">3</span>
+<span class="m">20</span>
+</code></pre></div>
 <p>Right-to-left.</p>
 </div>
 </div>
@@ -2598,11 +2622,13 @@ All standard implementations of APL allow the division of <code>0</code> by itse
 <div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Input</label><label for="__tabbed_13_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      5×2   +   3×2</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">5</span><span class="o">×</span><span class="m">2</span><span class="w">   </span><span class="o">+</span><span class="w">   </span><span class="m">3</span><span class="o">×</span><span class="m">2</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      5×2   +   3×2
-40</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">5</span><span class="o">×</span><span class="m">2</span><span class="w">   </span><span class="o">+</span><span class="w">   </span><span class="m">3</span><span class="o">×</span><span class="m">2</span>
+<span class="m">40</span>
+</code></pre></div>
 <p>Still right-to-left, regardless of spaces.</p>
 </div>
 </div>
@@ -2614,11 +2640,13 @@ All standard implementations of APL allow the division of <code>0</code> by itse
 <div class="tabbed-set tabbed-alternate" data-tabs="14:2"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">Input</label><label for="__tabbed_14_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      24÷8÷2</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">24</span><span class="o">÷</span><span class="m">8</span><span class="o">÷</span><span class="m">2</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      24÷8÷2
-6</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">24</span><span class="o">÷</span><span class="m">8</span><span class="o">÷</span><span class="m">2</span>
+<span class="m">6</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2629,13 +2657,15 @@ All standard implementations of APL allow the division of <code>0</code> by itse
 <div class="tabbed-set tabbed-alternate" data-tabs="15:2"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><input id="__tabbed_15_2" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="__tabbed_15_1">Input</label><label for="__tabbed_15_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      3÷12 + 4×¯3</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">3</span><span class="o">÷</span><span class="m">12</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">4</span><span class="o">×</span><span class="m">¯3</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      3÷12 + 4×¯3
-DOMAIN ERROR: Divide by zero
-      3÷12 + 4×¯3
-       ∧</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">3</span><span class="o">÷</span><span class="m">12</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">4</span><span class="o">×</span><span class="m">¯3</span>
+<span class="nv">DOMAIN</span><span class="w"> </span><span class="nv">ERROR</span><span class="bp">:</span><span class="w"> </span><span class="nv">Divide</span><span class="w"> </span><span class="nv">by</span><span class="w"> </span><span class="nv">zero</span>
+<span class="w">      </span><span class="m">3</span><span class="o">÷</span><span class="m">12</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">4</span><span class="o">×</span><span class="m">¯3</span>
+<span class="w">       </span><span class="o">∧</span>
+</code></pre></div>
 <p>The <code>12 + ¯12</code> results in zero, which is outside of the domain of the divide function's right argument.</p>
 </div>
 </div>
@@ -2647,11 +2677,13 @@ DOMAIN ERROR: Divide by zero
 <div class="tabbed-set tabbed-alternate" data-tabs="16:2"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><input id="__tabbed_16_2" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="__tabbed_16_1">Input</label><label for="__tabbed_16_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      (((2+3)))</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="p">(((</span><span class="m">2</span><span class="o">+</span><span class="m">3</span><span class="p">)))</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      (((2+3)))
-5</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="p">(((</span><span class="m">2</span><span class="o">+</span><span class="m">3</span><span class="p">)))</span>
+<span class="m">5</span>
+</code></pre></div>
 <p>Extra parentheses never hurt anyone.</p>
 </div>
 </div>
@@ -2663,11 +2695,13 @@ DOMAIN ERROR: Divide by zero
 <div class="tabbed-set tabbed-alternate" data-tabs="17:2"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><input id="__tabbed_17_2" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="__tabbed_17_1">Input</label><label for="__tabbed_17_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      (((5))+((((3)))×(2)))</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="p">(((</span><span class="m">5</span><span class="p">))</span><span class="o">+</span><span class="p">((((</span><span class="m">3</span><span class="p">)))</span><span class="o">×</span><span class="p">(</span><span class="m">2</span><span class="p">)))</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      (((5))+((((3)))×(2)))
-11</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="p">(((</span><span class="m">5</span><span class="p">))</span><span class="o">+</span><span class="p">((((</span><span class="m">3</span><span class="p">)))</span><span class="o">×</span><span class="p">(</span><span class="m">2</span><span class="p">)))</span>
+<span class="m">11</span>
+</code></pre></div>
 <p>Very aesthetic!</p>
 </div>
 </div>
@@ -2679,11 +2713,13 @@ DOMAIN ERROR: Divide by zero
 <div class="tabbed-set tabbed-alternate" data-tabs="18:2"><input checked="checked" id="__tabbed_18_1" name="__tabbed_18" type="radio" /><input id="__tabbed_18_2" name="__tabbed_18" type="radio" /><div class="tabbed-labels"><label for="__tabbed_18_1">Input</label><label for="__tabbed_18_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      4×24÷3</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">4</span><span class="o">×</span><span class="m">24</span><span class="o">÷</span><span class="m">3</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      4×24÷3
-32</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">4</span><span class="o">×</span><span class="m">24</span><span class="o">÷</span><span class="m">3</span>
+<span class="m">32</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2694,11 +2730,13 @@ DOMAIN ERROR: Divide by zero
 <div class="tabbed-set tabbed-alternate" data-tabs="19:2"><input checked="checked" id="__tabbed_19_1" name="__tabbed_19" type="radio" /><input id="__tabbed_19_2" name="__tabbed_19" type="radio" /><div class="tabbed-labels"><label for="__tabbed_19_1">Input</label><label for="__tabbed_19_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      24÷4×3</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">24</span><span class="o">÷</span><span class="m">4</span><span class="o">×</span><span class="m">3</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      24÷4×3
-2</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">24</span><span class="o">÷</span><span class="m">4</span><span class="o">×</span><span class="m">3</span>
+<span class="m">2</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2709,13 +2747,15 @@ DOMAIN ERROR: Divide by zero
 <div class="tabbed-set tabbed-alternate" data-tabs="20:2"><input checked="checked" id="__tabbed_20_1" name="__tabbed_20" type="radio" /><input id="__tabbed_20_2" name="__tabbed_20" type="radio" /><div class="tabbed-labels"><label for="__tabbed_20_1">Input</label><label for="__tabbed_20_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      6×3-</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">6</span><span class="o">×</span><span class="m">3</span><span class="o">-</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      6×3-
-SYNTAX ERROR
-      6×3-
-         ∧</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">6</span><span class="o">×</span><span class="m">3</span><span class="o">-</span>
+<span class="nv">SYNTAX</span><span class="w"> </span><span class="nv">ERROR</span>
+<span class="w">      </span><span class="m">6</span><span class="o">×</span><span class="m">3</span><span class="o">-</span>
+<span class="w">         </span><span class="o">∧</span>
+</code></pre></div>
 <p>Typo.</p>
 </div>
 </div>

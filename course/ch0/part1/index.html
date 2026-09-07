@@ -2344,9 +2344,9 @@
   <label class="md-nav__title">Feedback</label>
   <form class="apl-feedback" data-section="0.1 - Quirky and different">
     <p class="apl-feedback__where">0.1 - Quirky and different</p>
-    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+    <textarea aria-label="Course feedback" class="apl-feedback__message" rows="4" maxlength="2000" required
               placeholder="Spotted a mistake? Something unclear?"></textarea>
-    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+    <input aria-label="Email address (optional)" class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
            placeholder="Email (optional)">
     <button class="apl-feedback__send" type="submit">Send</button>
     <p class="apl-feedback__status" role="status"></p>
@@ -2371,7 +2371,8 @@
 <p>One December, I participated in the <a href="https://adventofcode.com/">Advent of Code</a>. Like a traditional advent calendar, every day had something new, but instead of a small treat they were small programming projects. Fun! </p>
 <p>There were two Christmas-themed challenges per day, leading to a grand total of fifty by the end of December.</p>
 <p>Throughout the month, so-called solutions like these were posted.</p>
-<pre class="highlight"><code class="language-apl">east  ← ⊢{(⍺+¯1⌽⍵)-⍵}     0∘&lt;∧0=1∘⌽   ⍝ (1)!</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="nv">east</span><span class="w">  </span><span class="kd">←</span><span class="w"> </span><span class="o">⊢</span><span class="kt">{</span><span class="p">(</span><span class="bp">⍺</span><span class="o">+</span><span class="m">¯1</span><span class="o">⌽</span><span class="bp">⍵</span><span class="p">)</span><span class="o">-</span><span class="bp">⍵</span><span class="kt">}</span><span class="w">     </span><span class="m">0</span><span class="na">∘</span><span class="o">&lt;∧</span><span class="m">0</span><span class="o">=</span><span class="m">1</span><span class="na">∘</span><span class="o">⌽</span><span class="w">   </span><span class="c1">⍝ (1)!</span>
+</code></pre></div>
 <ol>
 <li>Example taken from <a href="https://github.com/pitr/aoc/blob/main/2021/25.apl">https://github.com/pitr/aoc/blob/main/2021/25.apl</a></li>
 </ol>
@@ -2393,7 +2394,7 @@ However, I couldn't see how they could possibly represent any kind of algorithm,
 At one point, I found a solution that spanned just 50 lines.
 Python solutions to the more difficult challenges are usually around 150 lines long.
 In its 50 lines, the APL solution apparently solved <em>all</em> the problems!</p>
-<p>It was astounding.</p>
+<p>It was awe-inspiring.</p>
 <hr />
 <p>APL looks different, feels different, and challenges the way you think about programming.</p>
 <p>I hope that this course will expand your mind and let you approach programming from a whole new perspective.</p>

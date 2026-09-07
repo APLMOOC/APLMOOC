@@ -2344,9 +2344,9 @@
   <label class="md-nav__title">Feedback</label>
   <form class="apl-feedback" data-section="3.W - Write exercises">
     <p class="apl-feedback__where">3.W - Write exercises</p>
-    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+    <textarea aria-label="Course feedback" class="apl-feedback__message" rows="4" maxlength="2000" required
               placeholder="Spotted a mistake? Something unclear?"></textarea>
-    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+    <input aria-label="Email address (optional)" class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
            placeholder="Email (optional)">
     <button class="apl-feedback__send" type="submit">Send</button>
     <p class="apl-feedback__status" role="status"></p>
@@ -2389,10 +2389,10 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <div class="problem">
     <span class="problemspan">H←</span>
     <span class="problemfilltext" id="input_ch3_p1_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch3_p1_b2" placeholder="your solution here">
+    <input aria-label="Chapter 3, write problem 1, answer field 2" class="probleminput" type="text" id="input_ch3_p1_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch3_p1', 2)">Submit</button>
 </div>
-<p id="feedback_ch3_p1" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch3_p1" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
@@ -2401,10 +2401,10 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <div class="problem">
     <span class="problemspan">H←</span>
     <span class="problemfilltext" id="input_ch3_p2_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch3_p2_b2" placeholder="your solution here">
+    <input aria-label="Chapter 3, write problem 2, answer field 2" class="probleminput" type="text" id="input_ch3_p2_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch3_p2', 2)">Submit</button>
 </div>
-<p id="feedback_ch3_p2" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch3_p2" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
@@ -2413,10 +2413,10 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <div class="problem">
     <span class="problemspan">H←</span>
     <span class="problemfilltext" id="input_ch3_p3_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch3_p3_b2" placeholder="your solution here">
+    <input aria-label="Chapter 3, write problem 3, answer field 2" class="probleminput" type="text" id="input_ch3_p3_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch3_p3', 2)">Submit</button>
 </div>
-<p id="feedback_ch3_p3" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch3_p3" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
@@ -2431,10 +2431,10 @@ $$   H(\alpha, \omega) = \left\{
 <div class="problem">
     <span class="problemspan">H←</span>
     <span class="problemfilltext" id="input_ch3_p4_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch3_p4_b2" placeholder="your solution here">
+    <input aria-label="Chapter 3, write problem 4, answer field 2" class="probleminput" type="text" id="input_ch3_p4_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch3_p4', 2)">Submit</button>
 </div>
-<p id="feedback_ch3_p4" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch3_p4" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
@@ -2450,55 +2450,57 @@ $$   H(\alpha, \omega) = \left\{
 <div class="problem">
     <span class="problemspan">H←</span>
     <span class="problemfilltext" id="input_ch3_p5_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch3_p5_b2" placeholder="your solution here">
+    <input aria-label="Chapter 3, write problem 5, answer field 2" class="probleminput" type="text" id="input_ch3_p5_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch3_p5', 2)">Submit</button>
 </div>
-<p id="feedback_ch3_p5" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch3_p5" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 6</p>
 <p>Write a dfn called My that displays personal information. The My function should take a string right argument and return the following
-<pre class="highlight"><code class="language-apl">      My 'Name'
-DASH
-      My 'Age'
-20
-      My 'Profession'
-Engineer
-      My 'Company'
-Future Gadget Lab LLC</code></pre></p>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">My</span><span class="w"> </span><span class="s1">&#39;Name&#39;</span>
+<span class="nv">DASH</span>
+<span class="w">      </span><span class="nv">My</span><span class="w"> </span><span class="s1">&#39;Age&#39;</span>
+<span class="m">20</span>
+<span class="w">      </span><span class="nv">My</span><span class="w"> </span><span class="s1">&#39;Profession&#39;</span>
+<span class="nv">Engineer</span>
+<span class="w">      </span><span class="nv">My</span><span class="w"> </span><span class="s1">&#39;Company&#39;</span>
+<span class="nv">Future</span><span class="w"> </span><span class="nv">Gadget</span><span class="w"> </span><span class="nv">Lab</span><span class="w"> </span><span class="nv">LLC</span>
+</code></pre></div></p>
 <p>Hint: Use the match ≡ function.</p>
 <p><div class="problem">
     <span class="problemspan">My←</span>
     <span class="problemfilltext" id="input_ch3_p6_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch3_p6_b2" placeholder="your solution here">
+    <input aria-label="Chapter 3, write problem 6, answer field 2" class="probleminput" type="text" id="input_ch3_p6_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch3_p6', 2)">Submit</button>
 </div>
-<p id="feedback_ch3_p6" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch3_p6" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 7</p>
 <p>Recall the table of rock, paper, scissors outcomes given in the Chapter 2 Write problem 12.</p>
-<pre class="highlight"><code class="language-apl">      ROUND ← 3 3 ⍴ 'DRAW' 'P2 COVERS' 'P1 BLUNTS' 'P1 COVERS' 'DRAW' 'P2 CUTS' 'P2 BLUNTS' 'P1 CUTS' 'DRAW'
-      ROUND
-┌─────────┬─────────┬─────────┐
-│DRAW     │P2 COVERS│P1 BLUNTS│
-├─────────┼─────────┼─────────┤
-│P1 COVERS│DRAW     │P2 CUTS  │
-├─────────┼─────────┼─────────┤
-│P2 BLUNTS│P1 CUTS  │DRAW     │
-└─────────┴─────────┴─────────┘</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">ROUND</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="s1">&#39;DRAW&#39;</span><span class="w"> </span><span class="s1">&#39;P2 COVERS&#39;</span><span class="w"> </span><span class="s1">&#39;P1 BLUNTS&#39;</span><span class="w"> </span><span class="s1">&#39;P1 COVERS&#39;</span><span class="w"> </span><span class="s1">&#39;DRAW&#39;</span><span class="w"> </span><span class="s1">&#39;P2 CUTS&#39;</span><span class="w"> </span><span class="s1">&#39;P2 BLUNTS&#39;</span><span class="w"> </span><span class="s1">&#39;P1 CUTS&#39;</span><span class="w"> </span><span class="s1">&#39;DRAW&#39;</span>
+<span class="w">      </span><span class="nv">ROUND</span>
+<span class="err">┌─────────┬─────────┬─────────┐</span>
+<span class="err">│</span><span class="nv">DRAW</span><span class="w">     </span><span class="err">│</span><span class="nv">P2</span><span class="w"> </span><span class="nv">COVERS</span><span class="err">│</span><span class="nv">P1</span><span class="w"> </span><span class="nv">BLUNTS</span><span class="err">│</span>
+<span class="err">├─────────┼─────────┼─────────┤</span>
+<span class="err">│</span><span class="nv">P1</span><span class="w"> </span><span class="nv">COVERS</span><span class="err">│</span><span class="nv">DRAW</span><span class="w">     </span><span class="err">│</span><span class="nv">P2</span><span class="w"> </span><span class="nv">CUTS</span><span class="w">  </span><span class="err">│</span>
+<span class="err">├─────────┼─────────┼─────────┤</span>
+<span class="err">│</span><span class="nv">P2</span><span class="w"> </span><span class="nv">BLUNTS</span><span class="err">│</span><span class="nv">P1</span><span class="w"> </span><span class="nv">CUTS</span><span class="w">  </span><span class="err">│</span><span class="nv">DRAW</span><span class="w">     </span><span class="err">│</span>
+<span class="err">└─────────┴─────────┴─────────┘</span>
+</code></pre></div>
 <p>The rows specify the move made by player 1, and the columns the move made by player 2, both in the order ROCK, PAPER, SCISSORS.</p>
 <p>Create a dfn PLAY that takes the move made by player 1 as its left argument <code>⍺</code> and the move made by player 2 as its right argument <code>⍵</code>, each a number from 1 to 3, and returns the outcome of the round.</p>
 <p><div class="problem">
     <span class="problemspan">PLAY←</span>
     <span class="problemfilltext" id="input_ch3_p7_b1" hidden>A←{ROUND←3 3⍴'DRAW' 'P2 COVERS' 'P1 BLUNTS' 'P1 COVERS' 'DRAW' 'P2 CUTS' 'P2 BLUNTS' 'P1 CUTS' 'DRAW' ⋄ ⍺ </span>
-    <input class="probleminput" type="text" id="input_ch3_p7_b2" placeholder="your solution here">
+    <input aria-label="Chapter 3, write problem 7, answer field 2" class="probleminput" type="text" id="input_ch3_p7_b2" placeholder="your solution here">
     <span class="problemfilltext" id="input_ch3_p7_b3" hidden>⍵}</span>
     <button class="problembutton" onclick="submit_problem('ch3_p7', 3)">Submit</button>
 </div>
-<p id="feedback_ch3_p7" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch3_p7" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
@@ -2508,137 +2510,140 @@ Future Gadget Lab LLC</code></pre></p>
 <p><div class="problem">
     <span class="problemspan">SHIFT26←</span>
     <span class="problemfilltext" id="input_ch3_p8_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch3_p8_b2" placeholder="your solution here">
+    <input aria-label="Chapter 3, write problem 8, answer field 2" class="probleminput" type="text" id="input_ch3_p8_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch3_p8', 2)">Submit</button>
 </div>
-<p id="feedback_ch3_p8" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch3_p8" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 9</p>
 <p>Create a dfn that returns a matrix of zeroes of size <code>⍺</code> by <code>⍺</code>, with a 1 in a position specified by the vector right argument <code>⍵</code>. 
-<pre class="highlight"><code class="language-apl">      2 SPARSE 2 1
-0 0
-1 0
-      10 SPARSE 5 4
-0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0
-0 0 0 1 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">2</span><span class="w"> </span><span class="nv">SPARSE</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span>
+<span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">1</span><span class="w"> </span><span class="m">0</span>
+<span class="w">      </span><span class="m">10</span><span class="w"> </span><span class="nv">SPARSE</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">4</span>
+<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+</code></pre></div>
 <div class="problem">
     <span class="problemspan">SPARSE←</span>
     <span class="problemfilltext" id="input_ch3_p9_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch3_p9_b2" placeholder="your solution here">
+    <input aria-label="Chapter 3, write problem 9, answer field 2" class="probleminput" type="text" id="input_ch3_p9_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch3_p9', 2)">Submit</button>
 </div>
-<p id="feedback_ch3_p9" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch3_p9" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 10</p>
 <p>Create a dfn that plots a heatmap of a matrix, that is, a <code>*</code> where the matrix <code>⍵</code> is above a certain value <code>⍺</code> and an underscore <code>_</code> otherwise. For example,</p>
-<pre class="highlight"><code class="language-apl">      M ← 10 10⍴⍳9
-      M
-1 2 3 4 5 6 7 8 9 1
-2 3 4 5 6 7 8 9 1 2
-3 4 5 6 7 8 9 1 2 3
-4 5 6 7 8 9 1 2 3 4
-5 6 7 8 9 1 2 3 4 5
-6 7 8 9 1 2 3 4 5 6
-7 8 9 1 2 3 4 5 6 7
-8 9 1 2 3 4 5 6 7 8
-9 1 2 3 4 5 6 7 8 9
-1 2 3 4 5 6 7 8 9 1
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">M</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="o">⍴⍳</span><span class="m">9</span>
+<span class="w">      </span><span class="nv">M</span>
+<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">1</span>
+<span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span>
+<span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
+<span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span>
+<span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span>
+<span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span>
+<span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span>
+<span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span>
+<span class="m">9</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span>
+<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">1</span>
 
-      7 PLOT M
-_______**_
-______**__
-_____**___
-____**____
-___**_____
-__**______
-_**_______
-**_______*
-*_______**
-_______**_
-</code></pre>
+<span class="w">      </span><span class="m">7</span><span class="w"> </span><span class="nv">PLOT</span><span class="w"> </span><span class="nv">M</span>
+<span class="nv">_______</span><span class="o">**</span><span class="nv">_</span>
+<span class="nv">______</span><span class="o">**</span><span class="nv">__</span>
+<span class="nv">_____</span><span class="o">**</span><span class="nv">___</span>
+<span class="nv">____</span><span class="o">**</span><span class="nv">____</span>
+<span class="nv">___</span><span class="o">**</span><span class="nv">_____</span>
+<span class="nv">__</span><span class="o">**</span><span class="nv">______</span>
+<span class="nv">_</span><span class="o">**</span><span class="nv">_______</span>
+<span class="o">**</span><span class="nv">_______</span><span class="o">*</span>
+<span class="o">*</span><span class="nv">_______</span><span class="o">**</span>
+<span class="nv">_______</span><span class="o">**</span><span class="nv">_</span>
+</code></pre></div>
 <p>Hint: Index the vector <code>'_*'</code> by a matrix</p>
 <p><div class="problem">
     <span class="problemspan">PLOT←</span>
     <span class="problemfilltext" id="input_ch3_p10_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch3_p10_b2" placeholder="your solution here">
+    <input aria-label="Chapter 3, write problem 10, answer field 2" class="probleminput" type="text" id="input_ch3_p10_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch3_p10', 2)">Submit</button>
 </div>
-<p id="feedback_ch3_p10" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch3_p10" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 11</p>
 <p>Create a dfn that returns the singular form of a noun given as a vector right argument <code>⍵</code>, returning 'AN' with the noun when the noun begins with a vowel, and 'A' with the noun otherwise. In this case, 'Y' is not considered a vowel. The nouns will be given in UPPERCASE.</p>
-<pre class="highlight"><code class="language-apl">      SINGULAR 'DREAM'
-A DREAM
-      SINGULAR 'SNOOZE'
-A SNOOZE
-      SINGULAR 'AERODROME'
-AN AERODROME</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">SINGULAR</span><span class="w"> </span><span class="s1">&#39;DREAM&#39;</span>
+<span class="nv">A</span><span class="w"> </span><span class="nv">DREAM</span>
+<span class="w">      </span><span class="nv">SINGULAR</span><span class="w"> </span><span class="s1">&#39;SNOOZE&#39;</span>
+<span class="nv">A</span><span class="w"> </span><span class="nv">SNOOZE</span>
+<span class="w">      </span><span class="nv">SINGULAR</span><span class="w"> </span><span class="s1">&#39;AERODROME&#39;</span>
+<span class="nv">AN</span><span class="w"> </span><span class="nv">AERODROME</span>
+</code></pre></div>
 <p><div class="problem">
     <span class="problemspan">SINGULAR←</span>
     <span class="problemfilltext" id="input_ch3_p11_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch3_p11_b2" placeholder="your solution here">
+    <input aria-label="Chapter 3, write problem 11, answer field 2" class="probleminput" type="text" id="input_ch3_p11_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch3_p11', 2)">Submit</button>
 </div>
-<p id="feedback_ch3_p11" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch3_p11" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 12</p>
 <p>Create a dfn that determines an APL MOOC student's final grade. The right argument <code>⍵</code> is the number of exercises completed. For the sake of this problem, you can assume that the APL MOOC has 72 exercises. The grade boundaries and expected results are given below</p>
-<pre class="highlight"><code class="language-apl">      ⍝ Less than 60%
-      GRADE 42
-0
-      ⍝ Between 60% and 70%
-      GRADE 44
-1
-      GRADE 50
-1
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="c1">⍝ Less than 60%</span>
+<span class="w">      </span><span class="nv">GRADE</span><span class="w"> </span><span class="m">42</span>
+<span class="m">0</span>
+<span class="w">      </span><span class="c1">⍝ Between 60% and 70%</span>
+<span class="w">      </span><span class="nv">GRADE</span><span class="w"> </span><span class="m">44</span>
+<span class="m">1</span>
+<span class="w">      </span><span class="nv">GRADE</span><span class="w"> </span><span class="m">50</span>
+<span class="m">1</span>
 
-      ⍝ Between 70% and 80%
-      GRADE 51
-2
-      GRADE 57
-2
+<span class="w">      </span><span class="c1">⍝ Between 70% and 80%</span>
+<span class="w">      </span><span class="nv">GRADE</span><span class="w"> </span><span class="m">51</span>
+<span class="m">2</span>
+<span class="w">      </span><span class="nv">GRADE</span><span class="w"> </span><span class="m">57</span>
+<span class="m">2</span>
 
-      ⍝ Between 80% and 90%
-      GRADE 58
-3
-      GRADE 64
-3
+<span class="w">      </span><span class="c1">⍝ Between 80% and 90%</span>
+<span class="w">      </span><span class="nv">GRADE</span><span class="w"> </span><span class="m">58</span>
+<span class="m">3</span>
+<span class="w">      </span><span class="nv">GRADE</span><span class="w"> </span><span class="m">64</span>
+<span class="m">3</span>
 
-      ⍝ Between 90% and 99%
-      GRADE 65
-4
-      GRADE 71
-4
+<span class="w">      </span><span class="c1">⍝ Between 90% and 99%</span>
+<span class="w">      </span><span class="nv">GRADE</span><span class="w"> </span><span class="m">65</span>
+<span class="m">4</span>
+<span class="w">      </span><span class="nv">GRADE</span><span class="w"> </span><span class="m">71</span>
+<span class="m">4</span>
 
-      ⍝ Between 99% and 100%
-      GRADE 72
-5
+<span class="w">      </span><span class="c1">⍝ Between 99% and 100%</span>
+<span class="w">      </span><span class="nv">GRADE</span><span class="w"> </span><span class="m">72</span>
+<span class="m">5</span>
 
-      ⍝ Any higher returns nothing
-      GRADE 73</code></pre>
+<span class="w">      </span><span class="c1">⍝ Any higher returns nothing</span>
+<span class="w">      </span><span class="nv">GRADE</span><span class="w"> </span><span class="m">73</span>
+</code></pre></div>
 <p><div class="problem">
     <span class="problemspan">GRADE←</span>
     <span class="problemfilltext" id="input_ch3_p12_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch3_p12_b2" placeholder="your solution here">
+    <input aria-label="Chapter 3, write problem 12, answer field 2" class="probleminput" type="text" id="input_ch3_p12_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch3_p12', 2)">Submit</button>
 </div>
-<p id="feedback_ch3_p12" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch3_p12" style="color: red"></p></p>
 </div>
 <hr />
 

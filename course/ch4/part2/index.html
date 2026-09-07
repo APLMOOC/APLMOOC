@@ -1352,9 +1352,9 @@
   <label class="md-nav__title">Feedback</label>
   <form class="apl-feedback" data-section="4.2 - Reductions and scans">
     <p class="apl-feedback__where">4.2 - Reductions and scans</p>
-    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+    <textarea aria-label="Course feedback" class="apl-feedback__message" rows="4" maxlength="2000" required
               placeholder="Spotted a mistake? Something unclear?"></textarea>
-    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+    <input aria-label="Email address (optional)" class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
            placeholder="Email (optional)">
     <button class="apl-feedback__send" type="submit">Send</button>
     <p class="apl-feedback__status" role="status"></p>
@@ -2370,9 +2370,9 @@
   <label class="md-nav__title">Feedback</label>
   <form class="apl-feedback" data-section="4.2 - Reductions and scans">
     <p class="apl-feedback__where">4.2 - Reductions and scans</p>
-    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+    <textarea aria-label="Course feedback" class="apl-feedback__message" rows="4" maxlength="2000" required
               placeholder="Spotted a mistake? Something unclear?"></textarea>
-    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+    <input aria-label="Email address (optional)" class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
            placeholder="Email (optional)">
     <button class="apl-feedback__send" type="submit">Send</button>
     <p class="apl-feedback__status" role="status"></p>
@@ -2404,76 +2404,83 @@
 <p>In this section, suppose you are (or maybe you really are!) a moviegoer. You are orbiting the Earth at an elevation of 26 meters and a speed of 1340 kilometers per hour.</p>
 <p>After your trips to the cinema, you like to log and rate the movies you've watched. Unfortunately for you, your pretentiousness stops you from rating them on easily accessible public websites. Unfortunately for your friends, you're going to make them install APL to see your movie lists.</p>
 <p>You start logging your first few movies as an APL array</p>
-<pre class="highlight"><code class="language-apl">MovieDB ← [ 'Title' 'Year' 'Rating' 'Runtime' 'Watches' 'Genre' ⋄
-            'Real Genius' 1985 4 108 3 'Comedy' ⋄ 
-            'Eraserhead' 1977 3.5 89 1 'Fantasy' ⋄
-            'The Devil Wears Prada' 2006 4.5 109 2 'Comedy' ⋄
-            '12 Angry Men' 1957 5 96 4 'Thriller'
-            ]
-      MovieDB
-┌─────────────────────┬────┬──────┬───────┬───────┬────────┐
-│Title                │Year│Rating│Runtime│Watches│Genre   │
-├─────────────────────┼────┼──────┼───────┼───────┼────────┤
-│Real Genius          │1985│4     │108    │3      │Comedy  │
-├─────────────────────┼────┼──────┼───────┼───────┼────────┤
-│Eraserhead           │1977│3.5   │89     │1      │Fantasy │
-├─────────────────────┼────┼──────┼───────┼───────┼────────┤
-│The Devil Wears Prada│2006│4.5   │109    │2      │Comedy  │
-├─────────────────────┼────┼──────┼───────┼───────┼────────┤
-│12 Angry Men         │1957│5     │96     │4      │Thriller│
-└─────────────────────┴────┴──────┴───────┴───────┴────────┘</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="nv">MovieDB</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="sr">[</span><span class="w"> </span><span class="s1">&#39;Title&#39;</span><span class="w"> </span><span class="s1">&#39;Year&#39;</span><span class="w"> </span><span class="s1">&#39;Rating&#39;</span><span class="w"> </span><span class="s1">&#39;Runtime&#39;</span><span class="w"> </span><span class="s1">&#39;Watches&#39;</span><span class="w"> </span><span class="s1">&#39;Genre&#39;</span><span class="w"> </span><span class="p">⋄</span>
+<span class="w">            </span><span class="s1">&#39;Real Genius&#39;</span><span class="w"> </span><span class="m">1985</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">108</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="s1">&#39;Comedy&#39;</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span>
+<span class="w">            </span><span class="s1">&#39;Eraserhead&#39;</span><span class="w"> </span><span class="m">1977</span><span class="w"> </span><span class="m">3.5</span><span class="w"> </span><span class="m">89</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="s1">&#39;Fantasy&#39;</span><span class="w"> </span><span class="p">⋄</span>
+<span class="w">            </span><span class="s1">&#39;The Devil Wears Prada&#39;</span><span class="w"> </span><span class="m">2006</span><span class="w"> </span><span class="m">4.5</span><span class="w"> </span><span class="m">109</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="s1">&#39;Comedy&#39;</span><span class="w"> </span><span class="p">⋄</span>
+<span class="w">            </span><span class="s1">&#39;12 Angry Men&#39;</span><span class="w"> </span><span class="m">1957</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">96</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="s1">&#39;Thriller&#39;</span>
+<span class="w">            </span><span class="sr">]</span>
+<span class="w">      </span><span class="nv">MovieDB</span>
+<span class="err">┌─────────────────────┬────┬──────┬───────┬───────┬────────┐</span>
+<span class="err">│</span><span class="nv">Title</span><span class="w">                </span><span class="err">│</span><span class="nv">Year</span><span class="err">│</span><span class="nv">Rating</span><span class="err">│</span><span class="nv">Runtime</span><span class="err">│</span><span class="nv">Watches</span><span class="err">│</span><span class="nv">Genre</span><span class="w">   </span><span class="err">│</span>
+<span class="err">├─────────────────────┼────┼──────┼───────┼───────┼────────┤</span>
+<span class="err">│</span><span class="nv">Real</span><span class="w"> </span><span class="nv">Genius</span><span class="w">          </span><span class="err">│</span><span class="m">1985</span><span class="err">│</span><span class="m">4</span><span class="w">     </span><span class="err">│</span><span class="m">108</span><span class="w">    </span><span class="err">│</span><span class="m">3</span><span class="w">      </span><span class="err">│</span><span class="nv">Comedy</span><span class="w">  </span><span class="err">│</span>
+<span class="err">├─────────────────────┼────┼──────┼───────┼───────┼────────┤</span>
+<span class="err">│</span><span class="nv">Eraserhead</span><span class="w">           </span><span class="err">│</span><span class="m">1977</span><span class="err">│</span><span class="m">3.5</span><span class="w">   </span><span class="err">│</span><span class="m">89</span><span class="w">     </span><span class="err">│</span><span class="m">1</span><span class="w">      </span><span class="err">│</span><span class="nv">Fantasy</span><span class="w"> </span><span class="err">│</span>
+<span class="err">├─────────────────────┼────┼──────┼───────┼───────┼────────┤</span>
+<span class="err">│</span><span class="nv">The</span><span class="w"> </span><span class="nv">Devil</span><span class="w"> </span><span class="nv">Wears</span><span class="w"> </span><span class="nv">Prada</span><span class="err">│</span><span class="m">2006</span><span class="err">│</span><span class="m">4.5</span><span class="w">   </span><span class="err">│</span><span class="m">109</span><span class="w">    </span><span class="err">│</span><span class="m">2</span><span class="w">      </span><span class="err">│</span><span class="nv">Comedy</span><span class="w">  </span><span class="err">│</span>
+<span class="err">├─────────────────────┼────┼──────┼───────┼───────┼────────┤</span>
+<span class="err">│</span><span class="m">12</span><span class="w"> </span><span class="nv">Angry</span><span class="w"> </span><span class="nv">Men</span><span class="w">         </span><span class="err">│</span><span class="m">1957</span><span class="err">│</span><span class="m">5</span><span class="w">     </span><span class="err">│</span><span class="m">96</span><span class="w">     </span><span class="err">│</span><span class="m">4</span><span class="w">      </span><span class="err">│</span><span class="nv">Thriller</span><span class="err">│</span>
+<span class="err">└─────────────────────┴────┴──────┴───────┴───────┴────────┘</span>
+</code></pre></div>
 <p>The first thing you want to do is calculate the total amount of time you've spent watching these movies. You first get the array of runtimes, then the array of times watched, and multiply them together. </p>
-<p>Note that you need to remove the first element of the arrays to get rid of the column labels, more on the drop  function <code>↓</code> in part 4.</p>
-<pre class="highlight"><code class="language-apl">      1↓MovieDB[;4]
-108 89 109 96
-      1↓MovieDB[;5]
-3 1 2 4
-      (1↓MovieDB[;4])×1↓MovieDB[;5]
-324 89 218 384</code></pre>
+<p>Note that you need to remove the first element of the arrays to get rid of the column labels, more on the drop function <code>↓</code> in part 4.</p>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">1</span><span class="o">↓</span><span class="nv">MovieDB</span><span class="sr">[;</span><span class="m">4</span><span class="sr">]</span>
+<span class="m">108</span><span class="w"> </span><span class="m">89</span><span class="w"> </span><span class="m">109</span><span class="w"> </span><span class="m">96</span>
+<span class="w">      </span><span class="m">1</span><span class="o">↓</span><span class="nv">MovieDB</span><span class="sr">[;</span><span class="m">5</span><span class="sr">]</span>
+<span class="m">3</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">4</span>
+<span class="w">      </span><span class="p">(</span><span class="m">1</span><span class="o">↓</span><span class="nv">MovieDB</span><span class="sr">[;</span><span class="m">4</span><span class="sr">]</span><span class="p">)</span><span class="o">×</span><span class="m">1</span><span class="o">↓</span><span class="nv">MovieDB</span><span class="sr">[;</span><span class="m">5</span><span class="sr">]</span>
+<span class="m">324</span><span class="w"> </span><span class="m">89</span><span class="w"> </span><span class="m">218</span><span class="w"> </span><span class="m">384</span>
+</code></pre></div>
 <h2 id="reduce">Reduce</h2>
 <p>To get the total, you need to sum up all the elements of this array, reducing it to a single number. This is where the reduce <code>/</code> operator comes in!</p>
 <p>The reduce operator <code>/</code> takes a left function argument and a right array argument. On vectors, <code>f/v</code> applies the function <code>f</code> between the elements of the vector <code>v</code>, reducing its rank by one.</p>
-<pre class="highlight"><code class="language-apl">      +/(1↓MovieDB[;4])×1↓MovieDB[;5]
-1015</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="o">+</span><span class="na">/</span><span class="p">(</span><span class="m">1</span><span class="o">↓</span><span class="nv">MovieDB</span><span class="sr">[;</span><span class="m">4</span><span class="sr">]</span><span class="p">)</span><span class="o">×</span><span class="m">1</span><span class="o">↓</span><span class="nv">MovieDB</span><span class="sr">[;</span><span class="m">5</span><span class="sr">]</span>
+<span class="m">1015</span>
+</code></pre></div>
 <p>Note that the reduce <code>/</code> operator always reduces the rank of its right argument by one; for example, reducing using the catenate <code>,</code> function creates a scalar which contains the array. More on nested scalars in Chapter 5.</p>
-<pre class="highlight"><code class="language-apl">      1↓MovieDB[;1]
-┌───────────┬──────────┬─────────────────────┬────────────┐
-│Real Genius│Eraserhead│The Devil Wears Prada│12 Angry Men│
-└───────────┴──────────┴─────────────────────┴────────────┘
-      {⍺,' ',⍵}/1↓MovieDB[;1]
-┌─────────────────────────────────────────────────────────┐
-│Real Genius Eraserhead The Devil Wears Prada 12 Angry Men│
-└─────────────────────────────────────────────────────────┘</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">1</span><span class="o">↓</span><span class="nv">MovieDB</span><span class="sr">[;</span><span class="m">1</span><span class="sr">]</span>
+<span class="err">┌───────────┬──────────┬─────────────────────┬────────────┐</span>
+<span class="err">│</span><span class="nv">Real</span><span class="w"> </span><span class="nv">Genius</span><span class="err">│</span><span class="nv">Eraserhead</span><span class="err">│</span><span class="nv">The</span><span class="w"> </span><span class="nv">Devil</span><span class="w"> </span><span class="nv">Wears</span><span class="w"> </span><span class="nv">Prada</span><span class="err">│</span><span class="m">12</span><span class="w"> </span><span class="nv">Angry</span><span class="w"> </span><span class="nv">Men</span><span class="err">│</span>
+<span class="err">└───────────┴──────────┴─────────────────────┴────────────┘</span>
+<span class="w">      </span><span class="kt">{</span><span class="bp">⍺</span><span class="o">,</span><span class="s1">&#39; &#39;</span><span class="o">,</span><span class="bp">⍵</span><span class="kt">}</span><span class="na">/</span><span class="m">1</span><span class="o">↓</span><span class="nv">MovieDB</span><span class="sr">[;</span><span class="m">1</span><span class="sr">]</span>
+<span class="err">┌─────────────────────────────────────────────────────────┐</span>
+<span class="err">│</span><span class="nv">Real</span><span class="w"> </span><span class="nv">Genius</span><span class="w"> </span><span class="nv">Eraserhead</span><span class="w"> </span><span class="nv">The</span><span class="w"> </span><span class="nv">Devil</span><span class="w"> </span><span class="nv">Wears</span><span class="w"> </span><span class="nv">Prada</span><span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="nv">Angry</span><span class="w"> </span><span class="nv">Men</span><span class="err">│</span>
+<span class="err">└─────────────────────────────────────────────────────────┘</span>
+</code></pre></div>
 <p>As an aside, it can be seen that for-each loops in imperative programming languages are equivalent to the reduce <code>/</code> operator, since they both destruct a list in the most general way possible. For example, the python <code>for x in range(1,11): print(x**2)</code> in APL is written as, after first generating the list of values we want using the indices <code>⍳</code> function:</p>
-<pre class="highlight"><code class="language-apl">      10-0,⍳10
-10 9 8 7 6 5 4 3 2 1 0
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">10</span><span class="o">-</span><span class="m">0</span><span class="o">,⍳</span><span class="m">10</span>
+<span class="m">10</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span>
 
-       {⎕←⍺*2}/10-0,⍳10
-1
-4
-9
-16
-25
-36
-49
-64
-81
-100</code></pre>
+<span class="w">       </span><span class="kt">{</span><span class="vg">⎕</span><span class="kd">←</span><span class="bp">⍺</span><span class="o">*</span><span class="m">2</span><span class="kt">}</span><span class="na">/</span><span class="m">10</span><span class="o">-</span><span class="m">0</span><span class="o">,⍳</span><span class="m">10</span>
+<span class="m">1</span>
+<span class="m">4</span>
+<span class="m">9</span>
+<span class="m">16</span>
+<span class="m">25</span>
+<span class="m">36</span>
+<span class="m">49</span>
+<span class="m">64</span>
+<span class="m">81</span>
+<span class="m">100</span>
+</code></pre></div>
 <p>Next, you're planning on hosting a movie marathon for a couple friends who've never seen your favorites. You're not sure how long it would take, so you try and calculate how long each sequence of movies would take. The cumulative sum of the runtimes can be easily expressed using the reduce <code>/</code> operator.</p>
-<pre class="highlight"><code class="language-apl">       {⍺,⍺+⍵}/1↓MovieDB[;4]
-┌───────────────┐
-│108 197 306 402│
-└───────────────┘</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">       </span><span class="kt">{</span><span class="bp">⍺</span><span class="o">,</span><span class="bp">⍺</span><span class="o">+</span><span class="bp">⍵</span><span class="kt">}</span><span class="na">/</span><span class="m">1</span><span class="o">↓</span><span class="nv">MovieDB</span><span class="sr">[;</span><span class="m">4</span><span class="sr">]</span>
+<span class="err">┌───────────────┐</span>
+<span class="err">│</span><span class="m">108</span><span class="w"> </span><span class="m">197</span><span class="w"> </span><span class="m">306</span><span class="w"> </span><span class="m">402</span><span class="err">│</span>
+<span class="err">└───────────────┘</span>
+</code></pre></div>
 <h2 id="scan">Scan</h2>
 <p>More conveniently, there is a built-in operator that calculates cumulative functions even for higher dimensional arrays, without reducing the rank of its argument array. The scan <code>\</code> operator cumulatively applies its left argument function on its right argument array and returns a result array of the same rank.</p>
 <p>Here, we get the cumulative runtime and the movies to watch. </p>
-<pre class="highlight"><code class="language-apl">      +\1↓MovieDB[;4]
-108 197 306 402
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="o">+</span><span class="na">\</span><span class="m">1</span><span class="o">↓</span><span class="nv">MovieDB</span><span class="sr">[;</span><span class="m">4</span><span class="sr">]</span>
+<span class="m">108</span><span class="w"> </span><span class="m">197</span><span class="w"> </span><span class="m">306</span><span class="w"> </span><span class="m">402</span>
 
-      {⍺,' ',⍵}\1↓MovieDB[;1]
-┌───────────┬──────────────────────┬────────────────────────────────────────────┬─────────────────────────────────────────────────────────┐
-│Real Genius│Real Genius Eraserhead│Real Genius Eraserhead The Devil Wears Prada│Real Genius Eraserhead The Devil Wears Prada 12 Angry Men│
-└───────────┴──────────────────────┴────────────────────────────────────────────┴─────────────────────────────────────────────────────────┘</code></pre>
+<span class="w">      </span><span class="kt">{</span><span class="bp">⍺</span><span class="o">,</span><span class="s1">&#39; &#39;</span><span class="o">,</span><span class="bp">⍵</span><span class="kt">}</span><span class="na">\</span><span class="m">1</span><span class="o">↓</span><span class="nv">MovieDB</span><span class="sr">[;</span><span class="m">1</span><span class="sr">]</span>
+<span class="err">┌───────────┬──────────────────────┬────────────────────────────────────────────┬─────────────────────────────────────────────────────────┐</span>
+<span class="err">│</span><span class="nv">Real</span><span class="w"> </span><span class="nv">Genius</span><span class="err">│</span><span class="nv">Real</span><span class="w"> </span><span class="nv">Genius</span><span class="w"> </span><span class="nv">Eraserhead</span><span class="err">│</span><span class="nv">Real</span><span class="w"> </span><span class="nv">Genius</span><span class="w"> </span><span class="nv">Eraserhead</span><span class="w"> </span><span class="nv">The</span><span class="w"> </span><span class="nv">Devil</span><span class="w"> </span><span class="nv">Wears</span><span class="w"> </span><span class="nv">Prada</span><span class="err">│</span><span class="nv">Real</span><span class="w"> </span><span class="nv">Genius</span><span class="w"> </span><span class="nv">Eraserhead</span><span class="w"> </span><span class="nv">The</span><span class="w"> </span><span class="nv">Devil</span><span class="w"> </span><span class="nv">Wears</span><span class="w"> </span><span class="nv">Prada</span><span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="nv">Angry</span><span class="w"> </span><span class="nv">Men</span><span class="err">│</span>
+<span class="err">└───────────┴──────────────────────┴────────────────────────────────────────────┴─────────────────────────────────────────────────────────┘</span>
+</code></pre></div>
 <p>This shows you that watching the first three movies would take roughly five hours, but this list of movies doesn't prioritize your favorites. You'd rather watch your highest rated movie first! We will continue planning this event in the next section.</p>
 
 

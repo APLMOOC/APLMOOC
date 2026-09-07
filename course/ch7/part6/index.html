@@ -2235,9 +2235,9 @@
   <label class="md-nav__title">Feedback</label>
   <form class="apl-feedback" data-section="7.6 - External libraries">
     <p class="apl-feedback__where">7.6 - External libraries</p>
-    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+    <textarea aria-label="Course feedback" class="apl-feedback__message" rows="4" maxlength="2000" required
               placeholder="Spotted a mistake? Something unclear?"></textarea>
-    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+    <input aria-label="Email address (optional)" class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
            placeholder="Email (optional)">
     <button class="apl-feedback__send" type="submit">Send</button>
     <p class="apl-feedback__status" role="status"></p>
@@ -2370,9 +2370,9 @@
   <label class="md-nav__title">Feedback</label>
   <form class="apl-feedback" data-section="7.6 - External libraries">
     <p class="apl-feedback__where">7.6 - External libraries</p>
-    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+    <textarea aria-label="Course feedback" class="apl-feedback__message" rows="4" maxlength="2000" required
               placeholder="Spotted a mistake? Something unclear?"></textarea>
-    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+    <input aria-label="Email address (optional)" class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
            placeholder="Email (optional)">
     <button class="apl-feedback__send" type="submit">Send</button>
     <p class="apl-feedback__status" role="status"></p>
@@ -2411,73 +2411,84 @@
 <p>Other languages solve this with a package manager, like <code>pip</code> for Python or <code>npm</code> for JavaScript. APL has <a href="https://tatin.dev">Tatin</a>, and it's built into Dyalog since version 19.0.</p>
 <h2 id="activating-tatin">Activating Tatin</h2>
 <p>Tatin comes with Dyalog APL, and can be activated using the <code>]Activate</code> user command. </p>
-<pre class="highlight"><code class="language-apl">      ]Activate tatin
-Rebuilding user command cache... done
-Restart APL to complete activation.
-cmddir set to: C:/Users/username/Documents//MyUCMDs;...</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="sr">]</span><span class="nv">Activate</span><span class="w"> </span><span class="nv">tatin</span>
+<span class="nv">Rebuilding</span><span class="w"> </span><span class="nv">user</span><span class="w"> </span><span class="nv">command</span><span class="w"> </span><span class="nv">cache</span><span class="na">...</span><span class="w"> </span><span class="nv">done</span>
+<span class="nv">Restart</span><span class="w"> </span><span class="nv">APL</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">complete</span><span class="w"> </span><span class="nv">activation</span><span class="na">.</span>
+<span class="nv">cmddir</span><span class="w"> </span><span class="nv">set</span><span class="w"> </span><span class="nv">to</span><span class="bp">:</span><span class="w"> </span><span class="nv">C</span><span class="bp">:</span><span class="na">/</span><span class="nv">Users</span><span class="na">/</span><span class="nv">username</span><span class="na">/</span><span class="nv">Documents</span><span class="na">//</span><span class="nv">MyUCMDs</span><span class="sr">;</span><span class="na">...</span>
+</code></pre></div>
 <p>This copies Tatin from the Dyalog installation folder into your own user folder, and tells the user command system where to find it.</p>
 <div class="admonition bug">
 <p class="admonition-title">Invalid user command</p>
 <p>If you've restarted RIDE and tried a Tatin command, you may have come across the following error.</p>
-<pre class="highlight"><code class="language-apl">      ]TATIN.Version
-* Invalid user command; to see a list of all user commands type
-      ] -?</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="sr">]</span><span class="nv">TATIN</span><span class="na">.</span><span class="nv">Version</span>
+<span class="o">*</span><span class="w"> </span><span class="nv">Invalid</span><span class="w"> </span><span class="nv">user</span><span class="w"> </span><span class="nv">command</span><span class="sr">;</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">see</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">list</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">all</span><span class="w"> </span><span class="nv">user</span><span class="w"> </span><span class="nv">commands</span><span class="w"> </span><span class="nv">type</span>
+<span class="w">      </span><span class="sr">]</span><span class="w"> </span><span class="o">-?</span>
+</code></pre></div>
 <p>This is because RIDE keeps a cached list of user commands, and running <code>]UReset</code> will resolve the issue.</p>
-<pre class="highlight"><code class="language-apl">      ]UReset
-144 commands reloaded</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="sr">]</span><span class="nv">UReset</span>
+<span class="m">144</span><span class="w"> </span><span class="nv">commands</span><span class="w"> </span><span class="nv">reloaded</span>
+</code></pre></div>
 </div>
 <p>You can check that everything worked by running <code>]TATIN.Version</code>.</p>
-<pre class="highlight"><code class="language-apl">      ]TATIN.Version
- Tatin  0.112.1+1942  2024-08-16</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="sr">]</span><span class="nv">TATIN</span><span class="na">.</span><span class="nv">Version</span>
+<span class="w"> </span><span class="nv">Tatin</span><span class="w">  </span><span class="m">0.112.1</span><span class="o">+</span><span class="m">1942</span><span class="w">  </span><span class="m">2024</span><span class="o">-</span><span class="m">08</span><span class="o">-</span><span class="m">16</span>
+</code></pre></div>
 <h2 id="registries-and-packages">Registries and packages</h2>
 <p>Tatin gets its packages from online registries, and the default <code>tatin.dev</code> registry is maintained by Dyalog.</p>
-<pre class="highlight"><code class="language-apl">      ]TATIN.ListRegistries
- Alias       URL                       ID                                    Port  Priority
- ----------  ------------------------  ------------------------------------  ----  --------
- tatin       https://tatin.dev/        3a252259-1554-4d09-8381-8ac9aded64cf     0       100
- tatin-test  https://test.tatin.dev/   ba053b97-a68a-4f90-abc4-e98cff187472     0         0</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="sr">]</span><span class="nv">TATIN</span><span class="na">.</span><span class="nv">ListRegistries</span>
+<span class="w"> </span><span class="nv">Alias</span><span class="w">       </span><span class="nv">URL</span><span class="w">                       </span><span class="nv">ID</span><span class="w">                                    </span><span class="nv">Port</span><span class="w">  </span><span class="nv">Priority</span>
+<span class="w"> </span><span class="o">----------</span><span class="w">  </span><span class="o">------------------------</span><span class="w">  </span><span class="o">------------------------------------</span><span class="w">  </span><span class="o">----</span><span class="w">  </span><span class="o">--------</span>
+<span class="w"> </span><span class="nv">tatin</span><span class="w">       </span><span class="nv">https</span><span class="bp">:</span><span class="na">//</span><span class="nv">tatin</span><span class="na">.</span><span class="nv">dev</span><span class="na">/</span><span class="w">        </span><span class="m">3</span><span class="nv">a252259</span><span class="o">-</span><span class="m">1554</span><span class="o">-</span><span class="m">4</span><span class="nv">d09</span><span class="o">-</span><span class="m">8381</span><span class="o">-</span><span class="m">8</span><span class="nv">ac9aded64cf</span><span class="w">     </span><span class="m">0</span><span class="w">       </span><span class="m">100</span>
+<span class="w"> </span><span class="nv">tatin</span><span class="o">-</span><span class="nv">test</span><span class="w">  </span><span class="nv">https</span><span class="bp">:</span><span class="na">//</span><span class="nv">test</span><span class="na">.</span><span class="nv">tatin</span><span class="na">.</span><span class="nv">dev</span><span class="na">/</span><span class="w">   </span><span class="nv">ba053b97</span><span class="o">-</span><span class="nv">a68a</span><span class="o">-</span><span class="m">4</span><span class="nv">f90</span><span class="o">-</span><span class="nv">abc4</span><span class="o">-</span><span class="nv">e98cff187472</span><span class="w">     </span><span class="m">0</span><span class="w">         </span><span class="m">0</span>
+</code></pre></div>
 <p>At the time of writing there are 72 packages on the official <code>tatin.dev</code> registry.</p>
-<pre class="highlight"><code class="language-apl">      ]TATIN.ListPackages -group=dyalog
-Registry: https://tatin.dev                ≢ 5
- Group &amp; Name                   # major versions
- ------------                   ----------------
- dyalog-APLProcess                             1
- dyalog-HttpCommand                            1
- dyalog-Jarvis                                 1
- dyalog-NuGet                                  1
- dyalog-OpenAI                                 1</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="sr">]</span><span class="nv">TATIN</span><span class="na">.</span><span class="nv">ListPackages</span><span class="w"> </span><span class="o">-</span><span class="nv">group</span><span class="o">=</span><span class="nv">dyalog</span>
+<span class="nv">Registry</span><span class="bp">:</span><span class="w"> </span><span class="nv">https</span><span class="bp">:</span><span class="na">//</span><span class="nv">tatin</span><span class="na">.</span><span class="nv">dev</span><span class="w">                </span><span class="o">≢</span><span class="w"> </span><span class="m">5</span>
+<span class="w"> </span><span class="nv">Group</span><span class="w"> </span><span class="na">&amp;</span><span class="w"> </span><span class="nv">Name</span><span class="w">                   </span><span class="c1"># major versions</span>
+<span class="w"> </span><span class="o">------------</span><span class="w">                   </span><span class="o">----------------</span>
+<span class="w"> </span><span class="nv">dyalog</span><span class="o">-</span><span class="nv">APLProcess</span><span class="w">                             </span><span class="m">1</span>
+<span class="w"> </span><span class="nv">dyalog</span><span class="o">-</span><span class="nv">HttpCommand</span><span class="w">                            </span><span class="m">1</span>
+<span class="w"> </span><span class="nv">dyalog</span><span class="o">-</span><span class="nv">Jarvis</span><span class="w">                                 </span><span class="m">1</span>
+<span class="w"> </span><span class="nv">dyalog</span><span class="o">-</span><span class="nv">NuGet</span><span class="w">                                  </span><span class="m">1</span>
+<span class="w"> </span><span class="nv">dyalog</span><span class="o">-</span><span class="nv">OpenAI</span><span class="w">                                 </span><span class="m">1</span>
+</code></pre></div>
 <p>Every package has a group and a name, and you refer to it as <code>group-name</code>. The group is the name of the publisher, so <code>dyalog-HttpCommand</code> is the official <code>HttpCommand</code> package published by Dyalog.</p>
 <h2 id="loading-a-package">Loading a package</h2>
 <p>The simulation in the <a href="../part5/">previous section</a> produced summaries of a simulated solar wind. Real solar wind measurements can be obtained via satellite measurements, and some are published through the <a href="https://services.swpc.noaa.gov/">NOAA website</a> as JSON every minute. There is an official HTTP networking package <code>dyalog-HttpCommand</code> from Dyalog, which we will use to retrieve this information.</p>
-<pre class="highlight"><code class="language-apl">      ]TATIN.LoadPackages dyalog-HttpCommand #
-1 package loaded into #</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="sr">]</span><span class="nv">TATIN</span><span class="na">.</span><span class="nv">LoadPackages</span><span class="w"> </span><span class="nv">dyalog</span><span class="o">-</span><span class="nv">HttpCommand</span><span class="w"> </span><span class="c1">#</span>
+<span class="m">1</span><span class="w"> </span><span class="nv">package</span><span class="w"> </span><span class="nv">loaded</span><span class="w"> </span><span class="nv">into</span><span class="w"> </span><span class="c1">#</span>
+</code></pre></div>
 <p>Tatin downloads the package, checks whether it depends on any other packages, and places it all into <code>#</code>. (More on namespaces in the next section).</p>
-<pre class="highlight"><code class="language-apl">      #.HttpCommand.Version
- HttpCommand  5.11.1  2026-05-18
-      #.HttpCommand.⎕NL ¯3
- Base64Decode  Base64Encode  Chunk  Do  Documentation  Fix  Get  GetEnv  GetJSON  New  ...</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="c1">#.HttpCommand.Version</span>
+<span class="w"> </span><span class="nv">HttpCommand</span><span class="w">  </span><span class="m">5.11.1</span><span class="w">  </span><span class="m">2026</span><span class="o">-</span><span class="m">05</span><span class="o">-</span><span class="m">18</span>
+<span class="w">      </span><span class="c1">#.HttpCommand.⎕NL ¯3</span>
+<span class="w"> </span><span class="nv">Base64Decode</span><span class="w">  </span><span class="nv">Base64Encode</span><span class="w">  </span><span class="nv">Chunk</span><span class="w">  </span><span class="nv">Do</span><span class="w">  </span><span class="nv">Documentation</span><span class="w">  </span><span class="nv">Fix</span><span class="w">  </span><span class="nv">Get</span><span class="w">  </span><span class="nv">GetEnv</span><span class="w">  </span><span class="nv">GetJSON</span><span class="w">  </span><span class="nv">New</span><span class="w">  </span><span class="na">...</span>
+</code></pre></div>
 <p>The <code>Get</code> function fetches a page and returns its raw text, and the <code>GetJSON</code> function additionally converts JSON into APL arrays and namespaces.</p>
-<pre class="highlight"><code class="language-apl">      r←#.HttpCommand.GetJSON 'GET' 'https://services.swpc.noaa.gov/json/rtsw/rtsw_wind_1m.json'
-      r.HttpStatus
-200
-      ≢r.Data
-3114
-      r.Data[1].proton_speed
-328.75</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">r</span><span class="kd">←</span><span class="c1">#.HttpCommand.GetJSON &#39;GET&#39; &#39;https://services.swpc.noaa.gov/json/rtsw/rtsw_wind_1m.json&#39;</span>
+<span class="w">      </span><span class="nv">r</span><span class="na">.</span><span class="nv">HttpStatus</span>
+<span class="m">200</span>
+<span class="w">      </span><span class="o">≢</span><span class="nv">r</span><span class="na">.</span><span class="nv">Data</span>
+<span class="m">3114</span>
+<span class="w">      </span><span class="nv">r</span><span class="na">.</span><span class="nv">Data</span><span class="sr">[</span><span class="m">1</span><span class="sr">]</span><span class="na">.</span><span class="nv">proton_speed</span>
+<span class="m">328.75</span>
+</code></pre></div>
 <p><code>HttpStatus</code> is the standard HTTP status code, where <code>200</code> denotes success, and <code>Data</code> contains the parsed JSON; here a vector of 3114 namespaces, one per minute of measurement, where <code>proton_speed</code> is the speed of the solar wind in km/s.</p>
 <p><code>r.Data.proton_speed</code> gives the vector of proton speeds, but computing on it directly is not possible since the feed writes the text <code>null</code> for the minutes where the instrument has no reading. The verify fix input <code>⎕VFI</code> system function can remedy this; it takes in a character vector and returns a boolean vector denoting where the valid numbers are, along with the numerical values themselves.</p>
-<pre class="highlight"><code class="language-apl">      (ok speeds)←⎕VFI⍕r.Data.proton_speed
-      +/~ok
-1
-      speeds←ok/speeds</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="p">(</span><span class="nv">ok</span><span class="w"> </span><span class="nv">speeds</span><span class="p">)</span><span class="kd">←</span><span class="nf">⎕VFI</span><span class="o">⍕</span><span class="nv">r</span><span class="na">.</span><span class="nv">Data</span><span class="na">.</span><span class="nv">proton_speed</span>
+<span class="w">      </span><span class="o">+</span><span class="na">/</span><span class="o">~</span><span class="nv">ok</span>
+<span class="m">1</span>
+<span class="w">      </span><span class="nv">speeds</span><span class="kd">←</span><span class="nv">ok</span><span class="na">/</span><span class="nv">speeds</span>
+</code></pre></div>
 <p>The format <code>⍕</code> turns the numeric vector into a single character vector for <code>⎕VFI</code> to parse, and compressing by <code>ok</code> keeps the valid readings; exactly one measurement in this fetch was a <code>null</code>.</p>
-<pre class="highlight"><code class="language-apl">      ⌊(+/speeds)÷≢speeds
-352
-      ⌈/speeds
-399.71
-      (ok dens)←⎕VFI⍕r.Data.proton_density
-      ⌈/ok/dens
-12.13</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="o">⌊</span><span class="p">(</span><span class="o">+</span><span class="na">/</span><span class="nv">speeds</span><span class="p">)</span><span class="o">÷≢</span><span class="nv">speeds</span>
+<span class="m">352</span>
+<span class="w">      </span><span class="o">⌈</span><span class="na">/</span><span class="nv">speeds</span>
+<span class="m">399.71</span>
+<span class="w">      </span><span class="p">(</span><span class="nv">ok</span><span class="w"> </span><span class="nv">dens</span><span class="p">)</span><span class="kd">←</span><span class="nf">⎕VFI</span><span class="o">⍕</span><span class="nv">r</span><span class="na">.</span><span class="nv">Data</span><span class="na">.</span><span class="nv">proton_density</span>
+<span class="w">      </span><span class="o">⌈</span><span class="na">/</span><span class="nv">ok</span><span class="na">/</span><span class="nv">dens</span>
+<span class="m">12.13</span>
+</code></pre></div>
 <p>This gives us an average solar wind speed of 352 km/s over the last two days, a maximum speed of around 400 km/s, and a peak proton density of 12.13 particles per cubic centimetre. </p>
 <p><img alt="A picture of RIDE after loading HttpCommand and fetching solar wind data" src="../../assets/7_6_httpcommand.png" /></p>
 <div class="admonition note">

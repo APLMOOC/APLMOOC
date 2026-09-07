@@ -2166,9 +2166,9 @@
   <label class="md-nav__title">Feedback</label>
   <form class="apl-feedback" data-section="7.3 - Traditional functions">
     <p class="apl-feedback__where">7.3 - Traditional functions</p>
-    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+    <textarea aria-label="Course feedback" class="apl-feedback__message" rows="4" maxlength="2000" required
               placeholder="Spotted a mistake? Something unclear?"></textarea>
-    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+    <input aria-label="Email address (optional)" class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
            placeholder="Email (optional)">
     <button class="apl-feedback__send" type="submit">Send</button>
     <p class="apl-feedback__status" role="status"></p>
@@ -2370,9 +2370,9 @@
   <label class="md-nav__title">Feedback</label>
   <form class="apl-feedback" data-section="7.3 - Traditional functions">
     <p class="apl-feedback__where">7.3 - Traditional functions</p>
-    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+    <textarea aria-label="Course feedback" class="apl-feedback__message" rows="4" maxlength="2000" required
               placeholder="Spotted a mistake? Something unclear?"></textarea>
-    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+    <input aria-label="Email address (optional)" class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
            placeholder="Email (optional)">
     <button class="apl-feedback__send" type="submit">Send</button>
     <p class="apl-feedback__status" role="status"></p>
@@ -2410,16 +2410,17 @@ It should look a little something like this:</p>
 <h2 id="tradfns">Tradfns</h2>
 <p>Finally, we can get to the actual programming part ;D</p>
 <p>Imagine for a second that you've been programming for a long time, and came up with this code that'll simulate dealing a hand from a pack of cards:</p>
-<pre class="highlight"><code class="language-apl">      CARDS←5?52
-      SUITS←1+⌊(CARDS-1)÷13
-      SUITS←'SHDC'[SUITS]
-      CARDS←1+13|CARDS-1
-      CARDS←'A23456789TJQK'[CARDS]
-      HAND←14⍴' '
-      HAND[1 4 7 10 13]←CARDS
-      HAND[2 5 8 11 14]←SUITS
-      HAND
-2D AS 7D 5D AH</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">CARDS</span><span class="kd">←</span><span class="m">5</span><span class="o">?</span><span class="m">52</span>
+<span class="w">      </span><span class="nv">SUITS</span><span class="kd">←</span><span class="m">1</span><span class="o">+⌊</span><span class="p">(</span><span class="nv">CARDS</span><span class="o">-</span><span class="m">1</span><span class="p">)</span><span class="o">÷</span><span class="m">13</span>
+<span class="w">      </span><span class="nv">SUITS</span><span class="kd">←</span><span class="s1">&#39;SHDC&#39;</span><span class="sr">[</span><span class="nv">SUITS</span><span class="sr">]</span>
+<span class="w">      </span><span class="nv">CARDS</span><span class="kd">←</span><span class="m">1</span><span class="o">+</span><span class="m">13</span><span class="o">|</span><span class="nv">CARDS</span><span class="o">-</span><span class="m">1</span>
+<span class="w">      </span><span class="nv">CARDS</span><span class="kd">←</span><span class="s1">&#39;A23456789TJQK&#39;</span><span class="sr">[</span><span class="nv">CARDS</span><span class="sr">]</span>
+<span class="w">      </span><span class="nv">HAND</span><span class="kd">←</span><span class="m">14</span><span class="o">⍴</span><span class="s1">&#39; &#39;</span>
+<span class="w">      </span><span class="nv">HAND</span><span class="sr">[</span><span class="m">1</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">13</span><span class="sr">]</span><span class="kd">←</span><span class="nv">CARDS</span>
+<span class="w">      </span><span class="nv">HAND</span><span class="sr">[</span><span class="m">2</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">14</span><span class="sr">]</span><span class="kd">←</span><span class="nv">SUITS</span>
+<span class="w">      </span><span class="nv">HAND</span>
+<span class="m">2</span><span class="nv">D</span><span class="w"> </span><span class="nv">AS</span><span class="w"> </span><span class="m">7</span><span class="nv">D</span><span class="w"> </span><span class="m">5</span><span class="nv">D</span><span class="w"> </span><span class="nv">AH</span>
+</code></pre></div>
 <p>Now, this is cool, but running this again is annoying (I don't really want to copy-paste all of the code every time I want a new hand).</p>
 <p>Tradfns - pronounced exactly like you'd expect - are a way to write longer and more involved functions in APL.
 You'll finally be able to write program logic that spans multiple lines instead of having to cram everything into one line!</p>
@@ -2434,8 +2435,9 @@ RIDE will then go into a function writing mode: it will spit out a line number <
 If you press enter, it will move on to line number <code>[2]</code> etc.
 Now, we could write all of our functions this way, but we'll do something a little more clever.
 Instead of writing any code, let's just end the function (and leave it empty) by typing <code>∇</code> again:</p>
-<pre class="highlight"><code class="language-apl">      ∇ DealHand
-[1]  ∇</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="bp">∇</span><span class="w"> </span><span class="nv">DealHand</span>
+<span class="sr">[</span><span class="m">1</span><span class="sr">]</span><span class="w">  </span><span class="bp">∇</span>
+</code></pre></div>
 <p>Now, for the interesting part: we can double-click the text <code>DealHand</code> in the editor to open the function in a separate tab for editing!</p>
 <p><img alt="A picture showing the editor split into edit mode and interactive mode" src="../../assets/7_3_editmode.png" /></p>
 <p>Now, let's paste our card-dealing code in the editor, and save with <kbd>Ctrl</kbd> <kbd>S</kbd>.
@@ -2456,16 +2458,17 @@ We can make them more useful by letting them take parameters and return values!<
 <p>We can convert our card dealing function to take in how many cards we want to deal.
 Here's the code that lets you change the number of cards based on the variable <code>COUNT</code>.
 And whether it uses uppercase or lowercase letters using the variable <code>UPPERCASE</code> (bonus points if you can see how it works):</p>
-<pre class="highlight"><code class="language-apl">COUNT←5
-UPPERCASE←1
-CARDS←COUNT?52
-SUITS←1+⌊(CARDS-1)÷13
-SUITS←((1+UPPERCASE)⊃'shdc' 'SHDC')[SUITS]
-CARDS←1+13|CARDS-1
-CARDS←((1+UPPERCASE)⊃'a23456789tjqk' 'A23456789TJQK')[CARDS]
-HAND←(¯1+3×COUNT)⍴' '
-HAND[¯2+3×⍳COUNT]←CARDS
-HAND[¯1+3×⍳COUNT]←SUITS</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="nv">COUNT</span><span class="kd">←</span><span class="m">5</span>
+<span class="nv">UPPERCASE</span><span class="kd">←</span><span class="m">1</span>
+<span class="nv">CARDS</span><span class="kd">←</span><span class="nv">COUNT</span><span class="o">?</span><span class="m">52</span>
+<span class="nv">SUITS</span><span class="kd">←</span><span class="m">1</span><span class="o">+⌊</span><span class="p">(</span><span class="nv">CARDS</span><span class="o">-</span><span class="m">1</span><span class="p">)</span><span class="o">÷</span><span class="m">13</span>
+<span class="nv">SUITS</span><span class="kd">←</span><span class="p">((</span><span class="m">1</span><span class="o">+</span><span class="nv">UPPERCASE</span><span class="p">)</span><span class="o">⊃</span><span class="s1">&#39;shdc&#39;</span><span class="w"> </span><span class="s1">&#39;SHDC&#39;</span><span class="p">)</span><span class="sr">[</span><span class="nv">SUITS</span><span class="sr">]</span>
+<span class="nv">CARDS</span><span class="kd">←</span><span class="m">1</span><span class="o">+</span><span class="m">13</span><span class="o">|</span><span class="nv">CARDS</span><span class="o">-</span><span class="m">1</span>
+<span class="nv">CARDS</span><span class="kd">←</span><span class="p">((</span><span class="m">1</span><span class="o">+</span><span class="nv">UPPERCASE</span><span class="p">)</span><span class="o">⊃</span><span class="s1">&#39;a23456789tjqk&#39;</span><span class="w"> </span><span class="s1">&#39;A23456789TJQK&#39;</span><span class="p">)</span><span class="sr">[</span><span class="nv">CARDS</span><span class="sr">]</span>
+<span class="nv">HAND</span><span class="kd">←</span><span class="p">(</span><span class="m">¯1</span><span class="o">+</span><span class="m">3</span><span class="o">×</span><span class="nv">COUNT</span><span class="p">)</span><span class="o">⍴</span><span class="s1">&#39; &#39;</span>
+<span class="nv">HAND</span><span class="sr">[</span><span class="m">¯2</span><span class="o">+</span><span class="m">3</span><span class="o">×⍳</span><span class="nv">COUNT</span><span class="sr">]</span><span class="kd">←</span><span class="nv">CARDS</span>
+<span class="nv">HAND</span><span class="sr">[</span><span class="m">¯1</span><span class="o">+</span><span class="m">3</span><span class="o">×⍳</span><span class="nv">COUNT</span><span class="sr">]</span><span class="kd">←</span><span class="nv">SUITS</span>
+</code></pre></div>
 <p>Now, obviously, we don't want to adjust the two variables manually: let's make them parameters of our <code>DealHand</code> function.</p>
 <p>In APL, the 0th line of a function is called the <em>header line</em>.
 Here, you can specify your program's parameters and what variable it returns after exiting.
@@ -2479,7 +2482,8 @@ What does this mean? Local variables are erased when the function exits, while g
 When writing code, you <strong>almost always want your variables to be local</strong>.
 To do this, we can put them in the header line using semicolons after our function definition.
 This is what it should ideally look like:</p>
-<pre class="highlight"><code class="language-apl">      ∇ HAND ← UPPERCASE DealHand COUNT;CARDS;SUITS</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="bp">∇</span><span class="w"> </span><span class="nv">HAND</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">UPPERCASE</span><span class="w"> </span><span class="nv">DealHand</span><span class="w"> </span><span class="nv">COUNT</span><span class="sr">;</span><span class="nv">CARDS</span><span class="sr">;</span><span class="nv">SUITS</span>
+</code></pre></div>
 <p><img alt="A picture of the corrected dealing function with local variables" src="../../assets/7_3_correctdealing.png" /></p>
 <div class="admonition warning">
 <p class="admonition-title">Local vs global variables</p>
@@ -2491,63 +2495,66 @@ If you don't do this, you risk filling up your workspace with garbage: global va
 <h2 id="conditional-expressions">Conditional expressions</h2>
 <p>Recall that when using dfns we could execute parts of our code depending on whether a logical operation returns a <code>1</code> or a <code>0</code>. In tradfns, the usual dfn conditional expressions are not recognized. The equivalent method of specifying a conditional expression is similar to imperative programming languages, using an <code>:If</code> statement.</p>
 <p>Consider the following example, where we check if our tradfn has a left argument using the <a href="https://docs.dyalog.com/20.0/language-reference-guide/system-functions/nc/"><code>⎕NC</code> function</a> which returns <code>0</code> when a variable name is unused.</p>
-<pre class="highlight"><code class="language-apl">       ∇ result ← {LEFT} function RIGHT
-         :If 0=⎕NC'LEFT'
-              result ← 'No left argument specified'
-         :Else
-              result ← 'The left argument is ',LEFT
-         :EndIf
-       ∇
+<div class="language-apl highlight"><pre><span></span><code><span class="w">       </span><span class="bp">∇</span><span class="w"> </span><span class="nv">result</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="nv">LEFT</span><span class="kt">}</span><span class="w"> </span><span class="nv">function</span><span class="w"> </span><span class="nv">RIGHT</span>
+<span class="w">         </span><span class="bp">:</span><span class="nv">If</span><span class="w"> </span><span class="m">0</span><span class="o">=</span><span class="nf">⎕NC</span><span class="s1">&#39;LEFT&#39;</span>
+<span class="w">              </span><span class="nv">result</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="s1">&#39;No left argument specified&#39;</span>
+<span class="w">         </span><span class="bp">:</span><span class="nv">Else</span>
+<span class="w">              </span><span class="nv">result</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="s1">&#39;The left argument is &#39;</span><span class="o">,</span><span class="nv">LEFT</span>
+<span class="w">         </span><span class="bp">:</span><span class="nv">EndIf</span>
+<span class="w">       </span><span class="bp">∇</span>
 
-       function 'world'
-No left argument specified
+<span class="w">       </span><span class="nv">function</span><span class="w"> </span><span class="s1">&#39;world&#39;</span>
+<span class="nv">No</span><span class="w"> </span><span class="nv">left</span><span class="w"> </span><span class="nv">argument</span><span class="w"> </span><span class="nv">specified</span>
 
-       'hello' function 'world'
-The left argument is hello</code></pre>
+<span class="w">       </span><span class="s1">&#39;hello&#39;</span><span class="w"> </span><span class="nv">function</span><span class="w"> </span><span class="s1">&#39;world&#39;</span>
+<span class="nv">The</span><span class="w"> </span><span class="nv">left</span><span class="w"> </span><span class="nv">argument</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">hello</span>
+</code></pre></div>
 <p>The <code>:If</code> keyword is followed by a conditional expression, here <code>0=⎕NC'LEFT'</code>, and executes the code that follows if the conditional expression returns a value of <code>1</code> (true). If the value is <code>0</code> (false), then it executes the code after an <code>:Else</code> statement if it exists.</p>
 <p>These types of control structures are discouraged in APL code since they are usually the wrong tool for the job; however, they are common when interfacing with external code or libraries. We will not cover any further control flow structures, such as <code>:For</code>, <code>:While</code>, or <code>:Repeat</code>, one reason for which is that they have the same syntax as in imperative programming languages.</p>
 <h2 id="branch">Branch</h2>
 <p>In many older APL programs, you may see the branch <code>→</code> symbol. Its behavior is similar to <code>goto</code> and is similarly discouraged, with some dialects dropping it entirely. When given a right argument in functions, it continues the execution of code from that line onwards. If the line number does not exist (including 0) or when it is not given a right argument at all, the code halts execution.</p>
 <p>Instead of hard-coding line numbers which change as our code grows, <em>labels</em> may also be used. The syntax is the name of the label followed by a colon <code>:</code>. This simply assigns the line number to the name of the label. To verify this, see the following example.</p>
-<pre class="highlight"><code class="language-apl">       ∇ labeltest
-              → third
-              first:
-              'hello'
-              second:
-              'world'
-              third:
-              ⎕ ← first second third
-       ∇
+<div class="language-apl highlight"><pre><span></span><code><span class="w">       </span><span class="bp">∇</span><span class="w"> </span><span class="nv">labeltest</span>
+<span class="w">              </span><span class="kd">→</span><span class="w"> </span><span class="nv">third</span>
+<span class="w">              </span><span class="nv">first</span><span class="bp">:</span>
+<span class="w">              </span><span class="s1">&#39;hello&#39;</span>
+<span class="w">              </span><span class="nv">second</span><span class="bp">:</span>
+<span class="w">              </span><span class="s1">&#39;world&#39;</span>
+<span class="w">              </span><span class="nv">third</span><span class="bp">:</span>
+<span class="w">              </span><span class="vg">⎕</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">first</span><span class="w"> </span><span class="nv">second</span><span class="w"> </span><span class="nv">third</span>
+<span class="w">       </span><span class="bp">∇</span>
 
-       labeltest
-2 4 6</code></pre>
+<span class="w">       </span><span class="nv">labeltest</span>
+<span class="m">2</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">6</span>
+</code></pre></div>
 <p>See the following example that sets the display precision of numbers to either <code>1</code> significant figure, <code>7</code> significant figures, or <code>14</code> significant figures depending on its right argument.</p>
-<pre class="highlight"><code class="language-apl">       ∇ precision type
-              → (NDP FDP DDP)['SINGLE' 'FLOAT' 'DOUBLE'⍳⊂type]
+<div class="language-apl highlight"><pre><span></span><code><span class="w">       </span><span class="bp">∇</span><span class="w"> </span><span class="nv">precision</span><span class="w"> </span><span class="nv">type</span>
+<span class="w">              </span><span class="kd">→</span><span class="w"> </span><span class="p">(</span><span class="nv">NDP</span><span class="w"> </span><span class="nv">FDP</span><span class="w"> </span><span class="nv">DDP</span><span class="p">)</span><span class="sr">[</span><span class="s1">&#39;SINGLE&#39;</span><span class="w"> </span><span class="s1">&#39;FLOAT&#39;</span><span class="w"> </span><span class="s1">&#39;DOUBLE&#39;</span><span class="o">⍳⊂</span><span class="nv">type</span><span class="sr">]</span>
 
-              NDP:
-              ⎕PP ← 1
-              →
+<span class="w">              </span><span class="nv">NDP</span><span class="bp">:</span>
+<span class="w">              </span><span class="nf">⎕PP</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">1</span>
+<span class="w">              </span><span class="kd">→</span>
 
-              FDP:
-              ⎕PP ← 7
-              →
+<span class="w">              </span><span class="nv">FDP</span><span class="bp">:</span>
+<span class="w">              </span><span class="nf">⎕PP</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">7</span>
+<span class="w">              </span><span class="kd">→</span>
 
-              DDP:
-              ⎕PP ← 14
+<span class="w">              </span><span class="nv">DDP</span><span class="bp">:</span>
+<span class="w">              </span><span class="nf">⎕PP</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">14</span>
 
-       ∇
+<span class="w">       </span><span class="bp">∇</span>
 
-       precision 'SINGLE'
-       2÷3
-0.7
-       precision 'FLOAT'
-       2÷3
-0.6666667
+<span class="w">       </span><span class="nv">precision</span><span class="w"> </span><span class="s1">&#39;SINGLE&#39;</span>
+<span class="w">       </span><span class="m">2</span><span class="o">÷</span><span class="m">3</span>
+<span class="m">0.7</span>
+<span class="w">       </span><span class="nv">precision</span><span class="w"> </span><span class="s1">&#39;FLOAT&#39;</span>
+<span class="w">       </span><span class="m">2</span><span class="o">÷</span><span class="m">3</span>
+<span class="m">0.6666667</span>
 
-       precision 'DOUBLE'
-       2÷3
-0.66666666666667</code></pre>
+<span class="w">       </span><span class="nv">precision</span><span class="w"> </span><span class="s1">&#39;DOUBLE&#39;</span>
+<span class="w">       </span><span class="m">2</span><span class="o">÷</span><span class="m">3</span>
+<span class="m">0.66666666666667</span>
+</code></pre></div>
 <p>These kinds of expressions are used very frequently in older APL code, the kind which you might see in APL programming books such as <a href="https://archive.org/details/mathematicalexpe0000gren/">Mathematical experiments on the computer</a>.</p>
 
 

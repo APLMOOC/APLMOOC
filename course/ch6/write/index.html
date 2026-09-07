@@ -2344,9 +2344,9 @@
   <label class="md-nav__title">Feedback</label>
   <form class="apl-feedback" data-section="6.W - Write exercises">
     <p class="apl-feedback__where">6.W - Write exercises</p>
-    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+    <textarea aria-label="Course feedback" class="apl-feedback__message" rows="4" maxlength="2000" required
               placeholder="Spotted a mistake? Something unclear?"></textarea>
-    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+    <input aria-label="Email address (optional)" class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
            placeholder="Email (optional)">
     <button class="apl-feedback__send" type="submit">Send</button>
     <p class="apl-feedback__status" role="status"></p>
@@ -2387,275 +2387,304 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <p class="admonition-title">Write problem 1</p>
 <p>Write a function to record an APL expression together with its result. The right argument ⍵ is a character vector holding an expression. The result is a character vector containing the expression in quotation marks, then <code>gave</code>, then the result of the expression.</p>
 <p>The expression gives a scalar or a vector. The result of <code>logbook</code> must be a character vector.</p>
-<pre class="highlight"><code class="language-apl">      logbook '2+3'
-'2+3' gave 5
-      logbook '⍳5'
-'⍳5' gave 1 2 3 4 5
-      logbook '⌽⎕A'
-'⌽⎕A' gave ZYXWVUTSRQPONMLKJIHGFEDCBA</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">logbook</span><span class="w"> </span><span class="s1">&#39;2+3&#39;</span>
+<span class="s1">&#39;2+3&#39;</span><span class="w"> </span><span class="nv">gave</span><span class="w"> </span><span class="m">5</span>
+<span class="w">      </span><span class="nv">logbook</span><span class="w"> </span><span class="s1">&#39;⍳5&#39;</span>
+<span class="s1">&#39;⍳5&#39;</span><span class="w"> </span><span class="nv">gave</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span>
+<span class="w">      </span><span class="nv">logbook</span><span class="w"> </span><span class="s1">&#39;⌽⎕A&#39;</span>
+<span class="s1">&#39;⌽⎕A&#39;</span><span class="w"> </span><span class="nv">gave</span><span class="w"> </span><span class="nv">ZYXWVUTSRQPONMLKJIHGFEDCBA</span>
+</code></pre></div>
 <p><div class="problem">
     <span class="problemspan">logbook←</span>
     <span class="problemfilltext" id="input_ch6_p1_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch6_p1_b2" placeholder="your solution here">
+    <input aria-label="Chapter 6, write problem 1, answer field 2" class="probleminput" type="text" id="input_ch6_p1_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch6_p1', 2)">Submit</button>
 </div>
-<p id="feedback_ch6_p1" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch6_p1" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 2</p>
 <p>Write a function to name a vector of angles. The right argument ⍵ holds angles in radians. Each angle is <span class="arithmatex">\(\pi\)</span> divided by a whole number greater than 1.</p>
 <p>The result is a character matrix with one row per angle. Each row holds the name of the angle, then the angle itself to 4 decimal places in a field 10 characters wide. The name column is as wide as the longest name, and shorter names are padded on the right.</p>
-<pre class="highlight"><code class="language-apl">      angle_names ○÷12 6 4 3 2
-Pi/12    0.2618
-Pi/6     0.5236
-Pi/4     0.7854
-Pi/3     1.0472
-Pi/2     1.5708
-      angle_names ○÷2 3
-Pi/2    1.5708
-Pi/3    1.0472</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">angle_names</span><span class="w"> </span><span class="o">○÷</span><span class="m">12</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span>
+<span class="nv">Pi</span><span class="na">/</span><span class="m">12</span><span class="w">    </span><span class="m">0.2618</span>
+<span class="nv">Pi</span><span class="na">/</span><span class="m">6</span><span class="w">     </span><span class="m">0.5236</span>
+<span class="nv">Pi</span><span class="na">/</span><span class="m">4</span><span class="w">     </span><span class="m">0.7854</span>
+<span class="nv">Pi</span><span class="na">/</span><span class="m">3</span><span class="w">     </span><span class="m">1.0472</span>
+<span class="nv">Pi</span><span class="na">/</span><span class="m">2</span><span class="w">     </span><span class="m">1.5708</span>
+<span class="w">      </span><span class="nv">angle_names</span><span class="w"> </span><span class="o">○÷</span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
+<span class="nv">Pi</span><span class="na">/</span><span class="m">2</span><span class="w">    </span><span class="m">1.5708</span>
+<span class="nv">Pi</span><span class="na">/</span><span class="m">3</span><span class="w">    </span><span class="m">1.0472</span>
+</code></pre></div>
 <p><div class="problem">
     <span class="problemspan">angle_names←</span>
     <span class="problemfilltext" id="input_ch6_p2_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch6_p2_b2" placeholder="your solution here">
+    <input aria-label="Chapter 6, write problem 2, answer field 2" class="probleminput" type="text" id="input_ch6_p2_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch6_p2', 2)">Submit</button>
 </div>
-<p id="feedback_ch6_p2" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch6_p2" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 3</p>
 <p>Write a function to build a table of shifted alphabets. The left argument ⍺ is a vector of shift amounts, the right argument ⍵ is an alphabet of any length. Row i of the result is ⍵ rotated left by ⍺[i], wrapping around the end. </p>
 <p>The full 26 letter table, which you met as CIPHER in Chapter 2, is <code>(¯1+⍳26) shift ⎕A</code>.</p>
-<pre class="highlight"><code class="language-apl">      0 3 13 shift ⎕A
-ABCDEFGHIJKLMNOPQRSTUVWXYZ
-DEFGHIJKLMNOPQRSTUVWXYZABC
-NOPQRSTUVWXYZABCDEFGHIJKLM
-      ¯1 27 shift ⎕A
-ZABCDEFGHIJKLMNOPQRSTUVWXY
-BCDEFGHIJKLMNOPQRSTUVWXYZA
-      0 1 2 shift 'FINSKA'
-FINSKA
-INSKAF
-NSKAFI
-      (¯1+⍳5) shift 'ABCDE'
-ABCDE
-BCDEA
-CDEAB
-DEABC
-EABCD</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">0</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="nv">shift</span><span class="w"> </span><span class="nf">⎕A</span>
+<span class="nv">ABCDEFGHIJKLMNOPQRSTUVWXYZ</span>
+<span class="nv">DEFGHIJKLMNOPQRSTUVWXYZABC</span>
+<span class="nv">NOPQRSTUVWXYZABCDEFGHIJKLM</span>
+<span class="w">      </span><span class="m">¯1</span><span class="w"> </span><span class="m">27</span><span class="w"> </span><span class="nv">shift</span><span class="w"> </span><span class="nf">⎕A</span>
+<span class="nv">ZABCDEFGHIJKLMNOPQRSTUVWXY</span>
+<span class="nv">BCDEFGHIJKLMNOPQRSTUVWXYZA</span>
+<span class="w">      </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="nv">shift</span><span class="w"> </span><span class="s1">&#39;FINSKA&#39;</span>
+<span class="nv">FINSKA</span>
+<span class="nv">INSKAF</span>
+<span class="nv">NSKAFI</span>
+<span class="w">      </span><span class="p">(</span><span class="m">¯1</span><span class="o">+⍳</span><span class="m">5</span><span class="p">)</span><span class="w"> </span><span class="nv">shift</span><span class="w"> </span><span class="s1">&#39;ABCDE&#39;</span>
+<span class="nv">ABCDE</span>
+<span class="nv">BCDEA</span>
+<span class="nv">CDEAB</span>
+<span class="nv">DEABC</span>
+<span class="nv">EABCD</span>
+</code></pre></div>
 <p>Hint: Build a table of positions with the outer product ∘.+, then wrap it with the residue |.</p>
 <p><div class="problem">
     <span class="problemspan">shift←</span>
     <span class="problemfilltext" id="input_ch6_p3_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch6_p3_b2" placeholder="your solution here">
+    <input aria-label="Chapter 6, write problem 3, answer field 2" class="probleminput" type="text" id="input_ch6_p3_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch6_p3', 2)">Submit</button>
 </div>
-<p id="feedback_ch6_p3" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch6_p3" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 4</p>
 <p>A maze has four rooms joined by one-way corridors. The matrix <code>maze</code> holds a 1 in row i column j when a corridor leads from room i to room j.</p>
 <p>Write a function to count routes through the maze. The left argument ⍺ is such a matrix, the right argument ⍵ is a number of moves, at least 1. Element i j of the result is the number of routes of exactly ⍵ moves from room i to room j. A route may enter the same room more than once.</p>
-<pre class="highlight"><code class="language-apl">      ⍝ Corridors: 1→2 1→3 2→3 2→4 3→1 3→4 4→1
-      maze ← 4 4⍴0 1 1 0 0 0 1 1 1 0 0 1 1 0 0 0
-      maze
-0 1 1 0
-0 0 1 1
-1 0 0 1
-1 0 0 0
-      maze routes 1
-0 1 1 0
-0 0 1 1
-1 0 0 1
-1 0 0 0
-      maze routes 2
-1 0 1 2
-2 0 0 1
-1 1 1 0
-0 1 1 0
-      maze routes 3
-3 1 1 1
-1 2 2 0
-1 1 2 2
-1 0 1 2</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="c1">⍝ Corridors: 1→2 1→3 2→3 2→4 3→1 3→4 4→1</span>
+<span class="w">      </span><span class="nv">maze</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="o">⍴</span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="w">      </span><span class="nv">maze</span>
+<span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span>
+<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span>
+<span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span>
+<span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="w">      </span><span class="nv">maze</span><span class="w"> </span><span class="nv">routes</span><span class="w"> </span><span class="m">1</span>
+<span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span>
+<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span>
+<span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span>
+<span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="w">      </span><span class="nv">maze</span><span class="w"> </span><span class="nv">routes</span><span class="w"> </span><span class="m">2</span>
+<span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span>
+<span class="m">2</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span>
+<span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span>
+<span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span>
+<span class="w">      </span><span class="nv">maze</span><span class="w"> </span><span class="nv">routes</span><span class="w"> </span><span class="m">3</span>
+<span class="m">3</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span>
+<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">0</span>
+<span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span>
+<span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span>
+</code></pre></div>
 <p>Hint: Use matrix multiplication +.× and repeat.</p>
 <p><div class="problem">
     <span class="problemspan">routes←</span>
     <span class="problemfilltext" id="input_ch6_p4_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch6_p4_b2" placeholder="your solution here">
+    <input aria-label="Chapter 6, write problem 4, answer field 2" class="probleminput" type="text" id="input_ch6_p4_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch6_p4', 2)">Submit</button>
 </div>
-<p id="feedback_ch6_p4" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch6_p4" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 5</p>
 <p>Write a function to fit a straight line to a set of measurements by least squares. The left argument ⍺ is a vector of times in minutes. The right argument ⍵ is the vector of temperatures measured at those times. Return first the temperature at time zero, then the rise in temperature per minute. (The Y-intercept and the slope)</p>
-<pre class="highlight"><code class="language-apl">      times ← 2 4 6 8 10
-      times
-2 4 6 8 10
-      temps ← 21 30 42 49 61
-      temps
-21 30 42 49 61
-      times line temps
-10.9 4.95
-      1 2 3 line 5 7 9
-3 2</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">times</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">10</span>
+<span class="w">      </span><span class="nv">times</span>
+<span class="m">2</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">10</span>
+<span class="w">      </span><span class="nv">temps</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="m">42</span><span class="w"> </span><span class="m">49</span><span class="w"> </span><span class="m">61</span>
+<span class="w">      </span><span class="nv">temps</span>
+<span class="m">21</span><span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="m">42</span><span class="w"> </span><span class="m">49</span><span class="w"> </span><span class="m">61</span>
+<span class="w">      </span><span class="nv">times</span><span class="w"> </span><span class="nv">line</span><span class="w"> </span><span class="nv">temps</span>
+<span class="m">10.9</span><span class="w"> </span><span class="m">4.95</span>
+<span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="nv">line</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">9</span>
+<span class="m">3</span><span class="w"> </span><span class="m">2</span>
+</code></pre></div>
 <p>Hint: Use the pseudoinverse ⌹</p>
 <p><div class="problem">
     <span class="problemspan">line←</span>
     <span class="problemfilltext" id="input_ch6_p5_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch6_p5_b2" placeholder="your solution here">
+    <input aria-label="Chapter 6, write problem 5, answer field 2" class="probleminput" type="text" id="input_ch6_p5_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch6_p5', 2)">Submit</button>
 </div>
-<p id="feedback_ch6_p5" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch6_p5" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 6</p>
 <p>Write a function to advance a clock. The right argument ⍵ is a time given as the vector hours minutes seconds. The left argument ⍺ is a whole number of seconds to add to it. Return the new time in the same format. </p>
-<pre class="highlight"><code class="language-apl">      20 tick 23 59 50
-0 0 10
-      90 tick 10 30 0
-10 31 30
-      3600 tick 12 0 0
-13 0 0
-      86400 tick 7 15 0
-7 15 0</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">20</span><span class="w"> </span><span class="nv">tick</span><span class="w"> </span><span class="m">23</span><span class="w"> </span><span class="m">59</span><span class="w"> </span><span class="m">50</span>
+<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">10</span>
+<span class="w">      </span><span class="m">90</span><span class="w"> </span><span class="nv">tick</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="m">0</span>
+<span class="m">10</span><span class="w"> </span><span class="m">31</span><span class="w"> </span><span class="m">30</span>
+<span class="w">      </span><span class="m">3600</span><span class="w"> </span><span class="nv">tick</span><span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">13</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="w">      </span><span class="m">86400</span><span class="w"> </span><span class="nv">tick</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="m">0</span>
+<span class="m">7</span><span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="m">0</span>
+</code></pre></div>
 <p><div class="problem">
     <span class="problemspan">tick←</span>
     <span class="problemfilltext" id="input_ch6_p6_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch6_p6_b2" placeholder="your solution here">
+    <input aria-label="Chapter 6, write problem 6, answer field 2" class="probleminput" type="text" id="input_ch6_p6_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch6_p6', 2)">Submit</button>
 </div>
-<p id="feedback_ch6_p6" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch6_p6" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 7</p>
 <p>The digital root of a number is found by replacing the number with the sum of its digits, then repeating until the value stops changing. In base 10, <code>12345</code> becomes <code>15</code>, then <code>6</code>. A single digit is its own digit sum, so <code>6</code> does not change.</p>
 <p>Write a function to reduce a number ⍵ to its digital root in the base given as left argument ⍺. The base is 2 or more.</p>
-<pre class="highlight"><code class="language-apl">      10 digit_root 12345
-6
-      10 digit_root 999999999
-9
-      16 digit_root 123456789
-9
-      2 digit_root 12345
-1</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">10</span><span class="w"> </span><span class="nv">digit_root</span><span class="w"> </span><span class="m">12345</span>
+<span class="m">6</span>
+<span class="w">      </span><span class="m">10</span><span class="w"> </span><span class="nv">digit_root</span><span class="w"> </span><span class="m">999999999</span>
+<span class="m">9</span>
+<span class="w">      </span><span class="m">16</span><span class="w"> </span><span class="nv">digit_root</span><span class="w"> </span><span class="m">123456789</span>
+<span class="m">9</span>
+<span class="w">      </span><span class="m">2</span><span class="w"> </span><span class="nv">digit_root</span><span class="w"> </span><span class="m">12345</span>
+<span class="m">1</span>
+</code></pre></div>
 <p>Hint: the power operator with a negative right argument gives the inverse of a function, so <code>⍺(⊥⍣¯1)⍵</code> gives the digits of <code>⍵</code> in base <code>⍺</code>.</p>
 <p><div class="problem">
     <span class="problemspan">digit_root←</span>
     <span class="problemfilltext" id="input_ch6_p7_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch6_p7_b2" placeholder="your solution here">
+    <input aria-label="Chapter 6, write problem 7, answer field 2" class="probleminput" type="text" id="input_ch6_p7_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch6_p7', 2)">Submit</button>
 </div>
-<p id="feedback_ch6_p7" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch6_p7" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 8</p>
 <p>A quiz is scored in a matrix. Each row is a round and each column is a player. The first round is a practice round, so its scores are set to 0. The last round counts double. Write a function to apply both rules. You can assume there are at least two rounds.</p>
-<pre class="highlight"><code class="language-apl">      rounds ← 4 3⍴7 4 5 2 8 6 9 3 3 5 5 1
-      rounds
-7 4 5
-2 8 6
-9 3 3
-5 5 1
-      bonus rounds
- 0  0 0
- 2  8 6
- 9  3 3
-10 10 2</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">rounds</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">3</span><span class="o">⍴</span><span class="m">7</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">1</span>
+<span class="w">      </span><span class="nv">rounds</span>
+<span class="m">7</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span>
+<span class="m">2</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">6</span>
+<span class="m">9</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span>
+<span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">1</span>
+<span class="w">      </span><span class="nv">bonus</span><span class="w"> </span><span class="nv">rounds</span>
+<span class="w"> </span><span class="m">0</span><span class="w">  </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="w"> </span><span class="m">2</span><span class="w">  </span><span class="m">8</span><span class="w"> </span><span class="m">6</span>
+<span class="w"> </span><span class="m">9</span><span class="w">  </span><span class="m">3</span><span class="w"> </span><span class="m">3</span>
+<span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">2</span>
+</code></pre></div>
 <p>Hint: Copy ⍵ to a local name before assigning into it.</p>
 <p><div class="problem">
     <span class="problemspan">bonus←</span>
     <span class="problemfilltext" id="input_ch6_p8_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch6_p8_b2" placeholder="your solution here">
+    <input aria-label="Chapter 6, write problem 8, answer field 2" class="probleminput" type="text" id="input_ch6_p8_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch6_p8', 2)">Submit</button>
 </div>
-<p id="feedback_ch6_p8" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch6_p8" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 9</p>
 <p>Write a function to delay all flights on 2024-12-01 by 5 minutes. You can assume that all the times listed end with '30' or '00'.</p>
-<pre class="highlight"><code class="language-apl">          flights ← 3 5⍴'Jari N.' 'Helsinki' 'Tallinn' '2024-12-01' '08:00' 'Erik O.' 'Stockholm' 'Gothenburg' '2024-12-01' '14:00' 'Michel A.' 'London' 'Los Angeles' '2024-12-03' '11:30'
-          flights
-    ┌─────────┬─────────┬───────────┬──────────┬─────┐
-    │Jari N.  │Helsinki │Tallinn    │2024-12-01│08:00│
-    ├─────────┼─────────┼───────────┼──────────┼─────┤
-    │Erik O.  │Stockholm│Gothenburg │2024-12-01│14:00│
-    ├─────────┼─────────┼───────────┼──────────┼─────┤
-    │Michel A.│London   │Los Angeles│2024-12-03│11:30│
-    └─────────┴─────────┴───────────┴──────────┴─────┘
-          delay flights
-    ┌─────────┬─────────┬───────────┬──────────┬─────┐
-    │Jari N.  │Helsinki │Tallinn    │2024-12-01│08:05│
-    ├─────────┼─────────┼───────────┼──────────┼─────┤
-    │Erik O.  │Stockholm│Gothenburg │2024-12-01│14:05│
-    ├─────────┼─────────┼───────────┼──────────┼─────┤
-    │Michel A.│London   │Los Angeles│2024-12-03│11:30│
-    └─────────┴─────────┴───────────┴──────────┴─────┘
-</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">          </span><span class="nv">flights</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">5</span><span class="o">⍴</span><span class="s1">&#39;Jari N.&#39;</span><span class="w"> </span><span class="s1">&#39;Helsinki&#39;</span><span class="w"> </span><span class="s1">&#39;Tallinn&#39;</span><span class="w"> </span><span class="s1">&#39;2024-12-01&#39;</span><span class="w"> </span><span class="s1">&#39;08:00&#39;</span><span class="w"> </span><span class="s1">&#39;Erik O.&#39;</span><span class="w"> </span><span class="s1">&#39;Stockholm&#39;</span><span class="w"> </span><span class="s1">&#39;Gothenburg&#39;</span><span class="w"> </span><span class="s1">&#39;2024-12-01&#39;</span><span class="w"> </span><span class="s1">&#39;14:00&#39;</span><span class="w"> </span><span class="s1">&#39;Michel A.&#39;</span><span class="w"> </span><span class="s1">&#39;London&#39;</span><span class="w"> </span><span class="s1">&#39;Los Angeles&#39;</span><span class="w"> </span><span class="s1">&#39;2024-12-03&#39;</span><span class="w"> </span><span class="s1">&#39;11:30&#39;</span>
+<span class="w">          </span><span class="nv">flights</span>
+<span class="w">    </span><span class="err">┌─────────┬─────────┬───────────┬──────────┬─────┐</span>
+<span class="w">    </span><span class="err">│</span><span class="nv">Jari</span><span class="w"> </span><span class="nv">N</span><span class="na">.</span><span class="w">  </span><span class="err">│</span><span class="nv">Helsinki</span><span class="w"> </span><span class="err">│</span><span class="nv">Tallinn</span><span class="w">    </span><span class="err">│</span><span class="m">2024</span><span class="o">-</span><span class="m">12</span><span class="o">-</span><span class="m">01</span><span class="err">│</span><span class="m">08</span><span class="bp">:</span><span class="m">00</span><span class="err">│</span>
+<span class="w">    </span><span class="err">├─────────┼─────────┼───────────┼──────────┼─────┤</span>
+<span class="w">    </span><span class="err">│</span><span class="nv">Erik</span><span class="w"> </span><span class="nv">O</span><span class="na">.</span><span class="w">  </span><span class="err">│</span><span class="nv">Stockholm</span><span class="err">│</span><span class="nv">Gothenburg</span><span class="w"> </span><span class="err">│</span><span class="m">2024</span><span class="o">-</span><span class="m">12</span><span class="o">-</span><span class="m">01</span><span class="err">│</span><span class="m">14</span><span class="bp">:</span><span class="m">00</span><span class="err">│</span>
+<span class="w">    </span><span class="err">├─────────┼─────────┼───────────┼──────────┼─────┤</span>
+<span class="w">    </span><span class="err">│</span><span class="nv">Michel</span><span class="w"> </span><span class="nv">A</span><span class="na">.</span><span class="err">│</span><span class="nv">London</span><span class="w">   </span><span class="err">│</span><span class="nv">Los</span><span class="w"> </span><span class="nv">Angeles</span><span class="err">│</span><span class="m">2024</span><span class="o">-</span><span class="m">12</span><span class="o">-</span><span class="m">03</span><span class="err">│</span><span class="m">11</span><span class="bp">:</span><span class="m">30</span><span class="err">│</span>
+<span class="w">    </span><span class="err">└─────────┴─────────┴───────────┴──────────┴─────┘</span>
+<span class="w">          </span><span class="nv">delay</span><span class="w"> </span><span class="nv">flights</span>
+<span class="w">    </span><span class="err">┌─────────┬─────────┬───────────┬──────────┬─────┐</span>
+<span class="w">    </span><span class="err">│</span><span class="nv">Jari</span><span class="w"> </span><span class="nv">N</span><span class="na">.</span><span class="w">  </span><span class="err">│</span><span class="nv">Helsinki</span><span class="w"> </span><span class="err">│</span><span class="nv">Tallinn</span><span class="w">    </span><span class="err">│</span><span class="m">2024</span><span class="o">-</span><span class="m">12</span><span class="o">-</span><span class="m">01</span><span class="err">│</span><span class="m">08</span><span class="bp">:</span><span class="m">05</span><span class="err">│</span>
+<span class="w">    </span><span class="err">├─────────┼─────────┼───────────┼──────────┼─────┤</span>
+<span class="w">    </span><span class="err">│</span><span class="nv">Erik</span><span class="w"> </span><span class="nv">O</span><span class="na">.</span><span class="w">  </span><span class="err">│</span><span class="nv">Stockholm</span><span class="err">│</span><span class="nv">Gothenburg</span><span class="w"> </span><span class="err">│</span><span class="m">2024</span><span class="o">-</span><span class="m">12</span><span class="o">-</span><span class="m">01</span><span class="err">│</span><span class="m">14</span><span class="bp">:</span><span class="m">05</span><span class="err">│</span>
+<span class="w">    </span><span class="err">├─────────┼─────────┼───────────┼──────────┼─────┤</span>
+<span class="w">    </span><span class="err">│</span><span class="nv">Michel</span><span class="w"> </span><span class="nv">A</span><span class="na">.</span><span class="err">│</span><span class="nv">London</span><span class="w">   </span><span class="err">│</span><span class="nv">Los</span><span class="w"> </span><span class="nv">Angeles</span><span class="err">│</span><span class="m">2024</span><span class="o">-</span><span class="m">12</span><span class="o">-</span><span class="m">03</span><span class="err">│</span><span class="m">11</span><span class="bp">:</span><span class="m">30</span><span class="err">│</span>
+<span class="w">    </span><span class="err">└─────────┴─────────┴───────────┴──────────┴─────┘</span>
+</code></pre></div>
 <p><div class="problem">
     <span class="problemspan">delay←</span>
     <span class="problemfilltext" id="input_ch6_p9_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch6_p9_b2" placeholder="your solution here">
+    <input aria-label="Chapter 6, write problem 9, answer field 2" class="probleminput" type="text" id="input_ch6_p9_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch6_p9', 2)">Submit</button>
 </div>
-<p id="feedback_ch6_p9" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch6_p9" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 10</p>
 <p>Each line of a message has been rotated to the right by its line number minus one. The first line is unchanged, the second line is rotated by one place, and so on. Write a function to undo the rotation. The right argument ⍵ is a vector of character vectors of equal length. The result is a character matrix.</p>
-<pre class="highlight"><code class="language-apl">      lines ← 'SHALL' 'P WE ' ' ALAY' 'AME G' '    ?'
-      lines
-┌─────┬─────┬─────┬─────┬─────┐
-│SHALL│P WE │ ALAY│AME G│    ?│
-└─────┴─────┴─────┴─────┴─────┘
-      unskew lines
-SHALL
- WE P
-LAY A
- GAME
-?    </code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">lines</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="s1">&#39;SHALL&#39;</span><span class="w"> </span><span class="s1">&#39;P WE &#39;</span><span class="w"> </span><span class="s1">&#39; ALAY&#39;</span><span class="w"> </span><span class="s1">&#39;AME G&#39;</span><span class="w"> </span><span class="s1">&#39;    ?&#39;</span>
+<span class="w">      </span><span class="nv">lines</span>
+<span class="err">┌─────┬─────┬─────┬─────┬─────┐</span>
+<span class="err">│</span><span class="nv">SHALL</span><span class="err">│</span><span class="nv">P</span><span class="w"> </span><span class="nv">WE</span><span class="w"> </span><span class="err">│</span><span class="w"> </span><span class="nv">ALAY</span><span class="err">│</span><span class="nv">AME</span><span class="w"> </span><span class="nv">G</span><span class="err">│</span><span class="w">    </span><span class="o">?</span><span class="err">│</span>
+<span class="err">└─────┴─────┴─────┴─────┴─────┘</span>
+<span class="w">      </span><span class="nv">unskew</span><span class="w"> </span><span class="nv">lines</span>
+<span class="nv">SHALL</span>
+<span class="w"> </span><span class="nv">WE</span><span class="w"> </span><span class="nv">P</span>
+<span class="nv">LAY</span><span class="w"> </span><span class="nv">A</span>
+<span class="w"> </span><span class="nv">GAME</span>
+<span class="o">?</span><span class="w">    </span>
+</code></pre></div>
 <p>Hint: Copy ⍵ to a local name before assigning into it.</p>
 <p><div class="problem">
     <span class="problemspan">unskew←</span>
     <span class="problemfilltext" id="input_ch6_p10_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch6_p10_b2" placeholder="your solution here">
+    <input aria-label="Chapter 6, write problem 10, answer field 2" class="probleminput" type="text" id="input_ch6_p10_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch6_p10', 2)">Submit</button>
 </div>
-<p id="feedback_ch6_p10" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch6_p10" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 11</p>
 <p>A dyadic function is commutative on a set of values if <code>x f y</code> matches <code>y f x</code> for every pair of values x and y drawn from that set. Write an operator that takes a dyadic function as its left operand ⍺⍺ and a vector of values as its right argument ⍵. It returns 1 if the operand is commutative on the elements of ⍵, and 0 otherwise.</p>
-<pre class="highlight"><code class="language-apl">      +commutes 1 2 3
-1
-      -commutes 1 2 3
-0
-      ⌈commutes 3 1 4 1 5
-1
-      ,commutes 'ABC'
-0
-      *commutes 1 2 3
-0</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="o">+</span><span class="nv">commutes</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
+<span class="m">1</span>
+<span class="w">      </span><span class="o">-</span><span class="nv">commutes</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
+<span class="m">0</span>
+<span class="w">      </span><span class="o">⌈</span><span class="nv">commutes</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">5</span>
+<span class="m">1</span>
+<span class="w">      </span><span class="o">,</span><span class="nv">commutes</span><span class="w"> </span><span class="s1">&#39;ABC&#39;</span>
+<span class="m">0</span>
+<span class="w">      </span><span class="o">*</span><span class="nv">commutes</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
+<span class="m">0</span>
+</code></pre></div>
 <p>Hint: Use the outer product <code>∘.⍺⍺</code>.</p>
 <p><div class="problem">
     <span class="problemspan">commutes←</span>
     <span class="problemfilltext" id="input_ch6_p11_b1" hidden>A←{f←⍎⍺ ⋄ OP←</span>
-    <input class="probleminput" type="text" id="input_ch6_p11_b2" placeholder="your solution here">
+    <input aria-label="Chapter 6, write problem 11, answer field 2" class="probleminput" type="text" id="input_ch6_p11_b2" placeholder="your solution here">
     <span class="problemfilltext" id="input_ch6_p11_b3" hidden>⋄ (f OP)⍵}</span>
     <button class="problembutton" onclick="submit_problem('ch6_p11', 3)">Submit</button>
 </div>
-<p id="feedback_ch6_p11" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch6_p11" style="color: red"></p></p>
+</div>
+<hr />
+<div class="admonition write-problem">
+<p class="admonition-title">Write problem 12</p>
+<p>Write a function to hide the digits in a text. The right argument ⍵ is a character vector. Every digit in it is replaced with <code>#</code>, all other characters stay as they are.</p>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">hide_digits</span><span class="w"> </span><span class="s1">&#39;Call 040 123 4567&#39;</span>
+<span class="nv">Call</span><span class="w"> </span><span class="c1">### ### ####</span>
+<span class="w">      </span><span class="nv">hide_digits</span><span class="w"> </span><span class="s1">&#39;2024-12-01&#39;</span>
+<span class="c1">####-##-##</span>
+<span class="w">      </span><span class="nv">hide_digits</span><span class="w"> </span><span class="s1">&#39;no digits here&#39;</span>
+<span class="nv">no</span><span class="w"> </span><span class="nv">digits</span><span class="w"> </span><span class="nv">here</span>
+</code></pre></div>
+<p><div class="problem">
+    <span class="problemspan">hide_digits←</span>
+    <span class="problemfilltext" id="input_ch6_p12_b1" hidden>A←</span>
+    <input aria-label="Chapter 6, write problem 12, answer field 2" class="probleminput" type="text" id="input_ch6_p12_b2" placeholder="your solution here">
+    <button class="problembutton" onclick="submit_problem('ch6_p12', 2)">Submit</button>
+</div>
+<p role="status" aria-atomic="true" id="feedback_ch6_p12" style="color: red"></p></p>
 </div>
 <hr />
 

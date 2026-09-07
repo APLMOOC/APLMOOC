@@ -2344,9 +2344,9 @@
   <label class="md-nav__title">Feedback</label>
   <form class="apl-feedback" data-section="2.R - Read exercises">
     <p class="apl-feedback__where">2.R - Read exercises</p>
-    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+    <textarea aria-label="Course feedback" class="apl-feedback__message" rows="4" maxlength="2000" required
               placeholder="Spotted a mistake? Something unclear?"></textarea>
-    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+    <input aria-label="Email address (optional)" class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
            placeholder="Email (optional)">
     <button class="apl-feedback__send" type="submit">Send</button>
     <p class="apl-feedback__status" role="status"></p>
@@ -2375,11 +2375,13 @@ Check your answers by opening the "Output" tab.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Input</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      1 4 9 16 25[4]</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">25</span><span class="sr">[</span><span class="m">4</span><span class="sr">]</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      1 4 9 16 25[4]
-16</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">25</span><span class="sr">[</span><span class="m">4</span><span class="sr">]</span>
+<span class="m">16</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2390,11 +2392,13 @@ Check your answers by opening the "Output" tab.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Input</label><label for="__tabbed_2_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">1 4 9 16 25[3 4 5]</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="m">1</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">25</span><span class="sr">[</span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="sr">]</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      1 4 9 16 25[3 4 5]
-9 16 25</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">25</span><span class="sr">[</span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="sr">]</span>
+<span class="m">9</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">25</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2405,11 +2409,13 @@ Check your answers by opening the "Output" tab.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Input</label><label for="__tabbed_3_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      (2×1 4 9 16 25)[4]</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="p">(</span><span class="m">2</span><span class="o">×</span><span class="m">1</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">25</span><span class="p">)</span><span class="sr">[</span><span class="m">4</span><span class="sr">]</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<p><pre class="highlight"><code class="language-apl">      (2×1 4 9 16 25)[4]
-32</code></pre>
+<p><div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="p">(</span><span class="m">2</span><span class="o">×</span><span class="m">1</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">25</span><span class="p">)</span><span class="sr">[</span><span class="m">4</span><span class="sr">]</span>
+<span class="m">32</span>
+</code></pre></div>
 Remember, creating a vector takes precedence over any other operations.</p>
 </div>
 </div>
@@ -2421,11 +2427,13 @@ Remember, creating a vector takes precedence over any other operations.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Input</label><label for="__tabbed_4_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      (2×1) 4 9 16 25[4]</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="p">(</span><span class="m">2</span><span class="o">×</span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">25</span><span class="sr">[</span><span class="m">4</span><span class="sr">]</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      (2×1) 4 9 16 25[4]
-16</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="p">(</span><span class="m">2</span><span class="o">×</span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">25</span><span class="sr">[</span><span class="m">4</span><span class="sr">]</span>
+<span class="m">16</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2436,11 +2444,13 @@ Remember, creating a vector takes precedence over any other operations.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Input</label><label for="__tabbed_5_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      ¯1 4 9 16 25[2]</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">¯1</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">25</span><span class="sr">[</span><span class="m">2</span><span class="sr">]</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      ¯1 4 9 16 25[2]
-4</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">¯1</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">25</span><span class="sr">[</span><span class="m">2</span><span class="sr">]</span>
+<span class="m">4</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2451,11 +2461,13 @@ Remember, creating a vector takes precedence over any other operations.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Input</label><label for="__tabbed_6_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      -1 4 9 16 25[2]</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="o">-</span><span class="m">1</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">25</span><span class="sr">[</span><span class="m">2</span><span class="sr">]</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<p><pre class="highlight"><code class="language-apl">      -1 4 9 16 25[2]
-¯4</code></pre>
+<p><div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="o">-</span><span class="m">1</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">25</span><span class="sr">[</span><span class="m">2</span><span class="sr">]</span>
+<span class="m">¯4</span>
+</code></pre></div>
 - is a function, which is applied to the whole vector, ¯ is the correct way to write negative numbers</p>
 </div>
 </div>
@@ -2467,11 +2479,13 @@ Remember, creating a vector takes precedence over any other operations.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Input</label><label for="__tabbed_7_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      1 2 3 4 ÷ 2 3 4 5</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="o">÷</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      1 2 3 4 ÷ 2 3 4 5
-0.5 0.6666666667 0.75 0.8</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="o">÷</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span>
+<span class="m">0.5</span><span class="w"> </span><span class="m">0.6666666667</span><span class="w"> </span><span class="m">0.75</span><span class="w"> </span><span class="m">0.8</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2482,13 +2496,15 @@ Remember, creating a vector takes precedence over any other operations.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Input</label><label for="__tabbed_8_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      1 2 ÷ 2 3 4 5</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">÷</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      1 2 ÷ 2 3 4 5
-LENGTH ERROR: Mismatched left and right argument shapes
-      1 2÷2 3 4 5
-         ∧</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">÷</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span>
+<span class="nv">LENGTH</span><span class="w"> </span><span class="nv">ERROR</span><span class="bp">:</span><span class="w"> </span><span class="nv">Mismatched</span><span class="w"> </span><span class="nv">left</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">right</span><span class="w"> </span><span class="nv">argument</span><span class="w"> </span><span class="nv">shapes</span>
+<span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="o">÷</span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span>
+<span class="w">         </span><span class="o">∧</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2499,15 +2515,17 @@ LENGTH ERROR: Mismatched left and right argument shapes
 <div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Input</label><label for="__tabbed_9_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      5 5 ⍴ 0</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="m">0</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      5 5 ⍴ 0
-0 0 0 0 0
-0 0 0 0 0
-0 0 0 0 0
-0 0 0 0 0
-0 0 0 0 0</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="m">0</span>
+<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2518,15 +2536,17 @@ LENGTH ERROR: Mismatched left and right argument shapes
 <div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Input</label><label for="__tabbed_10_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      5 5 ⍴ ⎕A</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="nf">⎕A</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      5 5 ⍴ ⎕A
-ABCDE
-FGHIJ
-KLMNO
-PQRST
-UVWXY</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="nf">⎕A</span>
+<span class="nv">ABCDE</span>
+<span class="nv">FGHIJ</span>
+<span class="nv">KLMNO</span>
+<span class="nv">PQRST</span>
+<span class="nv">UVWXY</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2537,13 +2557,15 @@ UVWXY</code></pre>
 <div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Input</label><label for="__tabbed_11_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      (5 5 ⍴ ⎕A)[2 3 4;2 3 4]</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="p">(</span><span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="nf">⎕A</span><span class="p">)</span><span class="sr">[</span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="sr">;</span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="sr">]</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      (5 5 ⍴ ⎕A)[2 3 4;2 3 4]
-GHI
-LMN
-QRS</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="p">(</span><span class="m">5</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="nf">⎕A</span><span class="p">)</span><span class="sr">[</span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="sr">;</span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="sr">]</span>
+<span class="nv">GHI</span>
+<span class="nv">LMN</span>
+<span class="nv">QRS</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2554,20 +2576,22 @@ QRS</code></pre>
 <div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Input</label><label for="__tabbed_12_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      10 11 ⍴ '╚╗░'</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">10</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="s1">&#39;╚╗░&#39;</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      10 11 ⍴ '╚╗░'
-╚╗░╚╗░╚╗░╚╗
-░╚╗░╚╗░╚╗░╚
-╗░╚╗░╚╗░╚╗░
-╚╗░╚╗░╚╗░╚╗
-░╚╗░╚╗░╚╗░╚
-╗░╚╗░╚╗░╚╗░
-╚╗░╚╗░╚╗░╚╗
-░╚╗░╚╗░╚╗░╚
-╗░╚╗░╚╗░╚╗░
-╚╗░╚╗░╚╗░╚╗</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">10</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="s1">&#39;╚╗░&#39;</span>
+<span class="err">╚╗░╚╗░╚╗░╚╗</span>
+<span class="err">░╚╗░╚╗░╚╗░╚</span>
+<span class="err">╗░╚╗░╚╗░╚╗░</span>
+<span class="err">╚╗░╚╗░╚╗░╚╗</span>
+<span class="err">░╚╗░╚╗░╚╗░╚</span>
+<span class="err">╗░╚╗░╚╗░╚╗░</span>
+<span class="err">╚╗░╚╗░╚╗░╚╗</span>
+<span class="err">░╚╗░╚╗░╚╗░╚</span>
+<span class="err">╗░╚╗░╚╗░╚╗░</span>
+<span class="err">╚╗░╚╗░╚╗░╚╗</span>
+</code></pre></div>
 </div>
 </div>
 </div>

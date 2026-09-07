@@ -2344,9 +2344,9 @@
   <label class="md-nav__title">Feedback</label>
   <form class="apl-feedback" data-section="3.R - Read exercises">
     <p class="apl-feedback__where">3.R - Read exercises</p>
-    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+    <textarea aria-label="Course feedback" class="apl-feedback__message" rows="4" maxlength="2000" required
               placeholder="Spotted a mistake? Something unclear?"></textarea>
-    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+    <input aria-label="Email address (optional)" class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
            placeholder="Email (optional)">
     <button class="apl-feedback__send" type="submit">Send</button>
     <p class="apl-feedback__status" role="status"></p>
@@ -2375,10 +2375,12 @@ Check your answers by opening the "Output" tab.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Input</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      6{⍵}5</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">6</span><span class="kt">{</span><span class="bp">⍵</span><span class="kt">}</span><span class="m">5</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">5</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="m">5</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2389,10 +2391,12 @@ Check your answers by opening the "Output" tab.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Input</label><label for="__tabbed_2_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      6{⍺}5</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">6</span><span class="kt">{</span><span class="bp">⍺</span><span class="kt">}</span><span class="m">5</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">6</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="m">6</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2403,10 +2407,12 @@ Check your answers by opening the "Output" tab.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Input</label><label for="__tabbed_3_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      6{⍵-⍺}5</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">6</span><span class="kt">{</span><span class="bp">⍵</span><span class="o">-</span><span class="bp">⍺</span><span class="kt">}</span><span class="m">5</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">¯1</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="m">¯1</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2417,24 +2423,26 @@ Check your answers by opening the "Output" tab.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Input</label><label for="__tabbed_4_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      F ← {⍵&lt;0: 0 ⋄ 1}
-      F ¯1
-      F ¯0.5
-      F 0
-      F 0.5
-      F 1</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">F</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="bp">⍵</span><span class="o">&lt;</span><span class="m">0</span><span class="bp">:</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span><span class="m">1</span><span class="kt">}</span>
+<span class="w">      </span><span class="nv">F</span><span class="w"> </span><span class="m">¯1</span>
+<span class="w">      </span><span class="nv">F</span><span class="w"> </span><span class="m">¯0.5</span>
+<span class="w">      </span><span class="nv">F</span><span class="w"> </span><span class="m">0</span>
+<span class="w">      </span><span class="nv">F</span><span class="w"> </span><span class="m">0.5</span>
+<span class="w">      </span><span class="nv">F</span><span class="w"> </span><span class="m">1</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      F ¯1
-0
-      F ¯0.5
-0
-      F 0
-1
-      F 0.5
-1
-      F 1
-1</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">F</span><span class="w"> </span><span class="m">¯1</span>
+<span class="m">0</span>
+<span class="w">      </span><span class="nv">F</span><span class="w"> </span><span class="m">¯0.5</span>
+<span class="m">0</span>
+<span class="w">      </span><span class="nv">F</span><span class="w"> </span><span class="m">0</span>
+<span class="m">1</span>
+<span class="w">      </span><span class="nv">F</span><span class="w"> </span><span class="m">0.5</span>
+<span class="m">1</span>
+<span class="w">      </span><span class="nv">F</span><span class="w"> </span><span class="m">1</span>
+<span class="m">1</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2445,48 +2453,51 @@ Check your answers by opening the "Output" tab.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Input</label><label for="__tabbed_5_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      D ← {0=15|⍵: 'FizzBuzz' ⋄ 0=3|⍵: 'Fizz' ⋄ 0=5|⍵: 'Buzz'}
-      D 1
-      D 2
-      D 3
-      D 4
-      D 5
-      D 6
-      D 7
-      D 8
-      D 9
-      D 10
-      D 11
-      D 12
-      D 13
-      D 14
-      D 15</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">D</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="m">0</span><span class="o">=</span><span class="m">15</span><span class="o">|</span><span class="bp">⍵:</span><span class="w"> </span><span class="s1">&#39;FizzBuzz&#39;</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span><span class="m">0</span><span class="o">=</span><span class="m">3</span><span class="o">|</span><span class="bp">⍵:</span><span class="w"> </span><span class="s1">&#39;Fizz&#39;</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span><span class="m">0</span><span class="o">=</span><span class="m">5</span><span class="o">|</span><span class="bp">⍵:</span><span class="w"> </span><span class="s1">&#39;Buzz&#39;</span><span class="kt">}</span>
+<span class="w">      </span><span class="nv">D</span><span class="w"> </span><span class="m">1</span>
+<span class="w">      </span><span class="nv">D</span><span class="w"> </span><span class="m">2</span>
+<span class="w">      </span><span class="nv">D</span><span class="w"> </span><span class="m">3</span>
+<span class="w">      </span><span class="nv">D</span><span class="w"> </span><span class="m">4</span>
+<span class="w">      </span><span class="nv">D</span><span class="w"> </span><span class="m">5</span>
+<span class="w">      </span><span class="nv">D</span><span class="w"> </span><span class="m">6</span>
+<span class="w">      </span><span class="nv">D</span><span class="w"> </span><span class="m">7</span>
+<span class="w">      </span><span class="nv">D</span><span class="w"> </span><span class="m">8</span>
+<span class="w">      </span><span class="nv">D</span><span class="w"> </span><span class="m">9</span>
+<span class="w">      </span><span class="nv">D</span><span class="w"> </span><span class="m">10</span>
+<span class="w">      </span><span class="nv">D</span><span class="w"> </span><span class="m">11</span>
+<span class="w">      </span><span class="nv">D</span><span class="w"> </span><span class="m">12</span>
+<span class="w">      </span><span class="nv">D</span><span class="w"> </span><span class="m">13</span>
+<span class="w">      </span><span class="nv">D</span><span class="w"> </span><span class="m">14</span>
+<span class="w">      </span><span class="nv">D</span><span class="w"> </span><span class="m">15</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      D 1
-      D 2
-      D 3
-Fizz
-      D 4
-      D 5
-Buzz
-      D 6
-Fizz
-      D 7
-      D 8
-      D 9
-Fizz
-      D 10
-Buzz
-      D 11
-      D 12
-Fizz
-      D 13
-      D 14
-      D 15
-FizzBuzz</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">D</span><span class="w"> </span><span class="m">1</span>
+<span class="w">      </span><span class="nv">D</span><span class="w"> </span><span class="m">2</span>
+<span class="w">      </span><span class="nv">D</span><span class="w"> </span><span class="m">3</span>
+<span class="nv">Fizz</span>
+<span class="w">      </span><span class="nv">D</span><span class="w"> </span><span class="m">4</span>
+<span class="w">      </span><span class="nv">D</span><span class="w"> </span><span class="m">5</span>
+<span class="nv">Buzz</span>
+<span class="w">      </span><span class="nv">D</span><span class="w"> </span><span class="m">6</span>
+<span class="nv">Fizz</span>
+<span class="w">      </span><span class="nv">D</span><span class="w"> </span><span class="m">7</span>
+<span class="w">      </span><span class="nv">D</span><span class="w"> </span><span class="m">8</span>
+<span class="w">      </span><span class="nv">D</span><span class="w"> </span><span class="m">9</span>
+<span class="nv">Fizz</span>
+<span class="w">      </span><span class="nv">D</span><span class="w"> </span><span class="m">10</span>
+<span class="nv">Buzz</span>
+<span class="w">      </span><span class="nv">D</span><span class="w"> </span><span class="m">11</span>
+<span class="w">      </span><span class="nv">D</span><span class="w"> </span><span class="m">12</span>
+<span class="nv">Fizz</span>
+<span class="w">      </span><span class="nv">D</span><span class="w"> </span><span class="m">13</span>
+<span class="w">      </span><span class="nv">D</span><span class="w"> </span><span class="m">14</span>
+<span class="w">      </span><span class="nv">D</span><span class="w"> </span><span class="m">15</span>
+<span class="nv">FizzBuzz</span>
+</code></pre></div>
 <p>The famous FizzBuzz interview question. Note that a more concise version can be written as</p>
-<pre class="highlight"><code class="language-apl">      D ← {((4×0=3|⍵)⍴'Fizz'),(4×0=5|⍵)⍴'Buzz'}</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">D</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="p">((</span><span class="m">4</span><span class="o">×</span><span class="m">0</span><span class="o">=</span><span class="m">3</span><span class="o">|</span><span class="bp">⍵</span><span class="p">)</span><span class="o">⍴</span><span class="s1">&#39;Fizz&#39;</span><span class="p">)</span><span class="o">,</span><span class="p">(</span><span class="m">4</span><span class="o">×</span><span class="m">0</span><span class="o">=</span><span class="m">5</span><span class="o">|</span><span class="bp">⍵</span><span class="p">)</span><span class="o">⍴</span><span class="s1">&#39;Buzz&#39;</span><span class="kt">}</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2497,37 +2508,39 @@ FizzBuzz</code></pre>
 <div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Input</label><label for="__tabbed_6_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      G ← {
-        ⍺&lt;0: 0
-        ⍺&gt;1: ⍵
-        ⍺×⍵
-        }
-      ¯0.5 G 10
-      ¯0.25 G 10
-      0 G 10
-      0.25 G 10
-      0.5 G 10
-      0.75 G 10
-      1 G 10
-      1.25 G 10</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">G</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span>
+<span class="w">        </span><span class="bp">⍺</span><span class="o">&lt;</span><span class="m">0</span><span class="bp">:</span><span class="w"> </span><span class="m">0</span>
+<span class="w">        </span><span class="bp">⍺</span><span class="o">&gt;</span><span class="m">1</span><span class="bp">:</span><span class="w"> </span><span class="bp">⍵</span>
+<span class="w">        </span><span class="bp">⍺</span><span class="o">×</span><span class="bp">⍵</span>
+<span class="w">        </span><span class="kt">}</span>
+<span class="w">      </span><span class="m">¯0.5</span><span class="w"> </span><span class="nv">G</span><span class="w"> </span><span class="m">10</span>
+<span class="w">      </span><span class="m">¯0.25</span><span class="w"> </span><span class="nv">G</span><span class="w"> </span><span class="m">10</span>
+<span class="w">      </span><span class="m">0</span><span class="w"> </span><span class="nv">G</span><span class="w"> </span><span class="m">10</span>
+<span class="w">      </span><span class="m">0.25</span><span class="w"> </span><span class="nv">G</span><span class="w"> </span><span class="m">10</span>
+<span class="w">      </span><span class="m">0.5</span><span class="w"> </span><span class="nv">G</span><span class="w"> </span><span class="m">10</span>
+<span class="w">      </span><span class="m">0.75</span><span class="w"> </span><span class="nv">G</span><span class="w"> </span><span class="m">10</span>
+<span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="nv">G</span><span class="w"> </span><span class="m">10</span>
+<span class="w">      </span><span class="m">1.25</span><span class="w"> </span><span class="nv">G</span><span class="w"> </span><span class="m">10</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      ¯0.5 G 10
-0
-      ¯0.25 G 10
-0
-      0 G 10
-0
-      0.25 G 10
-2.5
-      0.5 G 10
-5
-      0.75 G 10
-7.5
-      1 G 10
-10
-      1.25 G 10
-10</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">¯0.5</span><span class="w"> </span><span class="nv">G</span><span class="w"> </span><span class="m">10</span>
+<span class="m">0</span>
+<span class="w">      </span><span class="m">¯0.25</span><span class="w"> </span><span class="nv">G</span><span class="w"> </span><span class="m">10</span>
+<span class="m">0</span>
+<span class="w">      </span><span class="m">0</span><span class="w"> </span><span class="nv">G</span><span class="w"> </span><span class="m">10</span>
+<span class="m">0</span>
+<span class="w">      </span><span class="m">0.25</span><span class="w"> </span><span class="nv">G</span><span class="w"> </span><span class="m">10</span>
+<span class="m">2.5</span>
+<span class="w">      </span><span class="m">0.5</span><span class="w"> </span><span class="nv">G</span><span class="w"> </span><span class="m">10</span>
+<span class="m">5</span>
+<span class="w">      </span><span class="m">0.75</span><span class="w"> </span><span class="nv">G</span><span class="w"> </span><span class="m">10</span>
+<span class="m">7.5</span>
+<span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="nv">G</span><span class="w"> </span><span class="m">10</span>
+<span class="m">10</span>
+<span class="w">      </span><span class="m">1.25</span><span class="w"> </span><span class="nv">G</span><span class="w"> </span><span class="m">10</span>
+<span class="m">10</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2538,12 +2551,14 @@ FizzBuzz</code></pre>
 <div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Input</label><label for="__tabbed_7_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      H←{⍺=⍵:⍵ ⋄ ⍵ ∇ 2○⍵}
-      0 H 0.5</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">H</span><span class="kd">←</span><span class="kt">{</span><span class="bp">⍺</span><span class="o">=</span><span class="bp">⍵:⍵</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span><span class="bp">⍵</span><span class="w"> </span><span class="bp">∇</span><span class="w"> </span><span class="m">2</span><span class="o">○</span><span class="bp">⍵</span><span class="kt">}</span>
+<span class="w">      </span><span class="m">0</span><span class="w"> </span><span class="nv">H</span><span class="w"> </span><span class="m">0.5</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      0 H 0.5
-0.7390851332</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">0</span><span class="w"> </span><span class="nv">H</span><span class="w"> </span><span class="m">0.5</span>
+<span class="m">0.7390851332</span>
+</code></pre></div>
 <p>This function repeatedly applies cosine 2○ to ⍵ until ⍵ is the same as 2 ○ ⍵, that is, trying to find the fixed point of cosine. The left argument keeps track of the previous iteration.</p>
 </div>
 </div>
@@ -2555,15 +2570,17 @@ FizzBuzz</code></pre>
 <div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Input</label><label for="__tabbed_8_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      K ← {
-        ⍵≤2: 1
-        (∇ ⍵ - 2) + ∇ ⍵ - 1
-        }
-      K 6</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">K</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span>
+<span class="w">        </span><span class="bp">⍵</span><span class="o">≤</span><span class="m">2</span><span class="bp">:</span><span class="w"> </span><span class="m">1</span>
+<span class="w">        </span><span class="p">(</span><span class="bp">∇</span><span class="w"> </span><span class="bp">⍵</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="bp">∇</span><span class="w"> </span><span class="bp">⍵</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span>
+<span class="w">        </span><span class="kt">}</span>
+<span class="w">      </span><span class="nv">K</span><span class="w"> </span><span class="m">6</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      K 6
-8</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">K</span><span class="w"> </span><span class="m">6</span>
+<span class="m">8</span>
+</code></pre></div>
 <p>This function calculates the ⍵th fibonacci number</p>
 </div>
 </div>
@@ -2575,16 +2592,18 @@ FizzBuzz</code></pre>
 <div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Input</label><label for="__tabbed_9_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      L ← {
-        ⍵=0: 1
-        2*∇ ⍵ - 1
-        }
-      L 3</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">L</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span>
+<span class="w">        </span><span class="bp">⍵</span><span class="o">=</span><span class="m">0</span><span class="bp">:</span><span class="w"> </span><span class="m">1</span>
+<span class="w">        </span><span class="m">2</span><span class="o">*</span><span class="bp">∇</span><span class="w"> </span><span class="bp">⍵</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span>
+<span class="w">        </span><span class="kt">}</span>
+<span class="w">      </span><span class="nv">L</span><span class="w"> </span><span class="m">3</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      L 3
-16
-      ⍝ 2*2*2</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">L</span><span class="w"> </span><span class="m">3</span>
+<span class="m">16</span>
+<span class="w">      </span><span class="c1">⍝ 2*2*2</span>
+</code></pre></div>
 <p>This function calculates repeated exponentials of 2</p>
 </div>
 </div>
@@ -2596,20 +2615,21 @@ FizzBuzz</code></pre>
 <div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Input</label><label for="__tabbed_10_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      A ← 3 3⍴1 2 3 4 5 6 7 8 9
-      A
-1 2 3
-4 5 6
-7 8 9
-      M ← {(⍴⍺)⍴⍵}
-      A M ⎕A
-</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">A</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="o">⍴</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span>
+<span class="w">      </span><span class="nv">A</span>
+<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
+<span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span>
+<span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span>
+<span class="w">      </span><span class="nv">M</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="p">(</span><span class="o">⍴</span><span class="bp">⍺</span><span class="p">)</span><span class="o">⍴</span><span class="bp">⍵</span><span class="kt">}</span>
+<span class="w">      </span><span class="nv">A</span><span class="w"> </span><span class="nv">M</span><span class="w"> </span><span class="nf">⎕A</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      A M ⎕A
-ABC
-DEF
-GHI</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">A</span><span class="w"> </span><span class="nv">M</span><span class="w"> </span><span class="nf">⎕A</span>
+<span class="nv">ABC</span>
+<span class="nv">DEF</span>
+<span class="nv">GHI</span>
+</code></pre></div>
 <p>This function resizes ⍵ to be the same shape as ⍺</p>
 </div>
 </div>
@@ -2621,11 +2641,13 @@ GHI</code></pre>
 <div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Input</label><label for="__tabbed_11_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      5 (+,-) 1 2 3</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">5</span><span class="w"> </span><span class="p">(</span><span class="o">+,-</span><span class="p">)</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      5 (+,-) 1 2 3
-6 7 8 4 3 2</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">5</span><span class="w"> </span><span class="p">(</span><span class="o">+,-</span><span class="p">)</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
+<span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span>
+</code></pre></div>
 <p>This is a fork, the corresponding dfn is 5 {(⍺+⍵),(⍺-⍵)} 1 2 3</p>
 </div>
 </div>
@@ -2637,19 +2659,21 @@ GHI</code></pre>
 <div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Input</label><label for="__tabbed_12_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      ]Box -trains=tree
-      (1∘,⍴∘0) 10
-      (1∘,⍴∘0)</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="sr">]</span><span class="nv">Box</span><span class="w"> </span><span class="o">-</span><span class="nv">trains</span><span class="o">=</span><span class="nv">tree</span>
+<span class="w">      </span><span class="p">(</span><span class="m">1</span><span class="na">∘</span><span class="o">,⍴</span><span class="na">∘</span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="m">10</span>
+<span class="w">      </span><span class="p">(</span><span class="m">1</span><span class="na">∘</span><span class="o">,⍴</span><span class="na">∘</span><span class="m">0</span><span class="p">)</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      (1∘,⍴∘0) 10
-1 0 0 0 0 0 0 0 0 0 0
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="p">(</span><span class="m">1</span><span class="na">∘</span><span class="o">,⍴</span><span class="na">∘</span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="m">10</span>
+<span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
 
-      (1∘,⍴∘0)
- ┌─┴─┐
- ∘   ∘
-┌┴┐ ┌┴┐
-1 , ⍴ 0</code></pre>
+<span class="w">      </span><span class="p">(</span><span class="m">1</span><span class="na">∘</span><span class="o">,⍴</span><span class="na">∘</span><span class="m">0</span><span class="p">)</span>
+<span class="w"> </span><span class="err">┌─┴─┐</span>
+<span class="w"> </span><span class="na">∘</span><span class="w">   </span><span class="na">∘</span>
+<span class="err">┌┴┐</span><span class="w"> </span><span class="err">┌┴┐</span>
+<span class="m">1</span><span class="w"> </span><span class="o">,</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="m">0</span>
+</code></pre></div>
 <p>This is an atop, the dfn equivalent is {1,⍵⍴0}</p>
 </div>
 </div>
@@ -2661,29 +2685,31 @@ GHI</code></pre>
 <div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Input</label><label for="__tabbed_13_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      ]Box -trains=tree
-      (2∘⍴⍴(1∘,⍴∘0)) 10
-      (2∘⍴⍴(1∘,⍴∘0))</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="sr">]</span><span class="nv">Box</span><span class="w"> </span><span class="o">-</span><span class="nv">trains</span><span class="o">=</span><span class="nv">tree</span>
+<span class="w">      </span><span class="p">(</span><span class="m">2</span><span class="na">∘</span><span class="o">⍴⍴</span><span class="p">(</span><span class="m">1</span><span class="na">∘</span><span class="o">,⍴</span><span class="na">∘</span><span class="m">0</span><span class="p">))</span><span class="w"> </span><span class="m">10</span>
+<span class="w">      </span><span class="p">(</span><span class="m">2</span><span class="na">∘</span><span class="o">⍴⍴</span><span class="p">(</span><span class="m">1</span><span class="na">∘</span><span class="o">,⍴</span><span class="na">∘</span><span class="m">0</span><span class="p">))</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      (2∘⍴⍴(1∘,⍴∘0)) 10
-1 0 0 0 0 0 0 0 0 0
-0 1 0 0 0 0 0 0 0 0
-0 0 1 0 0 0 0 0 0 0
-0 0 0 1 0 0 0 0 0 0
-0 0 0 0 1 0 0 0 0 0
-0 0 0 0 0 1 0 0 0 0
-0 0 0 0 0 0 1 0 0 0
-0 0 0 0 0 0 0 1 0 0
-0 0 0 0 0 0 0 0 1 0
-0 0 0 0 0 0 0 0 0 1
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="p">(</span><span class="m">2</span><span class="na">∘</span><span class="o">⍴⍴</span><span class="p">(</span><span class="m">1</span><span class="na">∘</span><span class="o">,⍴</span><span class="na">∘</span><span class="m">0</span><span class="p">))</span><span class="w"> </span><span class="m">10</span>
+<span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span>
+<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span>
 
-      (2∘⍴⍴(1∘,⍴∘0))
- ┌─┼───┐
- ∘ ⍴ ┌─┴─┐
-┌┴┐  ∘   ∘
-2 ⍴ ┌┴┐ ┌┴┐
-    1 , ⍴ 0</code></pre>
+<span class="w">      </span><span class="p">(</span><span class="m">2</span><span class="na">∘</span><span class="o">⍴⍴</span><span class="p">(</span><span class="m">1</span><span class="na">∘</span><span class="o">,⍴</span><span class="na">∘</span><span class="m">0</span><span class="p">))</span>
+<span class="w"> </span><span class="err">┌─┼───┐</span>
+<span class="w"> </span><span class="na">∘</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="err">┌─┴─┐</span>
+<span class="err">┌┴┐</span><span class="w">  </span><span class="na">∘</span><span class="w">   </span><span class="na">∘</span>
+<span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="err">┌┴┐</span><span class="w"> </span><span class="err">┌┴┐</span>
+<span class="w">    </span><span class="m">1</span><span class="w"> </span><span class="o">,</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="m">0</span>
+</code></pre></div>
 <p>This is a fork over an atop, the dfn equivalent is {(2⍴⍵)⍴1,⍵⍴0}</p>
 </div>
 </div>
@@ -2695,11 +2721,13 @@ GHI</code></pre>
 <div class="tabbed-set tabbed-alternate" data-tabs="14:2"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">Input</label><label for="__tabbed_14_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      (+/÷⍴) 1 10 100</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="p">(</span><span class="o">+</span><span class="na">/</span><span class="o">÷⍴</span><span class="p">)</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">100</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      (+/÷⍴) 1 10 100
-37</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="p">(</span><span class="o">+</span><span class="na">/</span><span class="o">÷⍴</span><span class="p">)</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">100</span>
+<span class="m">37</span>
+</code></pre></div>
 <p>This is a fork for the average function, the dfn equivalent is <code>{(+/⍵)÷⍴⍵}</code></p>
 </div>
 </div>

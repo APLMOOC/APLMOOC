@@ -2344,9 +2344,9 @@
   <label class="md-nav__title">Feedback</label>
   <form class="apl-feedback" data-section="1.2 - Basic operations and input">
     <p class="apl-feedback__where">1.2 - Basic operations and input</p>
-    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+    <textarea aria-label="Course feedback" class="apl-feedback__message" rows="4" maxlength="2000" required
               placeholder="Spotted a mistake? Something unclear?"></textarea>
-    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+    <input aria-label="Email address (optional)" class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
            placeholder="Email (optional)">
     <button class="apl-feedback__send" type="submit">Send</button>
     <p class="apl-feedback__status" role="status"></p>
@@ -2379,18 +2379,20 @@
 <p>APL is a programming language, so it would make sense if it could, at least, do some basic arithmetic.
 Let's try it out!</p>
 <p>How about addition?</p>
-<pre class="highlight"><code class="language-apl">      2+2
-4</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">2</span><span class="o">+</span><span class="m">2</span>
+<span class="m">4</span>
+</code></pre></div>
 <p>Okay, it seems to be able to handle that. Great start!</p>
 <p>You'll notice that the programmer's input is indented, while the interpreter's output is not.
 You can think of it as a conversation, where you are on the right and the interpreter is on the left.
 Keep this in mind. It will be important for later.</p>
 <hr />
 <p>Time to try subtraction...</p>
-<pre class="highlight"><code class="language-apl">      8-5
-3
-      5-8
-¯3</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">8</span><span class="o">-</span><span class="m">5</span>
+<span class="m">3</span>
+<span class="w">      </span><span class="m">5</span><span class="o">-</span><span class="m">8</span>
+<span class="m">¯3</span>
+</code></pre></div>
 <p>Okay, so that seems to work as well.
 But wait, why is the negative sign before the number 3 rendered weirdly?
 It looks different from the minus sign we typed.</p>
@@ -2418,10 +2420,11 @@ just like in any other programming language.</p>
 </div>
 <hr />
 <p>Multiplication should work just as intuitively.</p>
-<pre class="highlight"><code class="language-apl">      2*2
-4
-      2*5
-32</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">2</span><span class="o">*</span><span class="m">2</span>
+<span class="m">4</span>
+<span class="w">      </span><span class="m">2</span><span class="o">*</span><span class="m">5</span>
+<span class="m">32</span>
+</code></pre></div>
 <p>Wait, what? <code>2*2</code> evaluated to <code>4</code>, while <code>2*5</code> evaluated to <code>32</code>?!
 This isn't multiplication, it's exponentiation! What's going on here?</p>
 <div class="admonition warning">
@@ -2439,17 +2442,18 @@ just because they were invented by APL'ers before any proper standards were writ
 Not to be confused with the letter <code>x</code>!
 Similarly, division is done with the dedicated mathematical division symbol (<code>÷</code>).</p>
 <p>Let's try them out:</p>
-<pre class="highlight"><code class="language-apl">      2×2
-4
-      2×5
-10
-      7÷2
-3.5
-      2÷7
-0.2857142857
-      123×¯456
-¯56088</code></pre>
-<p>As we say in Swedish, funkar som den ska.</p>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">2</span><span class="o">×</span><span class="m">2</span>
+<span class="m">4</span>
+<span class="w">      </span><span class="m">2</span><span class="o">×</span><span class="m">5</span>
+<span class="m">10</span>
+<span class="w">      </span><span class="m">7</span><span class="o">÷</span><span class="m">2</span>
+<span class="m">3.5</span>
+<span class="w">      </span><span class="m">2</span><span class="o">÷</span><span class="m">7</span>
+<span class="m">0.2857142857</span>
+<span class="w">      </span><span class="m">123</span><span class="o">×</span><span class="m">¯456</span>
+<span class="m">¯56088</span>
+</code></pre></div>
+<p>As they say in Swedish, funkar som den ska.</p>
 <div class="admonition info">
 <p class="admonition-title">Significant figures</p>
 <p>Internally, APL calculates all floating-point operations using 64-bit floating point numbers; however, APL will only display results of your calculations to 10 significant figures. </p>

@@ -1631,9 +1631,9 @@
   <label class="md-nav__title">Feedback</label>
   <form class="apl-feedback" data-section="5.3 - Choose your axis">
     <p class="apl-feedback__where">5.3 - Choose your axis</p>
-    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+    <textarea aria-label="Course feedback" class="apl-feedback__message" rows="4" maxlength="2000" required
               placeholder="Spotted a mistake? Something unclear?"></textarea>
-    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+    <input aria-label="Email address (optional)" class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
            placeholder="Email (optional)">
     <button class="apl-feedback__send" type="submit">Send</button>
     <p class="apl-feedback__status" role="status"></p>
@@ -2370,9 +2370,9 @@
   <label class="md-nav__title">Feedback</label>
   <form class="apl-feedback" data-section="5.3 - Choose your axis">
     <p class="apl-feedback__where">5.3 - Choose your axis</p>
-    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+    <textarea aria-label="Course feedback" class="apl-feedback__message" rows="4" maxlength="2000" required
               placeholder="Spotted a mistake? Something unclear?"></textarea>
-    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+    <input aria-label="Email address (optional)" class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
            placeholder="Email (optional)">
     <button class="apl-feedback__send" type="submit">Send</button>
     <p class="apl-feedback__status" role="status"></p>
@@ -2405,81 +2405,87 @@
 <p><link rel="stylesheet" href="/styles/ch5part2.css"></p>
 <p>So far, we’ve only covered reducing along a vector. Vectors, being one-dimensional arrays, have a clear unambiguous axis along which reduction can be done. Higher dimensional arrays do not have this same privilege, the axis along which to reduce must be specified.</p>
 <p>Take the following example matrix</p>
-<pre class="highlight"><code class="language-apl">      ⎕ ← M ← ⍉10 10⍴⍳10
- 1  1  1  1  1  1  1  1  1  1
- 2  2  2  2  2  2  2  2  2  2
- 3  3  3  3  3  3  3  3  3  3
- 4  4  4  4  4  4  4  4  4  4
- 5  5  5  5  5  5  5  5  5  5
- 6  6  6  6  6  6  6  6  6  6
- 7  7  7  7  7  7  7  7  7  7
- 8  8  8  8  8  8  8  8  8  8
- 9  9  9  9  9  9  9  9  9  9
-10 10 10 10 10 10 10 10 10 10</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="vg">⎕</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">M</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="o">⍉</span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="o">⍴⍳</span><span class="m">10</span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span>
+<span class="w"> </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">2</span>
+<span class="w"> </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w">  </span><span class="m">3</span>
+<span class="w"> </span><span class="m">4</span><span class="w">  </span><span class="m">4</span><span class="w">  </span><span class="m">4</span><span class="w">  </span><span class="m">4</span><span class="w">  </span><span class="m">4</span><span class="w">  </span><span class="m">4</span><span class="w">  </span><span class="m">4</span><span class="w">  </span><span class="m">4</span><span class="w">  </span><span class="m">4</span><span class="w">  </span><span class="m">4</span>
+<span class="w"> </span><span class="m">5</span><span class="w">  </span><span class="m">5</span><span class="w">  </span><span class="m">5</span><span class="w">  </span><span class="m">5</span><span class="w">  </span><span class="m">5</span><span class="w">  </span><span class="m">5</span><span class="w">  </span><span class="m">5</span><span class="w">  </span><span class="m">5</span><span class="w">  </span><span class="m">5</span><span class="w">  </span><span class="m">5</span>
+<span class="w"> </span><span class="m">6</span><span class="w">  </span><span class="m">6</span><span class="w">  </span><span class="m">6</span><span class="w">  </span><span class="m">6</span><span class="w">  </span><span class="m">6</span><span class="w">  </span><span class="m">6</span><span class="w">  </span><span class="m">6</span><span class="w">  </span><span class="m">6</span><span class="w">  </span><span class="m">6</span><span class="w">  </span><span class="m">6</span>
+<span class="w"> </span><span class="m">7</span><span class="w">  </span><span class="m">7</span><span class="w">  </span><span class="m">7</span><span class="w">  </span><span class="m">7</span><span class="w">  </span><span class="m">7</span><span class="w">  </span><span class="m">7</span><span class="w">  </span><span class="m">7</span><span class="w">  </span><span class="m">7</span><span class="w">  </span><span class="m">7</span><span class="w">  </span><span class="m">7</span>
+<span class="w"> </span><span class="m">8</span><span class="w">  </span><span class="m">8</span><span class="w">  </span><span class="m">8</span><span class="w">  </span><span class="m">8</span><span class="w">  </span><span class="m">8</span><span class="w">  </span><span class="m">8</span><span class="w">  </span><span class="m">8</span><span class="w">  </span><span class="m">8</span><span class="w">  </span><span class="m">8</span><span class="w">  </span><span class="m">8</span>
+<span class="w"> </span><span class="m">9</span><span class="w">  </span><span class="m">9</span><span class="w">  </span><span class="m">9</span><span class="w">  </span><span class="m">9</span><span class="w">  </span><span class="m">9</span><span class="w">  </span><span class="m">9</span><span class="w">  </span><span class="m">9</span><span class="w">  </span><span class="m">9</span><span class="w">  </span><span class="m">9</span><span class="w">  </span><span class="m">9</span>
+<span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span>
+</code></pre></div>
 <h2 id="leading-and-last-axis">Leading and last axis</h2>
 <p>The leading axis of the matrix is the first axis along which indexing is done. In this case, </p>
-<pre class="highlight"><code class="language-apl">       M[1;]
-1 1 1 1 1 1 1 1 1 1
-       M[1 2 3;]
-1 1 1 1 1 1 1 1 1 1
-2 2 2 2 2 2 2 2 2 2
-3 3 3 3 3 3 3 3 3 3</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">       </span><span class="nv">M</span><span class="sr">[</span><span class="m">1</span><span class="sr">;]</span>
+<span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span>
+<span class="w">       </span><span class="nv">M</span><span class="sr">[</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="sr">;]</span>
+<span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span>
+<span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span>
+<span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span>
+</code></pre></div>
 <p>the leading axis is the vertical axis of this matrix. The last axis then is the horizontal axis of this matrix. </p>
 <p>Notice that elements fill an array from the last axis first</p>
-<pre class="highlight"><code class="language-apl">      3 3 3⍴⍳27
- 1  2  3
- 4  5  6
- 7  8  9
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="o">⍴⍳</span><span class="m">27</span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">3</span>
+<span class="w"> </span><span class="m">4</span><span class="w">  </span><span class="m">5</span><span class="w">  </span><span class="m">6</span>
+<span class="w"> </span><span class="m">7</span><span class="w">  </span><span class="m">8</span><span class="w">  </span><span class="m">9</span>
 
-10 11 12
-13 14 15
-16 17 18
+<span class="m">10</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">12</span>
+<span class="m">13</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">15</span>
+<span class="m">16</span><span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="m">18</span>
 
-19 20 21
-22 23 24
-25 26 27
+<span class="m">19</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">21</span>
+<span class="m">22</span><span class="w"> </span><span class="m">23</span><span class="w"> </span><span class="m">24</span>
+<span class="m">25</span><span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">27</span>
 
-      ⍝ The last axis is filled first
-      (3 3 3⍴⍳27)[1;1;]
-1 2 3
-      ⍝ Then we move one step along the middle axis
-      (3 3 3⍴⍳27)[1;2;]
-4 5 6
-      ⍝ Repeating until we move on one step in the first axis
-      (3 3 3⍴⍳27)[1;3;]
-7 8 9
-      (3 3 3⍴⍳27)[2;1;]
-10 11 12</code></pre>
+<span class="w">      </span><span class="c1">⍝ The last axis is filled first</span>
+<span class="w">      </span><span class="p">(</span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="o">⍴⍳</span><span class="m">27</span><span class="p">)</span><span class="sr">[</span><span class="m">1</span><span class="sr">;</span><span class="m">1</span><span class="sr">;]</span>
+<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
+<span class="w">      </span><span class="c1">⍝ Then we move one step along the middle axis</span>
+<span class="w">      </span><span class="p">(</span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="o">⍴⍳</span><span class="m">27</span><span class="p">)</span><span class="sr">[</span><span class="m">1</span><span class="sr">;</span><span class="m">2</span><span class="sr">;]</span>
+<span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span>
+<span class="w">      </span><span class="c1">⍝ Repeating until we move on one step in the first axis</span>
+<span class="w">      </span><span class="p">(</span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="o">⍴⍳</span><span class="m">27</span><span class="p">)</span><span class="sr">[</span><span class="m">1</span><span class="sr">;</span><span class="m">3</span><span class="sr">;]</span>
+<span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span>
+<span class="w">      </span><span class="p">(</span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="o">⍴⍳</span><span class="m">27</span><span class="p">)</span><span class="sr">[</span><span class="m">2</span><span class="sr">;</span><span class="m">1</span><span class="sr">;]</span>
+<span class="m">10</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">12</span>
+</code></pre></div>
 <h2 id="reduce-first-and-reduce-last">Reduce first and reduce last</h2>
 <p>To specify the axis along which to reduce, we can use one of the two reduce operators <code>⌿</code> and <code>/</code>, corresponding to reducing along the leading axis and last axis respectively; equivalently, along columns or rows.</p>
-<pre class="highlight"><code class="language-apl">       +⌿M
-55 55 55 55 55 55 55 55 55 55
-       +/M
-10 20 30 40 50 60 70 80 90 100</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">       </span><span class="o">+</span><span class="na">⌿</span><span class="nv">M</span>
+<span class="m">55</span><span class="w"> </span><span class="m">55</span><span class="w"> </span><span class="m">55</span><span class="w"> </span><span class="m">55</span><span class="w"> </span><span class="m">55</span><span class="w"> </span><span class="m">55</span><span class="w"> </span><span class="m">55</span><span class="w"> </span><span class="m">55</span><span class="w"> </span><span class="m">55</span><span class="w"> </span><span class="m">55</span>
+<span class="w">       </span><span class="o">+</span><span class="na">/</span><span class="nv">M</span>
+<span class="m">10</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="m">40</span><span class="w"> </span><span class="m">50</span><span class="w"> </span><span class="m">60</span><span class="w"> </span><span class="m">70</span><span class="w"> </span><span class="m">80</span><span class="w"> </span><span class="m">90</span><span class="w"> </span><span class="m">100</span>
+</code></pre></div>
 <p>Since the leading axis is the vertical axis, the plus reduce first <code>+⌿</code> function returned the sums of the vertical columns of the matrix; similarly, the plus reduce last <code>+/</code> function returned the sums of the horizontal rows of the matrix. For higher dimensional arrays, only reducing along either the leading axis or the last axis is not sufficient, as there are intermediate axes that need to be considered.</p>
 <h2 id="catenate-first">Catenate first</h2>
 <p>The same pairing of a leading axis and a last axis appears in other functions. The catenate <code>,</code> function joins two arrays along their last axis, and the catenate first <code>⍪</code> function joins them along the leading axis, so that for matrices <code>,</code> places them side by side and <code>⍪</code> stacks one on top of the other.</p>
-<pre class="highlight"><code class="language-apl">      A←2 3⍴⍳6
-      A,A
-1 2 3 1 2 3
-4 5 6 4 5 6
-      A⍪A
-1 2 3
-4 5 6
-1 2 3
-4 5 6</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">A</span><span class="kd">←</span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="o">⍴⍳</span><span class="m">6</span>
+<span class="w">      </span><span class="nv">A</span><span class="o">,</span><span class="nv">A</span>
+<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
+<span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span>
+<span class="w">      </span><span class="nv">A</span><span class="o">⍪</span><span class="nv">A</span>
+<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
+<span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span>
+<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
+<span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span>
+</code></pre></div>
 <p>Monadically, the table <code>⍪</code> function turns its argument into a matrix, giving each element of a vector its own row. A vector therefore becomes a single column matrix, which the transpose <code>⍉</code> function turns into a single row matrix.</p>
-<pre class="highlight"><code class="language-apl">      ⍴⍪2*⍳5
-5 1
-      ⍴⍉⍪2*⍳5
-1 5</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="o">⍴⍪</span><span class="m">2</span><span class="o">*⍳</span><span class="m">5</span>
+<span class="m">5</span><span class="w"> </span><span class="m">1</span>
+<span class="w">      </span><span class="o">⍴⍉⍪</span><span class="m">2</span><span class="o">*⍳</span><span class="m">5</span>
+<span class="m">1</span><span class="w"> </span><span class="m">5</span>
+</code></pre></div>
 <h2 id="bracket-axis-notation">Bracket-axis notation</h2>
 <p>There is special syntax that allows for such general axis specification for certain built-in functions. It consists of adding a set of square brackets <code>[ ]</code> after the function containing an increasing integer axis number starting from 1, corresponding to the leading axis.</p>
 <p>Instead of an explanation using a mystifying array of random numbers that makes the calculations difficult to fully grasp, consider instead the following delicious rendered piece of cheesecake, represented as an APL array.</p>
 <p>This cake is arranged along three axis, as is the case with most physical objects, and will serve as a suitable example for our axis-selective operations. Click and drag on the 3D view to orbit the array, use the scroll wheel to zoom in and out. Move your mouse over a section to see it highlighted.</p>
 <p>Try to get familiar with the order of the axes.</p>
 <div style="aspect-ratio: 5 / 3; width: 100%;">
-<iframe class="lazy-iframe" data-src="\js\demos\cake_intro.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%;width:100%;height:100%;"></iframe>
+<iframe title="Interactive demonstration of array axes" class="lazy-iframe" data-src="\js\demos\cake_intro.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%;width:100%;height:100%;"></iframe>
 </div>
 
 <p>Using bracket-axis notation, we can now play with our food and reduce along all three axes! Click one of the buttons below to visualize each reduction. Use your knowledge of the axis order to guess the direction of each reduction!</p>
@@ -2525,7 +2531,7 @@
 </div>
 
 <div style="aspect-ratio: 5/3; width:100%">
-<iframe id="cake_rank" class="lazy-iframe" data-src="\js\demos\cake_rank.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%"></iframe>
+<iframe title="Interactive demonstration of array rank" id="cake_rank" class="lazy-iframe" data-src="\js\demos\cake_rank.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%"></iframe>
 </div>
 
 <script>
@@ -2631,7 +2637,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 
 <div style="aspect-ratio: 5/3; width:100%">
-<iframe id="cake_cell" class="lazy-iframe" data-src="\js\demos\cake_cell.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%"></iframe>
+<iframe title="Interactive demonstration of array cells" id="cake_cell" class="lazy-iframe" data-src="\js\demos\cake_cell.html" frameborder="0" allowfullscreen style="top:0;left:0;width:100%;height:100%"></iframe>
 </div>
 
 <p>As an example, we study the action of the rank operator <code>⍤</code> on the plus reduce <code>+⌿</code> function, <code>+⌿⍤n</code>. </p>
@@ -2640,90 +2646,92 @@ document.addEventListener('DOMContentLoaded', function() {
 <p>Similarly, for n=1, the action of <code>+⌿⍤1</code> on the array is adding up its 1-cells, which is equivalent to adding along its last axis.</p>
 <h2 id="squad-indexing">Squad indexing</h2>
 <p>An operator form of (partially) indexing a matrix, such as <code>N[1;3;]</code>, is given by the squad (“squish quad”) indexing <code>⌷</code> function. It is equivalent to bracket indexing, but can be used like any other function.</p>
-<pre class="highlight"><code class="language-apl">      N ← 3 3 3 ⍴ ⍳27
-      N
- 1  2  3
- 4  5  6
- 7  8  9
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">N</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="o">⍳</span><span class="m">27</span>
+<span class="w">      </span><span class="nv">N</span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">3</span>
+<span class="w"> </span><span class="m">4</span><span class="w">  </span><span class="m">5</span><span class="w">  </span><span class="m">6</span>
+<span class="w"> </span><span class="m">7</span><span class="w">  </span><span class="m">8</span><span class="w">  </span><span class="m">9</span>
 
-10 11 12
-13 14 15
-16 17 18
+<span class="m">10</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">12</span>
+<span class="m">13</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">15</span>
+<span class="m">16</span><span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="m">18</span>
 
-19 20 21
-22 23 24
-25 26 27
+<span class="m">19</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">21</span>
+<span class="m">22</span><span class="w"> </span><span class="m">23</span><span class="w"> </span><span class="m">24</span>
+<span class="m">25</span><span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">27</span>
 
-      (⊂⍤2)N
-┌─────┬────────┬────────┐
-│1 2 3│10 11 12│19 20 21│
-│4 5 6│13 14 15│22 23 24│
-│7 8 9│16 17 18│25 26 27│
-└─────┴────────┴────────┘
-      1⌷N
-1 2 3
-4 5 6
-7 8 9
+<span class="w">      </span><span class="p">(</span><span class="o">⊂</span><span class="na">⍤</span><span class="m">2</span><span class="p">)</span><span class="nv">N</span>
+<span class="err">┌─────┬────────┬────────┐</span>
+<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="err">│</span><span class="m">10</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">12</span><span class="err">│</span><span class="m">19</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">21</span><span class="err">│</span>
+<span class="err">│</span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="err">│</span><span class="m">13</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">15</span><span class="err">│</span><span class="m">22</span><span class="w"> </span><span class="m">23</span><span class="w"> </span><span class="m">24</span><span class="err">│</span>
+<span class="err">│</span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="err">│</span><span class="m">16</span><span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="m">18</span><span class="err">│</span><span class="m">25</span><span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">27</span><span class="err">│</span>
+<span class="err">└─────┴────────┴────────┘</span>
+<span class="w">      </span><span class="m">1</span><span class="o">⌷</span><span class="nv">N</span>
+<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
+<span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span>
+<span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span>
 
-      1(⌷⍤2)N
- 1  2  3
-10 11 12
-19 20 21
+<span class="w">      </span><span class="m">1</span><span class="p">(</span><span class="o">⌷</span><span class="na">⍤</span><span class="m">2</span><span class="p">)</span><span class="nv">N</span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">3</span>
+<span class="m">10</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">12</span>
+<span class="m">19</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">21</span>
 
-      (⊂⍤1)N
-┌────────┬────────┬────────┐
-│1 2 3   │4 5 6   │7 8 9   │
-├────────┼────────┼────────┤
-│10 11 12│13 14 15│16 17 18│
-├────────┼────────┼────────┤
-│19 20 21│22 23 24│25 26 27│
-└────────┴────────┴────────┘
-      1(⌷⍤1)N
- 1  4  7
-10 13 16
-19 22 25</code></pre>
+<span class="w">      </span><span class="p">(</span><span class="o">⊂</span><span class="na">⍤</span><span class="m">1</span><span class="p">)</span><span class="nv">N</span>
+<span class="err">┌────────┬────────┬────────┐</span>
+<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w">   </span><span class="err">│</span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w">   </span><span class="err">│</span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="w">   </span><span class="err">│</span>
+<span class="err">├────────┼────────┼────────┤</span>
+<span class="err">│</span><span class="m">10</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">12</span><span class="err">│</span><span class="m">13</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">15</span><span class="err">│</span><span class="m">16</span><span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="m">18</span><span class="err">│</span>
+<span class="err">├────────┼────────┼────────┤</span>
+<span class="err">│</span><span class="m">19</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">21</span><span class="err">│</span><span class="m">22</span><span class="w"> </span><span class="m">23</span><span class="w"> </span><span class="m">24</span><span class="err">│</span><span class="m">25</span><span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">27</span><span class="err">│</span>
+<span class="err">└────────┴────────┴────────┘</span>
+<span class="w">      </span><span class="m">1</span><span class="p">(</span><span class="o">⌷</span><span class="na">⍤</span><span class="m">1</span><span class="p">)</span><span class="nv">N</span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span><span class="m">4</span><span class="w">  </span><span class="m">7</span>
+<span class="m">10</span><span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="m">16</span>
+<span class="m">19</span><span class="w"> </span><span class="m">22</span><span class="w"> </span><span class="m">25</span>
+</code></pre></div>
 <h2 id="dyadic-rank">Dyadic rank</h2>
 <p>It is also possible to pair up cells of different rank using the rank operator by specifying an integer array right argument.</p>
-<pre class="highlight"><code class="language-apl">      3 3 ⍴ ⎕A
-ABC
-DEF
-GHI
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="nf">⎕A</span>
+<span class="nv">ABC</span>
+<span class="nv">DEF</span>
+<span class="nv">GHI</span>
 
-      3 3 ⍴ ⍳9
-1 2 3
-4 5 6
-7 8 9
+<span class="w">      </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="o">⍳</span><span class="m">9</span>
+<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
+<span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span>
+<span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span>
 
-      (3 3 ⍴ ⎕A) (,⍤1) (3 3 ⍴ ⍳9)
-ABC 1 2 3
-DEF 4 5 6
-GHI 7 8 9
+<span class="w">      </span><span class="p">(</span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="nf">⎕A</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">,</span><span class="na">⍤</span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="o">⍳</span><span class="m">9</span><span class="p">)</span>
+<span class="nv">ABC</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
+<span class="nv">DEF</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span>
+<span class="nv">GHI</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span>
 
-      (3 3 ⍴ ⎕A) (,⍤1 2) (3 3 ⍴ ⍳9)
-A 1 2 3
-B 4 5 6
-C 7 8 9
+<span class="w">      </span><span class="p">(</span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="nf">⎕A</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">,</span><span class="na">⍤</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="o">⍳</span><span class="m">9</span><span class="p">)</span>
+<span class="nv">A</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
+<span class="nv">B</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span>
+<span class="nv">C</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span>
 
-D 1 2 3
-E 4 5 6
-F 7 8 9
+<span class="nv">D</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
+<span class="nv">E</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span>
+<span class="nv">F</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span>
 
-G 1 2 3
-H 4 5 6
-I 7 8 9
+<span class="nv">G</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
+<span class="nv">H</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span>
+<span class="nv">I</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span>
 
-      (3 3 ⍴ ⎕A) (,⍤2 1) (3 3 ⍴ ⍳9)
-ABC 1
-DEF 2
-GHI 3
+<span class="w">      </span><span class="p">(</span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="nf">⎕A</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">,</span><span class="na">⍤</span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="o">⍳</span><span class="m">9</span><span class="p">)</span>
+<span class="nv">ABC</span><span class="w"> </span><span class="m">1</span>
+<span class="nv">DEF</span><span class="w"> </span><span class="m">2</span>
+<span class="nv">GHI</span><span class="w"> </span><span class="m">3</span>
 
-ABC 4
-DEF 5
-GHI 6
+<span class="nv">ABC</span><span class="w"> </span><span class="m">4</span>
+<span class="nv">DEF</span><span class="w"> </span><span class="m">5</span>
+<span class="nv">GHI</span><span class="w"> </span><span class="m">6</span>
 
-ABC 7
-DEF 8
-GHI 9</code></pre>
+<span class="nv">ABC</span><span class="w"> </span><span class="m">7</span>
+<span class="nv">DEF</span><span class="w"> </span><span class="m">8</span>
+<span class="nv">GHI</span><span class="w"> </span><span class="m">9</span>
+</code></pre></div>
 
 
 

@@ -2344,9 +2344,9 @@
   <label class="md-nav__title">Feedback</label>
   <form class="apl-feedback" data-section="5.W - Write exercises">
     <p class="apl-feedback__where">5.W - Write exercises</p>
-    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+    <textarea aria-label="Course feedback" class="apl-feedback__message" rows="4" maxlength="2000" required
               placeholder="Spotted a mistake? Something unclear?"></textarea>
-    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+    <input aria-label="Email address (optional)" class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
            placeholder="Email (optional)">
     <button class="apl-feedback__send" type="submit">Send</button>
     <p class="apl-feedback__status" role="status"></p>
@@ -2386,341 +2386,351 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 1</p>
 <p>Write a dfn <code>only</code> that returns the elements of its left argument ⍺ that do not occur in its right argument ⍵, without duplicates.
-<pre class="highlight"><code class="language-apl">      'MISSISSIPPI' only 'SIP'
-M
-      2 4 4 6 8 only 4 5
-2 6 8</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="s1">&#39;MISSISSIPPI&#39;</span><span class="w"> </span><span class="nv">only</span><span class="w"> </span><span class="s1">&#39;SIP&#39;</span>
+<span class="nv">M</span>
+<span class="w">      </span><span class="m">2</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="nv">only</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span>
+<span class="m">2</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">8</span>
+</code></pre></div>
 <div class="problem">
     <span class="problemspan">only←</span>
     <span class="problemfilltext" id="input_ch5_p1_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch5_p1_b2" placeholder="your solution here">
+    <input aria-label="Chapter 5, write problem 1, answer field 2" class="probleminput" type="text" id="input_ch5_p1_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch5_p1', 2)">Submit</button>
 </div>
-<p id="feedback_ch5_p1" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch5_p1" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 2</p>
 <p>Write a dfn <code>cheat</code> that takes a name as left argument ⍺ and the leaderboard below as right argument ⍵, and adds a new entry at the top with that name and a score of 1000000.</p>
-<pre class="highlight"><code class="language-apl">      leaderboard
-┌────────────┬──────┐
-│SpaceTornado│999905│
-├────────────┼──────┤
-│StarSpangler│999875│
-├────────────┼──────┤
-│MoonJuice   │999870│
-├────────────┼──────┤
-│RocketRanger│894900│
-├────────────┼──────┤
-│AlienNation │545990│
-└────────────┴──────┘
-      'PhotonFury' cheat leaderboard
-┌────────────┬───────┐
-│PhotonFury  │1000000│
-├────────────┼───────┤
-│SpaceTornado│999905 │
-├────────────┼───────┤
-│StarSpangler│999875 │
-├────────────┼───────┤
-│MoonJuice   │999870 │
-├────────────┼───────┤
-│RocketRanger│894900 │
-├────────────┼───────┤
-│AlienNation │545990 │
-└────────────┴───────┘</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">leaderboard</span>
+<span class="err">┌────────────┬──────┐</span>
+<span class="err">│</span><span class="nv">SpaceTornado</span><span class="err">│</span><span class="m">999905</span><span class="err">│</span>
+<span class="err">├────────────┼──────┤</span>
+<span class="err">│</span><span class="nv">StarSpangler</span><span class="err">│</span><span class="m">999875</span><span class="err">│</span>
+<span class="err">├────────────┼──────┤</span>
+<span class="err">│</span><span class="nv">MoonJuice</span><span class="w">   </span><span class="err">│</span><span class="m">999870</span><span class="err">│</span>
+<span class="err">├────────────┼──────┤</span>
+<span class="err">│</span><span class="nv">RocketRanger</span><span class="err">│</span><span class="m">894900</span><span class="err">│</span>
+<span class="err">├────────────┼──────┤</span>
+<span class="err">│</span><span class="nv">AlienNation</span><span class="w"> </span><span class="err">│</span><span class="m">545990</span><span class="err">│</span>
+<span class="err">└────────────┴──────┘</span>
+<span class="w">      </span><span class="s1">&#39;PhotonFury&#39;</span><span class="w"> </span><span class="nv">cheat</span><span class="w"> </span><span class="nv">leaderboard</span>
+<span class="err">┌────────────┬───────┐</span>
+<span class="err">│</span><span class="nv">PhotonFury</span><span class="w">  </span><span class="err">│</span><span class="m">1000000</span><span class="err">│</span>
+<span class="err">├────────────┼───────┤</span>
+<span class="err">│</span><span class="nv">SpaceTornado</span><span class="err">│</span><span class="m">999905</span><span class="w"> </span><span class="err">│</span>
+<span class="err">├────────────┼───────┤</span>
+<span class="err">│</span><span class="nv">StarSpangler</span><span class="err">│</span><span class="m">999875</span><span class="w"> </span><span class="err">│</span>
+<span class="err">├────────────┼───────┤</span>
+<span class="err">│</span><span class="nv">MoonJuice</span><span class="w">   </span><span class="err">│</span><span class="m">999870</span><span class="w"> </span><span class="err">│</span>
+<span class="err">├────────────┼───────┤</span>
+<span class="err">│</span><span class="nv">RocketRanger</span><span class="err">│</span><span class="m">894900</span><span class="w"> </span><span class="err">│</span>
+<span class="err">├────────────┼───────┤</span>
+<span class="err">│</span><span class="nv">AlienNation</span><span class="w"> </span><span class="err">│</span><span class="m">545990</span><span class="w"> </span><span class="err">│</span>
+<span class="err">└────────────┴───────┘</span>
+</code></pre></div>
 <p><div class="problem">
     <span class="problemspan">cheat←</span>
     <span class="problemfilltext" id="input_ch5_p2_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch5_p2_b2" placeholder="your solution here">
+    <input aria-label="Chapter 5, write problem 2, answer field 2" class="probleminput" type="text" id="input_ch5_p2_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch5_p2', 2)">Submit</button>
 </div>
-<p id="feedback_ch5_p2" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch5_p2" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 3</p>
 <p>Write a dfn that takes the flight table below as left argument ⍺ and a date as right argument ⍵, and returns the rows of the flights on that date</p>
-<pre class="highlight"><code class="language-apl">      flights
-┌─────────┬─────────┬───────────┬──────────┬─────┐
-│Jari N.  │Helsinki │Tallinn    │2024-12-01│08:00│
-├─────────┼─────────┼───────────┼──────────┼─────┤
-│Erik O.  │Stockholm│Gothenburg │2024-12-01│14:00│
-├─────────┼─────────┼───────────┼──────────┼─────┤
-│Michel A.│London   │Los Angeles│2024-12-03│11:30│
-└─────────┴─────────┴───────────┴──────────┴─────┘
-      flights on_date '2024-12-01'
-┌───────┬─────────┬──────────┬──────────┬─────┐
-│Jari N.│Helsinki │Tallinn   │2024-12-01│08:00│
-├───────┼─────────┼──────────┼──────────┼─────┤
-│Erik O.│Stockholm│Gothenburg│2024-12-01│14:00│
-└───────┴─────────┴──────────┴──────────┴─────┘</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">flights</span>
+<span class="err">┌─────────┬─────────┬───────────┬──────────┬─────┐</span>
+<span class="err">│</span><span class="nv">Jari</span><span class="w"> </span><span class="nv">N</span><span class="na">.</span><span class="w">  </span><span class="err">│</span><span class="nv">Helsinki</span><span class="w"> </span><span class="err">│</span><span class="nv">Tallinn</span><span class="w">    </span><span class="err">│</span><span class="m">2024</span><span class="o">-</span><span class="m">12</span><span class="o">-</span><span class="m">01</span><span class="err">│</span><span class="m">08</span><span class="bp">:</span><span class="m">00</span><span class="err">│</span>
+<span class="err">├─────────┼─────────┼───────────┼──────────┼─────┤</span>
+<span class="err">│</span><span class="nv">Erik</span><span class="w"> </span><span class="nv">O</span><span class="na">.</span><span class="w">  </span><span class="err">│</span><span class="nv">Stockholm</span><span class="err">│</span><span class="nv">Gothenburg</span><span class="w"> </span><span class="err">│</span><span class="m">2024</span><span class="o">-</span><span class="m">12</span><span class="o">-</span><span class="m">01</span><span class="err">│</span><span class="m">14</span><span class="bp">:</span><span class="m">00</span><span class="err">│</span>
+<span class="err">├─────────┼─────────┼───────────┼──────────┼─────┤</span>
+<span class="err">│</span><span class="nv">Michel</span><span class="w"> </span><span class="nv">A</span><span class="na">.</span><span class="err">│</span><span class="nv">London</span><span class="w">   </span><span class="err">│</span><span class="nv">Los</span><span class="w"> </span><span class="nv">Angeles</span><span class="err">│</span><span class="m">2024</span><span class="o">-</span><span class="m">12</span><span class="o">-</span><span class="m">03</span><span class="err">│</span><span class="m">11</span><span class="bp">:</span><span class="m">30</span><span class="err">│</span>
+<span class="err">└─────────┴─────────┴───────────┴──────────┴─────┘</span>
+<span class="w">      </span><span class="nv">flights</span><span class="w"> </span><span class="nv">on_date</span><span class="w"> </span><span class="s1">&#39;2024-12-01&#39;</span>
+<span class="err">┌───────┬─────────┬──────────┬──────────┬─────┐</span>
+<span class="err">│</span><span class="nv">Jari</span><span class="w"> </span><span class="nv">N</span><span class="na">.</span><span class="err">│</span><span class="nv">Helsinki</span><span class="w"> </span><span class="err">│</span><span class="nv">Tallinn</span><span class="w">   </span><span class="err">│</span><span class="m">2024</span><span class="o">-</span><span class="m">12</span><span class="o">-</span><span class="m">01</span><span class="err">│</span><span class="m">08</span><span class="bp">:</span><span class="m">00</span><span class="err">│</span>
+<span class="err">├───────┼─────────┼──────────┼──────────┼─────┤</span>
+<span class="err">│</span><span class="nv">Erik</span><span class="w"> </span><span class="nv">O</span><span class="na">.</span><span class="err">│</span><span class="nv">Stockholm</span><span class="err">│</span><span class="nv">Gothenburg</span><span class="err">│</span><span class="m">2024</span><span class="o">-</span><span class="m">12</span><span class="o">-</span><span class="m">01</span><span class="err">│</span><span class="m">14</span><span class="bp">:</span><span class="m">00</span><span class="err">│</span>
+<span class="err">└───────┴─────────┴──────────┴──────────┴─────┘</span>
+</code></pre></div>
 <p><div class="problem">
     <span class="problemspan">on_date←</span>
     <span class="problemfilltext" id="input_ch5_p3_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch5_p3_b2" placeholder="your solution here">
+    <input aria-label="Chapter 5, write problem 3, answer field 2" class="probleminput" type="text" id="input_ch5_p3_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch5_p3', 2)">Submit</button>
 </div>
-<p id="feedback_ch5_p3" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch5_p3" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 4</p>
 <p>Given an array of cities with their latitudes and longitudes as right argument ⍵, create a function to return a matrix of the absolute differences in latitude and longitude between each pair of cities (not great-circle distances), in the following format</p>
-<pre class="highlight"><code class="language-apl">      cities
-┌────────┬───────┬─────────┐
-│Helsinki│60.1695│24.9354  │
-├────────┼───────┼─────────┤
-│Juneau  │58.3019│¯134.4197│
-├────────┼───────┼─────────┤
-│Beirut  │33.8886│35.4955  │
-├────────┼───────┼─────────┤
-│Havana  │23.1136│¯82.3666 │
-└────────┴───────┴─────────┘
-      distance cities
-┌────────┬───────────────┬────────────────┬────────────────┬───────────────┐
-│X       │Helsinki       │Juneau          │Beirut          │Havana         │
-├────────┼───────────────┼────────────────┼────────────────┼───────────────┤
-│Helsinki│0 0            │1.8676 159.3551 │26.2809 10.5601 │37.0559 107.302│
-├────────┼───────────────┼────────────────┼────────────────┼───────────────┤
-│Juneau  │1.8676 159.3551│0 0             │24.4133 169.9152│35.1883 52.0531│
-├────────┼───────────────┼────────────────┼────────────────┼───────────────┤
-│Beirut  │26.2809 10.5601│24.4133 169.9152│0 0             │10.775 117.8621│
-├────────┼───────────────┼────────────────┼────────────────┼───────────────┤
-│Havana  │37.0559 107.302│35.1883 52.0531 │10.775 117.8621 │0 0            │
-└────────┴───────────────┴────────────────┴────────────────┴───────────────┘</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">cities</span>
+<span class="err">┌────────┬───────┬─────────┐</span>
+<span class="err">│</span><span class="nv">Helsinki</span><span class="err">│</span><span class="m">60.1695</span><span class="err">│</span><span class="m">24.9354</span><span class="w">  </span><span class="err">│</span>
+<span class="err">├────────┼───────┼─────────┤</span>
+<span class="err">│</span><span class="nv">Juneau</span><span class="w">  </span><span class="err">│</span><span class="m">58.3019</span><span class="err">│</span><span class="m">¯134.4197</span><span class="err">│</span>
+<span class="err">├────────┼───────┼─────────┤</span>
+<span class="err">│</span><span class="nv">Beirut</span><span class="w">  </span><span class="err">│</span><span class="m">33.8886</span><span class="err">│</span><span class="m">35.4955</span><span class="w">  </span><span class="err">│</span>
+<span class="err">├────────┼───────┼─────────┤</span>
+<span class="err">│</span><span class="nv">Havana</span><span class="w">  </span><span class="err">│</span><span class="m">23.1136</span><span class="err">│</span><span class="m">¯82.3666</span><span class="w"> </span><span class="err">│</span>
+<span class="err">└────────┴───────┴─────────┘</span>
+<span class="w">      </span><span class="nv">distance</span><span class="w"> </span><span class="nv">cities</span>
+<span class="err">┌────────┬───────────────┬────────────────┬────────────────┬───────────────┐</span>
+<span class="err">│</span><span class="nv">X</span><span class="w">       </span><span class="err">│</span><span class="nv">Helsinki</span><span class="w">       </span><span class="err">│</span><span class="nv">Juneau</span><span class="w">          </span><span class="err">│</span><span class="nv">Beirut</span><span class="w">          </span><span class="err">│</span><span class="nv">Havana</span><span class="w">         </span><span class="err">│</span>
+<span class="err">├────────┼───────────────┼────────────────┼────────────────┼───────────────┤</span>
+<span class="err">│</span><span class="nv">Helsinki</span><span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w">            </span><span class="err">│</span><span class="m">1.8676</span><span class="w"> </span><span class="m">159.3551</span><span class="w"> </span><span class="err">│</span><span class="m">26.2809</span><span class="w"> </span><span class="m">10.5601</span><span class="w"> </span><span class="err">│</span><span class="m">37.0559</span><span class="w"> </span><span class="m">107.302</span><span class="err">│</span>
+<span class="err">├────────┼───────────────┼────────────────┼────────────────┼───────────────┤</span>
+<span class="err">│</span><span class="nv">Juneau</span><span class="w">  </span><span class="err">│</span><span class="m">1.8676</span><span class="w"> </span><span class="m">159.3551</span><span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w">             </span><span class="err">│</span><span class="m">24.4133</span><span class="w"> </span><span class="m">169.9152</span><span class="err">│</span><span class="m">35.1883</span><span class="w"> </span><span class="m">52.0531</span><span class="err">│</span>
+<span class="err">├────────┼───────────────┼────────────────┼────────────────┼───────────────┤</span>
+<span class="err">│</span><span class="nv">Beirut</span><span class="w">  </span><span class="err">│</span><span class="m">26.2809</span><span class="w"> </span><span class="m">10.5601</span><span class="err">│</span><span class="m">24.4133</span><span class="w"> </span><span class="m">169.9152</span><span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w">             </span><span class="err">│</span><span class="m">10.775</span><span class="w"> </span><span class="m">117.8621</span><span class="err">│</span>
+<span class="err">├────────┼───────────────┼────────────────┼────────────────┼───────────────┤</span>
+<span class="err">│</span><span class="nv">Havana</span><span class="w">  </span><span class="err">│</span><span class="m">37.0559</span><span class="w"> </span><span class="m">107.302</span><span class="err">│</span><span class="m">35.1883</span><span class="w"> </span><span class="m">52.0531</span><span class="w"> </span><span class="err">│</span><span class="m">10.775</span><span class="w"> </span><span class="m">117.8621</span><span class="w"> </span><span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w">            </span><span class="err">│</span>
+<span class="err">└────────┴───────────────┴────────────────┴────────────────┴───────────────┘</span>
+</code></pre></div>
 <p>Hint: Remove the labels from the matrix before computing the distances, then add them afterwards. Use the rank operator ⍤1 2.</p>
 <p><div class="problem">
     <span class="problemspan">distance←</span>
     <span class="problemfilltext" id="input_ch5_p4_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch5_p4_b2" placeholder="your solution here">
+    <input aria-label="Chapter 5, write problem 4, answer field 2" class="probleminput" type="text" id="input_ch5_p4_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch5_p4', 2)">Submit</button>
 </div>
-<p id="feedback_ch5_p4" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch5_p4" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 5</p>
 <p>Write a function to add an extra floor number column to a hotel reservation array. The floor number is always the first digit of the room number, which is stored as a character vector.</p>
-<pre class="highlight"><code class="language-apl">      bookings
-┌─────────┬──────────┬───┐
-│Jari N.  │2024-12-01│427│
-├─────────┼──────────┼───┤
-│Erik O.  │2024-12-01│506│
-├─────────┼──────────┼───┤
-│Michel A.│2024-12-03│415│
-└─────────┴──────────┴───┘
-      floor bookings
-┌─────────┬──────────┬───┬─┐
-│Jari N.  │2024-12-01│427│4│
-├─────────┼──────────┼───┼─┤
-│Erik O.  │2024-12-01│506│5│
-├─────────┼──────────┼───┼─┤
-│Michel A.│2024-12-03│415│4│
-└─────────┴──────────┴───┴─┘</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">bookings</span>
+<span class="err">┌─────────┬──────────┬───┐</span>
+<span class="err">│</span><span class="nv">Jari</span><span class="w"> </span><span class="nv">N</span><span class="na">.</span><span class="w">  </span><span class="err">│</span><span class="m">2024</span><span class="o">-</span><span class="m">12</span><span class="o">-</span><span class="m">01</span><span class="err">│</span><span class="m">427</span><span class="err">│</span>
+<span class="err">├─────────┼──────────┼───┤</span>
+<span class="err">│</span><span class="nv">Erik</span><span class="w"> </span><span class="nv">O</span><span class="na">.</span><span class="w">  </span><span class="err">│</span><span class="m">2024</span><span class="o">-</span><span class="m">12</span><span class="o">-</span><span class="m">01</span><span class="err">│</span><span class="m">506</span><span class="err">│</span>
+<span class="err">├─────────┼──────────┼───┤</span>
+<span class="err">│</span><span class="nv">Michel</span><span class="w"> </span><span class="nv">A</span><span class="na">.</span><span class="err">│</span><span class="m">2024</span><span class="o">-</span><span class="m">12</span><span class="o">-</span><span class="m">03</span><span class="err">│</span><span class="m">415</span><span class="err">│</span>
+<span class="err">└─────────┴──────────┴───┘</span>
+<span class="w">      </span><span class="nv">floor</span><span class="w"> </span><span class="nv">bookings</span>
+<span class="err">┌─────────┬──────────┬───┬─┐</span>
+<span class="err">│</span><span class="nv">Jari</span><span class="w"> </span><span class="nv">N</span><span class="na">.</span><span class="w">  </span><span class="err">│</span><span class="m">2024</span><span class="o">-</span><span class="m">12</span><span class="o">-</span><span class="m">01</span><span class="err">│</span><span class="m">427</span><span class="err">│</span><span class="m">4</span><span class="err">│</span>
+<span class="err">├─────────┼──────────┼───┼─┤</span>
+<span class="err">│</span><span class="nv">Erik</span><span class="w"> </span><span class="nv">O</span><span class="na">.</span><span class="w">  </span><span class="err">│</span><span class="m">2024</span><span class="o">-</span><span class="m">12</span><span class="o">-</span><span class="m">01</span><span class="err">│</span><span class="m">506</span><span class="err">│</span><span class="m">5</span><span class="err">│</span>
+<span class="err">├─────────┼──────────┼───┼─┤</span>
+<span class="err">│</span><span class="nv">Michel</span><span class="w"> </span><span class="nv">A</span><span class="na">.</span><span class="err">│</span><span class="m">2024</span><span class="o">-</span><span class="m">12</span><span class="o">-</span><span class="m">03</span><span class="err">│</span><span class="m">415</span><span class="err">│</span><span class="m">4</span><span class="err">│</span>
+<span class="err">└─────────┴──────────┴───┴─┘</span>
+</code></pre></div>
 <p><div class="problem">
     <span class="problemspan">floor←</span>
     <span class="problemfilltext" id="input_ch5_p5_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch5_p5_b2" placeholder="your solution here">
+    <input aria-label="Chapter 5, write problem 5, answer field 2" class="probleminput" type="text" id="input_ch5_p5_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch5_p5', 2)">Submit</button>
 </div>
-<p id="feedback_ch5_p5" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch5_p5" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 6</p>
 <p>Write a function to group an array of hotel bookings by floor (the fourth column), returning one matrix per floor, in order of first appearance.</p>
-<pre class="highlight"><code class="language-apl">      bookings2
-┌─────────┬──────────┬───┬─┐
-│Jari N.  │2024-12-01│427│4│
-├─────────┼──────────┼───┼─┤
-│Erik O.  │2024-12-01│506│5│
-├─────────┼──────────┼───┼─┤
-│Michel A.│2024-12-03│415│4│
-└─────────┴──────────┴───┴─┘
-      group bookings2
-┌────────────────────────────┬──────────────────────────┐
-│┌─────────┬──────────┬───┬─┐│┌───────┬──────────┬───┬─┐│
-││Jari N.  │2024-12-01│427│4│││Erik O.│2024-12-01│506│5││
-│├─────────┼──────────┼───┼─┤│└───────┴──────────┴───┴─┘│
-││Michel A.│2024-12-03│415│4││                          │
-│└─────────┴──────────┴───┴─┘│                          │
-└────────────────────────────┴──────────────────────────┘
-</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">bookings2</span>
+<span class="err">┌─────────┬──────────┬───┬─┐</span>
+<span class="err">│</span><span class="nv">Jari</span><span class="w"> </span><span class="nv">N</span><span class="na">.</span><span class="w">  </span><span class="err">│</span><span class="m">2024</span><span class="o">-</span><span class="m">12</span><span class="o">-</span><span class="m">01</span><span class="err">│</span><span class="m">427</span><span class="err">│</span><span class="m">4</span><span class="err">│</span>
+<span class="err">├─────────┼──────────┼───┼─┤</span>
+<span class="err">│</span><span class="nv">Erik</span><span class="w"> </span><span class="nv">O</span><span class="na">.</span><span class="w">  </span><span class="err">│</span><span class="m">2024</span><span class="o">-</span><span class="m">12</span><span class="o">-</span><span class="m">01</span><span class="err">│</span><span class="m">506</span><span class="err">│</span><span class="m">5</span><span class="err">│</span>
+<span class="err">├─────────┼──────────┼───┼─┤</span>
+<span class="err">│</span><span class="nv">Michel</span><span class="w"> </span><span class="nv">A</span><span class="na">.</span><span class="err">│</span><span class="m">2024</span><span class="o">-</span><span class="m">12</span><span class="o">-</span><span class="m">03</span><span class="err">│</span><span class="m">415</span><span class="err">│</span><span class="m">4</span><span class="err">│</span>
+<span class="err">└─────────┴──────────┴───┴─┘</span>
+<span class="w">      </span><span class="nv">group</span><span class="w"> </span><span class="nv">bookings2</span>
+<span class="err">┌────────────────────────────┬──────────────────────────┐</span>
+<span class="err">│┌─────────┬──────────┬───┬─┐│┌───────┬──────────┬───┬─┐│</span>
+<span class="err">││</span><span class="nv">Jari</span><span class="w"> </span><span class="nv">N</span><span class="na">.</span><span class="w">  </span><span class="err">│</span><span class="m">2024</span><span class="o">-</span><span class="m">12</span><span class="o">-</span><span class="m">01</span><span class="err">│</span><span class="m">427</span><span class="err">│</span><span class="m">4</span><span class="err">│││</span><span class="nv">Erik</span><span class="w"> </span><span class="nv">O</span><span class="na">.</span><span class="err">│</span><span class="m">2024</span><span class="o">-</span><span class="m">12</span><span class="o">-</span><span class="m">01</span><span class="err">│</span><span class="m">506</span><span class="err">│</span><span class="m">5</span><span class="err">││</span>
+<span class="err">│├─────────┼──────────┼───┼─┤│└───────┴──────────┴───┴─┘│</span>
+<span class="err">││</span><span class="nv">Michel</span><span class="w"> </span><span class="nv">A</span><span class="na">.</span><span class="err">│</span><span class="m">2024</span><span class="o">-</span><span class="m">12</span><span class="o">-</span><span class="m">03</span><span class="err">│</span><span class="m">415</span><span class="err">│</span><span class="m">4</span><span class="err">││</span><span class="w">                          </span><span class="err">│</span>
+<span class="err">│└─────────┴──────────┴───┴─┘│</span><span class="w">                          </span><span class="err">│</span>
+<span class="err">└────────────────────────────┴──────────────────────────┘</span>
+</code></pre></div>
 <p><div class="problem">
     <span class="problemspan">group←</span>
     <span class="problemfilltext" id="input_ch5_p6_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch5_p6_b2" placeholder="your solution here">
+    <input aria-label="Chapter 5, write problem 6, answer field 2" class="probleminput" type="text" id="input_ch5_p6_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch5_p6', 2)">Submit</button>
 </div>
-<p id="feedback_ch5_p6" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch5_p6" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 7</p>
 <p>Write a function to turn the elements of a matrix into proportions of the sum of their row.</p>
-<pre class="highlight"><code class="language-apl">      matrix
-0 0 0 0 1
-0 0 0 1 1
-1 1 1 1 1
-0 0 0 3 1
-0 1 1 1 1
-      proportion matrix
-0   0    0    0    1   
-0   0    0    0.5  0.5 
-0.2 0.2  0.2  0.2  0.2 
-0   0    0    0.75 0.25
-0   0.25 0.25 0.25 0.25
-</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">matrix</span>
+<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span>
+<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span>
+<span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span>
+<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">1</span>
+<span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span>
+<span class="w">      </span><span class="nv">proportion</span><span class="w"> </span><span class="nv">matrix</span>
+<span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w">    </span><span class="m">0</span><span class="w">    </span><span class="m">0</span><span class="w">    </span><span class="m">1</span><span class="w">   </span>
+<span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w">    </span><span class="m">0</span><span class="w">    </span><span class="m">0.5</span><span class="w">  </span><span class="m">0.5</span><span class="w"> </span>
+<span class="m">0.2</span><span class="w"> </span><span class="m">0.2</span><span class="w">  </span><span class="m">0.2</span><span class="w">  </span><span class="m">0.2</span><span class="w">  </span><span class="m">0.2</span><span class="w"> </span>
+<span class="m">0</span><span class="w">   </span><span class="m">0</span><span class="w">    </span><span class="m">0</span><span class="w">    </span><span class="m">0.75</span><span class="w"> </span><span class="m">0.25</span>
+<span class="m">0</span><span class="w">   </span><span class="m">0.25</span><span class="w"> </span><span class="m">0.25</span><span class="w"> </span><span class="m">0.25</span><span class="w"> </span><span class="m">0.25</span>
+</code></pre></div>
 <p><div class="problem">
     <span class="problemspan">proportion←</span>
     <span class="problemfilltext" id="input_ch5_p7_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch5_p7_b2" placeholder="your solution here">
+    <input aria-label="Chapter 5, write problem 7, answer field 2" class="probleminput" type="text" id="input_ch5_p7_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch5_p7', 2)">Submit</button>
 </div>
-<p id="feedback_ch5_p7" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch5_p7" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 8</p>
 <p>Write a function to group runs of elements which are equal.</p>
-<pre class="highlight"><code class="language-apl">      runs 1 1 9 9 9 2 2 3 4 4
-┌───┬─────┬───┬─┬───┐
-│1 1│9 9 9│2 2│3│4 4│
-└───┴─────┴───┴─┴───┘</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">runs</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span>
+<span class="err">┌───┬─────┬───┬─┬───┐</span>
+<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="err">│</span><span class="m">9</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">9</span><span class="err">│</span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">3</span><span class="err">│</span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="err">│</span>
+<span class="err">└───┴─────┴───┴─┴───┘</span>
+</code></pre></div>
 <p><div class="problem">
     <span class="problemspan">runs←</span>
     <span class="problemfilltext" id="input_ch5_p8_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch5_p8_b2" placeholder="your solution here">
+    <input aria-label="Chapter 5, write problem 8, answer field 2" class="probleminput" type="text" id="input_ch5_p8_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch5_p8', 2)">Submit</button>
 </div>
-<p id="feedback_ch5_p8" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch5_p8" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 9</p>
 <p>Write a function that generates a table of values for sin and cos from 0 to 2pi. The right argument ⍵ is the number of interior points, that is, the number of points strictly between 0 and 2pi. The step between consecutive points is 2pi÷⍵+1. The table has ⍵+2 rows of values, under a first row of the labels 'x', 'sin x' and 'cos x'.</p>
-<pre class="highlight"><code class="language-apl">      trig_table 4
-┌───────────┬────────────────┬─────────────┐
-│x          │sin x           │cos x        │
-├───────────┼────────────────┼─────────────┤
-│0          │0               │1            │
-├───────────┼────────────────┼─────────────┤
-│1.256637061│0.9510565163    │0.3090169944 │
-├───────────┼────────────────┼─────────────┤
-│2.513274123│0.5877852523    │¯0.8090169944│
-├───────────┼────────────────┼─────────────┤
-│3.769911184│¯0.5877852523   │¯0.8090169944│
-├───────────┼────────────────┼─────────────┤
-│5.026548246│¯0.9510565163   │0.3090169944 │
-├───────────┼────────────────┼─────────────┤
-│6.283185307│¯2.449293598E¯16│1            │
-└───────────┴────────────────┴─────────────┘
-      trig_table 1
-┌───────────┬────────────────┬─────┐
-│x          │sin x           │cos x│
-├───────────┼────────────────┼─────┤
-│0          │0               │1    │
-├───────────┼────────────────┼─────┤
-│3.141592654│1.224646799E¯16 │¯1   │
-├───────────┼────────────────┼─────┤
-│6.283185307│¯2.449293598E¯16│1    │
-└───────────┴────────────────┴─────┘
-      trig_table 0
-┌───────────┬────────────────┬─────┐
-│x          │sin x           │cos x│
-├───────────┼────────────────┼─────┤
-│0          │0               │1    │
-├───────────┼────────────────┼─────┤
-│6.283185307│¯2.449293598E¯16│1    │
-└───────────┴────────────────┴─────┘</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">trig_table</span><span class="w"> </span><span class="m">4</span>
+<span class="err">┌───────────┬────────────────┬─────────────┐</span>
+<span class="err">│</span><span class="nv">x</span><span class="w">          </span><span class="err">│</span><span class="nv">sin</span><span class="w"> </span><span class="nv">x</span><span class="w">           </span><span class="err">│</span><span class="nv">cos</span><span class="w"> </span><span class="nv">x</span><span class="w">        </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼─────────────┤</span>
+<span class="err">│</span><span class="m">0</span><span class="w">          </span><span class="err">│</span><span class="m">0</span><span class="w">               </span><span class="err">│</span><span class="m">1</span><span class="w">            </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼─────────────┤</span>
+<span class="err">│</span><span class="m">1.256637061</span><span class="err">│</span><span class="m">0.9510565163</span><span class="w">    </span><span class="err">│</span><span class="m">0.3090169944</span><span class="w"> </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼─────────────┤</span>
+<span class="err">│</span><span class="m">2.513274123</span><span class="err">│</span><span class="m">0.5877852523</span><span class="w">    </span><span class="err">│</span><span class="m">¯0.8090169944</span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼─────────────┤</span>
+<span class="err">│</span><span class="m">3.769911184</span><span class="err">│</span><span class="m">¯0.5877852523</span><span class="w">   </span><span class="err">│</span><span class="m">¯0.8090169944</span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼─────────────┤</span>
+<span class="err">│</span><span class="m">5.026548246</span><span class="err">│</span><span class="m">¯0.9510565163</span><span class="w">   </span><span class="err">│</span><span class="m">0.3090169944</span><span class="w"> </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼─────────────┤</span>
+<span class="err">│</span><span class="m">6.283185307</span><span class="err">│</span><span class="m">¯2.449293598E¯16</span><span class="err">│</span><span class="m">1</span><span class="w">            </span><span class="err">│</span>
+<span class="err">└───────────┴────────────────┴─────────────┘</span>
+<span class="w">      </span><span class="nv">trig_table</span><span class="w"> </span><span class="m">1</span>
+<span class="err">┌───────────┬────────────────┬─────┐</span>
+<span class="err">│</span><span class="nv">x</span><span class="w">          </span><span class="err">│</span><span class="nv">sin</span><span class="w"> </span><span class="nv">x</span><span class="w">           </span><span class="err">│</span><span class="nv">cos</span><span class="w"> </span><span class="nv">x</span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼─────┤</span>
+<span class="err">│</span><span class="m">0</span><span class="w">          </span><span class="err">│</span><span class="m">0</span><span class="w">               </span><span class="err">│</span><span class="m">1</span><span class="w">    </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼─────┤</span>
+<span class="err">│</span><span class="m">3.141592654</span><span class="err">│</span><span class="m">1.224646799E¯16</span><span class="w"> </span><span class="err">│</span><span class="m">¯1</span><span class="w">   </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼─────┤</span>
+<span class="err">│</span><span class="m">6.283185307</span><span class="err">│</span><span class="m">¯2.449293598E¯16</span><span class="err">│</span><span class="m">1</span><span class="w">    </span><span class="err">│</span>
+<span class="err">└───────────┴────────────────┴─────┘</span>
+<span class="w">      </span><span class="nv">trig_table</span><span class="w"> </span><span class="m">0</span>
+<span class="err">┌───────────┬────────────────┬─────┐</span>
+<span class="err">│</span><span class="nv">x</span><span class="w">          </span><span class="err">│</span><span class="nv">sin</span><span class="w"> </span><span class="nv">x</span><span class="w">           </span><span class="err">│</span><span class="nv">cos</span><span class="w"> </span><span class="nv">x</span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼─────┤</span>
+<span class="err">│</span><span class="m">0</span><span class="w">          </span><span class="err">│</span><span class="m">0</span><span class="w">               </span><span class="err">│</span><span class="m">1</span><span class="w">    </span><span class="err">│</span>
+<span class="err">├───────────┼────────────────┼─────┤</span>
+<span class="err">│</span><span class="m">6.283185307</span><span class="err">│</span><span class="m">¯2.449293598E¯16</span><span class="err">│</span><span class="m">1</span><span class="w">    </span><span class="err">│</span>
+<span class="err">└───────────┴────────────────┴─────┘</span>
+</code></pre></div>
 <p><div class="problem">
     <span class="problemspan">trig_table←</span>
     <span class="problemfilltext" id="input_ch5_p9_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch5_p9_b2" placeholder="your solution here">
+    <input aria-label="Chapter 5, write problem 9, answer field 2" class="probleminput" type="text" id="input_ch5_p9_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch5_p9', 2)">Submit</button>
 </div>
-<p id="feedback_ch5_p9" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch5_p9" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 10</p>
 <p>Write a function to remove all zero columns from a matrix. </p>
-<pre class="highlight"><code class="language-apl">      M
-0 1 0 2
-0 3 0 0
-0 4 0 5
-      nonzero M
-1 2
-3 0
-4 5</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">M</span>
+<span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">2</span>
+<span class="m">0</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">0</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">5</span>
+<span class="w">      </span><span class="nv">nonzero</span><span class="w"> </span><span class="nv">M</span>
+<span class="m">1</span><span class="w"> </span><span class="m">2</span>
+<span class="m">3</span><span class="w"> </span><span class="m">0</span>
+<span class="m">4</span><span class="w"> </span><span class="m">5</span>
+</code></pre></div>
 <p><div class="problem">
     <span class="problemspan">nonzero←</span>
     <span class="problemfilltext" id="input_ch5_p10_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch5_p10_b2" placeholder="your solution here">
+    <input aria-label="Chapter 5, write problem 10, answer field 2" class="probleminput" type="text" id="input_ch5_p10_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch5_p10', 2)">Submit</button>
 </div>
-<p id="feedback_ch5_p10" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch5_p10" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 11</p>
 <p>Write a function to remove all 2-cells of a rank-3 array with sum less than 10.</p>
-<pre class="highlight"><code class="language-apl">      M
- 1  1  1
- 1  1  1
- 1  1  1
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">M</span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span>
 
- 1  2  3
- 4  5  6
- 7  8  9
+<span class="w"> </span><span class="m">1</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">3</span>
+<span class="w"> </span><span class="m">4</span><span class="w">  </span><span class="m">5</span><span class="w">  </span><span class="m">6</span>
+<span class="w"> </span><span class="m">7</span><span class="w">  </span><span class="m">8</span><span class="w">  </span><span class="m">9</span>
 
-10 11 12
-13 14 15
-16 17 18
+<span class="m">10</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">12</span>
+<span class="m">13</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">15</span>
+<span class="m">16</span><span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="m">18</span>
 
-      significant M
- 1  2  3
- 4  5  6
- 7  8  9
+<span class="w">      </span><span class="nv">significant</span><span class="w"> </span><span class="nv">M</span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">3</span>
+<span class="w"> </span><span class="m">4</span><span class="w">  </span><span class="m">5</span><span class="w">  </span><span class="m">6</span>
+<span class="w"> </span><span class="m">7</span><span class="w">  </span><span class="m">8</span><span class="w">  </span><span class="m">9</span>
 
-10 11 12
-13 14 15
-16 17 18</code></pre>
+<span class="m">10</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">12</span>
+<span class="m">13</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">15</span>
+<span class="m">16</span><span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="m">18</span>
+</code></pre></div>
 <p><div class="problem">
     <span class="problemspan">significant←</span>
     <span class="problemfilltext" id="input_ch5_p11_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch5_p11_b2" placeholder="your solution here">
+    <input aria-label="Chapter 5, write problem 11, answer field 2" class="probleminput" type="text" id="input_ch5_p11_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch5_p11', 2)">Submit</button>
 </div>
-<p id="feedback_ch5_p11" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch5_p11" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 12</p>
 <p>Write a function that takes in a right argument character vector and returns the array that the character vector represents.</p>
 <p>In the character vector, commas separate the elements of a 1-cell, semicolons separate 1-cells, and colons separate 2-cells.</p>
-<pre class="highlight"><code class="language-apl">      a
-a,b,c,d;e,f,g,h:1,2,3,4;5,6,7,8
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">a</span>
+<span class="nv">a</span><span class="o">,</span><span class="nv">b</span><span class="o">,</span><span class="nv">c</span><span class="o">,</span><span class="nv">d</span><span class="sr">;</span><span class="nv">e</span><span class="o">,</span><span class="nv">f</span><span class="o">,</span><span class="nv">g</span><span class="o">,</span><span class="nv">h</span><span class="bp">:</span><span class="m">1</span><span class="o">,</span><span class="m">2</span><span class="o">,</span><span class="m">3</span><span class="o">,</span><span class="m">4</span><span class="sr">;</span><span class="m">5</span><span class="o">,</span><span class="m">6</span><span class="o">,</span><span class="m">7</span><span class="o">,</span><span class="m">8</span>
 
-      array a
-┌─┬─┬─┬─┐
-│a│b│c│d│
-├─┼─┼─┼─┤
-│e│f│g│h│
-└─┴─┴─┴─┘
-┌─┬─┬─┬─┐
-│1│2│3│4│
-├─┼─┼─┼─┤
-│5│6│7│8│
-└─┴─┴─┴─┘</code></pre>
+<span class="w">      </span><span class="nv">array</span><span class="w"> </span><span class="nv">a</span>
+<span class="err">┌─┬─┬─┬─┐</span>
+<span class="err">│</span><span class="nv">a</span><span class="err">│</span><span class="nv">b</span><span class="err">│</span><span class="nv">c</span><span class="err">│</span><span class="nv">d</span><span class="err">│</span>
+<span class="err">├─┼─┼─┼─┤</span>
+<span class="err">│</span><span class="nv">e</span><span class="err">│</span><span class="nv">f</span><span class="err">│</span><span class="nv">g</span><span class="err">│</span><span class="nv">h</span><span class="err">│</span>
+<span class="err">└─┴─┴─┴─┘</span>
+<span class="err">┌─┬─┬─┬─┐</span>
+<span class="err">│</span><span class="m">1</span><span class="err">│</span><span class="m">2</span><span class="err">│</span><span class="m">3</span><span class="err">│</span><span class="m">4</span><span class="err">│</span>
+<span class="err">├─┼─┼─┼─┤</span>
+<span class="err">│</span><span class="m">5</span><span class="err">│</span><span class="m">6</span><span class="err">│</span><span class="m">7</span><span class="err">│</span><span class="m">8</span><span class="err">│</span>
+<span class="err">└─┴─┴─┴─┘</span>
+</code></pre></div>
 <p>Hint: Use the partition ⊆ function</p>
 <p><div class="problem">
     <span class="problemspan">array←</span>
     <span class="problemfilltext" id="input_ch5_p12_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch5_p12_b2" placeholder="your solution here">
+    <input aria-label="Chapter 5, write problem 12, answer field 2" class="probleminput" type="text" id="input_ch5_p12_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch5_p12', 2)">Submit</button>
 </div>
-<p id="feedback_ch5_p12" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch5_p12" style="color: red"></p></p>
 </div>
 <hr />
 

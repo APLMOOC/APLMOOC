@@ -1956,9 +1956,9 @@
   <label class="md-nav__title">Feedback</label>
   <form class="apl-feedback" data-section="6.6 - Dops (dee-ops)">
     <p class="apl-feedback__where">6.6 - Dops (dee-ops)</p>
-    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+    <textarea aria-label="Course feedback" class="apl-feedback__message" rows="4" maxlength="2000" required
               placeholder="Spotted a mistake? Something unclear?"></textarea>
-    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+    <input aria-label="Email address (optional)" class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
            placeholder="Email (optional)">
     <button class="apl-feedback__send" type="submit">Send</button>
     <p class="apl-feedback__status" role="status"></p>
@@ -2370,9 +2370,9 @@
   <label class="md-nav__title">Feedback</label>
   <form class="apl-feedback" data-section="6.6 - Dops (dee-ops)">
     <p class="apl-feedback__where">6.6 - Dops (dee-ops)</p>
-    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+    <textarea aria-label="Course feedback" class="apl-feedback__message" rows="4" maxlength="2000" required
               placeholder="Spotted a mistake? Something unclear?"></textarea>
-    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+    <input aria-label="Email address (optional)" class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
            placeholder="Email (optional)">
     <button class="apl-feedback__send" type="submit">Send</button>
     <p class="apl-feedback__status" role="status"></p>
@@ -2401,77 +2401,82 @@
 <hr />
 <p><link rel="stylesheet" href="/styles/ch5part2.css"></p>
 <p>Just as we defined custom functions using dfn notation, a slightly modified notation allows us to define custom operators. Consider the problem of scalar pervasion mentioned in the last section. In order to allow functions to match the simple scalars from nested left and right arrays, a certain amount of <code>¨</code> Each operators were needed, in this case four</p>
-<pre class="highlight"><code class="language-apl">      ⊢A ← ⊂\,\ 2/1 0
-┌─┬─────┬───────────┬─────────────────┐
-│1│┌─┬─┐│┌───┬─────┐│┌─────┬─────────┐│
-│ ││1│1│││┌─┐│┌───┐│││┌───┐│┌───────┐││
-│ │└─┴─┘│││1│││1 0│││││┌─┐│││┌─────┐│││
-│ │     ││└─┘│└───┘│││││1│││││1 0 0││││
-│ │     │└───┴─────┘│││└─┘│││└─────┘│││
-│ │     │           ││└───┘│└───────┘││
-│ │     │           │└─────┴─────────┘│
-└─┴─────┴───────────┴─────────────────┘
-      ⊢B ← A[1 2 3]
-┌─┬─────┬───────────┐
-│1│┌─┬─┐│┌───┬─────┐│
-│ ││1│1│││┌─┐│┌───┐││
-│ │└─┴─┘│││1│││1 0│││
-│ │     ││└─┘│└───┘││
-│ │     │└───┴─────┘│
-└─┴─────┴───────────┘
-      ⊢C ← 2 × ⊂\,\ 3/1
-┌─┬─────┬───────────┐
-│2│┌─┬─┐│┌───┬─────┐│
-│ ││2│2│││┌─┐│┌───┐││
-│ │└─┴─┘│││2│││2 2│││
-│ │     ││└─┘│└───┘││
-│ │     │└───┴─────┘│
-└─┴─────┴───────────┘
-      B ,¨¨¨¨ C
-┌─────────┬─────────────────┬─────────────────────┐
-│┌───────┐│┌───────┬───────┐│┌───────┬───────────┐│
-││┌─────┐│││┌─────┐│┌─────┐│││┌─────┐│┌─────────┐││
-│││┌───┐│││││┌───┐│││┌───┐│││││┌───┐│││┌───┬───┐│││
-││││1 2│││││││1 2│││││1 2│││││││1 2│││││1 2│0 2││││
-│││└───┘│││││└───┘│││└───┘│││││└───┘│││└───┴───┘│││
-││└─────┘│││└─────┘│└─────┘│││└─────┘│└─────────┘││
-│└───────┘│└───────┴───────┘│└───────┴───────────┘│
-└─────────┴─────────────────┴─────────────────────┘</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="o">⊢</span><span class="nv">A</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="o">⊂</span><span class="na">\</span><span class="o">,</span><span class="na">\</span><span class="w"> </span><span class="m">2</span><span class="na">/</span><span class="m">1</span><span class="w"> </span><span class="m">0</span>
+<span class="err">┌─┬─────┬───────────┬─────────────────┐</span>
+<span class="err">│</span><span class="m">1</span><span class="err">│┌─┬─┐│┌───┬─────┐│┌─────┬─────────┐│</span>
+<span class="err">│</span><span class="w"> </span><span class="err">││</span><span class="m">1</span><span class="err">│</span><span class="m">1</span><span class="err">│││┌─┐│┌───┐│││┌───┐│┌───────┐││</span>
+<span class="err">│</span><span class="w"> </span><span class="err">│└─┴─┘│││</span><span class="m">1</span><span class="err">│││</span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="err">│││││┌─┐│││┌─────┐│││</span>
+<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">││└─┘│└───┘│││││</span><span class="m">1</span><span class="err">│││││</span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="err">││││</span>
+<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">│└───┴─────┘│││└─┘│││└─────┘│││</span>
+<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">│</span><span class="w">           </span><span class="err">││└───┘│└───────┘││</span>
+<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">│</span><span class="w">           </span><span class="err">│└─────┴─────────┘│</span>
+<span class="err">└─┴─────┴───────────┴─────────────────┘</span>
+<span class="w">      </span><span class="o">⊢</span><span class="nv">B</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">A</span><span class="sr">[</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="sr">]</span>
+<span class="err">┌─┬─────┬───────────┐</span>
+<span class="err">│</span><span class="m">1</span><span class="err">│┌─┬─┐│┌───┬─────┐│</span>
+<span class="err">│</span><span class="w"> </span><span class="err">││</span><span class="m">1</span><span class="err">│</span><span class="m">1</span><span class="err">│││┌─┐│┌───┐││</span>
+<span class="err">│</span><span class="w"> </span><span class="err">│└─┴─┘│││</span><span class="m">1</span><span class="err">│││</span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="err">│││</span>
+<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">││└─┘│└───┘││</span>
+<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">│└───┴─────┘│</span>
+<span class="err">└─┴─────┴───────────┘</span>
+<span class="w">      </span><span class="o">⊢</span><span class="nv">C</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">×</span><span class="w"> </span><span class="o">⊂</span><span class="na">\</span><span class="o">,</span><span class="na">\</span><span class="w"> </span><span class="m">3</span><span class="na">/</span><span class="m">1</span>
+<span class="err">┌─┬─────┬───────────┐</span>
+<span class="err">│</span><span class="m">2</span><span class="err">│┌─┬─┐│┌───┬─────┐│</span>
+<span class="err">│</span><span class="w"> </span><span class="err">││</span><span class="m">2</span><span class="err">│</span><span class="m">2</span><span class="err">│││┌─┐│┌───┐││</span>
+<span class="err">│</span><span class="w"> </span><span class="err">│└─┴─┘│││</span><span class="m">2</span><span class="err">│││</span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="err">│││</span>
+<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">││└─┘│└───┘││</span>
+<span class="err">│</span><span class="w"> </span><span class="err">│</span><span class="w">     </span><span class="err">│└───┴─────┘│</span>
+<span class="err">└─┴─────┴───────────┘</span>
+<span class="w">      </span><span class="nv">B</span><span class="w"> </span><span class="o">,</span><span class="na">¨¨¨¨</span><span class="w"> </span><span class="nv">C</span>
+<span class="err">┌─────────┬─────────────────┬─────────────────────┐</span>
+<span class="err">│┌───────┐│┌───────┬───────┐│┌───────┬───────────┐│</span>
+<span class="err">││┌─────┐│││┌─────┐│┌─────┐│││┌─────┐│┌─────────┐││</span>
+<span class="err">│││┌───┐│││││┌───┐│││┌───┐│││││┌───┐│││┌───┬───┐│││</span>
+<span class="err">││││</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│││││││</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│││││</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│││││││</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│││││</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">2</span><span class="err">││││</span>
+<span class="err">│││└───┘│││││└───┘│││└───┘│││││└───┘│││└───┴───┘│││</span>
+<span class="err">││└─────┘│││└─────┘│└─────┘│││└─────┘│└─────────┘││</span>
+<span class="err">│└───────┘│└───────┴───────┘│└───────┴───────────┘│</span>
+<span class="err">└─────────┴─────────────────┴─────────────────────┘</span>
+</code></pre></div>
 <h2 id="recursive-each">Recursive each</h2>
 <p>In general, we might not a priori know how many <code>¨</code> each operators are needed, and even then, their excessive repeated use can make some code hard to read or understand. It would be useful to define a general operator that repeatedly applies the required number of <code>¨</code> each operators to match the simple arrays inside the nested arrays. Luckily, one such operator can be found on the Dyalog <a href="https://dfns.dyalog.com/">General Utility dfns workspace</a> </p>
-<pre class="highlight"><code class="language-apl">      saw←{                 
-        ⍺←⊢                 ⍝ default left arg.
-        2≥|≡⍺ ⍵ ⍵:⍺ ⍺⍺ ⍵    ⍝ Both simple: apply operand.
-        1≥|≡⍵:⍺ ∇¨⊂⍵        ⍝ ⍵ simple: traverse ⍺.
-        2≥|≡⍺ 1:⍺∘∇¨⍵       ⍝ ⍺ simple: traverse ⍵.
-        ⍺ ∇¨⍵               ⍝ Both nested: traverse both.
-      }</code></pre>
-<pre class="highlight"><code class="language-apl">      B ,saw C
-┌───┬─────────┬─────────────────┐
-│1 2│┌───┬───┐│┌─────┬─────────┐│
-│   ││1 2│1 2│││┌───┐│┌───────┐││
-│   │└───┴───┘│││1 2│││1 0 2 2│││
-│   │         ││└───┘│└───────┘││
-│   │         │└─────┴─────────┘│
-└───┴─────────┴─────────────────┘</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">saw</span><span class="kd">←</span><span class="kt">{</span><span class="w">                 </span>
+<span class="w">        </span><span class="bp">⍺</span><span class="kd">←</span><span class="o">⊢</span><span class="w">                 </span><span class="c1">⍝ default left arg.</span>
+<span class="w">        </span><span class="m">2</span><span class="o">≥|≡</span><span class="bp">⍺</span><span class="w"> </span><span class="bp">⍵</span><span class="w"> </span><span class="bp">⍵:⍺</span><span class="w"> </span><span class="bp">⍺⍺</span><span class="w"> </span><span class="bp">⍵</span><span class="w">    </span><span class="c1">⍝ Both simple: apply operand.</span>
+<span class="w">        </span><span class="m">1</span><span class="o">≥|≡</span><span class="bp">⍵:⍺</span><span class="w"> </span><span class="bp">∇</span><span class="na">¨</span><span class="o">⊂</span><span class="bp">⍵</span><span class="w">        </span><span class="c1">⍝ ⍵ simple: traverse ⍺.</span>
+<span class="w">        </span><span class="m">2</span><span class="o">≥|≡</span><span class="bp">⍺</span><span class="w"> </span><span class="m">1</span><span class="bp">:⍺</span><span class="na">∘</span><span class="bp">∇</span><span class="na">¨</span><span class="bp">⍵</span><span class="w">       </span><span class="c1">⍝ ⍺ simple: traverse ⍵.</span>
+<span class="w">        </span><span class="bp">⍺</span><span class="w"> </span><span class="bp">∇</span><span class="na">¨</span><span class="bp">⍵</span><span class="w">               </span><span class="c1">⍝ Both nested: traverse both.</span>
+<span class="w">      </span><span class="kt">}</span>
+</code></pre></div>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">B</span><span class="w"> </span><span class="o">,</span><span class="nv">saw</span><span class="w"> </span><span class="nv">C</span>
+<span class="err">┌───┬─────────┬─────────────────┐</span>
+<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│┌───┬───┐│┌─────┬─────────┐│</span>
+<span class="err">│</span><span class="w">   </span><span class="err">││</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│││┌───┐│┌───────┐││</span>
+<span class="err">│</span><span class="w">   </span><span class="err">│└───┴───┘│││</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">│││</span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="err">│││</span>
+<span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">         </span><span class="err">││└───┘│└───────┘││</span>
+<span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">         </span><span class="err">│└─────┴─────────┘│</span>
+<span class="err">└───┴─────────┴─────────────────┘</span>
+</code></pre></div>
 <p>Note that <code>saw</code> stops at simple arrays rather than simple scalars, so for the innermost vectors it gives <code>1 0 2 2</code> where <code>,¨¨¨¨</code> gave <code>1 2</code> and <code>0 2</code>.</p>
 <h2 id="operands">Operands</h2>
 <p>The <code>⍺←</code> on the first line gives a default left argument, used when the function is called monadically.</p>
-<pre class="highlight"><code class="language-apl">      f←{⍺←10 ⋄ ⍺+⍵}
-      f 5
-15
-      3 f 5
-8</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">f</span><span class="kd">←</span><span class="kt">{</span><span class="bp">⍺</span><span class="kd">←</span><span class="m">10</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span><span class="bp">⍺</span><span class="o">+</span><span class="bp">⍵</span><span class="kt">}</span>
+<span class="w">      </span><span class="nv">f</span><span class="w"> </span><span class="m">5</span>
+<span class="m">15</span>
+<span class="w">      </span><span class="m">3</span><span class="w"> </span><span class="nv">f</span><span class="w"> </span><span class="m">5</span>
+<span class="m">8</span>
+</code></pre></div>
 <p>The only new syntax in this dop that does not already exist in a dfn is the <code>⍺⍺</code> argument. Recall that all operators (except for the outer product <code>∘.f</code>!) take a function argument on the left, and possibly another function argument on the right, these function arguments are called "operands". These operands are denoted as <code>⍺⍺</code> and <code>⍵⍵</code> in dops, and the function resulting from applying an operator to operands is called a "derived function". Then, the second line of the dop can be read as "If the magnitude of the depth of the vector <code>⍺ ⍵ ⍵</code> is at most two, then apply the left operand <code>⍺⍺</code> to the array left argument <code>⍺</code> and array right argument <code>⍵</code>". </p>
 <p>Dops also has two different types of recursion. Using a single del <code>∇</code> refers to the derived function, and a double del <code>∇∇</code> refers to the dop itself.</p>
 <h2 id="swap-and-tack-operators">Swap and tack operators</h2>
 <p>To make the new syntax clearer, let's consider some simple examples. </p>
 <p>The <code>⍨</code> swap or self operator can be written as <code>{⍺←⍵⋄⍵ ⍺⍺ ⍺}</code> since both <code>A f{⍺←⍵⋄⍵ ⍺⍺ ⍺} B</code> evaluates to <code>B f A</code> and <code>f{⍺←⍵⋄⍵ ⍺⍺ ⍺} B</code> evaluates to <code>B f B</code>.</p>
-<pre class="highlight"><code class="language-apl">      swap←{⍺←⍵ ⋄ ⍵ ⍺⍺ ⍺}
-      2 -swap 5
-3
-      -swap 5
-0</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">swap</span><span class="kd">←</span><span class="kt">{</span><span class="bp">⍺</span><span class="kd">←</span><span class="bp">⍵</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span><span class="bp">⍵</span><span class="w"> </span><span class="bp">⍺⍺</span><span class="w"> </span><span class="bp">⍺</span><span class="kt">}</span>
+<span class="w">      </span><span class="m">2</span><span class="w"> </span><span class="o">-</span><span class="nv">swap</span><span class="w"> </span><span class="m">5</span>
+<span class="m">3</span>
+<span class="w">      </span><span class="o">-</span><span class="nv">swap</span><span class="w"> </span><span class="m">5</span>
+<span class="m">0</span>
+</code></pre></div>
 <p>We can write <code>⊢</code> right and <code>⊣</code> left tack operators that apply not to array arguments as the usual functions do, but rather to function arguments. A right tack operator could look like <code>{⍺ ⍵⍵ ⍵}</code>, as <code>A f{⍺ ⍵⍵ ⍵}g B</code> evaluates to <code>A g B</code>. The left tack similarly could be written as <code>{⍺ ⍺⍺ ⍵}</code>, since <code>A f{⍺ ⍺⍺ ⍵} B</code> evaluates to <code>A f B</code>. However, note that the right tack operator only evaluates correctly when given two operands; it cannot be evaluated monadically since all dops require a left operand.</p>
 
 

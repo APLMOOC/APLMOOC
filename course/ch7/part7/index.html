@@ -2258,9 +2258,9 @@
   <label class="md-nav__title">Feedback</label>
   <form class="apl-feedback" data-section="7.7 - Project management">
     <p class="apl-feedback__where">7.7 - Project management</p>
-    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+    <textarea aria-label="Course feedback" class="apl-feedback__message" rows="4" maxlength="2000" required
               placeholder="Spotted a mistake? Something unclear?"></textarea>
-    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+    <input aria-label="Email address (optional)" class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
            placeholder="Email (optional)">
     <button class="apl-feedback__send" type="submit">Send</button>
     <p class="apl-feedback__status" role="status"></p>
@@ -2370,9 +2370,9 @@
   <label class="md-nav__title">Feedback</label>
   <form class="apl-feedback" data-section="7.7 - Project management">
     <p class="apl-feedback__where">7.7 - Project management</p>
-    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+    <textarea aria-label="Course feedback" class="apl-feedback__message" rows="4" maxlength="2000" required
               placeholder="Spotted a mistake? Something unclear?"></textarea>
-    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+    <input aria-label="Email address (optional)" class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
            placeholder="Email (optional)">
     <button class="apl-feedback__send" type="submit">Send</button>
     <p class="apl-feedback__status" role="status"></p>
@@ -2404,57 +2404,64 @@
 <p>Object-oriented programming is one of the most popular programming paradigms of all time, and while we will not cover the whole of what Dyalog APL has to offer in terms of objects, an understanding of namespaces is important for understanding how to manage projects.</p>
 <p>The previous section placed <code>HttpCommand</code> into <code>#</code>. <code>#</code> is called the root namespace, the namespace where functions and variables will reside in by default. A namespace is a container for names; every workspace has the root namespace <code>#</code>, and further namespaces can be created inside it and inside each other, forming a tree.</p>
 <p>A namespace is created with the <code>⎕NS</code> system function, and names inside it are accessed with dot notation. The right argument of <code>⎕NS</code> is a vector of names of functions and variables to be added to this namespace, and the left argument is the name of the namespace (if it doesn't already exist, it is created).</p>
-<pre class="highlight"><code class="language-apl">      step ← 1E¯3
-      'config'⎕NS 'step'
-      config.retries←3
-      config.retries
-3
-      config.step
-0.001</code></pre>
-<p><code>#.HttpCommand.Get</code> is the function <code>Get</code> inside the namespace <code>HttpCommand</code> inside the root, and <code>r.Data</code> was a namespace produced by <code>GetJSON</code>. A namespace can also be written as an APL <code>.apln</code> source file, using <code>:Namespace</code> and <code>:EndNamespace</code>, and stored as a text file; this is the form that packages and projects use for their source.</p>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">step</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">1E¯3</span>
+<span class="w">      </span><span class="s1">&#39;config&#39;</span><span class="nf">⎕NS</span><span class="w"> </span><span class="s1">&#39;step&#39;</span>
+<span class="w">      </span><span class="nv">config</span><span class="na">.</span><span class="nv">retries</span><span class="kd">←</span><span class="m">3</span>
+<span class="w">      </span><span class="nv">config</span><span class="na">.</span><span class="nv">retries</span>
+<span class="m">3</span>
+<span class="w">      </span><span class="nv">config</span><span class="na">.</span><span class="nv">step</span>
+<span class="m">0.001</span>
+</code></pre></div>
+<p><code>#.HttpCommand.Get</code> is the function <code>Get</code> inside the namespace <code>HttpCommand</code> inside the root, and <code>r.Data</code> was a vector of namespaces produced by <code>GetJSON</code>. A namespace can also be written as an APL <code>.apln</code> source file, using <code>:Namespace</code> and <code>:EndNamespace</code>, and stored as a text file; this is the form that packages and projects use for their source.</p>
 <h2 id="from-workspaces-to-projects">From workspaces to projects</h2>
 <p><a href="../part2/">Section 7.2</a> stored code as text with LINK, and <a href="../part6/">section 7.6</a> loaded packages with Tatin. An APL project puts this arrangement into a folder; the source files, together with a configuration file that records where the source lives, which packages it depends on, and how the workspace should be set up. <a href="https://github.com/aplteam/Cider">Cider</a> is the project manager that reads this file and performs the setup.</p>
 <p>Cider is activated in the same way as Tatin, using <code>]Activate</code>.</p>
-<pre class="highlight"><code class="language-apl">      ]Activate cider
-Restart APL to complete activation.
-cmddir set to: C:/Users/username/Documents//MyUCMDs;...</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="sr">]</span><span class="nv">Activate</span><span class="w"> </span><span class="nv">cider</span>
+<span class="nv">Restart</span><span class="w"> </span><span class="nv">APL</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">complete</span><span class="w"> </span><span class="nv">activation</span><span class="na">.</span>
+<span class="nv">cmddir</span><span class="w"> </span><span class="nv">set</span><span class="w"> </span><span class="nv">to</span><span class="bp">:</span><span class="w"> </span><span class="nv">C</span><span class="bp">:</span><span class="na">/</span><span class="nv">Users</span><span class="na">/</span><span class="nv">username</span><span class="na">/</span><span class="nv">Documents</span><span class="na">//</span><span class="nv">MyUCMDs</span><span class="sr">;</span><span class="na">...</span>
+</code></pre></div>
 <p>As with Tatin, the user command cache may need a <code>]UReset</code> after restarting.</p>
-<pre class="highlight"><code class="language-apl">      ]CIDER.Version
-0.42.2+671</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="sr">]</span><span class="nv">CIDER</span><span class="na">.</span><span class="nv">Version</span>
+<span class="m">0.42.2</span><span class="o">+</span><span class="m">671</span>
+</code></pre></div>
 <h2 id="opening-a-project">Opening a project</h2>
 <p><a href="https://github.com/nunezco2/quAPL">quAPL</a> is a quantum computing simulator written in APL, <a href="https://www.dyalog.com/uploads/conference/dyalog23/materials/U08_quAPLAQuantumComputingLibraryInAPL.pdf">presented at the Dyalog '23 conference</a>, and it is developed as a Cider project. </p>
 <p>Since quantum mechanics was also historically called matrix mechanics, it would seem natural that APL, that treats arrays as first-class objects, would be a natural programming language for running these computations. First clone the repository with <code>git clone https://github.com/nunezco2/quAPL</code>. Then open the project by pointing <code>]CIDER.OpenProject</code> at the folder.</p>
-<pre class="highlight"><code class="language-apl">      ]CIDER.OpenProject C:/Users/username/quAPL -alias=quapl
-forceFilenames= 1
-Link parameter "watch" is &lt;ns&gt;
-The current directory is now C:\Users\username\quAPL
-  No Dropbox conflicts found
-Project successfully opened and established in "#.quapl"</code></pre>
-<p>Cider read the configuration file, linked the source folder into a new namespace <code>#.quapl</code>, changed the working directory, and also installs any Tatin packages the project depends on. The <code>-alias=quapl</code> names the project, so that it can be reopened later with <code>]CIDER.OpenProject [quapl]</code> without typing the path again. Cider also inspects the project's git repository when one is present, and opens an edit window containing a status report.</p>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="sr">]</span><span class="nv">CIDER</span><span class="na">.</span><span class="nv">OpenProject</span><span class="w"> </span><span class="nv">C</span><span class="bp">:</span><span class="na">/</span><span class="nv">Users</span><span class="na">/</span><span class="nv">username</span><span class="na">/</span><span class="nv">quAPL</span><span class="w"> </span><span class="o">-</span><span class="nv">alias</span><span class="o">=</span><span class="nv">quapl</span>
+<span class="nv">forceFilenames</span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
+<span class="nv">Link</span><span class="w"> </span><span class="nv">parameter</span><span class="w"> </span><span class="s2">&quot;watch&quot;</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="o">&lt;</span><span class="nv">ns</span><span class="o">&gt;</span>
+<span class="nv">The</span><span class="w"> </span><span class="nv">current</span><span class="w"> </span><span class="nv">directory</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">now</span><span class="w"> </span><span class="nv">C</span><span class="bp">:</span><span class="na">\</span><span class="nv">Users</span><span class="na">\</span><span class="nv">username</span><span class="na">\</span><span class="nv">quAPL</span>
+<span class="w">  </span><span class="nv">No</span><span class="w"> </span><span class="nv">Dropbox</span><span class="w"> </span><span class="nv">conflicts</span><span class="w"> </span><span class="nv">found</span>
+<span class="nv">Project</span><span class="w"> </span><span class="nv">successfully</span><span class="w"> </span><span class="nv">opened</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">established</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="s2">&quot;#.quapl&quot;</span>
+</code></pre></div>
+<p>Cider read the configuration file, linked the source folder into a new namespace <code>#.quapl</code>, changed the working directory, and also installed any Tatin packages the project depends on. The <code>-alias=quapl</code> names the project, so that it can be reopened later with <code>]CIDER.OpenProject [quapl]</code> without typing the path again. Cider also inspects the project's git repository when one is present, and opens an edit window containing a status report.</p>
 <p>The project is now a namespace, and its contents can be listed with the name list <code>⎕NL</code> system function. Its right argument is a so-called name class, where <code>2</code> selects variables, <code>3</code> functions, <code>4</code> operators and <code>9</code> namespaces, and several classes can be given at once. A positive class returns the names as a character matrix, one per row, and a negative class returns them as a vector of character vectors, which is easier to work with. Prefixing <code>⎕NL</code> with a namespace lists the contents of that namespace rather than the current one.</p>
-<pre class="highlight"><code class="language-apl">      config.⎕NL 2
-retries
-      ⎕NL 9
-config
-      quapl.⎕NL ¯9
- CiderConfig  TatinVars  circuit  gates  lib  measurement  mlt  show  sng</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">config</span><span class="na">.</span><span class="nf">⎕NL</span><span class="w"> </span><span class="m">2</span>
+<span class="nv">retries</span>
+<span class="nv">step</span>
+<span class="w">      </span><span class="nf">⎕NL</span><span class="w"> </span><span class="m">9</span>
+<span class="nv">config</span>
+<span class="w">      </span><span class="nv">quapl</span><span class="na">.</span><span class="nf">⎕NL</span><span class="w"> </span><span class="m">¯9</span>
+<span class="w"> </span><span class="nv">CiderConfig</span><span class="w">  </span><span class="nv">TatinVars</span><span class="w">  </span><span class="nv">circuit</span><span class="w">  </span><span class="nv">gates</span><span class="w">  </span><span class="nv">lib</span><span class="w">  </span><span class="nv">measurement</span><span class="w">  </span><span class="nv">mlt</span><span class="w">  </span><span class="nv">show</span><span class="w">  </span><span class="nv">sng</span>
+</code></pre></div>
 <p>The namespaces <code>circuit</code>, <code>gates</code>, <code>measurement</code>, <code>show</code>, <code>sng</code> and the others each come from one file in the <code>APLSource</code> folder of the repository, written in the <code>:Namespace</code> script form. <code>CiderConfig</code> and <code>TatinVars</code> were injected by Cider and hold the configuration the project was opened with.</p>
 <h2 id="the-project-in-use">The project in use</h2>
 <p>In quAPL, a qubit is a 2-row matrix of amplitudes, a quantum gate is a matrix, and applying a gate is the inner product from <a href="../../ch6/part2/">section 6.2</a>.</p>
-<pre class="highlight"><code class="language-apl">      q←quapl.sng.q0
-      quapl.show.q q
-|0⟩
-      q←quapl.gates.H+.×q
-      q
-0.7071067812
-0.7071067812
-      quapl.show.q q
-0.7071067812|0⟩+0.7071067812|1⟩</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">q</span><span class="kd">←</span><span class="nv">quapl</span><span class="na">.</span><span class="nv">sng</span><span class="na">.</span><span class="nv">q0</span>
+<span class="w">      </span><span class="nv">quapl</span><span class="na">.</span><span class="nv">show</span><span class="na">.</span><span class="nv">q</span><span class="w"> </span><span class="nv">q</span>
+<span class="o">|</span><span class="m">0</span><span class="err">⟩</span>
+<span class="w">      </span><span class="nv">q</span><span class="kd">←</span><span class="nv">quapl</span><span class="na">.</span><span class="nv">gates</span><span class="na">.</span><span class="nv">H</span><span class="o">+</span><span class="na">.</span><span class="o">×</span><span class="nv">q</span>
+<span class="w">      </span><span class="nv">q</span>
+<span class="m">0.7071067812</span>
+<span class="m">0.7071067812</span>
+<span class="w">      </span><span class="nv">quapl</span><span class="na">.</span><span class="nv">show</span><span class="na">.</span><span class="nv">q</span><span class="w"> </span><span class="nv">q</span>
+<span class="m">0.7071067812</span><span class="o">|</span><span class="m">0</span><span class="err">⟩</span><span class="o">+</span><span class="m">0.7071067812</span><span class="o">|</span><span class="m">1</span><span class="err">⟩</span>
+</code></pre></div>
 <p>The Hadamard gate <code>H</code> has placed the qubit in an equal superposition of its two basis states, and <code>quapl.measurement.measure</code> collapses it back to one of them at random, as quantum mechanics demands.</p>
 <p><img alt="A picture of RIDE after opening the quAPL project and applying a Hadamard gate" src="../../assets/7_7_cider.png" /></p>
 <h2 id="the-structure-of-a-project">The structure of a project</h2>
 <p>The directory structure of quAPL is as follows, and is the general structure of Cider projects.</p>
-<pre class="highlight"><code>quAPL/
+<div class="language-text highlight"><pre><span></span><code>quAPL/
 ├── APLSource/                one file per namespace
 │   ├── circuit.apln
 │   ├── gates.apln
@@ -2468,55 +2475,58 @@ config
 ├── packages_dev/             Tatin packages used only during development
 │   └── apl-dependencies.txt
 ├── apl-package.json
-└── cider.config</code></pre>
+└── cider.config
+</code></pre></div>
 <p><code>APLSource</code> holds the APL code.  The <code>.apln</code> files are the <code>:Namespace</code> scripts that became <code>quapl.circuit</code>, <code>quapl.gates</code> and so on, and an <code>.aplf</code> file holds a single function; these are the same file types that LINK produced in <a href="../part2/">section 7.2</a>, and Cider uses LINK to load them. <code>Tests</code> holds one function per test case, and <code>packages_dev</code> lists two Tatin packages, a test framework and a logger, that the developers need but a user of quAPL does not.</p>
 <h2 id="the-configuration-file">The configuration file</h2>
 <p>The file Cider read is <code>cider.config</code> in the root of the repository.</p>
-<pre class="highlight"><code class="language-json">{
-  "CIDER": {
-    "dependencies": {
-      "tatin": ""
-    },
-    "dependencies_dev": {
-      "tatin": ""
-    },
-    "parent": "#",
-    "projectSpace": "quapl",
-    "source": "APLSource",
-    "tests": "TestCases.RunTests"
-  },
-  "SYSVARS": {
-    "io": 1,
-    "ml": 1
-  }
-}</code></pre>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;CIDER&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;dependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;tatin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;dependencies_dev&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;tatin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;parent&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;projectSpace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;quapl&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;APLSource&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tests&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TestCases.RunTests&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;SYSVARS&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;io&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;ml&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>For the sake of demonstrating a more complex configuration file, we look at Cider's own configuration file, since Cider is a Cider project itself.</p>
-<pre class="highlight"><code class="language-json">{
-  "CIDER": {
-    "cider_version": "0.52.1",
-    "dependencies": {
-      "tatin": "tatin-packages=Cider"
-    },
-    "dependencies_dev": {
-      "tatin": "tatin-packages_dev=TestCases"
-    },
-    "distributionFolder": "Dist",
-    "init": "Cider.Init",
-    "make": "Admin.Make 1",
-    "parent": "#",
-    "projectSpace": "Cider",
-    "project_url": "https://github.com/aplteam/cider",
-    "source": "APLSource",
-    "tests": "TestCases.RunTests"
-  },
-  "SYSVARS": {
-    "io": 1,
-    "ml": 1
-  }
-}</code></pre>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;CIDER&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;cider_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.52.1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;dependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;tatin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tatin-packages=Cider&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;dependencies_dev&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;tatin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tatin-packages_dev=TestCases&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;distributionFolder&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Dist&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;init&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Cider.Init&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;make&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Admin.Make 1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;parent&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;projectSpace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Cider&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;project_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com/aplteam/cider&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;APLSource&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tests&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TestCases.RunTests&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;SYSVARS&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;io&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;ml&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <p><code>source</code> names the folder of APL source files, and <code>projectSpace</code> and <code>parent</code> name the namespace they are loaded into; in quAPL the folder <code>APLSource</code> became <code>#.quapl</code>, and in Cider the same folder becomes <code>#.Cider</code>.</p>
 <p><code>dependencies.tatin</code> names a folder, which is <code>tatin-dependencies</code> by default. The Cider project directory looks as follows.</p>
-<pre class="highlight"><code>Cider/
+<div class="language-text highlight"><pre><span></span><code>Cider/
 ├── APLSource/
 │   ├── Admin/
 │   ├── Cider/
@@ -2540,13 +2550,15 @@ config
 │   ├── aplteam-Tester2-4.4.0/
 │   └── ...
 ├── apl-package.json
-└── cider.config</code></pre>
+└── cider.config
+</code></pre></div>
 <p>The packages themselves are folders inside <code>tatin-packages</code>, each named by group, name and version. The file <code>apl-dependencies.txt</code> next to them lists the packages that the project asked for, and this file is how the versions from the <a href="../part6/">previous section</a> are recorded for collaborators.</p>
-<pre class="highlight"><code>aplteam-APLTreeUtils2-1.4.1
+<div class="language-text highlight"><pre><span></span><code>aplteam-APLTreeUtils2-1.4.1
 dyalog-NuGet-0.2.6
 aplteam-CommTools-2.0.2
 aplteam-APLGit2-0.28.0
-aplteam-FilesAndDirs-7.1.1</code></pre>
+aplteam-FilesAndDirs-7.1.1
+</code></pre></div>
 <p>The astute reader might notice that the folder holds more packages than this file lists! This is because Tatin resolves dependencies and records the full set in <code>apl-buildlist.json</code>; <code>dyalog-HttpCommand-5.8.0</code> is there because one of the five listed packages requires it. </p>
 <p>The <code>=Cider</code> after the folder name in the configuration file loads the packages into a child namespace of that name rather than into the project space itself, so that the packages become <code>#.Cider.Cider.APLGit2</code>, <code>#.Cider.Cider.HttpCommand</code> and so on, and do not mix with the project's own names.</p>
 <p><code>dependencies_dev.tatin</code> does the same for packages that are needed only while developing the project and loads its test framework into a child namespace <code>TestCases</code>.</p>
@@ -2556,83 +2568,91 @@ aplteam-FilesAndDirs-7.1.1</code></pre>
 <p><code>SYSVARS</code> sets the system variables, so that the project gets the index origin it was written for regardless of the session it is opened in. Both projects set <code>⎕IO</code> to 1, and the Cider documentation recommends always setting it explicitly.</p>
 <h2 id="creating-a-project">Creating a project</h2>
 <p>To create your own project, the <code>]CIDER.CreateProject</code> user command can be used, which turns an empty folder into a project. The namespace that the project will live in must already exist, since Cider only links the folder.</p>
-<pre class="highlight"><code class="language-apl">      'solarwind'⎕NS''
-      ]CIDER.CreateProject C:/Users/username/solarwind solarwind -noEdit
-Project successfully created; open as well? (Y/n) y
-Link parameter "watch" is &lt;both&gt;
-The current directory is now C:\Users\username\solarwind
-  No Dropbox conflicts found
-Project successfully opened and established in "#.solarwind"</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="s1">&#39;solarwind&#39;</span><span class="nf">⎕NS</span><span class="s1">&#39;&#39;</span>
+<span class="w">      </span><span class="sr">]</span><span class="nv">CIDER</span><span class="na">.</span><span class="nv">CreateProject</span><span class="w"> </span><span class="nv">C</span><span class="bp">:</span><span class="na">/</span><span class="nv">Users</span><span class="na">/</span><span class="nv">username</span><span class="na">/</span><span class="nv">solarwind</span><span class="w"> </span><span class="nv">solarwind</span><span class="w"> </span><span class="o">-</span><span class="nv">noEdit</span>
+<span class="nv">Project</span><span class="w"> </span><span class="nv">successfully</span><span class="w"> </span><span class="nv">created</span><span class="sr">;</span><span class="w"> </span><span class="nv">open</span><span class="w"> </span><span class="nv">as</span><span class="w"> </span><span class="nv">well</span><span class="o">?</span><span class="w"> </span><span class="p">(</span><span class="nv">Y</span><span class="na">/</span><span class="nv">n</span><span class="p">)</span><span class="w"> </span><span class="nv">y</span>
+<span class="nv">Link</span><span class="w"> </span><span class="nv">parameter</span><span class="w"> </span><span class="s2">&quot;watch&quot;</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="o">&lt;</span><span class="nv">both</span><span class="o">&gt;</span>
+<span class="nv">The</span><span class="w"> </span><span class="nv">current</span><span class="w"> </span><span class="nv">directory</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">now</span><span class="w"> </span><span class="nv">C</span><span class="bp">:</span><span class="na">\</span><span class="nv">Users</span><span class="na">\</span><span class="nv">username</span><span class="na">\</span><span class="nv">solarwind</span>
+<span class="w">  </span><span class="nv">No</span><span class="w"> </span><span class="nv">Dropbox</span><span class="w"> </span><span class="nv">conflicts</span><span class="w"> </span><span class="nv">found</span>
+<span class="nv">Project</span><span class="w"> </span><span class="nv">successfully</span><span class="w"> </span><span class="nv">opened</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">established</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="s2">&quot;#.solarwind&quot;</span>
+</code></pre></div>
 <p>Cider writes the project files and asks whether to open the project. Without <code>-noEdit</code>, Cider also opens the new configuration file in an editor so that it can be adjusted immediately. The folder now looks as follows.</p>
-<pre class="highlight"><code>solarwind/
+<div class="language-text highlight"><pre><span></span><code>solarwind/
 ├── APLSource/
-└── cider.config</code></pre>
-<pre class="highlight"><code class="language-json">{
-  "CIDER": {
-    "cider_version": "0.42.2",
-    "dependencies": {
-      "nuget": "nuget-dependencies",
-      "tatin": "tatin-dependencies"
-    },
-    "dependencies_dev": {
-      "tatin": "tatin-dependencies_dev"
-    },
-    "distributionFolder": "Dist",
-    "init": "",
-    "make": "",
-    "parent": "#",
-    "projectSpace": "solarwind",
-    "project_url": "",
-    "source": "APLSource",
-    "tests": "",
-    "version": ""
-  },
-  "LINK": {},
-  "SYSVARS": {
-    "io": 1,
-    "ml": 1
-  },
-  "USER": {}
-}</code></pre>
+└── cider.config
+</code></pre></div>
+<div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;CIDER&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;cider_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.42.2&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;dependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;nuget&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nuget-dependencies&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;tatin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tatin-dependencies&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;dependencies_dev&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;tatin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tatin-dependencies_dev&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;distributionFolder&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Dist&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;init&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;make&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;parent&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;projectSpace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;solarwind&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;project_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;APLSource&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tests&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;LINK&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">  </span><span class="nt">&quot;SYSVARS&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;io&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;ml&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;USER&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>The template names the dependency folders but does not create them, since the project has no dependencies yet. To give it one, first change the <code>tatin</code> entry to <code>"tatin-dependencies=pkgs"</code>, so that the packages will be loaded into a child namespace <code>pkgs</code>, and then add the package from the previous section with <code>]CIDER.AddTatinDependencies</code>.</p>
-<pre class="highlight"><code class="language-apl">      ]CIDER.AddTatinDependencies dyalog-HttpCommand
-solarwind: add dependencies to the folder tatin-dependencies/ (Y/n) y
-Would you like to (re-)load all Tatin dependencies? (Y/n) y
- 1 Tatin dependency added:
- dyalog-HttpCommand-5.11.1
- 1 dependency was loaded</code></pre>
-<pre class="highlight"><code>solarwind/
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="sr">]</span><span class="nv">CIDER</span><span class="na">.</span><span class="nv">AddTatinDependencies</span><span class="w"> </span><span class="nv">dyalog</span><span class="o">-</span><span class="nv">HttpCommand</span>
+<span class="nv">solarwind</span><span class="bp">:</span><span class="w"> </span><span class="nv">add</span><span class="w"> </span><span class="nv">dependencies</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">folder</span><span class="w"> </span><span class="nv">tatin</span><span class="o">-</span><span class="nv">dependencies</span><span class="na">/</span><span class="w"> </span><span class="p">(</span><span class="nv">Y</span><span class="na">/</span><span class="nv">n</span><span class="p">)</span><span class="w"> </span><span class="nv">y</span>
+<span class="nv">Would</span><span class="w"> </span><span class="nv">you</span><span class="w"> </span><span class="nv">like</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="p">(</span><span class="nv">re</span><span class="o">-</span><span class="p">)</span><span class="nv">load</span><span class="w"> </span><span class="nv">all</span><span class="w"> </span><span class="nv">Tatin</span><span class="w"> </span><span class="nv">dependencies</span><span class="o">?</span><span class="w"> </span><span class="p">(</span><span class="nv">Y</span><span class="na">/</span><span class="nv">n</span><span class="p">)</span><span class="w"> </span><span class="nv">y</span>
+<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="nv">Tatin</span><span class="w"> </span><span class="nv">dependency</span><span class="w"> </span><span class="nv">added</span><span class="bp">:</span>
+<span class="w"> </span><span class="nv">dyalog</span><span class="o">-</span><span class="nv">HttpCommand</span><span class="o">-</span><span class="m">5.11.1</span>
+<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="nv">dependency</span><span class="w"> </span><span class="nv">was</span><span class="w"> </span><span class="nv">loaded</span>
+</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>solarwind/
 ├── APLSource/
 ├── tatin-dependencies/
 │   ├── apl-buildlist.json
 │   ├── apl-dependencies.txt
 │   └── dyalog-HttpCommand-5.11.1/
-└── cider.config</code></pre>
-<pre class="highlight"><code class="language-apl">      solarwind.⎕NL ¯9
- CiderConfig  pkgs 
-      solarwind.pkgs.⎕NL ¯9
- HttpCommand 
-      solarwind.pkgs.HttpCommand.Version
- HttpCommand  5.11.1  2026-05-18 </code></pre>
+└── cider.config
+</code></pre></div>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">solarwind</span><span class="na">.</span><span class="nf">⎕NL</span><span class="w"> </span><span class="m">¯9</span>
+<span class="w"> </span><span class="nv">CiderConfig</span><span class="w">  </span><span class="nv">pkgs</span><span class="w"> </span>
+<span class="w">      </span><span class="nv">solarwind</span><span class="na">.</span><span class="nv">pkgs</span><span class="na">.</span><span class="nf">⎕NL</span><span class="w"> </span><span class="m">¯9</span>
+<span class="w"> </span><span class="nv">HttpCommand</span><span class="w"> </span>
+<span class="w">      </span><span class="nv">solarwind</span><span class="na">.</span><span class="nv">pkgs</span><span class="na">.</span><span class="nv">HttpCommand</span><span class="na">.</span><span class="nv">Version</span>
+<span class="w"> </span><span class="nv">HttpCommand</span><span class="w">  </span><span class="m">5.11.1</span><span class="w">  </span><span class="m">2026</span><span class="o">-</span><span class="m">05</span><span class="o">-</span><span class="m">18</span><span class="w"> </span>
+</code></pre></div>
 <p>Anyone who clones this folder and opens it with <code>]CIDER.OpenProject</code> gets the same package at the same version, which simplifies collaboration on large projects substantially.</p>
 <p>We will use the example of the previous section of obtaining and processing solar wind data from the NOAA for our custom project, creating the following two files in our source code editor of choice.</p>
 <p><code>APLSource/Fetch.aplf</code></p>
-<pre class="highlight"><code class="language-apl"> speeds←Fetch;url;r
- url←'https://services.swpc.noaa.gov/json/rtsw/rtsw_wind_1m.json'
- r←pkgs.HttpCommand.GetJSON 'GET' url
- speeds←Stats.Clean r.Data.proton_speed</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w"> </span><span class="nv">speeds</span><span class="kd">←</span><span class="nv">Fetch</span><span class="sr">;</span><span class="nv">url</span><span class="sr">;</span><span class="nv">r</span>
+<span class="w"> </span><span class="nv">url</span><span class="kd">←</span><span class="s1">&#39;https://services.swpc.noaa.gov/json/rtsw/rtsw_wind_1m.json&#39;</span>
+<span class="w"> </span><span class="nv">r</span><span class="kd">←</span><span class="nv">pkgs</span><span class="na">.</span><span class="nv">HttpCommand</span><span class="na">.</span><span class="nv">GetJSON</span><span class="w"> </span><span class="s1">&#39;GET&#39;</span><span class="w"> </span><span class="nv">url</span>
+<span class="w"> </span><span class="nv">speeds</span><span class="kd">←</span><span class="nv">Stats</span><span class="na">.</span><span class="nv">Clean</span><span class="w"> </span><span class="nv">r</span><span class="na">.</span><span class="nv">Data</span><span class="na">.</span><span class="nv">proton_speed</span>
+</code></pre></div>
 <p><code>APLSource/Stats.apln</code></p>
-<pre class="highlight"><code class="language-apl">:Namespace Stats
+<div class="language-apl highlight"><pre><span></span><code><span class="bp">:</span><span class="nv">Namespace</span><span class="w"> </span><span class="nv">Stats</span>
 
-    Clean←{(ok v)←⎕VFI⍕⍵ ⋄ ok/v}
+<span class="w">    </span><span class="nv">Clean</span><span class="kd">←</span><span class="kt">{</span><span class="p">(</span><span class="nv">ok</span><span class="w"> </span><span class="nv">v</span><span class="p">)</span><span class="kd">←</span><span class="nf">⎕VFI</span><span class="o">⍕</span><span class="bp">⍵</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span><span class="nv">ok</span><span class="na">/</span><span class="nv">v</span><span class="kt">}</span>
 
-    Mean←{⌊(+/⍵)÷≢⍵}
+<span class="w">    </span><span class="nv">Mean</span><span class="kd">←</span><span class="kt">{</span><span class="o">⌊</span><span class="p">(</span><span class="o">+</span><span class="na">/</span><span class="bp">⍵</span><span class="p">)</span><span class="o">÷≢</span><span class="bp">⍵</span><span class="kt">}</span>
 
-    Peak←{⌈/⍵}
-:EndNamespace</code></pre>
+<span class="w">    </span><span class="nv">Peak</span><span class="kd">←</span><span class="kt">{</span><span class="o">⌈</span><span class="na">/</span><span class="bp">⍵</span><span class="kt">}</span>
+<span class="bp">:</span><span class="nv">EndNamespace</span>
+</code></pre></div>
 <p>A function stored in an <code>.aplf</code> file needs no <code>∇</code> delimiters, since the file boundary shows where the function begins and ends.</p>
 <p>The directory structure is now as follows.</p>
-<pre class="highlight"><code>solarwind/
+<div class="language-text highlight"><pre><span></span><code>solarwind/
 ├── APLSource/
 │   ├── Fetch.aplf
 │   └── Stats.apln
@@ -2640,29 +2660,31 @@ Would you like to (re-)load all Tatin dependencies? (Y/n) y
 │   ├── apl-buildlist.json
 │   ├── apl-dependencies.txt
 │   └── dyalog-HttpCommand-5.11.1/
-└── cider.config</code></pre>
+└── cider.config
+</code></pre></div>
 <p>Opening the file in Dyalog and testing out the functions we've written, all the expected results are obtained.</p>
-<pre class="highlight"><code class="language-apl">      ]CIDER.OpenProject C:/Users/username/solarwind -alias=solarwind
-Link parameter "watch" is &lt;both&gt;
-Report availability of later versions of installed Tatin packages? (y/N) n
-Tatin installation folder "C:/Users/username/solarwind/tatin-dependencies" exists, therefore no packages loaded
-The current directory is now C:\Users\username\solarwind
-  No Dropbox conflicts found
-Project successfully opened and established in "#.solarwind"
-      solarwind.⎕NL ¯9
- CiderConfig  Stats  pkgs 
-      solarwind.⎕NL ¯3
- Fetch 
-      solarwind.pkgs.⎕NL ¯9
- HttpCommand
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="sr">]</span><span class="nv">CIDER</span><span class="na">.</span><span class="nv">OpenProject</span><span class="w"> </span><span class="nv">C</span><span class="bp">:</span><span class="na">/</span><span class="nv">Users</span><span class="na">/</span><span class="nv">username</span><span class="na">/</span><span class="nv">solarwind</span><span class="w"> </span><span class="o">-</span><span class="nv">alias</span><span class="o">=</span><span class="nv">solarwind</span>
+<span class="nv">Link</span><span class="w"> </span><span class="nv">parameter</span><span class="w"> </span><span class="s2">&quot;watch&quot;</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="o">&lt;</span><span class="nv">both</span><span class="o">&gt;</span>
+<span class="nv">Report</span><span class="w"> </span><span class="nv">availability</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">later</span><span class="w"> </span><span class="nv">versions</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">installed</span><span class="w"> </span><span class="nv">Tatin</span><span class="w"> </span><span class="nv">packages</span><span class="o">?</span><span class="w"> </span><span class="p">(</span><span class="nv">y</span><span class="na">/</span><span class="nv">N</span><span class="p">)</span><span class="w"> </span><span class="nv">n</span>
+<span class="nv">Tatin</span><span class="w"> </span><span class="nv">installation</span><span class="w"> </span><span class="nv">folder</span><span class="w"> </span><span class="s2">&quot;C:/Users/username/solarwind/tatin-dependencies&quot;</span><span class="w"> </span><span class="nv">exists</span><span class="o">,</span><span class="w"> </span><span class="nv">therefore</span><span class="w"> </span><span class="nv">no</span><span class="w"> </span><span class="nv">packages</span><span class="w"> </span><span class="nv">loaded</span>
+<span class="nv">The</span><span class="w"> </span><span class="nv">current</span><span class="w"> </span><span class="nv">directory</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">now</span><span class="w"> </span><span class="nv">C</span><span class="bp">:</span><span class="na">\</span><span class="nv">Users</span><span class="na">\</span><span class="nv">username</span><span class="na">\</span><span class="nv">solarwind</span>
+<span class="w">  </span><span class="nv">No</span><span class="w"> </span><span class="nv">Dropbox</span><span class="w"> </span><span class="nv">conflicts</span><span class="w"> </span><span class="nv">found</span>
+<span class="nv">Project</span><span class="w"> </span><span class="nv">successfully</span><span class="w"> </span><span class="nv">opened</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">established</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="s2">&quot;#.solarwind&quot;</span>
+<span class="w">      </span><span class="nv">solarwind</span><span class="na">.</span><span class="nf">⎕NL</span><span class="w"> </span><span class="m">¯9</span>
+<span class="w"> </span><span class="nv">CiderConfig</span><span class="w">  </span><span class="nv">Stats</span><span class="w">  </span><span class="nv">pkgs</span><span class="w"> </span>
+<span class="w">      </span><span class="nv">solarwind</span><span class="na">.</span><span class="nf">⎕NL</span><span class="w"> </span><span class="m">¯3</span>
+<span class="w"> </span><span class="nv">Fetch</span><span class="w"> </span>
+<span class="w">      </span><span class="nv">solarwind</span><span class="na">.</span><span class="nv">pkgs</span><span class="na">.</span><span class="nf">⎕NL</span><span class="w"> </span><span class="m">¯9</span>
+<span class="w"> </span><span class="nv">HttpCommand</span>
 
-      s←solarwind.Fetch
-      ≢s
-3153
-      solarwind.Stats.Mean s
-345
-      solarwind.Stats.Peak s
-399.71</code></pre>
+<span class="w">      </span><span class="nv">s</span><span class="kd">←</span><span class="nv">solarwind</span><span class="na">.</span><span class="nv">Fetch</span>
+<span class="w">      </span><span class="o">≢</span><span class="nv">s</span>
+<span class="m">3153</span>
+<span class="w">      </span><span class="nv">solarwind</span><span class="na">.</span><span class="nv">Stats</span><span class="na">.</span><span class="nv">Mean</span><span class="w"> </span><span class="nv">s</span>
+<span class="m">345</span>
+<span class="w">      </span><span class="nv">solarwind</span><span class="na">.</span><span class="nv">Stats</span><span class="na">.</span><span class="nv">Peak</span><span class="w"> </span><span class="nv">s</span>
+<span class="m">399.71</span>
+</code></pre></div>
 
 
 

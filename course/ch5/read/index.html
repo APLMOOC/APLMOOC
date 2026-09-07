@@ -2344,9 +2344,9 @@
   <label class="md-nav__title">Feedback</label>
   <form class="apl-feedback" data-section="5.R - Read exercises">
     <p class="apl-feedback__where">5.R - Read exercises</p>
-    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+    <textarea aria-label="Course feedback" class="apl-feedback__message" rows="4" maxlength="2000" required
               placeholder="Spotted a mistake? Something unclear?"></textarea>
-    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+    <input aria-label="Email address (optional)" class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
            placeholder="Email (optional)">
     <button class="apl-feedback__send" type="submit">Send</button>
     <p class="apl-feedback__status" role="status"></p>
@@ -2375,11 +2375,13 @@ Check your answers by opening the "Output" tab.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Input</label><label for="__tabbed_1_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      'softheartedness'~'otherness'</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="s1">&#39;softheartedness&#39;</span><span class="o">~</span><span class="s1">&#39;otherness&#39;</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      'softheartedness'~'otherness'
-fad</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="s1">&#39;softheartedness&#39;</span><span class="o">~</span><span class="s1">&#39;otherness&#39;</span>
+<span class="nv">fad</span>
+</code></pre></div>
 <p>The set difference ~ function removes all occurrences of the right-hand array elements from the left-hand array</p>
 </div>
 </div>
@@ -2391,24 +2393,25 @@ fad</code></pre>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Input</label><label for="__tabbed_2_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      'platform'∪'formatting'
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="s1">&#39;platform&#39;</span><span class="o">∪</span><span class="s1">&#39;formatting&#39;</span>
 
-      'emergency'∪'encyclopedia'
+<span class="w">      </span><span class="s1">&#39;emergency&#39;</span><span class="o">∪</span><span class="s1">&#39;encyclopedia&#39;</span>
 
-      'networking'∪'kingdom'
+<span class="w">      </span><span class="s1">&#39;networking&#39;</span><span class="o">∪</span><span class="s1">&#39;kingdom&#39;</span>
 
-      'spring'∪'ringtone'
-</code></pre>
+<span class="w">      </span><span class="s1">&#39;spring&#39;</span><span class="o">∪</span><span class="s1">&#39;ringtone&#39;</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      'platform'∪'formatting'
-platforming
-      'emergency'∪'encyclopedia'
-emergencylopdia
-      'networking'∪'kingdom'
-networkingdm
-      'spring'∪'ringtone'
-springtoe</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="s1">&#39;platform&#39;</span><span class="o">∪</span><span class="s1">&#39;formatting&#39;</span>
+<span class="nv">platforming</span>
+<span class="w">      </span><span class="s1">&#39;emergency&#39;</span><span class="o">∪</span><span class="s1">&#39;encyclopedia&#39;</span>
+<span class="nv">emergencylopdia</span>
+<span class="w">      </span><span class="s1">&#39;networking&#39;</span><span class="o">∪</span><span class="s1">&#39;kingdom&#39;</span>
+<span class="nv">networkingdm</span>
+<span class="w">      </span><span class="s1">&#39;spring&#39;</span><span class="o">∪</span><span class="s1">&#39;ringtone&#39;</span>
+<span class="nv">springtoe</span>
+</code></pre></div>
 <p>The union ∪ function adds to the left array elements of the right array not already in the left array.</p>
 </div>
 </div>
@@ -2421,26 +2424,27 @@ springtoe</code></pre>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>The two arrays below list some English and Finnish words.</p>
-<pre class="highlight"><code class="language-apl">      ⎕ ← EN ← 'home' 'cat' 'tie' 'door' 'on' 'me' 'auto'
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="vg">⎕</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">EN</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="s1">&#39;home&#39;</span><span class="w"> </span><span class="s1">&#39;cat&#39;</span><span class="w"> </span><span class="s1">&#39;tie&#39;</span><span class="w"> </span><span class="s1">&#39;door&#39;</span><span class="w"> </span><span class="s1">&#39;on&#39;</span><span class="w"> </span><span class="s1">&#39;me&#39;</span><span class="w"> </span><span class="s1">&#39;auto&#39;</span>
 
-      ⎕ ← FI ← 'kissa' 'ovi' 'auto' 'on' 'tie' 'home' 'talo'
-      ⍝ English words that are also Finnish words
-      EN ∩ FI
-      ⍝ Finnish words that are also English words
-      FI ∩ EN
-</code></pre>
+<span class="w">      </span><span class="vg">⎕</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">FI</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="s1">&#39;kissa&#39;</span><span class="w"> </span><span class="s1">&#39;ovi&#39;</span><span class="w"> </span><span class="s1">&#39;auto&#39;</span><span class="w"> </span><span class="s1">&#39;on&#39;</span><span class="w"> </span><span class="s1">&#39;tie&#39;</span><span class="w"> </span><span class="s1">&#39;home&#39;</span><span class="w"> </span><span class="s1">&#39;talo&#39;</span>
+<span class="w">      </span><span class="c1">⍝ English words that are also Finnish words</span>
+<span class="w">      </span><span class="nv">EN</span><span class="w"> </span><span class="o">∩</span><span class="w"> </span><span class="nv">FI</span>
+<span class="w">      </span><span class="c1">⍝ Finnish words that are also English words</span>
+<span class="w">      </span><span class="nv">FI</span><span class="w"> </span><span class="o">∩</span><span class="w"> </span><span class="nv">EN</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      ⎕ ← EN ← 'home' 'cat' 'tie' 'door' 'on' 'me' 'auto'
-home  cat  tie  door  on  me  auto
-      ⎕ ← FI ← 'kissa' 'ovi' 'auto' 'on' 'tie' 'home' 'talo'
-kissa  ovi  auto  on  tie  home  talo
-      ⍝ English words that are also Finnish words
-      EN ∩ FI
-home  tie  on  auto
-      ⍝ Finnish words that are also English words
-      FI ∩ EN
-auto  on  tie  home</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="vg">⎕</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">EN</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="s1">&#39;home&#39;</span><span class="w"> </span><span class="s1">&#39;cat&#39;</span><span class="w"> </span><span class="s1">&#39;tie&#39;</span><span class="w"> </span><span class="s1">&#39;door&#39;</span><span class="w"> </span><span class="s1">&#39;on&#39;</span><span class="w"> </span><span class="s1">&#39;me&#39;</span><span class="w"> </span><span class="s1">&#39;auto&#39;</span>
+<span class="nv">home</span><span class="w">  </span><span class="nv">cat</span><span class="w">  </span><span class="nv">tie</span><span class="w">  </span><span class="nv">door</span><span class="w">  </span><span class="nv">on</span><span class="w">  </span><span class="nv">me</span><span class="w">  </span><span class="nv">auto</span>
+<span class="w">      </span><span class="vg">⎕</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">FI</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="s1">&#39;kissa&#39;</span><span class="w"> </span><span class="s1">&#39;ovi&#39;</span><span class="w"> </span><span class="s1">&#39;auto&#39;</span><span class="w"> </span><span class="s1">&#39;on&#39;</span><span class="w"> </span><span class="s1">&#39;tie&#39;</span><span class="w"> </span><span class="s1">&#39;home&#39;</span><span class="w"> </span><span class="s1">&#39;talo&#39;</span>
+<span class="nv">kissa</span><span class="w">  </span><span class="nv">ovi</span><span class="w">  </span><span class="nv">auto</span><span class="w">  </span><span class="nv">on</span><span class="w">  </span><span class="nv">tie</span><span class="w">  </span><span class="nv">home</span><span class="w">  </span><span class="nv">talo</span>
+<span class="w">      </span><span class="c1">⍝ English words that are also Finnish words</span>
+<span class="w">      </span><span class="nv">EN</span><span class="w"> </span><span class="o">∩</span><span class="w"> </span><span class="nv">FI</span>
+<span class="nv">home</span><span class="w">  </span><span class="nv">tie</span><span class="w">  </span><span class="nv">on</span><span class="w">  </span><span class="nv">auto</span>
+<span class="w">      </span><span class="c1">⍝ Finnish words that are also English words</span>
+<span class="w">      </span><span class="nv">FI</span><span class="w"> </span><span class="o">∩</span><span class="w"> </span><span class="nv">EN</span>
+<span class="nv">auto</span><span class="w">  </span><span class="nv">on</span><span class="w">  </span><span class="nv">tie</span><span class="w">  </span><span class="nv">home</span>
+</code></pre></div>
 <p>The intersection <code>∩</code> function keeps the elements of the left array that also occur in the right array, so the result takes its order from the left argument. That is, <code>EN ∩ FI</code> lists them in the order they appear in <code>EN</code>, and <code>FI ∩ EN</code> in the order they appear in <code>FI</code>. </p>
 </div>
 </div>
@@ -2452,14 +2456,15 @@ auto  on  tie  home</code></pre>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Input</label><label for="__tabbed_4_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      ('re'),¨'play' 'cord' 'peat' 'serve' 'quest' 'present'
-</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="p">(</span><span class="s1">&#39;re&#39;</span><span class="p">)</span><span class="o">,</span><span class="na">¨</span><span class="s1">&#39;play&#39;</span><span class="w"> </span><span class="s1">&#39;cord&#39;</span><span class="w"> </span><span class="s1">&#39;peat&#39;</span><span class="w"> </span><span class="s1">&#39;serve&#39;</span><span class="w"> </span><span class="s1">&#39;quest&#39;</span><span class="w"> </span><span class="s1">&#39;present&#39;</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      ('re'),¨'play' 'cord' 'peat' 'serve' 'quest' 'present'
-LENGTH ERROR
-      ('re'),¨'play' 'cord' 'peat' 'serve' 'quest' 'present'
-            ∧</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="p">(</span><span class="s1">&#39;re&#39;</span><span class="p">)</span><span class="o">,</span><span class="na">¨</span><span class="s1">&#39;play&#39;</span><span class="w"> </span><span class="s1">&#39;cord&#39;</span><span class="w"> </span><span class="s1">&#39;peat&#39;</span><span class="w"> </span><span class="s1">&#39;serve&#39;</span><span class="w"> </span><span class="s1">&#39;quest&#39;</span><span class="w"> </span><span class="s1">&#39;present&#39;</span>
+<span class="nv">LENGTH</span><span class="w"> </span><span class="nv">ERROR</span>
+<span class="w">      </span><span class="p">(</span><span class="s1">&#39;re&#39;</span><span class="p">)</span><span class="o">,</span><span class="na">¨</span><span class="s1">&#39;play&#39;</span><span class="w"> </span><span class="s1">&#39;cord&#39;</span><span class="w"> </span><span class="s1">&#39;peat&#39;</span><span class="w"> </span><span class="s1">&#39;serve&#39;</span><span class="w"> </span><span class="s1">&#39;quest&#39;</span><span class="w"> </span><span class="s1">&#39;present&#39;</span>
+<span class="w">            </span><span class="o">∧</span>
+</code></pre></div>
 <p>What the previous code attempts to do is catenate each element of the left array, 'r' and 'e', with each element of the right array, but the lengths clearly do not match.</p>
 </div>
 </div>
@@ -2471,12 +2476,13 @@ LENGTH ERROR
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Input</label><label for="__tabbed_5_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      (⊂'re'),¨'play' 'cord' 'peat' 'serve' 'quest' 'present'
-</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="p">(</span><span class="o">⊂</span><span class="s1">&#39;re&#39;</span><span class="p">)</span><span class="o">,</span><span class="na">¨</span><span class="s1">&#39;play&#39;</span><span class="w"> </span><span class="s1">&#39;cord&#39;</span><span class="w"> </span><span class="s1">&#39;peat&#39;</span><span class="w"> </span><span class="s1">&#39;serve&#39;</span><span class="w"> </span><span class="s1">&#39;quest&#39;</span><span class="w"> </span><span class="s1">&#39;present&#39;</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      (⊂'re'),¨'play' 'cord' 'peat' 'serve' 'quest' 'present'
-replay  record  repeat  reserve  request  represent</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="p">(</span><span class="o">⊂</span><span class="s1">&#39;re&#39;</span><span class="p">)</span><span class="o">,</span><span class="na">¨</span><span class="s1">&#39;play&#39;</span><span class="w"> </span><span class="s1">&#39;cord&#39;</span><span class="w"> </span><span class="s1">&#39;peat&#39;</span><span class="w"> </span><span class="s1">&#39;serve&#39;</span><span class="w"> </span><span class="s1">&#39;quest&#39;</span><span class="w"> </span><span class="s1">&#39;present&#39;</span>
+<span class="nv">replay</span><span class="w">  </span><span class="nv">record</span><span class="w">  </span><span class="nv">repeat</span><span class="w">  </span><span class="nv">reserve</span><span class="w">  </span><span class="nv">request</span><span class="w">  </span><span class="nv">represent</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2487,32 +2493,30 @@ replay  record  repeat  reserve  request  represent</code></pre>
 <div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Input</label><label for="__tabbed_6_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      arrow ← 5 7⍴' ▉▉     ▉▉     ▉▉    ▉▉▉▉    ▉▉    '
-      arrow
- ▉▉    
- ▉▉    
- ▉▉    
-▉▉▉▉   
- ▉▉    
-      ⍉arrow
-</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">arrow</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">7</span><span class="o">⍴</span><span class="s1">&#39; ▉▉     ▉▉     ▉▉    ▉▉▉▉    ▉▉    &#39;</span>
+<span class="w">      </span><span class="nv">arrow</span>
+<span class="w"> </span><span class="err">▉▉</span><span class="w">    </span>
+<span class="w"> </span><span class="err">▉▉</span><span class="w">    </span>
+<span class="w"> </span><span class="err">▉▉</span><span class="w">    </span>
+<span class="err">▉▉▉▉</span><span class="w">   </span>
+<span class="w"> </span><span class="err">▉▉</span><span class="w">    </span>
+<span class="w">      </span><span class="o">⍉</span><span class="nv">arrow</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      arrow ← 5 7⍴' ▉▉     ▉▉     ▉▉    ▉▉▉▉    ▉▉    '
-      arrow
- ▉▉    
- ▉▉    
- ▉▉    
-▉▉▉▉   
- ▉▉    
-      ⍉arrow
-   ▉ 
-▉▉▉▉▉
-▉▉▉▉▉
-   ▉ 
-
-
-</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">arrow</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">7</span><span class="o">⍴</span><span class="s1">&#39; ▉▉     ▉▉     ▉▉    ▉▉▉▉    ▉▉    &#39;</span>
+<span class="w">      </span><span class="nv">arrow</span>
+<span class="w"> </span><span class="err">▉▉</span><span class="w">    </span>
+<span class="w"> </span><span class="err">▉▉</span><span class="w">    </span>
+<span class="w"> </span><span class="err">▉▉</span><span class="w">    </span>
+<span class="err">▉▉▉▉</span><span class="w">   </span>
+<span class="w"> </span><span class="err">▉▉</span><span class="w">    </span>
+<span class="w">      </span><span class="o">⍉</span><span class="nv">arrow</span>
+<span class="w">   </span><span class="err">▉</span><span class="w"> </span>
+<span class="err">▉▉▉▉▉</span>
+<span class="err">▉▉▉▉▉</span>
+<span class="w">   </span><span class="err">▉</span><span class="w"> </span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2523,24 +2527,23 @@ replay  record  repeat  reserve  request  represent</code></pre>
 <div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Input</label><label for="__tabbed_7_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      'm'{(⍺≠⍵)⊆⍵}'nonemployments'
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="s1">&#39;m&#39;</span><span class="kt">{</span><span class="p">(</span><span class="bp">⍺</span><span class="o">≠</span><span class="bp">⍵</span><span class="p">)</span><span class="o">⊆</span><span class="bp">⍵</span><span class="kt">}</span><span class="s1">&#39;nonemployments&#39;</span>
 
 
 
-      'i'(≠⊆⊢)'pestilentially'
-
-
-</code></pre>
+<span class="w">      </span><span class="s1">&#39;i&#39;</span><span class="p">(</span><span class="o">≠⊆⊢</span><span class="p">)</span><span class="s1">&#39;pestilentially&#39;</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      'm'{(⍺≠⍵)⊆⍵}'nonemployments'
-┌────┬────┬────┐
-│none│ploy│ents│
-└────┴────┴────┘
-      'i'(≠⊆⊢)'pestilentially'
-┌────┬────┬────┐
-│pest│lent│ally│
-└────┴────┴────┘</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="s1">&#39;m&#39;</span><span class="kt">{</span><span class="p">(</span><span class="bp">⍺</span><span class="o">≠</span><span class="bp">⍵</span><span class="p">)</span><span class="o">⊆</span><span class="bp">⍵</span><span class="kt">}</span><span class="s1">&#39;nonemployments&#39;</span>
+<span class="err">┌────┬────┬────┐</span>
+<span class="err">│</span><span class="nv">none</span><span class="err">│</span><span class="nv">ploy</span><span class="err">│</span><span class="nv">ents</span><span class="err">│</span>
+<span class="err">└────┴────┴────┘</span>
+<span class="w">      </span><span class="s1">&#39;i&#39;</span><span class="p">(</span><span class="o">≠⊆⊢</span><span class="p">)</span><span class="s1">&#39;pestilentially&#39;</span>
+<span class="err">┌────┬────┬────┐</span>
+<span class="err">│</span><span class="nv">pest</span><span class="err">│</span><span class="nv">lent</span><span class="err">│</span><span class="nv">ally</span><span class="err">│</span>
+<span class="err">└────┴────┴────┘</span>
+</code></pre></div>
 <p>The second function is a tacit form of the first function.</p>
 </div>
 </div>
@@ -2553,13 +2556,15 @@ replay  record  repeat  reserve  request  represent</code></pre>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>The following code makes heavy use of the ⍨ commute operator, try rewriting it using parentheses to figure out what it does.</p>
-<pre class="highlight"><code class="language-apl">      ↓↑1,⍨¨0/⍨¨1-⍨⍳5</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="o">↓↑</span><span class="m">1</span><span class="o">,</span><span class="na">⍨¨</span><span class="m">0</span><span class="na">/⍨¨</span><span class="m">1</span><span class="o">-</span><span class="na">⍨</span><span class="o">⍳</span><span class="m">5</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      ↓↑1,⍨¨0/⍨¨1-⍨⍳5
-┌─────────┬─────────┬─────────┬─────────┬─────────┐
-│1 0 0 0 0│0 1 0 0 0│0 0 1 0 0│0 0 0 1 0│0 0 0 0 1│
-└─────────┴─────────┴─────────┴─────────┴─────────┘</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="o">↓↑</span><span class="m">1</span><span class="o">,</span><span class="na">⍨¨</span><span class="m">0</span><span class="na">/⍨¨</span><span class="m">1</span><span class="o">-</span><span class="na">⍨</span><span class="o">⍳</span><span class="m">5</span>
+<span class="err">┌─────────┬─────────┬─────────┬─────────┬─────────┐</span>
+<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="err">│</span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="err">│</span>
+<span class="err">└─────────┴─────────┴─────────┴─────────┴─────────┘</span>
+</code></pre></div>
 <p>Without the commute operator, this would be ↓↑((((⍳5)-1)/¨0),¨1)</p>
 </div>
 </div>
@@ -2571,23 +2576,25 @@ replay  record  repeat  reserve  request  represent</code></pre>
 <div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Input</label><label for="__tabbed_9_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      |5-⍨⍳9
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="o">|</span><span class="m">5</span><span class="o">-</span><span class="na">⍨</span><span class="o">⍳</span><span class="m">9</span>
 
-      (|5-⍨⍳9)(/⍤0)'█'</code></pre>
+<span class="w">      </span><span class="p">(</span><span class="o">|</span><span class="m">5</span><span class="o">-</span><span class="na">⍨</span><span class="o">⍳</span><span class="m">9</span><span class="p">)(</span><span class="na">/⍤</span><span class="m">0</span><span class="p">)</span><span class="s1">&#39;█&#39;</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      |5-⍨⍳9
-4 3 2 1 0 1 2 3 4
-      (|5-⍨⍳9)(/⍤0)'█'
-████
-███ 
-██  
-█   
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="o">|</span><span class="m">5</span><span class="o">-</span><span class="na">⍨</span><span class="o">⍳</span><span class="m">9</span>
+<span class="m">4</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span>
+<span class="w">      </span><span class="p">(</span><span class="o">|</span><span class="m">5</span><span class="o">-</span><span class="na">⍨</span><span class="o">⍳</span><span class="m">9</span><span class="p">)(</span><span class="na">/⍤</span><span class="m">0</span><span class="p">)</span><span class="s1">&#39;█&#39;</span>
+<span class="err">████</span>
+<span class="err">███</span><span class="w"> </span>
+<span class="err">██</span><span class="w">  </span>
+<span class="err">█</span><span class="w">   </span>
 
-█   
-██  
-███ 
-████</code></pre>
+<span class="err">█</span><span class="w">   </span>
+<span class="err">██</span><span class="w">  </span>
+<span class="err">███</span><span class="w"> </span>
+<span class="err">████</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2598,31 +2605,33 @@ replay  record  repeat  reserve  request  represent</code></pre>
 <div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Input</label><label for="__tabbed_10_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      {⍉↑(|⍵) (10-|2×⍵) (|⍵)}5-⍨⍳9
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="kt">{</span><span class="o">⍉↑</span><span class="p">(</span><span class="o">|</span><span class="bp">⍵</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">10</span><span class="o">-|</span><span class="m">2</span><span class="o">×</span><span class="bp">⍵</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">|</span><span class="bp">⍵</span><span class="p">)</span><span class="kt">}</span><span class="m">5</span><span class="o">-</span><span class="na">⍨</span><span class="o">⍳</span><span class="m">9</span>
 
-      ({⍉↑(|⍵) (10-|2×⍵) (|⍵)}5-⍨⍳9)(/⍤1 2)'█ █'</code></pre>
+<span class="w">      </span><span class="p">(</span><span class="kt">{</span><span class="o">⍉↑</span><span class="p">(</span><span class="o">|</span><span class="bp">⍵</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">10</span><span class="o">-|</span><span class="m">2</span><span class="o">×</span><span class="bp">⍵</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">|</span><span class="bp">⍵</span><span class="p">)</span><span class="kt">}</span><span class="m">5</span><span class="o">-</span><span class="na">⍨</span><span class="o">⍳</span><span class="m">9</span><span class="p">)(</span><span class="na">/⍤</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="s1">&#39;█ █&#39;</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      {⍉↑(|⍵) (10-|2×⍵) (|⍵)}5-⍨⍳9
-4  2 4
-3  4 3
-2  6 2
-1  8 1
-0 10 0
-1  8 1
-2  6 2
-3  4 3
-4  2 4
-      ({⍉↑(|⍵) (10-|2×⍵) (|⍵)}5-⍨⍳9)(/⍤1 2)'█ █'
-████  ████
-███    ███
-██      ██
-█        █
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="kt">{</span><span class="o">⍉↑</span><span class="p">(</span><span class="o">|</span><span class="bp">⍵</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">10</span><span class="o">-|</span><span class="m">2</span><span class="o">×</span><span class="bp">⍵</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">|</span><span class="bp">⍵</span><span class="p">)</span><span class="kt">}</span><span class="m">5</span><span class="o">-</span><span class="na">⍨</span><span class="o">⍳</span><span class="m">9</span>
+<span class="m">4</span><span class="w">  </span><span class="m">2</span><span class="w"> </span><span class="m">4</span>
+<span class="m">3</span><span class="w">  </span><span class="m">4</span><span class="w"> </span><span class="m">3</span>
+<span class="m">2</span><span class="w">  </span><span class="m">6</span><span class="w"> </span><span class="m">2</span>
+<span class="m">1</span><span class="w">  </span><span class="m">8</span><span class="w"> </span><span class="m">1</span>
+<span class="m">0</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">0</span>
+<span class="m">1</span><span class="w">  </span><span class="m">8</span><span class="w"> </span><span class="m">1</span>
+<span class="m">2</span><span class="w">  </span><span class="m">6</span><span class="w"> </span><span class="m">2</span>
+<span class="m">3</span><span class="w">  </span><span class="m">4</span><span class="w"> </span><span class="m">3</span>
+<span class="m">4</span><span class="w">  </span><span class="m">2</span><span class="w"> </span><span class="m">4</span>
+<span class="w">      </span><span class="p">(</span><span class="kt">{</span><span class="o">⍉↑</span><span class="p">(</span><span class="o">|</span><span class="bp">⍵</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">10</span><span class="o">-|</span><span class="m">2</span><span class="o">×</span><span class="bp">⍵</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">|</span><span class="bp">⍵</span><span class="p">)</span><span class="kt">}</span><span class="m">5</span><span class="o">-</span><span class="na">⍨</span><span class="o">⍳</span><span class="m">9</span><span class="p">)(</span><span class="na">/⍤</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="s1">&#39;█ █&#39;</span>
+<span class="err">████</span><span class="w">  </span><span class="err">████</span>
+<span class="err">███</span><span class="w">    </span><span class="err">███</span>
+<span class="err">██</span><span class="w">      </span><span class="err">██</span>
+<span class="err">█</span><span class="w">        </span><span class="err">█</span>
 
-█        █
-██      ██
-███    ███
-████  ████</code></pre>
+<span class="err">█</span><span class="w">        </span><span class="err">█</span>
+<span class="err">██</span><span class="w">      </span><span class="err">██</span>
+<span class="err">███</span><span class="w">    </span><span class="err">███</span>
+<span class="err">████</span><span class="w">  </span><span class="err">████</span>
+</code></pre></div>
 <p>(/⍤1 2) matches the 1-cells of the left-hand argument with the 2-cells of the right-hand argument. Since the right-hand array is only 1-dimensional, a 2-cell is interpreted as the whole array instead of returning an error. That is, the rows of the left-hand array are matched with the whole of the right-hand array.</p>
 </div>
 </div>
@@ -2634,23 +2643,25 @@ replay  record  repeat  reserve  request  represent</code></pre>
 <div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Input</label><label for="__tabbed_11_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      ⎕ ← v ← 2*⍳10
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="vg">⎕</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">v</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">2</span><span class="o">*⍳</span><span class="m">10</span>
 
-      ⍴v
+<span class="w">      </span><span class="o">⍴</span><span class="nv">v</span>
 
-      ⍉⍪v
+<span class="w">      </span><span class="o">⍉⍪</span><span class="nv">v</span>
 
-      ⍴⍉⍪v</code></pre>
+<span class="w">      </span><span class="o">⍴⍉⍪</span><span class="nv">v</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      ⎕ ← v ← 2*⍳10
-2 4 8 16 32 64 128 256 512 1024
-      ⍴v
-10
-      ⍉⍪v
-2 4 8 16 32 64 128 256 512 1024
-      ⍴⍉⍪v
-1 10</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="vg">⎕</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">v</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">2</span><span class="o">*⍳</span><span class="m">10</span>
+<span class="m">2</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">32</span><span class="w"> </span><span class="m">64</span><span class="w"> </span><span class="m">128</span><span class="w"> </span><span class="m">256</span><span class="w"> </span><span class="m">512</span><span class="w"> </span><span class="m">1024</span>
+<span class="w">      </span><span class="o">⍴</span><span class="nv">v</span>
+<span class="m">10</span>
+<span class="w">      </span><span class="o">⍉⍪</span><span class="nv">v</span>
+<span class="m">2</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">32</span><span class="w"> </span><span class="m">64</span><span class="w"> </span><span class="m">128</span><span class="w"> </span><span class="m">256</span><span class="w"> </span><span class="m">512</span><span class="w"> </span><span class="m">1024</span>
+<span class="w">      </span><span class="o">⍴⍉⍪</span><span class="nv">v</span>
+<span class="m">1</span><span class="w"> </span><span class="m">10</span>
+</code></pre></div>
 <p>The phrase ⍉⍪ can be used to turn a vector into a one-row matrix.</p>
 </div>
 </div>
@@ -2662,20 +2673,22 @@ replay  record  repeat  reserve  request  represent</code></pre>
 <div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Input</label><label for="__tabbed_12_2">Output</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      ⎕ ← M ← ⍉⍪2*⍳10
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="vg">⎕</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">M</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="o">⍉⍪</span><span class="m">2</span><span class="o">*⍳</span><span class="m">10</span>
 
-      ⎕ ← M ⍪← 3*⍳10
+<span class="w">      </span><span class="vg">⎕</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">M</span><span class="w"> </span><span class="o">⍪</span><span class="kd">←</span><span class="w"> </span><span class="m">3</span><span class="o">*⍳</span><span class="m">10</span>
 
-      M,⍪'XY'</code></pre>
+<span class="w">      </span><span class="nv">M</span><span class="o">,⍪</span><span class="s1">&#39;XY&#39;</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-apl">      ⎕ ← M ← ⍉⍪2*⍳10
-2 4 8 16 32 64 128 256 512 1024
-      ⎕ ← M ⍪← 3*⍳10
-3 9 27 81 243 729 2187 6561 19683 59049
-      M,⍪'XY'
-2 4  8 16  32  64  128  256   512  1024 X
-3 9 27 81 243 729 2187 6561 19683 59049 Y</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="vg">⎕</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">M</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="o">⍉⍪</span><span class="m">2</span><span class="o">*⍳</span><span class="m">10</span>
+<span class="m">2</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">32</span><span class="w"> </span><span class="m">64</span><span class="w"> </span><span class="m">128</span><span class="w"> </span><span class="m">256</span><span class="w"> </span><span class="m">512</span><span class="w"> </span><span class="m">1024</span>
+<span class="w">      </span><span class="vg">⎕</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">M</span><span class="w"> </span><span class="o">⍪</span><span class="kd">←</span><span class="w"> </span><span class="m">3</span><span class="o">*⍳</span><span class="m">10</span>
+<span class="m">3</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">27</span><span class="w"> </span><span class="m">81</span><span class="w"> </span><span class="m">243</span><span class="w"> </span><span class="m">729</span><span class="w"> </span><span class="m">2187</span><span class="w"> </span><span class="m">6561</span><span class="w"> </span><span class="m">19683</span><span class="w"> </span><span class="m">59049</span>
+<span class="w">      </span><span class="nv">M</span><span class="o">,⍪</span><span class="s1">&#39;XY&#39;</span>
+<span class="m">2</span><span class="w"> </span><span class="m">4</span><span class="w">  </span><span class="m">8</span><span class="w"> </span><span class="m">16</span><span class="w">  </span><span class="m">32</span><span class="w">  </span><span class="m">64</span><span class="w">  </span><span class="m">128</span><span class="w">  </span><span class="m">256</span><span class="w">   </span><span class="m">512</span><span class="w">  </span><span class="m">1024</span><span class="w"> </span><span class="nv">X</span>
+<span class="m">3</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">27</span><span class="w"> </span><span class="m">81</span><span class="w"> </span><span class="m">243</span><span class="w"> </span><span class="m">729</span><span class="w"> </span><span class="m">2187</span><span class="w"> </span><span class="m">6561</span><span class="w"> </span><span class="m">19683</span><span class="w"> </span><span class="m">59049</span><span class="w"> </span><span class="nv">Y</span>
+</code></pre></div>
 </div>
 </div>
 </div>

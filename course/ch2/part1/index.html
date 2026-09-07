@@ -2344,9 +2344,9 @@
   <label class="md-nav__title">Feedback</label>
   <form class="apl-feedback" data-section="2.1 - Assignment">
     <p class="apl-feedback__where">2.1 - Assignment</p>
-    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+    <textarea aria-label="Course feedback" class="apl-feedback__message" rows="4" maxlength="2000" required
               placeholder="Spotted a mistake? Something unclear?"></textarea>
-    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+    <input aria-label="Email address (optional)" class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
            placeholder="Email (optional)">
     <button class="apl-feedback__send" type="submit">Send</button>
     <p class="apl-feedback__status" role="status"></p>
@@ -2376,51 +2376,57 @@
 </div>
 <hr />
 <p>Allow me to introduce you to a new symbol; the assignment symbol:</p>
-<pre class="highlight"><code class="language-apl">←</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="kd">←</span>
+</code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Typing the assignment symbol <code>←</code></p>
-<p>Prefix method: <kbd>PREFIX</kbd> <kbd>]</kbd></p>
+<p>Prefix method: <kbd>PREFIX</kbd> <kbd>[</kbd></p>
 <p>Tab method: <kbd>&lt;</kbd> <kbd>-</kbd> <span class="keys"><kbd class="key-tab">Tab</kbd></span></p>
 </div>
 <p>Here is an example of assignment:</p>
-<pre class="highlight"><code class="language-apl">      BANANA ← 3</code></pre>
-<p>As you can see, there is no output, because assignment does not return anything.
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">BANANA</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">3</span>
+</code></pre></div>
+<p>As you can see, there is no displayed output.
 This is what's called a <em>shy operation</em> in APL.</p>
 <p>You can use capital letters, lowercase letters, underscores, and numbers (but a variable name cannot start with a number).
 In addition, you can use the characters <code>∆</code> and <code>⍙</code>, called <em>delta</em> and <em>delta underbar</em>.
 These have no special meaning, and can be used to separate parts of a variable.</p>
 <p>For example, all of the following are valid variable names:
-<pre class="highlight"><code class="language-apl">STATS2020       BalanceDiff       _Rate_of_change      
-STATS∆2020      ∆Balance          _ROC
-S20             ∆                 ⍙R</code></pre></p>
+<div class="language-apl highlight"><pre><span></span><code><span class="nv">STATS2020</span><span class="w">       </span><span class="nv">BalanceDiff</span><span class="w">       </span><span class="nv">_Rate_of_change</span><span class="w">      </span>
+<span class="nv">STATS∆2020</span><span class="w">      </span><span class="nv">∆Balance</span><span class="w">          </span><span class="nv">_ROC</span>
+<span class="nv">S20</span><span class="w">             </span><span class="nv">∆</span><span class="w">                 </span><span class="nv">⍙R</span>
+</code></pre></div></p>
 <p>If you try creating a variable that starts with a number, it will cause a <code>SYNTAX ERROR</code>.</p>
 <hr />
 <p>We can use variables in place of a number.</p>
-<pre class="highlight"><code class="language-apl">      BANANA ← 3
-      BANANA-1
-2
-      BANANA÷2
-1.5
-      BANANA×BANANA
-9</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">BANANA</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">3</span>
+<span class="w">      </span><span class="nv">BANANA</span><span class="o">-</span><span class="m">1</span>
+<span class="m">2</span>
+<span class="w">      </span><span class="nv">BANANA</span><span class="o">÷</span><span class="m">2</span>
+<span class="m">1.5</span>
+<span class="w">      </span><span class="nv">BANANA</span><span class="o">×</span><span class="nv">BANANA</span>
+<span class="m">9</span>
+</code></pre></div>
 <p>Note that variables keep their value even if you perform operations with them.
 The only way to change a variable's value is to use assignment again:</p>
-<pre class="highlight"><code class="language-apl">      BANANA ← 3
-      BANANA
-3
-      BANANA+1
-4
-      BANANA ← 0
-      BANANA
-0
-      BANANA+1
-1
-      BANANA ← BANANA + 3
-      BANANA
-4</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">BANANA</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">3</span>
+<span class="w">      </span><span class="nv">BANANA</span>
+<span class="m">3</span>
+<span class="w">      </span><span class="nv">BANANA</span><span class="o">+</span><span class="m">1</span>
+<span class="m">4</span>
+<span class="w">      </span><span class="nv">BANANA</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">0</span>
+<span class="w">      </span><span class="nv">BANANA</span>
+<span class="m">0</span>
+<span class="w">      </span><span class="nv">BANANA</span><span class="o">+</span><span class="m">1</span>
+<span class="m">1</span>
+<span class="w">      </span><span class="nv">BANANA</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">BANANA</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">3</span>
+<span class="w">      </span><span class="nv">BANANA</span>
+<span class="m">3</span>
+</code></pre></div>
 <p>Notice, at the end there we did a common operation: increasing the value of a variable by some amount.
 This is such a common operation, that the creators of APL introduced a shorthand:</p>
-<pre class="highlight"><code class="language-apl">      BANANA +← 3</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">BANANA</span><span class="w"> </span><span class="o">+</span><span class="kd">←</span><span class="w"> </span><span class="m">3</span>
+</code></pre></div>
 <p>This has the same effect as the earlier <code>BANANA ← BANANA + 3</code>, but may save you some keystrokes.
 You can also use this same technique with all other APL functions, some more useful than others.
 With any function <code>F</code>, the expression <code>VAR F← X</code> will expand to become <code>VAR ← VAR F X</code>.
@@ -2432,33 +2438,38 @@ What if we really <em>wanted</em> to see what was assigned to a variable immedia
 This is where intermediate assignment, or chaining assignments, comes into play.</p>
 <p>For an example, say we were trying to solve the equation "one plus the value of five times six",
 and we assigned it to a variable.</p>
-<pre class="highlight"><code class="language-apl">      RES ← 1+5*6
-(nothing is displayed)</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">RES</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">1</span><span class="o">+</span><span class="m">5</span><span class="o">*</span><span class="m">6</span>
+<span class="p">(</span><span class="nv">nothing</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">displayed</span><span class="p">)</span>
+</code></pre></div>
 <p>Now, something seems wrong. Let's see whether we got the result we wanted...</p>
-<pre class="highlight"><code class="language-apl">      ⎕ ← RES ← 1+5*6
-15626</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="vg">⎕</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">RES</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">1</span><span class="o">+</span><span class="m">5</span><span class="o">*</span><span class="m">6</span>
+<span class="m">15626</span>
+</code></pre></div>
 <p>Here, we "assigned" to a symbol called a <em>quad</em>.
 All this does is print whatever is assigned to it to the screen.
 The developers of APL picked this because it looks kinda like a (arguably, vertical) computer monitor.</p>
 <div class="admonition note">
 <p class="admonition-title">Typing the quad symbol <code>⎕</code></p>
-<p>Prefix method: <kbd>PREFIX</kbd> <kbd>L</kbd></p>
+<p>Prefix method: <kbd>PREFIX</kbd> <kbd>l</kbd></p>
 <p>Tab method: <kbd>[</kbd> <kbd>]</kbd> <span class="keys"><kbd class="key-tab">Tab</kbd></span></p>
 </div>
 <p>We also realised that we made a mistake somewhere in our calculation
 (it should be fairly obvious, but let's pretend we have a very complex program here).
 To debug what's going on, we can use intermediate assignment in the middle of our calculation as follows:</p>
-<pre class="highlight"><code class="language-apl">      RES ← 1 + DEBUG ← 5*6
-(nothing is displayed)
-      DEBUG
-15625</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">RES</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">DEBUG</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">5</span><span class="o">*</span><span class="m">6</span>
+<span class="p">(</span><span class="nv">nothing</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">displayed</span><span class="p">)</span>
+<span class="w">      </span><span class="nv">DEBUG</span>
+<span class="m">15625</span>
+</code></pre></div>
 <p>This makes it easy to identify and debug different parts of our code.
 We could have also done both the assigning and the printing in one line, using our familiar quad symbol:</p>
-<pre class="highlight"><code class="language-apl">      RES ← 1 + ⎕ ← 5*6
-15625</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">RES</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="vg">⎕</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">5</span><span class="o">*</span><span class="m">6</span>
+<span class="m">15625</span>
+</code></pre></div>
 <p>With this, we can fix our code to work as it should.</p>
-<pre class="highlight"><code class="language-apl">      ⎕ ← RES ← 1+5×6
-31</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="vg">⎕</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">RES</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">1</span><span class="o">+</span><span class="m">5</span><span class="o">×</span><span class="m">6</span>
+<span class="m">31</span>
+</code></pre></div>
 <p>Nice!</p>
 <div class="admonition bug">
 <p class="admonition-title">Intermediate quad symbol</p>

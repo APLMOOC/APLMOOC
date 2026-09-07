@@ -2344,9 +2344,9 @@
   <label class="md-nav__title">Feedback</label>
   <form class="apl-feedback" data-section="4.W - Write exercises">
     <p class="apl-feedback__where">4.W - Write exercises</p>
-    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+    <textarea aria-label="Course feedback" class="apl-feedback__message" rows="4" maxlength="2000" required
               placeholder="Spotted a mistake? Something unclear?"></textarea>
-    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+    <input aria-label="Email address (optional)" class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
            placeholder="Email (optional)">
     <button class="apl-feedback__send" type="submit">Send</button>
     <p class="apl-feedback__status" role="status"></p>
@@ -2389,10 +2389,10 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <div class="problem">
     <span class="problemspan">ABB←</span>
     <span class="problemfilltext" id="input_ch4_p1_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch4_p1_b2" placeholder="your solution here">
+    <input aria-label="Chapter 4, write problem 1, answer field 2" class="probleminput" type="text" id="input_ch4_p1_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch4_p1', 2)">Submit</button>
 </div>
-<p id="feedback_ch4_p1" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch4_p1" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
@@ -2401,27 +2401,28 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <div class="problem">
     <span class="problemspan">INT←</span>
     <span class="problemfilltext" id="input_ch4_p2_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch4_p2_b2" placeholder="your solution here">
+    <input aria-label="Chapter 4, write problem 2, answer field 2" class="probleminput" type="text" id="input_ch4_p2_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch4_p2', 2)">Submit</button>
 </div>
-<p id="feedback_ch4_p2" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch4_p2" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 3</p>
 <p>Create a dfn that returns the vector ⍺, ⍺+⍵[1], ⍺+2×⍵[1], ⍺+3×⍵[1], ..., ⍺+⍵[2]×⍵[1]
-<pre class="highlight"><code class="language-apl">      1 STEP 10 10
-1 11 21 31 41 51 61 71 81 91 101
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="nv">STEP</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span>
+<span class="m">1</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">31</span><span class="w"> </span><span class="m">41</span><span class="w"> </span><span class="m">51</span><span class="w"> </span><span class="m">61</span><span class="w"> </span><span class="m">71</span><span class="w"> </span><span class="m">81</span><span class="w"> </span><span class="m">91</span><span class="w"> </span><span class="m">101</span>
 
-      2 STEP 0.5 5
-2 2.5 3 3.5 4 4.5</code></pre>
+<span class="w">      </span><span class="m">2</span><span class="w"> </span><span class="nv">STEP</span><span class="w"> </span><span class="m">0.5</span><span class="w"> </span><span class="m">5</span>
+<span class="m">2</span><span class="w"> </span><span class="m">2.5</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3.5</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4.5</span>
+</code></pre></div>
 <div class="problem">
     <span class="problemspan">STEP←</span>
     <span class="problemfilltext" id="input_ch4_p3_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch4_p3_b2" placeholder="your solution here">
+    <input aria-label="Chapter 4, write problem 3, answer field 2" class="probleminput" type="text" id="input_ch4_p3_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch4_p3', 2)">Submit</button>
 </div>
-<p id="feedback_ch4_p3" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch4_p3" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
@@ -2434,10 +2435,10 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <div class="problem">
     <span class="problemspan">RATIO←</span>
     <span class="problemfilltext" id="input_ch4_p4_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch4_p4_b2" placeholder="your solution here">
+    <input aria-label="Chapter 4, write problem 4, answer field 2" class="probleminput" type="text" id="input_ch4_p4_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch4_p4', 2)">Submit</button>
 </div>
-<p id="feedback_ch4_p4" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch4_p4" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
@@ -2450,28 +2451,29 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <div class="problem">
     <span class="problemspan">SUM←</span>
     <span class="problemfilltext" id="input_ch4_p5_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch4_p5_b2" placeholder="your solution here">
+    <input aria-label="Chapter 4, write problem 5, answer field 2" class="probleminput" type="text" id="input_ch4_p5_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch4_p5', 2)">Submit</button>
 </div>
-<p id="feedback_ch4_p5" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch4_p5" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 6</p>
 <p>Create a dfn that returns a 1 if every element of its left argument appears somewhere in its right argument, and 0 otherwise.
-<pre class="highlight"><code class="language-apl">      1 1 2 3 SUBSET 1 2 3 4 5
-1
-      'MEOW' SUBSET 'HOMEOWNER'
-1
-      'I' SUBSET 'TEAM'
-0</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="nv">SUBSET</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span>
+<span class="m">1</span>
+<span class="w">      </span><span class="s1">&#39;MEOW&#39;</span><span class="w"> </span><span class="nv">SUBSET</span><span class="w"> </span><span class="s1">&#39;HOMEOWNER&#39;</span>
+<span class="m">1</span>
+<span class="w">      </span><span class="s1">&#39;I&#39;</span><span class="w"> </span><span class="nv">SUBSET</span><span class="w"> </span><span class="s1">&#39;TEAM&#39;</span>
+<span class="m">0</span>
+</code></pre></div>
 <div class="problem">
     <span class="problemspan">SUBSET←</span>
     <span class="problemfilltext" id="input_ch4_p6_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch4_p6_b2" placeholder="your solution here">
+    <input aria-label="Chapter 4, write problem 6, answer field 2" class="probleminput" type="text" id="input_ch4_p6_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch4_p6', 2)">Submit</button>
 </div>
-<p id="feedback_ch4_p6" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch4_p6" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
@@ -2480,10 +2482,10 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <p><div class="problem">
     <span class="problemspan">PRIME←</span>
     <span class="problemfilltext" id="input_ch4_p7_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch4_p7_b2" placeholder="your solution here">
+    <input aria-label="Chapter 4, write problem 7, answer field 2" class="probleminput" type="text" id="input_ch4_p7_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch4_p7', 2)">Submit</button>
 </div>
-<p id="feedback_ch4_p7" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch4_p7" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
@@ -2492,10 +2494,10 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <p><div class="problem">
     <span class="problemspan">MODE←</span>
     <span class="problemfilltext" id="input_ch4_p8_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch4_p8_b2" placeholder="your solution here">
+    <input aria-label="Chapter 4, write problem 8, answer field 2" class="probleminput" type="text" id="input_ch4_p8_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch4_p8', 2)">Submit</button>
 </div>
-<p id="feedback_ch4_p8" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch4_p8" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
@@ -2505,60 +2507,63 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <p><div class="problem">
     <span class="problemspan">DECIPHER←</span>
     <span class="problemfilltext" id="input_ch4_p9_b1" hidden>A←{MODE←{({⍺}⌸⍵)[⊃⍒{⍴⍵}⌸⍵]} ⋄ </span>
-    <input class="probleminput" type="text" id="input_ch4_p9_b2" placeholder="your solution here">
+    <input aria-label="Chapter 4, write problem 9, answer field 2" class="probleminput" type="text" id="input_ch4_p9_b2" placeholder="your solution here">
     <span class="problemfilltext" id="input_ch4_p9_b3" hidden>⍵}</span>
     <button class="problembutton" onclick="submit_problem('ch4_p9', 3)">Submit</button>
 </div>
-<p id="feedback_ch4_p9" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch4_p9" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 10</p>
 <p>Create a dfn that generates a random word of length <code>⍵</code>.</p>
-<pre class="highlight"><code class="language-apl">      WORD 10
-OJCCKXBSVA
-      WORD 5
-SBURB </code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">WORD</span><span class="w"> </span><span class="m">10</span>
+<span class="nv">OJCCKXBSVA</span>
+<span class="w">      </span><span class="nv">WORD</span><span class="w"> </span><span class="m">5</span>
+<span class="nv">SBURB</span><span class="w"> </span>
+</code></pre></div>
 <p><div class="problem">
     <span class="problemspan">WORD←</span>
     <span class="problemfilltext" id="input_ch4_p10_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch4_p10_b2" placeholder="your solution here">
+    <input aria-label="Chapter 4, write problem 10, answer field 2" class="probleminput" type="text" id="input_ch4_p10_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch4_p10', 2)">Submit</button>
 </div>
-<p id="feedback_ch4_p10" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch4_p10" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 11</p>
 <p>Create a dfn that generates an array of 0s and 1s: for each element of the vector right argument <code>⍵</code>, that many 0s followed by a single 1.</p>
-<pre class="highlight"><code class="language-apl">      RUN 2 3 4
-0 0 1 0 0 0 1 0 0 0 0 1
-      RUN 10
-0 0 0 0 0 0 0 0 0 0 1</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">RUN</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span>
+<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span>
+<span class="w">      </span><span class="nv">RUN</span><span class="w"> </span><span class="m">10</span>
+<span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span>
+</code></pre></div>
 <p>Hint: One way is to use ∊ member of and + plus scan</p>
 <p><div class="problem">
     <span class="problemspan">RUN←</span>
     <span class="problemfilltext" id="input_ch4_p11_b1" hidden>A←</span>
-    <input class="probleminput" type="text" id="input_ch4_p11_b2" placeholder="your solution here">
+    <input aria-label="Chapter 4, write problem 11, answer field 2" class="probleminput" type="text" id="input_ch4_p11_b2" placeholder="your solution here">
     <button class="problembutton" onclick="submit_problem('ch4_p11', 2)">Submit</button>
 </div>
-<p id="feedback_ch4_p11" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch4_p11" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 12</p>
 <p>Create a dfn that generates random words with lengths specified by its right vector argument <code>⍵</code>.
-<pre class="highlight"><code class="language-apl">      PHRASE 2 3 4
-OG CPD HXQO </code></pre></p>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">PHRASE</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span>
+<span class="nv">OG</span><span class="w"> </span><span class="nv">CPD</span><span class="w"> </span><span class="nv">HXQO</span><span class="w"> </span>
+</code></pre></div></p>
 <p>Hint: One way is to create a random string of the right length including spaces, then use the function of the previous exercise to place the spaces</p>
 <p><div class="problem">
     <span class="problemspan">PHRASE←</span>
     <span class="problemfilltext" id="input_ch4_p12_b1" hidden>A←{RUN←{(⍳+/1+⍵)∊+&#92;1+⍵} ⋄ </span>
-    <input class="probleminput" type="text" id="input_ch4_p12_b2" placeholder="your solution here">
+    <input aria-label="Chapter 4, write problem 12, answer field 2" class="probleminput" type="text" id="input_ch4_p12_b2" placeholder="your solution here">
     <span class="problemfilltext" id="input_ch4_p12_b3" hidden>⍵}</span>
     <button class="problembutton" onclick="submit_problem('ch4_p12', 3)">Submit</button>
 </div>
-<p id="feedback_ch4_p12" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch4_p12" style="color: red"></p></p>
 </div>
 <hr />
 

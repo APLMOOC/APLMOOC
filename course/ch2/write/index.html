@@ -2344,9 +2344,9 @@
   <label class="md-nav__title">Feedback</label>
   <form class="apl-feedback" data-section="2.W - Write exercises">
     <p class="apl-feedback__where">2.W - Write exercises</p>
-    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+    <textarea aria-label="Course feedback" class="apl-feedback__message" rows="4" maxlength="2000" required
               placeholder="Spotted a mistake? Something unclear?"></textarea>
-    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+    <input aria-label="Email address (optional)" class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
            placeholder="Email (optional)">
     <button class="apl-feedback__send" type="submit">Send</button>
     <p class="apl-feedback__status" role="status"></p>
@@ -2389,11 +2389,11 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <div class="problem">
     <span class="problemspan">PRIMES←</span>
     <span class="problemfilltext" id="input_ch2_p1_b1" hidden>A←{PRIMES←</span>
-    <input class="probleminput" type="text" id="input_ch2_p1_b2" placeholder="your solution here">
+    <input aria-label="Chapter 2, write problem 1, answer field 2" class="probleminput" type="text" id="input_ch2_p1_b2" placeholder="your solution here">
     <span class="problemfilltext" id="input_ch2_p1_b3" hidden>⋄ PRIMES}</span>
     <button class="problembutton" onclick="submit_problem('ch2_p1', 3)">Submit</button>
 </div>
-<p id="feedback_ch2_p1" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch2_p1" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
@@ -2402,11 +2402,11 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <div class="problem">
     <span class="problemspan">POWER←</span>
     <span class="problemfilltext" id="input_ch2_p2_b1" hidden>A←{PRIMES←2 3 5 7 11 13 17 19 23 29 ⋄ POWER←</span>
-    <input class="probleminput" type="text" id="input_ch2_p2_b2" placeholder="your solution here">
+    <input aria-label="Chapter 2, write problem 2, answer field 2" class="probleminput" type="text" id="input_ch2_p2_b2" placeholder="your solution here">
     <span class="problemfilltext" id="input_ch2_p2_b3" hidden>⋄ POWER}</span>
     <button class="problembutton" onclick="submit_problem('ch2_p2', 3)">Submit</button>
 </div>
-<p id="feedback_ch2_p2" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch2_p2" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
@@ -2415,11 +2415,11 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
 <div class="problem">
     <span class="problemspan">⎕←</span>
     <span class="problemfilltext" id="input_ch2_p3_b1" hidden>A←{PRIMES←2 3 5 7 11 13 17 19 23 29 ⋄ POWER←(2*PRIMES)-2 ⋄ </span>
-    <input class="probleminput" type="text" id="input_ch2_p3_b2" placeholder="your solution here">
+    <input aria-label="Chapter 2, write problem 3, answer field 2" class="probleminput" type="text" id="input_ch2_p3_b2" placeholder="your solution here">
     <span class="problemfilltext" id="input_ch2_p3_b3" hidden>}</span>
     <button class="problembutton" onclick="submit_problem('ch2_p3', 3)">Submit</button>
 </div>
-<p id="feedback_ch2_p3" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch2_p3" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
@@ -2429,101 +2429,104 @@ If the write problem is red, it is unsolved. If it it green, you have solved it 
     <span class="problemspan">⎕←</span>
     <span class="problemfilltext" id="input_ch2_p4_b1" hidden>A←{</span>
     <span class="problemfilltext" id="input_ch2_p4_b2">⎕A[</span>
-    <input class="problemfillinput" type="text" id="input_ch2_p4_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
+    <input aria-label="Chapter 2, write problem 4, answer field 3" class="problemfillinput" type="text" id="input_ch2_p4_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
     <span class="problemfilltext" id="input_ch2_p4_b4" hidden>}</span>
     <button class="problembutton" onclick="submit_problem('ch2_p4', 4)">Submit</button>
 </div>
-<p id="feedback_ch2_p4" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch2_p4" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 5</p>
 <p>The following matrix CIPHER consists of shifted versions of the alphabet for every row.
-<pre class="highlight"><code class="language-apl">      CIPHER ← (26 27 ⍴ ⎕A)[;1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26]
-      CIPHER
-  ABCDEFGHIJKLMNOPQRSTUVWXYZ
-  BCDEFGHIJKLMNOPQRSTUVWXYZA
-  CDEFGHIJKLMNOPQRSTUVWXYZAB
-  DEFGHIJKLMNOPQRSTUVWXYZABC
-  EFGHIJKLMNOPQRSTUVWXYZABCD
-  FGHIJKLMNOPQRSTUVWXYZABCDE
-  GHIJKLMNOPQRSTUVWXYZABCDEF
-  HIJKLMNOPQRSTUVWXYZABCDEFG
-  IJKLMNOPQRSTUVWXYZABCDEFGH
-  JKLMNOPQRSTUVWXYZABCDEFGHI
-  KLMNOPQRSTUVWXYZABCDEFGHIJ
-  LMNOPQRSTUVWXYZABCDEFGHIJK
-  MNOPQRSTUVWXYZABCDEFGHIJKL
-  NOPQRSTUVWXYZABCDEFGHIJKLM
-  OPQRSTUVWXYZABCDEFGHIJKLMN
-  PQRSTUVWXYZABCDEFGHIJKLMNO
-  QRSTUVWXYZABCDEFGHIJKLMNOP
-  RSTUVWXYZABCDEFGHIJKLMNOPQ
-  STUVWXYZABCDEFGHIJKLMNOPQR
-  TUVWXYZABCDEFGHIJKLMNOPQRS
-  UVWXYZABCDEFGHIJKLMNOPQRST
-  VWXYZABCDEFGHIJKLMNOPQRSTU
-  WXYZABCDEFGHIJKLMNOPQRSTUV
-  XYZABCDEFGHIJKLMNOPQRSTUVW
-  YZABCDEFGHIJKLMNOPQRSTUVWX
-  ZABCDEFGHIJKLMNOPQRSTUVWXY</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">CIPHER</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="p">(</span><span class="m">26</span><span class="w"> </span><span class="m">27</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="nf">⎕A</span><span class="p">)</span><span class="sr">[;</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">19</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="m">22</span><span class="w"> </span><span class="m">23</span><span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">26</span><span class="sr">]</span>
+<span class="w">      </span><span class="nv">CIPHER</span>
+<span class="w">  </span><span class="nv">ABCDEFGHIJKLMNOPQRSTUVWXYZ</span>
+<span class="w">  </span><span class="nv">BCDEFGHIJKLMNOPQRSTUVWXYZA</span>
+<span class="w">  </span><span class="nv">CDEFGHIJKLMNOPQRSTUVWXYZAB</span>
+<span class="w">  </span><span class="nv">DEFGHIJKLMNOPQRSTUVWXYZABC</span>
+<span class="w">  </span><span class="nv">EFGHIJKLMNOPQRSTUVWXYZABCD</span>
+<span class="w">  </span><span class="nv">FGHIJKLMNOPQRSTUVWXYZABCDE</span>
+<span class="w">  </span><span class="nv">GHIJKLMNOPQRSTUVWXYZABCDEF</span>
+<span class="w">  </span><span class="nv">HIJKLMNOPQRSTUVWXYZABCDEFG</span>
+<span class="w">  </span><span class="nv">IJKLMNOPQRSTUVWXYZABCDEFGH</span>
+<span class="w">  </span><span class="nv">JKLMNOPQRSTUVWXYZABCDEFGHI</span>
+<span class="w">  </span><span class="nv">KLMNOPQRSTUVWXYZABCDEFGHIJ</span>
+<span class="w">  </span><span class="nv">LMNOPQRSTUVWXYZABCDEFGHIJK</span>
+<span class="w">  </span><span class="nv">MNOPQRSTUVWXYZABCDEFGHIJKL</span>
+<span class="w">  </span><span class="nv">NOPQRSTUVWXYZABCDEFGHIJKLM</span>
+<span class="w">  </span><span class="nv">OPQRSTUVWXYZABCDEFGHIJKLMN</span>
+<span class="w">  </span><span class="nv">PQRSTUVWXYZABCDEFGHIJKLMNO</span>
+<span class="w">  </span><span class="nv">QRSTUVWXYZABCDEFGHIJKLMNOP</span>
+<span class="w">  </span><span class="nv">RSTUVWXYZABCDEFGHIJKLMNOPQ</span>
+<span class="w">  </span><span class="nv">STUVWXYZABCDEFGHIJKLMNOPQR</span>
+<span class="w">  </span><span class="nv">TUVWXYZABCDEFGHIJKLMNOPQRS</span>
+<span class="w">  </span><span class="nv">UVWXYZABCDEFGHIJKLMNOPQRST</span>
+<span class="w">  </span><span class="nv">VWXYZABCDEFGHIJKLMNOPQRSTU</span>
+<span class="w">  </span><span class="nv">WXYZABCDEFGHIJKLMNOPQRSTUV</span>
+<span class="w">  </span><span class="nv">XYZABCDEFGHIJKLMNOPQRSTUVW</span>
+<span class="w">  </span><span class="nv">YZABCDEFGHIJKLMNOPQRSTUVWX</span>
+<span class="w">  </span><span class="nv">ZABCDEFGHIJKLMNOPQRSTUVWXY</span>
+</code></pre></div>
 The Caesar cipher encrypts a phrase by shifting all its letters by a specific amount along the alphabet. For example, "ARENA" becomes "RIVER" under a shift of 17 places. Use indexing of the above matrix to encipher the word "BUNNY" by shifting its letters 17 places.
 <div class="problem">
     <span class="problemspan">⎕←</span>
     <span class="problemfilltext" id="input_ch2_p5_b1" hidden>A←{CIPHER←(26 27⍴⎕A)[;⍳26] ⋄ </span>
     <span class="problemfilltext" id="input_ch2_p5_b2">CIPHER[</span>
-    <input class="problemfillinput" type="text" id="input_ch2_p5_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
+    <input aria-label="Chapter 2, write problem 5, answer field 3" class="problemfillinput" type="text" id="input_ch2_p5_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
     <span class="problemfilltext" id="input_ch2_p5_b4" hidden>}</span>
     <button class="problembutton" onclick="submit_problem('ch2_p5', 4)">Submit</button>
 </div>
-<p id="feedback_ch2_p5" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch2_p5" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 6</p>
 <p>Consider the following ASCII art stored in a matrix called ART, shown here with its row and column numbers.
-<pre class="highlight"><code class="language-apl">   123456789111111111122222222
-            012345678901234567
- 1      ._________________.
- 2      |.---------------.|
- 3      ||  __  ____ __  ||
- 4      || / _\(  _ (  ) ||
- 5      ||/    \) __/ (_/||
- 6      ||\_/\_(__) \____||
- 7      ||_______________||
- 8      /.-.-.-.-.-.-.-.-.\
- 9     /.-.-.-.-.-.-.-.-.-.\
-10    /.-.-.-.-.-.-.-.-.-.-.\
-11   /______/__________\_____\
-12   \_______________________/</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">   </span><span class="m">123456789111111111122222222</span>
+<span class="w">            </span><span class="m">012345678901234567</span>
+<span class="w"> </span><span class="m">1</span><span class="w">      </span><span class="na">.</span><span class="nv">_________________</span><span class="na">.</span>
+<span class="w"> </span><span class="m">2</span><span class="w">      </span><span class="o">|</span><span class="na">.</span><span class="o">---------------</span><span class="na">.</span><span class="o">|</span>
+<span class="w"> </span><span class="m">3</span><span class="w">      </span><span class="o">||</span><span class="w">  </span><span class="nv">__</span><span class="w">  </span><span class="nv">____</span><span class="w"> </span><span class="nv">__</span><span class="w">  </span><span class="o">||</span>
+<span class="w"> </span><span class="m">4</span><span class="w">      </span><span class="o">||</span><span class="w"> </span><span class="na">/</span><span class="w"> </span><span class="nv">_</span><span class="na">\</span><span class="p">(</span><span class="w">  </span><span class="nv">_</span><span class="w"> </span><span class="p">(</span><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="o">||</span>
+<span class="w"> </span><span class="m">5</span><span class="w">      </span><span class="o">||</span><span class="na">/</span><span class="w">    </span><span class="na">\</span><span class="p">)</span><span class="w"> </span><span class="nv">__</span><span class="na">/</span><span class="w"> </span><span class="p">(</span><span class="nv">_</span><span class="na">/</span><span class="o">||</span>
+<span class="w"> </span><span class="m">6</span><span class="w">      </span><span class="o">||</span><span class="na">\</span><span class="nv">_</span><span class="na">/\</span><span class="nv">_</span><span class="p">(</span><span class="nv">__</span><span class="p">)</span><span class="w"> </span><span class="na">\</span><span class="nv">____</span><span class="o">||</span>
+<span class="w"> </span><span class="m">7</span><span class="w">      </span><span class="o">||</span><span class="nv">_______________</span><span class="o">||</span>
+<span class="w"> </span><span class="m">8</span><span class="w">      </span><span class="na">/.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.\</span>
+<span class="w"> </span><span class="m">9</span><span class="w">     </span><span class="na">/.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.\</span>
+<span class="m">10</span><span class="w">    </span><span class="na">/.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.</span><span class="o">-</span><span class="na">.\</span>
+<span class="m">11</span><span class="w">   </span><span class="na">/</span><span class="nv">______</span><span class="na">/</span><span class="nv">__________</span><span class="na">\</span><span class="nv">_____</span><span class="na">\</span>
+<span class="m">12</span><span class="w">   </span><span class="na">\</span><span class="nv">_______________________</span><span class="na">/</span>
+</code></pre></div>
 Create a matrix called APL which consists of the following subarray obtained by indexing ART
-<pre class="highlight"><code class="language-apl">  __  ____ __  
- / _\(  _ (  ) 
-/    \) __/ (_/
-\_/\_(__) \____</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">  </span><span class="nv">__</span><span class="w">  </span><span class="nv">____</span><span class="w"> </span><span class="nv">__</span><span class="w">  </span>
+<span class="w"> </span><span class="na">/</span><span class="w"> </span><span class="nv">_</span><span class="na">\</span><span class="p">(</span><span class="w">  </span><span class="nv">_</span><span class="w"> </span><span class="p">(</span><span class="w">  </span><span class="p">)</span><span class="w"> </span>
+<span class="na">/</span><span class="w">    </span><span class="na">\</span><span class="p">)</span><span class="w"> </span><span class="nv">__</span><span class="na">/</span><span class="w"> </span><span class="p">(</span><span class="nv">_</span><span class="na">/</span>
+<span class="na">\</span><span class="nv">_</span><span class="na">/\</span><span class="nv">_</span><span class="p">(</span><span class="nv">__</span><span class="p">)</span><span class="w"> </span><span class="na">\</span><span class="nv">____</span>
+</code></pre></div>
 <div class="problem">
     <span class="problemspan">APL←</span>
     <span class="problemfilltext" id="input_ch2_p6_b1" hidden>A←{ART←12 27⍴'     .&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;.        |.---------------.|        ||  &#95;&#95;  &#95;&#95;&#95;&#95; &#95;&#95;  ||        || / &#95;&#92;(  &#95; (  ) ||        ||/    &#92;) &#95;&#95;/ (&#95;/||        ||&#92;&#95;/&#92;&#95;(&#95;&#95;) &#92;&#95;&#95;&#95;&#95;||        ||&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;||        /.-.-.-.-.-.-.-.-.&#92;       /.-.-.-.-.-.-.-.-.-.&#92;     /.-.-.-.-.-.-.-.-.-.-.&#92;   /&#95;&#95;&#95;&#95;&#95;&#95;/&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#92;&#95;&#95;&#95;&#95;&#95;&#92;  &#92;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;/' ⋄ </span>
     <span class="problemfilltext" id="input_ch2_p6_b2">ART[</span>
-    <input class="problemfillinput" type="text" id="input_ch2_p6_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
+    <input aria-label="Chapter 2, write problem 6, answer field 3" class="problemfillinput" type="text" id="input_ch2_p6_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
     <span class="problemfilltext" id="input_ch2_p6_b4" hidden>}</span>
     <button class="problembutton" onclick="submit_problem('ch2_p6', 4)">Submit</button>
 </div>
-<p id="feedback_ch2_p6" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch2_p6" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 7</p>
-<p>Create a 3 by 3 grid of 'X's and 'O's called BOARD 
+<p>Create a 3 by 3 grid called BOARD by reshaping the vector 'XO', so that 'X' and 'O' alternate
 <div class="problem">
     <span class="problemspan">BOARD←</span>
     <span class="problemfilltext" id="input_ch2_p7_b1" hidden>A←{BOARD←</span>
-    <input class="problemfillinput" type="text" id="input_ch2_p7_b2" placeholder="fill in the blank" oninput="fillinput_resize(this)">
+    <input aria-label="Chapter 2, write problem 7, answer field 2" class="problemfillinput" type="text" id="input_ch2_p7_b2" placeholder="fill in the blank" oninput="fillinput_resize(this)">
     <span class="problemfilltext" id="input_ch2_p7_b3">'XO'</span>
     <span class="problemfilltext" id="input_ch2_p7_b4" hidden>⋄ BOARD}</span>
     <button class="problembutton" onclick="submit_problem('ch2_p7', 4)">Submit</button>
 </div>
-<p id="feedback_ch2_p7" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch2_p7" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
@@ -2533,11 +2536,11 @@ Create a matrix called APL which consists of the following subarray obtained by 
     <span class="problemspan">⎕←</span>
     <span class="problemfilltext" id="input_ch2_p8_b1" hidden>A←{BOARD←3 3⍴'XO' ⋄ </span>
     <span class="problemfilltext" id="input_ch2_p8_b2">BOARD[</span>
-    <input class="problemfillinput" type="text" id="input_ch2_p8_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
+    <input aria-label="Chapter 2, write problem 8, answer field 3" class="problemfillinput" type="text" id="input_ch2_p8_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
     <span class="problemfilltext" id="input_ch2_p8_b4" hidden>⋄ BOARD}</span>
     <button class="problembutton" onclick="submit_problem('ch2_p8', 4)">Submit</button>
 </div>
-<p id="feedback_ch2_p8" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch2_p8" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
@@ -2546,33 +2549,34 @@ Create a matrix called APL which consists of the following subarray obtained by 
 <div class="problem">
     <span class="problemspan">⎕←</span>
     <span class="problemfilltext" id="input_ch2_p9_b1" hidden>A←{C←3↑⍵ ⋄ X←4⊃⍵ ⋄ </span>
-    <input class="probleminput" type="text" id="input_ch2_p9_b2" placeholder="your solution here">
+    <input aria-label="Chapter 2, write problem 9, answer field 2" class="probleminput" type="text" id="input_ch2_p9_b2" placeholder="your solution here">
     <span class="problemfilltext" id="input_ch2_p9_b3" hidden>}</span>
     <button class="problembutton" onclick="submit_problem('ch2_p9', 3)">Submit</button>
 </div>
-<p id="feedback_ch2_p9" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch2_p9" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 10</p>
 <p>Consider the following list of GAMES
-<pre class="highlight"><code class="language-apl">      GAMES ← 5 24 ⍴ 'CHESS                   CHECKERS                BACKGAMMON              POKER                   GLOBAL THERMONUCLEAR WAR'
-      GAMES
-CHESS                   
-CHECKERS                
-BACKGAMMON              
-POKER                   
-GLOBAL THERMONUCLEAR WAR</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">GAMES</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="s1">&#39;CHESS                   CHECKERS                BACKGAMMON              POKER                   GLOBAL THERMONUCLEAR WAR&#39;</span>
+<span class="w">      </span><span class="nv">GAMES</span>
+<span class="nv">CHESS</span><span class="w">                   </span>
+<span class="nv">CHECKERS</span><span class="w">                </span>
+<span class="nv">BACKGAMMON</span><span class="w">              </span>
+<span class="nv">POKER</span><span class="w">                   </span>
+<span class="nv">GLOBAL</span><span class="w"> </span><span class="nv">THERMONUCLEAR</span><span class="w"> </span><span class="nv">WAR</span>
+</code></pre></div>
 Get the first letter of each of the games listed using indexing
 <div class="problem">
     <span class="problemspan">⎕←</span>
     <span class="problemfilltext" id="input_ch2_p10_b1" hidden>A←{GAMES←5 24⍴'CHESS                   CHECKERS                BACKGAMMON              POKER                   GLOBAL THERMONUCLEAR WAR' ⋄ </span>
     <span class="problemfilltext" id="input_ch2_p10_b2">GAMES[</span>
-    <input class="problemfillinput" type="text" id="input_ch2_p10_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
+    <input aria-label="Chapter 2, write problem 10, answer field 3" class="problemfillinput" type="text" id="input_ch2_p10_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
     <span class="problemfilltext" id="input_ch2_p10_b4" hidden>}</span>
     <button class="problembutton" onclick="submit_problem('ch2_p10', 4)">Submit</button>
 </div>
-<p id="feedback_ch2_p10" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch2_p10" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
@@ -2582,36 +2586,37 @@ Get the first letter of each of the games listed using indexing
     <span class="problemspan">⎕←</span>
     <span class="problemfilltext" id="input_ch2_p11_b1" hidden>A←{GAMES←5 24⍴'CHESS                   CHECKERS                BACKGAMMON              POKER                   GLOBAL THERMONUCLEAR WAR' ⋄ </span>
     <span class="problemfilltext" id="input_ch2_p11_b2">GAMES[</span>
-    <input class="problemfillinput" type="text" id="input_ch2_p11_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
+    <input aria-label="Chapter 2, write problem 11, answer field 3" class="problemfillinput" type="text" id="input_ch2_p11_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
     <span class="problemfilltext" id="input_ch2_p11_b4" hidden>}</span>
     <button class="problembutton" onclick="submit_problem('ch2_p11', 4)">Submit</button>
 </div>
-<p id="feedback_ch2_p11" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch2_p11" style="color: red"></p></p>
 </div>
 <hr />
 <div class="admonition write-problem">
 <p class="admonition-title">Write problem 12</p>
 <p>Consider the following matrix ROUND of the outcomes of a game of rock, paper, scissors.
-<pre class="highlight"><code class="language-apl">      ROUND ← 3 3 ⍴ 'DRAW' 'P2 COVERS' 'P1 BLUNTS' 'P1 COVERS' 'DRAW' 'P2 CUTS' 'P2 BLUNTS' 'P1 CUTS' 'DRAW'
-      ROUND
-┌─────────┬─────────┬─────────┐
-│DRAW     │P2 COVERS│P1 BLUNTS│
-├─────────┼─────────┼─────────┤
-│P1 COVERS│DRAW     │P2 CUTS  │
-├─────────┼─────────┼─────────┤
-│P2 BLUNTS│P1 CUTS  │DRAW     │
-└─────────┴─────────┴─────────┘</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">ROUND</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="s1">&#39;DRAW&#39;</span><span class="w"> </span><span class="s1">&#39;P2 COVERS&#39;</span><span class="w"> </span><span class="s1">&#39;P1 BLUNTS&#39;</span><span class="w"> </span><span class="s1">&#39;P1 COVERS&#39;</span><span class="w"> </span><span class="s1">&#39;DRAW&#39;</span><span class="w"> </span><span class="s1">&#39;P2 CUTS&#39;</span><span class="w"> </span><span class="s1">&#39;P2 BLUNTS&#39;</span><span class="w"> </span><span class="s1">&#39;P1 CUTS&#39;</span><span class="w"> </span><span class="s1">&#39;DRAW&#39;</span>
+<span class="w">      </span><span class="nv">ROUND</span>
+<span class="err">┌─────────┬─────────┬─────────┐</span>
+<span class="err">│</span><span class="nv">DRAW</span><span class="w">     </span><span class="err">│</span><span class="nv">P2</span><span class="w"> </span><span class="nv">COVERS</span><span class="err">│</span><span class="nv">P1</span><span class="w"> </span><span class="nv">BLUNTS</span><span class="err">│</span>
+<span class="err">├─────────┼─────────┼─────────┤</span>
+<span class="err">│</span><span class="nv">P1</span><span class="w"> </span><span class="nv">COVERS</span><span class="err">│</span><span class="nv">DRAW</span><span class="w">     </span><span class="err">│</span><span class="nv">P2</span><span class="w"> </span><span class="nv">CUTS</span><span class="w">  </span><span class="err">│</span>
+<span class="err">├─────────┼─────────┼─────────┤</span>
+<span class="err">│</span><span class="nv">P2</span><span class="w"> </span><span class="nv">BLUNTS</span><span class="err">│</span><span class="nv">P1</span><span class="w"> </span><span class="nv">CUTS</span><span class="w">  </span><span class="err">│</span><span class="nv">DRAW</span><span class="w">     </span><span class="err">│</span>
+<span class="err">└─────────┴─────────┴─────────┘</span>
+</code></pre></div>
 The rows specify the move made by player 1, and the columns the move made by player 2, both in the order ROCK, PAPER, SCISSORS.</p>
 <p>Using indexing, find the outcome of the round in which player 1 plays scissors and player 2 plays paper.</p>
 <p><div class="problem">
     <span class="problemspan">⎕←</span>
     <span class="problemfilltext" id="input_ch2_p12_b1" hidden>A←{ROUND←3 3⍴'DRAW' 'P2 COVERS' 'P1 BLUNTS' 'P1 COVERS' 'DRAW' 'P2 CUTS' 'P2 BLUNTS' 'P1 CUTS' 'DRAW' ⋄ </span>
     <span class="problemfilltext" id="input_ch2_p12_b2">ROUND[</span>
-    <input class="problemfillinput" type="text" id="input_ch2_p12_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
+    <input aria-label="Chapter 2, write problem 12, answer field 3" class="problemfillinput" type="text" id="input_ch2_p12_b3" placeholder="fill in the blank" oninput="fillinput_resize(this)">
     <span class="problemfilltext" id="input_ch2_p12_b4" hidden>}</span>
     <button class="problembutton" onclick="submit_problem('ch2_p12', 4)">Submit</button>
 </div>
-<p id="feedback_ch2_p12" style="color: red"></p></p>
+<p role="status" aria-atomic="true" id="feedback_ch2_p12" style="color: red"></p></p>
 </div>
 <hr />
 

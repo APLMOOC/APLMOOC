@@ -2189,9 +2189,9 @@
   <label class="md-nav__title">Feedback</label>
   <form class="apl-feedback" data-section="7.4 - Error handling">
     <p class="apl-feedback__where">7.4 - Error handling</p>
-    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+    <textarea aria-label="Course feedback" class="apl-feedback__message" rows="4" maxlength="2000" required
               placeholder="Spotted a mistake? Something unclear?"></textarea>
-    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+    <input aria-label="Email address (optional)" class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
            placeholder="Email (optional)">
     <button class="apl-feedback__send" type="submit">Send</button>
     <p class="apl-feedback__status" role="status"></p>
@@ -2370,9 +2370,9 @@
   <label class="md-nav__title">Feedback</label>
   <form class="apl-feedback" data-section="7.4 - Error handling">
     <p class="apl-feedback__where">7.4 - Error handling</p>
-    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+    <textarea aria-label="Course feedback" class="apl-feedback__message" rows="4" maxlength="2000" required
               placeholder="Spotted a mistake? Something unclear?"></textarea>
-    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+    <input aria-label="Email address (optional)" class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
            placeholder="Email (optional)">
     <button class="apl-feedback__send" type="submit">Send</button>
     <p class="apl-feedback__status" role="status"></p>
@@ -2404,20 +2404,21 @@
 <h2 id="error-traps">Error traps</h2>
 <p>Programs often need to make use of external data, which is predictably unpredictable. Traps can be laid which execute when this expected unpredictability leads to an error, allowing it to be gracefully dealt with.</p>
 <p>Users of imperative programming languages will recognize the following <code>:Trap</code> control structure as the familiar <code>try</code> control structure.
-<pre class="highlight"><code class="language-apl">      ∇ result ← a DIVIDE b
-      :Trap 11
-            result←a÷b
-      :Else
-            result←'How dare you, division by zero is not allowed!'
-      :EndTrap
-      ∇
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="bp">∇</span><span class="w"> </span><span class="nv">result</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">DIVIDE</span><span class="w"> </span><span class="nv">b</span>
+<span class="w">      </span><span class="bp">:</span><span class="nv">Trap</span><span class="w"> </span><span class="m">11</span>
+<span class="w">            </span><span class="nv">result</span><span class="kd">←</span><span class="nv">a</span><span class="o">÷</span><span class="nv">b</span>
+<span class="w">      </span><span class="bp">:</span><span class="nv">Else</span>
+<span class="w">            </span><span class="nv">result</span><span class="kd">←</span><span class="s1">&#39;How dare you, division by zero is not allowed!&#39;</span>
+<span class="w">      </span><span class="bp">:</span><span class="nv">EndTrap</span>
+<span class="w">      </span><span class="bp">∇</span>
 
-      1 DIVIDE 1
-1
-      0 DIVIDE 0
-1
-      1 DIVIDE 0
- How dare you, division by zero is not allowed!</code></pre></p>
+<span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="nv">DIVIDE</span><span class="w"> </span><span class="m">1</span>
+<span class="m">1</span>
+<span class="w">      </span><span class="m">0</span><span class="w"> </span><span class="nv">DIVIDE</span><span class="w"> </span><span class="m">0</span>
+<span class="m">1</span>
+<span class="w">      </span><span class="m">1</span><span class="w"> </span><span class="nv">DIVIDE</span><span class="w"> </span><span class="m">0</span>
+<span class="w"> </span><span class="nv">How</span><span class="w"> </span><span class="nv">dare</span><span class="w"> </span><span class="nv">you</span><span class="o">,</span><span class="w"> </span><span class="nv">division</span><span class="w"> </span><span class="nv">by</span><span class="w"> </span><span class="nv">zero</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">not</span><span class="w"> </span><span class="nv">allowed</span><span class="o">!</span>
+</code></pre></div></p>
 <p>The <code>:Trap</code> control structure takes as argument a numerical error code signifying the error to guard against. A full list of arguments is available at the <a href="https://docs.dyalog.com/20.0/language-reference-guide/system-functions/trap/">Dyalog APL documentation site</a> but the most important values are as follows:</p>
 <table>
 <thead>
@@ -2475,37 +2476,40 @@
 </table>
 <p>Multiple errors can be caught by passing a vector of error codes to the <code>:Trap</code> control structure and using <code>:Case</code> to differentiate them, with extra diagnostic information (such as the error message) provided by the <a href="https://docs.dyalog.com/20.0/language-reference-guide/system-functions/dmx/"><code>⎕DMX</code> system object</a>. The full list of properties is listed therein. <code>⎕DMX.EM</code> is the error name, <code>⎕DMX.Message</code> the detail, and <code>⎕EN</code> the error number.</p>
 <p>Consider the following example of a tradfn averaging weather measurements from a given file of comma-separated values, using the <code>⎕CSV</code> system function which will be covered in <a href="../part5/">section 7.5</a>.</p>
-<pre class="highlight"><code class="language-apl">      ∇ r←loadTemps file;data;temps;⎕PP
-      ⎕PP ← 3
-      :Trap 0
-            data←⊃⎕CSV file '' (1 2) 1
-            temps←data[;2]
-            r←'Average of ',(⍕≢temps),' readings: ',⍕(+/temps)÷≢temps
-      :Case 22
-            r←'The file cannot be found. ',⎕DMX.Message
-      :Case 11
-            r←'The file is malformed. ',⎕DMX.Message
-      :Else
-            r←'Unexpected error ',(⍕⎕EN),': ',⎕DMX.EM
-      :EndTrap
-      ∇</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="bp">∇</span><span class="w"> </span><span class="nv">r</span><span class="kd">←</span><span class="nv">loadTemps</span><span class="w"> </span><span class="nv">file</span><span class="sr">;</span><span class="nv">data</span><span class="sr">;</span><span class="nv">temps</span><span class="sr">;</span><span class="nf">⎕PP</span>
+<span class="w">      </span><span class="nf">⎕PP</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">3</span>
+<span class="w">      </span><span class="bp">:</span><span class="nv">Trap</span><span class="w"> </span><span class="m">0</span>
+<span class="w">            </span><span class="nv">data</span><span class="kd">←</span><span class="o">⊃</span><span class="nf">⎕CSV</span><span class="w"> </span><span class="nv">file</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="m">1</span>
+<span class="w">            </span><span class="nv">temps</span><span class="kd">←</span><span class="nv">data</span><span class="sr">[;</span><span class="m">2</span><span class="sr">]</span>
+<span class="w">            </span><span class="nv">r</span><span class="kd">←</span><span class="s1">&#39;Average of &#39;</span><span class="o">,</span><span class="p">(</span><span class="o">⍕≢</span><span class="nv">temps</span><span class="p">)</span><span class="o">,</span><span class="s1">&#39; readings: &#39;</span><span class="o">,⍕</span><span class="p">(</span><span class="o">+</span><span class="na">/</span><span class="nv">temps</span><span class="p">)</span><span class="o">÷≢</span><span class="nv">temps</span>
+<span class="w">      </span><span class="bp">:</span><span class="nv">Case</span><span class="w"> </span><span class="m">22</span>
+<span class="w">            </span><span class="nv">r</span><span class="kd">←</span><span class="s1">&#39;The file cannot be found. &#39;</span><span class="o">,</span><span class="nf">⎕DMX</span><span class="na">.</span><span class="nv">Message</span>
+<span class="w">      </span><span class="bp">:</span><span class="nv">Case</span><span class="w"> </span><span class="m">11</span>
+<span class="w">            </span><span class="nv">r</span><span class="kd">←</span><span class="s1">&#39;The file is malformed. &#39;</span><span class="o">,</span><span class="nf">⎕DMX</span><span class="na">.</span><span class="nv">Message</span>
+<span class="w">      </span><span class="bp">:</span><span class="nv">Else</span>
+<span class="w">            </span><span class="nv">r</span><span class="kd">←</span><span class="s1">&#39;Unexpected error &#39;</span><span class="o">,</span><span class="p">(</span><span class="o">⍕</span><span class="nf">⎕EN</span><span class="p">)</span><span class="o">,</span><span class="s1">&#39;: &#39;</span><span class="o">,</span><span class="nf">⎕DMX</span><span class="na">.</span><span class="nv">EM</span>
+<span class="w">      </span><span class="bp">:</span><span class="nv">EndTrap</span>
+<span class="w">      </span><span class="bp">∇</span>
+</code></pre></div>
 <p>The following three files are loaded in the current working directory (which can be obtained by the change directory <code>]CD</code> user command), the first of which should be the ideal case, and the other two are incorrectly formatted.</p>
-<pre class="highlight"><code>good.csv          text.csv          short.csv
+<div class="language-text highlight"><pre><span></span><code>good.csv          text.csv          short.csv
 station,temp      station,temp      station,temp
 Kumpula,4.2       Kumpula,4.2       Kumpula,4.2
 Malmi,3.8         Malmi,n/a         Malmi
-Vantaa,5.1        Vantaa,5.1        Vantaa,5.1</code></pre>
+Vantaa,5.1        Vantaa,5.1        Vantaa,5.1
+</code></pre></div>
 <p>The function gives the following results.</p>
-<pre class="highlight"><code class="language-apl">      loadTemps 'good.csv'
-Average of 3 readings: 4.37
-      loadTemps 'text.csv'
-The file is malformed. Non-numeric data in record 3, field 2 (⎕IO=1)
-      loadTemps 'short.csv'
-The file is malformed. Invalid number of fields in record 3 (⎕IO=1)
-      loadTemps 'weather.csv'
-The file cannot be found. weather.csv: Unable to open file
-      loadTemps '/tmp/'
-Unexpected error 19: FILE ACCESS ERROR</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">loadTemps</span><span class="w"> </span><span class="s1">&#39;good.csv&#39;</span>
+<span class="nv">Average</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="nv">readings</span><span class="bp">:</span><span class="w"> </span><span class="m">4.37</span>
+<span class="w">      </span><span class="nv">loadTemps</span><span class="w"> </span><span class="s1">&#39;text.csv&#39;</span>
+<span class="nv">The</span><span class="w"> </span><span class="nv">file</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">malformed</span><span class="na">.</span><span class="w"> </span><span class="nv">Non</span><span class="o">-</span><span class="nv">numeric</span><span class="w"> </span><span class="nv">data</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">record</span><span class="w"> </span><span class="m">3</span><span class="o">,</span><span class="w"> </span><span class="nv">field</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="p">(</span><span class="nf">⎕IO</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
+<span class="w">      </span><span class="nv">loadTemps</span><span class="w"> </span><span class="s1">&#39;short.csv&#39;</span>
+<span class="nv">The</span><span class="w"> </span><span class="nv">file</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">malformed</span><span class="na">.</span><span class="w"> </span><span class="nv">Invalid</span><span class="w"> </span><span class="nv">number</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">fields</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">record</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="p">(</span><span class="nf">⎕IO</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
+<span class="w">      </span><span class="nv">loadTemps</span><span class="w"> </span><span class="s1">&#39;weather.csv&#39;</span>
+<span class="nv">The</span><span class="w"> </span><span class="nv">file</span><span class="w"> </span><span class="nv">cannot</span><span class="w"> </span><span class="nv">be</span><span class="w"> </span><span class="nv">found</span><span class="na">.</span><span class="w"> </span><span class="nv">weather</span><span class="na">.</span><span class="nv">csv</span><span class="bp">:</span><span class="w"> </span><span class="nv">Unable</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">open</span><span class="w"> </span><span class="nv">file</span>
+<span class="w">      </span><span class="nv">loadTemps</span><span class="w"> </span><span class="s1">&#39;/tmp/&#39;</span>
+<span class="nv">Unexpected</span><span class="w"> </span><span class="nv">error</span><span class="w"> </span><span class="m">19</span><span class="bp">:</span><span class="w"> </span><span class="nv">FILE</span><span class="w"> </span><span class="nv">ACCESS</span><span class="w"> </span><span class="nv">ERROR</span>
+</code></pre></div>
 <h2 id="function-tracing">Function tracing</h2>
 <p>Traps can only capture expected errors, and handle them in pre-determined ways. For unexpected errors, typically found during development or in production, and when the program is too large to hold the entire state mentally, it is more useful to have interactive execution to investigate the state at which an error occurred. Tracing through the functions at the error line-by-line is a natural method of doing so.</p>
 <h3 id="the-tracer">The Tracer</h3>
@@ -2585,35 +2589,37 @@ Unexpected error 19: FILE ACCESS ERROR</code></pre>
 <p>A breakpoint invokes the Tracer at a specific line during execution. The easiest way to add a breakpoint is in either the function definition or the Tracer. Click the left margin of the Tracer or function definition, beside the line number. Click the same place again to remove it. A breakpoint shows as a red circle in that margin.</p>
 <p><img alt="A picture of a breakpoint on line 3 of a function" src="../../assets/7_4_breakpoint.png" /></p>
 <p>Alternatively, you can use the <code>⎕STOP</code> system function to set (and unset) a breakpoint at a particular line.</p>
-<pre class="highlight"><code class="language-apl">      2 ⎕STOP 'loadTemps'
-      ⎕STOP 'loadTemps'
-2
-      ⍬ ⎕STOP 'loadTemps'</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="m">2</span><span class="w"> </span><span class="nf">⎕STOP</span><span class="w"> </span><span class="s1">&#39;loadTemps&#39;</span>
+<span class="w">      </span><span class="nf">⎕STOP</span><span class="w"> </span><span class="s1">&#39;loadTemps&#39;</span>
+<span class="m">2</span>
+<span class="w">      </span><span class="no">⍬</span><span class="w"> </span><span class="nf">⎕STOP</span><span class="w"> </span><span class="s1">&#39;loadTemps&#39;</span>
+</code></pre></div>
 <p>The first line sets a breakpoint on line 2. The second line asks which lines have breakpoints. The fourth line removes all of them.</p>
 <h3 id="automatic-output">Automatic output</h3>
 <p>The <code>⎕TRACE</code> system function prints the result of each chosen line to the session. This is most useful for a line that runs many times, like the following fibonacci function.</p>
-<pre class="highlight"><code class="language-apl">      ∇ r←fib n;a;b;i
-      a←0 ⋄ b←1
-      :For i :In ⍳n
-            (a b)←b(a+b)
-      :EndFor
-      r←a
-      ∇
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="bp">∇</span><span class="w"> </span><span class="nv">r</span><span class="kd">←</span><span class="nv">fib</span><span class="w"> </span><span class="nv">n</span><span class="sr">;</span><span class="nv">a</span><span class="sr">;</span><span class="nv">b</span><span class="sr">;</span><span class="nv">i</span>
+<span class="w">      </span><span class="nv">a</span><span class="kd">←</span><span class="m">0</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span><span class="nv">b</span><span class="kd">←</span><span class="m">1</span>
+<span class="w">      </span><span class="bp">:</span><span class="nv">For</span><span class="w"> </span><span class="nv">i</span><span class="w"> </span><span class="bp">:</span><span class="nv">In</span><span class="w"> </span><span class="o">⍳</span><span class="nv">n</span>
+<span class="w">            </span><span class="p">(</span><span class="nv">a</span><span class="w"> </span><span class="nv">b</span><span class="p">)</span><span class="kd">←</span><span class="nv">b</span><span class="p">(</span><span class="nv">a</span><span class="o">+</span><span class="nv">b</span><span class="p">)</span>
+<span class="w">      </span><span class="bp">:</span><span class="nv">EndFor</span>
+<span class="w">      </span><span class="nv">r</span><span class="kd">←</span><span class="nv">a</span>
+<span class="w">      </span><span class="bp">∇</span>
 
-      fib 8
-21
-      3 ⎕TRACE 'fib'
-      fib 8
- fib[3]  1 1 
- fib[3]  1 2 
- fib[3]  2 3 
- fib[3]  3 5 
- fib[3]  5 8 
- fib[3]  8 13 
- fib[3]  13 21 
- fib[3]  21 34 
-21
-      ⍬ ⎕TRACE 'fib'</code></pre>
+<span class="w">      </span><span class="nv">fib</span><span class="w"> </span><span class="m">8</span>
+<span class="m">21</span>
+<span class="w">      </span><span class="m">3</span><span class="w"> </span><span class="nf">⎕TRACE</span><span class="w"> </span><span class="s1">&#39;fib&#39;</span>
+<span class="w">      </span><span class="nv">fib</span><span class="w"> </span><span class="m">8</span>
+<span class="w"> </span><span class="nv">fib</span><span class="sr">[</span><span class="m">3</span><span class="sr">]</span><span class="w">  </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>
+<span class="w"> </span><span class="nv">fib</span><span class="sr">[</span><span class="m">3</span><span class="sr">]</span><span class="w">  </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span>
+<span class="w"> </span><span class="nv">fib</span><span class="sr">[</span><span class="m">3</span><span class="sr">]</span><span class="w">  </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span>
+<span class="w"> </span><span class="nv">fib</span><span class="sr">[</span><span class="m">3</span><span class="sr">]</span><span class="w">  </span><span class="m">3</span><span class="w"> </span><span class="m">5</span><span class="w"> </span>
+<span class="w"> </span><span class="nv">fib</span><span class="sr">[</span><span class="m">3</span><span class="sr">]</span><span class="w">  </span><span class="m">5</span><span class="w"> </span><span class="m">8</span><span class="w"> </span>
+<span class="w"> </span><span class="nv">fib</span><span class="sr">[</span><span class="m">3</span><span class="sr">]</span><span class="w">  </span><span class="m">8</span><span class="w"> </span><span class="m">13</span><span class="w"> </span>
+<span class="w"> </span><span class="nv">fib</span><span class="sr">[</span><span class="m">3</span><span class="sr">]</span><span class="w">  </span><span class="m">13</span><span class="w"> </span><span class="m">21</span><span class="w"> </span>
+<span class="w"> </span><span class="nv">fib</span><span class="sr">[</span><span class="m">3</span><span class="sr">]</span><span class="w">  </span><span class="m">21</span><span class="w"> </span><span class="m">34</span><span class="w"> </span>
+<span class="m">21</span>
+<span class="w">      </span><span class="no">⍬</span><span class="w"> </span><span class="nf">⎕TRACE</span><span class="w"> </span><span class="s1">&#39;fib&#39;</span>
+</code></pre></div>
 <p>Each traced line prints the name of the function, the line number, and the result.</p>
 
 

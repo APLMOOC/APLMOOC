@@ -2143,9 +2143,9 @@
   <label class="md-nav__title">Feedback</label>
   <form class="apl-feedback" data-section="7.2 - Development environment">
     <p class="apl-feedback__where">7.2 - Development environment</p>
-    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+    <textarea aria-label="Course feedback" class="apl-feedback__message" rows="4" maxlength="2000" required
               placeholder="Spotted a mistake? Something unclear?"></textarea>
-    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+    <input aria-label="Email address (optional)" class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
            placeholder="Email (optional)">
     <button class="apl-feedback__send" type="submit">Send</button>
     <p class="apl-feedback__status" role="status"></p>
@@ -2370,9 +2370,9 @@
   <label class="md-nav__title">Feedback</label>
   <form class="apl-feedback" data-section="7.2 - Development environment">
     <p class="apl-feedback__where">7.2 - Development environment</p>
-    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+    <textarea aria-label="Course feedback" class="apl-feedback__message" rows="4" maxlength="2000" required
               placeholder="Spotted a mistake? Something unclear?"></textarea>
-    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+    <input aria-label="Email address (optional)" class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
            placeholder="Email (optional)">
     <button class="apl-feedback__send" type="submit">Send</button>
     <p class="apl-feedback__status" role="status"></p>
@@ -2418,65 +2418,69 @@ Imagine if you couldn't do this for bigger projects!</p>
 These are binary blobs of data containing all of your code, variables, values, and command history.
 Don't worry: we'll cover a way to save your code as plaintext later on.</p>
 <p>Let's say you're just done with an intense APL coding session:</p>
-<pre class="highlight"><code class="language-apl">      pyramid ← {⍵-∘.⌈⍨|⍵-⍳¯1+⍵×2}
-      pyramid
-     ∇pyramid←{⍵-∘.⌈⍨|⍵-⍳¯1+⍵×2}
-     ∇
-      pyramid 5
-1 1 1 1 1 1 1 1 1
-1 2 2 2 2 2 2 2 1
-1 2 3 3 3 3 3 2 1
-1 2 3 4 4 4 3 2 1
-1 2 3 4 5 4 3 2 1
-1 2 3 4 4 4 3 2 1
-1 2 3 3 3 3 3 2 1
-1 2 2 2 2 2 2 2 1
-1 1 1 1 1 1 1 1 1
-      pyramid 3
-1 1 1 1 1
-1 2 2 2 1
-1 2 3 2 1
-1 2 2 2 1
-1 1 1 1 1
-      pyramid7 ← pyramid 7
-      first ← pyramid7[1;]
-      first
-1 1 1 1 1 1 1 1 1 1 1 1 1
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">pyramid</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="bp">⍵</span><span class="o">-</span><span class="na">∘.</span><span class="o">⌈</span><span class="na">⍨</span><span class="o">|</span><span class="bp">⍵</span><span class="o">-⍳</span><span class="m">¯1</span><span class="o">+</span><span class="bp">⍵</span><span class="o">×</span><span class="m">2</span><span class="kt">}</span>
+<span class="w">      </span><span class="nv">pyramid</span>
+<span class="w">     </span><span class="bp">∇</span><span class="nv">pyramid</span><span class="kd">←</span><span class="kt">{</span><span class="bp">⍵</span><span class="o">-</span><span class="na">∘.</span><span class="o">⌈</span><span class="na">⍨</span><span class="o">|</span><span class="bp">⍵</span><span class="o">-⍳</span><span class="m">¯1</span><span class="o">+</span><span class="bp">⍵</span><span class="o">×</span><span class="m">2</span><span class="kt">}</span>
+<span class="w">     </span><span class="bp">∇</span>
+<span class="w">      </span><span class="nv">pyramid</span><span class="w"> </span><span class="m">5</span>
+<span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span>
+<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span>
+<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span>
+<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span>
+<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span>
+<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span>
+<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span>
+<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span>
+<span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span>
+<span class="w">      </span><span class="nv">pyramid</span><span class="w"> </span><span class="m">3</span>
+<span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span>
+<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span>
+<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span>
+<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span>
+<span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span>
+<span class="w">      </span><span class="nv">pyramid7</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">pyramid</span><span class="w"> </span><span class="m">7</span>
+<span class="w">      </span><span class="nv">first</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">pyramid7</span><span class="sr">[</span><span class="m">1</span><span class="sr">;]</span>
+<span class="w">      </span><span class="nv">first</span>
+<span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span>
 
-      myfunc ← {4/⍵}
-      myfunc 'meow'
-mmmmeeeeoooowwww</code></pre>
+<span class="w">      </span><span class="nv">myfunc</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="m">4</span><span class="na">/</span><span class="bp">⍵</span><span class="kt">}</span>
+<span class="w">      </span><span class="nv">myfunc</span><span class="w"> </span><span class="s1">&#39;meow&#39;</span>
+<span class="nv">mmmmeeeeoooowwww</span>
+</code></pre></div>
 <p>Then, to save this as a workspace, you can use the <code>)save filename</code> command, replacing <code>filename</code> with the name of your project:</p>
-<pre class="highlight"><code class="language-apl">      )save test
-test.dws ⍝ saved Tue Jan 28 20:03:04 2025</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="p">)</span><span class="nv">save</span><span class="w"> </span><span class="nv">test</span>
+<span class="nv">test</span><span class="na">.</span><span class="nv">dws</span><span class="w"> </span><span class="c1">⍝ saved Tue Jan 28 20:03:04 2025</span>
+</code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title"><strong><em>Remember to save your workspaces</em></strong></p>
 <p>Sometimes, before exiting your session, RIDE will suggest to save your workspace; however, always <strong><em>remember to save your workspaces</em></strong></p>
 </div>
 <p>Once you close and re-open RIDE, you can load your workspace by using the <code>)load filename</code> command:</p>
-<pre class="highlight"><code class="language-apl">      )load test
-./test.dws ⍝ saved Tue Jan 28 20:03:04 2025</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="p">)</span><span class="nv">load</span><span class="w"> </span><span class="nv">test</span>
+<span class="na">./</span><span class="nv">test</span><span class="na">.</span><span class="nv">dws</span><span class="w"> </span><span class="c1">⍝ saved Tue Jan 28 20:03:04 2025</span>
+</code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">System commands</p>
 <p>The APL developers had to find a way to include useful commands in a way that they can't be confused for APL functions.
-The solution: no APL expression starts with a closing bracket, so let's use those for commands!</p>
+The solution: no APL expression starts with a closing parenthesis, so let's use those for commands!</p>
 <p>To see a full list of system commands, go to <a href="https://aplwiki.com/wiki/System_command">https://aplwiki.com/wiki/System_command</a>.</p>
 </div>
 <p>There are some other useful system commands: <code>)fns</code> lists all functions, <code>)vars</code> lists all variables, <code>)erase</code> deletes a function or variable, <code>)clear</code> deletes everything, and <code>)off</code> closes RIDE.</p>
-<pre class="highlight"><code class="language-apl">      )fns
-myfunc  pyramid 
-      )vars
-first   pyramid7        
-      )erase first
-      )vars
-pyramid7        
-      )erase myfunc
-      )fns
-pyramid 
-      )clear
-clear ws
-      )vars
-      )fns</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="p">)</span><span class="nv">fns</span>
+<span class="nv">myfunc</span><span class="w">  </span><span class="nv">pyramid</span><span class="w"> </span>
+<span class="w">      </span><span class="p">)</span><span class="nv">vars</span>
+<span class="nv">first</span><span class="w">   </span><span class="nv">pyramid7</span><span class="w">        </span>
+<span class="w">      </span><span class="p">)</span><span class="nv">erase</span><span class="w"> </span><span class="nv">first</span>
+<span class="w">      </span><span class="p">)</span><span class="nv">vars</span>
+<span class="nv">pyramid7</span><span class="w">        </span>
+<span class="w">      </span><span class="p">)</span><span class="nv">erase</span><span class="w"> </span><span class="nv">myfunc</span>
+<span class="w">      </span><span class="p">)</span><span class="nv">fns</span>
+<span class="nv">pyramid</span><span class="w"> </span>
+<span class="w">      </span><span class="p">)</span><span class="nv">clear</span>
+<span class="nv">clear</span><span class="w"> </span><span class="nv">ws</span>
+<span class="w">      </span><span class="p">)</span><span class="nv">vars</span>
+<span class="w">      </span><span class="p">)</span><span class="nv">fns</span>
+</code></pre></div>
 <h2 id="saving-your-code-as-text">Saving your code as text</h2>
 <p>For many years, APL programmers relied on workspaces to write their APL code.
 If they needed to send code to a friend or coworker, they would just email the workspace file to them!</p>
@@ -2485,114 +2489,120 @@ The developers of APL eventually realised that workspaces on their own were a te
 <p>To fix this, they created a <em>user command</em> called LINK!</p>
 <div class="admonition tip">
 <p class="admonition-title">User commands</p>
-<p>System commands are functions that let you interact directly with the system.
+<p>System commands are commands handled by the APL session that let you interact directly with the system.
 They are actually written in C under the hood.
 On the other hand, <em>user commands</em> are written in APL and let you do more involved actions.
 You can also overwrite or modify them if you're crazy enough.</p>
 <p>All user commands start with a <code>]</code>, for the same reason that system commands start with a <code>)</code>.</p>
 <p>To see a full list of user commands, run the <em>help</em> command <code>]?</code>:</p>
-<pre class="highlight"><code class="language-apl">      ]?
-───────────────────────────────────────────────────────────────────────────────
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="sr">]</span><span class="o">?</span>
+<span class="err">───────────────────────────────────────────────────────────────────────────────</span>
 
-104 commands:                                                                  
+<span class="m">104</span><span class="w"> </span><span class="nv">commands</span><span class="bp">:</span><span class="w">                                                                  </span>
 
-ARRAY         Compare  Edit                                                   
-CALC          Factors  FromHex  PivotTable  ToHex                             
-DEVOPS        DBuild  DTest  GetTools4CITA                                    
-EXPERIMENTAL  Get                                                             
-FILE          CD  Collect  Compare  Edit  Find  Open  Replace  Split          
-            ToLarge  ToQuadTS  Touch                                        
-FN            Align  Calls  Compare  Defs  DInput  Latest  ReorderLocals      
-LINK          Add  Break  Configure  Create  Export  Expunge  GetFileName     
-            GetItemName  Import  Refresh  Resync  Status  Stop  Trace       
-NS            ScriptUpdate  Summary  Xref                                     
-OUTPUT        Box  Boxing  Disp  Display  Find  Format  HTML  LastResult      
-            Layout  Plot  Repr  Rows  View                                  
-PERFORMANCE   Profile  RunTime  SpaceNeeded                                   
-SALT          Boot  Clean  Compare  List  Load  Refresh  RemoveVersions       
-            Save  Set  Settings  Snap                                       
-TOOLS         Activate  ADoc  APLCart  Calendar  Config  Deactivate  Demo     
-            Help  Version                                                   
-TRANSFER      In  Out                                                         
-UCMD          UDebug  ULoad  UMonitor  UNew  UReset  USetup  UVersion         
-WS            Check  Compare  Document  FindRefs  FnsLike  Locate  Map        
-            Names  NamesLike  Nms  ObsLike  Peek  SizeOf  VarsLike          
+<span class="nv">ARRAY</span><span class="w">         </span><span class="nv">Compare</span><span class="w">  </span><span class="nv">Edit</span><span class="w">                                                   </span>
+<span class="nv">CALC</span><span class="w">          </span><span class="nv">Factors</span><span class="w">  </span><span class="nv">FromHex</span><span class="w">  </span><span class="nv">PivotTable</span><span class="w">  </span><span class="nv">ToHex</span><span class="w">                             </span>
+<span class="nv">DEVOPS</span><span class="w">        </span><span class="nv">DBuild</span><span class="w">  </span><span class="nv">DTest</span><span class="w">  </span><span class="nv">GetTools4CITA</span><span class="w">                                    </span>
+<span class="nv">EXPERIMENTAL</span><span class="w">  </span><span class="nv">Get</span><span class="w">                                                             </span>
+<span class="nv">FILE</span><span class="w">          </span><span class="nv">CD</span><span class="w">  </span><span class="nv">Collect</span><span class="w">  </span><span class="nv">Compare</span><span class="w">  </span><span class="nv">Edit</span><span class="w">  </span><span class="nv">Find</span><span class="w">  </span><span class="nv">Open</span><span class="w">  </span><span class="nv">Replace</span><span class="w">  </span><span class="nv">Split</span><span class="w">          </span>
+<span class="w">            </span><span class="nv">ToLarge</span><span class="w">  </span><span class="nv">ToQuadTS</span><span class="w">  </span><span class="nv">Touch</span><span class="w">                                        </span>
+<span class="nv">FN</span><span class="w">            </span><span class="nv">Align</span><span class="w">  </span><span class="nv">Calls</span><span class="w">  </span><span class="nv">Compare</span><span class="w">  </span><span class="nv">Defs</span><span class="w">  </span><span class="nv">DInput</span><span class="w">  </span><span class="nv">Latest</span><span class="w">  </span><span class="nv">ReorderLocals</span><span class="w">      </span>
+<span class="nv">LINK</span><span class="w">          </span><span class="nv">Add</span><span class="w">  </span><span class="nv">Break</span><span class="w">  </span><span class="nv">Configure</span><span class="w">  </span><span class="nv">Create</span><span class="w">  </span><span class="nv">Export</span><span class="w">  </span><span class="nv">Expunge</span><span class="w">  </span><span class="nv">GetFileName</span><span class="w">     </span>
+<span class="w">            </span><span class="nv">GetItemName</span><span class="w">  </span><span class="nv">Import</span><span class="w">  </span><span class="nv">Refresh</span><span class="w">  </span><span class="nv">Resync</span><span class="w">  </span><span class="nv">Status</span><span class="w">  </span><span class="nv">Stop</span><span class="w">  </span><span class="nv">Trace</span><span class="w">       </span>
+<span class="nv">NS</span><span class="w">            </span><span class="nv">ScriptUpdate</span><span class="w">  </span><span class="nv">Summary</span><span class="w">  </span><span class="nv">Xref</span><span class="w">                                     </span>
+<span class="nv">OUTPUT</span><span class="w">        </span><span class="nv">Box</span><span class="w">  </span><span class="nv">Boxing</span><span class="w">  </span><span class="nv">Disp</span><span class="w">  </span><span class="nv">Display</span><span class="w">  </span><span class="nv">Find</span><span class="w">  </span><span class="nv">Format</span><span class="w">  </span><span class="nv">HTML</span><span class="w">  </span><span class="nv">LastResult</span><span class="w">      </span>
+<span class="w">            </span><span class="nv">Layout</span><span class="w">  </span><span class="nv">Plot</span><span class="w">  </span><span class="nv">Repr</span><span class="w">  </span><span class="nv">Rows</span><span class="w">  </span><span class="nv">View</span><span class="w">                                  </span>
+<span class="nv">PERFORMANCE</span><span class="w">   </span><span class="nv">Profile</span><span class="w">  </span><span class="nv">RunTime</span><span class="w">  </span><span class="nv">SpaceNeeded</span><span class="w">                                   </span>
+<span class="nv">SALT</span><span class="w">          </span><span class="nv">Boot</span><span class="w">  </span><span class="nv">Clean</span><span class="w">  </span><span class="nv">Compare</span><span class="w">  </span><span class="nv">List</span><span class="w">  </span><span class="nv">Load</span><span class="w">  </span><span class="nv">Refresh</span><span class="w">  </span><span class="nv">RemoveVersions</span><span class="w">       </span>
+<span class="w">            </span><span class="nv">Save</span><span class="w">  </span><span class="nv">Set</span><span class="w">  </span><span class="nv">Settings</span><span class="w">  </span><span class="nv">Snap</span><span class="w">                                       </span>
+<span class="nv">TOOLS</span><span class="w">         </span><span class="nv">Activate</span><span class="w">  </span><span class="nv">ADoc</span><span class="w">  </span><span class="nv">APLCart</span><span class="w">  </span><span class="nv">Calendar</span><span class="w">  </span><span class="nv">Config</span><span class="w">  </span><span class="nv">Deactivate</span><span class="w">  </span><span class="nv">Demo</span><span class="w">     </span>
+<span class="w">            </span><span class="nv">Help</span><span class="w">  </span><span class="nv">Version</span><span class="w">                                                   </span>
+<span class="nv">TRANSFER</span><span class="w">      </span><span class="nv">In</span><span class="w">  </span><span class="nv">Out</span><span class="w">                                                         </span>
+<span class="nv">UCMD</span><span class="w">          </span><span class="nv">UDebug</span><span class="w">  </span><span class="nv">ULoad</span><span class="w">  </span><span class="nv">UMonitor</span><span class="w">  </span><span class="nv">UNew</span><span class="w">  </span><span class="nv">UReset</span><span class="w">  </span><span class="nv">USetup</span><span class="w">  </span><span class="nv">UVersion</span><span class="w">         </span>
+<span class="nv">WS</span><span class="w">            </span><span class="nv">Check</span><span class="w">  </span><span class="nv">Compare</span><span class="w">  </span><span class="nv">Document</span><span class="w">  </span><span class="nv">FindRefs</span><span class="w">  </span><span class="nv">FnsLike</span><span class="w">  </span><span class="nv">Locate</span><span class="w">  </span><span class="nv">Map</span><span class="w">        </span>
+<span class="w">            </span><span class="nv">Names</span><span class="w">  </span><span class="nv">NamesLike</span><span class="w">  </span><span class="nv">Nms</span><span class="w">  </span><span class="nv">ObsLike</span><span class="w">  </span><span class="nv">Peek</span><span class="w">  </span><span class="nv">SizeOf</span><span class="w">  </span><span class="nv">VarsLike</span><span class="w">          </span>
 
-]            ⍝ for general user command help                                   
-] -??        ⍝ for brief info on each command                                  
-]grp -?      ⍝ for info on the "GRP" group                                     
-]grp.cmd -?  ⍝ for info on the "Cmd" command of the "GRP" group</code></pre>
+<span class="sr">]</span><span class="w">            </span><span class="c1">⍝ for general user command help                                   </span>
+<span class="sr">]</span><span class="w"> </span><span class="o">-??</span><span class="w">        </span><span class="c1">⍝ for brief info on each command                                  </span>
+<span class="sr">]</span><span class="nv">grp</span><span class="w"> </span><span class="o">-?</span><span class="w">      </span><span class="c1">⍝ for info on the &quot;GRP&quot; group                                     </span>
+<span class="sr">]</span><span class="nv">grp</span><span class="na">.</span><span class="nv">cmd</span><span class="w"> </span><span class="o">-?</span><span class="w">  </span><span class="c1">⍝ for info on the &quot;Cmd&quot; command of the &quot;GRP&quot; group</span>
+</code></pre></div>
 </div>
 <p>Let's use the <code>]LINK</code> command to create a link between our workspace and a folder.
 Let's see how to use it using the help command again:</p>
-<pre class="highlight"><code class="language-apl">      ]LINK -?
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="sr">]</span><span class="nv">LINK</span><span class="w"> </span><span class="o">-?</span>
 
- LINK          User commands for namespace-directory synchronisation (see     
-               https://dyalog.github.io/link ):                               
-  Add          Associate items in linked namespaces with new files/directories
-               in corresponding directory, optionally with simultaneous       
-               definition                                                     
-  Break        Break link between namespace and corresponding directory       
-  Configure    Set directory or user configuration options                    
-  Create       Link a namespace with a directory (create one but not both if  
-               non-existent)                                                  
-  Export       Export a namespace to a directory (create the directory if     
-               absent); does not create a link                                
-  Expunge      Erase item and associated file                                 
-  GetFileName  Return name of file associated with item                       
-  GetItemName  Return name of item associated with file                       
-  Import       Import a namespace from a directory (create the namespace if   
-               absent); does not create a link                                
-  Refresh      Manually synchronise namespace or directory contents           
-  Resync       Automatically synchronise namespace-directory differences      
-  Status       List active namespace-directory links                          
-  Stop         Set, clear or report on breakpoints                            
-  Trace        Set, clear or report on lines traced                           
+<span class="w"> </span><span class="nv">LINK</span><span class="w">          </span><span class="nv">User</span><span class="w"> </span><span class="nv">commands</span><span class="w"> </span><span class="nv">for</span><span class="w"> </span><span class="nv">namespace</span><span class="o">-</span><span class="nv">directory</span><span class="w"> </span><span class="nv">synchronisation</span><span class="w"> </span><span class="p">(</span><span class="nv">see</span><span class="w">     </span>
+<span class="w">               </span><span class="nv">https</span><span class="bp">:</span><span class="na">//</span><span class="nv">dyalog</span><span class="na">.</span><span class="nv">github</span><span class="na">.</span><span class="nv">io</span><span class="na">/</span><span class="nv">link</span><span class="w"> </span><span class="p">)</span><span class="bp">:</span><span class="w">                               </span>
+<span class="w">  </span><span class="nv">Add</span><span class="w">          </span><span class="nv">Associate</span><span class="w"> </span><span class="nv">items</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">linked</span><span class="w"> </span><span class="nv">namespaces</span><span class="w"> </span><span class="nv">with</span><span class="w"> </span><span class="nv">new</span><span class="w"> </span><span class="nv">files</span><span class="na">/</span><span class="nv">directories</span>
+<span class="w">               </span><span class="nv">in</span><span class="w"> </span><span class="nv">corresponding</span><span class="w"> </span><span class="nv">directory</span><span class="o">,</span><span class="w"> </span><span class="nv">optionally</span><span class="w"> </span><span class="nv">with</span><span class="w"> </span><span class="nv">simultaneous</span><span class="w">       </span>
+<span class="w">               </span><span class="nv">definition</span><span class="w">                                                     </span>
+<span class="w">  </span><span class="nv">Break</span><span class="w">        </span><span class="nv">Break</span><span class="w"> </span><span class="nv">link</span><span class="w"> </span><span class="nv">between</span><span class="w"> </span><span class="nv">namespace</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">corresponding</span><span class="w"> </span><span class="nv">directory</span><span class="w">       </span>
+<span class="w">  </span><span class="nv">Configure</span><span class="w">    </span><span class="nv">Set</span><span class="w"> </span><span class="nv">directory</span><span class="w"> </span><span class="nv">or</span><span class="w"> </span><span class="nv">user</span><span class="w"> </span><span class="nv">configuration</span><span class="w"> </span><span class="nv">options</span><span class="w">                    </span>
+<span class="w">  </span><span class="nv">Create</span><span class="w">       </span><span class="nv">Link</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">namespace</span><span class="w"> </span><span class="nv">with</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">directory</span><span class="w"> </span><span class="p">(</span><span class="nv">create</span><span class="w"> </span><span class="nv">one</span><span class="w"> </span><span class="nv">but</span><span class="w"> </span><span class="nv">not</span><span class="w"> </span><span class="nv">both</span><span class="w"> </span><span class="nv">if</span><span class="w">  </span>
+<span class="w">               </span><span class="nv">non</span><span class="o">-</span><span class="nv">existent</span><span class="p">)</span><span class="w">                                                  </span>
+<span class="w">  </span><span class="nv">Export</span><span class="w">       </span><span class="nv">Export</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">namespace</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">directory</span><span class="w"> </span><span class="p">(</span><span class="nv">create</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">directory</span><span class="w"> </span><span class="nv">if</span><span class="w">     </span>
+<span class="w">               </span><span class="nv">absent</span><span class="p">)</span><span class="sr">;</span><span class="w"> </span><span class="nv">does</span><span class="w"> </span><span class="nv">not</span><span class="w"> </span><span class="nv">create</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">link</span><span class="w">                                </span>
+<span class="w">  </span><span class="nv">Expunge</span><span class="w">      </span><span class="nv">Erase</span><span class="w"> </span><span class="nv">item</span><span class="w"> </span><span class="nv">and</span><span class="w"> </span><span class="nv">associated</span><span class="w"> </span><span class="nv">file</span><span class="w">                                 </span>
+<span class="w">  </span><span class="nv">GetFileName</span><span class="w">  </span><span class="nv">Return</span><span class="w"> </span><span class="nv">name</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">file</span><span class="w"> </span><span class="nv">associated</span><span class="w"> </span><span class="nv">with</span><span class="w"> </span><span class="nv">item</span><span class="w">                       </span>
+<span class="w">  </span><span class="nv">GetItemName</span><span class="w">  </span><span class="nv">Return</span><span class="w"> </span><span class="nv">name</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">item</span><span class="w"> </span><span class="nv">associated</span><span class="w"> </span><span class="nv">with</span><span class="w"> </span><span class="nv">file</span><span class="w">                       </span>
+<span class="w">  </span><span class="nv">Import</span><span class="w">       </span><span class="nv">Import</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">namespace</span><span class="w"> </span><span class="nv">from</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">directory</span><span class="w"> </span><span class="p">(</span><span class="nv">create</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">namespace</span><span class="w"> </span><span class="nv">if</span><span class="w">   </span>
+<span class="w">               </span><span class="nv">absent</span><span class="p">)</span><span class="sr">;</span><span class="w"> </span><span class="nv">does</span><span class="w"> </span><span class="nv">not</span><span class="w"> </span><span class="nv">create</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">link</span><span class="w">                                </span>
+<span class="w">  </span><span class="nv">Refresh</span><span class="w">      </span><span class="nv">Manually</span><span class="w"> </span><span class="nv">synchronise</span><span class="w"> </span><span class="nv">namespace</span><span class="w"> </span><span class="nv">or</span><span class="w"> </span><span class="nv">directory</span><span class="w"> </span><span class="nv">contents</span><span class="w">           </span>
+<span class="w">  </span><span class="nv">Resync</span><span class="w">       </span><span class="nv">Automatically</span><span class="w"> </span><span class="nv">synchronise</span><span class="w"> </span><span class="nv">namespace</span><span class="o">-</span><span class="nv">directory</span><span class="w"> </span><span class="nv">differences</span><span class="w">      </span>
+<span class="w">  </span><span class="nv">Status</span><span class="w">       </span><span class="nv">List</span><span class="w"> </span><span class="nv">active</span><span class="w"> </span><span class="nv">namespace</span><span class="o">-</span><span class="nv">directory</span><span class="w"> </span><span class="nv">links</span><span class="w">                          </span>
+<span class="w">  </span><span class="nv">Stop</span><span class="w">         </span><span class="nv">Set</span><span class="o">,</span><span class="w"> </span><span class="nv">clear</span><span class="w"> </span><span class="nv">or</span><span class="w"> </span><span class="nv">report</span><span class="w"> </span><span class="nv">on</span><span class="w"> </span><span class="nv">breakpoints</span><span class="w">                            </span>
+<span class="w">  </span><span class="nv">Trace</span><span class="w">        </span><span class="nv">Set</span><span class="o">,</span><span class="w"> </span><span class="nv">clear</span><span class="w"> </span><span class="nv">or</span><span class="w"> </span><span class="nv">report</span><span class="w"> </span><span class="nv">on</span><span class="w"> </span><span class="nv">lines</span><span class="w"> </span><span class="nv">traced</span><span class="w">                           </span>
 
-]            ⍝ for general user command help                                  
-]grp -?      ⍝ for info on the "GRP" group                                    
-]grp.cmd -?  ⍝ for info on the "Cmd" command of the "GRP" group</code></pre>
+<span class="sr">]</span><span class="w">            </span><span class="c1">⍝ for general user command help                                  </span>
+<span class="sr">]</span><span class="nv">grp</span><span class="w"> </span><span class="o">-?</span><span class="w">      </span><span class="c1">⍝ for info on the &quot;GRP&quot; group                                    </span>
+<span class="sr">]</span><span class="nv">grp</span><span class="na">.</span><span class="nv">cmd</span><span class="w"> </span><span class="o">-?</span><span class="w">  </span><span class="c1">⍝ for info on the &quot;Cmd&quot; command of the &quot;GRP&quot; group</span>
+</code></pre></div>
 <p>And again for the <code>Create</code> subcommand:</p>
-<pre class="highlight"><code class="language-apl">      ]LINK.Create -?
-───────────────────────────────────────────────────────────────────────────────
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="sr">]</span><span class="nv">LINK</span><span class="na">.</span><span class="nv">Create</span><span class="w"> </span><span class="o">-?</span>
+<span class="err">───────────────────────────────────────────────────────────────────────────────</span>
 
-]LINK.Create                                                                   
+<span class="sr">]</span><span class="nv">LINK</span><span class="na">.</span><span class="nv">Create</span><span class="w">                                                                   </span>
 
-Link a namespace with a directory (create one but not both if non-existent)    
-    ]LINK.Create [&lt;ns&gt;] &lt;dir&gt; [-source={ns|dir|auto}]                          
-    [-watch={none|ns|dir|both}] [-casecode] [-forceextensions]                 
-    [-forcefilenames] [-arrays{=name1,name2,...}] [-sysvars] [-flatten]        
-    [-beforeread=&lt;fn&gt;] [-beforewrite=&lt;fn&gt;] [-getfilename=&lt;fn&gt;]                 
-    [-codeextensions=&lt;var&gt;] [-typeextensions=&lt;var&gt;] [-fastload] [-ignoreconfig]
-    [-text={aplan|plain}]                                                      
+<span class="nv">Link</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">namespace</span><span class="w"> </span><span class="nv">with</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">directory</span><span class="w"> </span><span class="p">(</span><span class="nv">create</span><span class="w"> </span><span class="nv">one</span><span class="w"> </span><span class="nv">but</span><span class="w"> </span><span class="nv">not</span><span class="w"> </span><span class="nv">both</span><span class="w"> </span><span class="nv">if</span><span class="w"> </span><span class="nv">non</span><span class="o">-</span><span class="nv">existent</span><span class="p">)</span><span class="w">    </span>
+<span class="w">    </span><span class="sr">]</span><span class="nv">LINK</span><span class="na">.</span><span class="nv">Create</span><span class="w"> </span><span class="sr">[</span><span class="o">&lt;</span><span class="nv">ns</span><span class="o">&gt;</span><span class="sr">]</span><span class="w"> </span><span class="o">&lt;</span><span class="nv">dir</span><span class="o">&gt;</span><span class="w"> </span><span class="sr">[</span><span class="o">-</span><span class="nv">source</span><span class="o">=</span><span class="kt">{</span><span class="nv">ns</span><span class="o">|</span><span class="nv">dir</span><span class="o">|</span><span class="nv">auto</span><span class="kt">}</span><span class="sr">]</span><span class="w">                          </span>
+<span class="w">    </span><span class="sr">[</span><span class="o">-</span><span class="nv">watch</span><span class="o">=</span><span class="kt">{</span><span class="nv">none</span><span class="o">|</span><span class="nv">ns</span><span class="o">|</span><span class="nv">dir</span><span class="o">|</span><span class="nv">both</span><span class="kt">}</span><span class="sr">]</span><span class="w"> </span><span class="sr">[</span><span class="o">-</span><span class="nv">casecode</span><span class="sr">]</span><span class="w"> </span><span class="sr">[</span><span class="o">-</span><span class="nv">forceextensions</span><span class="sr">]</span><span class="w">                 </span>
+<span class="w">    </span><span class="sr">[</span><span class="o">-</span><span class="nv">forcefilenames</span><span class="sr">]</span><span class="w"> </span><span class="sr">[</span><span class="o">-</span><span class="nv">arrays</span><span class="kt">{</span><span class="o">=</span><span class="nv">name1</span><span class="o">,</span><span class="nv">name2</span><span class="o">,</span><span class="na">...</span><span class="kt">}</span><span class="sr">]</span><span class="w"> </span><span class="sr">[</span><span class="o">-</span><span class="nv">sysvars</span><span class="sr">]</span><span class="w"> </span><span class="sr">[</span><span class="o">-</span><span class="nv">flatten</span><span class="sr">]</span><span class="w">        </span>
+<span class="w">    </span><span class="sr">[</span><span class="o">-</span><span class="nv">beforeread</span><span class="o">=&lt;</span><span class="nv">fn</span><span class="o">&gt;</span><span class="sr">]</span><span class="w"> </span><span class="sr">[</span><span class="o">-</span><span class="nv">beforewrite</span><span class="o">=&lt;</span><span class="nv">fn</span><span class="o">&gt;</span><span class="sr">]</span><span class="w"> </span><span class="sr">[</span><span class="o">-</span><span class="nv">getfilename</span><span class="o">=&lt;</span><span class="nv">fn</span><span class="o">&gt;</span><span class="sr">]</span><span class="w">                 </span>
+<span class="w">    </span><span class="sr">[</span><span class="o">-</span><span class="nv">codeextensions</span><span class="o">=&lt;</span><span class="nv">var</span><span class="o">&gt;</span><span class="sr">]</span><span class="w"> </span><span class="sr">[</span><span class="o">-</span><span class="nv">typeextensions</span><span class="o">=&lt;</span><span class="nv">var</span><span class="o">&gt;</span><span class="sr">]</span><span class="w"> </span><span class="sr">[</span><span class="o">-</span><span class="nv">fastload</span><span class="sr">]</span><span class="w"> </span><span class="sr">[</span><span class="o">-</span><span class="nv">ignoreconfig</span><span class="sr">]</span>
+<span class="w">    </span><span class="sr">[</span><span class="o">-</span><span class="nv">text</span><span class="o">=</span><span class="kt">{</span><span class="nv">aplan</span><span class="o">|</span><span class="nv">plain</span><span class="kt">}</span><span class="sr">]</span><span class="w">                                                      </span>
 
-]LINK.Create -??  ⍝ for argument and modifier details                          
-]FILE.Open https://dyalog.github.io/link/4.0/API/Link.Create</code></pre>
+<span class="sr">]</span><span class="nv">LINK</span><span class="na">.</span><span class="nv">Create</span><span class="w"> </span><span class="o">-??</span><span class="w">  </span><span class="c1">⍝ for argument and modifier details                          </span>
+<span class="sr">]</span><span class="nv">FILE</span><span class="na">.</span><span class="nv">Open</span><span class="w"> </span><span class="nv">https</span><span class="bp">:</span><span class="na">//</span><span class="nv">dyalog</span><span class="na">.</span><span class="nv">github</span><span class="na">.</span><span class="nv">io</span><span class="na">/</span><span class="nv">link</span><span class="na">/</span><span class="m">4.0</span><span class="na">/</span><span class="nv">API</span><span class="na">/</span><span class="nv">Link</span><span class="na">.</span><span class="nv">Create</span>
+</code></pre></div>
 <p>Ok, enough documentation. Time to create the link!</p>
 <p><code>]LINK.Create</code> takes two arguments: the <em>namespace</em> you are using and the path on your computer you want to link the workspace to.
 In most cases, you should just put <code>#</code> for the namespace, which just means "everything". <code>#</code> is the root namespace, the workspace itself.
 Namespaces are a way to organise code within one workspace, more on namespaces in section 7.7.</p>
 <p>All you have to do now is to create a new (empty) folder somewhere on your computer, and pass its path to the link command.
 For example, I have created a new folder called <code>apltest</code> in the <code>Programs</code> folder, so I'll run this:</p>
-<pre class="highlight"><code class="language-apl">      ]LINK.Create # Programs/apltest
-Linked: # ←→ ~/Programs/apltest</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="sr">]</span><span class="nv">LINK</span><span class="na">.</span><span class="nv">Create</span><span class="w"> </span><span class="c1"># Programs/apltest</span>
+<span class="nv">Linked</span><span class="bp">:</span><span class="w"> </span><span class="c1"># ←→ ~/Programs/apltest</span>
+</code></pre></div>
 <p>The bi-directional arrow means changes to our code in our namespace <code>#</code> are written to our folder, and changes to our code in the folder are reflected back to our namespace! On some systems, only a uni-directional arrow is shown. If this is the case, you might need to install the <a href="https://dotnet.microsoft.com/en-us/download">.NET Framework</a> from Microsoft, but a uni-directional link is sufficient for our purposes.</p>
 <p>Let's see what happens when we create the same functions and variables as in the previous example.</p>
-<pre class="highlight"><code class="language-apl">      pyramid ← {⍵-∘.⌈⍨|⍵-⍳¯1+⍵×2}
-      pyramid7 ← pyramid 7
-      first ← pyramid7[1;]
-      myfunc ← {4/⍵}</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">pyramid</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="bp">⍵</span><span class="o">-</span><span class="na">∘.</span><span class="o">⌈</span><span class="na">⍨</span><span class="o">|</span><span class="bp">⍵</span><span class="o">-⍳</span><span class="m">¯1</span><span class="o">+</span><span class="bp">⍵</span><span class="o">×</span><span class="m">2</span><span class="kt">}</span>
+<span class="w">      </span><span class="nv">pyramid7</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">pyramid</span><span class="w"> </span><span class="m">7</span>
+<span class="w">      </span><span class="nv">first</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="nv">pyramid7</span><span class="sr">[</span><span class="m">1</span><span class="sr">;]</span>
+<span class="w">      </span><span class="nv">myfunc</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="m">4</span><span class="na">/</span><span class="bp">⍵</span><span class="kt">}</span>
+</code></pre></div>
 <p>Nothing special happens for now.
 This is because LINK only cares about automatically saving "real" functions, which we'll get to in the next part.
 For now, though, we can manually add our dfns and variables to the link:</p>
-<pre class="highlight"><code class="language-apl">      ]LINK.Add myfunc
-Added: #.myfunc
-      ]LINK.Add pyramid
-Added: #.pyramid
-      ]LINK.Add pyramid7
-Added: #.pyramid7
-      ]LINK.Add first
-Added: #.first</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="sr">]</span><span class="nv">LINK</span><span class="na">.</span><span class="nv">Add</span><span class="w"> </span><span class="nv">myfunc</span>
+<span class="nv">Added</span><span class="bp">:</span><span class="w"> </span><span class="c1">#.myfunc</span>
+<span class="w">      </span><span class="sr">]</span><span class="nv">LINK</span><span class="na">.</span><span class="nv">Add</span><span class="w"> </span><span class="nv">pyramid</span>
+<span class="nv">Added</span><span class="bp">:</span><span class="w"> </span><span class="c1">#.pyramid</span>
+<span class="w">      </span><span class="sr">]</span><span class="nv">LINK</span><span class="na">.</span><span class="nv">Add</span><span class="w"> </span><span class="nv">pyramid7</span>
+<span class="nv">Added</span><span class="bp">:</span><span class="w"> </span><span class="c1">#.pyramid7</span>
+<span class="w">      </span><span class="sr">]</span><span class="nv">LINK</span><span class="na">.</span><span class="nv">Add</span><span class="w"> </span><span class="nv">first</span>
+<span class="nv">Added</span><span class="bp">:</span><span class="w"> </span><span class="c1">#.first</span>
+</code></pre></div>
 <p>Open the folder you created, and voilà: your code has been saved!</p>
 <p><img alt="A picture of the files created by LINK" src="../../assets/7_2_files.png" /></p>
 <div class="admonition info">
@@ -2612,16 +2622,17 @@ How do you get back your saved code?
 There are two options: the first is clunky and manual, and the second is smooth and automatic.</p>
 <h3 id="the-clunky-and-manual-option">The clunky and manual option</h3>
 <p>This is pretty straightforward: just run the <code>]LINK</code> command again.</p>
-<pre class="highlight"><code class="language-apl">      )fns
-      )vars
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="p">)</span><span class="nv">fns</span>
+<span class="w">      </span><span class="p">)</span><span class="nv">vars</span>
 
-      ]LINK.Create # Programs/apltest
-Linked: # → ~/Programs/apltest
+<span class="w">      </span><span class="sr">]</span><span class="nv">LINK</span><span class="na">.</span><span class="nv">Create</span><span class="w"> </span><span class="c1"># Programs/apltest</span>
+<span class="nv">Linked</span><span class="bp">:</span><span class="w"> </span><span class="c1"># → ~/Programs/apltest</span>
 
-      )fns
-myfunc  pyramid 
-      )vars
-first   pyramid7</code></pre>
+<span class="w">      </span><span class="p">)</span><span class="nv">fns</span>
+<span class="nv">myfunc</span><span class="w">  </span><span class="nv">pyramid</span><span class="w"> </span>
+<span class="w">      </span><span class="p">)</span><span class="nv">vars</span>
+<span class="nv">first</span><span class="w">   </span><span class="nv">pyramid7</span>
+</code></pre></div>
 <p>LINK will just load all of the files stored in your folder and put them back in your fresh workspace.
 The only problem is that you'll have to run this command every time you re-open RIDE, which might get a little annoying.</p>
 <h3 id="the-smooth-and-automatic-version">The smooth and automatic version</h3>

@@ -932,9 +932,9 @@
   <label class="md-nav__title">Feedback</label>
   <form class="apl-feedback" data-section="2.5 - Nested arrays">
     <p class="apl-feedback__where">2.5 - Nested arrays</p>
-    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+    <textarea aria-label="Course feedback" class="apl-feedback__message" rows="4" maxlength="2000" required
               placeholder="Spotted a mistake? Something unclear?"></textarea>
-    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+    <input aria-label="Email address (optional)" class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
            placeholder="Email (optional)">
     <button class="apl-feedback__send" type="submit">Send</button>
     <p class="apl-feedback__status" role="status"></p>
@@ -2370,9 +2370,9 @@
   <label class="md-nav__title">Feedback</label>
   <form class="apl-feedback" data-section="2.5 - Nested arrays">
     <p class="apl-feedback__where">2.5 - Nested arrays</p>
-    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+    <textarea aria-label="Course feedback" class="apl-feedback__message" rows="4" maxlength="2000" required
               placeholder="Spotted a mistake? Something unclear?"></textarea>
-    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+    <input aria-label="Email address (optional)" class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
            placeholder="Email (optional)">
     <button class="apl-feedback__send" type="submit">Send</button>
     <p class="apl-feedback__status" role="status"></p>
@@ -2403,144 +2403,148 @@
 <p><link rel="stylesheet" href="/styles/ch5part2.css"></p>
 <p>Be warned, elements of arrays can be vectors, or matrices, or arrays of higher rank in their own right!  We will discuss this in depth in Chapter 5, so take this section as a warning.</p>
 <p>Recall that in previous sections our temperature arrays contained both numbers and vectors of characters.</p>
-<pre class="highlight"><code class="language-apl">      T1
-┌────┬───────────┐
-│21.4│Day 1 07:42│
-├────┼───────────┤
-│21.8│Day 1 08:47│
-├────┼───────────┤
-│22  │Day 1 10:10│
-├────┼───────────┤
-│21.5│Day 1 12:01│
-├────┼───────────┤
-│21.3│Day 1 14:36│
-├────┼───────────┤
-│22.3│Day 1 16:50│
-└────┴───────────┘</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">T1</span>
+<span class="err">┌────┬───────────┐</span>
+<span class="err">│</span><span class="m">21.4</span><span class="err">│</span><span class="nv">Day</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">07</span><span class="bp">:</span><span class="m">42</span><span class="err">│</span>
+<span class="err">├────┼───────────┤</span>
+<span class="err">│</span><span class="m">21.8</span><span class="err">│</span><span class="nv">Day</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">08</span><span class="bp">:</span><span class="m">47</span><span class="err">│</span>
+<span class="err">├────┼───────────┤</span>
+<span class="err">│</span><span class="m">22</span><span class="w">  </span><span class="err">│</span><span class="nv">Day</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">10</span><span class="bp">:</span><span class="m">10</span><span class="err">│</span>
+<span class="err">├────┼───────────┤</span>
+<span class="err">│</span><span class="m">21.5</span><span class="err">│</span><span class="nv">Day</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">12</span><span class="bp">:</span><span class="m">01</span><span class="err">│</span>
+<span class="err">├────┼───────────┤</span>
+<span class="err">│</span><span class="m">21.3</span><span class="err">│</span><span class="nv">Day</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">14</span><span class="bp">:</span><span class="m">36</span><span class="err">│</span>
+<span class="err">├────┼───────────┤</span>
+<span class="err">│</span><span class="m">22.3</span><span class="err">│</span><span class="nv">Day</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">16</span><span class="bp">:</span><span class="m">50</span><span class="err">│</span>
+<span class="err">└────┴───────────┘</span>
+</code></pre></div>
 <p>Because the contents of this array are mixed, if boxing is enabled, APL draws boxes to separate the entries visually.</p>
 <h2 id="accidental-nesting">Accidental nesting</h2>
 <p>This also means that it's possible to accidentally create a matrix of vectors rather than a matrix of their elements. Suppose we created the full array <code>TData</code> immediately from T1 and T2 like so</p>
-<pre class="highlight"><code class="language-apl">      T1 ← [ 21.4 'Day 1 07:42' ⋄ 
-            21.8 'Day 1 08:47' ⋄
-            22.0 'Day 1 10:10' ⋄
-            21.5 'Day 1 12:01' ⋄
-            21.3 'Day 1 14:36' ⋄
-            22.3 'Day 1 16:50' ]
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">T1</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="sr">[</span><span class="w"> </span><span class="m">21.4</span><span class="w"> </span><span class="s1">&#39;Day 1 07:42&#39;</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span>
+<span class="w">            </span><span class="m">21.8</span><span class="w"> </span><span class="s1">&#39;Day 1 08:47&#39;</span><span class="w"> </span><span class="p">⋄</span>
+<span class="w">            </span><span class="m">22.0</span><span class="w"> </span><span class="s1">&#39;Day 1 10:10&#39;</span><span class="w"> </span><span class="p">⋄</span>
+<span class="w">            </span><span class="m">21.5</span><span class="w"> </span><span class="s1">&#39;Day 1 12:01&#39;</span><span class="w"> </span><span class="p">⋄</span>
+<span class="w">            </span><span class="m">21.3</span><span class="w"> </span><span class="s1">&#39;Day 1 14:36&#39;</span><span class="w"> </span><span class="p">⋄</span>
+<span class="w">            </span><span class="m">22.3</span><span class="w"> </span><span class="s1">&#39;Day 1 16:50&#39;</span><span class="w"> </span><span class="sr">]</span>
 
-      T2 ← [ 22.8 'Day 1 18:23'  ⋄ 
-             21.5 'Day 1 19:30'  ⋄
-             22.1 'Day 2, 21:12' ⋄
-             22.0 'Day 3, 07:15' ⋄
-             21.9 'Day 3, 08:30' ⋄
-             22.4 'Day 3, 09:45' ]
+<span class="w">      </span><span class="nv">T2</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="sr">[</span><span class="w"> </span><span class="m">22.8</span><span class="w"> </span><span class="s1">&#39;Day 1 18:23&#39;</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span>
+<span class="w">             </span><span class="m">21.5</span><span class="w"> </span><span class="s1">&#39;Day 1 19:30&#39;</span><span class="w"> </span><span class="p">⋄</span>
+<span class="w">             </span><span class="m">22.1</span><span class="w"> </span><span class="s1">&#39;Day 1 21:12&#39;</span><span class="w"> </span><span class="p">⋄</span>
+<span class="w">             </span><span class="m">22.0</span><span class="w"> </span><span class="s1">&#39;Day 2 07:15&#39;</span><span class="w"> </span><span class="p">⋄</span>
+<span class="w">             </span><span class="m">21.9</span><span class="w"> </span><span class="s1">&#39;Day 2 08:30&#39;</span><span class="w"> </span><span class="p">⋄</span>
+<span class="w">             </span><span class="m">22.4</span><span class="w"> </span><span class="s1">&#39;Day 2 09:45&#39;</span><span class="w"> </span><span class="sr">]</span>
 
-      TData ← 2 6 2 ⍴ T1 T2</code></pre>
-<p>We would get a very large array of the vectors T1 and T2! (Try it!) </p>
-<p>In APL, elements of arrays can be of any rank. In the above code, we create an array of vectors rather than an array of their scalars because <code>T1 T2</code> is a vector whose elements are <code>T1</code> and <code>T2</code>. </p>
+<span class="w">      </span><span class="nv">TData</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="nv">T1</span><span class="w"> </span><span class="nv">T2</span>
+</code></pre></div>
+<p>We would get a very large array of the matrices T1 and T2! (Try it!) </p>
+<p>In APL, elements of arrays can be of any rank. In the above code, we create a nested array of matrices rather than an array of their scalars because <code>T1 T2</code> is a vector whose elements are <code>T1</code> and <code>T2</code>. </p>
 <h2 id="catenate-and-ravel">Catenate and ravel</h2>
 <p>The proper way to combine two vectors into a single longer vector is using the catenate <code>,</code> function,  generally joining two arrays along a common edge. Monadically, the ravel <code>,</code> function can be used to "unravel" a matrix into a vector of its elements in top-down left-right order, called ravel order.</p>
-<pre class="highlight"><code class="language-apl">      WORD ← 3 2 2 ⍴ 'BOROSILICATE'
-      WORD
-BO
-RO
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">WORD</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="s1">&#39;BOROSILICATE&#39;</span>
+<span class="w">      </span><span class="nv">WORD</span>
+<span class="nv">BO</span>
+<span class="nv">RO</span>
 
-SI
-LI
+<span class="nv">SI</span>
+<span class="nv">LI</span>
 
-CA
-TE
+<span class="nv">CA</span>
+<span class="nv">TE</span>
 
-      ,WORD
-BOROSILICATE
+<span class="w">      </span><span class="o">,</span><span class="nv">WORD</span>
+<span class="nv">BOROSILICATE</span>
 
-      WORD,'T'
-BOT
-ROT
+<span class="w">      </span><span class="nv">WORD</span><span class="o">,</span><span class="s1">&#39;T&#39;</span>
+<span class="nv">BOT</span>
+<span class="nv">ROT</span>
 
-SIT
-LIT
+<span class="nv">SIT</span>
+<span class="nv">LIT</span>
 
-CAT
-TET
+<span class="nv">CAT</span>
+<span class="nv">TET</span>
 
-      WORD,WORD
-BOBO
-RORO
+<span class="w">      </span><span class="nv">WORD</span><span class="o">,</span><span class="nv">WORD</span>
+<span class="nv">BOBO</span>
+<span class="nv">RORO</span>
 
-SISI
-LILI
+<span class="nv">SISI</span>
+<span class="nv">LILI</span>
 
-CACA
-TETE
+<span class="nv">CACA</span>
+<span class="nv">TETE</span>
 
-      T1 ← [ 21.4 'Day 1 07:42' ⋄ 
-            21.8 'Day 1 08:47' ⋄
-            22.0 'Day 1 10:10' ⋄
-            21.5 'Day 1 12:01' ⋄
-            21.3 'Day 1 14:36' ⋄
-            22.3 'Day 1 16:50' ]
+<span class="w">      </span><span class="nv">T1</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="sr">[</span><span class="w"> </span><span class="m">21.4</span><span class="w"> </span><span class="s1">&#39;Day 1 07:42&#39;</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span>
+<span class="w">            </span><span class="m">21.8</span><span class="w"> </span><span class="s1">&#39;Day 1 08:47&#39;</span><span class="w"> </span><span class="p">⋄</span>
+<span class="w">            </span><span class="m">22.0</span><span class="w"> </span><span class="s1">&#39;Day 1 10:10&#39;</span><span class="w"> </span><span class="p">⋄</span>
+<span class="w">            </span><span class="m">21.5</span><span class="w"> </span><span class="s1">&#39;Day 1 12:01&#39;</span><span class="w"> </span><span class="p">⋄</span>
+<span class="w">            </span><span class="m">21.3</span><span class="w"> </span><span class="s1">&#39;Day 1 14:36&#39;</span><span class="w"> </span><span class="p">⋄</span>
+<span class="w">            </span><span class="m">22.3</span><span class="w"> </span><span class="s1">&#39;Day 1 16:50&#39;</span><span class="w"> </span><span class="sr">]</span>
 
-      T2 ← [ 22.8 'Day 1 18:23'  ⋄ 
-             21.5 'Day 1 19:30'  ⋄
-             22.1 'Day 2, 21:12' ⋄
-             22.0 'Day 3, 07:15' ⋄
-             21.9 'Day 3, 08:30' ⋄
-             22.4 'Day 3, 09:45' ]
+<span class="w">      </span><span class="nv">T2</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="sr">[</span><span class="w"> </span><span class="m">22.8</span><span class="w"> </span><span class="s1">&#39;Day 1 18:23&#39;</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span>
+<span class="w">             </span><span class="m">21.5</span><span class="w"> </span><span class="s1">&#39;Day 1 19:30&#39;</span><span class="w"> </span><span class="p">⋄</span>
+<span class="w">             </span><span class="m">22.1</span><span class="w"> </span><span class="s1">&#39;Day 1 21:12&#39;</span><span class="w"> </span><span class="p">⋄</span>
+<span class="w">             </span><span class="m">22.0</span><span class="w"> </span><span class="s1">&#39;Day 2 07:15&#39;</span><span class="w"> </span><span class="p">⋄</span>
+<span class="w">             </span><span class="m">21.9</span><span class="w"> </span><span class="s1">&#39;Day 2 08:30&#39;</span><span class="w"> </span><span class="p">⋄</span>
+<span class="w">             </span><span class="m">22.4</span><span class="w"> </span><span class="s1">&#39;Day 2 09:45&#39;</span><span class="w"> </span><span class="sr">]</span>
 
-      TData ← 2 6 2 ⍴ T1,T2
-      TData
-┌────┬───────────┐
-│21.4│Day 1 07:42│
-├────┼───────────┤
-│21.8│Day 1 08:47│
-├────┼───────────┤
-│22  │Day 1 10:10│
-├────┼───────────┤
-│21.5│Day 1 12:01│
-├────┼───────────┤
-│21.3│Day 1 14:36│
-├────┼───────────┤
-│22.3│Day 1 16:50│
-└────┴───────────┘
-┌────┬───────────┐
-│22.8│Day 1 18:23│
-├────┼───────────┤
-│21.5│Day 1 19:30│
-├────┼───────────┤
-│22.1│Day 2 21:12│
-├────┼───────────┤
-│22  │Day 3 07:15│
-├────┼───────────┤
-│21.9│Day 3 08:30│
-├────┼───────────┤
-│22.4│Day 3 09:45│
-└────┴───────────┘</code></pre>
+<span class="w">      </span><span class="nv">TData</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="p">(</span><span class="o">,</span><span class="nv">T1</span><span class="p">)</span><span class="o">,,</span><span class="nv">T2</span>
+<span class="w">      </span><span class="nv">TData</span>
+<span class="err">┌────┬───────────┐</span>
+<span class="err">│</span><span class="m">21.4</span><span class="err">│</span><span class="nv">Day</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">07</span><span class="bp">:</span><span class="m">42</span><span class="err">│</span>
+<span class="err">├────┼───────────┤</span>
+<span class="err">│</span><span class="m">21.8</span><span class="err">│</span><span class="nv">Day</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">08</span><span class="bp">:</span><span class="m">47</span><span class="err">│</span>
+<span class="err">├────┼───────────┤</span>
+<span class="err">│</span><span class="m">22</span><span class="w">  </span><span class="err">│</span><span class="nv">Day</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">10</span><span class="bp">:</span><span class="m">10</span><span class="err">│</span>
+<span class="err">├────┼───────────┤</span>
+<span class="err">│</span><span class="m">21.5</span><span class="err">│</span><span class="nv">Day</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">12</span><span class="bp">:</span><span class="m">01</span><span class="err">│</span>
+<span class="err">├────┼───────────┤</span>
+<span class="err">│</span><span class="m">21.3</span><span class="err">│</span><span class="nv">Day</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">14</span><span class="bp">:</span><span class="m">36</span><span class="err">│</span>
+<span class="err">├────┼───────────┤</span>
+<span class="err">│</span><span class="m">22.3</span><span class="err">│</span><span class="nv">Day</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">16</span><span class="bp">:</span><span class="m">50</span><span class="err">│</span>
+<span class="err">└────┴───────────┘</span>
+<span class="err">┌────┬───────────┐</span>
+<span class="err">│</span><span class="m">22.8</span><span class="err">│</span><span class="nv">Day</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">18</span><span class="bp">:</span><span class="m">23</span><span class="err">│</span>
+<span class="err">├────┼───────────┤</span>
+<span class="err">│</span><span class="m">21.5</span><span class="err">│</span><span class="nv">Day</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">19</span><span class="bp">:</span><span class="m">30</span><span class="err">│</span>
+<span class="err">├────┼───────────┤</span>
+<span class="err">│</span><span class="m">22.1</span><span class="err">│</span><span class="nv">Day</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">21</span><span class="bp">:</span><span class="m">12</span><span class="err">│</span>
+<span class="err">├────┼───────────┤</span>
+<span class="err">│</span><span class="m">22</span><span class="w">  </span><span class="err">│</span><span class="nv">Day</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">07</span><span class="bp">:</span><span class="m">15</span><span class="err">│</span>
+<span class="err">├────┼───────────┤</span>
+<span class="err">│</span><span class="m">21.9</span><span class="err">│</span><span class="nv">Day</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">08</span><span class="bp">:</span><span class="m">30</span><span class="err">│</span>
+<span class="err">├────┼───────────┤</span>
+<span class="err">│</span><span class="m">22.4</span><span class="err">│</span><span class="nv">Day</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">09</span><span class="bp">:</span><span class="m">45</span><span class="err">│</span>
+<span class="err">└────┴───────────┘</span>
+</code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Boxing</p>
-<p>In TryAPL, boxing is enabled by default; however, to manually control boxing, the <code>]Box</code> user command can be used.</p>
-<pre class="highlight"><code class="language-apl">      nested ← 2 2 ⍴ (1 2 3) ('  ') ('   ') (2 2 ⍴ ('  ') (1 2 3) (2 2 ⍴ (1 2 3) ('  ') ('   ') (1 2)) ('   '))
-      nested
-1 2 3                        
-                1 2 3  
-   1 2 3               
-          1 2          
+<p>In TryAPL, drawing boxes around distinct elements for readability is enabled by default; however, to manually control boxing, the <code>]Box</code> user command can be used.</p>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">nested</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;  &#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;   &#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;  &#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">⍴</span><span class="w"> </span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;  &#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;   &#39;</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="p">))</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;   &#39;</span><span class="p">))</span>
+<span class="w">      </span><span class="nv">nested</span>
+<span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w">                        </span>
+<span class="w">                </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w">  </span>
+<span class="w">   </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w">               </span>
+<span class="w">          </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w">          </span>
 
-      ]Box on
-Was OFF
-      nested
-┌─────┬───────────────────┐
-│1 2 3│                   │
-├─────┼───────────────────┤
-│     │┌───────────┬─────┐│
-│     ││           │1 2 3││
-│     │├───────────┼─────┤│
-│     ││┌─────┬───┐│     ││
-│     │││1 2 3│   ││     ││
-│     ││├─────┼───┤│     ││
-│     │││     │1 2││     ││
-│     ││└─────┴───┘│     ││
-│     │└───────────┴─────┘│
-└─────┴───────────────────┘</code></pre>
+<span class="w">      </span><span class="sr">]</span><span class="nv">Box</span><span class="w"> </span><span class="nv">on</span>
+<span class="nv">Was</span><span class="w"> </span><span class="nv">OFF</span>
+<span class="w">      </span><span class="nv">nested</span>
+<span class="err">┌─────┬───────────────────┐</span>
+<span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="err">│</span><span class="w">                   </span><span class="err">│</span>
+<span class="err">├─────┼───────────────────┤</span>
+<span class="err">│</span><span class="w">     </span><span class="err">│┌───────────┬─────┐│</span>
+<span class="err">│</span><span class="w">     </span><span class="err">││</span><span class="w">           </span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="err">││</span>
+<span class="err">│</span><span class="w">     </span><span class="err">│├───────────┼─────┤│</span>
+<span class="err">│</span><span class="w">     </span><span class="err">││┌─────┬───┐│</span><span class="w">     </span><span class="err">││</span>
+<span class="err">│</span><span class="w">     </span><span class="err">│││</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="err">│</span><span class="w">   </span><span class="err">││</span><span class="w">     </span><span class="err">││</span>
+<span class="err">│</span><span class="w">     </span><span class="err">││├─────┼───┤│</span><span class="w">     </span><span class="err">││</span>
+<span class="err">│</span><span class="w">     </span><span class="err">│││</span><span class="w">     </span><span class="err">│</span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="err">││</span><span class="w">     </span><span class="err">││</span>
+<span class="err">│</span><span class="w">     </span><span class="err">││└─────┴───┘│</span><span class="w">     </span><span class="err">││</span>
+<span class="err">│</span><span class="w">     </span><span class="err">│└───────────┴─────┘│</span>
+<span class="err">└─────┴───────────────────┘</span>
+</code></pre></div>
 </div>
 
 

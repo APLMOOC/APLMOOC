@@ -99,15 +99,28 @@ function submit_problem(problem_id, parts=0) {
     xhttp.onreadystatechange = function() {
         if (this.readyState != 4) return;
 
-        response = JSON.parse(this.responseText);
+        if (this.status === 0) return; // onerror, ontimeout or onabort provides feedback
+        let response;
+        try {
+            response = JSON.parse(this.responseText);
+            if (!response || typeof response !== "object" || Array.isArray(response)) throw new Error("Invalid response");
+            if (this.status === 200 && (typeof response.feedback !== "string" || ![0, 1, 2].includes(response.points))) throw new Error("Invalid grading result");
+        } catch {
+            set_feedback(problem_id, "The grading service returned an unreadable response. Please try again.");
+            return;
+        }
         if (this.status == 200) {
             set_feedback(problem_id, response["feedback"], response["points"] == 2);
         } else {
-            set_feedback(problem_id, response["message"]);
+            set_feedback(problem_id, response.error || response.message || "Submission failed. Please try again.");
         }
     }
 
+    xhttp.onerror = () => set_feedback(problem_id, "Could not reach the grading service. Check your connection and try again.");
+    xhttp.ontimeout = () => set_feedback(problem_id, "The grading service did not respond in time. Please try again.");
+    xhttp.onabort = () => set_feedback(problem_id, "Submission cancelled. Please try again.");
     xhttp.open("POST", `${backend_url}/submit`, true);
+    xhttp.timeout = 15000;
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(JSON.stringify({
         "id_problem": problem_id,
@@ -128,7 +141,9 @@ function problem_status_update() {
     let problems = $$("div.write-problem");
 
     for(const problem of problems) {
-        let problem_id = problem.getElementsByClassName("probleminput")[0].id;
+        let input = problem.querySelector(".probleminput, .problemfillinput");
+        if(input === null) continue;
+        let problem_id = input.id;
         if(solved.includes(problem_id)) {
             console.log(`Marking ${problem_id} as complete`);
             problem.classList.remove("write-problem");

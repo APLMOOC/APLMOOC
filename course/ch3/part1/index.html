@@ -1073,9 +1073,9 @@
   <label class="md-nav__title">Feedback</label>
   <form class="apl-feedback" data-section="3.1 - Fun for everyone">
     <p class="apl-feedback__where">3.1 - Fun for everyone</p>
-    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+    <textarea aria-label="Course feedback" class="apl-feedback__message" rows="4" maxlength="2000" required
               placeholder="Spotted a mistake? Something unclear?"></textarea>
-    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+    <input aria-label="Email address (optional)" class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
            placeholder="Email (optional)">
     <button class="apl-feedback__send" type="submit">Send</button>
     <p class="apl-feedback__status" role="status"></p>
@@ -2370,9 +2370,9 @@
   <label class="md-nav__title">Feedback</label>
   <form class="apl-feedback" data-section="3.1 - Fun for everyone">
     <p class="apl-feedback__where">3.1 - Fun for everyone</p>
-    <textarea class="apl-feedback__message" rows="4" maxlength="2000" required
+    <textarea aria-label="Course feedback" class="apl-feedback__message" rows="4" maxlength="2000" required
               placeholder="Spotted a mistake? Something unclear?"></textarea>
-    <input class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
+    <input aria-label="Email address (optional)" class="apl-feedback__email" type="email" maxlength="200" autocomplete="email"
            placeholder="Email (optional)">
     <button class="apl-feedback__send" type="submit">Send</button>
     <p class="apl-feedback__status" role="status"></p>
@@ -2439,17 +2439,24 @@
 <p>You are an engineer sitting at your <a href="https://en.wikipedia.org/wiki/Cubicle">cubicle</a>. You are currently orbiting the Earth at an altitude of 160m at a speed of 1,600km/h.</p>
 <p>In brief intervals of time spent waiting between tasks, you have to organise project data in your data management system. Unfortunately for you, your clients all use different units of measurement, and none of your colleagues seem to share your enthusiasm for avoiding misunderstanding. Fortunately for your company, you’ve decided to use your APL skills to avoid a <a href="https://en.wikipedia.org/wiki/Mars_Climate_Orbiter">Mars Climate Orbiter</a>-like disaster.</p>
 <h2 id="direct-functions">Direct functions</h2>
-<p>One of the ways of defining a function, taking in array arguments and outputting an array result, is using direct functions abbreviated dfn. ("dee-fun") A dfn is a series of statements in curly braces <code>{}</code>, where the special characters <code>⍺</code> and <code>⍵</code> represent the left and right arguments to the function. Functions always require a right argument. You start with the basic conversions your current project requires, and a couple fun ones just for yourself.</p>
-<pre class="highlight"><code class="language-apl">      FtoC ← {(5 × ⍵ - 32)÷9}
-      FtoC 451
-232.7777778
-      CtoF ← {32 + (9 × ⍵) ÷ 5}
-      CtoF ¯273.15
-¯459.67
-      CtoF FtoC 100
-100
+<p>One of the ways of defining a function, taking in array arguments and outputting an array result, is using direct functions abbreviated dfn. ("dee-fun") A dfn is a series of statements in curly braces <code>{}</code>, where the special characters <code>⍺</code> and <code>⍵</code> represent the left and right arguments to the function. Functions always require a right argument. </p>
+<p>You start with the basic conversions your current project requires, and a couple fun ones just for yourself.</p>
+<p>First, you write functions to convert from Fahrenheit to Celsius and back again.</p>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="c1">⍝ Fahrenheit to Celsius</span>
+<span class="w">      </span><span class="nv">FtoC</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="p">(</span><span class="m">5</span><span class="w"> </span><span class="o">×</span><span class="w"> </span><span class="bp">⍵</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">32</span><span class="p">)</span><span class="o">÷</span><span class="m">9</span><span class="kt">}</span>
+<span class="w">      </span><span class="nv">FtoC</span><span class="w"> </span><span class="m">451</span>
+<span class="m">232.7777778</span>
 
-      ⍝ Centimeters to feet and inches
+<span class="w">      </span><span class="c1">⍝ Celsius to Fahrenheit</span>
+<span class="w">      </span><span class="nv">CtoF</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="m">32</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="m">9</span><span class="w"> </span><span class="o">×</span><span class="w"> </span><span class="bp">⍵</span><span class="p">)</span><span class="w"> </span><span class="o">÷</span><span class="w"> </span><span class="m">5</span><span class="kt">}</span>
+<span class="w">      </span><span class="nv">CtoF</span><span class="w"> </span><span class="m">¯273.15</span>
+<span class="m">¯459.67</span>
+
+<span class="w">      </span><span class="nv">CtoF</span><span class="w"> </span><span class="nv">FtoC</span><span class="w"> </span><span class="m">100</span>
+<span class="m">100</span>
+</code></pre></div>
+<p>Similarly, you write functions to convert between centimeters and feet and inches.</p>
+<div class="language-text highlight"><pre><span></span><code>      ⍝ Centimeters to feet and inches
       CmtoIn ← {⌊⍵÷2.54}
       CmtoFtIn ← {
             (⌊(CmtoIn ⍵) ÷ 12),(12 | (CmtoIn ⍵))
@@ -2461,18 +2468,9 @@
 5 10
       CmtoFtIn 300
 9 10
-
-      ⍝ From decibels to bels 
-      dBtoB ← {⍵÷10} 
-      ⍝ From decibels back to a power ratio
-      dBtoRatio ← {10*dBtoB ⍵} 
-      dBtoRatio 60
-1000000
-      dBtoRatio 3
-1.995262315
-
-
-      ⍝ Pythagorean theorem
+</code></pre></div>
+<p>Then, a function that calculates the hypotenuse of a triangle with sides given by the left and right arguments.</p>
+<div class="language-text highlight"><pre><span></span><code>      ⍝ Pythagorean theorem
       hypotenuse ← {((⍺*2)+⍵*2)*0.5} 
       3 hypotenuse 4
 5
@@ -2482,47 +2480,54 @@
 13
       1 hypotenuse 3*.5
 2
-      ⍝ A dfn that uses ⍺ needs a left argument
+</code></pre></div>
+<p>Note that this means the function requires a left argument too!</p>
+<div class="language-text highlight"><pre><span></span><code>      ⍝ A dfn that uses ⍺ needs a left argument
       hypotenuse 4
 VALUE ERROR
 hypotenuse[0] hypotenuse←{((⍺*2)+⍵*2)*0.5}
                             ∧
-
-      ⍝ golden ratio
+</code></pre></div>
+<p>Finally, a function that calculates terms of the Fibonacci sequence.</p>
+<div class="language-text highlight"><pre><span></span><code>      ⍝ golden ratio
       PHI ← 0.5× 1 + 5*.5 
       fibonacci ← {((PHI*⍵) - (-PHI)*-⍵) ÷ (¯1 + 2×PHI)}
-      fibonacci ⍳7
+      fibonacci 1 2 3 4 5 6 7
 1 1 2 3 5 8 13
       fibonacci 10
 55
-</code></pre>
+</code></pre></div>
 <p>Note that for the Fibonacci function, a constant value PHI for the golden ratio was used. If the value of PHI is changed, the Fibonacci function will use the updated value. </p>
 <p>In order to let the Fibonacci function define its own PHI, we have to define it inside the function itself. APL allows any number of assignment statements inside a function before the statement which evaluates the result, using the diamond-shaped statement separator <code>⋄</code>, or placing the statements on new lines. The following two functions are equivalent.</p>
-<pre class="highlight"><code class="language-apl">      fibonacci ← {
-            PHI ← 0.5× 1 + 5*.5
-            ((PHI*⍵) - (-PHI)*-⍵) ÷ (¯1 + 2×PHI)
-      }
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">fibonacci</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span>
+<span class="w">            </span><span class="nv">PHI</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">0.5</span><span class="o">×</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">5</span><span class="o">*</span><span class="m">.5</span>
+<span class="w">            </span><span class="p">((</span><span class="nv">PHI</span><span class="o">*</span><span class="bp">⍵</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="nv">PHI</span><span class="p">)</span><span class="o">*-</span><span class="bp">⍵</span><span class="p">)</span><span class="w"> </span><span class="o">÷</span><span class="w"> </span><span class="p">(</span><span class="m">¯1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">2</span><span class="o">×</span><span class="nv">PHI</span><span class="p">)</span>
+<span class="w">      </span><span class="kt">}</span>
 
-      fibonacci ← {
-            PHI ← 0.5× 1 + 5*.5 ⋄ ((PHI*⍵) - (-PHI)*-⍵) ÷ (¯1 + 2×PHI)
-      }</code></pre>
+<span class="w">      </span><span class="nv">fibonacci</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span>
+<span class="w">            </span><span class="nv">PHI</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">0.5</span><span class="o">×</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">5</span><span class="o">*</span><span class="m">.5</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span><span class="p">((</span><span class="nv">PHI</span><span class="o">*</span><span class="bp">⍵</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="nv">PHI</span><span class="p">)</span><span class="o">*-</span><span class="bp">⍵</span><span class="p">)</span><span class="w"> </span><span class="o">÷</span><span class="w"> </span><span class="p">(</span><span class="m">¯1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">2</span><span class="o">×</span><span class="nv">PHI</span><span class="p">)</span>
+<span class="w">      </span><span class="kt">}</span>
+</code></pre></div>
 <p>Note that the first statement whose result is not assigned to a name ends the function and returns that result.</p>
-<pre class="highlight"><code class="language-apl">      separator_test ← {a ← 1 ⋄ a + a ⋄ a - a}
-      separator_test ⍬
-2</code></pre>
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">separator_test</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="nv">a</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">a</span><span class="kt">}</span>
+<span class="w">      </span><span class="nv">separator_test</span><span class="w"> </span><span class="no">⍬</span>
+<span class="m">2</span>
+</code></pre></div>
+<p>Here, the second statement <code>a + a</code> is executed and returns the result, and <code>a - a</code> is never executed.</p>
 <p>The empty vector symbol <code>⍬</code> is added here as filler since functions always require a right argument.</p>
 <div class="admonition warning">
 <p class="admonition-title">Variable Scope</p>
 <p>In dfns, while it is possible to access variables outside the function, it is not possible to assign to them. All quantities assigned in dfns are said to be local to the function itself.
-<pre class="highlight"><code class="language-apl">      i ← 10
-      d_increment ← {i←i+1 ⋄ i}
+<div class="language-apl highlight"><pre><span></span><code><span class="w">      </span><span class="nv">i</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="m">10</span>
+<span class="w">      </span><span class="nv">d_increment</span><span class="w"> </span><span class="kd">←</span><span class="w"> </span><span class="kt">{</span><span class="nv">i</span><span class="kd">←</span><span class="nv">i</span><span class="o">+</span><span class="m">1</span><span class="w"> </span><span class="p">⋄</span><span class="w"> </span><span class="nv">i</span><span class="kt">}</span>
 
-      i
-10
-      d_increment ⍬
-11
-      i
-10</code></pre></p>
+<span class="w">      </span><span class="nv">i</span>
+<span class="m">10</span>
+<span class="w">      </span><span class="nv">d_increment</span><span class="w"> </span><span class="no">⍬</span>
+<span class="m">11</span>
+<span class="w">      </span><span class="nv">i</span>
+<span class="m">10</span>
+</code></pre></div></p>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Multiline support in RIDE</p>
